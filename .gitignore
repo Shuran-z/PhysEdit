@@ -3,3 +3,9 @@ __pycache__/
 .pytest_cache/
 runs/
 manifests/*.jsonl
+data/
+.venv/
+logs/
+third_party/
+.venv311/
+.claude/

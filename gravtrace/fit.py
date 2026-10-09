@@ -17,7 +17,7 @@ import numpy as np
 from scipy.optimize import least_squares
 
 from .camera import Camera, quat_to_matrix
-from .motion import ballistic, incline
+from .motion import ballistic, incline, torque_free
 from .observe import load_boxes
 
 G_RANGE = (0.1, 80.0)
@@ -38,6 +38,14 @@ def fit_sample(sample: dict) -> dict:
     return fit_boxes(sample, frames, boxes)
 
 
+def safe_fit(sample: dict) -> dict:
+    """`fit_sample` that reports an exception as an `error` status (importable, so spawned workers can use it)."""
+    try:
+        return fit_sample(sample)
+    except Exception as exc:  # one bad sample must not stop a benchmark run
+        return {"id": sample["id"], "status": "error", "error": f"{type(exc).__name__}: {exc}"}
+
+
 def fit_boxes(sample: dict, frames: np.ndarray, boxes: np.ndarray, times: np.ndarray | None = None) -> dict:
     """Fit one sample from its observed boxes (times default to frame index / fps).
 
@@ -55,17 +63,19 @@ def fit_boxes(sample: dict, frames: np.ndarray, boxes: np.ndarray, times: np.nda
     if n < MIN_FRAMES:
         return {**out, "status": "no_track", "frames": int(len(frames))}
     t = times[keep] - times[keep][0] if times is not None else (frames - frames[0]) / float(sample["fps"])
-    problem = _Problem(sample, t[:n], boxes[:n])
+    declared = window.get("edges_visible") or {}  # per frame [left, top, right, bottom]: hidden edges drop out
+    seen = np.array([declared.get(str(int(f)), [True] * 4) for f in frames], dtype=bool).reshape(-1, 4)
+    problem = _Problem(sample, t[:n], boxes[:n], seen[:n])
     if problem.anchor is None:
         return {**out, "status": "few_frames", "frames": n}
     best = problem.solve()
     contact = problem.contact_frame(best)
     if contact is not None and MIN_FRAMES <= contact < n:  # the analytic model ends at first contact
         n = contact
-        problem = _Problem(sample, t[:n], boxes[:n])
+        problem = _Problem(sample, t[:n], boxes[:n], seen[:n])
         best = problem.solve() if problem.anchor is not None else best
     while n > MIN_FRAMES:  # contact with anything undeclared: the flight so far fails to predict the last frame
-        shorter = _Problem(sample, t[:n - 1], boxes[:n - 1])
+        shorter = _Problem(sample, t[:n - 1], boxes[:n - 1], seen[:n - 1])
         if shorter.anchor is None:
             break
         short_best = shorter.solve()
@@ -87,28 +97,42 @@ def _is_outlier(miss: float, errors: np.ndarray) -> bool:
 
 
 class _Problem:
-    def __init__(self, sample: dict, t: np.ndarray, boxes: np.ndarray) -> None:
+    def __init__(self, sample: dict, t: np.ndarray, boxes: np.ndarray, seen: np.ndarray | None = None) -> None:
         self.m, self.t, self.scenario = sample["motion"], t, sample["scenario"]
         obj = sample["object"]
-        self.use_size = obj.get("corners") is not None  # without geometry only the box centre is modelled
+        # without geometry (or when asked: a tumbling object) only the box centre is modelled
+        self.use_size = obj.get("corners") is not None and sample.get("features", "box") != "centre"
         corners = np.asarray(obj["corners"], dtype=float) if self.use_size else np.zeros((1, 3))
-        self.corners = corners @ quat_to_matrix(obj.get("quaternion")).T
+        self.rotation0 = quat_to_matrix(obj.get("quaternion"))
+        self.corners = corners @ self.rotation0.T
+        # a declared spin turns the corners by torque-free rotation (box inertia unless given); it does not depend on g
+        self.body_corners, self.omega = corners, obj.get("angular_velocity") if self.use_size else None
+        extent = corners.max(axis=0) - corners.min(axis=0)
+        self.inertia = obj.get("inertia") or [extent[1] ** 2 + extent[2] ** 2, extent[0] ** 2 + extent[2] ** 2,
+                                              extent[0] ** 2 + extent[1] ** 2]
+        self.spin_damping = float(obj.get("angular_damping", 0.0)) if obj.get("inertia") else 0.0  # N m s, needs inertia
+        self.drag = float(obj.get("linear_damping", 0.0)) / float(obj["mass"]) if obj.get("mass") else 0.0  # 1/s
+        self._spin_cache: dict = {}
         self.x0 = np.asarray(obj["position"], dtype=float)
         self.g_dir = np.asarray(self.m.get("gravity_dir", [0.0, 0.0, -1.0]), dtype=float)
         self.g_dir /= np.linalg.norm(self.g_dir)
-        self.camera = Camera(sample["camera"]["matrix_world"], sample["camera"]["fx"], sample["camera"]["fy"],
-                             sample["image_size"])
+        self.camera = Camera.from_dict(sample["camera"], sample["image_size"])
         size = boxes[:, 2:] - boxes[:, :2]
         area = size.prod(axis=1)
         clipped = np.column_stack([boxes[:, 0] <= 1, boxes[:, 1] <= 1,
                                    boxes[:, 2] >= self.camera.width - 1, boxes[:, 3] >= self.camera.height - 1])
+        if seen is not None:  # an edge hidden behind another declared object is as unusable as one cut by the border
+            clipped |= ~seen
         if not self.use_size:  # centre only: a clipped edge displaces the centre on that axis
             clipped = np.tile(clipped[:, :2] | clipped[:, 2:], 2)
             boxes = np.tile(0.5 * (boxes[:, :2] + boxes[:, 2:]), 2)
         tiny = (size < 6).any(axis=1) | (area < 36)
         median = np.median(area[~tiny]) if (~tiny).any() else 1.0
         reliable = np.flatnonzero(~tiny & (area >= 0.35 * median))
-        self.anchor = int(reliable[0]) if reliable.size else None
+        # anchor: the reliable frame sharing the most usable edges with the others (the earliest one on a tie)
+        usable = ~clipped & ~tiny[:, None]
+        shared = [(usable & usable[a]).sum() for a in reliable]
+        self.anchor = int(reliable[int(np.argmax(shared))]) if reliable.size else None
         # per-edge weights: small boxes count less; an edge on the image border (here or in the anchor) not at all
         frame_weight = np.where(tiny, 0.0, np.sqrt(np.minimum(area / median, 1.0)))
         self.weight = frame_weight[:, None] * ~clipped
@@ -136,7 +160,7 @@ class _Problem:
             return hyps
         if "v0" in m or self.scenario == "freefall":
             v0 = np.asarray(m.get("v0", [0.0, 0.0, 0.0]), dtype=float)
-            return [dict(names=[], bounds=[], t0=t0, centres=lambda tau, g, e: ballistic(tau, self.x0, v0, g, self.g_dir))]
+            return [dict(names=[], bounds=[], t0=t0, centres=lambda tau, g, e: ballistic(tau, self.x0, v0, g, self.g_dir, self.drag))]
 
         # unknown launch: speed and elevation within the declared ranges, azimuth free (seeded by any declared directions)
         e1 = np.eye(3)[0] if abs(up[0]) < 0.9 else np.eye(3)[1]
@@ -145,7 +169,7 @@ class _Problem:
 
         def launch(tau, g, e):
             d = np.cos(e[2]) * e1 + np.sin(e[2]) * e2
-            return ballistic(tau, self.x0, e[0] * (np.cos(e[1]) * d + np.sin(e[1]) * up), g, self.g_dir)
+            return ballistic(tau, self.x0, e[0] * (np.cos(e[1]) * d + np.sin(e[1]) * up), g, self.g_dir, self.drag)
         seeds = [np.arctan2(np.dot(d, e2), np.dot(d, e1)) for d in m.get("directions", [])]
         angle = np.radians(m["angle_deg"])
         return [dict(names=["speed", "angle", "azimuth"], bounds=[m["speed"], angle, [phi - np.pi, phi + np.pi]], t0=t0,
@@ -154,9 +178,19 @@ class _Problem:
     def predict(self, h: dict, x: np.ndarray) -> np.ndarray:
         """Image box [x0, y0, x1, y1] spanned by the projected corners in each frame."""
         g, t0, extras = np.exp(x[0]), x[1], x[2:]
-        centres = h["centres"](np.maximum(self.t + t0, 0.0), g, extras)  # held in the initial state until release
-        uv = self.camera.project(centres[:, None, :] + self.corners[None])
+        tau = np.maximum(self.t + t0, 0.0)  # held in the initial state until release
+        uv = self.camera.project(self.points(tau, h["centres"](tau, g, extras)))
         return np.hstack([uv.min(axis=1), uv.max(axis=1)])
+
+    def points(self, tau: np.ndarray, centres: np.ndarray) -> np.ndarray:
+        """World corners (frames, corners, 3) at times tau given the centre trajectory."""
+        if self.omega is None:
+            return centres[:, None, :] + self.corners[None]
+        key = tuple(np.round(tau, 9))
+        if key not in self._spin_cache:
+            rot = torque_free(tau, self.rotation0, self.omega, self.inertia, damping=self.spin_damping)
+            self._spin_cache[key] = np.einsum("kij,cj->kci", rot, self.body_corners)
+        return centres[:, None, :] + self._spin_cache[key]
 
     def residual(self, h: dict, x: np.ndarray) -> np.ndarray:
         """Edge displacements since the anchor frame, predicted minus observed (px, weighted)."""
@@ -194,8 +228,8 @@ class _Problem:
         if ground is None:
             return None
         g, t0 = np.exp(best["x"][0]), best["x"][1]
-        centres = best["h"]["centres"](np.maximum(self.t + t0, 0.0), g, best["x"][2:])
-        z = (centres[:, None, :] + self.corners[None])[..., 2].min(axis=1)
+        tau = np.maximum(self.t + t0, 0.0)
+        z = self.points(tau, best["h"]["centres"](tau, g, best["x"][2:]))[..., 2].min(axis=1)
         below = np.flatnonzero((z < ground) & (np.arange(len(z)) > 0))
         return int(below[0]) if below.size and z[0] >= ground else None
 
