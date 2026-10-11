@@ -1,17 +1,13 @@
 # PhysEdit-GravTrace
 
-Estimate gravity from a single-view video using **SAM3.1** object tracking and declared camera/object geometry. Current evaluation uses **PhyEditing**.
+使用 **SAM3.1** 跟踪和声明的相机、物体几何，从单视角视频联合估计重力与未知初速度。当前验证数据为 **PhyEditing**。
 
-## Validated development results
-
-| Protocol | Successful fits | Mean error | Maximum error |
+| 冻结方案（30 fps） | 平均误差 | 最大误差 | 失败率 |
 |---|---:|---:|---:|
-| Known initial velocity | 1038/1038 | 1.11% | 6.2% |
-| Unknown initial velocity, 30 fps, frozen SAM3.1 pipeline | 1038/1038 | **2.704%** | **15.983%** |
+| GravTrace + SAM3.1 亚像素边界 | **2.700%** | **15.148%** | **0%** |
+| 同信息、同观测帧的2D对照 | 5.294% | 36.364% | 0% |
 
-The frozen single-view pipeline retains all 1038 cases and 13918 observation frames: failure rate **0%**, coverage **100%**. It uses integer image boundaries and the original anchor fitter. These are inspected development results; the protocols differ and do not establish independent generalization or global optimality. Inversion tuning is complete; next come matched comparisons and video-generation validation.
-
-## Quick start
+全部 **1038例、13918帧**保留，覆盖率100%，拟合器保持不变。2D及DepthPro、DA-V2 Metric、ZoeDepth、MoGe-2、UniDepthV2、VGGT均已完成公平对比；[完整结果与逐例记录](docs/phyediting/validation.md#frozen-comparison)包含全部失败及分组统计。这是开发集结果，不代表独立泛化或全局最优。
 
 ```bash
 pip install -e .[test]
@@ -19,12 +15,8 @@ python -m gravtrace fit samples.jsonl -o predictions.jsonl --workers 8
 python -m gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ```
 
-GravTrace projects a 3D flight trajectory and rotating object outline into the camera, clips the outline to the image, and jointly fits gravity and unknown motion parameters. Truth gravity is used only for scoring.
+- [方法与输入格式](docs/REFERENCE.md)
+- [验证协议与结果](docs/phyediting/validation.md)
+- [视频生成流水线与固定评分协议](docs/phyediting/GENERATION.md)
 
-Comparisons cover direct 2D inversion, DepthPro, DA-V2 Metric, ZoeDepth, MoGe-2, UniDepthV2 and VGGT, with matched declared information and actual observation frames.
-
-- [Method and sample format](docs/REFERENCE.md)
-- [Evaluation scope and frozen results](docs/phyediting/validation.md)
-- [Video-generation pipeline](docs/PIPELINE.md)
-
-MIT — see [LICENSE](LICENSE).
+MIT — 见 [LICENSE](LICENSE)。

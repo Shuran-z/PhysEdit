@@ -97,7 +97,7 @@ MODELS = {
         "{python}", "{models}/CogVideoX1.5-5B-I2V", "cogvideox_i2v", "--num-inference-steps 50 --guidance-scale 6.0 --num-frames 81")}),
     "wan_ti2v5b": dict(name="Wan2.2-TI2V-5B", frames=81, fps=16, sec_per_row=210, cmd={"site_a": diffusers(
         "{py_wan}", "{models}/Wan2.2-TI2V-5B-Diffusers", "wan_i2v", "--num-inference-steps 40 --guidance-scale 3.5"
-        " --height 480 --width 832 --num-frames 81 --wan-invert-output --offload-mode model")}),
+        " --height 480 --width 832 --num-frames 81 --offload-mode model")}),
     "cosmos": dict(name="Cosmos-Predict2-2B", frames=81, fps=16, mode="v2v", sec_per_row=450, cmd={"site_a":
         "{python} {tools}/cosmos_predict2.py --generation-manifest {manifest} --cosmos-tools {cosmos_tools}"
         " --python {python} --model-dir {cosmos_model} --cuda-visible-devices {gpu} --skip-existing"}),

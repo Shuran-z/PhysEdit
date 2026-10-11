@@ -1,13 +1,40 @@
 # PhyEditing evaluation
 
-The accepted frozen pipeline uses SAM3.1 with integer image boundaries, visible-outline projection and the original anchor fitter. Inversion tuning is complete. Initial velocity is estimated jointly; no reference velocity is supplied.
+当前接受并冻结的方案为 **SAM3.1 + 当前帧亚像素边界（V4）+ 原anchor拟合器**；未知初速度联合估计，不提供参考线速度。全部 **1038例、13918个原观测帧、30fps单视角**保留：平均误差 **2.700312%**、中位数 **2.027175%**、p95 **7.473846%**、最大 **15.148096%**，失败率 **0%**、覆盖率 **100%**。1028/1038例误差≤10%，1038/1038例≤20%。用户已接受现版并停止继续调优，最大误差并非低于10%。
 
-Across all **1038 original single-view 30fps cases and 13918 observation frames**, mean relative gravity error is **2.704381%**, median **2.037109%**, p95 **7.473846%**, maximum **15.983240%**. Failure rate is **0%** and coverage **100%**. There are 1028/1038 cases within 10% and 1038/1038 within 20%. The user accepted this accuracy to preserve method simplicity; this is not a claim of maximum error below 10%. No subpixel refinement or further inversion tuning is planned.
+亚像素只测量当前RGB与原SAM3.1最大连通轮廓：四个极值支撑均通过角点与稳定收敛核验才使用连续坐标，否则整框保留原整数边界；裁边保持图像边界。403帧使用亚像素，13515帧保留整数，未改拟合器、相机、窗口或阈值。实现见 [observations.py](../../gravtrace/observations.py)，不读取目标重力、参考线速度或拟合残差。
 
-These are inspected development data, not an untouched test. Background variants share physics groups and must not be counted as independent physical experiments. [Frozen aggregate evidence](sam31_frozen_result.json) includes event, gravity and camera statistics and source-result hashes; per-item research records remain local. The known-initial-velocity development protocol previously reached 1.11% mean / 6.2% maximum and is a separate information setting.
+这些是已参与开发的样本，不是独立测试；1038例不是整个数据集的资格覆盖统计。背景变体共享物理组。[当前结果](sam31_subpixel_v4_result.json)与[原整数方案](sam31_frozen_result.json)分别保留，原整数平均2.704381%、最大15.983240%；已知初速度1.11%/6.2%属于另一个信息设置。
 
-## Next evaluation
+## Frozen comparison
 
-Freeze the current predictions before comparing direct 2D inversion and DepthPro, DA-V2 Metric, ZoeDepth, MoGe-2, UniDepthV2 and VGGT. Give each method the same declared camera, geometry and initial prompts; unknown-velocity methods must not receive reference velocity. Align actual observation frames and decoded pixels, report any representation or loss differences, and retain all failed items in the original coverage denominator. Existing known-velocity comparisons do not substitute for this frozen unknown-velocity comparison. Oracle-depth references receive extra truth and must be labelled accordingly.
+八个估计器收到相同的声明相机/K、窗口起点几何/姿态、角运动/惯性/阻尼、质量/拖曳、重力方向、固定时间偏移与初始提示。它们使用同一套V4边界、全部13918个原观测帧及相同的认证解码像素；不向拟合提供参考线速度、速度方向或目标重力。相机/几何等声明信息属于协议输入，因此不是纯video-only评估。
 
-Report event, gravity, camera and physics-group summaries. Evaluate untouched physics settings without retuning, then verify the video-generation pipeline. Training remains last. Current evidence does not establish global optimality. Exploratory failures and trial logs remain local.
+五种单帧深度模型逐帧处理，VGGT使用每个窗口的全部原观测帧，不增加上下文。所有方法的未知速度范围0–8m/s、仰角±89°、重力范围0.1–80m/s²相同；complete-frame要求不丢帧。
+
+| 估计器 | 成功拟合 | 平均误差* | 最大误差* | 失败率 |
+|---|---:|---:|---:|---:|
+| GravTrace + SAM3.1 | 1038/1038 | 2.700% | 15.148% | 0.00% |
+| Rotation-aware 2D | 1038/1038 | 5.294% | 36.364% | 0.00% |
+| DepthPro | 696/1038 | 45.963% | 446.762% | 32.95% |
+| DA-V2 Metric Indoor | 825/1038 | 48.949% | 687.830% | 20.52% |
+| ZoeDepth | 771/1038 | 48.291% | 425.521% | 25.72% |
+| MoGe-2 | 857/1038 | 49.975% | 703.529% | 17.44% |
+| UniDepthV2 | 809/1038 | 59.552% | 1895.673% | 22.06% |
+| VGGT | 1012/1038 | 43.859% | 684.525% | 2.50% |
+
+*平均/最大误差只统计成功拟合，定义为100×abs(估计重力/目标重力−1)。全部失败保留1038分母，成功覆盖率=1−失败率；所有六模型深度推理输出完整，表中深度反演失败为重力触及边界，不是被删视频或缺帧。拟合状态是数值状态，不认证生成视频的物理真实性。
+
+2D对照在声明起点线性化轮廓平移，并补偿声明旋转。深度方法取同一边界中心半区的中位深度，提升中心射线，以声明初始表面深度固定单一尺度，再按声明拖曳和时间基联合估计未知速度、位置偏移与重力。释放时深度由全部拟合帧外推，固定非零t0也保留。
+
+提供信息一致，表示与损失有区别：深度提升用表面深度近似中心，未投影完整旋转轮廓，使用1m尺度的metric soft-L1；GravTrace/2D使用像素边界残差，参数化与优化器也不同。这里比较的是具体实现的估计器，不能推出深度网络普遍较差或GravTrace全局最优。
+
+GravTrace平均误差较2D低 **48.994%**。723个物理组等权均值为 **2.669138%**；共同成功子集上的七项配对均值也更低，按物理组重采样的差值95%区间全部为正。这些配对统计作为补充，不替代全分母的失败报告。
+
+[完整八项证据](sam31_subpixel_v4_comparison.json)包含event/gravity/camera/全部723个physics_group统计、共同成功配对、权重和输入hash；[逐例评分表](sam31_subpixel_v4_case_scores.csv)保留全部1038行和每种方法的失败状态，失败误差留空，不填0。
+
+执行时，938例输入逐项相同且hash核验通过，显式复用旧预测；100例边界有变更，全部使用原基线拟合重新计算。319帧/98窗的深度ROI改变，重新推理对应像素；transformers保持原batch边界，VGGT保留这98窗的全部1919帧上下文。六模型重新推理的原ROI深度与旧值逐项完全一致；更新与原观测无关的部分没有被重跑或冒充新结果。原整数对比独立保存在[sam31_frozen_comparison.json](sam31_frozen_comparison.json)。
+
+## Evaluation scope
+
+未参与指标调优的物理配置需要真实来源版本、状态hash与暴露边界核验，现有证据尚不能称独立泛化完成。生成模型事件留出不自动等于指标未见，遵守[整体benchmark划分](../joint_split_v3/PROTOCOL.md)。生成流水线操作验证与开发集重力精度分别记账；探索记录仅本地保存，训练最后。本轮现版已冻结，不再增加复杂模块或继续反演调优。

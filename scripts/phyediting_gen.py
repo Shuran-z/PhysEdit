@@ -6,12 +6,13 @@ the physedit runners read.
 
 `score`: generated videos tracked from their first frame (= the condition frame) are fitted in the item's declared
 window. Frame times are the condition time plus frame index / model fps. The declared initial state is the reference
-trajectory's at the target gravity (as for the ground-truth videos); `--v0 free` leaves the launch velocity open, so a
-flight that starts earlier or later than in the reference is fitted by its curvature alone.
+trajectory's at the target gravity (as for the ground-truth videos). The default `--v0 agnostic` supplies no reference
+linear velocity or direction. Fixed-window scoring retains every scheduled frame; missing observations fail the
+whole case. Requested-gravity deviation is not an error against known generated physical truth.
 
     python scripts/phyediting_gen.py build ITEMS.jsonl OUT_DIR --host-root DIR [--per-gravity N] [--seed S]
     python scripts/phyediting_gen.py rows TEMPLATE.jsonl ROWS.jsonl --model ltx_i2v --frames 81 --fps 16 --out-root DIR
-    python scripts/phyediting_gen.py jobs ITEMS.jsonl ROWS.jsonl JOBS.jsonl      (SAM2 jobs for the generated videos)
+    python scripts/phyediting_gen.py jobs ITEMS.jsonl ROWS.jsonl JOBS.jsonl
     python scripts/phyediting_gen.py score ITEMS.jsonl ROWS.jsonl TRACKS.jsonl OUT.jsonl
 """
 from __future__ import annotations
@@ -215,10 +216,7 @@ def score(args) -> None:
         track = tracks.get(row["sample_id"], {})
         to_first = motion_of.get(row["sample_id"], {})
         if not args.scan:
-            sample = _sample(row, it, track, args.v0, to_first)
-            sample["offset_mode"] = args.offset_mode
-            n = len(sample["boxes"]["xyxy"])
-            pred = safe_fit(sample) if n >= 4 else {"id": row["sample_id"], "status": "no_track", "frames": n}
+            pred = _score_fixed_window(row, it, track, args.v0, to_first, args.offset_mode)
             out.write(json.dumps({**pred, "item_id": row["item_id"], "gravity_target": row["gravity_truth"]}) + "\n")
             continue
         # scan: the item's window slid over the whole clip, --scan-step generated frames at a time
@@ -239,6 +237,51 @@ def score(args) -> None:
                 scan.append([round(sh, 4), pred.get("gravity"), pred.get("status")])
         out.write(json.dumps({"id": row["sample_id"], "item_id": row["item_id"], "gravity_target": row["gravity_truth"],
                               "scan": scan}) + "\n")
+
+
+def _score_fixed_window(row, it, track, v0="agnostic", to_first=None, offset_mode="anchor"):
+    """Check the registered frame contract before calling the unchanged fitter."""
+    fps = float(row.get("output_fps") or track.get("fps") or 16.0)
+    start = it["window"]["start_frame"] / float(it["fps"])
+    end = start + (it["window"]["max_frames"] - 1) / float(it["fps"])
+    condition = row["condition_frame_index"] / float(it["fps"])
+    planned = [f for f in range(int(row["num_frames"]))
+               if start - 1e-6 <= condition + f / fps <= end + 1e-6]
+    base = {"id": row["sample_id"], "frames": 0, "planned_frames": len(planned),
+            "planned_generated_frames": planned}
+    tr = track.get("tracks", {}).get(it["object_name"], {})
+    frames, boxes = tr.get("frames", []), tr.get("xyxy", [])
+    if len(frames) != len(boxes) or len(set(frames)) != len(frames):
+        return {**base, "status": "invalid_observation"}
+    observed = dict(zip(frames, boxes))
+    missing = [f for f in planned if observed.get(f) is None]
+    if missing:
+        return {**base, "status": "missing_observation", "missing_generated_frames": missing}
+    if len(planned) < 4:
+        return {**base, "status": "few_frames"}
+    if any(len(observed[f]) != 4 or not np.isfinite(observed[f]).all() for f in planned):
+        return {**base, "status": "invalid_observation"}
+    # Match the frozen fitter's existing zero-weight definition. A nonempty
+    # residual pixel is not a complete observation of a registered frame.
+    unusable = [f for f in planned
+                if ((np.asarray(observed[f])[2:] - np.asarray(observed[f])[:2]) < 6).any()
+                or np.prod(np.asarray(observed[f])[2:] - np.asarray(observed[f])[:2]) < 36]
+    if unusable:
+        return {**base, "status": "invalid_observation",
+                "unusable_generated_frames": unusable,
+                "observation_reason": "tiny_by_original_fitter"}
+    scheduled_track = {**track, "tracks": {it["object_name"]: {
+        "frames": planned, "xyxy": [observed[f] for f in planned]}}}
+    sample = _sample(row, it, scheduled_track, v0, to_first or {})
+    assert len(sample["boxes"]["frames"]) == len(planned)
+    sample["offset_mode"] = offset_mode
+    sample["window"]["contact_check"] = False
+    if v0 == "agnostic":
+        # A stale direction in an imported manifest must not become a prior.
+        sample["motion"].pop("directions", None)
+    pred = safe_fit(sample)
+    assert pred.get("frames", len(planned)) == len(planned), "Fixed-window fit trimmed scheduled frames"
+    return {**base, **pred}
 
 
 def main() -> None:

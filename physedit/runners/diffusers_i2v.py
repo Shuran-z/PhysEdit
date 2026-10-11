@@ -57,7 +57,7 @@ def main() -> int:
     parser.add_argument(
         "--wan-invert-output",
         action="store_true",
-        help="Invert decoded Wan RGB frames before export to repair the converted TI2V-5B checkpoint.",
+        help="Explicitly invert decoded Wan RGB frames before export for a checkpoint that requires it; disabled by default.",
     )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()

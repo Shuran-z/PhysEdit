@@ -1,5 +1,7 @@
 # physedit: generating and evaluating models with one command
 
+当前 PhyEditing / SAM3.1 / V4 的固定窗口评分合同见 [GENERATION.md](phyediting/GENERATION.md)。下文保留原 public-211 多机器调度说明。
+
 `physedit` runs any set of registered video models on a PhysEdit benchmark, from manifests to the results table:
 
 ```bash
