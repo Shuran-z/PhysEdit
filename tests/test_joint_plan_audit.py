@@ -58,6 +58,15 @@ class JointPlanTests(unittest.TestCase):
         self.assertIn("T03__sample", catalog_sample_ids("release/trajectories/T03__sample/state.json"))
         self.assertNotIn("T03__sample", catalog_sample_ids("release/metadata/T03__sample_extra__cam01.json.gz"))
 
+    def test_flat_media_matching_normalizes_camera_and_extension(self):
+        self.assertIn("PROD_T06_gap_p05", catalog_sample_ids("release/videos/PROD_T06_gap_p05__cam01.mp4"))
+        self.assertIn("T14_sample", catalog_sample_ids("release/videos/T14_sample__cam03__look_side.mp4"))
+        self.assertIn("T12_sample", catalog_sample_ids("release/videos/T12_sample__cam01_mechanism_side.mp4"))
+        self.assertIn("T12_sample", catalog_sample_ids("release/metadata/T12_sample__cam03_critical_close.json.gz"))
+        self.assertNotIn("T12_sample", catalog_sample_ids("release/videos/T12_sample_extra__cam01_mechanism_side.mp4"))
+        self.assertNotIn("T12_sample", catalog_sample_ids("release/videos/T12_sample__cam010_mechanism_side.mp4"))
+        self.assertNotIn("PROD_T06_gap_p05", catalog_sample_ids("release/videos/PROD_T06_gap_p050__cam01.mp4"))
+
 
 if __name__ == "__main__":
     unittest.main()
