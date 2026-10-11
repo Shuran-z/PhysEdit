@@ -1,30 +1,30 @@
-# PhysEdit-GravTrace
+# PhysEdit
 
-Estimate gravity from a single-view video using **SAM3.1** object tracking and declared camera/object geometry. Current evaluation uses **PhyEditing**.
+物理视频生成与评测工具，提供图像生成视频、视频编辑与未来帧预测、SAM3.1单视角跟踪、重力、动摩擦与初速度测量，以及视觉指标和Qwen视频判断。
 
-## Validated development results
+| 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
+| :---: | :---: | :---: | :---: | :---: |
+| 重力 | 1038 | 2.700% | 15.148% | 100% |
+| 动摩擦系数 | 880 | 0.235% | 1.974% | 75% |
+| 初速度大小 | 1038 | 1.785% | 14.353% | 100% |
 
-| Protocol | Successful fits | Mean error | Maximum error |
-|---|---:|---:|---:|
-| Known initial velocity | 1038/1038 | 1.11% | 6.2% |
-| Unknown initial velocity, 30 fps, frozen SAM3.1 pipeline | 1038/1038 | **2.704%** | **15.983%** |
-
-The frozen single-view pipeline retains all 1038 cases and 13918 observation frames: failure rate **0%**, coverage **100%**. It uses integer image boundaries and the original anchor fitter. These are inspected development results; the protocols differ and do not establish independent generalization or global optimality. Inversion tuning is complete; next come matched comparisons and video-generation validation.
-
-## Quick start
+表中为单视角开发集结果。初速度相对误差统计1036个非零目标，2个零目标使用绝对误差。摩擦误差统计660个滑动样本，其余220个静止样本给出静摩擦下界。测量条件与基线比较见[性能评测](docs/phyediting/validation.md)。
 
 ```bash
-pip install -e .[test]
-python -m gravtrace fit samples.jsonl -o predictions.jsonl --workers 8
-python -m gravtrace score samples.jsonl predictions.jsonl -o summary.json
+python -m pip install -e .
+physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit plan gravity100.json
+physedit run gravity100.json --execute
 ```
 
-GravTrace projects a 3D flight trajectory and rotating object outline into the camera, clips the outline to the image, and jointly fits gravity and unknown motion parameters. Truth gravity is used only for scoring.
+当前100条使用第0帧条件图与逐条时间范围，结果写入`runs/gravity100`。其他参数任务可分别选用动摩擦、初速度、V/P与Qwen评测，详见[快速上手](docs/phyediting/QUICKSTART.md)。
 
-Comparisons cover direct 2D inversion, DepthPro, DA-V2 Metric, ZoeDepth, MoGe-2, UniDepthV2 and VGGT, with matched declared information and actual observation frames.
+| 使用指南 | 参数测量 | 数据与部署 |
+| :---: | :---: | :---: |
+| [快速上手](docs/phyediting/QUICKSTART.md) | [SAM3.1跟踪](docs/phyediting/SAM31.md) | [100条重力评测](docs/phyediting/GRAVITY100.md) |
+| [模型与权重](docs/phyediting/MODELS.md) | [物理参数测量](docs/phyediting/MOTION_PARAMETERS.md) | [多机调度](docs/PIPELINE.md) |
+| [生成与评分](docs/phyediting/GENERATION.md) | [V/P与Qwen](docs/phyediting/EVALUATION.md) | [性能数据](docs/phyediting/latest_results.json) |
 
-- [Method and sample format](docs/REFERENCE.md)
-- [Evaluation scope and frozen results](docs/phyediting/validation.md)
-- [Video-generation pipeline](docs/PIPELINE.md)
+[评测清单CSV](docs/phyediting/gravity100.csv) · [数据集划分与训练来源](docs/joint_split_v3/PROTOCOL.md)
 
-MIT — see [LICENSE](LICENSE).
+MIT · [LICENSE](LICENSE)

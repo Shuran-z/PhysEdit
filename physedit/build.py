@@ -4,11 +4,11 @@ usage: python build.py SPEC.json      (the spec is written by the driver)
 
 Every row comes from the benchmark's template row (same source, condition frame, prompt and seed); the model sets
 its frame count, frame rate, canvas and output paths. Writes {dir}/manifest.jsonl (all rows) and one manifest per
-worker: manifest_w0.jsonl walks the rows forwards and manifest_w1.jsonl backwards, so two workers meet in the middle;
-with `split` (runners that process their whole manifest as one batch) the workers get disjoint halves instead. When
+worker: manifest_w0.jsonl and manifest_w1.jsonl are disjoint halves for every runner;
+no two workers may generate the same row concurrently. When
 the model needs them: per-orientation manifests, VideoGPA prompt files and 16:9 letterboxed condition images.
 """
-FORMAT = 2              # bump when the files written here change: runs built by an older format are rebuilt
+FORMAT = 3              # bump when the files written here change: runs built by an older format are rebuilt
 import collections
 import json
 import os
@@ -82,12 +82,12 @@ def build(spec):
         need = ["condition_image", "prompt_file", "negative_prompt_file"] + [k for k in fields if k.endswith("_video")]
         missing = ["%s=%s" % (k, r[k]) for k in need if not os.path.isfile(str(r[k]))]
         if missing:
-            raise SystemExit("%s: missing %s" % (sid, ", ".join(missing)))
+            r["input_failure"] = r.get("input_failure") or "missing_inputs: " + ", ".join(missing)
         out.append(r)
     os.makedirs(d + "/logs", exist_ok=True)
     dump(d + "/manifest.jsonl", out)
     half = (len(out) + 1) // 2
-    for w, rows_ in (("w0", out[:half] if spec.get("split") else out), ("w1", out[half:] if spec.get("split") else out[::-1])):
+    for w, rows_ in (("w0", out[:half]), ("w1", out[half:])):
         dump("%s/manifest_%s.jsonl" % (d, w), rows_)
         if spec.get("split_orientation"):
             for o in ("landscape", "portrait", "square"):

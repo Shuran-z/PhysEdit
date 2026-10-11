@@ -52,7 +52,7 @@ def test_rows_paths_and_order(tmp_path):
     assert r["generated_video_resized_to_source"] == str(tmp_path / "run" / "generated" / "m_pisa_0_coarse" / "resized.mp4")
     assert r["condition_image"] == str(tmp_path / "in" / "cond" / "pisa_0.png")      # remapped to the staged copy
     assert (r["gen_width"], r["gen_height"]) == (832, 480) and r["orientation"] == "landscape"
-    assert read(tmp_path / "run" / "manifest_w0.jsonl") == rows and read(tmp_path / "run" / "manifest_w1.jsonl") == rows[::-1]
+    assert read(tmp_path / "run" / "manifest_w0.jsonl") == rows[:4] and read(tmp_path / "run" / "manifest_w1.jsonl") == rows[4:]
 
 
 def test_split_gives_disjoint_halves(tmp_path):
@@ -64,8 +64,10 @@ def test_split_gives_disjoint_halves(tmp_path):
 
 def test_fields_per_run_limit_and_missing_inputs(tmp_path):
     fields = {"steps": 35, "x5": {"source_video": "{inputs[prefix5]}/{source_sample_id}.mp4"}}
-    with pytest.raises(SystemExit, match="source_video"):                  # prefix videos not staged yet
-        build(spec(tmp_path, fields=fields))
+    build(spec(tmp_path, fields=fields))
+    missing_rows = read(tmp_path / "run" / "manifest.jsonl")
+    assert len(missing_rows) == 8
+    assert all("source_video" in r["input_failure"] for r in missing_rows)
     (tmp_path / "in" / "prefix5").mkdir()
     for sid in ("pisa_0", "newton_0"):
         (tmp_path / "in" / "prefix5" / (sid + ".mp4")).write_text("v")
@@ -84,9 +86,9 @@ def read_x1(tmp_path, fields):
 def test_orientation_split_and_prompt_files(tmp_path):
     build(spec(tmp_path, split_orientation=True, prompts_json=True))
     run = tmp_path / "run"
-    assert len(read(run / "manifest_w0_landscape.jsonl")) == 8 and read(run / "manifest_w1_portrait.jsonl") == []
+    assert len(read(run / "manifest_w0_landscape.jsonl")) == 4 and read(run / "manifest_w1_portrait.jsonl") == []
     prompts = json.load(open(run / "prompts_w1.json"))
-    assert list(prompts)[0] == "m_newton_1_fine" and prompts["m_pisa_0_coarse"]["text_prompt"] == "a ball falls"
+    assert list(prompts)[0] == "m_pisa_1_coarse" and prompts["m_pisa_1_coarse"]["text_prompt"] == "a ball falls"
 
 
 def test_letterbox_portrait_sources(tmp_path):

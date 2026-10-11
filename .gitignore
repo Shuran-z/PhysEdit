@@ -36,3 +36,28 @@ third_party/
 /docs/phyediting/subpixel_pilot.json
 /docs/phyediting/motion_refine15.json
 /docs/phyediting/cross_window_visual15.json
+
+# Private progress, inventory reviews and exploratory outputs
+/AGENTS.md
+AGENTS.md
+AGENT.md
+CLAUDE.md
+.agents/
+.codex/
+/docs/BENCHMARK_CONTEXT.md
+/docs/COMPETITIVE_REVIEW_*.md
+/docs/CVPR_PROGRESS_*.md
+/docs/CVPR_PROGRESS_AUDIT_*.json
+/docs/intervention_audit_*/
+/docs/video_inventory_audit_*/
+/review/
+/docs/phyediting/*.json
+!/docs/phyediting/latest_results.json
+
+# Local deployment and per-record research inputs
+/physedit/config.local.py
+/private_fleet.py
+/docs/phyediting/sam31_subpixel_v4_case_scores.csv
+/docs/joint_split_v3/event_pool_routing.jsonl
+/docs/joint_split_v3/inventory_audit.json
+/docs/joint_split_v3/recovered_sidecar_references.jsonl

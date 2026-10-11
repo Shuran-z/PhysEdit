@@ -1,0 +1,49 @@
+{
+  "version": "sam31_single_view_frozen_v4",
+  "model": "facebook/sam3.1",
+  "official_source_commit": "0570b3a5be9c4e694f23d85232fb55f4a6f1f7fc",
+  "checkpoint_revision": "daa63191845a41281374e725f4c9e51c7a824460",
+  "checkpoint_sha256": "0567debeec80ba4ac6369540c6c248025283cb3ff2b92827509e57e2b3541cb6",
+  "sources": {
+    "track_sam31_identity_center_control.py": "61c64a9af6f324fefdd94aee20595b7c0c3fced7b209fb03a23003c0d7093d79",
+    "track_sam31_whole_book_control.py": "905eeec2ad2580521de7732fc92467ec5584d05268e6dc502e9782dac735aaca",
+    "track_sam31_initial_actual_foreground.py": "dbf9137fad0f5f5ac6bc954049e717a68abc0d70892880ea7f2ef473ea8ffc8c",
+    "repair_sam31_integrated_full30.py": "6ee5ea680b4cb322a116393f6a707d9deda04be55a0effef90847cf4b721c29d",
+    "repair_sam31_rgb_health_full30.py": "57df924ba30a5f16e0f65a78b8af53ef9249363b968e53224b4b621e575c6832",
+    "certify_sam31_recovered_rgb_full30.py": "a8a5961fe4ea1c6403265f7199612849c59abb1e9ae6d4e32708c544b8cb7d4c",
+    "repair_sam31_visible_projection_full30.py": "c45a8285c530aa2b61a36e85914a6a500d4bfecd907d6dddae61ca7e2c36fdf9",
+    "sam31_rgb_observation_health.py": "9a6b050c1cb3c95c36cfe3691d7ffcff567d43b380c40c5fe4b98277671d971e",
+    "sam31_observed_integer_rgb_rim.py": "b127216d9481e0e4f3961db5d677f033dad6450abfa83222ddd0d70bfaa890bd",
+    "repair_sam31_static_attachment.py": "fa3d33de0abb6dd93c5ed1cf7a3ae22822e44e4167481f7c7a7b07a609af4f8a"
+  },
+  "core_sources": {
+    "gravtrace/fit.py": "5e3acdfaad7978522ddd319b600b09d2e8ed5488e5d483d016e9eae47feede6a",
+    "gravtrace/camera.py": "56cbf7edbd60774cd55f738e22abcd5863b74786be43f3f4289a0f274710ad48",
+    "gravtrace/observations.py": "ebe303efb66c6b81ec72fa1735ebf14b3236b3b70799ae294a0d736d3dddc425"
+  },
+  "development_result": {
+    "cases": 1038,
+    "frames": 13918,
+    "fps": 30,
+    "mean_relative_error_percent": 2.700312065214676,
+    "max_relative_error_percent": 15.14809629360071,
+    "failure_rate_percent": 0,
+    "coverage_percent": 100,
+    "scope": "development set; not an independent test"
+  },
+  "method": {
+    "single_view": true,
+    "unknown_linear_velocity": true,
+    "fitter_changed": false,
+    "observation_pipeline": [
+      "initial_identity_instance",
+      "whole_book_semantics",
+      "integrated_rgb_cleanup",
+      "rgb_health",
+      "recovery_certification",
+      "initial_actual_foreground_fallback",
+      "visible_projection_integer_rim",
+      "current_rgb_v4_refine_box"
+    ]
+  }
+}

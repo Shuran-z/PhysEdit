@@ -2,14 +2,104 @@
   "version": "joint-event-v3-20261009",
   "status": "user_confirmed_design_target_not_materialized_training_split",
   "training_regime": "genesis_isaac_joint_training",
-  "events": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10", "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20"],
-  "train_pool": ["T01", "T02", "T04", "T05", "T06", "T07", "T08", "T09", "T10", "T12", "T13", "T14", "T15", "T16", "T17", "T18"],
-  "test_ood_1": ["T03", "T20"],
-  "test_ood_2": ["T11", "T19"],
-  "ratios": {"train": 0.8, "val": 0.1, "test_id": 0.1},
+  "events": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T09",
+    "T10",
+    "T11",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16",
+    "T17",
+    "T18",
+    "T19",
+    "T20"
+  ],
+  "train_pool": [
+    "T01",
+    "T02",
+    "T04",
+    "T05",
+    "T06",
+    "T07",
+    "T08",
+    "T09",
+    "T10",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16",
+    "T17",
+    "T18"
+  ],
+  "test_ood_1": [
+    "T03",
+    "T20"
+  ],
+  "test_ood_2": [
+    "T11",
+    "T19"
+  ],
+  "ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test_id": 0.1
+  },
   "video_targets": {
-    "genesis": {"T01": 2640, "T02": 2640, "T03": 2640, "T04": 2640, "T05": 2640, "T06": 2640, "T07": 2640, "T08": 2640, "T09": 2640, "T10": 2640, "T11": 2640, "T12": 2640, "T13": 2640, "T14": 2640, "T15": 2640, "T16": 2640, "T17": 2640, "T18": 2640, "T19": 2640, "T20": 2640},
-    "isaac": {"T01": 960, "T02": 960, "T03": 960, "T04": 960, "T05": 960, "T06": 960, "T07": 960, "T08": 960, "T09": 960, "T10": 960, "T11": 0, "T12": 0, "T13": 0, "T14": 0, "T15": 0, "T16": 2640, "T17": 2640, "T18": 2640, "T19": 2640, "T20": 0}
+    "genesis": {
+      "T01": 2640,
+      "T02": 2640,
+      "T03": 2640,
+      "T04": 2640,
+      "T05": 2640,
+      "T06": 2640,
+      "T07": 2640,
+      "T08": 2640,
+      "T09": 2640,
+      "T10": 2640,
+      "T11": 2640,
+      "T12": 2640,
+      "T13": 2640,
+      "T14": 2640,
+      "T15": 2640,
+      "T16": 2640,
+      "T17": 2640,
+      "T18": 2640,
+      "T19": 2640,
+      "T20": 2640
+    },
+    "isaac": {
+      "T01": 960,
+      "T02": 960,
+      "T03": 960,
+      "T04": 960,
+      "T05": 960,
+      "T06": 960,
+      "T07": 960,
+      "T08": 960,
+      "T09": 960,
+      "T10": 960,
+      "T11": 0,
+      "T12": 0,
+      "T13": 0,
+      "T14": 0,
+      "T15": 0,
+      "T16": 2640,
+      "T17": 2640,
+      "T18": 2640,
+      "T19": 2640,
+      "T20": 0
+    }
   },
   "binding_rules": [
     "all_views_of_each_physical_trajectory",
@@ -24,7 +114,11 @@
     "global_and_critical_samples_retained_in_each_training_event",
     "event_critical_family_and_propagation_depth_balanced_training_sampling"
   ],
-  "continuous_scan_review_events": ["T06", "T09", "T10"],
+  "continuous_scan_review_events": [
+    "T06",
+    "T09",
+    "T10"
+  ],
   "legacy_scan_requires_interval_review": true,
   "count_priority": "whole_group_integrity_before_exact_ratios",
   "missing_data_policy": "never_fabricate_missing_media_states_or_cross_engine_pairs",
@@ -41,6 +135,66 @@
     "define_numeric_scan_intervals_and_boundary_guard_rules_before_assignment",
     "audit_metric_development_exposure_separately_from_generator_training",
     "assign_whole_groups_and_verify_coverage_then_freeze_manifests"
-  ]
+  ],
+  "evaluation_sets": {
+    "fixed_core100": {
+      "version": "fixed_core100_v1_20261014",
+      "repository": "phy2/phydataset",
+      "revision": "64ae065222f6893b7c06ed446aa20d3b8e3cdc86",
+      "manifest": "benchmarks/fixed_core100_v1_20261014/core100.jsonl",
+      "manifest_sha256": "a9345fa1984b42c0bcc2ebce51fd4e19848e64f1af7e701739224c336a9f3f80",
+      "descriptor": "../../physedit/core100.json",
+      "unit": "single_view_case",
+      "registered": 100,
+      "per_event": 5,
+      "splits": {
+        "test_id": 80,
+        "test_ood_1": 10,
+        "test_ood_2": 10
+      },
+      "reserves": 80,
+      "training_group_exclusion_completed": false,
+      "scientific_acceptance_complete": false,
+      "formal_test_ready": false,
+      "training_policy": {
+        "engines": [
+          "genesis",
+          "isaac"
+        ],
+        "training_events": [
+          "T01",
+          "T02",
+          "T04",
+          "T05",
+          "T06",
+          "T07",
+          "T08",
+          "T09",
+          "T10",
+          "T12",
+          "T13",
+          "T14",
+          "T15",
+          "T16",
+          "T17",
+          "T18"
+        ],
+        "assignment": "remaining_eligible_source_groups_to_train",
+        "excluded_events": [
+          "T03",
+          "T20",
+          "T11",
+          "T19"
+        ],
+        "excluded_memberships": [
+          "fixed_core100_v1",
+          "reserve"
+        ],
+        "exclude_all_verified_source_relatives": true,
+        "separate_validation_split": false
+      }
+    }
+  },
+  "active_partition": "fixed_core100",
+  "ratios_scope": "optional_group_allocator_only"
 }
-

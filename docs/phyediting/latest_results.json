@@ -1,0 +1,287 @@
+{
+  "updated": "2026-10-14",
+  "evaluation_scope": "metric development dataset",
+  "single_view": true,
+  "error_definition": "100 * abs(estimate - target) / abs(target); speed target is the norm of its declared initial velocity",
+  "zero_target_policy": "absolute error only; exclude from relative-error denominator",
+  "gravity": {
+    "method": "GravTrace + SAM3.1",
+    "registered": 1038,
+    "frames": 13918,
+    "fps": 30,
+    "attempted": 1038,
+    "ok": 1038,
+    "failed": 0,
+    "failure_rate": 0.0,
+    "coverage_rate": 1.0,
+    "mean_pct_successes": 2.700312065214676,
+    "max_pct_successes": 15.14809629360071,
+    "median_pct_successes": 2.0271752696599976,
+    "p95_pct_successes": 7.473846196681651,
+    "within_10pct_all": 0.9903660886319846,
+    "within_20pct_all": 1.0,
+    "status_counts": {
+      "ok": 1038
+    },
+    "original_frames": 13918,
+    "successful_frames": 13918,
+    "reference_linear_velocity_provided": false,
+    "conditional_inputs": [
+      "camera",
+      "initial geometry and pose",
+      "angular motion",
+      "mass and damping",
+      "gravity direction",
+      "observation clock"
+    ]
+  },
+  "gravity_comparison": {
+    "ours": {
+      "label": "GravTrace + SAM3.1",
+      "summary": {
+        "attempted": 1038,
+        "ok": 1038,
+        "failed": 0,
+        "failure_rate": 0.0,
+        "coverage_rate": 1.0,
+        "mean_pct_successes": 2.700312065214676,
+        "max_pct_successes": 15.14809629360071,
+        "median_pct_successes": 2.0271752696599976,
+        "p95_pct_successes": 7.473846196681651,
+        "within_10pct_all": 0.9903660886319846,
+        "within_20pct_all": 1.0,
+        "status_counts": {
+          "ok": 1038
+        },
+        "original_frames": 13918,
+        "successful_frames": 13918
+      }
+    },
+    "pixel2d": {
+      "label": "Rotation-aware 2D",
+      "summary": {
+        "attempted": 1038,
+        "ok": 1038,
+        "failed": 0,
+        "failure_rate": 0.0,
+        "coverage_rate": 1.0,
+        "mean_pct_successes": 5.294086997073171,
+        "max_pct_successes": 36.36446191567914,
+        "median_pct_successes": 3.8917253928314466,
+        "p95_pct_successes": 15.521229256889894,
+        "within_10pct_all": 0.8805394990366089,
+        "within_20pct_all": 0.9691714836223507,
+        "status_counts": {
+          "ok": 1038
+        },
+        "original_frames": 13918,
+        "successful_frames": 13918
+      }
+    },
+    "depthpro": {
+      "label": "DepthPro",
+      "summary": {
+        "attempted": 1038,
+        "ok": 696,
+        "failed": 342,
+        "failure_rate": 0.32947976878612717,
+        "coverage_rate": 0.6705202312138728,
+        "mean_pct_successes": 45.962619190464935,
+        "max_pct_successes": 446.76210520388923,
+        "median_pct_successes": 36.38987459123294,
+        "p95_pct_successes": 98.95515163561407,
+        "within_10pct_all": 0.10308285163776493,
+        "within_20pct_all": 0.18978805394990367,
+        "status_counts": {
+          "ok": 696,
+          "at_bound": 342
+        },
+        "original_frames": 13918,
+        "successful_frames": 9079
+      }
+    },
+    "dav2_metric": {
+      "label": "DA-V2 Metric Indoor",
+      "summary": {
+        "attempted": 1038,
+        "ok": 825,
+        "failed": 213,
+        "failure_rate": 0.20520231213872833,
+        "coverage_rate": 0.7947976878612717,
+        "mean_pct_successes": 48.9489306453535,
+        "max_pct_successes": 687.8297835535134,
+        "median_pct_successes": 37.493039114656824,
+        "p95_pct_successes": 105.70299851334553,
+        "within_10pct_all": 0.1069364161849711,
+        "within_20pct_all": 0.2321772639691715,
+        "status_counts": {
+          "ok": 825,
+          "at_bound": 213
+        },
+        "original_frames": 13918,
+        "successful_frames": 11227
+      }
+    },
+    "zoedepth": {
+      "label": "ZoeDepth",
+      "summary": {
+        "attempted": 1038,
+        "ok": 771,
+        "failed": 267,
+        "failure_rate": 0.25722543352601157,
+        "coverage_rate": 0.7427745664739884,
+        "mean_pct_successes": 48.29075247966933,
+        "max_pct_successes": 425.52052195067046,
+        "median_pct_successes": 40.321103013728745,
+        "p95_pct_successes": 100.82261096727537,
+        "within_10pct_all": 0.07225433526011561,
+        "within_20pct_all": 0.1859344894026975,
+        "status_counts": {
+          "ok": 771,
+          "at_bound": 267
+        },
+        "original_frames": 13918,
+        "successful_frames": 10304
+      }
+    },
+    "moge2": {
+      "label": "MoGe-2",
+      "summary": {
+        "attempted": 1038,
+        "ok": 857,
+        "failed": 181,
+        "failure_rate": 0.174373795761079,
+        "coverage_rate": 0.825626204238921,
+        "mean_pct_successes": 49.974608751695,
+        "max_pct_successes": 703.5285078498937,
+        "median_pct_successes": 40.01741301676945,
+        "p95_pct_successes": 102.30897514724427,
+        "within_10pct_all": 0.10308285163776493,
+        "within_20pct_all": 0.1994219653179191,
+        "status_counts": {
+          "ok": 857,
+          "at_bound": 181
+        },
+        "original_frames": 13918,
+        "successful_frames": 11267
+      }
+    },
+    "unidepth_v2": {
+      "label": "UniDepthV2",
+      "summary": {
+        "attempted": 1038,
+        "ok": 809,
+        "failed": 229,
+        "failure_rate": 0.220616570327553,
+        "coverage_rate": 0.779383429672447,
+        "mean_pct_successes": 59.552320717971796,
+        "max_pct_successes": 1895.6728081102008,
+        "median_pct_successes": 38.11381222543015,
+        "p95_pct_successes": 165.75776781599112,
+        "within_10pct_all": 0.11946050096339114,
+        "within_20pct_all": 0.22928709055876687,
+        "status_counts": {
+          "ok": 809,
+          "at_bound": 229
+        },
+        "original_frames": 13918,
+        "successful_frames": 11243
+      }
+    },
+    "vggt": {
+      "label": "VGGT",
+      "summary": {
+        "attempted": 1038,
+        "ok": 1012,
+        "failed": 26,
+        "failure_rate": 0.025048169556840076,
+        "coverage_rate": 0.9749518304431599,
+        "mean_pct_successes": 43.85888229107722,
+        "max_pct_successes": 684.5250746832024,
+        "median_pct_successes": 26.95061651363526,
+        "p95_pct_successes": 142.9411989044721,
+        "within_10pct_all": 0.21098265895953758,
+        "within_20pct_all": 0.37764932562620424,
+        "status_counts": {
+          "ok": 1012,
+          "at_bound": 26
+        },
+        "original_frames": 13918,
+        "successful_frames": 13635
+      }
+    }
+  },
+  "initial_speed": {
+    "method": "Single-view initial-speed estimation",
+    "registered": 1038,
+    "numerical_point_estimates": 1038,
+    "relative_error_count": 1036,
+    "zero_target_count": 2,
+    "mean_pct": 1.7853754014163299,
+    "max_pct": 14.352886134160837,
+    "p95_pct": 5.506125730165864,
+    "numerical_point_coverage_rate": 1.0,
+    "zero_target_mean_absolute_error_mps": 0.04178440476828035,
+    "zero_target_max_absolute_error_mps": 0.05368744474952133,
+    "mean_vector_error_pct": 4.429102569919107,
+    "max_vector_error_pct": 62.59672931527012,
+    "planar_estimates": 721,
+    "refined_can_estimates": 45,
+    "refined_book_estimates": 184,
+    "book_unsupported_short_windows": 15,
+    "book_failed_refinement_attempts": 1,
+    "can_failed_refinement_attempts": 6,
+    "failed_refinement_policy": "retain failed attempts and original point estimates; never select by target error",
+    "new_large_speed_errors": 0,
+    "conditional_inputs": [
+      "initial pose and geometry",
+      "source-declared motion plane where applicable",
+      "registered camera and clock",
+      "frozen SAM observations",
+      "frozen gravity initialization with separate curvature nuisance"
+    ],
+    "future_reference_velocity_used_for_fit": false,
+    "direction_precision_certified": false
+  },
+  "kinetic_friction": {
+    "event": "T07",
+    "registered": 880,
+    "kinetic_point_estimates": 660,
+    "static_bounds": 220,
+    "unresolved": 0,
+    "mean_pct": 0.2354202108727575,
+    "max_pct": 1.9739755149801308,
+    "p95_pct": 0.9191951310192964,
+    "point_coverage_rate": 0.75,
+    "kinetic_eligible_point_coverage_rate": 1.0,
+    "point_or_bound_information_coverage_rate": 1.0,
+    "static_bounds_are_not_kinetic_point_estimates": true,
+    "conditional_inputs": [
+      "known gravity",
+      "slope geometry",
+      "camera",
+      "initial position",
+      "clock",
+      "damping"
+    ],
+    "joint_unknown_gravity_and_friction": false
+  },
+  "formal_id_ood_evaluation_completed": false,
+  "velocity_friction_enabled_in_default_generation_pipeline": false,
+  "reference_result_sha256": {
+    "gravity": "baec4ad78e770f67bae3743347eb751b3f55b89064e2011b16b4886986435325",
+    "gravity_comparison": "ab0c4254bc5324ebb38c68248d13d3b4ea9c74c537ee71b4f7de92312856c3c6",
+    "initial_speed": "36e28cec7c0a330c895ad491891772b1a596649016b0594534122ecb378eb6ef",
+    "kinetic_friction": "aa232caa2f247bbdfa97515ff6e699cf7743d08f3b519e266e972a154559aca3"
+  },
+  "implementation_sha256": {
+    "gravtrace/fit.py": "5e3acdfaad7978522ddd319b600b09d2e8ed5488e5d483d016e9eae47feede6a",
+    "gravtrace/observe.py": "a9b1e01d06a04917ab85f2c2a5bd8980214bad71903fac45d747c4db08a593c1",
+    "gravtrace/observations.py": "ebe303efb66c6b81ec72fa1735ebf14b3236b3b70799ae294a0d736d3dddc425",
+    "scripts/sam31_frozen/manifest.json": "ca741da2cfe0692266ff135d662e31d164b7bed2e0e49928be862b8e12ba396d",
+    "physedit/velocity_kinematics.py": "d027f2dcb235cdde10299af852587b72f5d8578e6bf37b0f8b39a80e1ac84299",
+    "physedit/velocity_pixels.py": "e9cfffa170a0a0b7e8ac29a1f462f7e78f9c152c8bbcd07983415d874f790595",
+    "physedit/book_velocity_pixels.py": "a29a4136cbf19ca22a43dddc736738d290aeedde9e5d2c173cc56239ba7ff04e",
+    "physedit/motion_parameters.py": "0b0fa7d30f802dd29032ae4efe1a9b1801d0af53de09f65ea7a403d9260cad52"
+  }
+}

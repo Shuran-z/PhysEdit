@@ -1,0 +1,57 @@
+{
+  "items": "/absolute/path/items.jsonl",
+  "data_root": "/absolute/path/reference_videos",
+  "compact": "/absolute/path/compact",
+  "model": "ltx_i2v",
+  "model_dir": "/absolute/path/ltx_weights",
+  "sam3": "/absolute/path/official-sam3-git",
+  "checkpoint": "/absolute/path/sam3.1_multiplex.pt",
+  "seed": 20261008,
+  "evaluation": {
+    "metrics": [
+      "gravtrace",
+      "friction",
+      "velocity",
+      "vp",
+      "qwen"
+    ],
+    "vp": {
+      "mask_backend": "sam31",
+      "reference_duration_seconds": 1.0,
+      "reference_fps": 30,
+      "trajectory_duration_seconds": 5,
+      "trajectory_sampling_fps": 30
+    },
+    "qwen": {
+      "backend": "api",
+      "model": "Qwen/Qwen3.5-9B",
+      "base_url": "http://127.0.0.1:8000/v1",
+      "api_key_env": "QWEN_API_KEY",
+      "timeout_seconds": 120,
+      "max_new_tokens": 1024,
+      "extra_body": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "video_fps": 2.0,
+      "max_video_frames": 64,
+      "max_pixels": 602112
+    },
+    "friction": {
+      "manifest": "/absolute/path/sliding_conditions.jsonl",
+      "manifest_sha256": "SHA256_OF_SLIDING_CONDITIONS"
+    }
+  },
+  "generation_runtime": {
+    "python": "/absolute/path/new-phyediting-env/bin/python",
+    "gpu_devices": "0",
+    "ffmpeg": "/absolute/path/ffmpeg"
+  },
+  "applicability": {
+    "benchmark_items": "/absolute/path/verified_benchmark_items.jsonl",
+    "benchmark_sha256": "SHA256_OF_VERIFIED_BENCHMARK_ITEMS",
+    "reference_predictions": "/absolute/path/frozen_reference_predictions.jsonl",
+    "reference_predictions_sha256": "SHA256_OF_FROZEN_REFERENCE_PREDICTIONS"
+  }
+}
