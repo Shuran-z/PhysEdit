@@ -5,10 +5,10 @@
 | 验证层级 | 当前证据 |
 | --- | --- |
 | 代码接入与CPU验证 | 12模型的计划、模式限制、argv与媒体/故障处理已验证 |
-| 真实GPU端到端 | 仅 LTX I2V 单条site_a运行验证完成；拟合 `at_bound`、0/1有效评分 |
-| 正式模型比较与ID/OOD | 尚未完成；其余11模型未真实GPU验收 |
+| 真实生成 | LTX、CogVideoX/T08、Wan/T17与Hunyuan/T19均已产出完整视频；实际调用均为I2V，评分有效性须分别报告 |
+| 正式模型比较与ID/OOD | 尚未完成；不能将逐条尝试或CPU检查当作全部模型GPU验收 |
 
-此入口当前仅提供 GravTrace 评分；Qwen 和 V/P 的状态见 [EVALUATION.md](EVALUATION.md)。先按 [QUICKSTART.md](QUICKSTART.md)准备环境、输入和运行登记，评分口径见 [GENERATION.md](GENERATION.md)。仅接受I2V/V2V；不提供纯T2V调用。
+此入口共用 GravTrace、V/P 和本地/API Qwen 评测配置，指标及验证范围见 [EVALUATION.md](EVALUATION.md)。先按 [QUICKSTART.md](QUICKSTART.md)准备环境、输入和运行登记，评分口径见 [GENERATION.md](GENERATION.md)。仅接受I2V/V2V；不提供纯T2V调用。
 
 ## 模型配置
 
@@ -16,10 +16,10 @@
 
 | 一键模型键 | 帧数／fps | 条件模式／入口 | 额外 `generation_runtime` | 本流水线GPU实测 |
 | --- | --- | --- | --- | --- |
-| `ltx_i2v` | 81/16 | I2V／Diffusers | 无 | 单条链路完成；拟合 `at_bound` |
-| `cogvideox_i2v` | 81/16 | I2V／Diffusers | 无 | 未实测 |
-| `wan_ti2v5b` | 81/16 | I2V／Diffusers | 无 | 未实测 |
-| `hunyuan15_i2v` | 121/24 | I2V／Diffusers | 无 | 未实测 |
+| `ltx_i2v` | 81/16 | I2V／Diffusers | 无 | 两条链路执行；一条反演失败、一条有效，新Qwen单独验证 |
+| `cogvideox_i2v` | 81/16 | I2V／Diffusers | 无 | T08生成成功；反演缺观测、V/P 18项有效、Qwen输出拒绝 |
+| `wan_ti2v5b` | 81/16 | I2V／Diffusers | 无 | 修复环境后T17生成成功；反演at_bound，V/P部分有效，Qwen空依据被拒绝；旧失败保留 |
+| `hunyuan15_i2v` | 121/24 | I2V／Diffusers | 无 | 修复环境后T19生成成功；冻结反演15/15帧有效，g=1.05754；不代表生成物理质量合格 |
 | `cosmos` | 81/16 | Cosmos-Predict2 V2V／单条件帧视频 | `code_dir` | 未实测 |
 | `dynamicrafter_i2v` | 16/8 | I2V／DynamiCrafter | `code_dir`；权重路径为checkpoint文件 | 未实测 |
 | `videogpa_ti2v5b` | 49/15 | I2V／VideoGPA | `code_dir`, `lora_dir` | 未实测 |
@@ -32,6 +32,8 @@
 本流水线仅允许 **I2V/V2V**，排除纯 T2V 模型和纯 T2V 调用。`wan_ti2v5b` 使用 `WanImageToVideoPipeline` 并传入登记的 `condition_image`；`videogpa_ti2v5b` 和 `physrvg_ti2v5b` 也传入图像。TI2V 名称不改变实际图像条件路径。计划输出会显示 `conditioning_mode`；登记的 `mode` 或 `conditioning_mode` 请求不同模式时，在启动前拒绝；外部 argv 的显式 T2V 登记也拒绝。外部代码实际是否消费条件图仍需单独验收，argv 登记不能自动证明其输入行为。
 
 `model_dir` 始终指向本机已经存在的模型权重；其余路径指向已经部署的模型代码和适配器。不同模型可选 `generation_runtime.python`、`gpu_devices`、`pythonpath` 路径列表及 `ffmpeg`；不自动下载或安装。示例：
+
+`generation_runtime.python` 保留虚拟环境中的可执行路径，不能将 `venv/bin/python` 的符号链接解析成基础环境Python；两者可能安装不同版本的模型依赖。本次已验证的CPU接口分别为CogVideoX使用Diffusers 0.33.1/Transformers 4.51.3、Wan使用0.39.0/4.51.3、Hunyuan1.5使用0.39.0/4.57.1；这是已检查的环境组合，不是所有模型的统一最低版本。加载阶段失败仍保留原底层报错，不用“缺完成凭据”代替。
 
 ```json
 {"model":"physrvg_ti2v5b","model_dir":"/absolute/path/wan_diffusers","generation_runtime":{"python":"/absolute/path/model_env/bin/python","code_dir":"/absolute/path/physrvg_code","lora_dir":"/absolute/path/lora_checkpoint","gpu_devices":"0"}}

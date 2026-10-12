@@ -14,7 +14,7 @@
 ## 命令接口
 
 ```bash
-python scripts/phyediting_gen.py build items.jsonl input --data-root /path/to/reference --host-root /path/to/input --source-root /path/to/reference
+python scripts/phyediting_gen.py build items.jsonl input --data-root /path/to/reference --host-root /path/to/input --source-root /path/to/reference --applicability /path/to/applicability.json --generation-frames 81 --generation-fps 16
 python scripts/phyediting_gen.py rows input/template.jsonl rows.jsonl --model ltx_i2v --frames 81 --fps 16 --out-root /path/to/output
 python scripts/phyediting_gen.py jobs items.jsonl rows.jsonl track_jobs.jsonl --compact /path/to/compact
 python scripts/phyediting_gen.py score items.jsonl rows.jsonl tracks.jsonl predictions.jsonl
@@ -30,7 +30,7 @@ python scripts/phyediting_gen.py score items.jsonl rows.jsonl tracks.jsonl predi
 
 每个模型保留全部登记案例，分别报告缺观测、帧数不足和触及参数边界等失败；均值/最大值只统计成功拟合，并同时给出全部注册样本的失败率、覆盖率、实际观测帧及事件/重力/相机/物理组统计。参考对照的误差针对已知物理真值；生成视频的数值是**相对于请求重力的偏差**，不是已知生成真值误差。只有测量适用性与参考控制同时成立，才能进一步解释模型差异。
 
-当前入口仅包含 GravTrace 评分；Qwen 和 V/P 的接入状态见 [EVALUATION.md](EVALUATION.md)。旧 public211 调度见 [PIPELINE.md](../PIPELINE.md)。
+当前入口支持 GravTrace、V/P 和本地/API Qwen；配置、统计口径和验证范围见 [EVALUATION.md](EVALUATION.md)。旧 public211 调度见 [PIPELINE.md](../PIPELINE.md)。
 
 ## 冻结 SAM3.1 前端
 

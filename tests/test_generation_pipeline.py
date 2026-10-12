@@ -33,13 +33,23 @@ def video(path, frames=45, fps=30):
 def item(id='ok', **kw):
     result = dict(id=id, event='T08', gravity=9.81, fps=30, camera_id='cam01', image_size=[80,64],
                   trajectory='source_g03_fixture', video='source.avi', object_name='book', camera={}, object={},
-                  motion={'v0':[1,0,0]}, window=dict(start_frame=25,max_frames=8), split='test_id')
+                  motion={'v0':[1,0,0]}, window=dict(start_frame=25,max_frames=10), split='test_id', sensitivity_px=20.)
     return {**result, **kw}
 
 
 def dump(path, rows):
     path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
     return path
+
+
+def reference_evidence(tmp, items):
+    # Artificial reference qualification for CPU integration tests only.
+    catalog = dump(tmp/'reference_items.jsonl', items)
+    predictions = dump(tmp/'reference_predictions.jsonl', [dict(id=i['id'], target=i['gravity'],
+        prediction=dict(status='ok', scenario='projectile', gravity=i['gravity'],
+                        frames=i['window']['max_frames'])) for i in items])
+    return dict(benchmark_items=str(catalog), reference_predictions=str(predictions),
+                benchmark_sha256=media.sha256(catalog), reference_predictions_sha256=media.sha256(predictions))
 
 
 @pytest.fixture
@@ -50,7 +60,8 @@ def registered(tmp_path):
     ip = dump(tmp_path/'items.jsonl',items)
     out = tmp_path/'input'
     gen.build(SimpleNamespace(items=ip, out=out, data_root=str(tmp_path),source_root=str(tmp_path),host_root=str(out),
-                              min_window_frames=8,max_end_frame=170,per_gravity=None,seed=1))
+                              min_window_frames=8,max_end_frame=170,per_gravity=None,seed=1,
+                              applicability=reference_evidence(tmp_path,items)))
     rows = gen._json_rows(out/'template.jsonl')
     return ip, out, rows
 
@@ -250,7 +261,7 @@ def test_gpu_environment_restored_after_controller_failure(tmp_path,monkeypatch)
 
 
 @pytest.mark.parametrize('evaluation', [
-    {'metrics':['qwen']}, {'metrics':['gravtrace','vp']}, {'metrics':[]},
+    {'metrics':['qwen']}, {'metrics':['gravtrace','unknown']}, {'metrics':[]},
     {'metrics':'gravtrace'}, {'metrics':['gravtrace','gravtrace']},
     {'metrics':['gravtrace'],'qwen_model_dir':'unused'}, None])
 def test_unavailable_or_invalid_evaluation_rejected_before_output(tmp_path,monkeypatch,evaluation):
@@ -277,15 +288,23 @@ def test_unknown_settings_are_not_silently_ignored(tmp_path,where,key):
         pipeline.execution_plan(spec)
 
 
-def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch):
+@pytest.mark.parametrize('extra_metrics',[False,True])
+def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra_metrics):
     # Real CPU source/generated media and V4; only model observations and fit are artificial.
-    video(tmp_path/'source.avi')
+    video(tmp_path/'source.avi',frames=75)
     model = tmp_path/'fixture_model'
     model.mkdir()
     spec=dict(items=str(dump(tmp_path/'items',[item(window=dict(start_frame=25,max_frames=10)),
                           item('missing',video='absent')])),data_root=str(tmp_path),compact='unused',
               model='ltx_i2v',model_dir=str(model),frames=81,fps=16,sam3='fixture_sam',checkpoint='fixture_weight',
               generation_runtime=dict(ffmpeg=sys.executable,gpu_devices='3'))
+    spec['applicability'] = reference_evidence(tmp_path, gen._json_rows(spec['items']))
+    if extra_metrics:
+        from physedit import evaluations as ev, qwen_judge as judge
+        spec['evaluation']=dict(metrics=['gravtrace','vp','qwen'],qwen=dict(backend='api',model='Qwen-fixture',base_url='http://localhost:1/v1'))
+        answer={k:dict(present=False,severity=0,evidence='synthetic evidence') for k in judge.CATEGORIES}
+        answer.update(confidence=.9,insufficient_evidence=False)
+        monkeypatch.setattr(ev,'call_api',lambda *a:dict(judgement=answer,raw=json.dumps(answer),served_model='Qwen-fixture'))
     def prompts(args):
         jobs=[dict(id=r['sample_id'],video=r['generated_video_resized_to_source'],prompt_frame=0,
                    objects={'book':[20,20,35,35]}, input_failure=r.get('input_failure')) for r in gen._json_rows(args.rows)]
@@ -322,6 +341,15 @@ def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch):
     assert captured[0]['offset_mode']=='anchor' and not captured[0]['window']['contact_check']
     assert len(read_rows:=frontend.read_rows(tmp_path/'run/predictions.jsonl'))==2
     assert read_rows[1]['reason']=='missing_source_video'
+    if extra_metrics:
+        assert result['evaluations']['qwen']['scored']==1
+        assert result['evaluations']['vp']['metrics']['trajectory_error_full']['scored']==1
+        assert result['evaluations']['vp']['metrics']['camera_motion_full']['scored']==0  # Feature-poor media is insufficient, not zero error.
+        assert result['evaluation_failed']==2
+        for stage in ('vp','qwen'):
+            records=frontend.read_rows(tmp_path/'run/evaluation'/f'{stage}_results.jsonl')
+            assert len(records)==2 and 'missing_source_video' in records[1]['reason']
+        assert captured[0]['boxes']['frames']==[0,1,2,3]  # Native 16fps window; V/P full-clip masks do not extend it.
 
 
 def test_survey_never_counts_nonempty_corrupt_video(tmp_path):
@@ -355,6 +383,7 @@ def test_runtime_failure_preserves_eligible_and_missing_rows_without_inference(t
     spec = dict(items=str(dump(tmp_path/'items', [item(), item('missing', video='absent')])),
                 data_root=str(tmp_path), compact='unused', model='ltx_i2v', model_dir=str(tmp_path/'absent_model'),
                 sam3=str(tmp_path/'absent_sam'), checkpoint=str(tmp_path/'absent_checkpoint'))
+    spec['applicability'] = reference_evidence(tmp_path, gen._json_rows(spec['items']))
     def prompts(args):
         dump(Path(args.out), [dict(id=r['sample_id'], prompt_frame=0, objects={'book':[20,20,35,35]},
                                   input_failure=r.get('input_failure')) for r in gen._json_rows(args.rows)])
@@ -392,6 +421,33 @@ def test_diffusers_load_is_local_only_and_refuses_text_only_api(monkeypatch):
     sys.modules['diffusers'].LTXImageToVideoPipeline = TextOnlyPipeline
     with pytest.raises(ValueError, match='does not accept an image'):
         runner._load_pipeline('ltx_i2v', 'local_weights', 'bfloat16', 'none', None)
+
+
+def test_controller_keeps_actual_diffusers_failure_in_prediction(tmp_path, monkeypatch):
+    video(tmp_path/'source.avi', frames=75)
+    weights = tmp_path/'weights'
+    weights.mkdir()
+    spec = dict(items=str(dump(tmp_path/'items', [item()])), data_root=str(tmp_path), compact='unused',
+                model='ltx_i2v', model_dir=str(weights), sam3='fixture_sam', checkpoint='fixture_weight',
+                generation_runtime=dict(ffmpeg=sys.executable))
+    spec['applicability'] = reference_evidence(tmp_path, gen._json_rows(spec['items']))
+    def prompts(args):
+        dump(Path(args.out), [dict(id=r['sample_id'], video=r['generated_video_resized_to_source'],
+             prompt_frame=0, objects={'book':[20,20,35,35]}, input_failure=r.get('input_failure'))
+             for r in gen._json_rows(args.rows)])
+    monkeypatch.setattr(gen, 'track_jobs', prompts)
+    monkeypatch.setattr(frontend, 'validate_runtime', lambda *a: dict(gpu_started=False, fixture=True))
+    def fail_loading(*args):
+        raise ValueError('fixture_VAE_shape_mismatch')
+    monkeypatch.setattr(runner, '_load_pipeline', fail_loading)
+    monkeypatch.setattr(subprocess, 'run', lambda command, **kw: SimpleNamespace(returncode=runner.main(command[2:])))
+    monkeypatch.setattr(frontend, 'run', lambda root, *a: frontend.measure(root))
+    monkeypatch.setattr(gen, 'safe_fit', lambda *a: pytest.fail('must not fit a failed generation'))
+    result = pipeline.pipeline(spec, tmp_path/'run')
+    pred = gen._json_rows(tmp_path/'run/predictions.jsonl')[0]
+    assert result['registered'] == result['failed'] == 1
+    assert 'fixture_VAE_shape_mismatch' in pred['reason']
+    assert 'resized.completed.json' not in pred['reason']
 
 
 def test_diffusers_preserves_zero_seed_and_image_condition(tmp_path, monkeypatch):

@@ -9,10 +9,11 @@ description = "Recover the gravity a video shows from a tracked object's image b
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
-dependencies = ["numpy", "scipy", "opencv-python-headless"]
+dependencies = ["numpy", "scipy", "opencv-python-headless", "scikit-image==0.24.0"]
 
 [project.optional-dependencies]
 test = ["pytest"]
+judge = ["transformers>=4.51.3", "accelerate", "pillow", "torch", "torchvision"]
 
 [project.scripts]
 gravtrace = "gravtrace.__main__:main"
@@ -22,3 +23,4 @@ packages = ["gravtrace", "physedit", "physedit.runners", "scripts"]
 
 [tool.setuptools.package-data]
 scripts = ["sam31_frozen/*.py", "sam31_frozen/manifest.json"]
+physedit = ["qwen_prompt.json"]

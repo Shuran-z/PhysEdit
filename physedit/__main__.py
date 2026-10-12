@@ -36,7 +36,21 @@ def main(argv=None):
             s.add_argument("--retry", action="store_true",
                            help="restart workers that hit the restart limit and rerun failed evaluation stages")
     sub.add_parser("models", help="list the registered models")
+    evaluation=sub.add_parser('evaluate',help='Evaluate existing PhyEditing media; no generation or new gravity fit')
+    evaluation.add_argument('benchmark',choices=['phyediting'])
+    evaluation.add_argument('--spec',required=True)
+    evaluation.add_argument('--run-dir',required=True)
+    evaluation.add_argument('--output-dir',required=True)
+    evaluation.add_argument('--execute',action='store_true')
     a = p.parse_args(argv)
+
+    if a.cmd=='evaluate':
+        import json
+        from pathlib import Path
+        from .evaluations import existing_run
+        result=existing_run(json.loads(Path(a.spec).read_text()),a.run_dir,a.output_dir,a.execute)
+        print(json.dumps(result,ensure_ascii=False,allow_nan=False))
+        return int(bool(result.get('evaluation_failed',0)))
 
     if a.cmd == "models":
         for key, m in config.MODELS.items():

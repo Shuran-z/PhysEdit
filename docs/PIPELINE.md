@@ -1,6 +1,6 @@
 # public211：旧多机生成与评测调度
 
-当前 PhyEditing 本地一键入口从 [QUICKSTART.md](phyediting/QUICKSTART.md)开始，模型配置见 [MODELS.md](phyediting/MODELS.md)，固定评分见 [GENERATION.md](phyediting/GENERATION.md)。新入口仅接入 GravTrace；Qwen 和 V/P 仍为旧流程的外部脚本，详见[评测指标与接入状态](phyediting/EVALUATION.md)。下文仅为旧 `public211` 多机调度，使用不同环境、远程路径及重试机制；这些服务器配置不是可直接复用的通用安装说明。
+当前 PhyEditing 本地一键入口从 [QUICKSTART.md](phyediting/QUICKSTART.md)开始，模型配置见 [MODELS.md](phyediting/MODELS.md)，固定评分见 [GENERATION.md](phyediting/GENERATION.md)。新入口已接入 GravTrace、V/P 和本地/API Qwen，详见[评测指标与接入状态](phyediting/EVALUATION.md)。下文仅为旧 `public211` 多机调度，使用不同环境、远程路径及重试机制；这些服务器配置不是可直接复用的通用安装说明。
 
 `physedit` runs any set of registered video models on a PhysEdit benchmark, from manifests to the results table:
 

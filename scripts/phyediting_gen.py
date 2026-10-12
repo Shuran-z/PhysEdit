@@ -63,6 +63,12 @@ def build(args) -> None:
     (out / 'prompts').mkdir()
     rows, per_g = [], defaultdict(int)
     quota = getattr(args, 'per_gravity', None)
+    from physedit.inversion_inputs import assess
+    applicability = assess(items, getattr(args, 'applicability', None),
+                           frames=getattr(args, 'generation_frames', 81),
+                           fps=getattr(args, 'generation_fps', 16))
+    eligibility = {r['item_id']: r for r in applicability['items']}
+    (out/'inversion_applicability.json').write_text(json.dumps(applicability, indent=2)+'\n')
     for k, it in enumerate(items):
         # All registered items remain, including unsupported events and quota exclusions.
         import hashlib
@@ -79,6 +85,10 @@ def build(args) -> None:
         if not reason and quota is not None and per_g[it['gravity']] >= quota:
             reason = 'not_selected_explicit_per_gravity_quota'
         w, h = it.get('image_size', [0, 0])
+        if not reason and not local.is_file():
+            reason = 'missing_source_video'
+        if not reason:
+            reason = eligibility[it['id']]['reason']
         if not reason:
             try:
                 validate_video(local, fps=float(it['fps']), width=w, height=h)
@@ -113,6 +123,7 @@ def build(args) -> None:
             'protocol': 'phyediting_gravity_v1', 'gen_height': 480, 'gen_width': 704 if w >= h else 480,
             'input_failure': reason, 'split': it.get('split', 'unspecified'),
             'source_video_sha256': sha256(local) if local.is_file() else None,
+            'inversion_applicability': eligibility[it['id']],
         }
         rows.append(row)
     for name, content in [('template.jsonl', rows), ('input_failures.jsonl', [r for r in rows if r['input_failure']])]:
@@ -370,6 +381,9 @@ def main() -> None:
     b.add_argument("--min-window-frames", type=int, default=8, help="reference frames in the window (8: >= 4 frames at 16 fps)")
     b.add_argument("--max-end-frame", type=int, default=170, help="window end (reference frame) a 5 s clip from frame 23 reaches")
     b.add_argument("--seed", type=int, default=20261008)
+    b.add_argument("--applicability", type=Path, help="JSON reference catalog/prediction paths and SHA256 locks")
+    b.add_argument("--generation-frames", type=int, default=81)
+    b.add_argument("--generation-fps", type=float, default=16.0)
     s = sub.add_parser("score")
     s.add_argument("items")
     s.add_argument("rows")
@@ -398,6 +412,8 @@ def main() -> None:
     t.add_argument("--host-prefix", default="")
     t.add_argument("--local-prefix", default="")
     args = ap.parse_args()
+    if args.cmd == 'build' and args.applicability:
+        args.applicability = json.loads(args.applicability.read_text())
     {"build": build, "score": score, "rows": model_rows, "jobs": track_jobs}[args.cmd](args)
 
 

@@ -9,7 +9,7 @@ Usage: scripts/setup_phyediting_server.sh --python BASE_PYTHON --sam-source OFFI
 
 The base Python must already provide a working PyTorch/CUDA and Diffusers stack.
 This script creates a new virtual environment that can see those packages, adds
-the pinned lightweight SAM dependencies, installs this repository, and verifies
+the pinned lightweight SAM and pixel-metric dependencies, installs this repository, and verifies
 the frozen SAM source commit and checkpoint SHA. It never changes the base env.
 EOF
 }
@@ -43,6 +43,11 @@ mkdir -p "$(dirname "$env_dir")"
 "$base_python" -m venv --system-site-packages "$env_dir"
 venv_python="$env_dir/bin/python"
 "$venv_python" -m pip install --disable-pip-version-check --no-deps 'setuptools==70.3.0' 'timm==1.0.28'
+# Install the CPU metric closure in the overlay only; never upgrade base NumPy,
+# SciPy, PyTorch or CUDA to satisfy a new evaluation dependency.
+"$venv_python" -m pip install --disable-pip-version-check --no-deps \
+  'scikit-image==0.24.0' 'imageio==2.37.2' 'lazy-loader==0.4' \
+  'networkx==3.2.1' 'tifffile==2024.8.30' 'packaging==25.0'
 "$venv_python" -m pip install --disable-pip-version-check --no-deps --no-build-isolation -e "$repo"
 
 PYTHONPATH="$sam_source:$repo${PYTHONPATH:+:$PYTHONPATH}" \
@@ -53,7 +58,7 @@ import sys
 from pathlib import Path
 
 for name in ('torch', 'torchvision', 'diffusers', 'transformers', 'accelerate',
-             'cv2', 'numpy', 'scipy', 'timm', 'pkg_resources', 'sam3'):
+             'cv2', 'numpy', 'scipy', 'timm', 'pkg_resources', 'sam3', 'skimage'):
     importlib.import_module(name)
 from sam3.model_builder import build_sam3_multiplex_video_predictor
 from scripts.sam31_frontend import validate_runtime
@@ -61,6 +66,11 @@ from scripts.sam31_frontend import validate_runtime
 receipt = validate_runtime(Path(sys.argv[1]), Path(sys.argv[2]))
 receipt['environment_python'] = sys.executable
 receipt['inference_started'] = False
+from physedit.pixel_metrics import settings, ssim, psnr
+import numpy as np
+pixels = np.zeros((11, 11, 3), dtype=np.uint8)
+assert ssim(pixels, pixels) == 1 and psnr(pixels, pixels) == float('inf')
+receipt['pixel_metrics'] = settings()
 print(json.dumps(receipt, sort_keys=True))
 PY
 

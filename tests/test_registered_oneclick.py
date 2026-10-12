@@ -1,6 +1,8 @@
 """No GPU or model inference: check the twelve launch contracts and input isolation."""
 import json
 import sys
+import subprocess
+import venv
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -212,3 +214,17 @@ def test_diffusers_uses_registered_runtime_without_loading_models(tmp_path, mode
     assert env['IMAGEIO_FFMPEG_EXE'] == str(ffmpeg)
     assert str(tmp_path/'site') in env['PYTHONPATH'].split(':')
     assert command[command.index('--model-dir')+1] == str(weights)
+
+
+def test_registered_python_preserves_real_virtual_environment(tmp_path):
+    environment = tmp_path/'model_env'
+    venv.EnvBuilder(with_pip=False, symlinks=True).create(environment)
+    python = environment/'bin/python'
+    weights = tmp_path/'weights'
+    weights.mkdir()
+    spec = dict(model='hunyuan15_i2v', model_dir=str(weights), generation_runtime=dict(
+        python=str(python), ffmpeg=sys.executable))
+    command, _ = phyediting.diffusers_launch(spec, tmp_path/'manifest')
+    prefix = subprocess.check_output([command[0], '-I', '-c', 'import sys; print(sys.prefix)'], text=True).strip()
+    assert Path(prefix) == environment
+    assert command[0] == str(python)

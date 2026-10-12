@@ -33,7 +33,9 @@ def _write_rows(path, rows):
 
 def _program(value):
     if Path(value).expanduser().is_file():
-        return str(Path(value).expanduser().resolve())
+        # Python locates pyvenv.cfg relative to the invoked executable. Resolving
+        # a venv's python symlink silently selects the base environment instead.
+        return str(Path(value).expanduser().absolute())
     found = shutil.which(value)
     if found:
         return found

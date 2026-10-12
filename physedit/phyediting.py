@@ -20,7 +20,7 @@ def validate_settings(spec):
     """Reject misspelled settings and unavailable evaluations before any execution."""
     allowed = {'items', 'data_root', 'compact', 'model', 'model_dir', 'sam3', 'checkpoint',
                'seed', 'frames', 'fps', 'canvas', 'generation_runtime', 'generation_command',
-               'mode', 'conditioning_mode', 'evaluation'}
+               'mode', 'conditioning_mode', 'evaluation', 'applicability'}
     if not isinstance(spec, dict):
         raise ValueError('Run spec must be an object')
     unknown = set(spec) - allowed
@@ -36,16 +36,8 @@ def validate_settings(spec):
     if 'gpu_devices' in runtime and (not isinstance(runtime['gpu_devices'], str) or
                                     not runtime['gpu_devices'].strip()):
         raise ValueError('generation_runtime.gpu_devices must be a nonempty string')
-    evaluation = spec.get('evaluation', {'metrics': ['gravtrace']})
-    if not isinstance(evaluation, dict) or set(evaluation) != {'metrics'}:
-        raise ValueError('evaluation must contain only a metrics list')
-    metrics = evaluation['metrics']
-    if (not isinstance(metrics, list) or not metrics or
-            any(not isinstance(m, str) for m in metrics) or len(set(metrics)) != len(metrics)):
-        raise ValueError('evaluation.metrics must be a nonempty list of unique metric names')
-    if metrics != ['gravtrace']:
-        raise ValueError('Unsupported evaluation.metrics: only gravtrace is integrated; Qwen and V/P are not integrated')
-    return metrics
+    from .evaluation_settings import validate
+    return validate(spec.get('evaluation', {'metrics': ['gravtrace']}))
 
 
 def model_profile(spec):
@@ -80,6 +72,8 @@ def write_rows(path, rows):
 
 def execution_plan(spec):
     metrics = validate_settings(spec)
+    if 'gravtrace' not in metrics:
+        raise ValueError('Generation pipeline includes gravtrace; use evaluate for standalone Qwen/V/P evaluation')
     from scripts.sam31_frontend import lock
     lock()
     required = ('items', 'data_root', 'compact', 'model', 'model_dir', 'sam3', 'checkpoint')
@@ -102,18 +96,24 @@ def execution_plan(spec):
         raise ValueError('Invalid registered generation clock')
     if profile.frames is not None:
         validate_registration(spec, require_runtime=not bool(spec.get('generation_command')))
+    from .pixel_metrics import settings as pixel_settings
     items = read_rows(spec['items'])
     if len({i['id'] for i in items}) != len(items):
         raise ValueError('Duplicate registered item IDs')
+    from .inversion_inputs import assess
+    applicability = assess(items, spec.get('applicability'), frames=spec['frames'], fps=spec['fps'])
     return dict(registered=len(items), model=spec['model'],
                 model_runner='custom_argv' if spec.get('generation_command') else profile.runner,
                 conditioning_mode=profile.mode,
                 frames=spec['frames'], fps=spec['fps'],
                 evaluation_metrics=metrics,
+                vp_pixel_settings=pixel_settings(spec.get('evaluation', {}).get('vp')) if 'vp' in metrics else None,
                 gpu_devices=spec.get('generation_runtime', {}).get('gpu_devices', os.environ.get('CUDA_VISIBLE_DEVICES')),
                 required_generation_runtime=list(profile.needs), single_view=True, v0='agnostic', offset_mode='anchor',
-                stages=['inputs', 'generation', 'initial_prompts', 'sam31', 'fixed_score', 'summary'],
-                execution_requested=False, gpu_started=False, input_items_sha256=sha256(spec['items']))
+                stages=['inputs', 'generation', 'initial_prompts', 'sam31', 'fixed_score']+
+                       [m for m in ('vp','qwen') if m in metrics]+['summary'],
+                execution_requested=False, gpu_started=False, input_items_sha256=sha256(spec['items']),
+                inversion_applicability=applicability)
 
 
 def diffusers_launch(spec, manifest):
@@ -160,6 +160,8 @@ def _pipeline(spec, root, plan):
     items_path = root/'items.jsonl'
     # Immutable public input registration, preserving exact bytes and all IDs.
     items_path.write_bytes(Path(spec['items']).read_bytes())
+    if sha256(items_path) != plan['input_items_sha256']:
+        raise ValueError('registered_items_changed_since_plan')
     (root/'registered.json').write_text(json.dumps(dict(plan=plan, spec=spec), indent=2)+'\n')
     rows = []
     try:
@@ -167,7 +169,8 @@ def _pipeline(spec, root, plan):
         gen.build(SimpleNamespace(items=str(items_path), out=str(input_dir), host_root=str(input_dir),
                                  source_root=str(Path(spec['data_root']).resolve()), data_root=spec['data_root'],
                                  per_gravity=None, min_window_frames=8, max_end_frame=170,
-                                 seed=spec.get('seed', 20261008)))
+                                 seed=spec.get('seed', 20261008), applicability=spec.get('applicability'),
+                                 generation_frames=spec['frames'], generation_fps=spec['fps']))
         rows_path = root/'rows.jsonl'
         profile = model_profile(spec)
         canvas = spec.get('canvas') or (f'{profile.canvas[0]}x{profile.canvas[1]}' if profile.canvas else None)
@@ -225,6 +228,13 @@ def _pipeline(spec, root, plan):
         model_status_path = root/'registered_model_status.jsonl'
         model_status = ({r['sample_id']: r for r in read_rows(model_status_path)}
                         if model_status_path.is_file() else {})
+        if profile.runner == 'diffusers':
+            diffusers_status_path = root / f"{spec['model']}_generation_status.jsonl"
+            if diffusers_status_path.is_file():
+                for status in read_rows(diffusers_status_path):
+                    if status['sample_id'] not in expected_inputs:
+                        continue  # Ineligible inputs keep their original input failure.
+                    model_status[status['sample_id']] = status
         for r in rows:
             if not r.get('input_failure'):
                 try:
@@ -234,7 +244,8 @@ def _pipeline(spec, root, plan):
                     else:
                         verified_completion(r)
                 except Exception as error:
-                    detail = model_status.get(r['sample_id'], {}).get('reason') or str(error)
+                    status = model_status.get(r['sample_id'], {})
+                    detail = status.get('reason') or status.get('error') or str(error)
                     r['input_failure'] = 'generation_output_failure: '+detail
         observed_rows = root/'observed_rows.jsonl'
         write_rows(observed_rows, rows)
@@ -255,9 +266,16 @@ def _pipeline(spec, root, plan):
                                   camera_motion=None, scan=False))
         result = summary.report(rows, read_rows(predictions_path), {i['id']: i for i in read_rows(items_path)})
         result['evaluation_metrics'] = plan['evaluation_metrics']
+        if set(plan['evaluation_metrics']) & {'vp','qwen'}:
+            from .evaluations import run_additional, attach_summary
+            extra=run_additional(spec,rows,{i['id']:i for i in read_rows(items_path)},initial,root/'evaluation')
+            result=attach_summary(result,extra,plan['evaluation_metrics'])
+        else:
+            result['evaluation_failed'] = result['failed']
         (root/'summary.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
         (root/'completed.json').write_text(json.dumps(dict(registered=len(rows), single_view=True,
                     evaluation_metrics=plan['evaluation_metrics'],
+                    evaluation_failed=result['evaluation_failed'],
                     summary_sha256=sha256(root/'summary.json'), successful=result['scored'], failed=result['failed'],
                     completion_is_not_scientific_certification=True), indent=2)+'\n')
         return result
@@ -282,7 +300,7 @@ def main(argv=None):
     spec = json.loads(Path(args.spec).read_text())
     result = pipeline(spec, args.run_dir) if args.execute else execution_plan(spec)
     print(json.dumps(result, ensure_ascii=False))
-    return 1 if args.execute and result['failed'] else 0
+    return 1 if args.execute and result.get('evaluation_failed',result['failed']) else 0
 
 
 if __name__ == '__main__':
