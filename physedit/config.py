@@ -2,13 +2,14 @@
 
 A model's `cmd` maps a site to the shell command that generates the rows of one manifest there. Placeholders are
 filled from the site's `vars` and, per job, with
-    {manifest}  the worker's manifest, {dir}/manifest_{worker}.jsonl (w0 forwards, w1 backwards or the other half)
+    {manifest}  the worker's manifest, {dir}/manifest_{worker}.jsonl (w0 and w1 are disjoint halves)
     {worker}    w0 or w1, for commands that read other per-worker files ({dir}/prompts_{worker}.json)
     {dir}       the model's run directory on that site (manifests, generated/<row>/resized.mp4, logs/)
     {tools}     the deployed physedit runners on that site
     {gpu}       the job's GPU index(es), comma separated (also exported as CUDA_VISIBLE_DEVICES)
     {run} {job}
-Every runner skips rows whose resized.mp4 already exists, so any job can be stopped and started again.
+Media completion requires full decode, registered dimensions/frame count and clock validation.
+The local PhyEditing pipeline is one-shot; interrupted outputs are retained and not automatically retried.
 """
 import os
 
@@ -147,6 +148,7 @@ INV = "/path/to/benchmark/inversion"
 P211 = "/path/to/evaluation"          # public-211 evaluation scripts (UniversalPhysicsEval port)
 GT2 = "/path/to/PhysEdit-GravTrace"                         # gravtrace working copy with the ground-truth scenes
 BENCHMARKS = {
+    "phyediting": dict(kind="local_single_view", runs={"frozen": "SAM3.1 + V4 fixed-window"}),
     "public211": dict(
         home="site_a",
         runs={"x5": "V/P run, condition frame aligned with self100", "x1": "inversion run, first visible frame"},

@@ -1,5 +1,13 @@
 import sys
 import copy
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def isolated_fixed_window_math(monkeypatch):
+    # These existing tests isolate the frozen window math; real media bindings
+    # are independently exercised in test_generation_pipeline.py.
+    monkeypatch.setattr(phyediting_gen, "_binding_failure", lambda *args: None)
 
 from scripts import phyediting_gen
 
@@ -94,3 +102,13 @@ def test_tiny_mask_outside_registered_window_does_not_change_score(monkeypatch):
     result = phyediting_gen._score_fixed_window(row, item, track)
     assert result["status"] == "ok"
     assert result["planned_generated_frames"] == [8, 9, 10, 11, 12]
+
+
+def test_already_unknown_velocity_manifest_stays_agnostic(monkeypatch):
+    row, item, track = fixed_window_inputs()
+    item['motion'].pop('v0')
+    captured=[]
+    monkeypatch.setattr(phyediting_gen,'safe_fit',lambda s: captured.append(s) or {'status':'ok','frames':5})
+    result=phyediting_gen._score_fixed_window(row,item,track)
+    assert result['status']=='ok' and captured[0]['motion']['speed']==[0.,8.]
+    assert 'v0' not in captured[0]['motion'] and 'directions' not in captured[0]['motion']

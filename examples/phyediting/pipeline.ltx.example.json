@@ -1,0 +1,16 @@
+{
+  "items": "/absolute/path/items.jsonl",
+  "data_root": "/absolute/path/reference_videos",
+  "compact": "/absolute/path/compact",
+  "model": "ltx_i2v",
+  "model_dir": "/absolute/path/ltx_weights",
+  "sam3": "/absolute/path/official-sam3-git",
+  "checkpoint": "/absolute/path/sam3.1_multiplex.pt",
+  "seed": 20261008,
+  "evaluation": {"metrics": ["gravtrace"]},
+  "generation_runtime": {
+    "python": "/absolute/path/new-phyediting-env/bin/python",
+    "gpu_devices": "0",
+    "ffmpeg": "/absolute/path/ffmpeg"
+  }
+}

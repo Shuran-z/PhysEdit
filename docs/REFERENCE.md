@@ -1,10 +1,8 @@
 # GravTrace
 
-Current work uses **PhyEditing**. The earlier PISA, NewtonBench and self-rendered evaluations below are historical references, not the acceptance set for this project.
+当前冻结方案为单视角 **SAM3.1＋V4、未知初速度、anchor拟合**。开发集1038例/13918帧的平均误差2.700312065%、最大15.148096294%、失败率0%、覆盖率100%；[当前验证与公平对比](phyediting/validation.md)是最新结果。下面保留反演输入格式、通用算法说明和早期实验；早期目标、已知速度或centred设置不覆盖现行冻结协议。
 
-The target is 2–3% mean relative gravity error, maximum ≤10% (20% is a fallback ceiling). An experimental all-frame offset estimate reaches 0.89% mean / 8.99% maximum on 1,036 common-observation items with known velocity; its unknown-velocity tail still misses the target, so it is not the default. **This is not yet met across all settings.** The tuned, filtered set with known launch velocity reaches 1.11% mean / 6.2% maximum; with unknown launch velocity it reaches 2.88% / 19.8% at 30 fps, and 3.17% / 34.2% among 845 successful fits out of 1,038 at 15 fps.
-
-See [validation notes](docs/phyediting/validation.md), [interactive report](docs/phyediting/report.html) and [six-model results](docs/phyediting/generation_summary.json).
+生成评测从 [快速上手](phyediting/QUICKSTART.md)进入，独立前端见 [SAM31.md](phyediting/SAM31.md)。这里的通用 `gravtrace fit` 说明不替代生成评测的[固定窗口评分方法](phyediting/GENERATION.md)。
 
 GravTrace measures the gravity a video shows. Given a single-view video of an object that falls,
 is thrown, or slides down a ramp, together with what is known about the scene before the motion
@@ -201,7 +199,7 @@ All methods receive the same fully visible, unclipped frames; GravTrace contact 
 
 The oracle-depth reference has a lower mean (0.87%) than the default GravTrace (1.19%) and the experimental centred variant (0.89%). GravTrace is better on mean error than the tested 2D and predicted-depth methods; this does not establish global optimality. The common-frame maximum of 15.62% still exceeds the 10% target. Coverage-penalised score averages min(relative error, 1), with failed/missing fits assigned 1.
 
-Reproduce with `phyediting_common_observations.py`, `baselines.py`, `gravtrace fit`, then `phyediting_common_report.py`. Source: [common_observations.json](docs/phyediting/common_observations.json).
+Reproduce with `phyediting_common_observations.py`, `baselines.py`, `gravtrace fit`, then `phyediting_common_report.py`. Source: [common_observations.json](phyediting/common_observations.json).
 
 ### Full unknown-launch offset experiment
 
@@ -214,7 +212,7 @@ Both modes retain the same 1,038 development items and attempt the same referenc
 | 15 | anchor (default) | 845 / 1038 | 3.17% | 34.16% | 843 |
 | 15 | centred | 845 / 1038 | 2.93% | 28.34% | 844 |
 
-The centred variant improves the mean at both frame rates and the 15 fps maximum, but worsens the 30 fps maximum. Neither variant satisfies maximum ≤10% across unknown-launch settings. The 193 low-frame-rate failures remain in the denominator. See [per-event, per-gravity and physics-group statistics](docs/phyediting/offset_comparison.json). Reproduce with `phyediting_offset_trial.py --fps 30 --limit 0 --all-items --mode centred` and its 15 fps equivalent, then `phyediting_offset_comparison.py`.
+The centred variant improves the mean at both frame rates and the 15 fps maximum, but worsens the 30 fps maximum. Neither variant satisfies maximum ≤10% across unknown-launch settings. The 193 low-frame-rate failures remain in the denominator. See [per-event, per-gravity and physics-group statistics](phyediting/offset_comparison.json). Reproduce with `phyediting_offset_trial.py --fps 30 --limit 0 --all-items --mode centred` and its 15 fps equivalent, then `phyediting_offset_comparison.py`.
 
 ### Generated videos (gravity editing)
 
@@ -294,11 +292,11 @@ python3 -m physedit run public211 --models ltx_i2v,cosmos3_nano --watch 10
 python3 -m physedit status public211
 ```
 
-Models, machines and benchmarks are declared in `physedit/config.py`; see [docs/PIPELINE.md](docs/PIPELINE.md).
+Models, machines and benchmarks are declared in `physedit/config.py`; see [docs/PIPELINE.md](PIPELINE.md).
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+MIT, see [LICENSE](../LICENSE).
 
 ## Converting the earlier manifests
 

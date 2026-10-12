@@ -22,6 +22,9 @@ def main(argv=None):
     for name in ("run", "status"):
         s = sub.add_parser(name)
         s.add_argument("benchmark", choices=sorted(config.BENCHMARKS))
+        s.add_argument("--spec", help="PhyEditing local pipeline JSON registration")
+        s.add_argument("--run-dir", help="PhyEditing immutable output directory")
+        s.add_argument("--execute", action="store_true", help="PhyEditing explicit execution; default is plan only")
         s.add_argument("--models", default="all", help="comma-separated model keys (see `models`), or all")
         s.add_argument("--runs", help="comma-separated runs (default: every run of the benchmark)")
         s.add_argument("--tag", default="", help="separate namespace for a trial; trials are not evaluated")
@@ -40,6 +43,31 @@ def main(argv=None):
             print("%-26s %-27s %-19s %3d frames %2d fps %d GPU" % (key, m["name"], "/".join(m["cmd"]), m["frames"],
                                                                      m["fps"], m.get("gpus", 1)))
         return
+    if a.benchmark == 'phyediting':
+        if a.cmd == 'status':
+            if not a.run_dir:
+                p.error('PhyEditing status requires --run-dir')
+            from pathlib import Path
+            import json
+            root = Path(a.run_dir)
+            if not (root/'registered.json').is_file():
+                p.error('PhyEditing run has no registered.json: '+str(root))
+            print(json.dumps({name: json.loads((root/name).read_text()) for name in
+                              ('registered.json', 'completed.json', 'failure.json') if (root/name).exists()}))
+            return
+        if not a.spec or not a.run_dir:
+            p.error('PhyEditing run requires --spec and --run-dir')
+        if a.watch or a.retry or a.hosts or a.limit or a.tag or a.runs or a.models != 'all':
+            p.error('PhyEditing is local and one-shot; use the spec, no fleet/watch/retry/subset flags')
+        from .phyediting import main as pipeline_main
+        command = ['--spec', a.spec, '--run-dir', a.run_dir]
+        if a.execute:
+            command.append('--execute')
+        if a.dry_run:
+            command.append('--dry-run')
+        return pipeline_main(command)
+    if a.execute or a.spec or a.run_dir:
+        p.error('spec/run-dir/execute are PhyEditing-only options')
     models = list(config.MODELS) if a.models == "all" else a.models.split(",")
     unknown = sorted(set(models) - set(config.MODELS))
     if unknown:
@@ -73,4 +101,4 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

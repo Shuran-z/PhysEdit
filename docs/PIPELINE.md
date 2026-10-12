@@ -1,6 +1,6 @@
-# physedit: generating and evaluating models with one command
+# public211：旧多机生成与评测调度
 
-当前 PhyEditing / SAM3.1 / V4 的固定窗口评分合同见 [GENERATION.md](phyediting/GENERATION.md)。下文保留原 public-211 多机器调度说明。
+当前 PhyEditing 本地一键入口从 [QUICKSTART.md](phyediting/QUICKSTART.md)开始，模型配置见 [MODELS.md](phyediting/MODELS.md)，固定评分见 [GENERATION.md](phyediting/GENERATION.md)。新入口仅接入 GravTrace；Qwen 和 V/P 仍为旧流程的外部脚本，详见[评测指标与接入状态](phyediting/EVALUATION.md)。下文仅为旧 `public211` 多机调度，使用不同环境、远程路径及重试机制；这些服务器配置不是可直接复用的通用安装说明。
 
 `physedit` runs any set of registered video models on a PhysEdit benchmark, from manifests to the results table:
 
@@ -30,9 +30,9 @@ continues from what is on disk.
    runners are deployed to `<site root>/tools`, the benchmark inputs (condition frames, prompts) are copied there once,
    and `build.py` writes the model's manifests from the benchmark's template rows: same sources, condition frames,
    prompts and seeds for every model; the model sets frame count, frame rate, canvas and output paths.
-3. **Generate.** Every unfinished run keeps up to two workers on free GPUs: one walks the manifest forwards, one
-   backwards, and every runner skips rows whose video exists, so they meet in the middle without coordination
-   (DynamiCrafter's runner takes its whole manifest as one batch, so its workers get disjoint halves: `split`). A GPU
+3. **Generate.** Every unfinished run keeps up to two workers on free GPUs: each reads its disjoint
+   `manifest_w0.jsonl` or `manifest_w1.jsonl` shard. Existing videos count as complete only after full media and
+   completion-binding verification; existence alone is insufficient. Interrupted claims and partial outputs stay retained. A GPU
    is free when it holds less than the host's `busy_mib` and runs none of our jobs. A worker that dies is restarted
    on the next pass; one started three times within three hours is left alone and reported (`--retry` overrides).
 4. **Copy home.** Videos made on a site the home host cannot read (cluster) are copied to it as parallel tar streams
@@ -59,7 +59,7 @@ videos, ETA and live workers; per model the evaluation stages; and notes (waitin
 
 `--tag` (implied by `--limit`) gives a trial its own namespace; trials are generation only. `spec.json` records what
 the manifests were built from: when a model's settings change, a run without videos is rebuilt and a run with videos
-is reported (remove its directory to start it again), so settings are never mixed within a run.
+is reported (use a new trial namespace after reviewing the old failure; retain its directory), so settings are never mixed within a run.
 
 ## Configuration: `physedit/config.py`
 
@@ -90,6 +90,5 @@ had stopped a run), `minimax_h3.py` takes the model path as an argument and writ
 - public-211 evaluation calls the UniversalPhysicsEval port on site_a (`/path/to/evaluation`),
   whose paths are fixed to the public-211 run directories. Models evaluated before physedit are recognised and left
   untouched; a new model is evaluated next to them, but the table script lists only the September 12 models.
-- The PhysEditing dataset (`phyeditingvideo/Phyediting` on the Hub) will become a benchmark entry: its template rows,
-  inputs and evaluation stages, in the dataset's own format.
-- MiniMax-H3 needs a host with two GPUs; none is configured yet.
+- PhyEditing now has a separate local one-shot entry (`run phyediting --spec ... --run-dir ...`); it does not use this fleet or its fixed public211 evaluation paths.
+- MiniMax-H3 has a historical two-GPU fleet declaration; its local runner also has a single-GPU offload path. Neither configuration has been GPU-validated in the current PhyEditing pipeline.

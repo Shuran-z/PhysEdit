@@ -79,7 +79,7 @@ def main() -> int:
     run_root.mkdir(parents=True, exist_ok=True)
     grouped: dict[int, list[dict]] = defaultdict(list)
     for row in pending:
-        grouped[int(row.get("seed") or 42)].append(row)
+        grouped[int(row.get("seed", 42))].append(row)
 
     status_path = manifest.parent / "dynamicrafter_i2v_generation_status.jsonl"
     completed = failed = 0

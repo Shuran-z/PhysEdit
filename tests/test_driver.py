@@ -10,15 +10,19 @@ import pytest
 
 from physedit import config, driver, fleet
 
-RUNNER = """import json, os, sys
+RUNNER = """import json, os, sys, cv2, numpy as np
 manifest, d = sys.argv[1:3]
 if "/x5/m1" in d and not os.path.exists(d + "/crashed"):        # first start fails: the driver must start it again
     open(d + "/crashed", "w").close(); sys.exit(1)
 for line in open(manifest):
-    p = json.loads(line)["generated_video_resized_to_source"]
+    row = json.loads(line)
+    p = row["generated_video_resized_to_source"]
     os.makedirs(os.path.dirname(p), exist_ok=True)
     if not os.path.exists(p):
-        open(p, "w").write("video")
+        w = cv2.VideoWriter(p, cv2.VideoWriter_fourcc(*"mp4v"), row["output_fps"], (64, 48))
+        assert w.isOpened()
+        for _ in range(row["num_frames"]): w.write(np.full((48,64,3), 180, np.uint8))
+        w.release()
 """
 
 

@@ -17,6 +17,7 @@ FROZEN = Path(__file__).resolve().parent/'sam31_frozen'
 sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from sam31_prompts import point
+from physedit.runners.media_contract import validate_video
 
 
 def sha(path):
@@ -83,13 +84,15 @@ def validate_job(row):
     if not math.isfinite(j['fps']) or j['fps'] <= 0:
         raise ValueError('Positive finite fps required')
     boxes = j['scene_boxes']
-    if j['target_name'] not in boxes:
+    if not j.get('input_failure') and j['target_name'] not in boxes:
         raise ValueError('Declared initial target box missing')
     for b in boxes.values():
         if len(b) != 4 or not all(math.isfinite(v) for v in b) or b[2] <= b[0] or b[3] <= b[1]:
             raise ValueError('Invalid declared initial box')
     j['video'] = str(Path(j['video']).resolve())
-    if not Path(j['video']).is_file():
+    if j.get('input_failure'):
+        reason = j['input_failure']
+    elif not Path(j['video']).is_file():
         reason = 'missing_source_video'
     elif not j.get('video_sha256') or sha(j['video']) != j['video_sha256']:
         reason = 'video_sha256_mismatch'
@@ -97,6 +100,13 @@ def validate_job(row):
         reason = 'empty_registered_window'
     else:
         import cv2
+        try:
+            media = validate_video(j['video'], fps=j['fps'])
+            if max(frames + [j['prompt_frame']]) >= media['frames']:
+                raise ValueError('registered_frame_outside_video')
+        except (OSError, ValueError, cv2.error) as error:
+            j['input_failure'] = str(error)
+            return validate_job(j)
         cap = cv2.VideoCapture(j['video'])
         cap.set(cv2.CAP_PROP_POS_FRAMES, j['prompt_frame'])
         ok, image = cap.read()
@@ -218,13 +228,30 @@ def measure(root, pipeline_failure=None):
             if cap is not None:
                 cap.release()
         predictions.append(dict(id=j['id'], fps=j['fps'], tracks={j['target_name']: dict(frames=j['frames'], xyxy=boxes)},
-                                frontend='sam31_single_view_frozen_v4', reasons=statuses))
+                                frontend='sam31_single_view_frozen_v4', reasons=statuses, video=j['video'],
+                                video_sha256=j.get('video_sha256'), frontend_manifest_sha256=sha(FROZEN/'manifest.json')))
         details.append(dict(id=j['id'], frames=j['frames'], statuses=statuses,
                             pixel_sha256=pixels, mask_sha256=masks, video_sha256=j.get('video_sha256')))
     write_rows(root/'measurements_v4.jsonl', details)
+    for p in predictions:
+        p['measurements_path'] = str((root/'measurements_v4.jsonl').resolve())
+        p['measurements_sha256'] = sha(root/'measurements_v4.jsonl')
     write_rows(root/'tracks_v4.jsonl', predictions)
     return dict(registered_cases=len(predictions), missing_boxes=sum(b is None for p in predictions for t in p['tracks'].values() for b in t['xyxy']),
                 tracks_sha256=sha(root/'tracks_v4.jsonl'), fitter_run=False, single_view=True)
+
+
+def validate_runtime(sam3, checkpoint):
+    """Check frozen source and weights on CPU before spending generation GPU time."""
+    sam3, checkpoint = Path(sam3).expanduser().resolve(), Path(checkpoint).expanduser().resolve()
+    manifest = lock()
+    if sha(checkpoint) != manifest['checkpoint_sha256']:
+        raise ValueError('Official checkpoint SHA mismatch')
+    commit = subprocess.check_output(['git', '-C', str(sam3), 'rev-parse', 'HEAD'], text=True).strip()
+    if commit != manifest['official_source_commit']:
+        raise ValueError('Official SAM source revision mismatch')
+    subprocess.run(['git', '-C', str(sam3), 'diff', '--exit-code', 'HEAD', '--', '*.py'], check=True, stdout=subprocess.DEVNULL)
+    return dict(source_commit=commit, checkpoint_sha256=manifest['checkpoint_sha256'], gpu_started=False)
 
 
 def run(root, sam3, checkpoint):
@@ -246,12 +273,7 @@ def run(root, sam3, checkpoint):
         raise ValueError('Run already attempted; keep its partial outputs, no automatic retry')
     eligible = receipt['eligible_cases']
     if eligible:
-        if sha(checkpoint) != manifest['checkpoint_sha256']:
-            raise ValueError('Official checkpoint SHA mismatch')
-        commit = subprocess.check_output(['git', '-C', str(sam3), 'rev-parse', 'HEAD'], text=True).strip()
-        if commit != manifest['official_source_commit']:
-            raise ValueError('Official SAM source revision mismatch')
-        subprocess.run(['git', '-C', str(sam3), 'diff', '--exit-code', 'HEAD', '--', '*.py'], check=True, stdout=subprocess.DEVNULL)
+        validate_runtime(sam3, checkpoint)
     (root/'started.json').write_text(json.dumps({'gpu_requested': bool(eligible), 'fitter_run': False})+'\n')
     try:
         if eligible:
@@ -288,20 +310,28 @@ def run(root, sam3, checkpoint):
 
 
 def generation_jobs(items_path, rows_path, initial_path, output):
-    items = {it['id']: it for it in read_rows(items_path)}
-    initial = {j['id']: j for j in read_rows(initial_path)}
+    item_rows, initial_rows = read_rows(items_path), read_rows(initial_path)
+    items = {it['id']: it for it in item_rows}
+    initial = {j['id']: j for j in initial_rows}
+    if len(items) != len(item_rows) or len(initial) != len(initial_rows):
+        raise ValueError('Duplicate registered item or initial-prompt ID')
     jobs = []
     for row in read_rows(rows_path):
-        it, seed = items[row['item_id']], initial[row['sample_id']]
+        it = items[row['item_id']]
+        seed = initial.get(row['sample_id'], {})
         fps = float(row['output_fps'])
         start = it['window']['start_frame']/float(it['fps'])
         end = start+(it['window']['max_frames']-1)/float(it['fps'])
         condition = row['condition_frame_index']/float(it['fps'])
         frames = [f for f in range(int(row['num_frames'])) if start-1e-6 <= condition+f/fps <= end+1e-6]
-        video = Path(seed['video']).resolve()
+        video = Path(seed.get('video', row.get('generated_video_resized_to_source', 'missing'))).resolve()
+        path_mismatch = row.get('generated_video_resized_to_source') and video != Path(row['generated_video_resized_to_source']).resolve()
         jobs.append(dict(id=row['sample_id'], video=str(video), video_sha256=sha(video) if video.is_file() else None,
-                         frames=frames, prompt_frame=seed['prompt_frame'], scene_boxes=seed['objects'],
-                         target_name=it['object_name'], fps=fps))
+                         frames=frames, prompt_frame=seed.get('prompt_frame', 0), scene_boxes=seed.get('objects', {}),
+                         target_name=it['object_name'], fps=fps,
+                         input_failure=row.get('input_failure') or seed.get('input_failure') or
+                         ('generated_video_path_mismatch' if path_mismatch else None) or
+                         ('missing_initial_prompt_record' if not seed else None)))
     if Path(output).exists():
         raise ValueError('Do not overwrite existing jobs')
     write_rows(output, jobs)

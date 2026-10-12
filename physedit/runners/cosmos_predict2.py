@@ -53,7 +53,7 @@ def main() -> int:
                 args.python,
                 "run_cosmos_v2w_from_video.py",
                 "--video_path",
-                row["source_video"],
+                row.get("conditioning_video") or row["source_video"],
                 "--out_dir",
                 str(out_dir),
                 "--model_dir",
@@ -63,17 +63,17 @@ def main() -> int:
                 "--resolution",
                 "480",
                 "--fps",
-                str(int(row.get("cosmos_output_fps", 16))),
+                str(int(row.get("cosmos_output_fps", row.get("output_fps", 16)))),
                 "--aspect_ratio",
                 str(row.get("aspect_ratio") or "9:16"),
                 "--num_frames",
-                "81",
+                str(int(row.get("num_frames", 81))),
                 "--num_conditional_frames",
                 str(int(row.get("cosmos_predict2_condition_frames", 5))),
                 "--sample_fps",
                 str(float(row.get("source_sample_fps", 240.0))),
                 "--seed",
-                str(42 + int(row.get("index", 0))),
+                str(int(row.get("seed", 42 + int(row.get("index", 0))))),
                 "--guidance",
                 "7.0",
                 "--prompt_file",
@@ -97,9 +97,14 @@ def main() -> int:
                 _write_status(status_handle, row, "failed_generation", start, log_path, resized_path, returncode=proc.returncode)
                 continue
 
-            raw_generated = Path(row["generated_video"])
             try:
-                _resize_to_source(raw_generated, Path(row["source_video"]), resized_path, fps=float(row.get("cosmos_output_fps", 16.0)))
+                raw_generated = Path(row["generated_video"])
+                if not raw_generated.is_file() and row.get('conditioning_video'):
+                    produced = [p for p in out_dir.rglob('*.mp4') if p != resized_path and p != Path(row['conditioning_video'])]
+                    if len(produced) != 1:
+                        raise RuntimeError('cosmos_raw_output_not_unique_or_missing')
+                    produced[0].replace(raw_generated)
+                _resize_to_source(raw_generated, Path(row["source_video"]), resized_path, fps=float(row.get("cosmos_output_fps", row.get("output_fps", 16.0))))
             except Exception as exc:
                 failed += 1
                 _write_status(status_handle, row, "failed_resize", start, log_path, resized_path, error=repr(exc))
