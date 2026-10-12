@@ -29,3 +29,6 @@ python scripts/phyediting_gen.py score items.jsonl rows.jsonl tracks.jsonl predi
 每个模型保留全部登记案例，分别报告缺观测、帧数不足和触及参数边界等失败；均值/最大值只统计成功拟合，并同时给出原分母失败率、覆盖率、实际观测帧及事件/重力/相机/物理组统计。参考对照的误差针对已知物理真值；生成视频的数值是**相对于请求重力的偏差**，不是已知生成真值误差。只有测量适用性与参考控制同时成立，才能进一步解释模型差异。
 
 原 `physedit` 多机器调度及 public-211 流程见 [PIPELINE.md](../PIPELINE.md)，与这里的 PhyEditing 固定评分合同分别维护。
+## 冻结 SAM3.1 前端
+
+实际使用的单视角 SAM3.1 + RGB 处理 + V4 测量代码和便携入口现已公开，运行方法见 [SAM31.md](SAM31.md)。`tracks_v4.jsonl` 可直接传给上述固定窗口 `score`，反演方法不变。

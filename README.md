@@ -15,7 +15,7 @@ python -m gravtrace fit samples.jsonl -o predictions.jsonl --workers 8
 python -m gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ```
 
-- [方法与输入格式](docs/REFERENCE.md)
+- [方法与输入格式](docs/REFERENCE.md) · [冻结SAM3.1前端与运行入口](docs/phyediting/SAM31.md)
 - [验证协议与结果](docs/phyediting/validation.md)
 - [视频生成流水线与固定评分协议](docs/phyediting/GENERATION.md)
 
