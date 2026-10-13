@@ -199,7 +199,7 @@ def test_status_rejects_unregistered_run(tmp_path,existing):
 
 def test_plan_cli_never_imports_models_or_creates_outputs(tmp_path,monkeypatch,capsys):
     spec=dict(items=str(dump(tmp_path/'items',[item()])),data_root=str(tmp_path),compact=str(tmp_path),model='ltx_i2v',
-              model_dir='missing_model',frames=81,fps=16,sam3='missing_sam',checkpoint='missing_weight')
+              model_dir='missing_model',frames=161,fps=25,sam3='missing_sam',checkpoint='missing_weight')
     sp=tmp_path/'spec.json';sp.write_text(json.dumps(spec))
     monkeypatch.setattr(subprocess,'run',lambda *a,**kw:pytest.fail('must not execute'))
     from physedit.__main__ import main
@@ -212,7 +212,7 @@ def test_cpu_one_click_missing_sources_complete_ledger(tmp_path,monkeypatch):
     # Explicit CPU synthetic control: every input is missing, so no model/fit.
     spec=dict(items=str(dump(tmp_path/'items',[item('a',video='absent'),item('b',event='T01')])),
               data_root=str(tmp_path),compact=str(tmp_path/'absent_compact'),model='ltx_i2v',model_dir='no_model',
-              frames=81,fps=16,sam3='no_sam',checkpoint='no_weights')
+              frames=161,fps=25,sam3='no_sam',checkpoint='no_weights')
     monkeypatch.setattr(gen,'safe_fit',lambda *a:pytest.fail('must not fit'))
     monkeypatch.setattr(subprocess,'run',lambda *a,**kw:pytest.fail('must not generate'))
     result=pipeline.pipeline(spec,tmp_path/'run')
@@ -289,19 +289,26 @@ def test_unknown_settings_are_not_silently_ignored(tmp_path,where,key):
 
 
 @pytest.mark.parametrize('extra_metrics',[False,True])
-def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra_metrics):
+@pytest.mark.parametrize('conditioning_mode',['i2v','v2v'])
+def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra_metrics,conditioning_mode):
     # Real CPU source/generated media and V4; only model observations and fit are artificial.
     video(tmp_path/'source.avi',frames=75)
     model = tmp_path/'fixture_model'
     model.mkdir()
     spec=dict(items=str(dump(tmp_path/'items',[item(window=dict(start_frame=25,max_frames=10)),
                           item('missing',video='absent')])),data_root=str(tmp_path),compact='unused',
-              model='ltx_i2v',model_dir=str(model),frames=81,fps=16,sam3='fixture_sam',checkpoint='fixture_weight',
+              model='ltx_i2v',model_dir=str(model),frames=161,fps=25,sam3='fixture_sam',checkpoint='fixture_weight',
               generation_runtime=dict(ffmpeg=sys.executable,gpu_devices='3'))
     spec['applicability'] = reference_evidence(tmp_path, gen._json_rows(spec['items']))
+    if conditioning_mode=='v2v':
+        source=video(tmp_path/'v2v_source.avi',frames=161,fps=25)
+        manifest=dump(tmp_path/'v2v_inputs.jsonl',[dict(item_id='ok',video=str(source),
+            video_sha256=media.sha256(source),fps=25,frames=161,start_frame=0)])
+        spec.update(conditioning_mode='v2v',v2v=dict(manifest=str(manifest),
+            manifest_sha256=media.sha256(manifest),denoise_strength=.6,conditioning_strength=.7))
     if extra_metrics:
         from physedit import evaluations as ev, qwen_judge as judge
-        spec['evaluation']=dict(metrics=['gravtrace','vp','qwen'],qwen=dict(backend='api',model='Qwen-fixture',base_url='http://localhost:1/v1'))
+        spec['evaluation']=dict(metrics=['gravtrace','vp','qwen'],vp=dict(trajectory_duration_seconds=1),qwen=dict(backend='api',model='Qwen-fixture',base_url='http://localhost:1/v1'))
         answer={k:dict(present=False,severity=0,evidence='synthetic evidence') for k in judge.CATEGORIES}
         answer.update(confidence=.9,insufficient_evidence=False)
         monkeypatch.setattr(ev,'call_api',lambda *a:dict(judgement=answer,raw=json.dumps(answer),served_model='Qwen-fixture'))
@@ -313,7 +320,7 @@ def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra
     monkeypatch.setattr(frontend, 'validate_runtime', lambda *a: dict(gpu_started=False, fixture=True))
     monkeypatch.setattr(runner,'_load_pipeline',lambda *a:object())
     monkeypatch.setattr(runner,'_generate_one',lambda pipe,args,r,path,log:video(path,frames=r['num_frames'],fps=r['output_fps']))
-    monkeypatch.setattr(runner,'_resize_to_source',lambda raw,source,path,**kw:video(path,frames=81,fps=16))
+    monkeypatch.setattr(runner,'_resize_to_source',lambda raw,source,path,**kw:video(path,frames=161,fps=25))
     def invoke(command,**kw):
         assert 'diffusers_i2v.py' in command[1]
         assert kw['env']['CUDA_VISIBLE_DEVICES']=='3'
@@ -349,7 +356,7 @@ def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra
         for stage in ('vp','qwen'):
             records=frontend.read_rows(tmp_path/'run/evaluation'/f'{stage}_results.jsonl')
             assert len(records)==2 and 'missing_source_video' in records[1]['reason']
-        assert captured[0]['boxes']['frames']==[0,1,2,3]  # Native 16fps window; V/P full-clip masks do not extend it.
+        assert captured[0]['boxes']['frames']==list(range(8))  # Native 25fps window; V/P full-clip masks do not extend it.
 
 
 def test_survey_never_counts_nonempty_corrupt_video(tmp_path):
@@ -465,7 +472,8 @@ def test_diffusers_preserves_zero_seed_and_image_condition(tmp_path, monkeypatch
     row = runner_row(tmp_path)
     row['seed'] = 0
     class Pipeline:
-        def __call__(self, prompt, image, generator):
+        def __call__(self, prompt, image, generator, num_frames, num_inference_steps, guidance_scale, frame_rate):
+            assert frame_rate == row['output_fps']
             assert image is not None
             return SimpleNamespace(frames=[np.zeros((2, 2, 3), dtype=np.uint8)])
     args = SimpleNamespace(pipeline='ltx_i2v', model_dir='weights', height=None, width=None,
@@ -476,7 +484,7 @@ def test_diffusers_preserves_zero_seed_and_image_condition(tmp_path, monkeypatch
 
 def test_controller_failure_retains_all_original_ids(tmp_path,monkeypatch):
     spec=dict(items=str(dump(tmp_path/'items',[item('a'),item('b')])),data_root='missing',compact='missing',
-              model='ltx_i2v',model_dir='missing',frames=81,fps=16,sam3='missing',checkpoint='missing')
+              model='ltx_i2v',model_dir='missing',frames=161,fps=25,sam3='missing',checkpoint='missing')
     monkeypatch.setattr(gen,'build',lambda *a:(_ for _ in ()).throw(ValueError('fixture controller crash')))
     with pytest.raises(ValueError,match='fixture controller crash'):pipeline.pipeline(spec,tmp_path/'run')
     assert [r['item_id'] for r in frontend.read_rows(tmp_path/'run/controller_failures.jsonl')]==['a','b']
@@ -484,7 +492,7 @@ def test_controller_failure_retains_all_original_ids(tmp_path,monkeypatch):
 
 def test_custom_runner_plan_and_bad_argv(tmp_path):
     spec=dict(items=str(dump(tmp_path/'items',[item()])),data_root='missing',compact='missing',model='cosmos3_nano',
-              model_dir='missing',frames=81,fps=16,sam3='missing',checkpoint='missing',
+              model_dir='missing',frames=189,fps=24,sam3='missing',checkpoint='missing',
               generation_command=['python','/registered/cosmos3.py','--manifest','{manifest}'])
     assert pipeline.execution_plan(spec)['model']=='cosmos3_nano'
     spec['generation_command']='shell string'

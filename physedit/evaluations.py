@@ -236,10 +236,11 @@ def export_observed_masks(rows, contexts, items, root, observations_root=None):
 
 
 def vp_case(row, ctx, item, pair, vp_settings=None):
+    config = vp_settings or {}
     result = {
         "sample_id": row["sample_id"],
         "metrics": {},
-        "protocol": "phyediting_vp_v2",
+        "protocol": "phyediting_vp_v3",
         "pixel_settings": pm.settings(vp_settings),
         "provenance": ctx,
     }
@@ -420,7 +421,26 @@ def vp_case(row, ctx, item, pair, vp_settings=None):
             return fn(sm, gm, 0, 0)
 
         metric("motion_region_iou_" + suffix, lambda: paired(dm.motion_region_iou))
-        metric("trajectory_error_" + suffix, lambda: paired(dm.trajectory_error))
+        def trajectory():
+            duration = float(config.get('trajectory_duration_seconds', 5.0)) if suffix == 'full' else 1.0
+            sample_fps = float(config.get('trajectory_sampling_fps', 30.0))
+            for times in (source_times, generated_times):
+                if times[-1] + 1e-8 < duration:
+                    raise pm.InsufficientEvidence('incomplete_trajectory_time_window')
+            counts = [min(np.searchsorted(times, duration, side='left') + 1, len(times))
+                      for times in (source_times, generated_times)]
+            sm = small(masks('source', range(counts[0])))
+            gm = small(masks('generated', range(counts[1])))
+            return dm.trajectory_error(sm, gm, 0, 0,
+                source_times=source_times[:counts[0]], generated_times=generated_times[:counts[1]],
+                duration_seconds=duration, sampling_fps=sample_fps)
+        result.setdefault('trajectory_settings', {})[suffix] = dict(
+            protocol='phyediting_trajectory_real_time_v2',
+            duration_seconds=float(config.get('trajectory_duration_seconds', 5.0)) if suffix == 'full' else 1.0,
+            sampling_fps=float(config.get('trajectory_sampling_fps', 30.0)),
+            alignment='linear_native_centroids_no_time_stretch_no_extrapolation',
+            normalization='source_image_diagonal', initial_translation_removed=True)
+        metric("trajectory_error_" + suffix, trajectory)
     result["status"] = (
         "ok"
         if all(m["status"] == "ok" for m in result["metrics"].values())
@@ -637,7 +657,7 @@ def run_additional(spec, rows, items, initial, root):
                 out.write(json.dumps(record, allow_nan=False) + "\n")
                 out.flush()
         summaries["vp"] = summarize(rows, records, "vp", items)
-        summaries["vp"]["protocol"] = "phyediting_vp_v2"
+        summaries["vp"]["protocol"] = "phyediting_vp_v3"
         summaries["vp"]["pixel_settings"] = pm.settings(vp)
     if "qwen" in enabled:
         config = evaluation["qwen"]

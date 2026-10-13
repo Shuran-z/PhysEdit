@@ -24,7 +24,7 @@ def sparse(entry, missing):
 
 def test_generated_only_metrics_do_not_require_source_masks(clip):
     row, ctx, item, pair = clip
-    result = ev.vp_case(row, ctx, item, {'generated': pair['generated']})
+    result = ev.vp_case(row, ctx, item, {'generated': pair['generated']}, {'trajectory_duration_seconds':1})
     for name in ('background_flicker_full', 'background_flicker_1s', 'silhouette_full', 'silhouette_1s'):
         assert result['metrics'][name]['status'] == 'ok'
         assert result['metrics'][name]['value'] == pytest.approx(0)
@@ -36,7 +36,7 @@ def test_generated_only_metrics_do_not_require_source_masks(clip):
 def test_late_missing_masks_preserve_complete_first_second(clip, kind):
     row, ctx, item, pair = clip
     sparse(pair[kind], [ctx[kind + '_frames'] - 1])
-    result = ev.vp_case(row, ctx, item, pair)
+    result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':47/16, 'trajectory_sampling_fps':16})
     for name in ev.VP_NAMES:
         if name.endswith('_1s') or 'foreground' in name:
             assert result['metrics'][name]['status'] == 'ok', (name, result['metrics'][name])

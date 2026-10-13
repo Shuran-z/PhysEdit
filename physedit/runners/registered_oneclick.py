@@ -16,9 +16,11 @@ from pathlib import Path
 try:
     from .media_contract import input_hashes, seal_completion, sha256, validate_video
     from .oneclick_registry import validate_registration
+    from .model_parameters import parameters
 except ImportError:
     from media_contract import input_hashes, seal_completion, sha256, validate_video
     from oneclick_registry import validate_registration
+    from model_parameters import parameters
 
 RUNNERS = Path(__file__).resolve().parent
 
@@ -84,7 +86,7 @@ def _preflight(spec, profile):
 
 
 def _condition_video(row, destination):
-    """For V2V, expose only condition frame 23; future reference frames stay hidden."""
+    """Single-frame continuation input, not full video editing."""
     import cv2
     image = cv2.imread(row['condition_image'])
     if image is None:
@@ -107,6 +109,7 @@ def _command(spec, profile, manifest, root, python, ffmpeg, rows):
         runtime[key] = str(Path(runtime[key]).expanduser().resolve())
     model = str(Path(spec['model_dir']).expanduser().resolve())
     runner = profile.runner
+    sampling = parameters(spec['model'])
     if runner == 'cosmos_predict2':
         return [[python, str(RUNNERS/'cosmos_predict2.py'), '--generation-manifest', str(manifest),
                  '--cosmos-tools', runtime['code_dir'], '--python', python, '--model-dir', model]], None
@@ -135,7 +138,8 @@ def _command(spec, profile, manifest, root, python, ffmpeg, rows):
             commands.append([python, str(RUNNERS/'physrvg.py'), '--manifest', str(subset),
                              '--model-id', model, '--lora-checkpoint', runtime['lora_dir'],
                              '--output-root', str(root), '--status-jsonl', str(root/f'physrvg_{width}x{height}_status.jsonl'),
-                             '--height', str(height), '--width', str(width), '--num-frames', '49', '--fps', '15',
+                             '--height', str(height), '--width', str(width), '--num-frames', str(profile.frames), '--fps', str(profile.fps),
+                             '--num-inference-steps', str(sampling['steps']),
                              '--condition-policy', 'static_frame', '--startup-reserve-mib', '0'])
         return commands, None
     if runner == 'videogpa':
@@ -146,7 +150,9 @@ def _command(spec, profile, manifest, root, python, ffmpeg, rows):
         command = [python, str(RUNNERS/'videogpa_wan22.py'), '--model_path', model,
                    '--prompt_json', str(prompts), '--output_dir', str(raw),
                    '--lora_path', runtime['lora_dir'], '--lora_weight', '0.2', '--gpu_id', '0',
-                   '--frame_num', '49', '--sampling_steps', '20', '--fps', '15', '--max_area', '399360', '--offload_model']
+                   '--frame_num', str(profile.frames), '--sampling_steps', str(sampling['steps']),
+                   '--fps', str(profile.fps), '--shift', str(sampling['flow_shift']),
+                   '--guide_scale', str(sampling['guidance']), '--max_area', '399360', '--offload_model']
         return [command], raw
     raise ValueError('No one-click adapter for ' + spec['model'])
 
@@ -239,7 +245,7 @@ def run(spec, manifest, root):
         for row in selected:
             sid = row['sample_id']
             try:
-                seal_completion(original[sid], settings=dict(model=spec['model'], runner=profile.runner,
+                seal_completion(original[sid], settings=dict(model=spec['model'], runner=profile.runner, sampling=parameters(spec['model']),
                                 model_dir=spec['model_dir'], runtime=spec.get('generation_runtime', {})),
                                 expected_inputs=expected[sid])
                 state, reason = 'complete', None

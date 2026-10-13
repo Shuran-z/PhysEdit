@@ -12,6 +12,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from .runners.media_contract import sha256
+from .runners.model_parameters import parameters
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -20,7 +21,7 @@ def validate_settings(spec):
     """Reject misspelled settings and unavailable evaluations before any execution."""
     allowed = {'items', 'data_root', 'compact', 'model', 'model_dir', 'sam3', 'checkpoint',
                'seed', 'frames', 'fps', 'canvas', 'generation_runtime', 'generation_command',
-               'mode', 'conditioning_mode', 'evaluation', 'applicability'}
+               'mode', 'conditioning_mode', 'evaluation', 'applicability', 'v2v'}
     if not isinstance(spec, dict):
         raise ValueError('Run spec must be an object')
     unknown = set(spec) - allowed
@@ -43,7 +44,11 @@ def validate_settings(spec):
 def model_profile(spec):
     from .runners.oneclick_registry import contract
     try:
-        return contract(spec['model'])
+        profile = contract(spec['model'])
+        if spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v':
+            from dataclasses import replace
+            profile = replace(profile, mode='v2v')
+        return profile
     except ValueError:
         if spec.get('generation_command'):
             return SimpleNamespace(runner='custom_argv', frames=None, fps=None,
@@ -87,6 +92,13 @@ def execution_plan(spec):
     for key in ('mode', 'conditioning_mode'):
         if key in spec and spec[key] != profile.mode:
             raise ValueError(f'Registered conditioning mode is {profile.mode}; requested {spec[key]}')
+    if profile.mode == 'v2v':
+        if spec['model'] != 'ltx_i2v' or spec.get('generation_command'):
+            raise ValueError('Full V2V is registered only for the LTX condition pipeline')
+        from .video_conditioning import registration
+        registration(spec)
+    elif 'v2v' in spec:
+        raise ValueError('v2v settings require conditioning_mode=v2v')
     if 'frames' not in spec or 'fps' not in spec:
         raise ValueError('Custom generation_command requires explicit frames and fps')
     if spec.get('generation_command') is not None and (not isinstance(spec['generation_command'], list) or
@@ -106,6 +118,8 @@ def execution_plan(spec):
                 model_runner='custom_argv' if spec.get('generation_command') else profile.runner,
                 conditioning_mode=profile.mode,
                 frames=spec['frames'], fps=spec['fps'],
+                generation_parameters=parameters(spec['model']) if profile.frames else None,
+                post_condition_seconds=(spec['frames']-1)/float(spec['fps']),
                 evaluation_metrics=metrics,
                 vp_pixel_settings=pixel_settings(spec.get('evaluation', {}).get('vp')) if 'vp' in metrics else None,
                 gpu_devices=spec.get('generation_runtime', {}).get('gpu_devices', os.environ.get('CUDA_VISIBLE_DEVICES')),
@@ -124,12 +138,13 @@ def diffusers_launch(spec, manifest):
                '--generation-manifest', str(manifest),
                '--model-dir', str(Path(spec['model_dir']).expanduser().resolve()),
                '--pipeline', spec['model'], '--skip-existing']
-    if spec['model'] == 'hunyuan15_i2v':
-        command += ['--num-inference-steps', '12', '--guidance-scale', '1.0',
-                    '--offload-mode', 'sequential']
-    elif spec['model'] == 'wan_ti2v5b':
-        command += ['--num-inference-steps', '40', '--guidance-scale', '3.5',
-                    '--offload-mode', 'model']
+    settings = parameters(spec['model'])
+    command += ['--num-inference-steps', str(settings['steps']), '--guidance-scale', str(settings['guidance'])]
+    if 'flow_shift' in settings:
+        command += ['--flow-shift', str(settings['flow_shift'])]
+    command += ['--offload-mode', 'sequential' if spec['model'] == 'hunyuan15_i2v' else 'model']
+    if model_profile(spec).mode == 'v2v':
+        command[command.index('--pipeline')+1] = 'ltx_v2v'
     return command, env
 
 
@@ -179,6 +194,10 @@ def _pipeline(spec, root, plan):
                                         out_root=str(root/'generated'), canvas=canvas, mode=profile.mode,
                                         square_canvas=None if spec.get('canvas') else profile.square_canvas))
         rows = read_rows(rows_path)
+        if profile.mode == 'v2v':
+            from .video_conditioning import attach
+            rows = attach(rows, spec)
+            rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
         # Obtain initial prompts BEFORE inference; missing prompt sources cannot start a model.
         initial_path = root/'initial_jobs.jsonl'
         gen.track_jobs(SimpleNamespace(items=str(items_path), rows=str(rows_path), out=str(initial_path),

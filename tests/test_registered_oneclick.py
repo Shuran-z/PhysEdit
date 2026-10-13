@@ -43,7 +43,7 @@ def test_registered_clock_and_resources_rejected_before_generation(tmp_path):
 
 
 def test_wan_ti2v_checkpoint_does_not_silently_accept_t2v_mode():
-    spec = dict(model='wan_ti2v5b', frames=81, fps=16, conditioning_mode='t2v')
+    spec = dict(model='wan_ti2v5b', frames=121, fps=24, conditioning_mode='t2v')
     with pytest.raises(ValueError, match='conditioning mode is i2v; requested t2v'):
         validate_registration(spec)
     spec['conditioning_mode'] = 'i2v'
@@ -128,20 +128,20 @@ def test_legacy_adapter_seals_only_full_media_and_preserves_attempt(tmp_path, mo
                generated_video=str(tmp_path/'case/raw.mp4'),
                generated_video_resized_to_source=str(tmp_path/'case/resized.mp4'),
                source_video=str(source), source_video_sha256=sha256(source),
-               source_width=80, source_height=64, num_frames=16, output_fps=8)
+               source_width=80, source_height=64, num_frames=16, output_fps=10)
     for name in ('condition_image', 'prompt_file', 'negative_prompt_file'):
         path = tmp_path/name
         path.write_text(name)
         row[name] = str(path)
     manifest = tmp_path/'eligible.jsonl'
     manifest.write_text(json.dumps(row)+'\n')
-    spec = dict(model='dynamicrafter_i2v', frames=16, fps=8, model_dir='registered_checkpoint',
+    spec = dict(model='dynamicrafter_i2v', frames=16, fps=10, model_dir='registered_checkpoint',
                 generation_runtime=dict(code_dir='registered_repo'))
     monkeypatch.setattr(adapter, '_preflight', lambda *a: (sys.executable, 'ffmpeg', {}))
     monkeypatch.setattr(adapter, '_command', lambda *a: ([['registered_runner']], None))
     def invoke(*args, **kwargs):
-        _video(Path(row['generated_video']), 16, 8)
-        _video(Path(row['generated_video_resized_to_source']), 16, 8)
+        _video(Path(row['generated_video']), 16, 10)
+        _video(Path(row['generated_video_resized_to_source']), 16, 10)
         return SimpleNamespace(returncode=0)
     monkeypatch.setattr(adapter.subprocess, 'run', invoke)
     assert adapter.run(spec, manifest, tmp_path) == 0

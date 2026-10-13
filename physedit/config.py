@@ -90,30 +90,30 @@ A14B = ("cd {wan_code} && python3 {tools}/wan22_a14b.py --code-dir {wan_code} --
 # sec_per_row: expected generation time, for ETAs before the first rows finish.
 MODELS = {
     # LTX and CogVideoX need sides divisible by 32: aspect-preserving canvases as in September
-    "ltx_i2v": dict(name="LTX-Video-2B", frames=81, fps=16, sec_per_row=46,
+    "ltx_i2v": dict(name="LTX-Video-2B", frames=161, fps=25, sec_per_row=46,
         canvas={"landscape": (704, 480), "portrait": (480, 704), "square": (480, 480)}, cmd={"site_a": diffusers(
-        "{python}", "{models}/LTX-Video-diffusers", "ltx_i2v", "--num-inference-steps 30 --guidance-scale 3.0 --num-frames 81")}),
+        "{python}", "{models}/LTX-Video-diffusers", "ltx_i2v", "--num-inference-steps 50 --guidance-scale 3.0 --num-frames 161")}),
     "cogvideox_i2v": dict(name="CogVideoX1.5-5B-I2V", frames=81, fps=16, sec_per_row=514,
         canvas={"landscape": (768, 480), "portrait": (480, 768), "square": (480, 480)}, cmd={"site_a": diffusers(
         "{python}", "{models}/CogVideoX1.5-5B-I2V", "cogvideox_i2v", "--num-inference-steps 50 --guidance-scale 6.0 --num-frames 81")}),
-    "wan_ti2v5b": dict(name="Wan2.2-TI2V-5B", frames=81, fps=16, sec_per_row=210, cmd={"site_a": diffusers(
-        "{py_wan}", "{models}/Wan2.2-TI2V-5B-Diffusers", "wan_i2v", "--num-inference-steps 40 --guidance-scale 3.5"
-        " --height 480 --width 832 --num-frames 81 --offload-mode model")}),
+    "wan_ti2v5b": dict(name="Wan2.2-TI2V-5B", frames=121, fps=24, sec_per_row=210, cmd={"site_a": diffusers(
+        "{py_wan}", "{models}/Wan2.2-TI2V-5B-Diffusers", "wan_i2v", "--num-inference-steps 50 --guidance-scale 5.0 --flow-shift 5.0"
+        " --height 480 --width 832 --num-frames 121 --offload-mode model")}),
     "cosmos": dict(name="Cosmos-Predict2-2B", frames=81, fps=16, mode="v2v", sec_per_row=450, cmd={"site_a":
         "{python} {tools}/cosmos_predict2.py --generation-manifest {manifest} --cosmos-tools {cosmos_tools}"
         " --python {python} --model-dir {cosmos_model} --cuda-visible-devices {gpu} --skip-existing"}),
     "hunyuan15_i2v": dict(name="HunyuanVideo-1.5-I2V", frames=121, fps=24, canvas=CANVAS_848, sec_per_row=900,
         cmd=dict.fromkeys(("site_a", "site_b"), diffusers("{py_hunyuan}", "{hunyuan}", "hunyuan15_i2v",
-            "--num-frames 121 --num-inference-steps 12 --guidance-scale 1.0 --offload-mode sequential"))),
-    "dynamicrafter_i2v": dict(name="DynamiCrafter-1024", frames=16, fps=8, letterbox=True, split=True, sec_per_row=60,
+            "--num-frames 121 --num-inference-steps 12 --guidance-scale 1.0 --flow-shift 7.0 --offload-mode sequential"))),
+    "dynamicrafter_i2v": dict(name="DynamiCrafter-1024", frames=16, fps=10, letterbox=True, split=True, sec_per_row=60,
         cmd={"site_b":
         "{py_dc} {tools}/dynamicrafter.py --generation-manifest {manifest} --repo-dir {dc_repo} --checkpoint {dc_ckpt}"
         " --cuda-visible-devices {gpu} --ddim-steps 50 --skip-existing && {python} {tools}/crop_letterbox.py {manifest}"}),
-    "videogpa_ti2v5b": dict(name="VideoGPA-Wan2.2-TI2V-5B", frames=49, fps=15, prompts_json=True, sec_per_row=150, cmd={"site_b":
+    "videogpa_ti2v5b": dict(name="VideoGPA-Wan2.2-TI2V-5B", frames=81, fps=24, prompts_json=True, sec_per_row=150, cmd={"site_b":
         "PYTHONPATH={physics}/repos/VideoGPA/Wan2.2:{physics}/deps/videogpa {py_lora} {tools}/videogpa_wan22.py"
         " --model_path {wan5b} --prompt_json {dir}/prompts_{worker}.json --output_dir {dir}/raw"
         " --lora_path {physics}/weights/VideoGPA-Wan2.2TI2V-lora --lora_weight 0.2 --gpu_id 0 --seed 20260920"
-        " --frame_num 49 --max_area 399360 --sampling_steps 20 --fps 15 --offload_model"
+        " --frame_num 81 --max_area 399360 --sampling_steps 50 --fps 24 --offload_model"
         " && {python} {tools}/videogpa_finalize.py {manifest} {dir}/raw 20260920"}),
     # PhysRVG takes one canvas per process; x5 conditions on the 5 source frames ending at the condition frame
     "physrvg_ti2v5b": dict(name="PhysRVG-Wan2.2-TI2V-5B", frames=49, fps=15, canvas=CANVAS_832, split_orientation=True,
@@ -126,7 +126,7 @@ MODELS = {
         " --output-root {dir} --status-jsonl {dir}/logs/{worker}_status_$o.jsonl --device 0 --height $H --width $W"
         " --num-frames 49 --num-inference-steps 16 --fps 15 --offload-mode model"
         " --condition-policy $([ {run} = x5 ] && echo source_history5 || echo static_frame) || exit 1; done"}),
-    "cosmos3_nano": dict(name="Cosmos3-Nano", frames=81, fps=16, canvas=CANVAS_832, sec_per_row=480,
+    "cosmos3_nano": dict(name="Cosmos3-Nano", frames=189, fps=24, canvas=CANVAS_832, sec_per_row=480,
         fields={"cosmos_num_inference_steps": 35, "cosmos_guidance_scale": 6.0}, cmd={"cluster":
         "{py_models} {tools}/cosmos3.py --model {cosmos3} --manifest {manifest} --node {job}"
         " --status-jsonl {dir}/logs/{worker}_status.jsonl --state-json {dir}/logs/{worker}_state.json"

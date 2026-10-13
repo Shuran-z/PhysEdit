@@ -22,6 +22,7 @@ except ImportError:
 PIPELINE_CLASS = {
     "cogvideox_i2v": "CogVideoXImageToVideoPipeline",
     "ltx_i2v": "LTXImageToVideoPipeline",
+    "ltx_v2v": "LTXConditionPipeline",
     "hunyuan_i2v": "HunyuanVideoImageToVideoPipeline",
     "hunyuan15_i2v": "HunyuanVideo15ImageToVideoPipeline",
     "wan_i2v": "WanImageToVideoPipeline",
@@ -31,11 +32,12 @@ PIPELINE_CLASS = {
 
 DEFAULT_SETTINGS = {
     "cogvideox_i2v": {"height": 480, "width": 768, "steps": 50, "guidance": 6.0},
-    "ltx_i2v": {"height": 480, "width": 720, "steps": 30, "guidance": 3.0},
+    "ltx_i2v": {"height": 480, "width": 704, "steps": 50, "guidance": 3.0},
+    "ltx_v2v": {"height": 480, "width": 704, "steps": 50, "guidance": 3.0},
     "hunyuan_i2v": {"height": 480, "width": 720, "steps": 30, "guidance": 6.0},
-    "hunyuan15_i2v": {"height": 480, "width": 848, "steps": 12, "guidance": 6.0},
+    "hunyuan15_i2v": {"height": 480, "width": 848, "steps": 12, "guidance": 1.0},
     "wan_i2v": {"height": 480, "width": 720, "steps": 40, "guidance": 3.5},
-    "wan_ti2v5b": {"height": 480, "width": 720, "steps": 40, "guidance": 3.5},
+    "wan_ti2v5b": {"height": 480, "width": 832, "steps": 50, "guidance": 5.0},
 }
 
 
@@ -50,6 +52,7 @@ def main(argv=None) -> int:
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--num-inference-steps", type=int, default=None)
     parser.add_argument("--guidance-scale", type=float, default=None)
+    parser.add_argument("--flow-shift", type=float, default=None)
     parser.add_argument("--height", type=int, default=None)
     parser.add_argument("--width", type=int, default=None)
     parser.add_argument("--num-frames", type=int, default=None)
@@ -99,7 +102,7 @@ def main(argv=None) -> int:
                 _write_status(status_handle, row, 'dry_run', start, log_path, resized_path)
                 continue
             try:
-                if row.get('mode', 'i2v') != 'i2v':
+                if row.get('mode', 'i2v') != ('v2v' if args.pipeline == 'ltx_v2v' else 'i2v'):
                     raise ValueError('Only I2V rows are accepted; refusing conditioning mode drift')
                 if resized_path.exists():
                     if not args.skip_existing:
@@ -159,7 +162,11 @@ def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_m
 
     cls_name = PIPELINE_CLASS[pipeline_key]
     cls = getattr(diffusers, cls_name)
-    if 'image' not in inspect.signature(cls.__call__).parameters:
+    if pipeline_key == 'ltx_v2v':
+        required = {'video', 'frame_rate', 'denoise_strength', 'strength', 'frame_index'}
+        if not required <= set(inspect.signature(cls.__call__).parameters):
+            raise ValueError('Installed LTXConditionPipeline lacks full editing arguments; use a compatible generation environment')
+    if ('video' if pipeline_key == 'ltx_v2v' else 'image') not in inspect.signature(cls.__call__).parameters:
         raise ValueError('Installed pipeline does not accept an image; refusing I2V drift')
     dtype = torch.bfloat16 if dtype_name == "bfloat16" else torch.float16
     load_kwargs = {"torch_dtype": dtype, "local_files_only": True}
@@ -259,7 +266,30 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
         "guidance_scale": guidance,
         "generator": generator,
     }
+    required = {'image', 'num_frames', 'num_inference_steps', 'guidance_scale'}
+    if args.pipeline.startswith('ltx_'):
+        call_kwargs['frame_rate'] = float(row['output_fps'])
+        required.add('frame_rate')
+    if args.pipeline == 'ltx_v2v':
+        from physedit.video_conditioning import load_frames
+        video = load_frames(row)
+        call_kwargs.pop('image')
+        # LTXConditionPipeline expects a list of video conditions, each of
+        # which is a full list of frames. A flat frame list is misinterpreted.
+        call_kwargs.update(video=[video], frame_index=[0],
+                           strength=[row['conditioning_strength']],
+                           denoise_strength=row['denoise_strength'])
+        required.remove('image')
+        required.update({'video', 'frame_index', 'strength', 'denoise_strength'})
+    flow_shift = getattr(args, 'flow_shift', None)
+    if flow_shift is not None:
+        from diffusers import FlowMatchEulerDiscreteScheduler, UniPCMultistepScheduler
+        scheduler = UniPCMultistepScheduler if args.pipeline.startswith('wan_') else FlowMatchEulerDiscreteScheduler
+        shift_key = 'flow_shift' if args.pipeline.startswith('wan_') else 'shift'
+        pipe.scheduler = scheduler.from_config(pipe.scheduler.config, **{shift_key: flow_shift})
     accepted = set(inspect.signature(pipe.__call__).parameters)
+    if not required <= accepted:
+        raise ValueError('pipeline_required_arguments_unavailable: ' + ','.join(sorted(required-accepted)))
     filtered = {key: value for key, value in call_kwargs.items() if key in accepted}
     _write_log(
         log_path,
@@ -275,6 +305,12 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
             "guidance_scale": guidance,
             "wan_invert_output": args.wan_invert_output,
             "accepted_call_args": sorted(filtered),
+            "generation_fps": row["output_fps"],
+            "conditioning_mode": row.get("mode", "i2v"),
+            "conditioning_video_sha256": row.get("conditioning_video_sha256"),
+            "denoise_strength": row.get("denoise_strength"),
+            "conditioning_strength": row.get("conditioning_strength"),
+            "flow_shift": flow_shift,
         },
     )
     with torch.inference_mode():

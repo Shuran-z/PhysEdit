@@ -210,32 +210,45 @@ def centroid_track(masks: list[np.ndarray], start: int) -> np.ndarray:
     return np.asarray(points, dtype=np.float64).reshape(-1, 2)
 
 
-def interpolate_track(track: np.ndarray, count: int) -> np.ndarray | None:
-    if len(track) < 3:
-        return None
-    valid = np.isfinite(track).all(axis=1)
-    if valid.sum() < 3:
-        return None
-    old_t = np.linspace(0.0, 1.0, len(track))[valid]
-    new_t = np.linspace(0.0, 1.0, count)
-    return np.column_stack(
-        [
-            np.interp(new_t, old_t, track[valid, 0]),
-            np.interp(new_t, old_t, track[valid, 1]),
-        ]
-    )
-
-
 def trajectory_error(
     source: list[np.ndarray],
     generated: list[np.ndarray],
     source_start: int,
     generated_start: int,
+    *,
+    source_times,
+    generated_times,
+    duration_seconds: float,
+    sampling_fps: float = 30.0,
 ) -> float:
-    src = interpolate_track(centroid_track(source, source_start), 32)
-    gen = interpolate_track(centroid_track(generated, generated_start), 32)
-    if src is None or gen is None:
-        return math.nan
+    """Displacement error on a fixed physical-time grid, never normalized clip time.
+
+    Native centroids are linearly interpolated between adjacent observations.
+    Missing targets, incomplete windows and extrapolation are rejected.
+    """
+    from .pixel_metrics import InsufficientEvidence
+    count = duration_seconds * sampling_fps
+    if (not math.isfinite(count) or duration_seconds <= 0 or sampling_fps <= 0
+            or not math.isclose(count, round(count), abs_tol=1e-8) or count < 1):
+        raise ValueError('invalid_trajectory_time_grid')
+    requested = np.arange(round(count) + 1, dtype=float) / sampling_fps
+    def at_times(sequence, start, clock):
+        points = centroid_track(sequence, start)
+        times = np.asarray(clock, dtype=float)[start:]
+        if (times.ndim != 1 or len(times) != len(points) or len(times) < 2
+                or not np.isfinite(times).all() or (np.diff(times) <= 0).any()):
+            raise ValueError('invalid_trajectory_timestamps')
+        times = times - times[0]
+        if times[-1] + 1e-8 < duration_seconds:
+            raise InsufficientEvidence('incomplete_trajectory_time_window')
+        end = min(np.searchsorted(times, duration_seconds, side='left') + 1, len(times))
+        if not np.isfinite(points[:end]).all():
+            raise InsufficientEvidence('missing_target_inside_trajectory_time_window')
+        if end < 3:
+            raise InsufficientEvidence('too_few_trajectory_observations')
+        return np.column_stack([np.interp(requested, times[:end], points[:end, j]) for j in (0, 1)])
+    src = at_times(source, source_start, source_times)
+    gen = at_times(generated, generated_start, generated_times)
     src -= src[0]
     gen -= gen[0]
     height, width = source[0].shape

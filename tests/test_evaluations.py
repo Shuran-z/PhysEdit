@@ -109,7 +109,7 @@ def test_mask_export_retains_independent_complete_sequence(tmp_path, monkeypatch
 
 def test_reference_foreground_scores_survive_missing_generated_masks(clip):
     row, ctx, item, pair = clip
-    result = ev.vp_case(row, ctx, item, {"source": pair["source"]})
+    result = ev.vp_case(row, ctx, item, {"source": pair["source"]}, {"trajectory_duration_seconds":1})
     for name in ("condition_foreground_ssim", "condition_foreground_psnr_db",
                  "reference_foreground_ssim", "reference_foreground_psnr_db"):
         assert result["metrics"][name]["status"] == "ok"
@@ -256,7 +256,7 @@ def clip(tmp_path):
 
 def test_full_vp_actual_cpu_media_and_known_agreement(clip):
     row, ctx, item, pair = clip
-    result = ev.vp_case(row, ctx, item, pair)
+    result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':1})
     assert result["status"] == "ok", result
     assert set(result["metrics"]) == set(ev.VP_NAMES)
     for name, m in result["metrics"].items():
@@ -282,8 +282,8 @@ def test_motion_formulas_distinguish_perturbed_motion():
         return masks
 
     source = track(2)
-    assert vp.trajectory_error(source, source, 0, 0) == 0
-    assert vp.trajectory_error(source, track(1), 0, 0) > 0
+    assert vp.trajectory_error(source, source, 0, 0, source_times=np.arange(10)/9, generated_times=np.arange(10)/9, duration_seconds=1) == 0
+    assert vp.trajectory_error(source, track(1), 0, 0, source_times=np.arange(10)/9, generated_times=np.arange(10)/9, duration_seconds=1) > 0
     assert vp.motion_region_iou(source, source, 0, 0) == 1
     assert 0 < vp.motion_region_iou(source, track(1), 0, 0) < 1
     assert vp.silhouette_structure_error(source, 0) == 0
@@ -308,7 +308,7 @@ def test_real_media_fixed_window_keeps_condition_scores_when_continuation_short(
 def test_real_media_registered_native_alignment_and_reference_mask_only(clip):
     row, ctx, item, pair = clip
     pair["generated"]["sha256"] = "invalid"
-    result = ev.vp_case(row, ctx, item, pair)
+    result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':1})
     alignment = result["pixel_alignment"]
     assert alignment["requested_pairs"] == 30
     assert alignment["requested_times_seconds"][-1] == 1
@@ -344,7 +344,7 @@ def test_mask_fault_does_not_erase_independent_pixel_scores(clip, mutation):
             data["masks"] = np.zeros_like(data["masks"])
         np.savez_compressed(path, **data)
         pair["generated"]["sha256"] = media.sha256(path)
-    result = ev.vp_case(row, ctx, item, pair)
+    result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':1})
     assert result["status"] == "partial"
     assert result["metrics"]["condition_ssim"]["status"] == "ok"
     assert result["metrics"]["trajectory_error_full"]["status"] != "ok"
@@ -489,7 +489,7 @@ def test_all_registered_rows_preserved_per_metric_and_group(tmp_path, clip, api)
     )
     evaluation = dict(
         metrics=["gravtrace", "vp", "qwen"],
-        vp=dict(mask_backend="registered", mask_manifest=str(manifest)),
+        vp=dict(trajectory_duration_seconds=1, mask_backend="registered", mask_manifest=str(manifest)),
         qwen=config,
     )
     validate(evaluation)
@@ -500,6 +500,7 @@ def test_all_registered_rows_preserved_per_metric_and_group(tmp_path, clip, api)
         {},
         tmp_path / "evaluation",
     )
+    assert result["vp"]["protocol"] == "phyediting_vp_v3"
     for stage in ("vp", "qwen"):
         assert result[stage]["registered"] == 3 and result[stage]["scored"] == 1
         assert result[stage]["coverage_percent"] == pytest.approx(100 / 3)

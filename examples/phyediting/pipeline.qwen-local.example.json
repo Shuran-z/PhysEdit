@@ -16,7 +16,9 @@
     "vp": {
       "mask_backend": "sam31",
       "reference_duration_seconds": 1.0,
-      "reference_fps": 30
+      "reference_fps": 30,
+      "trajectory_duration_seconds": 5,
+      "trajectory_sampling_fps": 30
     },
     "qwen": {
       "backend": "local",

@@ -35,7 +35,8 @@ def main(argv=None):
             s.add_argument("--dry-run", action="store_true", help="print what a pass would do, change nothing")
             s.add_argument("--retry", action="store_true",
                            help="restart workers that hit the restart limit and rerun failed evaluation stages")
-    sub.add_parser("models", help="list the registered models")
+    model_parser = sub.add_parser("models", help="list the registered one-click models")
+    model_parser.add_argument("--json", action="store_true", help="sampling settings and native clock")
     evaluation=sub.add_parser('evaluate',help='Evaluate existing PhyEditing media; no generation or new gravity fit')
     evaluation.add_argument('benchmark',choices=['phyediting'])
     evaluation.add_argument('--spec',required=True)
@@ -53,9 +54,18 @@ def main(argv=None):
         return int(bool(result.get('evaluation_failed',0)))
 
     if a.cmd == "models":
-        for key, m in config.MODELS.items():
-            print("%-26s %-27s %-19s %3d frames %2d fps %d GPU" % (key, m["name"], "/".join(m["cmd"]), m["frames"],
-                                                                     m["fps"], m.get("gpus", 1)))
+        from .runners.oneclick_registry import MODELS
+        from .runners.model_parameters import parameters
+        if a.json:
+            import json
+            from dataclasses import asdict
+            print(json.dumps({key: dict(**asdict(m), sampling=parameters(key),
+                supported_modes=['i2v', 'v2v'] if key == 'ltx_i2v' else [m.mode],
+                post_condition_seconds=(m.frames-1)/m.fps) for key,m in MODELS.items()}, indent=2))
+        else:
+            for key, m in MODELS.items():
+                settings = parameters(key)
+                print(f"{key:28} {m.frames:3} frames {m.fps:2} fps {m.mode:25} steps={settings['steps']} guidance={settings['guidance']}")
         return
     if a.benchmark == 'phyediting':
         if a.cmd == 'status':

@@ -1,61 +1,52 @@
-# 生成模型配置与支持范围
+# 生成模型与采样参数
 
-12个模型均接入 `python -m physedit run phyediting`。当前每次命令选一个 `model`；统一入口支持登记、生成、单视角SAM3.1和固定评分，不表示12个模型都已经在服务器实测成功。
+12个模型接入统一入口；I2V 与完整 V2V 编辑分别登记、分别汇报。本轮验证覆盖真实 CPU 媒体、模型调用参数、故障保留和冻结源码一致性，没有运行批量生成，也没有完成12模型的GPU验收。
 
-| 验证层级 | 当前证据 |
-| --- | --- |
-| 代码接入与CPU验证 | 12模型的计划、模式限制、argv与媒体/故障处理已验证 |
-| 真实生成 | LTX、CogVideoX/T08、Wan/T17与Hunyuan/T19均已产出完整视频；实际调用均为I2V，评分有效性须分别报告 |
-| 正式模型比较与ID/OOD | 尚未完成；不能将逐条尝试或CPU检查当作全部模型GPU验收 |
+## 权重与参数
 
-此入口共用 GravTrace、V/P 和本地/API Qwen 评测配置，指标及验证范围见 [EVALUATION.md](EVALUATION.md)。先按 [QUICKSTART.md](QUICKSTART.md)准备环境、输入和运行登记，评分口径见 [GENERATION.md](GENERATION.md)。仅接受I2V/V2V；不提供纯T2V调用。
+`phyediting_sampling_v2` 明确区分官方模型配置、API默认值、官方示例和本地适配。下表是当前一键入口实际使用的参数；步数、CFG、flow shift 和 LoRA 强度不能当作同一个“去噪强度”。更换蒸馏版或其他权重必须另行登记，不能仅沿用模型名称。`python -m physedit models --json` 输出可核对的全部参数、条件模式与时间范围。
 
-## 模型配置
+| 模型键／对应权重 | 帧数／fps；首末帧跨度 | 步数／CFG；其他参数 | 来源与适用范围 |
+|---|---|---|---|
+| `ltx_i2v`／LTX-Video-2B 非蒸馏版 | 161/25；6.4s | 50/3；显式 `frame_rate=25` | [Diffusers 0.39 LTX API](https://github.com/huggingface/diffusers/blob/v0.39.0/src/diffusers/pipelines/ltx/pipeline_ltx_condition.py) 默认值；不适用于13B蒸馏版 |
+| `cogvideox_i2v`／CogVideoX1.5-5B-I2V | 81/16；5s | 50/6 | [官方仓库](https://github.com/zai-org/CogVideo)、[权重卡](https://huggingface.co/THUDM/CogVideoX1.5-5B-I2V)；仓库1.5规格为16fps，权重卡示例导出8fps存在差异，采用仓库规格并记录实际时钟 |
+| `wan_ti2v5b`／Wan2.2-TI2V-5B | 121/24；5s | 50/5；shift=5 | [官方5B配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_ti2v_5B.py)；通过图像条件接口调用，排除T2V |
+| `hunyuan15_i2v`／480p I2V step-distilled | 121/24；5s | 12/1；shift=7 | [官方变体推荐](https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5#inference-configurations)；仅CFG-distilled版为50/1、shift=5，不能混用 |
+| `cosmos`／Cosmos-Predict2-2B-Video2World 16fps | 81/16；5s | CFG=7；步数继承本机producer | [官方Video2World](https://github.com/nvidia-cosmos/cosmos-predict2/blob/main/examples/video2world.py)；本机helper未提供步数覆盖，须另核验其版本；单帧前缀续写，不是完整V2V编辑 |
+| `dynamicrafter_i2v`／DynamiCrafter-1024 | 16/10；1.5s | 50/7.5；eta=1、rescale=.7、trailing | [官方1024脚本](https://github.com/Doubiiu/DynamiCrafter/blob/main/scripts/run.sh) 的FS=10表示模型FPS；[保存代码](https://github.com/Doubiiu/DynamiCrafter/blob/main/scripts/evaluation/inference.py)使用8fps，适配器保留原文件并以10fps写出相同16帧，禁止补帧 |
+| `videogpa_ti2v5b`／VideoGPA Wan2.2-TI2V-5B LoRA | 81/24；3.333s | 50/5；shift=5、LoRA=.2 | [官方推理脚本](https://github.com/Hongyang-Du/VideoGPA/blob/main/generate/Wan2.2-TI2V-5B.py) 的默认参数 |
+| `physrvg_ti2v5b`／PhysRVG Wan2.2-TI2V-5B LoRA | 49/15；3.2s | 16/5；`do_cfg=false` | 本地I2V适配值；[官方README](https://github.com/ant-research/PhysRVG)的49/15、8步示例是V2V强化学习训练，不是I2V推理推荐；五个静态条件帧不算完整视频编辑 |
+| `cosmos3_nano`／Cosmos3-Nano | 189/24；7.833s | 35/6；flow_shift=10 | [官方I2V示例](https://huggingface.co/nvidia/Cosmos3-Nano) |
+| `wan22_i2v_a14b`／Wan2.2-I2V-A14B | 81/16；5s | 40/(3.5,3.5)；shift=5 | [官方A14B配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_i2v_A14B.py)及shared_config；高低噪声CFG分别登记 |
+| `physalign_wan22_i2v_a14b`／社区PhysAlign转换适配器 | 81/16；5s | 40/(3.5,3.5)；shift=5 | 使用Wan基座配置；[PhysAlign项目](https://physalign.github.io/PhysAlign/)不自动认证本机社区转换权重，转换来源及LoRA合并需单独核验 |
+| `minimax_h3`／MiniMax-H3 FL2VA | 124/24；5.125s | 本地runner 50步；CFG继承权重pipeline | [官方权重卡](https://huggingface.co/MiniMaxAI/MiniMax-H3)支持24fps，公开卡未规定该50步为统一推荐，不私造CFG数值 |
 
-统一入口登记12个模型，按模型自动使用原生帧数、帧率与画布。显式填写 `frames` / `fps` 时必须与模型登记相同，避免输入切换模型后沿用旧时钟：
+帧数包含条件帧，物理比较时长为 `(N-1)/fps`，不是容器时长 `N/fps`。采样数量无需全部相同，但评分时间范围必须相同。轨迹默认比较固定5s，并另报1s；短于5s的模型保留为该指标覆盖不足，不能变速或填充到5s。新参数只用于新运行目录，旧媒体、原失败与原记录不改写，也不与新时钟混合汇总。
 
-| 一键模型键 | 帧数／fps | 条件模式／入口 | 额外 `generation_runtime` | 本流水线GPU实测 |
-| --- | --- | --- | --- | --- |
-| `ltx_i2v` | 81/16 | I2V／Diffusers | 无 | 两条链路执行；一条反演失败、一条有效，新Qwen单独验证 |
-| `cogvideox_i2v` | 81/16 | I2V／Diffusers | 无 | T08生成成功；反演缺观测、V/P 18项有效、Qwen输出拒绝 |
-| `wan_ti2v5b` | 81/16 | I2V／Diffusers | 无 | 修复环境后T17生成成功；反演at_bound，V/P部分有效，Qwen空依据被拒绝；旧失败保留 |
-| `hunyuan15_i2v` | 121/24 | I2V／Diffusers | 无 | 修复环境后T19生成成功；冻结反演15/15帧有效，g=1.05754；不代表生成物理质量合格 |
-| `cosmos` | 81/16 | Cosmos-Predict2 V2V／单条件帧视频 | `code_dir` | 未实测 |
-| `dynamicrafter_i2v` | 16/8 | I2V／DynamiCrafter | `code_dir`；权重路径为checkpoint文件 | 未实测 |
-| `videogpa_ti2v5b` | 49/15 | I2V／VideoGPA | `code_dir`, `lora_dir` | 未实测 |
-| `physrvg_ti2v5b` | 49/15 | I2V／PhysRVG | `code_dir`, `lora_dir` | 未实测 |
-| `cosmos3_nano` | 81/16 | I2V／Cosmos3 | 无 | 未实测 |
-| `wan22_i2v_a14b` | 81/16 | I2V／Wan官方入口 | `code_dir` | 未实测 |
-| `physalign_wan22_i2v_a14b` | 81/16 | I2V／Wan＋PhysAlign | `code_dir`, `lora_dir`, `physalign_hook_dir` | 未实测 |
-| `minimax_h3` | 124/24 | I2V／MiniMax FL2VA | 无 | 未实测 |
+画布仍是本benchmark的按宽高比设置，可用 `canvas` 显式登记；它不是所有权重的官方原生分辨率。Wan 5B官方介绍为720p，DynamiCrafter固定576×1024，其余变体的尺寸约束以对应API为准。画布、权重路径、模型环境和实际解码时钟均记录在运行产物中。不得把共同480p设置宣称为全部模型的官方最优质量设置。
 
-本流水线仅允许 **I2V/V2V**，排除纯 T2V 模型和纯 T2V 调用。`wan_ti2v5b` 使用 `WanImageToVideoPipeline` 并传入登记的 `condition_image`；`videogpa_ti2v5b` 和 `physrvg_ti2v5b` 也传入图像。TI2V 名称不改变实际图像条件路径。计划输出会显示 `conditioning_mode`；登记的 `mode` 或 `conditioning_mode` 请求不同模式时，在启动前拒绝；外部 argv 的显式 T2V 登记也拒绝。外部代码实际是否消费条件图仍需单独验收，argv 登记不能自动证明其输入行为。
+## 真正的视频编辑
 
-`model_dir` 始终指向本机已经存在的模型权重；其余路径指向已经部署的模型代码和适配器。不同模型可选 `generation_runtime.python`、`gpu_devices`、`pythonpath` 路径列表及 `ffmpeg`；不自动下载或安装。示例：
+当前完整 V2V 编辑入口为 `model=ltx_i2v`、`conditioning_mode=v2v`，实际加载 `LTXConditionPipeline`，使用原非蒸馏LTX权重。生成环境需要提供该类及 `video`、`frame_index`、`strength`、`denoise_strength`、`frame_rate` 参数；缺少接口直接拒绝，不退回I2V或T2V。已核对 Diffusers 0.39.0 官方源码接口；SAM3.1环境不随之升级。可用 `scripts/setup_ltx_v2v_env.sh --python CUDA_BASE_PYTHON --env-dir NEW_ENV_DIR` 建立独立生成环境；脚本只安装生成适配器版本并核对CPU接口，不加载权重或启动GPU。site_a现有0.39.0环境的完整编辑接口已实际CPU导入验证，0.33.1缺少去噪参数并会在加载权重前拒绝。
 
-`generation_runtime.python` 保留虚拟环境中的可执行路径，不能将 `venv/bin/python` 的符号链接解析成基础环境Python；两者可能安装不同版本的模型依赖。本次已验证的CPU接口分别为CogVideoX使用Diffusers 0.33.1/Transformers 4.51.3、Wan使用0.39.0/4.51.3、Hunyuan1.5使用0.39.0/4.57.1；这是已检查的环境组合，不是所有模型的统一最低版本。加载阶段失败仍保留原底层报错，不用“缺完成凭据”代替。
+额外配置：
 
 ```json
-{"model":"physrvg_ti2v5b","model_dir":"/absolute/path/wan_diffusers","generation_runtime":{"python":"/absolute/path/model_env/bin/python","code_dir":"/absolute/path/physrvg_code","lora_dir":"/absolute/path/lora_checkpoint","gpu_devices":"0"}}
+{"conditioning_mode":"v2v","v2v":{"manifest":"/absolute/path/video_inputs.jsonl","manifest_sha256":"SHA256_OF_MANIFEST","denoise_strength":0.6,"conditioning_strength":0.7}}
 ```
 
-启动模型前检查所需代码和权重路径，并先在 CPU 核对冻结 SAM3.1 源码版本与权重 SHA；不匹配时保留逐例失败，不花费生成 GPU 时间。四个 Diffusers 入口也使用登记的 `generation_runtime.python`、GPU 映射、`pythonpath` 和 `ffmpeg`，强制本地权重加载及 offline 环境。使用 ImageIO 的旧 runner 同样绑定登记的 FFmpeg。运行一键控制器的 Python 环境需已安装冻结 SAM3.1 的实际运行依赖；模型专属环境可分别指定。所有旧 runner 以 argv 调用，不经 shell；每条尝试有持久 claim，旧输出、部分输出或中断不自动重试。生成后按登记媒体完整解码、核对尺寸／帧数／时钟、输入 SHA，并封存完成凭据；独立控制器再次核验后才进入 SAM3.1。原始登记分母和所有失败原因保留在 `rows.jsonl`、`observed_rows.jsonl` 与 `registered_model_status.jsonl`。
+每行明确关联原item：
 
-`cosmos` 只把声明的条件帧写成单帧 V2V 输入，绝不把参考视频第24帧后的运动交给模型；模型仍需在目标环境验证其单帧条件接口。PhysRVG 采用五次复制同一条件帧的 `static_frame` 策略，不读参考前史。VideoGPA 保留独立 LoRA 输入与后处理。模型原生运行环境、权重格式和实际 GPU 输出仍需逐模型验收；代码接入与 CPU软件验证不等于12模型已经生成成功。
-
-## 切换模型
-
-修改 `pipeline.json` 的 `model`、`model_dir` 和相应 `generation_runtime`，使用新的 `run-dir`。帧数/fps不必手写；不同模型不能沿用其他模型的时钟。所有表中模型的 `conditioning_mode` 默认为 `i2v`，仅 `cosmos` 为 `v2v_one_condition_frame`。
-
-`cosmos3_nano` 在本注册入口中为图像条件；MiniMax-H3 为FL2VA图像条件。MiniMax runner支持单GPU共享offload或多GPU环境，但相应显存/格式/吞吐尚未在本流水线验收；旧fleet的双GPU配置不是当前单条运行验证证据。DynamiCrafter的 `model_dir` 是checkpoint文件，其他模型按各runner所需的本地权重格式配置。
-
-控制器/SAM3.1使用启动命令的 Python，生成模型可使用 `generation_runtime.python` 指定的环境。`generation_runtime.gpu_devices` 同时设置生成和 SAM3.1 的设备映射；省略时沿用启动进程的映射。运行示例见 [快速上手](QUICKSTART.md#4-查看计划与执行)。
-
-无需重新生成也能检查模型登记：
-
-```bash
-python -m physedit models
-python -m physedit run phyediting --spec pipeline.json --run-dir runs/new_model
+```json
+{"item_id":"original_item_id","video":"/absolute/path/input.avi","video_sha256":"SHA256_OF_VIDEO","fps":25,"frames":161,"start_frame":0}
 ```
 
-第一个命令显示共享的模型配置；本地PhyEditing入口的原生时钟/模式以 [oneclick_registry.py](../../physedit/runners/oneclick_registry.py)为准。第二个命令仅打印计划；缺权重/专有依赖/不兼容输出须在真实逐模型验收中保留失败，不能称全支持已经实测。
+上述强度仅为配置示例，不是已调优推荐。`denoise_strength` 控制编辑噪声，`conditioning_strength` 控制视频条件约束，两者独立并必须显式登记在(0,1)。只读取声明的来源区间，按真实秒数重采样后把全部目标时刻的帧传入视频接口；不把一张图片重复成完整视频、不拉伸时间、不外推。源文件必须与目标参考不同，初始解码像素必须与冻结条件图一致，保证原初始框与几何仍适用；压缩导致无法一致的输入需准备有真实来源的无损初始帧，不能放宽检查掩盖不适用。缺源、源SHA漂移、时长不足、初始状态不符均保留原分母和原因。
+
+I2V和V2V接收的信息不同，必须分组报告，不能把视频输入的结果与单图输入直接合并成同一比较。Cosmos的单帧前缀续写与PhysRVG的静态前缀保持独立标记；没有宣称12模型全部具备完整V2V。
+
+## 环境与执行
+
+模型始终从已有本地权重加载。`generation_runtime` 可登记 `python`、`gpu_devices`、`pythonpath`、`ffmpeg`；外部runner还需要 `code_dir`，VideoGPA/PhysRVG需要 `lora_dir`，PhysAlign另需 `physalign_hook_dir`。DynamiCrafter的 `model_dir` 是checkpoint文件。保留venv可执行路径，不解析成基础Python。
+
+默认只输出计划；显式 `--execute` 才启动。已有输出、partial或claim不自动覆盖/重试。统一入口完整解码校验媒体、时钟和输入SHA，再执行冻结单视角SAM3.1与原反演。详见 [QUICKSTART.md](QUICKSTART.md)、[EVALUATION.md](EVALUATION.md)。此前LTX、CogVideoX、Wan、Hunyuan单条视频已产出；这些是旧时钟/旧参数的尝试，新采样版本和完整V2V尚未GPU实测，不冒充新版本验收。

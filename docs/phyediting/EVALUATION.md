@@ -7,7 +7,7 @@
 | GravTrace | 请求重力相对偏差、失败率、覆盖率 | 原登记窗口内单视角观测；冻结的 V4 方法 |
 | V：像素一致性 | 条件图与参考续段的 RGB SSIM/PSNR，以及参考目标前景补充指标 | 条件帧单独评分；续段按固定真实时间网格匹配原生时间戳 |
 | V：视觉稳定性 | 相机运动、背景闪烁、轮廓结构差异 | 完整生成片段及首一秒；目标掩膜及可用图像特征 |
-| P：参考运动一致性 | 运动区域 mIoU、归一化轨迹误差 | 参考和生成目标掩膜；完整片段及首一秒 |
+| P：参考运动一致性 | 运动区域 mIoU、归一化轨迹误差 | 参考和生成目标掩膜；轨迹固定5秒及首一秒，mIoU仍为片段诊断 |
 | Qwen | 五类可见问题的存在性、严重程度、文字依据、置信度、证据不足标记 | 条件图＋完整生成视频；本地视频张量或支持 video_url 的 API |
 
 视频解码、尺寸、帧率和时间戳检查属于输入验证。P 指标衡量参考运动相似性，不证明物理正确或机械因果关系；不同的合理续段也可能具有参考差异。GravTrace 的数值是**相对于请求重力的偏差**，不是相对于生成视频已知物理真值的误差。
@@ -17,7 +17,7 @@
 ```json
 "evaluation": {
   "metrics": ["gravtrace", "vp", "qwen"],
-  "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30},
+  "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30, "trajectory_duration_seconds": 5, "trajectory_sampling_fps": 30},
   "qwen": {
     "backend": "api",
     "model": "Qwen/Qwen3.5-9B",
@@ -105,7 +105,7 @@ API 密钥只从 `api_key_env` 指定的环境变量读取，不写入 JSON 配�
 
 掩膜非空或SHA匹配不证明目标身份正确。可通过 `evaluation.vp.mask_review_manifest` 添加独立的**否决**记录，不修改SAM或反演。该JSONL每行含 `sample_id`、`source` / `generated` 对应的 `{"path":"review.json","sha256":"..."}`。复核JSON包含 `video_sha256`、`target_name`、`rejected_frames`；每项须有 `frame_index`、非空 `reason` 和该帧真实 `mask_sha256`。视频、对象、帧、掩膜及复核文件逐一绑定，漂移拒绝；已确认错误目标的帧不能参与需要它的指标，其他登记范围独立计算。该入口不能把未知/缺失提升为有效，未复核帧也不宣称身份认证；结果保留 `identity_accuracy_certified=false`。复核发现的错误与原掩膜共同留存。
 
-相机运动/闪烁/轮廓/mIoU/轨迹诊断沿用已核对的现存公式，历史源码 SHA 见 [vp_metrics.py](../../physedit/vp_metrics.py)。上述P轨迹诊断仍采用其归一化时间定义，与新像素指标的真实时间对齐分开解释；没有修改冻结反演或原观察窗口。像素实现见 [pixel_metrics.py](../../physedit/pixel_metrics.py)，不能把旧 SAM2 结果称为新 SAM3.1 结果。
+相机运动/闪烁/轮廓/mIoU/轨迹诊断沿用已核对的现存公式，历史源码 SHA 见 [vp_metrics.py](../../physedit/vp_metrics.py)。轨迹误差现采用 `phyediting_trajectory_real_time_v2`：默认固定5s与1s、30Hz时间网格，原生目标质心在相邻真实时间点间线性插值，移除初始平移并按参考图像对角线归一化。不按视频长度归一化时间、不外推、不跨缺失目标补点；参考或生成未覆盖完整窗口则保留 `insufficient_evidence`，不能缩窗。`trajectory_duration_seconds` 与 `trajectory_sampling_fps` 必须在运行前登记，各模型采用同一值。此变化仅影响V/P轨迹诊断，没有修改冻结反演或原观察窗口；旧轨迹成绩不能与新版本混合。像素实现见 [pixel_metrics.py](../../physedit/pixel_metrics.py)，不能把旧 SAM2 结果称为新 SAM3.1 结果。
 
 ## 只补评既有生成产物
 

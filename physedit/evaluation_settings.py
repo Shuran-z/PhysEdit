@@ -32,7 +32,14 @@ def validate(evaluation):
         if key in evaluation and key not in metrics:
             raise ValueError("evaluation." + key + " configured but not enabled")
     vp = evaluation.get("vp", {"mask_backend": "sam31"})
-    fields(vp, {"mask_backend", "mask_manifest", "mask_review_manifest", "reference_duration_seconds", "reference_fps"}, "evaluation.vp")
+    fields(vp, {"mask_backend", "mask_manifest", "mask_review_manifest", "reference_duration_seconds", "reference_fps", "trajectory_duration_seconds", "trajectory_sampling_fps"}, "evaluation.vp")
+    duration = vp.get('trajectory_duration_seconds', 5.0)
+    fps = vp.get('trajectory_sampling_fps', 30.0)
+    if (type(duration) not in (int, float) or type(fps) not in (int, float)
+            or not math.isfinite(duration) or not math.isfinite(fps) or duration <= 0 or fps <= 0
+            or duration * fps < 1 or not math.isclose(duration * fps, round(duration * fps), abs_tol=1e-8)
+            or not math.isclose(fps, round(fps), abs_tol=1e-8)):
+        raise ValueError('invalid_registered_trajectory_time_grid')
     for key, default in (("reference_duration_seconds", 1.0), ("reference_fps", 30.0)):
         value = vp.get(key, default)
         if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:

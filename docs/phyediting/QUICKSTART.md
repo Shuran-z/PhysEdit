@@ -68,7 +68,7 @@ item字段为 `id`、`event`、`gravity`、`fps`、`image_size`、`video`、`tra
   },
   "evaluation": {
     "metrics": ["gravtrace", "vp", "qwen"],
-    "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30},
+    "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30, "trajectory_duration_seconds": 5, "trajectory_sampling_fps": 30},
     "qwen": {"backend": "api", "model": "Qwen/Qwen3.5-9B",
              "base_url": "http://127.0.0.1:8000/v1", "api_key_env": "QWEN_API_KEY",
              "extra_body": {"chat_template_kwargs": {"enable_thinking": false}}}
@@ -133,3 +133,5 @@ item字段为 `id`、`event`、`gravity`、`fps`、`image_size`、`video`、`tra
 仅需SAM3.1跟踪时使用 [SAM31.md](SAM31.md#单视角输入与运行)；已有观测的手工评分接口见 [GENERATION.md](GENERATION.md#命令接口)；旧 `public211` 多机流程见 [PIPELINE.md](../PIPELINE.md)。
 
 评测逐项保留可用证据：V/P按登记帧范围处理缺失，Qwen按类别保留合法回答；已确认的目标误跟踪可用 `evaluation.vp.mask_review_manifest` 作SHA绑定的否决复核。字段与范围见 [评测说明](EVALUATION.md)，不会改变冻结反演或自动重跑生成。
+
+完整V2V的独立视频来源、初始状态一致性和强度参数见 [MODELS.md](MODELS.md#真正的视频编辑)。历史81/16的LTX尝试保持原记录，新登记默认161/25；不要复用旧运行目录或把旧成绩按新时钟解释。

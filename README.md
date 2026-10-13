@@ -7,7 +7,7 @@ PhyEditing 视频生成与重力评测流水线：**I2V/V2V 生成 → 单视角
 | GravTrace + SAM3.1 亚像素边界 | **2.700%** | **15.148%** | **0%** |
 | 同信息、同观测帧的2D对照 | 5.294% | 36.364% | 0% |
 
-以上为 **1038例、13918帧**开发集结果，覆盖率100%；[完整公平对比与逐例记录](docs/phyediting/validation.md#frozen-comparison)保留全部失败。一键入口已接入 GravTrace、V/P 和 Qwen完整视频评测（本地/视频API），输入须绑定原核验清单与冻结参考记录，拒绝不适用窗口。LTX 单条完整链路已实测，原反演 `at_bound`、Qwen 证据不足均保留。12模型均已接入代码，其余11模型及正式 ID/OOD 尚未实测。
+以上为 **1038例、13918帧**开发集结果，覆盖率100%；[完整公平对比与逐例记录](docs/phyediting/validation.md#frozen-comparison)保留全部失败。一键入口已接入 GravTrace、V/P 和 Qwen完整视频评测（本地/视频API），输入须绑定原核验清单与冻结参考记录，拒绝不适用窗口。LTX 单条完整链路已实测，原反演 `at_bound`、Qwen 证据不足均保留。12模型参数与原生时钟已登记；LTX完整V2V接入视频条件接口，CPU调用与媒体验证不等于GPU验收。正式 ID/OOD 尚未评测。
 
 ```bash
 python -m pip install -e '.[test]'

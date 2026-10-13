@@ -14,8 +14,8 @@
 ## 命令接口
 
 ```bash
-python scripts/phyediting_gen.py build items.jsonl input --data-root /path/to/reference --host-root /path/to/input --source-root /path/to/reference --applicability /path/to/applicability.json --generation-frames 81 --generation-fps 16
-python scripts/phyediting_gen.py rows input/template.jsonl rows.jsonl --model ltx_i2v --frames 81 --fps 16 --out-root /path/to/output
+python scripts/phyediting_gen.py build items.jsonl input --data-root /path/to/reference --host-root /path/to/input --source-root /path/to/reference --applicability /path/to/applicability.json --generation-frames 161 --generation-fps 25
+python scripts/phyediting_gen.py rows input/template.jsonl rows.jsonl --model ltx_i2v --frames 161 --fps 25 --out-root /path/to/output
 python scripts/phyediting_gen.py jobs items.jsonl rows.jsonl track_jobs.jsonl --compact /path/to/compact
 python scripts/phyediting_gen.py score items.jsonl rows.jsonl tracks.jsonl predictions.jsonl
 ```

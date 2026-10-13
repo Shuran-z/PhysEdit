@@ -20,20 +20,20 @@ class ModelContract:
 
 
 MODELS = {
-    'ltx_i2v': ModelContract('diffusers', 81, 16, canvas=(704, 480), square_canvas=480),
+    'ltx_i2v': ModelContract('diffusers', 161, 25, canvas=(704, 480), square_canvas=480),
     'cogvideox_i2v': ModelContract('diffusers', 81, 16, canvas=(768, 480), square_canvas=480),
     # The TI2V checkpoint can also do T2V. This registered benchmark route
     # supplies condition_image to WanImageToVideoPipeline, so it is I2V only.
-    'wan_ti2v5b': ModelContract('diffusers', 81, 16, mode='i2v', canvas=(832, 480)),
+    'wan_ti2v5b': ModelContract('diffusers', 121, 24, mode='i2v', canvas=(832, 480)),
     'hunyuan15_i2v': ModelContract('diffusers', 121, 24, canvas=(848, 480), square_canvas=640),
     'cosmos': ModelContract('cosmos_predict2', 81, 16, mode='v2v_one_condition_frame',
                             needs=('code_dir',)),
-    'dynamicrafter_i2v': ModelContract('dynamicrafter', 16, 8, needs=('code_dir',)),
-    'videogpa_ti2v5b': ModelContract('videogpa', 49, 15, canvas=(832, 480),
+    'dynamicrafter_i2v': ModelContract('dynamicrafter', 16, 10, needs=('code_dir',)),
+    'videogpa_ti2v5b': ModelContract('videogpa', 81, 24, canvas=(832, 480),
                                      needs=('code_dir', 'lora_dir')),
     'physrvg_ti2v5b': ModelContract('physrvg', 49, 15, canvas=(832, 480), square_canvas=640,
                                     needs=('code_dir', 'lora_dir')),
-    'cosmos3_nano': ModelContract('cosmos3', 81, 16, canvas=(832, 480), square_canvas=640),
+    'cosmos3_nano': ModelContract('cosmos3', 189, 24, canvas=(832, 480), square_canvas=640),
     'wan22_i2v_a14b': ModelContract('wan22', 81, 16, canvas=(832, 480),
                                     needs=('code_dir',)),
     'physalign_wan22_i2v_a14b': ModelContract('wan22', 81, 16, canvas=(832, 480),
@@ -51,6 +51,9 @@ def contract(model: str) -> ModelContract:
 
 def validate_registration(spec: dict, *, require_runtime=True) -> ModelContract:
     profile = contract(spec['model'])
+    if spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v':
+        from dataclasses import replace
+        profile = replace(profile, mode='v2v')
     for key in ('mode', 'conditioning_mode'):
         if key in spec and spec[key] != profile.mode:
             raise ValueError(f"Registered {spec['model']} conditioning mode is {profile.mode}; "
