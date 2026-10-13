@@ -228,3 +228,23 @@ def test_registered_python_preserves_real_virtual_environment(tmp_path):
     prefix = subprocess.check_output([command[0], '-I', '-c', 'import sys; print(sys.prefix)'], text=True).strip()
     assert Path(prefix) == environment
     assert command[0] == str(python)
+
+
+
+def test_legacy_launch_error_is_retained_instead_of_missing_output(tmp_path,monkeypatch):
+    spec=dict(model='dynamicrafter_i2v',model_dir='fixture',frames=16,fps=10,generation_runtime=dict(code_dir='fixture'))
+    row=dict(sample_id='x',out_dir=str(tmp_path/'x'),generated_video=str(tmp_path/'x/raw.mp4'),
+             generated_video_resized_to_source=str(tmp_path/'x/resized.mp4'),source_width=80,source_height=64,num_frames=16,output_fps=10)
+    for name in ['condition_image','prompt_file','negative_prompt_file']:
+        p=tmp_path/name;p.write_text('fixture');row[name]=str(p)
+    manifest=tmp_path/'rows';manifest.write_text(json.dumps(row)+'\n')
+    monkeypatch.setattr(adapter,'_preflight',lambda *a:('python','ffmpeg',{}))
+    monkeypatch.setattr(adapter,'_command',lambda *a:([['fixture']],None))
+    def fail(*a,**kw):
+        kw['stdout'].write("KeyError: 'before_encode'\n")
+        return SimpleNamespace(returncode=1)
+    monkeypatch.setattr(adapter.subprocess,'run',fail)
+    assert adapter.run(spec,manifest,tmp_path)==1
+    status=json.loads((tmp_path/'registered_model_status.jsonl').read_text().splitlines()[-1])
+    assert "KeyError: 'before_encode'" in status['reason']
+    assert 'missing_source_video' not in status['reason']

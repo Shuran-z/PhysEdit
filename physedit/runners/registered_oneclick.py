@@ -229,10 +229,15 @@ def run(spec, manifest, root):
     _write_rows(staged, selected)
     commands, raw_dir = _command(spec, profile, staged, root, python, ffmpeg, selected)
     codes = []
+    process_failures = []
     for index, command in enumerate(commands):
         with (root/f'model_call_{index}.log').open('x') as log:
             result = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT)
         codes.append(result.returncode)
+        if result.returncode:
+            lines = (root/f'model_call_{index}.log').read_text(errors='replace').splitlines()
+            last = next((line for line in reversed(lines) if line.strip()), 'no model diagnostic')
+            process_failures.append(f'model_process_exit_{result.returncode}: '+last[:2000])
     if raw_dir is not None:
         try:
             _finish_videogpa(selected, raw_dir, ffmpeg)
@@ -251,7 +256,7 @@ def run(spec, manifest, root):
                 state, reason = 'complete', None
             except Exception as error:
                 failed += 1
-                state, reason = 'generation_output_failure', str(error)
+                state, reason = 'generation_output_failure', ('; '.join(process_failures) or str(error))
             handle.write(json.dumps(dict(sample_id=sid, status=state, reason=reason))+'\n')
     return 1 if failed or any(codes) else 0
 

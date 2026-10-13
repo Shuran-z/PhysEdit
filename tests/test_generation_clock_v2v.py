@@ -174,3 +174,17 @@ def test_native_clock_and_sampler_reach_diffusers_launch(tmp_path,monkeypatch):
         assert float(command[command.index('--num-inference-steps')+1])==steps
         assert float(command[command.index('--guidance-scale')+1])==guidance
         assert float(command[command.index('--flow-shift')+1])==shift
+
+
+@pytest.mark.parametrize('key', ['before_encode', 'setup'])
+def test_minimax_first_frame_and_clock_compatibility(key):
+    from physedit.runners.model_parameters import split_minimax_workflow
+    fields=[SimpleNamespace(name=n) for n in ['image','height','width','num_frames']]
+    prep=SimpleNamespace(inputs=fields);text=object();tail=object()
+    workflow=SimpleNamespace(sub_blocks={key:prep,'text_encoder':text,'denoise':tail})
+    assert split_minimax_workflow(workflow)==(prep,text)
+    assert workflow.sub_blocks=={'denoise':tail}
+    unsafe=SimpleNamespace(sub_blocks={key:SimpleNamespace(inputs=fields[1:]),'text_encoder':text})
+    with pytest.raises(ValueError,match='image_or_clock'):
+        split_minimax_workflow(unsafe)
+    assert key in unsafe.sub_blocks  # Refuse before altering a T2V-only workflow.

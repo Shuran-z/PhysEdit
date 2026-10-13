@@ -24,3 +24,15 @@ PROFILES = {
 
 def parameters(model):
     return dict(protocol=VERSION, **deepcopy(PROFILES[model]))
+
+
+def split_minimax_workflow(workflow):
+    """Keep explicit first-frame conditioning across Modular Diffusers versions."""
+    name = 'before_encode' if 'before_encode' in workflow.sub_blocks else 'setup'
+    if name not in workflow.sub_blocks or 'text_encoder' not in workflow.sub_blocks:
+        raise ValueError('minimax_fl2va_workflow_incompatible')
+    prep = workflow.sub_blocks[name]
+    names = {value.name for value in prep.inputs}
+    if not {'image', 'height', 'width', 'num_frames'} <= names:
+        raise ValueError('minimax_fl2va_image_or_clock_input_unavailable')
+    return workflow.sub_blocks.pop(name), workflow.sub_blocks.pop('text_encoder')
