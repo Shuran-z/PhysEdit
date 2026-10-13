@@ -25,7 +25,6 @@ except ImportError:
     from model_parameters import split_minimax_workflow
 
 
-MODEL = "/path/to/cluster/models/MiniMax-H3-FL2VA"
 H3_WIDTH = 896
 H3_HEIGHT = 512
 
@@ -105,7 +104,7 @@ def main():
     parser.add_argument("--out-root", required=True)
     parser.add_argument("--steps", type=int, default=50)
     parser.add_argument("--max-samples", type=int, default=0)
-    parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--model", required=True)
     args = parser.parse_args()
     model = args.model
 

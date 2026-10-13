@@ -5,6 +5,7 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -14,9 +15,9 @@ import cv2
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--generation-manifest", required=True)
-    parser.add_argument("--cosmos-tools", default="/path/to/workspace/cosmos_predict2_tools")
-    parser.add_argument("--python", default="/path/to/workspace/miniconda3/envs/cosmos-predict2/bin/python")
-    parser.add_argument("--model-dir", default="/path/to/workspace/models/Cosmos-Predict2-2B-Video2World")
+    parser.add_argument("--cosmos-tools", required=True)
+    parser.add_argument("--python", default=sys.executable)
+    parser.add_argument("--model-dir", required=True)
     parser.add_argument("--cuda-visible-devices", default=None)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--start-index", type=int, default=0)

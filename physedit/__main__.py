@@ -1,9 +1,10 @@
-"""python -m physedit {run,status,models} ...   Run it on the hub (WSL on the workstation), which reaches every host.
+"""PhysEdit: physical video generation, tracking and evaluation.
 
-    python -m physedit run public211 --models ltx_i2v,cosmos3_nano          # one pass: start what can start
-    python -m physedit run public211 --models all --watch 10                # repeat every 10 min until all is done
-    python -m physedit run public211 --models ltx_i2v --limit 4             # trial: 4 rows per run, own namespace
-    python -m physedit status public211 --models all                        # progress, ETAs, evaluation stages
+    python -m physedit run phyediting --spec pipeline.json --run-dir runs/new_generation
+    python -m physedit status phyediting --run-dir runs/new_generation
+    python -m physedit models --json
+
+Multi-host tasks use benchmark keys declared in PHYSEDIT_FLEET_CONFIG.
 """
 import argparse
 import fcntl

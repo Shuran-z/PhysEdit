@@ -1,22 +1,22 @@
-# PhysEdit-GravTrace
+# PhysEdit
 
-PhyEditing 视频生成与重力评测流水线：**I2V/V2V 生成 → 单视角 SAM3.1 跟踪 → 冻结 V4 重力反演＋V/P＋Qwen → 全部注册样本汇总**。GravTrace 使用声明的相机和物体几何联合估计重力与未知初速度。
+PhysEdit用于物理视频生成与评测，提供I2V/V2V生成、SAM3.1单视角目标跟踪、重力与运动参数测量，以及V/P指标和Qwen视频评测。
 
-| 冻结方案（30 fps） | 平均误差 | 最大误差 | 失败率 |
-|---|---:|---:|---:|
-| GravTrace + SAM3.1 亚像素边界 | **2.700%** | **15.148%** | **0%** |
-| 同信息、同观测帧的2D对照 | 5.294% | 36.364% | 0% |
+| 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
+|---|---:|---:|---:|---:|
+| 重力 | 1038 | 2.700% | 15.148% | 100% |
+| 初速度大小 | 1038 | 1.785% | 14.353% | 100% |
+| 动摩擦系数 | 880 | 0.235% | 1.974% | 75% |
 
-以上为 **1038例、13918帧**开发集结果，覆盖率100%；[完整公平对比与逐例记录](docs/phyediting/validation.md#frozen-comparison)保留全部失败。一键入口已接入 GravTrace、V/P 和 Qwen完整视频评测（本地/视频API），输入须绑定原核验清单与冻结参考记录，拒绝不适用窗口。LTX 单条完整链路已实测，原反演 `at_bound`、Qwen 证据不足均保留。12模型参数与原生时钟已登记；LTX完整V2V接入视频条件接口，CPU调用与媒体验证不等于GPU验收。正式 ID/OOD 尚未评测。
+表中为单视角开发集结果；测量条件和基线比较见[性能评测](docs/phyediting/validation.md)。
+初速度误差统计1036个非零目标，2个零目标使用绝对误差。摩擦误差统计T07的660个滑动样本，其余220个静止样本给出静摩擦下界。速度与摩擦使用独立测量命令。
 
 ```bash
 python -m pip install -e '.[test]'
 python -m physedit run phyediting --spec pipeline.json --run-dir runs/new_generation
-# 默认只打印计划；配置与设备核对后，加 --execute 才生成、跟踪和评分。
 ```
 
-- [快速上手：环境、输入、执行和结果](docs/phyediting/QUICKSTART.md) · [12模型配置与实测状态](docs/phyediting/MODELS.md)
-- [固定评分方法与失败口径](docs/phyediting/GENERATION.md) · [冻结SAM3.1](docs/phyediting/SAM31.md) · [评测指标：全图 PSNR/SSIM、参数响应与排序、V/P、Qwen](docs/phyediting/EVALUATION.md)
-- [整体benchmark与划分](docs/joint_split_v3/PROTOCOL.md) · [开发集验证](docs/phyediting/validation.md) · [旧public211调度](docs/PIPELINE.md)
-
-MIT — 见 [LICENSE](LICENSE)。
+默认只打印计划；配置与设备核对后，加`--execute`才实际运行。
+[快速上手](docs/phyediting/QUICKSTART.md) · [12模型与参数](docs/phyediting/MODELS.md) · [生成与评分](docs/phyediting/GENERATION.md) · [V/P与Qwen](docs/phyediting/EVALUATION.md)
+[SAM3.1跟踪](docs/phyediting/SAM31.md) · [速度与摩擦](docs/phyediting/MOTION_PARAMETERS.md) · [划分协议](docs/joint_split_v3/PROTOCOL.md) · [性能数据](docs/phyediting/latest_results.json) · [多机调度](docs/PIPELINE.md)
+MIT — 见[LICENSE](LICENSE)。

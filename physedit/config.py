@@ -14,7 +14,7 @@ The local PhyEditing pipeline is one-shot; interrupted outputs are retained and 
 import os
 
 SSH = "ssh -o BatchMode=yes -o ConnectTimeout=25 -o ServerAliveInterval=30 -o ServerAliveCountMax=4"
-CLUSTER_SSH = SSH + " -F " + os.path.expanduser("~/.ssh/config")   # cluster pods behind the cluster proxy
+CLUSTER_SSH = SSH + " -F " + os.path.expanduser("~/.ssh/config")
 ENV = "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHONUNBUFFERED=1"
 
 # A site is one filesystem: all its hosts see the same paths. `shared_with`: the evaluation host reads this site's
@@ -54,21 +54,7 @@ SITES = {
         h3="/path/to/cluster/models/MiniMax-H3-FL2VA")),
 }
 
-# GPUs a job may take. A GPU is free when it holds at most `busy_mib` and runs none of our jobs (other users'
-# small processes, e.g. Isaac Sim's ~0.9 GB on every site_b GPU, are tolerated). A host's `vars` override its
-# site's: the cluster pods share one disk but run two container images. On the pytorch-ng (NGC) image the container's
-# python3 3.12 has torch 2.7 and the H3 bundle's diffusers 0.40-dev (Cosmos3OmniPipeline, ModularPipeline); the
-# uv venv below links to /usr/bin/python3 and only works on the deeplearni image (Python 3.10), where Cosmos3 ran in
-# September.
-NGC = dict(py_models="python3")
-DEEPLEARNI = dict(py_models=f"{Z}/envs/cosmos3_diffusers_py310/bin/python")
-HOSTS = {
-    "site_a": dict(site="site_a", ssh=SSH + " gpu-host-a", gpus=[0, 3, 4, 5], busy_mib=1500),  # 1/2/6/7: others
-    "site_b": dict(site="site_b", ssh=SSH + " gpu-host-b", gpus=range(6), busy_mib=3000),
-    # the deeplearni pods gpu-worker-4 and gpu-worker-5 (vars=DEEPLEARNI) are left to the Qwen judge (~/judge_a800.sh)
-    **{n: dict(site="cluster", ssh=CLUSTER_SSH + " " + n, gpus=[0], busy_mib=1500, vars=NGC)
-       for n in ("gpu-worker-1", "gpu-worker-2", "gpu-worker-3", "gpu-worker-1", "gpu-worker-1")},
-}
+HOSTS = {}  # Remote execution is enabled through an explicit private fleet configuration.
 
 CANVAS_848 = {"landscape": (848, 480), "portrait": (480, 848), "square": (640, 640)}
 CANVAS_832 = {"landscape": (832, 480), "portrait": (480, 832), "square": (640, 640)}
@@ -140,48 +126,23 @@ MODELS = {
         "{py_models} {tools}/minimax_h3.py --source-manifest {manifest} --out-root {dir}/logs/{worker} --model {h3} --steps 50"}),
 }
 
-# A benchmark: the site holding its inputs (the evaluation host), the template rows every model's manifest is
-# derived from (per mode and run: same sources, condition frames, prompts and seeds), the input directories other
-# sites need, where finished runs are published for the evaluation scripts, and the evaluation stages.
-RUN = "/path/to/benchmark/generation"
-INV = "/path/to/benchmark/inversion"
-P211 = "/path/to/evaluation"          # public-211 evaluation scripts (UniversalPhysicsEval port)
-GT2 = "/path/to/PhysEdit-GravTrace"                         # gravtrace working copy with the ground-truth scenes
 BENCHMARKS = {
-    "phyediting": dict(kind="local_single_view", runs={"frozen": "SAM3.1 + V4 fixed-window"}),
-    "public211": dict(
-        home="site_a",
-        runs={"x5": "V/P run, condition frame aligned with self100", "x1": "inversion run, first visible frame"},
-        templates={"i2v": {"x5": f"{RUN}/ltx_i2v/manifests/ltx_i2v_generation_manifest.jsonl",
-                           "x1": f"{INV}/ltx_i2v/manifests/ltx_i2v_generation_manifest.jsonl"},
-                   "v2v": {"x5": f"{RUN}/cosmos/manifests/cosmos_generation_manifest.jsonl",
-                           "x1": f"{INV}/cosmos/manifests/cosmos_generation_manifest.jsonl"}},
-        inputs={"x5_conditioning": f"{RUN}/conditioning", "x1_conditioning": f"{INV}/conditioning",
-                "prompts": f"{RUN}/prompts", "prefix5": f"{P211}/prefix5"},
-        publish={"x5": RUN + "/{model}/manifests/{model}_generation_manifest.jsonl",
-                 "x1": INV + "/{model}/manifests/{model}_generation_manifest.jsonl"},
-        # models evaluated before physedit; the V/P segmentation step rebuilds its job list over all models
-        legacy=["ltx_i2v", "cosmos", "cogvideox_i2v", "wan_ti2v5b", "cosmos3_nano", "physrvg_ti2v5b", "videogpa_ti2v5b",
-                "dynamicrafter_i2v", "hunyuan15_i2v", "wan22_i2v_a14b", "physalign_wan22_i2v_a14b"],
-        # stage: after (a run that must be published, or an earlier stage), where (home or hub), gpus,
-        # exclusive (one model at a time: shared job lists). {vp_models}: every published x5 model.
-        evaluate=[
-            dict(stage="vp", after="x5", gpus=3, exclusive=True, cmd=(
-                f"{{python}} {P211}/vp_port/build_jobs_public211.py {{vp_models}} && rm -f {RUN}/vp_metrics/supervisor.lock"
-                f" && cd {P211}/vp_port && {{py_physinv}} run_repair_public211.py --gpus {{gpu}} --cpu-workers 6"
-                f" && {{py_physinv}} score_window_1s_public211.py {{model}} > {RUN}/vp_metrics/metrics_1s_{{model}}.json"
-                f" && {{python}} build_qwen_proxy_public211.py {{model}} > {RUN}/vp_metrics/qwen_v4_1s.{{model}}.json")),
-            dict(stage="judge", after="vp", where="hub", cmd="~/judge_a800.sh {model}"),
-            dict(stage="inversion", after="x1", gpus=3, exclusive=True,
-                 cmd=f"{P211}/run_inv_eval_model_sharded.sh {{model}} 3 {{gpu}}"),
-            dict(stage="gravtrace", after="inversion", cmd=(
-                f"cd {GT2} && {{py_physinv}} runs/p211_videos.py {INV} {{model}} manifests/gt260.jsonl runs/p211/videos_{{model}}.jsonl"
-                f" && {{py_physinv}} scripts/generated_manifest.py manifests/gt260.jsonl runs/p211/videos_{{model}}.jsonl runs/p211/manifest_{{model}}.jsonl"
-                f" && {{py_physinv}} -m gravtrace fit runs/p211/manifest_{{model}}.jsonl -o runs/p211/pred_{{model}}.jsonl --workers 16"
-                f" && {{py_physinv}} -m gravtrace score runs/p211/manifest_{{model}}.jsonl runs/p211/pred_{{model}}.jsonl -o runs/p211/summary_{{model}}.json")),
-        ],
-        table=(f"S={RUN}/vp_metrics/summary; cd {P211}/vp_port && {{python}} summarize_public211.py > $S/summarize.log"
-               f" && {{python}} {P211}/inv_pscore.py $S/public211_inv_pscore.json > $S/public211_inv_pscore.txt"
-               f" && {{python}} {P211}/make_table.py $S/public211_vp_table.json $S/public211_inv_pscore.json $S/public211_vp_inv_table"),
-    ),
+    "phyediting": dict(kind="local_single_view", runs={"frozen": "SAM3.1 single-view parameter measurement"}),
 }
+
+
+def _load_private_fleet(path):
+    import runpy
+    settings = runpy.run_path(os.path.abspath(os.path.expanduser(path)))
+    for key in ("SITES", "HOSTS"):
+        if not isinstance(settings.get(key), dict):
+            raise ValueError("private_fleet_requires_mapping_" + key)
+    for key in ("SITES", "HOSTS", "MODELS", "BENCHMARKS"):
+        if key in settings:
+            if not isinstance(settings[key], dict):
+                raise ValueError("private_fleet_requires_mapping_" + key)
+            globals()[key] = settings[key]
+
+
+if os.environ.get("PHYSEDIT_FLEET_CONFIG"):
+    _load_private_fleet(os.environ["PHYSEDIT_FLEET_CONFIG"])

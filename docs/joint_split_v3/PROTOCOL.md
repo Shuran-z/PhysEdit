@@ -1,29 +1,21 @@
-# Joint Dataset Split v3
+# Genesis与Isaac联合划分协议
 
-This document records the user-confirmed target protocol for the PhysEdit dataset benchmark. It is a design specification; target counts do not imply that the media inventory, quality review, or frozen split manifests are complete.
+Genesis和Isaac联合训练。16类事件按完整来源组划分为train、val和ID，比例约80/10/10；另外4类事件整体留出。
 
-## Training and evaluation protocol
-
-Train jointly on Genesis and Isaac data. Use 16 events for training, validation, and in-distribution (ID) testing, with an 80% / 10% / 10% split by source groups. Keep four entire event classes out of training:
-
-| Partition | Events | Purpose |
+| 集合 | 事件 | 评测内容 |
 |---|---|---|
-| Train pool | T01, T02, T04–T10, T12–T18 | Joint train / validation / ID test, split by groups |
-| OOD-1 | T03, T20 | Transfer to unseen cascade events |
-| OOD-2 | T11, T19 | Transfer to unseen relay and multi-object interaction events |
+| 训练池 | T01、T02、T04–T10、T12–T18 | 组级train、val与ID划分 |
+| OOD-1 | T03、T20 | 未见级联事件迁移 |
+| OOD-2 | T11、T19 | 未见接力与多物体交互事件迁移 |
 
-The OOD sets are whole-event transfer evaluations. OOD-1 is not claimed to be a pure short-chain-to-long-chain test; OOD-2 does not isolate a single changed factor. Neither OOD set is an engine holdout because training uses both engines.
+OOD按整事件定义，评估对象、条件与事件结构共同变化的迁移。两个引擎都参与训练，分引擎结果另外报告。
 
-## Target capacity
+## 容量目标
 
-The design target is 52,800 Genesis videos and 20,160 Isaac videos (72,960 total). At target capacity, the 16-event train pool contains 58,800 videos, split into 47,040 train, 5,880 validation, and 5,880 ID test. OOD-1 targets 6,240 videos and OOD-2 targets 7,920 videos. Isaac target counts are zero for events without planned Isaac data; missing media or cross-engine pairs must not be fabricated.
+设计规模为Genesis52,800加Isaac20,160，共72,960个视频：train47,040、val5,880、ID5,880、OOD-1 6,240、OOD-2 7,920。具体事件与引擎容量见[plan.json](plan.json)。最终数量按有效来源和完整组约束确定。
 
-These are capacity targets, not a statement of current usable inventory. Final counts may change after complete media, state, metadata, and quality audits, and whole-group integrity takes priority over exact ratios.
+## 来源组
 
-## Grouping and release requirements
+同一轨迹的三视角、相同物理配置的背景变体、同一临界族的分支与重复、已核验的跨引擎对应配置、媒体重复与连续扫描区间归入同组。数值扫描根据真实参数区间和边界条件绑定。
 
-Keep all views of a trajectory, background variants of one physical configuration, branches and repeats from one critical family, known cross-engine counterparts, aliases/duplicate media, and contiguous scan intervals together. Review numeric intervals and boundary guards before assigning continuous scans (especially T06, T09, and T10). Where feasible, retain all four backgrounds and both global and critical samples across train, validation, and ID test.
-
-Before release, pin the actual media and state versions; audit views, metadata, states, and runtime parameters; validate event labels and visual physical quality; resolve cross-engine configuration mappings; separately audit metric-development exposure; then assign whole groups, verify coverage, and freeze manifests.
-
-
+发布时固定媒体、状态与元数据版本，核验时间、单位、对象、运行参数、事件标签和视觉质量，补齐跨引擎配置映射，并记录指标开发样本的暴露范围。随后分配完整来源组，核对覆盖率并冻结清单。训练读取已冻结版本，执行方式见[IMPLEMENTATION.md](IMPLEMENTATION.md)。

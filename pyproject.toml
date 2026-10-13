@@ -3,9 +3,9 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gravtrace"
+name = "physedit"
 version = "0.1.0"
-description = "Recover the gravity a video shows from a tracked object's image box"
+description = "Physical video generation and evaluation with single-view motion parameter estimation"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
