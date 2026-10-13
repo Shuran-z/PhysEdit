@@ -54,6 +54,8 @@ def report(rows, predictions, items):
         raise ValueError('Prediction outside registered denominator')
     by_id = {p['id']: p for p in predictions}
     result = summarise(by_id, rows)
+    from physedit.parameter_response import summarize as response_summary
+    result['parameter_response'] = response_summary(rows, by_id, items)
     result['groups'] = {}
     for field in ('split', 'event', 'camera_id', 'gravity_truth'):
         groups = defaultdict(list)

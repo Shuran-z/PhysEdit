@@ -16,7 +16,7 @@ python -m physedit run phyediting --spec pipeline.json --run-dir runs/new_genera
 ```
 
 - [快速上手：环境、输入、执行和结果](docs/phyediting/QUICKSTART.md) · [12模型配置与实测状态](docs/phyediting/MODELS.md)
-- [固定评分方法与失败口径](docs/phyediting/GENERATION.md) · [冻结SAM3.1](docs/phyediting/SAM31.md) · [评测指标：真实时间 RGB PSNR/SSIM、V/P、Qwen](docs/phyediting/EVALUATION.md)
+- [固定评分方法与失败口径](docs/phyediting/GENERATION.md) · [冻结SAM3.1](docs/phyediting/SAM31.md) · [评测指标：全图 PSNR/SSIM、参数响应与排序、V/P、Qwen](docs/phyediting/EVALUATION.md)
 - [整体benchmark与划分](docs/joint_split_v3/PROTOCOL.md) · [开发集验证](docs/phyediting/validation.md) · [旧public211调度](docs/PIPELINE.md)
 
 MIT — 见 [LICENSE](LICENSE)。

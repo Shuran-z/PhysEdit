@@ -344,6 +344,11 @@ def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra
     result=pipeline.pipeline(spec,tmp_path/'run')
     assert result['registered']==2 and result['scored']==1 and result['failed']==1
     assert result['failure_rate_percent']==50 and result['coverage_percent']==50
+    registered = frontend.read_rows(tmp_path/'run/generation_rows.jsonl')
+    assert all(r['prompt_source_class'] == 'builtin_event_template' and
+               r['prompt_granularity'] == 'event_template' and not r['prompt_is_exact_official'] for r in registered)
+    assert Path(registered[0]['prompt_file']).read_text() == (
+        gen.EVENTS[item()['event']] + ' The camera is fixed. ' + gen.GRAVITY[item()['gravity']])
     assert len(captured)==1 and captured[0]['motion']['speed']==[0,8] and 'v0' not in captured[0]['motion']
     assert captured[0]['offset_mode']=='anchor' and not captured[0]['window']['contact_check']
     assert len(read_rows:=frontend.read_rows(tmp_path/'run/predictions.jsonl'))==2

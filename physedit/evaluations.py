@@ -28,10 +28,6 @@ VP_NAMES = (
     "condition_psnr_db",
     "reference_ssim",
     "reference_psnr_db",
-    "condition_foreground_ssim",
-    "condition_foreground_psnr_db",
-    "reference_foreground_ssim",
-    "reference_foreground_psnr_db",
     "camera_motion_full",
     "camera_motion_1s",
     "background_flicker_full",
@@ -240,7 +236,7 @@ def vp_case(row, ctx, item, pair, vp_settings=None):
     result = {
         "sample_id": row["sample_id"],
         "metrics": {},
-        "protocol": "phyediting_vp_v3",
+        "protocol": "phyediting_vp_v4",
         "pixel_settings": pm.settings(vp_settings),
         "provenance": ctx,
     }
@@ -374,20 +370,6 @@ def vp_case(row, ctx, item, pair, vp_settings=None):
         return required_masks(sequences[kind], indices, kind,
                               result["mask_provenance"][kind])
 
-    def reference_masks():
-        if alignment_error is not None:
-            raise alignment_error
-        # Only registered, actually paired source frames are required by this metric.
-        masks("source", alignment["source_indices"])
-        return sequences["source"]
-
-    metric("condition_foreground_ssim", lambda: pm.ssim(source[0], generated[0], masks("source", [0])[0]))
-    metric("condition_foreground_psnr_db", lambda: pm.psnr(source[0], generated[0], masks("source", [0])[0]))
-    metric("reference_foreground_ssim", lambda: reference_score("ssim", reference_masks()))
-    metric("reference_foreground_psnr_db", lambda: reference_score("psnr", reference_masks()))
-    if "source" in result["mask_provenance"]:
-        result["reference_foreground_provenance"] = result["mask_provenance"]["source"]
-
     def small(sequence):
         return [cv2.resize(m.astype(np.uint8), (320, 180), interpolation=cv2.INTER_NEAREST).astype(bool)
                 for m in sequence]
@@ -415,12 +397,34 @@ def vp_case(row, ctx, item, pair, vp_settings=None):
         metric("silhouette_" + suffix, silhouette)
 
         def paired(fn):
-            sm, gm = small(window("source", ks)), small(window("generated", kg))
-            if min(sum(m.sum() >= 10 for m in sm), sum(m.sum() >= 10 for m in gm)) < 3:
+            duration = float(config.get('trajectory_duration_seconds', 5.0)) if suffix == 'full' else 1.0
+            sample_fps = float(config.get('trajectory_sampling_fps', 30.0))
+            # Identical physical-time windows, independent of native clip lengths.
+            for times in (source_times, generated_times):
+                if times[-1] + 1e-8 < duration:
+                    raise pm.InsufficientEvidence('incomplete_motion_time_window')
+            alignment = pm.fixed_time_alignment(source_times, generated_times, duration, sample_fps)
+            # Check every native observation in the window, including frame zero.
+            native = [np.flatnonzero(times <= duration + 1e-8) for times in (source_times, generated_times)]
+            masks('source', native[0])
+            masks('generated', native[1])
+            si = [0] + alignment['source_indices']
+            gi = [0] + alignment['generated_indices']
+            sm, gm = small(masks('source', si)), small(masks('generated', gi))
+            # Repeated nearest-neighbor samples are not independent observations.
+            visible = [sum(m.sum() >= 10 for m in small(masks(kind, sorted(set(indices)))))
+                       for kind, indices in (('source', si), ('generated', gi))]
+            if min(visible) < 3:
                 raise pm.InsufficientEvidence("too_few_visible_target_frames")
             return fn(sm, gm, 0, 0)
 
         metric("motion_region_iou_" + suffix, lambda: paired(dm.motion_region_iou))
+        result.setdefault('motion_region_settings', {})[suffix] = dict(
+            protocol='phyediting_motion_region_real_time_v2',
+            duration_seconds=float(config.get('trajectory_duration_seconds', 5.0)) if suffix == 'full' else 1.0,
+            sampling_fps=float(config.get('trajectory_sampling_fps', 30.0)),
+            alignment='nearest_native_timestamps_no_time_stretch',
+            interpretation='spatial_motion_extent_not_motion_order_or_physical_correctness')
         def trajectory():
             duration = float(config.get('trajectory_duration_seconds', 5.0)) if suffix == 'full' else 1.0
             sample_fps = float(config.get('trajectory_sampling_fps', 30.0))
@@ -645,7 +649,7 @@ def run_additional(spec, rows, items, initial, root):
                     record = dict(
                         sample_id=sid,
                         status="failed",
-                        protocol="phyediting_vp_v2",
+                        protocol="phyediting_vp_v4",
                         pixel_settings=pm.settings(vp),
                         reason=reason,
                         metrics={
@@ -657,7 +661,7 @@ def run_additional(spec, rows, items, initial, root):
                 out.write(json.dumps(record, allow_nan=False) + "\n")
                 out.flush()
         summaries["vp"] = summarize(rows, records, "vp", items)
-        summaries["vp"]["protocol"] = "phyediting_vp_v3"
+        summaries["vp"]["protocol"] = "phyediting_vp_v4"
         summaries["vp"]["pixel_settings"] = pm.settings(vp)
     if "qwen" in enabled:
         config = evaluation["qwen"]

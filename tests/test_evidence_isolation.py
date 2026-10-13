@@ -29,7 +29,7 @@ def test_generated_only_metrics_do_not_require_source_masks(clip):
         assert result['metrics'][name]['status'] == 'ok'
         assert result['metrics'][name]['value'] == pytest.approx(0)
     assert result['metrics']['trajectory_error_full']['status'] == 'failed'
-    assert result['metrics']['reference_foreground_ssim']['status'] == 'failed'
+    assert result['metrics']['reference_ssim']['status'] == 'ok'
 
 
 @pytest.mark.parametrize('kind', ['source', 'generated'])
@@ -38,7 +38,7 @@ def test_late_missing_masks_preserve_complete_first_second(clip, kind):
     sparse(pair[kind], [ctx[kind + '_frames'] - 1])
     result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':47/16, 'trajectory_sampling_fps':16})
     for name in ev.VP_NAMES:
-        if name.endswith('_1s') or 'foreground' in name:
+        if name.endswith('_1s'):
             assert result['metrics'][name]['status'] == 'ok', (name, result['metrics'][name])
     assert result['metrics']['trajectory_error_full']['status'] == 'failed'
     assert result['metrics']['motion_region_iou_full']['status'] == 'failed'
@@ -50,11 +50,12 @@ def test_missing_reference_window_frame_never_shrinks_window(clip):
     row, ctx, item, pair = clip
     sparse(pair['source'], [7])
     result = ev.vp_case(row, ctx, item, pair)
-    assert result['metrics']['condition_foreground_ssim']['status'] == 'ok'
-    assert result['metrics']['reference_foreground_ssim']['status'] == 'failed'
+    assert result['metrics']['condition_ssim']['status'] == 'ok'
+    assert not any('foreground' in name for name in result['metrics'])
+    assert result['metrics']['reference_ssim']['status'] == 'ok'
     assert result['metrics']['trajectory_error_1s']['status'] == 'failed'
     assert result['metrics']['silhouette_1s']['status'] == 'ok'
-    assert '7' in result['metrics']['reference_foreground_ssim']['reason']
+    assert '7' in result['metrics']['trajectory_error_1s']['reason']
     assert result['pixel_alignment']['requested_pairs'] == 30
 
 
@@ -68,7 +69,7 @@ def test_sparse_missing_reason_cannot_hide_mask_or_scope_drift(clip):
     np.savez_compressed(p, **data)
     pair['source']['sha256'] = ev.sha256(p)
     result = ev.vp_case(row, ctx, item, pair)
-    assert 'validity_inconsistent' in result['metrics']['condition_foreground_ssim']['reason']
+    assert 'validity_inconsistent' in result['metrics']['motion_region_iou_1s']['reason']
 
 
 @pytest.mark.parametrize('drift', [False, True])

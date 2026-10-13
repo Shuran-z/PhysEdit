@@ -194,6 +194,14 @@ def _pipeline(spec, root, plan):
                                         out_root=str(root/'generated'), canvas=canvas, mode=profile.mode,
                                         square_canvas=None if spec.get('canvas') else profile.square_canvas))
         rows = read_rows(rows_path)
+        registered_items = {i['id']: i for i in read_rows(items_path)}
+        for row in rows:
+            provided = bool(registered_items[row['item_id']].get('generation_prompt'))
+            row.update(prompt_source_class='registered_item_text' if provided else 'builtin_event_template',
+                       prompt_granularity='event_template', prompt_is_exact_official=False,
+                       prompt_transformation='append_fixed_camera_and_requested_gravity')
+        # Correct provenance only; the generated prompt text remains unchanged.
+        rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
         if profile.mode == 'v2v':
             from .video_conditioning import attach
             rows = attach(rows, spec)

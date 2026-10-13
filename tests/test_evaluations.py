@@ -107,18 +107,17 @@ def test_mask_export_retains_independent_complete_sequence(tmp_path, monkeypatch
     assert provenance["unavailable_frames"] and provenance["identity_accuracy_certified"] is False
 
 
-def test_reference_foreground_scores_survive_missing_generated_masks(clip):
+def test_full_image_scores_survive_missing_all_masks(clip):
     row, ctx, item, pair = clip
-    result = ev.vp_case(row, ctx, item, {"source": pair["source"]}, {"trajectory_duration_seconds":1})
-    for name in ("condition_foreground_ssim", "condition_foreground_psnr_db",
-                 "reference_foreground_ssim", "reference_foreground_psnr_db"):
+    result = ev.vp_case(row, ctx, item, {}, {"trajectory_duration_seconds":1})
+    for name in ("condition_ssim", "condition_psnr_db", "reference_ssim", "reference_psnr_db"):
         assert result["metrics"][name]["status"] == "ok"
     assert result["status"] == "partial"
     assert result["metrics"]["trajectory_error_full"]["status"] == "failed"
-    assert "missing_registered_or_sam31_generated_masks" in result["metrics"]["trajectory_error_full"]["reason"]
+    assert "missing_registered_or_sam31_source_masks" in result["metrics"]["trajectory_error_full"]["reason"]
     summary = ev.summarize([row], [result], "vp")
     assert summary["registered"] == 1 and summary["failed"] == 1
-    assert summary["metrics"]["reference_foreground_ssim"]["scored"] == 1
+    assert summary["metrics"]["reference_ssim"]["scored"] == 1
 
 
 @pytest.fixture
@@ -291,13 +290,40 @@ def test_motion_formulas_distinguish_perturbed_motion():
     assert vp.camera_motion_diagnostics(blank, 0)["error"] is None
 
 
+def test_motion_iou_ignores_motion_beyond_registered_common_time(clip):
+    row, ctx, item, pair = clip
+    sequences = {}
+    for kind in ('source', 'generated'):
+        path = Path(pair[kind]['path'])
+        with np.load(path) as z:
+            data = {key: z[key] for key in z.files}
+        masks = np.zeros_like(data['masks'])
+        for index in range(len(masks)):
+            x = 75 + min(index, 16)
+            if kind == 'source' and index > 16:
+                x = 120
+            masks[index, 65:85, x:x+20] = 1
+        data['masks'] = masks
+        np.savez_compressed(path, **data)
+        pair[kind]['sha256'] = media.sha256(path)
+        sequences[kind] = masks
+    assert vp.motion_region_iou(sequences['source'], sequences['generated'], 0, 0) < 1
+    result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds': 1})
+    assert result['metrics']['motion_region_iou_full']['value'] == pytest.approx(1)
+    assert result['metrics']['motion_region_iou_1s']['value'] == pytest.approx(1)
+    assert result['motion_region_settings']['full']['duration_seconds'] == 1
+    short = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds': 4})
+    assert short['metrics']['motion_region_iou_full']['status'] == 'insufficient_evidence'
+    assert short['metrics']['motion_region_iou_full']['reason'] == 'incomplete_motion_time_window'
+
+
 def test_real_media_fixed_window_keeps_condition_scores_when_continuation_short(clip):
     row, ctx, item, pair = clip
     result = ev.vp_case(row, ctx, item, pair, {"reference_duration_seconds": 4})
     assert result["sample_id"] == row["sample_id"]
     assert result["reference_alignment"] == "post_condition_fixed_real_time"
     assert result["pixel_settings"]["reference_duration_seconds"] == 4
-    for name in ("reference_ssim", "reference_psnr_db", "reference_foreground_ssim", "reference_foreground_psnr_db"):
+    for name in ("reference_ssim", "reference_psnr_db"):
         assert result["metrics"][name]["status"] == "insufficient_evidence"
         assert "incomplete_fixed_reference_window" in result["metrics"][name]["reason"]
     assert result["metrics"]["condition_ssim"]["status"] == "ok"
@@ -305,7 +331,7 @@ def test_real_media_fixed_window_keeps_condition_scores_when_continuation_short(
     json.dumps(result, allow_nan=False)
 
 
-def test_real_media_registered_native_alignment_and_reference_mask_only(clip):
+def test_real_media_native_pixel_alignment_independent_of_mask_failure(clip):
     row, ctx, item, pair = clip
     pair["generated"]["sha256"] = "invalid"
     result = ev.vp_case(row, ctx, item, pair, {'trajectory_duration_seconds':1})
@@ -315,8 +341,8 @@ def test_real_media_registered_native_alignment_and_reference_mask_only(clip):
     assert alignment["source_absolute_indices"][-1] == 21
     assert alignment["generated_indices"][-1] == 16
     assert 0 not in alignment["generated_indices"]
-    assert result["metrics"]["reference_foreground_ssim"]["status"] == "ok"
-    assert result["metrics"]["reference_foreground_psnr_db"]["diagnostic"]["positive_infinity_frames"] == 30
+    assert result["metrics"]["reference_ssim"]["status"] == "ok"
+    assert result["metrics"]["reference_psnr_db"]["diagnostic"]["positive_infinity_frames"] == 30
     assert result["metrics"]["trajectory_error_full"]["status"] == "failed"
     json.dumps(result, allow_nan=False)
 
@@ -500,7 +526,7 @@ def test_all_registered_rows_preserved_per_metric_and_group(tmp_path, clip, api)
         {},
         tmp_path / "evaluation",
     )
-    assert result["vp"]["protocol"] == "phyediting_vp_v3"
+    assert result["vp"]["protocol"] == "phyediting_vp_v4"
     for stage in ("vp", "qwen"):
         assert result[stage]["registered"] == 3 and result[stage]["scored"] == 1
         assert result[stage]["coverage_percent"] == pytest.approx(100 / 3)
