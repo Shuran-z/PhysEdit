@@ -1,20 +1,20 @@
 # 生成视频评测
 
-PhysEdit依次运行生成、SAM3.1单视角跟踪、重力测量及所选评测阶段。V衡量图像质量和视觉稳定性，P衡量物理参数控制，Qwen根据条件图与生成视频判断可见问题。默认评测重力；完整配置见[API示例](../../examples/phyediting/pipeline.ltx.example.json)和[本地Qwen示例](../../examples/phyediting/pipeline.qwen-local.example.json)。
+一键生成后，PhysEdit通过SAM3.1跟踪目标并估计重力，按配置执行V/P与Qwen评测。V衡量图像质量和视觉稳定性；P报告重力偏差、参数响应与排序；Qwen判断视频中的可见问题。初速度与动摩擦由[测量命令](MOTION_PARAMETERS.md)单独计算。
 
 | 评测类别 | 主要指标 | 观察范围 |
 | :---: | :---: | :---: |
 | 像素一致性 | 全图SSIM、PSNR | 条件帧、参考续段 |
 | 视觉稳定性 | 相机运动、背景闪烁、轮廓差异 | 生成全片、首1s |
 | 参考运动 | 运动区域IoU、轨迹位移误差 | 固定5s、首1s |
-| 参数控制 | 参数偏差、响应斜率、排序一致性 | 单例、完整受控组 |
+| 重力控制 | 请求值偏差、响应斜率、排序一致性 | 单例、完整受控组 |
 | Qwen判断 | 问题类别、严重程度、视频证据 | 条件图、生成全片 |
 
-重力对参考视频报告真值误差，对生成视频报告相对请求值的偏差。速度和摩擦通过[独立测量入口](MOTION_PARAMETERS.md)报告。各项结果分别包含误差或分数、可评分数量、覆盖率及逐例状态。
+参考视频使用重力真值评分，生成视频使用请求重力评分。各项结果报告分数、有效样本数、覆盖率和逐例状态。
 
 ## 配置评测
 
-在`pipeline.json`中选择阶段：
+在`pipeline.json`中选择评测阶段。下面同时启用重力、V/P和Qwen，完整示例见[API配置](../../examples/phyediting/pipeline.ltx.example.json)与[本地Qwen配置](../../examples/phyediting/pipeline.qwen-local.example.json)：
 
 ```json
 "evaluation": {
@@ -31,13 +31,15 @@ PhysEdit依次运行生成、SAM3.1单视角跟踪、重力测量及所选评测
 }
 ```
 
-生成入口包含`gravtrace`；已有视频可单独补评V/P或Qwen。`generation_runtime.gpu_devices`用于生成、跟踪和V/P掩膜，`generation_runtime.python`指定生成环境；控制器与SAM使用启动命令的Python。阶段名称和配置字段在执行前检查。
+`evaluation.metrics`支持三个配置键：`gravtrace`对应重力评测，`vp`对应视觉质量与参考运动指标，`qwen`对应视频判断。一键生成必须启用重力评测；省略`evaluation`时只执行该项。重力响应与排序根据已有估计和受控组文件汇总。已有视频可单独补评V/P或Qwen。
+
+`generation_runtime.gpu_devices`指定生成、跟踪和V/P使用的GPU；`generation_runtime.python`指定生成环境。控制器与SAM使用启动命令的Python。
 
 ## Qwen视频判断
 
 Qwen接收条件图和完整生成视频，判断形变、身份变化、穿透、相机运动及初始条件不一致。每类输出可观察性、存在性、0–3级严重度、文字依据和证据帧。时间性判断引用至少两个视频帧；初始条件判断使用第0帧与条件图对照。
 
-可选择支持原生`video_url`的Chat Completions API，或本地视觉语言模型。API发送条件图与视频容器；本地处理器将时序采样编码成视频张量。两种后端按实际模型版本与采样设置分别汇总。
+支持原生`video_url`的Chat Completions API及本地视觉语言模型。API接收条件图与视频文件；本地处理器将采样帧编码成视频张量。结果按模型版本与采样设置分别汇总。
 
 | 后端 | 配置项 | 运行方式 |
 | :---: | :---: | :---: |
@@ -72,9 +74,9 @@ API地址支持`/v1`基址或完整`/chat/completions`路径。服务需同时�
 
 依据名称包括`nonrigid_shape_change`、`object_replacement`、`unexplained_disappearance`、`impossible_overlap`、`static_scene_displacement`、`initial_state_mismatch`；无违规使用`visible_consistency`，不可观察使用`not_observable`。格式检查验证字段与帧引用，内容判断由Qwen给出。
 
-类别格式错误记入`category_errors`，其他有效类别独立统计；部分有效的回答记为`partial`，全部不可用记为`insufficient_evidence`。可观察且严重度≥2计明显违规，各类使用各自的有效分母。不可观察类别保留原因，零严重度不计作无违规。统计对象是模型判断，结果用`semantic_accuracy_validated=false`标识判断准确率的验证状态。
+类别格式错误记入`category_errors`，有效类别照常统计。部分有效的回答记为`partial`，全部不可用记为`insufficient_evidence`。可观察且严重度≥2计明显违规，各类使用各自的有效分母。不可观察类别保留原因，零严重度不计作无违规。`semantic_accuracy_validated=false`表示这些统计来自模型回答，尚未与人工标注核验准确率。
 
-超时、HTTP错误、回答截断、坏JSON及模型或视频信息漂移保留逐例失败状态。原回答、模型信息、提示与图像SHA、token用量随结果保存；密钥回显脱敏。子进程异常退出时，完整且有效的行保留，未写完或未返回的ID记录失败。重复或陌生ID、损坏中间行经过完整性检查。
+超时、HTTP错误、回答截断、坏JSON及模型或视频信息漂移保留逐例失败状态。原回答、模型信息、提示与图像SHA、token用量随结果保存；密钥回显脱敏。子进程异常退出时，完整且有效的行保留，未写完或未返回的ID记录失败。重复或陌生ID、损坏中间行会导致完整性检查失败。
 
 提示正文沿用当前事件模板或输入文本，以`builtin_event_template`、`registered_item_text`记录来源；固定相机与请求重力说明统一追加。`prompt_is_exact_official=false`记录这一文本组织方式。Qwen观察版本为`visible_video_full_v2`，结果按提示与回答格式版本保存。
 
@@ -132,9 +134,9 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 
 单例重力相对偏差为`100 × |estimated_g / requested_g − 1|`。有效估计报告均值、中位数和最大值；全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
 
-响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变重力。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计作排序未正确；恒定估计的rho为空。斜率与单例误差共同阅读。
+响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变重力。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计为排序错误；恒定估计的rho为空。斜率与单例误差共同阅读。
 
-每个item通过`parameter_response_registration`提供组文件路径与SHA。文件包含`group_id`、`varying_parameter="gravity"`、`fixed_controls`和`members=[{"item_id":"...","gravity":1.62}, ...]`。成员的事件、机位、对象、split和请求值逐项核验。缺源、失败、边界估计或未运行成员保留在组中，组结果记录证据不足；完整受控组等权汇总。
+每个item通过`parameter_response_registration`提供组文件路径与SHA。文件包含`group_id`、`varying_parameter="gravity"`、`fixed_controls`和`members=[{"item_id":"...","gravity":1.62}, ...]`。成员的事件、机位、对象、split和请求值逐项核验。含缺源、失败、边界估计或未运行成员的组保留全部成员，并标记证据不足。有效组等权汇总。
 
 ## 已有视频补评
 
@@ -144,7 +146,7 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --execute
 ```
 
-省略`--execute`查看计划。配置可只选择`qwen`或`vp`与`qwen`。入口读取已有预测和视频，在指定新目录保存逐例结果及`combined_summary.json`。
+省略`--execute`查看计划。配置可只选择`qwen`或`vp`与`qwen`。命令读取已有重力预测和视频，在新目录保存逐例结果及`combined_summary.json`。
 
 源运行需包含`registered.json`、`items.jsonl`、`observed_rows.jsonl`和`initial_jobs.jsonl`，并通过文件SHA、样本身份及路径检查。已有重力结果仍可展示，执行完成状态按本次选择的阶段统计。
 
@@ -159,4 +161,4 @@ physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --exec
 
 误差使用有效估计，覆盖率使用全部输入ID；兼容字段`failed`与`failure_rate_percent`统计全部未评分样本，原因区分执行失败、缺源和不适用。V/P各项报告自己的有效分母。Qwen违规比例使用格式有效且可观察的类别，覆盖定义记录在`coverage_basis`。
 
-`evaluation_failed`统计任一所选阶段未完整评分的案例并集。CLI非零退出时，已完成阶段的结果和所有样本状态保留。输入、生成和失败文件随运行目录保存。
+`evaluation_failed`统计任一所选阶段未完整评分的案例并集。CLI非零退出时，已完成阶段的结果和所有样本状态保留。原输入、生成视频和失败记录保留在运行目录中。

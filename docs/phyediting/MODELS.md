@@ -1,6 +1,6 @@
 # 模型与权重
 
-12个生成模型共用配置入口。选择模型后，程序读取相应帧数、帧率和采样设置：
+12个生成模型使用相同配置格式。以下命令列出模型及其采样设置：
 
 ```bash
 physedit models
@@ -15,10 +15,10 @@ physedit models --json
 | CogVideoX 1.5 | I2V | [Hugging Face](https://huggingface.co/zai-org/CogVideoX1.5-5B-I2V) |
 | Wan 2.2 5B | I2V | [Diffusers权重](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers) |
 | HunyuanVideo 1.5 | I2V | [480p步数蒸馏权重](https://huggingface.co/hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_i2v_step_distilled) |
-| Cosmos-Predict2 | 单帧续写 | [Hugging Face](https://huggingface.co/nvidia/Cosmos-Predict2-2B-Video2World) |
+| Cosmos-Predict2 | I2V（单帧条件） | [Hugging Face](https://huggingface.co/nvidia/Cosmos-Predict2-2B-Video2World) |
 | DynamiCrafter | I2V | [1024权重](https://huggingface.co/Doubiiu/DynamiCrafter_1024) |
 | VideoGPA | I2V | [Wan基座](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B) · [官方LoRA](https://github.com/Hongyang-Du/VideoGPA/releases/tag/v1.0.0-weights) |
-| PhysRVG | 静态前缀 | [Hugging Face](https://huggingface.co/HappyP4nda/PhysRVG) |
+| PhysRVG | I2V（静态前缀） | [Hugging Face](https://huggingface.co/HappyP4nda/PhysRVG) |
 | Cosmos3-Nano | I2V | [Hugging Face](https://huggingface.co/nvidia/Cosmos3-Nano) |
 | Wan 2.2 A14B | I2V | [Hugging Face](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B) |
 | PhysAlign社区适配 | I2V | [Wan基座](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B) · [项目](https://physalign.github.io/PhysAlign/) |
@@ -34,16 +34,16 @@ LTX使用2B非蒸馏权重；Hunyuan使用480p I2V步数蒸馏权重；Cosmos-Pr
 | `cogvideox_i2v` | 81 | 16 | 5.000 | 50 | 6 |
 | `wan_ti2v5b` | 121 | 24 | 5.000 | 50 | 5 |
 | `hunyuan15_i2v` | 121 | 24 | 5.000 | 12 | 1 |
-| `cosmos` | 81 | 16 | 5.000 | 继承调用器 | 7 |
+| `cosmos` | 81 | 16 | 5.000 | 由运行配置提供 | 7 |
 | `dynamicrafter_i2v` | 16 | 10 | 1.500 | 50 | 7.5 |
 | `videogpa_ti2v5b` | 81 | 24 | 3.333 | 50 | 5 |
 | `physrvg_ti2v5b` | 49 | 15 | 3.200 | 16 | 5（CFG关闭） |
 | `cosmos3_nano` | 189 | 24 | 7.833 | 35 | 6 |
 | `wan22_i2v_a14b` | 81 | 16 | 5.000 | 40 | 3.5 / 3.5 |
 | `physalign_wan22_i2v_a14b` | 81 | 16 | 5.000 | 40 | 3.5 / 3.5 |
-| `minimax_h3` | 124 | 24 | 5.125 | 50 | 继承权重 |
+| `minimax_h3` | 124 | 24 | 5.125 | 50 | 模型默认值 |
 
-时长为首帧到末帧的`(N−1)/fps`，帧数包含条件帧。生成长度由各模型配置决定，评测使用统一的真实时间范围：完整轨迹5s，短窗口1s。短于完整窗口的视频按该指标的实际覆盖情况报告。
+时长为首帧到末帧的`(N−1)/fps`，帧数包含条件帧。生成长度由各模型配置决定，评测使用统一的真实时间范围：轨迹比较5s，短窗口1s。短于完整窗口的视频按该指标的实际覆盖情况报告。
 
 <details>
 <summary>其他参数与推荐来源</summary>
@@ -66,7 +66,7 @@ LTX使用2B非蒸馏权重；Hunyuan使用480p I2V步数蒸馏权重；Cosmos-Pr
 
 ## 视频编辑
 
-完整V2V使用LTX的`LTXConditionPipeline`与Diffusers 0.39.0。复制[视频编辑示例](../../examples/phyediting/pipeline.ltx-v2v.example.json)，填写输入视频清单：
+视频编辑使用LTX的`LTXConditionPipeline`与Diffusers 0.39.0。复制[视频编辑示例](../../examples/phyediting/pipeline.ltx-v2v.example.json)，填写输入视频清单：
 
 ```json
 {
@@ -80,7 +80,7 @@ LTX使用2B非蒸馏权重；Hunyuan使用480p I2V步数蒸馏权重；Cosmos-Pr
 }
 ```
 
-`denoise_strength`控制编辑噪声，`conditioning_strength`控制视频条件约束。视频清单提供`item_id/video/video_sha256/fps/frames/start_frame`。输入按真实时间重采样，初始帧与条件图一致。I2V、完整V2V和静态前缀续写分别汇总。
+`denoise_strength`控制编辑噪声，`conditioning_strength`控制视频条件约束。视频清单提供`item_id/video/video_sha256/fps/frames/start_frame`。输入按真实时间重采样，初始帧与条件图一致。结果按图像条件、视频编辑和静态前缀续写分别汇总。
 
 ## 配置环境
 

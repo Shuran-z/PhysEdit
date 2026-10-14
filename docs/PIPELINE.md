@@ -1,6 +1,6 @@
 # 多机调度
 
-多机调度器按清单分配生成任务，回收视频并执行评测。单机使用[快速上手](phyediting/QUICKSTART.md)中的配置入口。
+多机调度器按清单分配生成任务，回收视频并执行评测。单机运行见[快速上手](phyediting/QUICKSTART.md)。
 
 ## 配置
 
@@ -49,6 +49,6 @@ physedit run "$BENCHMARK" --models all --watch 10
 physedit run "$BENCHMARK" --models ltx_i2v --limit 4
 ```
 
-`--watch`按分钟重复调度，`--limit`建立独立试运行目录，`--tag`指定名称。worker异常按配置的重启上限处理，`--retry`用于显式恢复。
+`--watch`按分钟重复调度，`--limit`建立独立试运行目录，`--tag`指定名称。任务进程异常退出后，按配置的重启次数上限处理；`--retry`用于手动重试。
 
 </details>

@@ -6,7 +6,7 @@ SAM3.1从单视角视频中跟踪指定物体，输出逐帧掩膜和图像边�
 
 准备[官方SAM源码](https://github.com/facebookresearch/sam3)与[SAM3.1权重](https://huggingface.co/facebook/sam3.1)，安装方式见[快速上手](QUICKSTART.md#安装)。
 
-环境激活脚本提供`PHYEDIT_SAM3_SOURCE`和`PHYEDIT_SAM31_CHECKPOINT`。独立跟踪使用同一环境。
+环境激活脚本提供`PHYEDIT_SAM3_SOURCE`和`PHYEDIT_SAM31_CHECKPOINT`。单独运行跟踪命令时使用同一环境。
 
 ## 准备与运行
 
@@ -43,7 +43,7 @@ physedit track run runs/tracking \
 | `prepared.json` | 输入任务与文件信息 |
 | `completed.json`、`failure.json` | 完成状态与异常原因 |
 
-文件关联视频SHA、模型版本和实际观测范围。完整生成流水线会自动准备跟踪任务并衔接评分，操作见[快速上手](QUICKSTART.md)。测量误差见[性能评测](validation.md)。
+文件关联视频SHA、模型版本和实际观测范围。生成流水线自动准备跟踪任务，再执行重力评分，操作见[快速上手](QUICKSTART.md)。测量误差见[性能评测](validation.md)。
 
 <details>
 <summary>依赖版本与边界测量</summary>
@@ -54,6 +54,6 @@ physedit track run runs/tracking \
 - checkpoint revision：`daa63191845a41281374e725f4c9e51c7a824460`
 - checkpoint SHA256：`0567debeec80ba4ac6369540c6c248025283cb3ff2b92827509e57e2b3541cb6`
 
-运行前检查上述文件及10份跟踪源码。图像边界使用`gravtrace.observations.refine_box`；四支撑不足时使用整数框。输入帧表与视频实际帧率共同确定观察时钟。
+运行前检查上述文件及10份跟踪源码。图像边界使用`gravtrace.observations.refine_box`；四条边界的像素位置未通过检查时采用整数像素框。输入帧表与视频实际帧率共同确定观察时钟。
 
 </details>

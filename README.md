@@ -1,6 +1,6 @@
 # PhysEdit
 
-物理视频生成与评测工具。支持I2V/V2V生成、SAM3.1单视角目标跟踪、重力与运动参数测量，以及视觉指标和Qwen视频评测。
+物理视频生成与评测工具，提供I2V/V2V生成、SAM3.1单视角跟踪、重力、初速度与动摩擦测量，以及视觉指标和Qwen视频判断。
 
 | 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
 | :---: | :---: | :---: | :---: | :---: |
@@ -16,7 +16,7 @@ physedit plan pipeline.json
 physedit run pipeline.json --execute
 ```
 
-路径和评测选项在配置中填写一次。结果默认写入`runs/pipeline`；输入准备见[快速上手](docs/phyediting/QUICKSTART.md)。
+配置文件集中填写路径和评测选项。一键流程执行生成、跟踪和重力评测，可同时启用V/P与Qwen；初速度与摩擦使用`physedit measure`。结果默认写入`runs/pipeline`，详见[快速上手](docs/phyediting/QUICKSTART.md)。
 
 | 使用指南 | 参数测量 | 数据与部署 |
 | :---: | :---: | :---: |

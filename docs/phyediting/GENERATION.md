@@ -1,6 +1,6 @@
-# 视频生成与参数评分
+# 视频生成与评测
 
-流水线从条件帧生成视频，跟踪目标，再测量请求参数的响应。模型、环境、提示和评测范围集中在配置文件中。
+从条件图或视频生成新视频，再跟踪目标、估计重力并执行所选V/P与Qwen评测。模型、环境、提示和评测范围集中在配置文件中。
 
 ## 运行
 
@@ -9,27 +9,27 @@ physedit plan pipeline.json
 physedit run pipeline.json --execute
 ```
 
-输入与配置见[快速上手](QUICKSTART.md)。运行依次完成输入准备、视频生成、媒体检查、SAM3.1跟踪、固定窗口参数评分和可选V/P、Qwen评测。
+输入与配置见[快速上手](QUICKSTART.md)。运行依次完成输入准备、视频生成、媒体检查、SAM3.1跟踪、固定窗口重力评分和可选V/P、Qwen评测。
 
-## 观察时间与场景条件
+## 视频时间与场景条件
 
-条件图取参考视频第23帧。生成帧对应的物理时间为：
+条件图取参考视频第23帧。生成帧与参考视频的时间对应关系为：
 
 ```text
 t = 23 / source_fps + generated_frame / output_fps
 ```
 
-观察窗口、物体几何与位姿、相机、角运动、质量和阻尼在评分前确定。初始线速度为待估参数，范围0–8m/s、仰角±89°；重力目标用于结果评分。非均匀源采样使用实际物理时间。
+评分前确定观察窗口、物体几何与位姿、相机、角运动、质量和阻尼。重力拟合同时估计辅助初速度，速度范围0–8m/s、仰角±89°；目标重力仅用于拟合后的评分。单独的初速度评测使用[速度测量方法](MOTION_PARAMETERS.md)。
 
-每个模型使用自己的生成帧数和帧率，参数比较采用相同的物理时间定义。帧数与时长见[模型说明](MODELS.md#采样参数)。
+各模型使用对应帧数和帧率，评测按视频秒数对齐。媒体时间与模拟时间的对应关系由数据来源提供。帧数与时长见[模型说明](MODELS.md#采样参数)。
 
 ## 输入与观测检查
 
-媒体检查完整视频的尺寸、帧数、帧率和时间戳。目标轨迹使用完整登记窗口，逐帧关联视频、对象和掩膜。所有输入样本保留在逐例结果中。
+媒体检查完整视频的尺寸、帧数、帧率和时间戳。目标轨迹使用预先确定的观察窗口，逐帧记录视频、对象和掩膜。所有输入样本保留在逐例结果中。
 
 | 状态 | 含义 |
 | :---: | :---: |
-| `ok` | 有效参数估计 |
+| `ok` | 有效重力估计 |
 | `missing_observation` | 窗口内缺少目标观测 |
 | `invalid_observation` | 目标框过小或不可用 |
 | `at_bound` | 拟合达到参数边界 |
@@ -51,13 +51,11 @@ failure_rate   = 1 − coverage
 
 ## 读取与补评结果
 
-`summary.json`给出综合统计，`predictions.jsonl`保存逐例估计，`evaluation/`保存V/P和Qwen输出。补评已有视频：
+`summary.json`给出综合统计，`predictions.jsonl`保存逐例重力估计与辅助拟合参数，`evaluation/`保存V/P和Qwen输出。补评已有视频：
 
 ```bash
 physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --execute
 ```
-
-速度与摩擦使用[独立测量入口](MOTION_PARAMETERS.md)。
 
 <details>
 <summary>底层命令与外部生成器</summary>
@@ -72,7 +70,7 @@ python scripts/phyediting_gen_summary.py --items items.jsonl --rows rows.jsonl \
 
 默认评分使用`--v0 agnostic --offset-mode anchor`，关闭自动接触裁窗。场景、模型和观测文件由SHA关联。
 
-外部生成器通过`generation_command`配置argv列表，支持`{manifest}`、`{run_dir}`和`{model_dir}`占位符。其输出经过相同媒体检查、目标跟踪和参数评分。
+外部生成器通过`generation_command`配置argv列表，支持`{manifest}`、`{run_dir}`和`{model_dir}`占位符。其输出经过相同媒体检查、目标跟踪和重力评分。
 
 生成媒体先写入`.partial.mp4`，完成检查后发布。已有结果、运行日志和中断产物保存在各自运行目录。
 
