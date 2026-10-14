@@ -22,7 +22,7 @@ GravTrace是项目中的重力测量模块，适用于自由落体、抛体和�
 输入采用JSONL，每行一个样本。长度单位为m，时间为s，速度为m/s；`truth`仅用于评分。
 
 | 字段 | 内容 |
-|---|---|
+| :---: | :---: |
 | `id`, `scenario` | 样本ID及`freefall`、`projectile`或`incline`运动类型 |
 | `fps`, `image_size` | 帧率及像素尺寸`[width, height]` |
 | `camera` | 4×4相机到世界变换`matrix_world`，相机沿−Z观察；`fx/fy`以图像宽/高归一化，`cx/cy`默认0.5 |
@@ -45,8 +45,8 @@ GravTrace是项目中的重力测量模块，适用于自由落体、抛体和�
 
 ```bash
 python -m pip install -e '.[test]'
-python -m gravtrace fit samples.jsonl -o predictions.jsonl --workers 16
-python -m gravtrace score samples.jsonl predictions.jsonl -o summary.json
+gravtrace fit samples.jsonl -o predictions.jsonl --workers 16
+gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ```
 
 `fit`在进入拟合前移除`truth`。`score`按来源和运动类型报告误差、失败率和覆盖率；覆盖惩罚均值在全部样本上计算`min(relative_error,1)`，失败或缺失估计记为1。`--root OLD=NEW`用于映射部署环境中的掩膜路径。

@@ -1,21 +1,20 @@
 # 生成视频评测
 
-`python -m physedit run phyediting` 依次执行 I2V/V2V 生成、单视角SAM3.1跟踪与重力测量、启用的 V/P 和 Qwen 阶段，最后汇总。评测选项对12个登记模型共用，模型输入模式仍仅允许 I2V/V2V。省略 `evaluation` 时沿用仅 GravTrace；完整评测配置见 [API 示例](../../examples/phyediting/pipeline.ltx.example.json)和[本地权重示例](../../examples/phyediting/pipeline.qwen-local.example.json)。
+PhysEdit依次运行生成、SAM3.1单视角跟踪、重力测量及所选评测阶段。V衡量图像质量和视觉稳定性，P衡量物理参数控制，Qwen根据条件图与生成视频判断可见问题。默认评测重力；完整配置见[API示例](../../examples/phyediting/pipeline.ltx.example.json)和[本地Qwen示例](../../examples/phyediting/pipeline.qwen-local.example.json)。
 
-| 阶段 | 输出 | 输入与范围 |
-| --- | --- | --- |
-| GravTrace | 请求重力相对偏差、失败率、覆盖率 | 原登记窗口内单视角观测；固定窗口重力测量 |
-| V：像素一致性 | 条件图与参考续段的全图 RGB SSIM/PSNR | 条件帧单独评分；续段按固定真实时间网格匹配原生时间戳 |
-| V：视觉稳定性 | 相机运动、背景闪烁、轮廓结构差异 | 完整生成片段及首一秒；目标掩膜及可用图像特征 |
-| P：参数控制 | 请求参数相对偏差、失败率、覆盖率；受控组内响应斜率、排序一致性及 Spearman rho | 参数测量结果；响应只用于同场景、同seed、不同重力的完整登记组 |
-| 参考运动辅助诊断 | 运动区域 mIoU、轨迹位移误差 | 两侧目标掩膜；统一固定5秒及首一秒的真实时间范围 |
-| Qwen | 五类可见问题的存在性、严重程度、文字依据、置信度、证据不足标记 | 条件图＋完整生成视频；本地视频张量或支持 video_url 的 API |
+| 评测类别 | 主要指标 | 观察范围 |
+| :---: | :---: | :---: |
+| 像素一致性 | 全图SSIM、PSNR | 条件帧、参考续段 |
+| 视觉稳定性 | 相机运动、背景闪烁、轮廓差异 | 生成全片、首1s |
+| 参考运动 | 运动区域IoU、轨迹位移误差 | 固定5s、首1s |
+| 参数控制 | 参数偏差、响应斜率、排序一致性 | 单例、完整受控组 |
+| Qwen判断 | 问题类别、严重程度、视频证据 | 条件图、生成全片 |
 
-视频解码、尺寸、帧率和时间戳检查属于输入验证。GravTrace对参考视频报告真值误差，对生成视频报告**请求重力相对偏差**。IoU和轨迹衡量参考运动差异，参数控制由反演结果、响应和排序报告。
+重力对参考视频报告真值误差，对生成视频报告相对请求值的偏差。速度和摩擦通过[独立测量入口](MOTION_PARAMETERS.md)报告。各项结果分别包含误差或分数、可评分数量、覆盖率及逐例状态。
 
-生成提示的正文保持原有版本。内置事件模板标为 `prompt_source_class="builtin_event_template"`，输入中提供的文本标为 `registered_item_text`；两者均追加固定相机与请求重力说明，`prompt_is_exact_official=false`。提示来源按上述字段记录。
+## 配置评测
 
-## 统一配置
+在`pipeline.json`中选择阶段：
 
 ```json
 "evaluation": {
@@ -26,125 +25,138 @@
     "model": "Qwen/Qwen3.5-9B",
     "base_url": "http://127.0.0.1:8000/v1",
     "api_key_env": "QWEN_API_KEY",
-    "timeout_seconds": 120,
     "max_new_tokens": 1024,
     "extra_body": {"chat_template_kwargs": {"enable_thinking": false}}
   }
 }
 ```
 
-`metrics` 显式选择阶段；未支持的名称、未知配置字段、已配置但未启用的阶段会报错。生成入口始终包含 `gravtrace`；只补评 V/P 或 Qwen 时使用下文 `evaluate`。`generation_runtime.gpu_devices` 同时用于生成、目标跟踪前端及 V/P 掩膜。`generation_runtime.python` 只指定生成模型环境；控制器及 SAM3.1 使用启动命令的 Python。
+生成入口包含`gravtrace`；已有视频可单独补评V/P或Qwen。`generation_runtime.gpu_devices`用于生成、跟踪和V/P掩膜，`generation_runtime.python`指定生成环境；控制器与SAM使用启动命令的Python。阶段名称和配置字段在执行前检查。
 
-### Qwen：兼容视觉 API
+## Qwen视频判断
 
-要求支持原生 `video_url` 的 Chat Completions 接口。`base_url` 可为 `/v1` 基址或完整 `/chat/completions` 地址，`model` 必须填写服务实际接受的模型名。服务需允许一个条件图 `image_url` 与完整视频 `video_url`，启用视频输入并返回 `choices[0].message.content` 中的 JSON 文本；纯文本或仅支持图片的服务不适用，不能自动退化成图片评测。请求为非流式、`temperature=0`；默认最多1024输出 token。按服务要求设置 `extra_body.enable_thinking` 或 `extra_body.chat_template_kwargs.enable_thinking`，不能覆盖模型、消息或其他评估参数。
+Qwen接收条件图和完整生成视频，判断形变、身份变化、穿透、相机运动及初始条件不一致。每类输出可观察性、存在性、0–3级严重度、文字依据和证据帧。时间性判断引用至少两个视频帧；初始条件判断使用第0帧与条件图对照。
 
-API 密钥只从 `api_key_env` 指定的环境变量读取，不写入 JSON 配置或结果。远程服务必须使用 HTTPS；本机 `localhost`、`127.0.0.1` 和 `::1` 可以使用 HTTP。配置不会自动启动服务或下载权重；执行时才向该端点发送条件图和完整生成视频的 base64 字节（最大128MiB视频）。视频解码和采样由服务决定，比较时固定服务的采样参数和模型版本。超时、HTTP 错误、重定向、返回截断/过滤、JSON 不符合格式、同次运行实际模型名变化均逐例记失败，不自动重试。
+可选择支持原生`video_url`的Chat Completions API，或本地视觉语言模型。API发送条件图与视频容器；本地处理器将时序采样编码成视频张量。两种后端按实际模型版本与采样设置分别汇总。
 
-结果保留声明模型名、服务返回模型名（若提供）、原回答、提示/图像 SHA 和数值 token 用量。格式不合法或被截断的文本回答同样保存于失败记录，并脱敏可能被服务回显的密钥；不计评分、不自动重试，不保存 HTTP 错误正文或传输头。结果按服务模型版本及本地/API后端分别汇总。
+| 后端 | 配置项 | 运行方式 |
+| :---: | :---: | :---: |
+| API | `model`、`base_url`、`api_key_env` | 条件图＋原生视频请求 |
+| 本地 | `model`、`model_dir`、`python`、`gpu_devices` | 官方模型类＋视频处理器 |
 
-### Qwen：已有本地权重
-
-将 `qwen` 替换为：
+本地配置示例：
 
 ```json
 "qwen": {
   "backend": "local",
   "model": "Qwen/Qwen3.5-9B",
-  "model_dir": "/absolute/path/Qwen3.5-9B",
-  "python": "/absolute/path/qwen-env/bin/python",
+  "model_dir": "/path/to/Qwen3.5-9B",
+  "python": "/path/to/qwen-env/bin/python",
   "gpu_devices": "0",
   "max_new_tokens": 1024
 }
 ```
 
-本地评估在独立进程中使用与实际 `model_type` 对应的官方条件生成类和 `AutoProcessor`、CUDA/BF16、SDPA、非 thinking、确定性解码；只读取 `model_dir` 已有权重，不允许远程代码或自动下载。进程串行运行，不与生成或 SAM 阶段并发；可指定另一个兼容环境，包路径由控制器传入。权重文件 SHA、Torch/Transformers 版本随结果保存；加载失败保留所有案例且只尝试加载一次。
+在Qwen环境安装`python -m pip install -e '.[judge]'`。本地入口支持Qwen2.5-VL、Qwen3-VL及Qwen3.5的官方条件生成类，含MoE变体；Transformers版本需包含所选权重的模型类。权重地址见[模型页](MODELS.md#跟踪与视频评测模型)。
 
-在独立 Qwen 环境安装本仓库的可选依赖：`python -m pip install -e '.[judge]'`。本地入口读取权重 `config.json` 的实际 `model_type`，支持 Qwen2.5-VL、Qwen3-VL（含 MoE）和 Qwen3.5（含 MoE）的官方条件生成类；不加载纯文本权重或远程自定义代码。Qwen2.5-VL 可使用 Transformers 4.51.3，更新模型须使用包含其官方类的版本，缺类会明确报错。旧 SAM/生成环境无需升级；例如已有 Qwen2.5-VL-3B 时，将 `model` 设为 `Qwen/Qwen2.5-VL-3B-Instruct`、`model_dir` 设为实际权重目录。本机 API 后端只用标准库 HTTP，无需安装 Qwen 权重或 SDK。实现依据 [Qwen2.5-VL 官方说明](https://huggingface.co/docs/transformers/v4.51.3/en/model_doc/qwen2_5_vl)和[Qwen3.5-9B 官方模型说明](https://huggingface.co/Qwen/Qwen3.5-9B)，执行环境按实际权重检查。
+<details>
+<summary>视频采样、API与回答格式</summary>
 
-### Qwen 的观察与判断口径
+本地默认2fps、最多64帧、`max_pixels=602112`，均匀覆盖第一帧至最后一帧，使用偶数采样帧。保存原生PNG，缩放由模型处理器完成；实际帧号、时间、有效采样率、量化误差、视频SHA、张量形状与`video_grid_thw`随结果记录。超出帧预算的片段报告输入错误，观察范围保持完整。处理器显式接收`videos`与采样fps，并检查`pixel_values_videos`和视频网格。
 
-协议 `visible_video_full_v2`：使用原生分辨率的声明条件图和完整生成视频，不限制为首秒。默认 `video_fps=2.0`、`max_video_frames=64`、`max_pixels=602112`，在运行前固定。视频处理必然涉及时序采样，但本地将采样序列编码为视频张量与视频 token，不作为彼此独立的图片消息。均匀覆盖第一帧至最后一帧，并用偶数帧避免模型暗中补帧；实际原生索引/时间、有效采样fps、时间量化误差、视频SHA、处理器张量形状及视频网格全部保存。长片超过帧预算整例拒绝，不只保留片头或自动缩短范围。源条件像素不一致同样拒绝。
+本地读取已有权重，使用CUDA/BF16、SDPA、非thinking和确定性解码。生成、SAM和Qwen阶段串行执行。模型文件SHA、Torch/Transformers版本与原回答保存在结果中。加载失败保留全部样本状态。
 
-本地保存原生PNG，不先压缩到224像素；尺寸缩放由模型处理器按已登记 `max_pixels` 完成。本地显式传入 `videos`、采样fps，并强制核验 `pixel_values_videos` / `video_grid_thw`。本地和API发送前共同核验条件图实际路径、像素SHA、视频SHA和登记的帧索引/时间，避免路径别名或时间登记漂移。API发送完整视频容器；本地与API使用同一提示和视频，但服务内部采样可能不同，两种后端分别记录采样设置和分数。原生视频API格式参见 [vLLM 官方说明](https://docs.vllm.ai/en/latest/features/multimodal_inputs/#video-inputs)。
+API地址支持`/v1`基址或完整`/chat/completions`路径。服务需同时接受`image_url`与`video_url`，返回`choices[0].message.content`中的JSON。请求非流式，`temperature=0`，默认最多1024输出token，视频上限128MiB。`extra_body`可配置服务的thinking选项；模型、消息与评测参数由入口统一提供。远程服务使用HTTPS，本机服务可使用HTTP。密钥从指定环境变量读取；条件图与视频按实际SHA和时间检查后发送。API内部采样由服务决定，比较时固定模型版本和采样参数。[视频API格式](https://docs.vllm.ai/en/latest/features/multimodal_inputs/#video-inputs)
 
-五类为 `abnormal_deformation`、`identity_change`、`interpenetration`、`camera_motion`、`condition_inconsistency`。回答按五类嵌套对象校验，提示中给出每类字段的类型与视频证据要求。每类包含 `assessable`、`present`、0–3级 `severity`、非空 `evidence`、`evidence_frames` 和 `basis`，全局保留 `confidence`、`insufficient_evidence`。时间性判断须引用至少两个已登记视频帧；初始条件一致性只允许引用第0帧并对照条件图，后续离桌/出画不能作为初始条件违规依据。
+五类字段为`abnormal_deformation`、`identity_change`、`interpenetration`、`camera_motion`、`condition_inconsistency`。每类包含`assessable`、`present`、`severity`、`evidence`、`evidence_frames`和`basis`；全局记录`confidence`与`insufficient_evidence`。依据区分刚体旋转与形变、遮挡与穿透、离画与身份变化。
 
-正例依据分别是 `nonrigid_shape_change`、`object_replacement` / `unexplained_disappearance`、`impossible_overlap`、`static_scene_displacement`、`initial_state_mismatch`。可判断的无违规用 `visible_consistency`；不可判断用 `not_observable` 并说明原因。判断区分刚体旋转与形变、遮挡与穿透、离画与身份变化。回答校验检查字段和帧引用，语义判断由Qwen给出。
+依据名称包括`nonrigid_shape_change`、`object_replacement`、`unexplained_disappearance`、`impossible_overlap`、`static_scene_displacement`、`initial_state_mismatch`；无违规使用`visible_consistency`，不可观察使用`not_observable`。格式检查验证字段与帧引用，内容判断由Qwen给出。
 
-类别字段、依据或证据帧不合规时，只将该类别标为未知，并在 `category_errors` 保存原因；完整原回答 `raw` 保留，其他合法类别仍可统计。任一类别未知则整例为 `partial`；全类未知为 `insufficient_evidence`。坏JSON、传输截断、模型漂移或视频证据漂移仍拒绝整例，不自动重试。`assessable=false` 的零严重度不是无违规，不进入该类违规率分母。各类有效且严重度≥2计明显违规，逐类报告分母/覆盖率；全部登记ID保留。
+类别格式错误记入`category_errors`，其他有效类别独立统计；部分有效的回答记为`partial`，全部不可用记为`insufficient_evidence`。可观察且严重度≥2计明显违规，各类使用各自的有效分母。不可观察类别保留原因，零严重度不计作无违规。统计对象是模型判断，结果用`semantic_accuracy_validated=false`标识判断准确率的验证状态。
 
-Qwen结果按提示和回答格式版本分别保存。`semantic_accuracy_validated=false`表示汇总统计模型回答，判断准确率另行评估。
+超时、HTTP错误、回答截断、坏JSON及模型或视频信息漂移保留逐例失败状态。原回答、模型信息、提示与图像SHA、token用量随结果保存；密钥回显脱敏。子进程异常退出时，完整且有效的行保留，未写完或未返回的ID记录失败。重复或陌生ID、损坏中间行经过完整性检查。
 
-## V/P 的计算与掩膜
+提示正文沿用当前事件模板或输入文本，以`builtin_event_template`、`registered_item_text`记录来源；固定相机与请求重力说明统一追加。`prompt_is_exact_official=false`记录这一文本组织方式。Qwen观察版本为`visible_video_full_v2`，结果按提示与回答格式版本保存。
 
-逐例辅助输出14项量：全图条件 SSIM/PSNR、全图参考续段 SSIM/PSNR，以及相机运动、背景闪烁、轮廓差异、运动区域 IoU、轨迹误差各自的 `full` / `1s` 版本。不再计算前景 SSIM/PSNR。完整片段和首秒分别汇总。SSIM和IoU越大越好，PSNR以dB计；其他差异量越小越好。参数控制统计另见下节。
+</details>
 
-像素评测使用RGB图像和真实时间对齐。固定 `scikit-image==0.24.0`，使用解码8-bit RGB、`data_range=255`。PSNR按三通道全部像素MSE计算；SSIM逐颜色通道计算后平均，Gaussian 11×11、σ=1.5、K₁=.01、K₂=.03、总体协方差，只统计完整窗口覆盖区域。参考/生成尺寸统一到源尺寸，使用 `INTER_AREA`，不作单应变换、动态裁剪或颜色归一化；尺寸与库版本随结果记录。[标准库参数](https://scikit-image.org/docs/0.24.x/api/skimage.metrics.html#skimage.metrics.structural_similarity)
+## V：图像与运动指标
 
-`reference_duration_seconds` 默认1.0、`reference_fps` 默认30，在配置中于执行前固定，所有案例共用。续段在条件时刻后 `1/fps, 2/fps, …, duration` 采样，时长×采样率须为正整数。按两侧实际解码时间戳分别取最近原生后续帧，等距时选较早帧；条件帧不参与续段。低原生fps会复用帧，逐对保存请求时刻、实际时刻、索引、最大采样时间差和唯一帧数，不插造图像，不拉伸时间。该对齐具有原生采样量化误差，时间量化误差随每项结果报告。
+全图SSIM和PSNR分别评估条件帧与参考续段。参考续段默认1s、30Hz，按真实视频时间戳匹配最近原生帧，等距时选择较早帧；条件帧单独统计。每条视频先对帧求平均，再对视频等权平均。原生采样带来的时间量化误差随结果报告。
 
-任一侧最后可用帧时间不足所登记时长，整个参考像素指标为 `insufficient_evidence`，不以共同短片段替换窗口；条件分数和其他可用指标仍保留。评测仅支持已通过完整时钟检查的固定帧率视频，缺失/重复/VFR时间戳拒绝评分。完整源/生成视频仍解码验证、留存，窗口外尾帧不删除。
+SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、闪烁和轮廓分别报告生成全片及首1s结果；运动IoU与轨迹分别使用固定5s及首1s窗口。
 
-这里的真实时间指视频容器的原生时间戳，不推断或修正未知的历史模拟步长；源视频时钟与物理时钟的对应仍由数据来源核验。
+| 指标 | 计算方式 | 有效观测要求 |
+| :---: | :---: | :---: |
+| 相机运动 | ORB/RANSAC后四角位移／图像对角线 | 有效配对≥50% |
+| 背景闪烁 | 配准后背景灰度残差／255 | 配对≥80%，背景>100px |
+| 轮廓差异 | 居中缩放后相对首帧的平均1−IoU | 目标≥10px，帧覆盖≥95% |
+| 运动区域IoU | 两侧相对条件掩膜的XOR区域并集IoU | 固定窗口，至少3次可见观测 |
+| 轨迹误差 | 相对初始位置的质心位移差／图像对角线 | 固定窗口，连续有效目标观测 |
 
-每条视频先对固定网格的逐帧分数求算术平均，再对视频等权平均。完全相同的帧 PSNR 为 `+∞`，JSON 用字符串 `"+inf"` 表示；不伪造100dB或丢弃该帧。算术平均中出现 `+∞` 时视频/组均值也为 `"+inf"`，同时报告无穷值帧数/案例数及中位数，`+∞` 不算失败。条件项单独报告，不混入参考续段均值。
+轨迹在相邻真实时间点间线性插值。运动IoU取最近原生掩膜；两侧都无运动时IoU为1。视频长度保持原值，评测使用统一秒数；窗口不足、出画和缺失目标各自保留不可评分原因。各项的分母根据实际必需观测独立计算。
 
+<details>
+<summary>像素计算与时间对齐</summary>
 
-- 相机运动：ORB/RANSAC 单应变换后，图像四角位移除以图像对角线，取中位数；有效配对覆盖率至少0.5。它是图像运动诊断，前景占优时可结合背景和Qwen结果判断镜头变化。
-- 背景闪烁：相邻帧配准，排除变换后的目标掩膜、15像素膨胀区及无效 padding；背景灰度残差除以255，有效配对覆盖率至少0.8且有效背景超过100像素。不使用百分位回退。
-- 轮廓差异：目标裁剪并居中缩放到128×128，计算相对首帧的平均 `1−IoU`；可见目标至少10掩膜像素，帧覆盖率至少0.95。
-- 运动区域 IoU：两侧采用相同的固定真实时长和30Hz时间网格，取最近原生掩膜，计算相对各自条件掩膜的 XOR 并集之间的 IoU。窗口内原生观测缺失则保留原因；不按各自完整片长比较。至少三个可见目标观测；无运动的两侧区域均为空时为1，分数描述运动范围的相似程度，时序变化由轨迹指标补充。
-- 轨迹误差：在相同真实时间网格上，用相邻原生目标质心线性插值；去除初始位置后，平均欧氏位移差除以源图像对角线。不拉伸片长、不做动态时间规整，不跨缺失目标补点。
+固定`scikit-image==0.24.0`，使用解码8-bit RGB及`data_range=255`。PSNR使用三通道全部像素MSE；SSIM逐通道计算后平均，Gaussian 11×11、σ=1.5、K₁=.01、K₂=.03、总体协方差，统计完整窗口覆盖区。两侧统一到源图像尺寸，使用`INTER_AREA`。像素分数直接比较完整图像；尺寸和库版本随结果记录。[SSIM参数](https://scikit-image.org/docs/0.24.x/api/skimage.metrics.html#skimage.metrics.structural_similarity)
 
-轮廓/运动区域/轨迹使用320×180掩膜，背景闪烁使用原媒体尺寸；源片段从登记条件帧开始，生成片段从首帧开始。相机运动、背景闪烁和轮廓的 `full` 覆盖生成全片，`1s` 覆盖首秒。IoU和轨迹的 `full` 固定5秒，`1s` 固定首秒；两者共用预登记的 `trajectory_duration_seconds` / `trajectory_sampling_fps`。不足完整窗口、出画或必需掩膜缺失时保留不可评分原因，不自动缩窗；原视频尾帧全部保留。
+续段取条件时刻后的`1/fps, 2/fps, …, duration`；时长与采样率乘积为正整数。低原生fps可能复用帧，记录请求时刻、实际时刻、帧号、最大时间差与唯一帧数。视频须通过完整固定帧率和时间戳检查；时长不足保留状态，条件项和其他有效指标分别计算。时间采用视频容器的原生时间戳，模拟步长与媒体时钟的对应由数据来源提供。
 
-默认 `mask_backend="sam31"` 为 V/P 单独运行SAM3.1单视角前端，获取源条件帧至源末帧及生成全片段的逐帧掩膜；这些观察不替换 GravTrace 的固定窗口。该阶段可能耗时，且需要可用的 SAM 环境/权重。该项读取完整目标掩膜；前端失败时像素项可保留，依赖掩膜的项分别记失败。
+相同帧的PSNR为`+∞`，JSON写作`"+inf"`。算术平均中的无穷值保持原值，同时报告无穷帧数、案例数和中位数。条件项与续段分开汇总。
 
-源视频与生成视频独立导出逐帧证据，每项指标只要求其登记范围和必需侧的掩膜。全图SSIM/PSNR不依赖目标掩膜；闪烁/轮廓只依赖生成侧；IoU/轨迹需要两侧。首秒后的缺失不影响完整首秒，首秒内缺失仍保留不可评分原因。部分指标有效不等于整例评分成功。
+相机运动取角点归一化位移的中位数。背景闪烁排除变换后的目标掩膜、15px膨胀区及无效padding。轮廓裁剪后居中缩放到128×128。轮廓、IoU和轨迹使用320×180掩膜，背景闪烁使用原媒体尺寸。
 
-已有掩膜可用 `{"mask_backend":"registered","mask_manifest":"/absolute/path/masks.jsonl"}`，只读取、不启动SAM。清单每行含 `sample_id` 和 `source` / `generated`，侧记录是 `{"path":"...npz","sha256":"..."}`。完整NPZ包含二值 `masks`（N×高×宽）、连续整数 `frames`、原生 `fps`、实际 `video_sha256`、`target_name`、`mask_method`。稀疏NPZ额外含完整 `scope_frames`、与其等长的 `unavailable_reasons`；`frames` / `masks` 只存实际可用观测，缺失帧必须有原因、可用帧原因必须为空。尺寸异常的单帧掩膜按缺失原因保留，不抹掉同侧其他完整范围。没有范围/缺失声明的截短文件仍拒绝，缺失不会补成零掩膜。源范围为条件帧至源末帧，生成范围为0至末帧；SHA、时钟、身份、尺寸、范围漂移仍拒绝。
+运动指标的时间网格由`trajectory_duration_seconds`和`trajectory_sampling_fps`在运行前统一指定。质心插值限定于相邻有效原生观测，缺失目标、外推及时间规整均不参与轨迹计算。实现见[pixel_metrics.py](../../physedit/pixel_metrics.py)和[vp_metrics.py](../../physedit/vp_metrics.py)。
 
-目标身份复核与文件校验分别处理。可通过 `evaluation.vp.mask_review_manifest` 添加独立的**否决**记录，不修改SAM或反演。该JSONL每行含 `sample_id`、`source` / `generated` 对应的 `{"path":"review.json","sha256":"..."}`。复核JSON包含 `video_sha256`、`target_name`、`rejected_frames`；每项须有 `frame_index`、非空 `reason` 和该帧真实 `mask_sha256`。视频、对象、帧、掩膜及复核文件逐一绑定，漂移拒绝；已确认错误目标的帧不能参与需要它的指标，其他登记范围独立计算。复核记录用于排除已确认的错误目标帧，未知和缺失状态保持原值；结果记录`identity_accuracy_certified=false`。复核发现的错误与原掩膜共同留存。
+</details>
 
-相机运动、闪烁、轮廓和IoU的实现见[vp_metrics.py](../../physedit/vp_metrics.py)。轨迹误差使用真实时间对齐：默认固定5s与1s、30Hz时间网格，原生目标质心在相邻真实时间点间线性插值，移除初始平移并按参考图像对角线归一化。不按视频长度归一化时间、不外推、不跨缺失目标补点；参考或生成未覆盖完整窗口则保留 `insufficient_evidence`，不能缩窗。`trajectory_duration_seconds` 与 `trajectory_sampling_fps` 必须在运行前登记，各模型采用同一值。轨迹诊断和参数测量使用各自的观察范围；像素实现见[pixel_metrics.py](../../physedit/pixel_metrics.py)。
+## 目标掩膜
+
+默认`mask_backend="sam31"`独立提取源条件帧至源末帧、生成首帧至末帧的目标掩膜。V/P观察与参数测量窗口分别保存。SSIM/PSNR使用图像；闪烁和轮廓需要生成侧掩膜；IoU和轨迹需要两侧掩膜。各项只检查自己的观察范围。
+
+已有掩膜可配置`{"mask_backend":"registered","mask_manifest":"/path/to/masks.jsonl"}`。身份复核通过`mask_review_manifest`提供，确认错误的目标帧从相关指标中排除，原掩膜与复核原因共同保留。
+
+<details>
+<summary>已有掩膜与身份复核格式</summary>
+
+清单每行包含`sample_id`与`source`／`generated`，侧记录为`{"path":"...npz","sha256":"..."}`。完整NPZ包含二值`masks`（N×高×宽）、连续整数`frames`、原生`fps`、`video_sha256`、`target_name`和`mask_method`。
+
+稀疏NPZ额外提供完整`scope_frames`及等长`unavailable_reasons`。`frames`和`masks`存储实际可用观测，缺失帧附原因，可用帧原因为空。异常尺寸的帧按缺失处理，其他有效范围保留；缺失观测保持缺失状态。视频SHA、身份、时钟、尺寸和范围逐项检查。
+
+身份复核清单每行含`sample_id`及两侧的`{"path":"review.json","sha256":"..."}`。复核JSON包含`video_sha256`、`target_name`和`rejected_frames`；每项提供`frame_index`、`reason`和真实`mask_sha256`。文件、帧和对象逐一绑定，相关范围分别评分。`identity_accuracy_certified=false`记录自动目标跟踪的身份验证状态。
+
+</details>
 
 ## P：参数误差、响应与排序
 
-`summary.json` 的重力误差、失败率和覆盖率仍读取参数测量结果。相对偏差为 `100 × |estimated_g / requested_g − 1|`；均值、中位数及最大值仅对有效反演报告，全部登记样本另报失败率、覆盖率与逐例原因。`at_bound` 原值和状态保留，不改写为已准确测得零重力，也不筛选 `estimated_g > 0.5` 来提高结果。
+单例重力相对偏差为`100 × |estimated_g / requested_g − 1|`。有效估计报告均值、中位数和最大值；全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
 
-`parameter_response` 只汇总显式登记的受控组：同场景、同机位/对象、同seed和生成模型，固定其他物理与生成设置，仅改变重力。不得从文件名猜同源组，不能把不同场景混在一起算相关性。每个源item可添加 `parameter_response_registration={"path":"/absolute/path/group.json","sha256":"..."}`；同组成员必须指向同一份文件，文件列出 `group_id`、`varying_parameter="gravity"`、非空 `fixed_controls` 与 `members=[{"item_id":"...","gravity":1.62}, ...]`。事件、机位、对象、split和登记重力逐成员一致性检查；SHA锁定这份输入，不代替原受控来源的科学核验。
+响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变重力。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计作排序未正确；恒定估计的rho为空。斜率与单例误差共同阅读。
 
-全部登记成员和同seed结果齐备后，分别输出：
+每个item通过`parameter_response_registration`提供组文件路径与SHA。文件包含`group_id`、`varying_parameter="gravity"`、`fixed_controls`和`members=[{"item_id":"...","gravity":1.62}, ...]`。成员的事件、机位、对象、split和请求值逐项核验。缺源、失败、边界估计或未运行成员保留在组中，组结果记录证据不足；完整受控组等权汇总。
 
-- **参数响应**：估计重力对请求重力的回归斜率，以及最高/最低档的估计重力差；理想斜率为1，但斜率正确仍可能有偏置，必须联合误差阅读。
-- **排序一致性**：不同请求重力档位之间，估计结果严格同向的成对比例。估计值相同计为未正确排序，不当作成功。
-- **Spearman rho**：组内秩相关，处理并列秩；至少三个不同重力档位才报告，恒定估计结果标为无变化，rho为空。
+## 已有视频补评
 
-缺源、失败、`at_bound`或成员未运行均保留在组中，并将该组标为证据不足，不只挑成功成员计算。响应和排序使用多个登记重力档位。各完整受控组等权汇总，未登记组逐例列出原因；这些组级量与逐例V/P辅助项分别报告，不新增反演模块。
-
-## 只补评既有生成产物
+在新输出目录评测已有视频：
 
 ```bash
-# 默认只打印计划，不生成、反演、加载模型或调用 API。
-python -m physedit evaluate phyediting --spec pipeline.json \
-  --run-dir runs/existing_generation --output-dir runs/new_evaluation
-
-# 显式执行选定指标；读取既有 predictions，不重新拟合。
-python -m physedit evaluate phyediting --spec pipeline.json \
-  --run-dir runs/existing_generation --output-dir runs/new_evaluation --execute
+physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --execute
 ```
 
-要求真实既有运行目录的 `registered.json`、`items.jsonl`、`observed_rows.jsonl` 和 `initial_jobs.jsonl`；原清单 SHA、全量身份分母及源/模型路径绑定一致。输出目录必须为新的。可只设 `metrics=["qwen"]` 或 `["vp","qwen"]`；未请求 GravTrace 时已有重力结果仍展示，但不用于综合完成状态。缺失预测不补造。
+省略`--execute`查看计划。配置可只选择`qwen`或`vp`与`qwen`。入口读取已有预测和视频，在指定新目录保存逐例结果及`combined_summary.json`。
 
-## 汇总与验证范围
+源运行需包含`registered.json`、`items.jsonl`、`observed_rows.jsonl`和`initial_jobs.jsonl`，并通过文件SHA、样本身份及路径检查。已有重力结果仍可展示，执行完成状态按本次选择的阶段统计。
 
-新生成运行的 `summary.json` 保留原重力统计，并在 `evaluations.vp` / `evaluations.qwen` 增加独立汇总；各阶段按全登记分母报告成功、不可评分数、覆盖率、失败率及 `split` / `event` / `camera_id` / `gravity_truth` 分组。V/P 每个量另有自己的可评分分母，视频等权，并按 `unscored_by_status` 区分执行失败/证据不足，保留原ID与原因。兼容字段 `failed` / `failure_rate_percent` 表示全部未评分样本，不只软件异常；缺源和不适用不会当作零误差。Qwen 明显违规比例仅用格式有效且证据充分的记录。`evaluation_failed` 是任一请求阶段未完整评分的案例并集；CLI返回非零时，其他阶段已有结果仍保留。
+## 结果文件
 
-逐例文件为 `evaluation/vp_results.jsonl`、`evaluation/qwen_results.jsonl`；掩膜清单、Qwen 抽帧/提示 SHA、原回答和模型信息也保留。只评测入口在独立输出目录保存同名文件及 `combined_summary.json`。失败、缺源、不适用、证据不足和 `at_bound` 均保留原ID和原因，不填零误差。本地Qwen子进程异常退出时，完整写出的逐例结果仍经原检查后保留；未写完的尾行和未返回的ID记录失败，保留原JSONL及进程退出码，不自动重试。重复/陌生ID、中间损坏行或正常退出却JSON损坏仍拒绝。
+| 文件 | 内容 |
+| :---: | :---: |
+| `summary.json` | 各阶段、集合及场景分组统计 |
+| `evaluation/vp_results.jsonl` | 逐样本V/P指标与覆盖情况 |
+| `evaluation/qwen_results.jsonl` | 逐样本判断、依据与状态 |
+| `combined_summary.json` | 已有视频补评的综合结果 |
 
-Qwen 汇总标注 `coverage_basis="category_valid_and_model_reported_assessability"` 和 `semantic_accuracy_validated=false`：覆盖率统计格式有效且模型判定可观察的类别，判断准确率单独评估。
+误差使用有效估计，覆盖率使用全部输入ID；兼容字段`failed`与`failure_rate_percent`统计全部未评分样本，原因区分执行失败、缺源和不适用。V/P各项报告自己的有效分母。Qwen违规比例使用格式有效且可观察的类别，覆盖定义记录在`coverage_basis`。
 
-模型输入模式、对应权重和运行状态见[MODELS.md](MODELS.md)。各版本结果按参数、视频时钟和评测设置分别保存。
-
-速度和摩擦通过[独立测量入口](MOTION_PARAMETERS.md)报告，默认生成评测使用重力指标。
+`evaluation_failed`统计任一所选阶段未完整评分的案例并集。CLI非零退出时，已完成阶段的结果和所有样本状态保留。输入、生成和失败文件随运行目录保存。

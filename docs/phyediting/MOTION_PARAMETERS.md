@@ -5,8 +5,8 @@
 ## 速度及参考时刻
 
 ```bash
-python scripts/phyediting_motion_parameters.py velocity \
-  runs/benchmark_gravity_v1/items.jsonl frozen_predictions.jsonl velocity_result.json
+physedit measure velocity \
+  items.jsonl predictions.jsonl velocity_result.json
 ```
 
 该命令将已有重力输出中的`speed/angle/azimuth`转换为世界坐标系速度向量。评分目标为同一物体在声明初始状态时刻的线速度，分别计算模长相对误差、向量相对误差和绝对误差（m/s）。零目标按绝对误差报告，仍计入覆盖率分母。
@@ -14,26 +14,25 @@ python scripts/phyediting_motion_parameters.py velocity \
 ## 运动模型与测量入口
 
 | 命令 | 使用条件 | 测量方式 |
-|---|---|---|
+| :---: | :---: | :---: |
 | `kinematic-velocity` | 来源明确声明运动平面 | 在平面内拟合速度与轨迹曲率 |
 | `coverage-velocity` | 登记初始状态及真实观察时钟 | 使用平面分支，或尝试无平面约束三维拟合 |
 | `can-pixel-velocity` | 已登记罐体和充分采样的圆形立体几何 | 掩膜矩、相邻帧光流与轮廓一致性 |
 | `book-pixel-velocity` | 已登记可视书本几何，至少8个原观察帧 | 可见轮廓矩、材料点光流与遮挡处理 |
 
 ```bash
-python scripts/phyediting_motion_parameters.py kinematic-velocity registered_inputs.jsonl result.json
-python scripts/phyediting_motion_parameters.py coverage-velocity registered_inputs.jsonl result.json
-python scripts/phyediting_motion_parameters.py can-pixel-velocity registered_pixel_inputs.jsonl result.json
-python scripts/phyediting_motion_parameters.py book-pixel-velocity registered_pixel_inputs.jsonl result.json
+physedit measure coverage-velocity inputs.jsonl velocity_result.json
 ```
 
-每行包括`id`、`sample`、`saved_gravity_prediction`、评分用`target_v0`和`plane_registration={"path":"/absolute/path/planes.json","sha256":"..."}`。来源登记绑定样本SHA、header/state文件及SHA、物体身份、初始状态帧和观察帧。参考速度在拟合完成后才用于评分。
+命令中的`coverage-velocity`可替换为表中其他测量方式。每行包括`id`、`sample`、`saved_gravity_prediction`、评分用`target_v0`和`plane_registration={"path":"/absolute/path/planes.json","sha256":"..."}`。来源登记绑定样本SHA、header/state文件及SHA、物体身份、初始状态帧和观察帧。参考速度在拟合完成后才用于评分。
 
 平面方向来自声明的驱动方向，仅使用方向信息；多个声明方向须平行。来源位置用于核验2mm平面范围，拟合使用像素观测和初始几何。平面入口要求保存的时间偏移为零。三维入口通过`source_initial_frame`保留声明初始时刻，观察首帧可晚于该时刻；缺帧按真实时间间隔处理，并报告`source_observation_gap_count`。
 
 速度轨迹单独拟合曲率，保存的重力用于初始化。平面分支采用0.25s时间权重与MAD稳健尺度（下限0.5px），三维分支采用固定1px尺度。曲率作为速度测量的辅助参数输出，辅助曲率与重力测量结果分别保存。
 
-### 像素与几何登记
+<details>
+<summary>像素与几何输入格式</summary>
+
 
 像素分支增加`pixel_registration={"path":"/absolute/path/pixels.json","sha256":"..."}`。登记行包含`id`、`sample_sha256`、`cache_path`、`cache_sha256`、`frames`；每帧包含`frame`、`bgr_sha256`、`mask_path`、`mask_file_sha256`。`rgb_<frame>`缓存保存BGR数组，像素SHA与压缩掩膜文件SHA分别校验。每条测量使用一个机位的原观察帧和秒数。
 
@@ -45,10 +44,12 @@ python scripts/phyediting_motion_parameters.py book-pixel-velocity registered_pi
 
 模型由预先登记的来源和几何确定。像素分支结果另存，拟合失败或不适用时保留原估计；汇总列出各分支的点值数量和失败数量。速度大小和三维向量误差分别报告。
 
+</details>
+
 ## 动摩擦
 
 ```bash
-python scripts/phyediting_motion_parameters.py friction registered_friction_inputs.jsonl friction_result.json
+physedit measure friction registered_friction_inputs.jsonl friction_result.json
 ```
 
 每行包括`id`、`measurement`及评分目标`target_effective_friction`。测量输入为单视角`boxes_xyxy`、`times_s`、相机与图像尺寸、初始位置、轮廓点、下坡方向、坡角、已知重力及线性阻尼（1/s）。目标有效摩擦系数只用于评分。

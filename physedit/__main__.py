@@ -1,8 +1,9 @@
 """PhysEdit: physical video generation, tracking and evaluation.
 
-    python -m physedit run phyediting --spec pipeline.json --run-dir runs/new_generation
-    python -m physedit status phyediting --run-dir runs/new_generation
-    python -m physedit models --json
+    physedit plan pipeline.json
+    physedit run pipeline.json --execute
+    physedit status runs/pipeline
+    physedit models --json
 
 Multi-host tasks use benchmark keys declared in PHYSEDIT_FLEET_CONFIG.
 """
@@ -16,7 +17,41 @@ from . import config
 from .driver import HUB_DIR, Driver
 
 
+def _short_command(argv):
+    """Expand convenient local commands into the existing explicit CLI."""
+    if not argv:
+        return argv
+    command = argv[0]
+    if command == "plan":
+        if "--execute" in argv:
+            raise ValueError("plan does not execute; use run with --execute")
+        argv = ["run", *argv[1:]]
+        command = "run"
+    if command in ("run", "evaluate") and len(argv) > 1 and argv[1].lower().endswith(".json"):
+        from pathlib import Path
+        spec, extra = argv[1], argv[2:]
+        expanded = [command, "phyediting", "--spec", spec, *extra]
+        if command == "run" and not any(a == "--run-dir" or a.startswith("--run-dir=") for a in extra):
+            expanded += ["--run-dir", str(Path("runs") / Path(spec).stem)]
+        return expanded
+    if command == "status" and len(argv) > 1 and not argv[1].startswith("-") and argv[1] not in config.BENCHMARKS:
+        return ["status", "phyediting", "--run-dir", argv[1], *argv[2:]]
+    return argv
+
+
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] in ("track", "measure"):
+        if argv[0] == "track":
+            from scripts.sam31_frontend import main as entry
+        else:
+            from scripts.phyediting_motion_parameters import main as entry
+        original_argv = sys.argv
+        try:
+            sys.argv = ["physedit " + argv[0], *argv[1:]]
+            return entry()
+        finally:
+            sys.argv = original_argv
     p = argparse.ArgumentParser(prog="physedit", description="Generate and evaluate video models on a PhysEdit benchmark.",
                                 formatter_class=argparse.RawDescriptionHelpFormatter, epilog=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -38,13 +73,22 @@ def main(argv=None):
                            help="restart workers that hit the restart limit and rerun failed evaluation stages")
     model_parser = sub.add_parser("models", help="list the registered one-click models")
     model_parser.add_argument("--json", action="store_true", help="sampling settings and native clock")
+    sub.add_parser("plan", help="inspect a local pipeline configuration")
+    sub.add_parser("track", help="SAM3.1 target tracking; use track --help")
+    sub.add_parser("measure", help="initial-speed and friction measurements; use measure --help")
     evaluation=sub.add_parser('evaluate',help='Evaluate existing PhyEditing media; no generation or new gravity fit')
     evaluation.add_argument('benchmark',choices=['phyediting'])
     evaluation.add_argument('--spec',required=True)
-    evaluation.add_argument('--run-dir',required=True)
-    evaluation.add_argument('--output-dir',required=True)
+    evaluation.add_argument('--run-dir','--run',required=True)
+    evaluation.add_argument('--output-dir','--out',required=True)
     evaluation.add_argument('--execute',action='store_true')
+    try:
+        argv = _short_command(argv)
+    except ValueError as error:
+        p.error(str(error))
     a = p.parse_args(argv)
+    if a.cmd == 'plan':
+        p.error('plan requires a JSON configuration: physedit plan pipeline.json')
 
     if a.cmd=='evaluate':
         import json
