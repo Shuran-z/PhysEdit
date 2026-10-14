@@ -194,7 +194,12 @@ def fit_sliding_friction(sample):
                 or not np.isfinite(times).all() or not np.isfinite(boxes).all()
                 or np.any(np.diff(times) <= 0) or np.any(boxes[:, 2:] <= boxes[:, :2])):
             raise ValueError('missing_or_invalid_fixed_window_observations')
-        times = times-times[0]
+        initial_time = float(sample.get('initial_time_s', times[0]))
+        if not math.isfinite(initial_time) or initial_time > times[0]:
+            raise ValueError('invalid_sliding_initial_state_time')
+        # Keep the declared pose at its actual time, even when the first model
+        # observation lands between source frames. The default remains exact.
+        times = times-initial_time
         if np.max(np.linalg.norm(boxes[:, :2]-boxes[0, :2], axis=1)) < 3.:
             out = dict(status='unidentifiable', reason='static_or_below_3px_motion',
                        friction=None, static_motion_is_not_exact_kinetic_friction=True)

@@ -536,7 +536,7 @@ def summarize(rows, records, kind, items=None):
 
     result = stats(records)
     result["groups"] = {}
-    for key in ("split", "event", "camera_id", "gravity_truth"):
+    for key in ("split", "event", "camera_id", "gravity_truth", "mode"):
         groups = {}
         for row, record in zip(rows, records):
             value = row.get(key, items.get(row.get("item_id"), {}).get(key, "unspecified"))
@@ -568,13 +568,13 @@ def read_local_responses(path, expected_ids, returncode):
                            completed_response_ids=list(responses))
 
 
-def run_additional(spec, rows, items, initial, root):
+def run_additional(spec, rows, items, initial, root, *, gravity_predictions=None, tracking_root=None):
     """Existing/generated media only. Each stage fails independently per original ID."""
     root = Path(root)
     root.mkdir(parents=True, exist_ok=False)
     evaluation = spec.get("evaluation", {"metrics": ["gravtrace"]})
     enabled = evaluation["metrics"]
-    if not set(enabled) & {"vp", "qwen"}:
+    if not set(enabled) & {"vp", "qwen", "velocity", "friction"}:
         return {}
     contexts = {}
     failures = {}
@@ -583,6 +583,12 @@ def run_additional(spec, rows, items, initial, root):
             contexts[row["sample_id"]] = context(row)
         except Exception as error:
             failures[row["sample_id"]] = type(error).__name__ + ": " + str(error)
+    from .parameter_evaluation import snapshot_inputs
+    try:
+        snapshot_inputs(spec, root/'parameter_inputs')
+    except (OSError, ValueError, KeyError, TypeError):
+        # Parameter stages below retain the binding error on each original ID.
+        pass
     dump(
         root / "registered.json",
         dict(
@@ -594,6 +600,10 @@ def run_additional(spec, rows, items, initial, root):
         ),
     )
     summaries = {}
+    if set(enabled) & {'velocity', 'friction'}:
+        from .parameter_evaluation import run as measure_parameters
+        summaries.update(measure_parameters(spec, rows, items, initial, root,
+                                            gravity_predictions, tracking_root, contexts, failures))
     if "vp" in enabled:
         vp = evaluation.get("vp", {})
         entries = {}
@@ -790,6 +800,30 @@ def run_additional(spec, rows, items, initial, root):
     return summaries
 
 
+def physical_parameters(gravity, extra, metrics):
+    """Parallel physical measurements, with the same counts and error names."""
+    output = {}
+    for key, metric, source in [('gravity', 'gravtrace', gravity),
+                                 ('friction', 'friction', extra.get('friction')),
+                                 ('initial_velocity', 'velocity', extra.get('velocity'))]:
+        if metric not in metrics or source is None:
+            continue
+        names = ('registered', 'scored', 'failed', 'coverage_percent', 'failure_rate_percent',
+                 'mean_error_percent', 'median_error_percent', 'p95_error_percent',
+                 'max_error_percent', 'failures', 'status_counts', 'groups', 'parameter_response')
+        record = {name: source.get(name) for name in names}
+        record['point_estimates'] = source.get('point_estimates', source.get('scored'))
+        record['point_coverage_percent'] = source.get('point_coverage_percent', source.get('coverage_percent'))
+        record['unit'] = {'gravity': 'm/s^2', 'friction': 'dimensionless', 'initial_velocity': 'm/s'}[key]
+        for name in ('static_bounds', 'point_or_bound_coverage_percent', 'zero_target_count',
+                     'zero_target_mean_absolute_error', 'mean_absolute_error',
+                     'vector_mean_error_percent', 'vector_max_error_percent'):
+            if name in source:
+                record[name] = source[name]
+        output[key] = record
+    return output
+
+
 def attach_summary(gravity, extra, metrics):
     result = dict(gravity, evaluation_metrics=metrics, evaluations=extra)
     failed = (
@@ -799,6 +833,7 @@ def attach_summary(gravity, extra, metrics):
     )
     for stage in extra.values():
         failed.update(f["sample_id"] for f in stage["failures"])
+    result["physical_parameters"] = physical_parameters(gravity, extra, metrics)
     result["evaluation_failed"] = len(failed)
     result["all_requested_metrics_complete"] = not failed
     return result
@@ -830,8 +865,10 @@ def existing_run(spec, run_dir, output_dir, execute=False):
         or {r["item_id"] for r in rows} != set(items)
     ):
         raise ValueError("existing_run_denominator_mismatch")
+    from .parameter_evaluation import plan_inputs
+    parameter_inputs = plan_inputs(spec, items)
     plan = dict(
-        registered=len(rows),
+        registered=len(rows), parameter_inputs=parameter_inputs,
         evaluation_metrics=metrics,
         vp_pixel_settings=pm.settings(spec.get("evaluation", {}).get("vp")) if "vp" in metrics else None,
         execution_requested=False,
@@ -849,7 +886,8 @@ def existing_run(spec, run_dir, output_dir, execute=False):
     gravity = report(rows, predictions, items)
     initial = {r["id"]: r for r in read_rows(run / "initial_jobs.jsonl")}
     result = attach_summary(
-        gravity, run_additional(spec, rows, items, initial, Path(output_dir)), metrics
+        gravity, run_additional(spec, rows, items, initial, Path(output_dir),
+                                gravity_predictions=predictions, tracking_root=run/"sam31"), metrics
     )
     dump(Path(output_dir) / "combined_summary.json", result)
     return result

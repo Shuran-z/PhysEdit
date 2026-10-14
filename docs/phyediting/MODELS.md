@@ -1,52 +1,125 @@
-# 生成模型与采样参数
+# 模型与权重
 
-12个模型接入统一入口；I2V 与完整 V2V 编辑分别登记、分别汇报。模型参数按对应权重登记，运行状态与接口检查分别列出。
+12个生成模型使用相同配置格式。以下命令列出模型及其采样设置：
 
-## 权重与参数
-
-采样参数区分官方模型配置、API默认值、官方示例和适配设置。下表列出一键入口使用的参数；步数、CFG、flow shift和LoRA强度分别控制不同的采样环节，更换权重时按其配置重新登记。`python -m physedit models --json` 输出可核对的全部参数、条件模式与时间范围。
-
-| 模型键／对应权重 | 帧数／fps；首末帧跨度 | 步数／CFG；其他参数 | 来源与适用范围 |
-|---|---|---|---|
-| `ltx_i2v`／LTX-Video-2B 非蒸馏版 | 161/25；6.4s | 50/3；显式 `frame_rate=25` | [Diffusers 0.39 LTX API](https://github.com/huggingface/diffusers/blob/v0.39.0/src/diffusers/pipelines/ltx/pipeline_ltx_condition.py) 默认值；不适用于13B蒸馏版 |
-| `cogvideox_i2v`／CogVideoX1.5-5B-I2V | 81/16；5s | 50/6 | [官方仓库](https://github.com/zai-org/CogVideo)、[权重卡](https://huggingface.co/THUDM/CogVideoX1.5-5B-I2V)；仓库1.5规格为16fps，权重卡示例导出8fps存在差异，采用仓库规格并记录实际时钟 |
-| `wan_ti2v5b`／Wan2.2-TI2V-5B | 121/24；5s | 50/5；shift=5 | [官方5B配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_ti2v_5B.py)；通过图像条件接口调用，排除T2V |
-| `hunyuan15_i2v`／480p I2V step-distilled | 121/24；5s | 12/1；shift=7 | [官方变体推荐](https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5#inference-configurations)；CFG-distilled版对应50/1、shift=5 |
-| `cosmos`／Cosmos-Predict2-2B-Video2World 16fps | 81/16；5s | CFG=7；步数继承本机producer | [官方Video2World](https://github.com/nvidia-cosmos/cosmos-predict2/blob/main/examples/video2world.py)；本机helper未提供步数覆盖，须另核验其版本；单帧前缀续写 |
-| `dynamicrafter_i2v`／DynamiCrafter-1024 | 16/10；1.5s | 50/7.5；eta=1、rescale=.7、trailing | [官方1024脚本](https://github.com/Doubiiu/DynamiCrafter/blob/main/scripts/run.sh) 的FS=10表示模型FPS；[保存代码](https://github.com/Doubiiu/DynamiCrafter/blob/main/scripts/evaluation/inference.py)使用8fps，适配器保留原文件并以10fps写出相同16帧，禁止补帧 |
-| `videogpa_ti2v5b`／VideoGPA Wan2.2-TI2V-5B LoRA | 81/24；3.333s | 50/5；shift=5、LoRA=.2 | [官方推理脚本](https://github.com/Hongyang-Du/VideoGPA/blob/main/generate/Wan2.2-TI2V-5B.py) 的默认参数 |
-| `physrvg_ti2v5b`／PhysRVG Wan2.2-TI2V-5B LoRA | 49/15；3.2s | 16/5；`do_cfg=false` | 本地I2V适配值；[官方README](https://github.com/ant-research/PhysRVG)的49/15、8步示例是V2V强化学习训练，I2V使用表中适配设置；输入为五个静态条件帧 |
-| `cosmos3_nano`／Cosmos3-Nano | 189/24；7.833s | 35/6；flow_shift=10 | [官方I2V示例](https://huggingface.co/nvidia/Cosmos3-Nano) |
-| `wan22_i2v_a14b`／Wan2.2-I2V-A14B | 81/16；5s | 40/(3.5,3.5)；shift=5 | [官方A14B配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_i2v_A14B.py)及shared_config；高低噪声CFG分别登记 |
-| `physalign_wan22_i2v_a14b`／社区PhysAlign转换适配器 | 81/16；5s | 40/(3.5,3.5)；shift=5 | 使用Wan基座配置；[PhysAlign项目](https://physalign.github.io/PhysAlign/)转换权重另行登记，转换来源及LoRA合并需单独核验 |
-| `minimax_h3`／MiniMax-H3 FL2VA | 124/24；5.125s | 本地runner 50步；CFG继承权重pipeline | [官方权重卡](https://huggingface.co/MiniMaxAI/MiniMax-H3)支持24fps，公开卡未规定该50步为统一推荐，CFG由权重pipeline提供 |
-
-帧数包含条件帧，物理比较时长为 `(N-1)/fps`，容器时长为`N/fps`。采样数量无需全部相同，但评分时间范围必须相同。轨迹默认比较固定5s，并另报1s；短于5s的模型将完整窗口指标记为覆盖不足，首秒指标独立计算。新参数只用于新运行目录，旧媒体、原失败与原记录不改写，也不与新时钟混合汇总。
-
-画布仍是本benchmark的按宽高比设置，可用 `canvas` 显式登记；各权重的原生分辨率另行登记。Wan 5B官方介绍为720p，DynamiCrafter固定576×1024，其余变体的尺寸约束以对应API为准。画布、权重路径、模型环境和实际解码时钟均记录在运行产物中。共同480p设置用于统一画布，原生分辨率与尺寸约束由各权重接口规定。
-
-## 真正的视频编辑
-
-当前完整 V2V 编辑入口为 `model=ltx_i2v`、`conditioning_mode=v2v`，实际加载 `LTXConditionPipeline`，使用原非蒸馏LTX权重。生成环境需要提供该类及 `video`、`frame_index`、`strength`、`denoise_strength`、`frame_rate` 参数；缺少接口直接拒绝，不退回I2V或T2V。已核对 Diffusers 0.39.0 官方源码接口；SAM3.1环境不随之升级。可用 `scripts/setup_ltx_v2v_env.sh --python CUDA_BASE_PYTHON --env-dir NEW_ENV_DIR` 建立独立生成环境；脚本只安装生成适配器版本并核对CPU接口，不加载权重或启动GPU。Diffusers 0.39.0的完整编辑接口已通过CPU导入检查；0.33.1缺少所需去噪参数。
-
-额外配置：
-
-```json
-{"conditioning_mode":"v2v","v2v":{"manifest":"/absolute/path/video_inputs.jsonl","manifest_sha256":"SHA256_OF_MANIFEST","denoise_strength":0.6,"conditioning_strength":0.7}}
+```bash
+physedit models
+physedit models --json
 ```
 
-每行明确关联原item：
+## 权重地址
+
+| 模型 | 输入方式 | 权重与资源 |
+| :---: | :---: | :---: |
+| LTX-Video 2B | I2V / V2V | [Hugging Face](https://huggingface.co/Lightricks/LTX-Video) |
+| CogVideoX 1.5 | I2V | [Hugging Face](https://huggingface.co/zai-org/CogVideoX1.5-5B-I2V) |
+| Wan 2.2 5B | I2V | [Diffusers权重](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers) |
+| HunyuanVideo 1.5 | I2V | [480p步数蒸馏权重](https://huggingface.co/hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_i2v_step_distilled) |
+| Cosmos-Predict2 | I2V / V2V未来帧预测 | [Hugging Face](https://huggingface.co/nvidia/Cosmos-Predict2-2B-Video2World) |
+| DynamiCrafter | I2V | [1024权重](https://huggingface.co/Doubiiu/DynamiCrafter_1024) |
+| VideoGPA | I2V | [Wan基座](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B) · [官方LoRA](https://github.com/Hongyang-Du/VideoGPA/releases/tag/v1.0.0-weights) |
+| PhysRVG | I2V（静态前缀） | [Hugging Face](https://huggingface.co/HappyP4nda/PhysRVG) |
+| Cosmos3-Nano | I2V | [Hugging Face](https://huggingface.co/nvidia/Cosmos3-Nano) |
+| Wan 2.2 A14B | I2V | [Hugging Face](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B) |
+| PhysAlign社区适配 | I2V | [Wan基座](https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B) · [项目](https://physalign.github.io/PhysAlign/) |
+| MiniMax-H3 | I2V | [FL2VA权重](https://huggingface.co/MiniMaxAI/MiniMax-H3) |
+
+LTX使用2B非蒸馏权重；Hunyuan使用480p I2V步数蒸馏权重；Cosmos-Predict2使用16fps变体。VideoGPA使用Wan 5B基座与TI2V LoRA。PhysAlign接口使用社区转换适配器，配置中提供其LoRA目录与合并脚本。
+
+## 采样参数
+
+| 配置键 | 帧数 | fps | 时长(s) | 步数 | CFG |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| `ltx_i2v` | 161 | 25 | 6.400 | 50 | 3 |
+| `cogvideox_i2v` | 81 | 16 | 5.000 | 50 | 6 |
+| `wan_ti2v5b` | 121 | 24 | 5.000 | 50 | 5 |
+| `hunyuan15_i2v` | 121 | 24 | 5.000 | 12 | 1 |
+| `cosmos` | 81 | 16 | 5.000 | 由运行配置提供 | 7 |
+| `dynamicrafter_i2v` | 16 | 10 | 1.500 | 50 | 7.5 |
+| `videogpa_ti2v5b` | 81 | 24 | 3.333 | 50 | 5 |
+| `physrvg_ti2v5b` | 49 | 15 | 3.200 | 16 | 5（CFG关闭） |
+| `cosmos3_nano` | 189 | 24 | 7.833 | 35 | 6 |
+| `wan22_i2v_a14b` | 81 | 16 | 5.000 | 40 | 3.5 / 3.5 |
+| `physalign_wan22_i2v_a14b` | 81 | 16 | 5.000 | 40 | 3.5 / 3.5 |
+| `minimax_h3` | 124 | 24 | 5.125 | 50 | 模型默认值 |
+
+时长为首帧到末帧的`(N−1)/fps`，帧数包含条件帧。生成长度由各模型配置决定，评测使用统一的真实时间范围：轨迹比较5s，短窗口1s。短于完整窗口的视频按该指标的实际覆盖情况报告。
+
+<details>
+<summary>其他参数与推荐来源</summary>
+
+- **LTX**：`frame_rate=25`，50步/CFG 3来自[Diffusers接口默认值](https://github.com/huggingface/diffusers/blob/v0.39.0/src/diffusers/pipelines/ltx/pipeline_ltx_condition.py)。
+- **CogVideoX**：81帧、16fps、50步/CFG 6对应[官方I2V规格](https://github.com/zai-org/CogVideo)。
+- **Wan 5B**：`flow_shift=5`，采样设置见[官方配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_ti2v_5B.py)。
+- **Hunyuan**：步数蒸馏变体使用12步、CFG 1、shift 7，见[变体推荐](https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5#inference-configurations)。
+- **Cosmos-Predict2**：CFG 7；步数由外部Video2World调用器提供，随运行设置记录，见[官方示例](https://github.com/nvidia-cosmos/cosmos-predict2/blob/main/examples/video2world.py)。
+- **DynamiCrafter**：FS 10、eta 1、rescale 0.7、trailing时刻表，见[1024推理脚本](https://github.com/Doubiiu/DynamiCrafter/blob/main/scripts/run.sh)。导出使用10fps，同步保留原8fps文件。
+- **VideoGPA**：LoRA强度0.2、shift 5，见[官方推理脚本](https://github.com/Hongyang-Du/VideoGPA/blob/main/generate/Wan2.2-TI2V-5B.py)。
+- **PhysRVG**：I2V适配采用16步、CFG开关关闭、五帧静态条件前缀；[原项目](https://github.com/ant-research/PhysRVG)另提供V2V/RL设置。
+- **Cosmos3**：35步、CFG 6、flow shift 10，见[模型卡](https://huggingface.co/nvidia/Cosmos3-Nano)。
+- **Wan A14B / PhysAlign**：高、低噪声专家分别使用CFG 3.5，shift 5，见[Wan配置](https://github.com/Wan-Video/Wan2.2/blob/main/wan/configs/wan_i2v_A14B.py)。
+- **MiniMax-H3**：调用器采用50步，CFG由FL2VA pipeline提供，见[模型卡](https://huggingface.co/MiniMaxAI/MiniMax-H3)。
+
+画布按源视频宽高比配置，并受模型的尺寸约束限制。参数、画布、权重和依赖版本保存到运行目录。
+
+</details>
+
+## 视频编辑
+
+视频编辑使用LTX的`LTXConditionPipeline`与Diffusers 0.39.0。复制[视频编辑示例](../../examples/phyediting/pipeline.ltx-v2v.example.json)，填写输入视频清单：
 
 ```json
-{"item_id":"original_item_id","video":"/absolute/path/input.avi","video_sha256":"SHA256_OF_VIDEO","fps":25,"frames":161,"start_frame":0}
+{
+  "conditioning_mode": "v2v",
+  "v2v": {
+    "manifest": "/path/to/video_inputs.jsonl",
+    "manifest_sha256": "SHA256_OF_MANIFEST",
+    "denoise_strength": 0.6,
+    "conditioning_strength": 0.7
+  }
+}
 ```
 
-上述强度仅为配置示例，按实验设置填写。`denoise_strength` 控制编辑噪声，`conditioning_strength` 控制视频条件约束，两者独立并必须显式登记在(0,1)。只读取声明的来源区间，按真实秒数重采样后把全部目标时刻的帧传入视频接口；不把一张图片重复成完整视频、不拉伸时间、不外推。源文件必须与目标参考不同，初始解码像素必须与登记条件图一致，保证原初始框与几何仍适用；压缩导致无法一致的输入需准备有真实来源的无损初始帧，不能放宽检查掩盖不适用。缺源、源SHA漂移、时长不足、初始状态不符均保留原分母和原因。
+`denoise_strength`控制编辑噪声，`conditioning_strength`控制视频条件约束。视频清单提供`item_id/video/video_sha256/fps/frames/start_frame`。输入按真实时间重采样，初始帧与条件图一致。结果按图像条件、视频编辑和静态前缀续写分别汇总。
 
-I2V和V2V按输入信息分组报告。完整V2V由LTX视频条件接口提供；Cosmos单帧前缀续写和PhysRVG静态前缀单独标记。
+## Cosmos未来帧预测
 
-## 环境与执行
+Cosmos-Predict2的Video2World支持1帧图像条件或5帧视频条件，见[官方接口](https://github.com/nvidia-cosmos/cosmos-predict2/blob/main/examples/video2world.py)和[历史帧读取实现](https://github.com/nvidia-cosmos/cosmos-predict2/blob/main/cosmos_predict2/pipelines/video2world.py)。视频条件用于延续运动，LTX的V2V用于编辑已有视频。
 
-模型始终从已有本地权重加载。`generation_runtime` 可登记 `python`、`gpu_devices`、`pythonpath`、`ffmpeg`；外部runner还需要 `code_dir`，VideoGPA/PhysRVG需要 `lora_dir`，PhysAlign另需 `physalign_hook_dir`。DynamiCrafter的 `model_dir` 是checkpoint文件。保留venv可执行路径，不解析成基础Python。
+复制[Cosmos续写配置](../../examples/phyediting/pipeline.cosmos-future.example.json)，填写权重、Video2World调用器目录及[历史视频清单](../../examples/phyediting/future.example.jsonl)：
 
-默认只输出计划；显式 `--execute` 才启动。已有输出、partial或claim不自动覆盖/重试。统一入口完整解码校验媒体、时钟和输入SHA，再执行SAM3.1单视角跟踪与参数测量。详见 [QUICKSTART.md](QUICKSTART.md)、[EVALUATION.md](EVALUATION.md)。模型执行状态按权重、输入模式和采样版本记录。
+```json
+"model": "cosmos",
+"conditioning_mode": "v2v_future",
+"future": {
+  "manifest": "/path/to/history_inputs.jsonl",
+  "manifest_sha256": "SHA256_OF_HISTORY_MANIFEST"
+}
+```
+
+清单提供`item_id/video/video_sha256/fps/frames/end_frame`，`end_frame`与条件图对应同一时刻、同一画面。程序从该时刻向前按16fps选5个真实观测，记录原帧号与采样时间差，并制作仅含这5帧的无损条件视频。历史不足、源文件变动和条件画面不一致均逐例保留原因。
+
+原生输出为81帧、16fps，包含5帧条件与76帧预测。原始视频保留；评测副本删去前4帧历史，以末个条件帧为时间零点，共77帧、4.75s。参数测量、V/P和Qwen使用这一副本；条件帧SSIM/PSNR与未来帧质量分别统计。默认5s轨迹项会记录窗口不足，跨模型运行前可统一选4s窗口，视频保持原生16fps。
+
+单帧路径继续兼容原配置中的`v2v_one_condition_frame`。Cosmos3-Nano目前使用I2V路径。三种输入方式分别记录，不混作同一种实验条件。
+
+## 配置环境
+
+重力、动摩擦、初速度、V/P与Qwen由公共评测流程调度，12个生成模型使用相同配置项。各参数按所需观测与场景条件分别判断适用性。
+
+生成权重通过`model_dir`指定。`generation_runtime`填写生成Python、GPU和FFmpeg；外部实现增加`code_dir`，LoRA模型增加`lora_dir`，PhysAlign增加`physalign_hook_dir`。DynamiCrafter的`model_dir`填写checkpoint文件。
+
+```bash
+physedit plan pipeline.json
+physedit run pipeline.json --execute
+```
+
+## 跟踪与视频评测模型
+
+| 用途 | 模型 | Hugging Face |
+| :---: | :---: | :---: |
+| 目标跟踪 | SAM3.1 | [权重](https://huggingface.co/facebook/sam3.1) |
+| 视频判断 | Qwen3.5-9B | [权重](https://huggingface.co/Qwen/Qwen3.5-9B) |
+| 视频判断 | Qwen3.5-27B | [权重](https://huggingface.co/Qwen/Qwen3.5-27B) |
+
+Qwen通过本地权重或视频API配置，操作见[评测指南](EVALUATION.md#qwen视频判断)。SAM3.1的依赖见[跟踪指南](SAM31.md)。

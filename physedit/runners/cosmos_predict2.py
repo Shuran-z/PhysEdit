@@ -50,6 +50,13 @@ def main() -> int:
                 _write_status(status_handle, row, "skipped_existing", start, log_path, resized_path)
                 continue
 
+            if row.get('mode') == 'v2v_future':
+                try:
+                    _validate_history(row)
+                except Exception as exc:
+                    failed += 1
+                    _write_status(status_handle, row, 'failed_input', start, log_path, resized_path, error=str(exc))
+                    continue
             command = [
                 args.python,
                 "run_cosmos_v2w_from_video.py",
@@ -68,7 +75,7 @@ def main() -> int:
                 "--aspect_ratio",
                 str(row.get("aspect_ratio") or "9:16"),
                 "--num_frames",
-                str(int(row.get("num_frames", 81))),
+                str(int(row.get('native_num_frames', row.get('num_frames', 81)))),
                 "--num_conditional_frames",
                 str(int(row.get("cosmos_predict2_condition_frames", 5))),
                 "--sample_fps",
@@ -105,7 +112,12 @@ def main() -> int:
                     if len(produced) != 1:
                         raise RuntimeError('cosmos_raw_output_not_unique_or_missing')
                     produced[0].replace(raw_generated)
-                _resize_to_source(raw_generated, Path(row["source_video"]), resized_path, fps=float(row.get("cosmos_output_fps", row.get("output_fps", 16.0))))
+                if row.get('mode') == 'v2v_future':
+                    _validate_history(row)
+                    _resize_to_source(raw_generated, Path(row['source_video']), resized_path,
+                                      fps=float(row['output_fps']), trim_prefix=4)
+                else:
+                    _resize_to_source(raw_generated, Path(row['source_video']), resized_path, fps=float(row.get('cosmos_output_fps', row.get('output_fps', 16.0))))
             except Exception as exc:
                 failed += 1
                 _write_status(status_handle, row, "failed_resize", start, log_path, resized_path, error=repr(exc))
@@ -142,11 +154,35 @@ def _write_status(handle, row, status, start_time, log_path, resized_path, **ext
     print(json.dumps(payload, sort_keys=True))
 
 
-def _resize_to_source(generated: Path, source: Path, output: Path, fps: float) -> None:
+def _validate_history(row):
+    try:
+        from .media_contract import sha256, validate_video
+    except ImportError:
+        from media_contract import sha256, validate_video
+    if (row.get('cosmos_predict2_condition_frames') != 5 or row.get('native_num_frames') != 81
+            or row.get('num_frames') != 77 or row.get('history_prefix_trim_frames') != 4):
+        raise ValueError('invalid_cosmos_future_frame_scope')
+    for name, key in [('conditioning_video', 'conditioning_video_sha256'),
+                      ('conditioning_source_video', 'conditioning_source_sha256'),
+                      ('future_manifest', 'future_manifest_sha256')]:
+        if sha256(row[name]) != row[key]:
+            raise ValueError('cosmos_future_source_changed')
+    validate_video(row['conditioning_video'], fps=row['output_fps'], frames=5,
+                   width=row['source_width'], height=row['source_height'])
+
+
+def _resize_to_source(generated: Path, source: Path, output: Path, fps: float, trim_prefix: int = 0) -> None:
     width, height = _video_size(source)
     if width <= 0 or height <= 0:
         raise RuntimeError(f"could not read source dimensions: {source}")
     output.parent.mkdir(parents=True, exist_ok=True)
+    if trim_prefix:
+        try:
+            from .media_contract import validate_video
+        except ImportError:
+            from media_contract import validate_video
+        validate_video(generated, fps=fps, frames=81)
+    filters = (f'trim=start_frame={trim_prefix},setpts=PTS-STARTPTS,' if trim_prefix else '') + f'scale={width}:{height}'
     cmd = [
         "ffmpeg",
         "-y",
@@ -156,7 +192,7 @@ def _resize_to_source(generated: Path, source: Path, output: Path, fps: float) -
         "-i",
         str(generated),
         "-vf",
-        f"scale={width}:{height}",
+        filters,
         "-r",
         str(fps),
         "-pix_fmt",
@@ -164,6 +200,8 @@ def _resize_to_source(generated: Path, source: Path, output: Path, fps: float) -
         str(output),
     ]
     subprocess.run(cmd, check=True)
+    if trim_prefix:
+        validate_video(output, fps=fps, frames=77, width=width, height=height)
 
 
 def _video_size(path: Path) -> tuple[int, int]:

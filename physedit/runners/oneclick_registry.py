@@ -51,9 +51,10 @@ def contract(model: str) -> ModelContract:
 
 def validate_registration(spec: dict, *, require_runtime=True) -> ModelContract:
     profile = contract(spec['model'])
-    if spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v':
+    if ((spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v') or
+            (spec.get('conditioning_mode', spec.get('mode')) == 'v2v_future' and spec['model'] == 'cosmos')):
         from dataclasses import replace
-        profile = replace(profile, mode='v2v')
+        profile = replace(profile, mode=spec.get('conditioning_mode', spec.get('mode')))
     for key in ('mode', 'conditioning_mode'):
         if key in spec and spec[key] != profile.mode:
             raise ValueError(f"Registered {spec['model']} conditioning mode is {profile.mode}; "

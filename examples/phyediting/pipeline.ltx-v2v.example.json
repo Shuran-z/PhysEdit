@@ -10,6 +10,8 @@
   "evaluation": {
     "metrics": [
       "gravtrace",
+      "friction",
+      "velocity",
       "vp",
       "qwen"
     ],
@@ -35,6 +37,10 @@
       "video_fps": 2.0,
       "max_video_frames": 64,
       "max_pixels": 602112
+    },
+    "friction": {
+      "manifest": "/absolute/path/sliding_conditions.jsonl",
+      "manifest_sha256": "SHA256_OF_SLIDING_CONDITIONS"
     }
   },
   "generation_runtime": {

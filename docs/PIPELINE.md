@@ -1,41 +1,54 @@
 # 多机调度
 
-PhysEdit的多机调度器按输入清单分配生成任务，回收视频并执行评测。单机流水线见[快速上手](phyediting/QUICKSTART.md)。多机环境通过独立配置指定任务、主机与共享存储。
+多机调度器按清单分配生成任务，回收视频并执行评测。单机运行见[快速上手](phyediting/QUICKSTART.md)。
 
-## 私有部署配置
+## 配置
 
-公开配置使用通用路径，默认远程主机列表为空。将自己的`SITES`、`HOSTS`、`MODELS`和`BENCHMARKS`保存在仓库外的Python文件，通过环境变量加载：
+将主机、存储、模型命令和评测任务写入自己的配置文件：
 
 ```bash
-export PHYSEDIT_FLEET_CONFIG=/absolute/path/private_fleet.py
+export PHYSEDIT_FLEET_CONFIG=/path/to/fleet.py
 export BENCHMARK=my_benchmark
-python -m physedit status "$BENCHMARK" --models all
-python -m physedit run "$BENCHMARK" --models all --dry-run
 ```
 
-`BENCHMARK`对应私有配置中`BENCHMARKS`的任务键。配置中的主机名称使用自己的SSH别名；共享存储、解释器、权重与评测路径由部署环境提供。配置文件和运行日志保存在本地。
+| 配置项 | 内容 |
+| :---: | :---: |
+| `SITES` | 文件系统、解释器与权重路径 |
+| `HOSTS` | SSH别名与GPU设备 |
+| `MODELS` | 采样参数与生成命令 |
+| `BENCHMARKS` | 输入清单、评测步骤与汇总命令 |
 
-## 执行
+`BENCHMARK`对应配置中的任务键。部署配置和日志保存于本地。
+
+## 检查与运行
 
 ```bash
-python -m physedit run "$BENCHMARK" --models ltx_i2v,cosmos3_nano
-python -m physedit run "$BENCHMARK" --models all --watch 10
-python -m physedit run "$BENCHMARK" --models ltx_i2v --limit 4
+physedit status "$BENCHMARK" --models all
+physedit run "$BENCHMARK" --models all --dry-run
+physedit run "$BENCHMARK" --models ltx_i2v,cosmos3_nano
 ```
 
-调度器检查GPU和已有任务，准备输入与互斥worker清单，执行生成，再将结果回收到评测主机。媒体通过完整解码、尺寸、帧数、时钟和完成记录校验后发布。共享文件系统可直接读取产物，其他站点通过调度主机回收。
+调度器检查设备和已有任务，建立分工清单，执行生成并回收结果。视频检查尺寸、帧数、时钟和完整解码；共享存储直接读取，独立存储通过调度主机回收。
 
-该入口按部署配置管理空闲显存阈值和设备列表。worker异常由调度器的重启限制处理；达到限制后记录状态，`--retry`可显式恢复。单机PhyEditing使用独立运行目录和显式执行，不使用这套重启策略。
-
-## 目录与字段
+## 任务目录
 
 ```text
-<root>/tools/                         runner与构建脚本
-<root>/<benchmark>/input/             条件图、提示与输入清单
-<root>/<benchmark>/<run>/<model>/      manifest、generated、logs
-<home-root>/<benchmark>/eval/          逐阶段结果与汇总
+<root>/tools/                     生成脚本
+<root>/<benchmark>/input/         条件图、提示与清单
+<root>/<benchmark>/<run>/<model>/  视频、清单与日志
+<home>/<benchmark>/eval/          评测结果
 ```
 
-`SITES`描述文件系统、路径与环境；`HOSTS`描述SSH别名及设备；`MODELS`描述采样参数和runner命令；`BENCHMARKS`描述清单、输入、评测依赖及汇总命令。命令模板中的`{manifest}`、`{dir}`、`{tools}`、`{gpu}`、`{run}`和`{worker}`由调度器填写。
+命令模板支持`{manifest}`、`{dir}`、`{tools}`、`{gpu}`、`{run}`和`{worker}`。任务状态与逐例原因保存在对应目录。
 
-`--limit`自动建立单独试运行命名空间；`--tag`可显式命名。已有产物保持原采样配置，参数变化使用新命名空间。实际状态和逐例原因以运行目录为准。
+<details>
+<summary>持续调度与试运行</summary>
+
+```bash
+physedit run "$BENCHMARK" --models all --watch 10
+physedit run "$BENCHMARK" --models ltx_i2v --limit 4
+```
+
+`--watch`按分钟重复调度，`--limit`建立独立试运行目录，`--tag`指定名称。任务进程异常退出后，按配置的重启次数上限处理；`--retry`用于手动重试。
+
+</details>

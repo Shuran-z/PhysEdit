@@ -1,0 +1,69 @@
+{
+  "version": "fixed_core100_v1_20261014",
+  "repository": "phy2/phydataset",
+  "revision": "64ae065222f6893b7c06ed446aa20d3b8e3cdc86",
+  "directory": "benchmarks/fixed_core100_v1_20261014",
+  "files": {
+    "FREEZE.json": "77bde052248a6a8cd0c6d866373f97ee115471a90eaa6df96a4f040c18085cfd",
+    "PROTOCOL.md": "66df3096b8d11ba22f07da6af02628e7397a2f7f5f7cbba496838be04135d650",
+    "core100.jsonl": "a9345fa1984b42c0bcc2ebce51fd4e19848e64f1af7e701739224c336a9f3f80",
+    "reserve80.jsonl": "ff79750469e5de8603dfa4a7eb229c080882864120fec355de191cb85665c0c1"
+  },
+  "core_total": 100,
+  "per_event": 5,
+  "reserve_total": 80,
+  "core_membership_sha256": "6e063c34775940fe675f09b47c98f109464ca979a26f496c6da9efe6e62c3852",
+  "test_ood_1": [
+    "T03",
+    "T20"
+  ],
+  "test_ood_2": [
+    "T11",
+    "T19"
+  ],
+  "expected_split_counts": {
+    "test_id": 80,
+    "test_ood_1": 10,
+    "test_ood_2": 10
+  },
+  "reserve_policy": "separate_no_automatic_substitution",
+  "training_group_exclusion_completed": false,
+  "scientific_acceptance_complete": false,
+  "training_policy": {
+    "engines": [
+      "genesis",
+      "isaac"
+    ],
+    "training_events": [
+      "T01",
+      "T02",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18"
+    ],
+    "assignment": "remaining_eligible_source_groups_to_train",
+    "excluded_events": [
+      "T03",
+      "T20",
+      "T11",
+      "T19"
+    ],
+    "excluded_memberships": [
+      "fixed_core100_v1",
+      "reserve"
+    ],
+    "exclude_all_verified_source_relatives": true,
+    "separate_validation_split": false
+  }
+}
