@@ -2,7 +2,7 @@
 
 PhysEdit从单视角目标观测中测量重力、初速度和动摩擦系数。SAM3.1提供目标掩膜和图像边界，解析运动模型预测三维轨迹，再用相机参数投影到图像平面，与目标观测拟合。各参数的输入条件和开发集误差见[性能评测](phyediting/validation.md)。
 
-GravTrace是项目中的重力测量模块，适用于自由落体、抛体和斜面运动。速度与摩擦使用[独立测量命令](phyediting/MOTION_PARAMETERS.md)。生成与评测的使用方法见[快速上手](phyediting/QUICKSTART.md)。
+GravTrace是项目中的重力测量模块，适用于自由落体、抛体和斜面运动。初速度与摩擦可随生成视频自动评测，也可使用[单独测量命令](phyediting/MOTION_PARAMETERS.md)。生成与评测的使用方法见[快速上手](phyediting/QUICKSTART.md)。
 
 ## 重力测量方法
 
@@ -55,7 +55,7 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 
 生成视频使用参考场景的已知条件与同一初始时刻。`scripts/generated_manifest.py GT.jsonl VIDEOS.jsonl OUT.jsonl`将参考样本与生成视频观测关联；视频行提供`id/gt_id/masks/fps/start_s`，随后使用上述`fit/score`命令。
 
-一键流水线使用固定窗口评分，分别记录重力对请求参数的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](phyediting/QUICKSTART.md)，指标定义见[生成视频评测](phyediting/EVALUATION.md)。
+一键流水线使用固定窗口评分，按配置记录重力、初速度与动摩擦对请求值的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](phyediting/QUICKSTART.md)，指标定义见[生成视频评测](phyediting/EVALUATION.md)。
 
 ## 测量条件
 

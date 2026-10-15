@@ -1,6 +1,6 @@
 # 快速上手
 
-将数据、权重和环境路径写入配置，即可运行视频生成、目标跟踪和重力评测，并按配置启用V/P与Qwen。每次运行一个模型，权重与采样参数见[模型说明](MODELS.md)。初速度和摩擦另用[测量命令](MOTION_PARAMETERS.md)。
+将数据、权重和环境路径写入配置，即可运行视频生成、目标跟踪，以及重力、初速度、动摩擦、V/P和Qwen评测。每次运行一个模型，权重与采样参数见[模型说明](MODELS.md)。
 
 ## 安装
 
@@ -58,9 +58,9 @@ cp examples/phyediting/pipeline.ltx.example.json pipeline.json
 | `sam3`、`checkpoint` | SAM源码与权重 |
 | `generation_runtime` | 生成Python、GPU和FFmpeg |
 | `applicability` | 参考文件路径与SHA256 |
-| `evaluation` | 重力、V/P与Qwen选项 |
+| `evaluation` | 重力、初速度、动摩擦、V/P与Qwen选项 |
 
-示例已开启重力、V/P和Qwen API评测。Qwen也可使用[本地权重配置](../../examples/phyediting/pipeline.qwen-local.example.json)。帧数、帧率和画布由模型配置提供，配置项说明见[评测指南](EVALUATION.md)。
+示例已开启五类评测。摩擦需要填写滑动条件清单及SHA256，格式见[摩擦输入示例](../../examples/phyediting/friction.example.jsonl)。条件尚不具备的样本会列出不适用原因。Qwen也可使用[本地权重配置](../../examples/phyediting/pipeline.qwen-local.example.json)。帧数、帧率和画布由模型配置提供，配置项说明见[评测指南](EVALUATION.md)。
 
 <details>
 <summary>参考清单与输入检查</summary>
@@ -95,11 +95,11 @@ physedit run pipeline.json --run-dir runs/experiment_02 --execute
 | :---: | :---: |
 | `summary.json` | 各项误差、覆盖率与分组统计 |
 | `predictions.jsonl` | 逐样本重力估计与拟合状态 |
-| `evaluation/` | V/P与Qwen逐样本结果 |
+| `evaluation/` | 速度、摩擦、V/P与Qwen逐样本结果 |
 | `sam31/` | 目标轨迹、掩膜与观测记录 |
 | `registered.json` | 输入、配置与版本信息 |
 | `completed.json`、`failure.json` | 执行状态与异常原因 |
 
 误差统计有效估计，覆盖率使用全部输入样本。生成视频的重力分数表示相对请求值的偏差；详细定义见[生成评分](GENERATION.md#误差与覆盖率)。
 
-已有视频可[补评V/P与Qwen](EVALUATION.md#已有视频补评)。`python -m physedit`与`physedit`使用相同命令参数。
+已有视频可[补评速度、摩擦、V/P与Qwen](EVALUATION.md#已有视频补评)。`python -m physedit`与`physedit`使用相同命令参数。

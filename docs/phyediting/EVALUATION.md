@@ -1,24 +1,25 @@
 # 生成视频评测
 
-一键生成后，PhysEdit通过SAM3.1跟踪目标并估计重力，按配置执行V/P与Qwen评测。V衡量图像质量和视觉稳定性；P报告重力偏差、参数响应与排序；Qwen判断视频中的可见问题。初速度与动摩擦由[测量命令](MOTION_PARAMETERS.md)单独计算。
+一键生成后，PhysEdit通过SAM3.1跟踪目标，按配置测量重力、初速度和动摩擦，并执行V/P与Qwen评测。V衡量视觉质量与运动差异；P报告物理参数偏差、响应与排序；Qwen判断可见问题。
 
 | 评测类别 | 主要指标 | 观察范围 |
 | :---: | :---: | :---: |
 | 像素一致性 | 全图SSIM、PSNR | 条件帧、参考续段 |
 | 视觉稳定性 | 相机运动、背景闪烁、轮廓差异 | 生成全片、首1s |
 | 参考运动 | 运动区域IoU、轨迹位移误差 | 固定5s、首1s |
-| 重力控制 | 请求值偏差、响应斜率、排序一致性 | 单例、完整受控组 |
+| 参数控制 | 重力、初速度和动摩擦偏差；响应与排序 | 单例、完整受控组 |
 | Qwen判断 | 问题类别、严重程度、视频证据 | 条件图、生成全片 |
 
 参考视频使用重力真值评分，生成视频使用请求重力评分。各项结果报告分数、有效样本数、覆盖率和逐例状态。
 
 ## 配置评测
 
-在`pipeline.json`中选择评测阶段。下面同时启用重力、V/P和Qwen，完整示例见[API配置](../../examples/phyediting/pipeline.ltx.example.json)与[本地Qwen配置](../../examples/phyediting/pipeline.qwen-local.example.json)：
+在`pipeline.json`中选择评测阶段。下面同时启用重力、初速度、动摩擦、V/P和Qwen，完整示例见[API配置](../../examples/phyediting/pipeline.ltx.example.json)与[本地Qwen配置](../../examples/phyediting/pipeline.qwen-local.example.json)：
 
 ```json
 "evaluation": {
-  "metrics": ["gravtrace", "vp", "qwen"],
+  "metrics": ["gravtrace", "velocity", "friction", "vp", "qwen"],
+  "friction": {"manifest": "/path/to/sliding_conditions.jsonl", "manifest_sha256": "SHA256_OF_SLIDING_CONDITIONS"},
   "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30, "trajectory_duration_seconds": 5, "trajectory_sampling_fps": 30},
   "qwen": {
     "backend": "api",
@@ -31,7 +32,7 @@
 }
 ```
 
-`evaluation.metrics`支持三个配置键：`gravtrace`对应重力评测，`vp`对应视觉质量与参考运动指标，`qwen`对应视频判断。一键生成必须启用重力评测；省略`evaluation`时只执行该项。重力响应与排序根据已有估计和受控组文件汇总。已有视频可单独补评V/P或Qwen。
+`evaluation.metrics`使用五个配置键：`gravtrace`、`velocity`、`friction`、`vp`和`qwen`，分别选择重力、初速度、动摩擦、视觉运动指标和视频判断。为兼容已有配置，省略`evaluation`时只评测重力；一键生成配置仍包含`gravtrace`，其余阶段可分别选择。已有视频补评可选择其中任意阶段并复用原重力结果。
 
 `generation_runtime.gpu_devices`指定生成、跟踪和V/P使用的GPU；`generation_runtime.python`指定生成环境。控制器与SAM使用启动命令的Python。
 
@@ -130,13 +131,25 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 
 </details>
 
+## 初速度与动摩擦
+
+`velocity`读取生成视频的单视角观测。自由飞行样本固定已有重力估计，单独拟合三维初速度；滑动样本在已知坡面与重力条件下，同时估计沿坡初速度和动摩擦。重力结果保持原值。初速度参考时刻随逐例结果保存，大小、方向和零目标误差分别统计。
+
+`friction`的输入清单提供样本身份、初始位置、坡向、坡角、轮廓、阻尼和已知重力，并绑定来源文件。实际边界框与采样时间由生成视频的SAM观测填入；清单中的参考像素不参与拟合。摩擦测量将请求重力作为固定输入，与重力偏差并列报告。格式见[输入示例](../../examples/phyediting/friction.example.jsonl)，场景条件说明见[测量方法](MOTION_PARAMETERS.md#动摩擦)。
+
+各指标独立判定适用性。有独立滑动条件依据的样本可生成并评测摩擦，同时保留重力不适用的原因。静止样本仅在平衡条件明确时报告静摩擦下界，动摩擦点值保持为空。缺源、缺帧、转动、外力或支撑条件不符的样本保留状态与原因。
+
+生成前，启用的速度与摩擦目标写入提示和`parameter_targets`，连同输入文件一起校验。补评已有视频时，新增参考参数与生成时已记录的请求分别标明；已有请求的值或参考时刻发生变化会报错。
+
 ## P：参数误差、响应与排序
 
-单例重力相对偏差为`100 × |estimated_g / requested_g − 1|`。有效估计报告均值、中位数和最大值；全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
+单例重力相对偏差为`100 × |estimated_g / requested_g − 1|`。有效估计报告均值、中位数和最大值；初速度与摩擦另报告P95、绝对误差和零目标数量。初速度同时报告三维向量误差。全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
 
 响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变重力。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计为排序错误；恒定估计的rho为空。斜率与单例误差共同阅读。
 
 每个item通过`parameter_response_registration`提供组文件路径与SHA。文件包含`group_id`、`varying_parameter="gravity"`、`fixed_controls`和`members=[{"item_id":"...","gravity":1.62}, ...]`。成员的事件、机位、对象、split和请求值逐项核验。含缺源、失败、边界估计或未运行成员的组保留全部成员，并标记证据不足。有效组等权汇总。
+
+初速度与摩擦通过各自的`response_manifest`及`response_manifest_sha256`配置受控组，设置位于`evaluation.velocity`或`evaluation.friction`。组文件为JSON数组，字段包括`group_id`、`varying_parameter`、`fixed_controls`和`members`；每个成员提供`item_id`、`item_sha256`与`value`。变化参数分别为`initial_speed`或`effective_kinetic_friction`。除目标参数外，场景、机位、几何、重力和生成seed需相同；速度组保持方向不变。完整组自动汇总响应斜率、严格排序比例和Spearman rho，缺失成员保留在原组中。
 
 ## 已有视频补评
 
@@ -146,7 +159,7 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --execute
 ```
 
-省略`--execute`查看计划。配置可只选择`qwen`或`vp`与`qwen`。命令读取已有重力预测和视频，在新目录保存逐例结果及`combined_summary.json`。
+省略`--execute`查看计划。配置可单独选择`velocity`、`friction`、`vp`或`qwen`，也可组合选择。命令读取已有重力预测和视频，在新目录保存逐例结果及`combined_summary.json`。
 
 源运行需包含`registered.json`、`items.jsonl`、`observed_rows.jsonl`和`initial_jobs.jsonl`，并通过文件SHA、样本身份及路径检查。已有重力结果仍可展示，执行完成状态按本次选择的阶段统计。
 
@@ -155,10 +168,12 @@ physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --exec
 | 文件 | 内容 |
 | :---: | :---: |
 | `summary.json` | 各阶段、集合及场景分组统计 |
+| `evaluation/velocity_results.jsonl` | 初速度大小、向量、偏差与状态 |
+| `evaluation/friction_results.jsonl` | 动摩擦点值、静摩擦下界与状态 |
 | `evaluation/vp_results.jsonl` | 逐样本V/P指标与覆盖情况 |
 | `evaluation/qwen_results.jsonl` | 逐样本判断、依据与状态 |
 | `combined_summary.json` | 已有视频补评的综合结果 |
 
-误差使用有效估计，覆盖率使用全部输入ID；兼容字段`failed`与`failure_rate_percent`统计全部未评分样本，原因区分执行失败、缺源和不适用。V/P各项报告自己的有效分母。Qwen违规比例使用格式有效且可观察的类别，覆盖定义记录在`coverage_basis`。
+误差使用有效估计，覆盖率使用全部输入ID；兼容字段`failed`与`failure_rate_percent`统计全部未评分样本，原因区分执行失败、缺源和不适用。速度与摩擦的点估计覆盖率、可评分覆盖率分别保存；静摩擦下界只计入信息覆盖。各阶段按集合、事件、机位、模型和seed分组汇总，V/P各项报告自己的有效分母。Qwen违规比例使用格式有效且可观察的类别，覆盖定义记录在`coverage_basis`。
 
 `evaluation_failed`统计任一所选阶段未完整评分的案例并集。CLI非零退出时，已完成阶段的结果和所有样本状态保留。原输入、生成视频和失败记录保留在运行目录中。

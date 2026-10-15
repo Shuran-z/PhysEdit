@@ -1,6 +1,6 @@
 # 视频生成与评测
 
-从条件图或视频生成新视频，再跟踪目标、估计重力并执行所选V/P与Qwen评测。模型、环境、提示和评测范围集中在配置文件中。
+从条件图或视频生成新视频，再跟踪目标、测量重力、初速度与动摩擦，并执行所选V/P与Qwen评测。模型、环境、提示和评测范围集中在配置文件中。
 
 ## 运行
 
@@ -9,7 +9,7 @@ physedit plan pipeline.json
 physedit run pipeline.json --execute
 ```
 
-输入与配置见[快速上手](QUICKSTART.md)。运行依次完成输入准备、视频生成、媒体检查、SAM3.1跟踪、固定窗口重力评分和可选V/P、Qwen评测。
+输入与配置见[快速上手](QUICKSTART.md)。运行依次完成输入准备、视频生成、媒体检查、SAM3.1跟踪、固定窗口重力评分，以及配置选择的初速度、动摩擦、V/P和Qwen评测。
 
 ## 视频时间与场景条件
 
@@ -19,7 +19,7 @@ physedit run pipeline.json --execute
 t = 23 / source_fps + generated_frame / output_fps
 ```
 
-评分前确定观察窗口、物体几何与位姿、相机、角运动、质量和阻尼。重力拟合同时估计辅助初速度，速度范围0–8m/s、仰角±89°；目标重力仅用于拟合后的评分。单独的初速度评测使用[速度测量方法](MOTION_PARAMETERS.md)。
+评分前确定观察窗口、物体几何与位姿、相机、角运动、质量和阻尼。重力拟合同时估计辅助初速度，速度范围0–8m/s、仰角±89°；目标重力仅用于拟合后的评分。`velocity`阶段固定已有重力，再单独拟合初速度；已知滑动条件的样本使用沿坡运动模型。详见[测量方法](MOTION_PARAMETERS.md)。
 
 各模型使用对应帧数和帧率，评测按视频秒数对齐。媒体时间与模拟时间的对应关系由数据来源提供。帧数与时长见[模型说明](MODELS.md#采样参数)。
 
@@ -51,7 +51,7 @@ failure_rate   = 1 − coverage
 
 ## 读取与补评结果
 
-`summary.json`给出综合统计，`predictions.jsonl`保存逐例重力估计与辅助拟合参数，`evaluation/`保存V/P和Qwen输出。补评已有视频：
+`summary.json`给出综合统计，`predictions.jsonl`保存逐例重力估计与辅助拟合参数，`evaluation/`保存速度、摩擦、V/P和Qwen输出。补评已有视频：
 
 ```bash
 physedit evaluate pipeline.json --run runs/pipeline --out runs/evaluation --execute

@@ -1,6 +1,7 @@
 """Evaluation registration; no model imports or network access."""
 
 import math
+import re
 from urllib.parse import urlsplit
 
 
@@ -15,7 +16,7 @@ def fields(value, allowed, name):
 
 
 def validate(evaluation):
-    fields(evaluation, {"metrics", "qwen", "vp"}, "evaluation")
+    fields(evaluation, {"metrics", "qwen", "vp", "velocity", "friction"}, "evaluation")
     metrics = evaluation.get("metrics")
     if (
         not isinstance(metrics, list)
@@ -26,11 +27,29 @@ def validate(evaluation):
         raise ValueError(
             "evaluation.metrics must be a nonempty list of unique metric names"
         )
-    if set(metrics) - {"gravtrace", "vp", "qwen"}:
+    if set(metrics) - {"gravtrace", "vp", "qwen", "velocity", "friction"}:
         raise ValueError("Unsupported evaluation.metrics")
-    for key in ("qwen", "vp"):
+    for key in ("qwen", "vp", "velocity", "friction"):
         if key in evaluation and key not in metrics:
             raise ValueError("evaluation." + key + " configured but not enabled")
+    velocity = evaluation.get('velocity', {})
+    fields(velocity, {'response_manifest', 'response_manifest_sha256'}, 'evaluation.velocity')
+    friction = evaluation.get('friction', {})
+    fields(friction, {'manifest', 'manifest_sha256', 'response_manifest', 'response_manifest_sha256'}, 'evaluation.friction')
+    if bool(friction.get('manifest')) != bool(friction.get('manifest_sha256')):
+        raise ValueError('friction manifest requires path and SHA256')
+    if 'manifest' in friction and (not isinstance(friction['manifest'], str) or not friction['manifest'].strip()
+            or not isinstance(friction.get('manifest_sha256'), str)
+            or not re.fullmatch('[0-9a-f]{64}', friction['manifest_sha256'])):
+        raise ValueError('invalid friction manifest binding')
+    for name, settings in (('velocity', velocity), ('friction', friction)):
+        if ('response_manifest' in settings) != ('response_manifest_sha256' in settings):
+            raise ValueError(name + ' response manifest requires path and SHA256')
+        if 'response_manifest' in settings and (not isinstance(settings['response_manifest'], str)
+                or not settings['response_manifest'].strip()
+                or not isinstance(settings['response_manifest_sha256'], str)
+                or not re.fullmatch('[0-9a-f]{64}', settings['response_manifest_sha256'])):
+            raise ValueError('invalid ' + name + ' response binding')
     vp = evaluation.get("vp", {"mask_backend": "sam31"})
     fields(vp, {"mask_backend", "mask_manifest", "mask_review_manifest", "reference_duration_seconds", "reference_fps", "trajectory_duration_seconds", "trajectory_sampling_fps"}, "evaluation.vp")
     duration = vp.get('trajectory_duration_seconds', 5.0)

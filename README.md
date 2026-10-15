@@ -16,7 +16,7 @@ physedit plan pipeline.json
 physedit run pipeline.json --execute
 ```
 
-配置文件集中填写路径和评测选项。一键流程执行生成、跟踪和重力评测，可同时启用V/P与Qwen；初速度与摩擦使用`physedit measure`。结果默认写入`runs/pipeline`，详见[快速上手](docs/phyediting/QUICKSTART.md)。
+配置文件集中填写路径和评测选项。一键流程执行生成与跟踪，并按配置评测重力、初速度、动摩擦、V/P与Qwen。结果默认写入`runs/pipeline`，详见[快速上手](docs/phyediting/QUICKSTART.md)。
 
 | 使用指南 | 参数测量 | 数据与部署 |
 | :---: | :---: | :---: |

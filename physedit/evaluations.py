@@ -568,13 +568,13 @@ def read_local_responses(path, expected_ids, returncode):
                            completed_response_ids=list(responses))
 
 
-def run_additional(spec, rows, items, initial, root):
+def run_additional(spec, rows, items, initial, root, *, gravity_predictions=None, tracking_root=None):
     """Existing/generated media only. Each stage fails independently per original ID."""
     root = Path(root)
     root.mkdir(parents=True, exist_ok=False)
     evaluation = spec.get("evaluation", {"metrics": ["gravtrace"]})
     enabled = evaluation["metrics"]
-    if not set(enabled) & {"vp", "qwen"}:
+    if not set(enabled) & {"vp", "qwen", "velocity", "friction"}:
         return {}
     contexts = {}
     failures = {}
@@ -583,6 +583,12 @@ def run_additional(spec, rows, items, initial, root):
             contexts[row["sample_id"]] = context(row)
         except Exception as error:
             failures[row["sample_id"]] = type(error).__name__ + ": " + str(error)
+    from .parameter_evaluation import snapshot_inputs
+    try:
+        snapshot_inputs(spec, root/'parameter_inputs')
+    except (OSError, ValueError, KeyError, TypeError):
+        # Parameter stages below retain the binding error on each original ID.
+        pass
     dump(
         root / "registered.json",
         dict(
@@ -594,6 +600,10 @@ def run_additional(spec, rows, items, initial, root):
         ),
     )
     summaries = {}
+    if set(enabled) & {'velocity', 'friction'}:
+        from .parameter_evaluation import run as measure_parameters
+        summaries.update(measure_parameters(spec, rows, items, initial, root,
+                                            gravity_predictions, tracking_root, contexts, failures))
     if "vp" in enabled:
         vp = evaluation.get("vp", {})
         entries = {}
@@ -830,8 +840,10 @@ def existing_run(spec, run_dir, output_dir, execute=False):
         or {r["item_id"] for r in rows} != set(items)
     ):
         raise ValueError("existing_run_denominator_mismatch")
+    from .parameter_evaluation import plan_inputs
+    parameter_inputs = plan_inputs(spec, items)
     plan = dict(
-        registered=len(rows),
+        registered=len(rows), parameter_inputs=parameter_inputs,
         evaluation_metrics=metrics,
         vp_pixel_settings=pm.settings(spec.get("evaluation", {}).get("vp")) if "vp" in metrics else None,
         execution_requested=False,
@@ -849,7 +861,8 @@ def existing_run(spec, run_dir, output_dir, execute=False):
     gravity = report(rows, predictions, items)
     initial = {r["id"]: r for r in read_rows(run / "initial_jobs.jsonl")}
     result = attach_summary(
-        gravity, run_additional(spec, rows, items, initial, Path(output_dir)), metrics
+        gravity, run_additional(spec, rows, items, initial, Path(output_dir),
+                                gravity_predictions=predictions, tracking_root=run/"sam31"), metrics
     )
     dump(Path(output_dir) / "combined_summary.json", result)
     return result

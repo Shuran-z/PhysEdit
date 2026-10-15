@@ -43,7 +43,7 @@ physedit track run runs/tracking \
 | `prepared.json` | 输入任务与文件信息 |
 | `completed.json`、`failure.json` | 完成状态与异常原因 |
 
-文件关联视频SHA、模型版本和实际观测范围。生成流水线自动准备跟踪任务，再执行重力评分，操作见[快速上手](QUICKSTART.md)。测量误差见[性能评测](validation.md)。
+文件关联视频SHA、模型版本和实际观测范围。生成流水线自动准备跟踪任务，再执行所选参数评测；摩擦窗口超出已有轨迹时，按预先指定的帧表补充跟踪，操作见[快速上手](QUICKSTART.md)。测量误差见[性能评测](validation.md)。
 
 <details>
 <summary>依赖版本与边界测量</summary>

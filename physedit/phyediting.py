@@ -110,6 +110,8 @@ def execution_plan(spec):
         validate_registration(spec, require_runtime=not bool(spec.get('generation_command')))
     from .pixel_metrics import settings as pixel_settings
     items = read_rows(spec['items'])
+    from .parameter_evaluation import plan_inputs
+    parameter_inputs = plan_inputs(spec, {i['id']: i for i in items})
     if len({i['id'] for i in items}) != len(items):
         raise ValueError('Duplicate registered item IDs')
     from .inversion_inputs import assess
@@ -120,12 +122,12 @@ def execution_plan(spec):
                 frames=spec['frames'], fps=spec['fps'],
                 generation_parameters=parameters(spec['model']) if profile.frames else None,
                 post_condition_seconds=(spec['frames']-1)/float(spec['fps']),
-                evaluation_metrics=metrics,
+                evaluation_metrics=metrics, parameter_inputs=parameter_inputs,
                 vp_pixel_settings=pixel_settings(spec.get('evaluation', {}).get('vp')) if 'vp' in metrics else None,
                 gpu_devices=spec.get('generation_runtime', {}).get('gpu_devices', os.environ.get('CUDA_VISIBLE_DEVICES')),
                 required_generation_runtime=list(profile.needs), single_view=True, v0='agnostic', offset_mode='anchor',
                 stages=['inputs', 'generation', 'initial_prompts', 'sam31', 'fixed_score']+
-                       [m for m in ('vp','qwen') if m in metrics]+['summary'],
+                       [m for m in ('friction','velocity','vp','qwen') if m in metrics]+['summary'],
                 execution_requested=False, gpu_started=False, input_items_sha256=sha256(spec['items']),
                 inversion_applicability=applicability)
 
@@ -180,16 +182,21 @@ def _pipeline(spec, root, plan):
     (root/'registered.json').write_text(json.dumps(dict(plan=plan, spec=spec), indent=2)+'\n')
     rows = []
     try:
+        from .parameter_evaluation import snapshot_inputs
+        snapshot_inputs(spec, root/'parameter_inputs')
         input_dir = root/'input'
         gen.build(SimpleNamespace(items=str(items_path), out=str(input_dir), host_root=str(input_dir),
                                  source_root=str(Path(spec['data_root']).resolve()), data_root=spec['data_root'],
                                  per_gravity=None, min_window_frames=8, max_end_frame=170,
                                  seed=spec.get('seed', 20261008), applicability=spec.get('applicability'),
                                  generation_frames=spec['frames'], generation_fps=spec['fps']))
+        from .parameter_evaluation import parameter_generation_template
+        generation_template = parameter_generation_template(spec, input_dir/'template.jsonl',
+                                                             input_dir/'template.parameter_routing.jsonl')
         rows_path = root/'rows.jsonl'
         profile = model_profile(spec)
         canvas = spec.get('canvas') or (f'{profile.canvas[0]}x{profile.canvas[1]}' if profile.canvas else None)
-        gen.model_rows(SimpleNamespace(template=str(input_dir/'template.jsonl'), out=str(rows_path),
+        gen.model_rows(SimpleNamespace(template=str(generation_template), out=str(rows_path),
                                         model=spec['model'], frames=spec['frames'], fps=spec['fps'],
                                         out_root=str(root/'generated'), canvas=canvas, mode=profile.mode,
                                         square_canvas=None if spec.get('canvas') else profile.square_canvas))
@@ -200,7 +207,8 @@ def _pipeline(spec, root, plan):
             row.update(prompt_source_class='registered_item_text' if provided else 'builtin_event_template',
                        prompt_granularity='event_template', prompt_is_exact_official=False,
                        prompt_transformation='append_fixed_camera_and_requested_gravity')
-        # Correct provenance only; the generated prompt text remains unchanged.
+        from .parameter_evaluation import attach_requested_parameters
+        rows = attach_requested_parameters(spec, rows, registered_items, input_dir/'motion_prompts')
         rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
         if profile.mode == 'v2v':
             from .video_conditioning import attach
@@ -288,14 +296,16 @@ def _pipeline(spec, root, plan):
                 frontend.measure(sam_root, pipeline_failure='frontend_failure: '+str(error))
             (root/'frontend_failure.json').write_text(json.dumps({'reason': str(error), 'partial_outputs_retained': True}))
         predictions_path = root/'predictions.jsonl'
-        gen.score(SimpleNamespace(items=str(items_path), rows=str(observed_rows), tracks=str(sam_root/'tracks_v4.jsonl'),
+        from .parameter_evaluation import score_gravity
+        score_gravity(SimpleNamespace(items=str(items_path), rows=str(observed_rows), tracks=str(sam_root/'tracks_v4.jsonl'),
                                   out=str(predictions_path), v0='agnostic', offset_mode='anchor', shard='0/1',
-                                  camera_motion=None, scan=False))
+                                  camera_motion=None, scan=False), rows)
         result = summary.report(rows, read_rows(predictions_path), {i['id']: i for i in read_rows(items_path)})
         result['evaluation_metrics'] = plan['evaluation_metrics']
-        if set(plan['evaluation_metrics']) & {'vp','qwen'}:
+        if set(plan['evaluation_metrics']) & {'vp','qwen','velocity','friction'}:
             from .evaluations import run_additional, attach_summary
-            extra=run_additional(spec,rows,{i['id']:i for i in read_rows(items_path)},initial,root/'evaluation')
+            extra=run_additional(spec,rows,{i['id']:i for i in read_rows(items_path)},initial,root/'evaluation',
+                                 gravity_predictions=read_rows(predictions_path), tracking_root=sam_root)
             result=attach_summary(result,extra,plan['evaluation_metrics'])
         else:
             result['evaluation_failed'] = result['failed']
@@ -304,6 +314,9 @@ def _pipeline(spec, root, plan):
                     evaluation_metrics=plan['evaluation_metrics'],
                     evaluation_failed=result['evaluation_failed'],
                     summary_sha256=sha256(root/'summary.json'), successful=result['scored'], failed=result['failed'],
+                    gravity_successful=result['scored'], all_metrics_successful=len(rows)-result['evaluation_failed'],
+                    metric_results={name: {key: value.get(key) for key in ('registered','scored','failed','coverage_percent')}
+                                    for name, value in result.get('evaluations', {}).items()},
                     completion_is_not_scientific_certification=True), indent=2)+'\n')
         return result
     except Exception as error:

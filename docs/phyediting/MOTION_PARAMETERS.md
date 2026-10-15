@@ -1,6 +1,6 @@
 # 初速度与摩擦测量
 
-`physedit measure`提供初速度与摩擦测量，使用SAM3.1单视角观测。准备相应输入后分别运行，结果写入指定JSON文件；误差与覆盖率见[项目性能](validation.md)。
+初速度与摩擦可在[一键生成评测](EVALUATION.md#初速度与动摩擦)中自动执行并汇总，也可用`physedit measure`处理已有观测。本页说明单独测量所需的输入与运动模型；开发集误差见[项目性能](validation.md)。
 
 ## 读取已有速度估计
 
@@ -51,9 +51,9 @@ physedit measure coverage-velocity inputs.jsonl velocity_result.json
 physedit measure friction registered_friction_inputs.jsonl friction_result.json
 ```
 
-每行包括`id`、`measurement`及评分目标`target_effective_friction`。测量输入为单视角`boxes_xyxy`、`times_s`、相机与图像尺寸、初始位置、轮廓点、下坡方向、坡角、已知重力及线性阻尼（1/s）。目标有效摩擦系数只用于评分。
+每行包括`id`、`measurement`及评分目标`target_effective_friction`。测量输入为单视角`boxes_xyxy`、`times_s`、相机与图像尺寸、初始位置、轮廓点、下坡方向、坡角、已知重力及线性阻尼（1/s）。目标有效摩擦系数只用于评分。`world_corners`提供相对物体参考点、已按初始姿态转到世界方向的轮廓偏移，`initial_position`单独提供参考点位置。
 
-纯滑动段采用`dv/dt = g(sin(theta) - mu*cos(theta)) - drag*v`，通过相机投影同时拟合窗口起点速度与有效动摩擦系数，支持水平面。`evidence`绑定时钟、物体身份、单支撑面、无外力和稳定姿态；窗口范围覆盖连续滑动片段。估计方法参见[WorldBench](https://arxiv.org/html/2601.21282v2)。
+纯滑动段采用`dv/dt = g(sin(theta) - mu*cos(theta)) - drag*v`，通过相机投影同时拟合窗口起点速度与有效动摩擦系数，支持水平面。`initial_time_s`可指定已知初始状态的时刻；首个观测晚于该时刻时保留真实时间差，缺省值为首观测时刻。`evidence`绑定时钟、物体身份、单支撑面、无外力和稳定姿态；窗口范围覆盖连续滑动片段。估计方法参见[WorldBench](https://arxiv.org/html/2601.21282v2)。
 
 评分使用接触组合规则和滑动接触力所对应的有效摩擦系数。材料属性值通过`declared_material_friction`单独记录。静止片段可输出`static_friction_bound`，斜面下界为`tan(theta)`，状态为`unidentifiable`、`friction=null`。
 

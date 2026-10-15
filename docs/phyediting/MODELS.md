@@ -84,6 +84,8 @@ LTX使用2B非蒸馏权重；Hunyuan使用480p I2V步数蒸馏权重；Cosmos-Pr
 
 ## 配置环境
 
+重力、初速度、动摩擦、V/P与Qwen由公共评测流程调度，12个生成模型使用相同配置项。各参数按所需观测与场景条件分别判断适用性。
+
 生成权重通过`model_dir`指定。`generation_runtime`填写生成Python、GPU和FFmpeg；外部实现增加`code_dir`，LoRA模型增加`lora_dir`，PhysAlign增加`physalign_hook_dir`。DynamiCrafter的`model_dir`填写checkpoint文件。
 
 ```bash
