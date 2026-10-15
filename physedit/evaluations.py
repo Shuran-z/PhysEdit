@@ -536,7 +536,7 @@ def summarize(rows, records, kind, items=None):
 
     result = stats(records)
     result["groups"] = {}
-    for key in ("split", "event", "camera_id", "gravity_truth"):
+    for key in ("split", "event", "camera_id", "gravity_truth", "mode"):
         groups = {}
         for row, record in zip(rows, records):
             value = row.get(key, items.get(row.get("item_id"), {}).get(key, "unspecified"))
@@ -800,6 +800,30 @@ def run_additional(spec, rows, items, initial, root, *, gravity_predictions=None
     return summaries
 
 
+def physical_parameters(gravity, extra, metrics):
+    """Parallel physical measurements, with the same counts and error names."""
+    output = {}
+    for key, metric, source in [('gravity', 'gravtrace', gravity),
+                                 ('friction', 'friction', extra.get('friction')),
+                                 ('initial_velocity', 'velocity', extra.get('velocity'))]:
+        if metric not in metrics or source is None:
+            continue
+        names = ('registered', 'scored', 'failed', 'coverage_percent', 'failure_rate_percent',
+                 'mean_error_percent', 'median_error_percent', 'p95_error_percent',
+                 'max_error_percent', 'failures', 'status_counts', 'groups', 'parameter_response')
+        record = {name: source.get(name) for name in names}
+        record['point_estimates'] = source.get('point_estimates', source.get('scored'))
+        record['point_coverage_percent'] = source.get('point_coverage_percent', source.get('coverage_percent'))
+        record['unit'] = {'gravity': 'm/s^2', 'friction': 'dimensionless', 'initial_velocity': 'm/s'}[key]
+        for name in ('static_bounds', 'point_or_bound_coverage_percent', 'zero_target_count',
+                     'zero_target_mean_absolute_error', 'mean_absolute_error',
+                     'vector_mean_error_percent', 'vector_max_error_percent'):
+            if name in source:
+                record[name] = source[name]
+        output[key] = record
+    return output
+
+
 def attach_summary(gravity, extra, metrics):
     result = dict(gravity, evaluation_metrics=metrics, evaluations=extra)
     failed = (
@@ -809,6 +833,7 @@ def attach_summary(gravity, extra, metrics):
     )
     for stage in extra.values():
         failed.update(f["sample_id"] for f in stage["failures"])
+    result["physical_parameters"] = physical_parameters(gravity, extra, metrics)
     result["evaluation_failed"] = len(failed)
     result["all_requested_metrics_complete"] = not failed
     return result

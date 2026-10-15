@@ -1,6 +1,6 @@
 # 快速上手
 
-将数据、权重和环境路径写入配置，即可运行视频生成、目标跟踪，以及重力、初速度、动摩擦、V/P和Qwen评测。每次运行一个模型，权重与采样参数见[模型说明](MODELS.md)。
+将数据、权重和环境路径写入配置，即可运行视频生成、目标跟踪，以及重力、动摩擦、初速度、V/P和Qwen评测。每次运行一个模型，权重与采样参数见[模型说明](MODELS.md)。视频编辑用[LTX配置](../../examples/phyediting/pipeline.ltx-v2v.example.json)，视频条件续写用[Cosmos配置](../../examples/phyediting/pipeline.cosmos-future.example.json)。
 
 ## 安装
 
@@ -58,7 +58,7 @@ cp examples/phyediting/pipeline.ltx.example.json pipeline.json
 | `sam3`、`checkpoint` | SAM源码与权重 |
 | `generation_runtime` | 生成Python、GPU和FFmpeg |
 | `applicability` | 参考文件路径与SHA256 |
-| `evaluation` | 重力、初速度、动摩擦、V/P与Qwen选项 |
+| `evaluation` | 重力、动摩擦、初速度、V/P与Qwen选项 |
 
 示例已开启五类评测。摩擦需要填写滑动条件清单及SHA256，格式见[摩擦输入示例](../../examples/phyediting/friction.example.jsonl)。条件尚不具备的样本会列出不适用原因。Qwen也可使用[本地权重配置](../../examples/phyediting/pipeline.qwen-local.example.json)。帧数、帧率和画布由模型配置提供，配置项说明见[评测指南](EVALUATION.md)。
 

@@ -21,7 +21,7 @@ def validate_settings(spec):
     """Reject misspelled settings and unavailable evaluations before any execution."""
     allowed = {'items', 'data_root', 'compact', 'model', 'model_dir', 'sam3', 'checkpoint',
                'seed', 'frames', 'fps', 'canvas', 'generation_runtime', 'generation_command',
-               'mode', 'conditioning_mode', 'evaluation', 'applicability', 'v2v'}
+               'mode', 'conditioning_mode', 'evaluation', 'applicability', 'v2v', 'future'}
     if not isinstance(spec, dict):
         raise ValueError('Run spec must be an object')
     unknown = set(spec) - allowed
@@ -45,9 +45,10 @@ def model_profile(spec):
     from .runners.oneclick_registry import contract
     try:
         profile = contract(spec['model'])
-        if spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v':
+        if ((spec.get('conditioning_mode', spec.get('mode')) == 'v2v' and spec['model'] == 'ltx_i2v') or
+                (spec.get('conditioning_mode', spec.get('mode')) == 'v2v_future' and spec['model'] == 'cosmos')):
             from dataclasses import replace
-            profile = replace(profile, mode='v2v')
+            profile = replace(profile, mode=spec.get('conditioning_mode', spec.get('mode')))
         return profile
     except ValueError:
         if spec.get('generation_command'):
@@ -87,7 +88,7 @@ def execution_plan(spec):
     spec = resolve_model_defaults(spec)
     from .runners.oneclick_registry import validate_registration
     profile = model_profile(spec)
-    if profile.mode not in ('i2v', 'v2v', 'v2v_one_condition_frame'):
+    if profile.mode not in ('i2v', 'v2v', 'v2v_future', 'v2v_one_condition_frame'):
         raise ValueError('Only I2V and V2V are allowed; pure T2V is not supported')
     for key in ('mode', 'conditioning_mode'):
         if key in spec and spec[key] != profile.mode:
@@ -99,6 +100,13 @@ def execution_plan(spec):
         registration(spec)
     elif 'v2v' in spec:
         raise ValueError('v2v settings require conditioning_mode=v2v')
+    if profile.mode == 'v2v_future':
+        if spec['model'] != 'cosmos' or spec.get('generation_command'):
+            raise ValueError('Future video prediction uses the registered Cosmos Video2World runner')
+        from .future_conditioning import registration
+        registration(spec)
+    elif 'future' in spec:
+        raise ValueError('future settings require conditioning_mode=v2v_future')
     if 'frames' not in spec or 'fps' not in spec:
         raise ValueError('Custom generation_command requires explicit frames and fps')
     if spec.get('generation_command') is not None and (not isinstance(spec['generation_command'], list) or
@@ -115,13 +123,16 @@ def execution_plan(spec):
     if len({i['id'] for i in items}) != len(items):
         raise ValueError('Duplicate registered item IDs')
     from .inversion_inputs import assess
-    applicability = assess(items, spec.get('applicability'), frames=spec['frames'], fps=spec['fps'])
+    applicability = assess(items, spec.get('applicability'), frames=spec['frames']-(4 if profile.mode == 'v2v_future' else 0), fps=spec['fps'])
     return dict(registered=len(items), model=spec['model'],
                 model_runner='custom_argv' if spec.get('generation_command') else profile.runner,
                 conditioning_mode=profile.mode,
                 frames=spec['frames'], fps=spec['fps'],
                 generation_parameters=parameters(spec['model']) if profile.frames else None,
-                post_condition_seconds=(spec['frames']-1)/float(spec['fps']),
+                post_condition_seconds=(spec['frames']-(5 if profile.mode == 'v2v_future' else 1))/float(spec['fps']),
+                native_output_frames=spec['frames'],
+                evaluated_frames=spec['frames']-(4 if profile.mode == 'v2v_future' else 0),
+                parameter_metrics=[name for name in ('gravtrace','friction','velocity') if name in metrics],
                 evaluation_metrics=metrics, parameter_inputs=parameter_inputs,
                 vp_pixel_settings=pixel_settings(spec.get('evaluation', {}).get('vp')) if 'vp' in metrics else None,
                 gpu_devices=spec.get('generation_runtime', {}).get('gpu_devices', os.environ.get('CUDA_VISIBLE_DEVICES')),
@@ -189,7 +200,7 @@ def _pipeline(spec, root, plan):
                                  source_root=str(Path(spec['data_root']).resolve()), data_root=spec['data_root'],
                                  per_gravity=None, min_window_frames=8, max_end_frame=170,
                                  seed=spec.get('seed', 20261008), applicability=spec.get('applicability'),
-                                 generation_frames=spec['frames'], generation_fps=spec['fps']))
+                                 generation_frames=spec['frames']-(4 if model_profile(spec).mode == 'v2v_future' else 0), generation_fps=spec['fps']))
         from .parameter_evaluation import parameter_generation_template
         generation_template = parameter_generation_template(spec, input_dir/'template.jsonl',
                                                              input_dir/'template.parameter_routing.jsonl')
@@ -212,6 +223,10 @@ def _pipeline(spec, root, plan):
         rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
         if profile.mode == 'v2v':
             from .video_conditioning import attach
+            rows = attach(rows, spec)
+            rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
+        if profile.mode == 'v2v_future':
+            from .future_conditioning import attach
             rows = attach(rows, spec)
             rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
         # Obtain initial prompts BEFORE inference; missing prompt sources cannot start a model.
@@ -309,6 +324,10 @@ def _pipeline(spec, root, plan):
             result=attach_summary(result,extra,plan['evaluation_metrics'])
         else:
             result['evaluation_failed'] = result['failed']
+        from .evaluations import physical_parameters
+        result['physical_parameters'] = physical_parameters(result, result.get('evaluations', {}), plan['evaluation_metrics'])
+        result['conditioning_mode'] = profile.mode
+        result['generation_scope'] = {key: plan[key] for key in ('native_output_frames','evaluated_frames','post_condition_seconds')}
         (root/'summary.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
         (root/'completed.json').write_text(json.dumps(dict(registered=len(rows), single_view=True,
                     evaluation_metrics=plan['evaluation_metrics'],

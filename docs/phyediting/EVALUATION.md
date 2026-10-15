@@ -1,24 +1,24 @@
 # 生成视频评测
 
-一键生成后，PhysEdit通过SAM3.1跟踪目标，按配置测量重力、初速度和动摩擦，并执行V/P与Qwen评测。V衡量视觉质量与运动差异；P报告物理参数偏差、响应与排序；Qwen判断可见问题。
+一键生成后，PhysEdit通过SAM3.1跟踪目标，按配置测量重力、动摩擦和初速度，并执行V/P与Qwen评测。V衡量视觉质量与运动差异；P报告物理参数偏差、响应与排序；Qwen判断可见问题。
 
 | 评测类别 | 主要指标 | 观察范围 |
 | :---: | :---: | :---: |
 | 像素一致性 | 全图SSIM、PSNR | 条件帧、参考续段 |
 | 视觉稳定性 | 相机运动、背景闪烁、轮廓差异 | 生成全片、首1s |
 | 参考运动 | 运动区域IoU、轨迹位移误差 | 固定5s、首1s |
-| 参数控制 | 重力、初速度和动摩擦偏差；响应与排序 | 单例、完整受控组 |
+| 参数控制 | 重力、动摩擦和初速度偏差；响应与排序 | 单例、完整受控组 |
 | Qwen判断 | 问题类别、严重程度、视频证据 | 条件图、生成全片 |
 
-参考视频使用重力真值评分，生成视频使用请求重力评分。各项结果报告分数、有效样本数、覆盖率和逐例状态。
+参考视频与已知参数对照，生成视频与相应请求值对照。重力、动摩擦、初速度分别报告误差、有效样本数、覆盖率和逐例状态。
 
 ## 配置评测
 
-在`pipeline.json`中选择评测阶段。下面同时启用重力、初速度、动摩擦、V/P和Qwen，完整示例见[API配置](../../examples/phyediting/pipeline.ltx.example.json)与[本地Qwen配置](../../examples/phyediting/pipeline.qwen-local.example.json)：
+在`pipeline.json`中选择评测阶段。下面同时启用重力、动摩擦、初速度、V/P和Qwen，完整示例见[API配置](../../examples/phyediting/pipeline.ltx.example.json)与[本地Qwen配置](../../examples/phyediting/pipeline.qwen-local.example.json)：
 
 ```json
 "evaluation": {
-  "metrics": ["gravtrace", "velocity", "friction", "vp", "qwen"],
+  "metrics": ["gravtrace", "friction", "velocity", "vp", "qwen"],
   "friction": {"manifest": "/path/to/sliding_conditions.jsonl", "manifest_sha256": "SHA256_OF_SLIDING_CONDITIONS"},
   "vp": {"mask_backend": "sam31", "reference_duration_seconds": 1.0, "reference_fps": 30, "trajectory_duration_seconds": 5, "trajectory_sampling_fps": 30},
   "qwen": {
@@ -32,7 +32,7 @@
 }
 ```
 
-`evaluation.metrics`使用五个配置键：`gravtrace`、`velocity`、`friction`、`vp`和`qwen`，分别选择重力、初速度、动摩擦、视觉运动指标和视频判断。为兼容已有配置，省略`evaluation`时只评测重力；一键生成配置仍包含`gravtrace`，其余阶段可分别选择。已有视频补评可选择其中任意阶段并复用原重力结果。
+`evaluation.metrics`使用五个配置键：`gravtrace`、`velocity`、`friction`、`vp`和`qwen`，分别选择重力、动摩擦、初速度、视觉运动指标和视频判断。为兼容已有配置，省略`evaluation`时只评测重力；一键生成配置仍包含`gravtrace`，其余阶段可分别选择。已有视频补评可选择其中任意阶段并复用原重力结果。
 
 `generation_runtime.gpu_devices`指定生成、跟踪和V/P使用的GPU；`generation_runtime.python`指定生成环境。控制器与SAM使用启动命令的Python。
 
@@ -131,7 +131,17 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 
 </details>
 
-## 初速度与动摩擦
+## 物理参数测量
+
+| 参数 | 配置键 | 测量与输出 |
+| :---: | :---: | :---: |
+| 重力 | `gravtrace` | 目标轮廓投影拟合；大小偏差与组级响应 |
+| 动摩擦 | `friction` | 纯滑动减速拟合；有效系数与静止下界 |
+| 初速度 | `velocity` | 自由飞行或沿坡拟合；模长及向量误差 |
+
+`summary.json.physical_parameters`以`gravity`、`friction`、`initial_velocity`并列保存结果。三项共享`registered/scored/failed`、`mean_error_percent/max_error_percent`、`coverage_percent/failure_rate_percent`及逐例失败原因。原重力字段和`evaluations`路径继续兼容已有分析脚本。
+
+重力测量使用预先确定的运动片段，依据三维轮廓投影与SAM边界位移进行拟合，目标重力仅用于评分。
 
 `velocity`读取生成视频的单视角观测。自由飞行样本固定已有重力估计，单独拟合三维初速度；滑动样本在已知坡面与重力条件下，同时估计沿坡初速度和动摩擦。重力结果保持原值。初速度参考时刻随逐例结果保存，大小、方向和零目标误差分别统计。
 
@@ -143,9 +153,9 @@ SSIM和IoU越大越好，PSNR以dB计；其余差异量越小越好。相机、�
 
 ## P：参数误差、响应与排序
 
-单例重力相对偏差为`100 × |estimated_g / requested_g − 1|`。有效估计报告均值、中位数和最大值；初速度与摩擦另报告P95、绝对误差和零目标数量。初速度同时报告三维向量误差。全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
+重力、动摩擦和初速度大小使用相对偏差`100 × |estimate / target − 1|`，各自报告均值、中位数、最大值、覆盖率与失败率。摩擦和初速度另报告P95与绝对误差，零目标只计算绝对误差。初速度同时报告三维向量误差。全部输入样本报告失败率、覆盖率与原因。`at_bound`记录边界估计值及其状态。
 
-响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变重力。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计为排序错误；恒定估计的rho为空。斜率与单例误差共同阅读。
+响应与排序使用同场景、机位、目标、seed及生成模型的完整受控组，固定其他设置，仅改变该组指定的一个参数。每组输出估计对请求的回归斜率、最高与最低档的估计差、严格同向的成对排序比例，以及至少三个不同档位的Spearman rho。相同估计值计为排序错误；恒定估计的rho为空。斜率与单例误差共同阅读。
 
 每个item通过`parameter_response_registration`提供组文件路径与SHA。文件包含`group_id`、`varying_parameter="gravity"`、`fixed_controls`和`members=[{"item_id":"...","gravity":1.62}, ...]`。成员的事件、机位、对象、split和请求值逐项核验。含缺源、失败、边界估计或未运行成员的组保留全部成员，并标记证据不足。有效组等权汇总。
 

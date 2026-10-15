@@ -10,8 +10,8 @@
   "evaluation": {
     "metrics": [
       "gravtrace",
-      "velocity",
       "friction",
+      "velocity",
       "vp",
       "qwen"
     ],

@@ -214,7 +214,7 @@ def run(spec, manifest, root):
                 with claim.open('x') as claimed:
                     claimed.write(json.dumps(dict(sample_id=sid, model=spec['model'], registered_row_sha256=sha256(manifest))))
                 expected[sid] = input_hashes(row)
-                if profile.runner == 'cosmos_predict2':
+                if profile.runner == 'cosmos_predict2' and profile.mode != 'v2v_future':
                     clip = out_dir/'condition_only.mp4'
                     _condition_video(row, clip)
                     row = {**row, 'conditioning_video': str(clip), 'cosmos_predict2_condition_frames': 1,

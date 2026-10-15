@@ -41,9 +41,26 @@ def _short_command(argv):
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] == ['measure'] and (len(argv) == 1 or argv[1] in ('-h', '--help')):
+        parser = argparse.ArgumentParser(prog='physedit measure',
+                    description='Measure gravity, kinetic friction and initial velocity from single-view observations.')
+        commands = parser.add_subparsers(dest='parameter')
+        for name, description in [('gravity', 'fit gravity from registered observations'),
+                                  ('friction', 'estimate effective kinetic friction from sliding'),
+                                  ('velocity', 'score initial velocity from saved predictions'),
+                                  ('coverage-velocity', 'fit initial velocity from image trajectories'),
+                                  ('kinematic-velocity', 'fit initial velocity on a known plane'),
+                                  ('can-pixel-velocity', 'fit initial velocity from can contours'),
+                                  ('book-pixel-velocity', 'fit initial velocity from book contours')]:
+            commands.add_parser(name, help=description)
+        parser.print_help()
+        parser.exit(0)
     if argv and argv[0] in ("track", "measure"):
         if argv[0] == "track":
             from scripts.sam31_frontend import main as entry
+        elif len(argv) > 1 and argv[1] == 'gravity':
+            from gravtrace.__main__ import main as entry
+            argv = [argv[0], 'fit', *argv[2:]]
         else:
             from scripts.phyediting_motion_parameters import main as entry
         original_argv = sys.argv
@@ -75,7 +92,7 @@ def main(argv=None):
     model_parser.add_argument("--json", action="store_true", help="sampling settings and native clock")
     sub.add_parser("plan", help="inspect a local pipeline configuration")
     sub.add_parser("track", help="SAM3.1 target tracking; use track --help")
-    sub.add_parser("measure", help="initial-speed and friction measurements; use measure --help")
+    sub.add_parser("measure", help="gravity, friction and initial-velocity measurements; use measure --help")
     evaluation=sub.add_parser('evaluate',help='Evaluate existing PhyEditing media; no generation or new gravity fit')
     evaluation.add_argument('benchmark',choices=['phyediting'])
     evaluation.add_argument('--spec',required=True)
@@ -105,12 +122,17 @@ def main(argv=None):
             import json
             from dataclasses import asdict
             print(json.dumps({key: dict(**asdict(m), sampling=parameters(key),
-                supported_modes=['i2v', 'v2v'] if key == 'ltx_i2v' else [m.mode],
+                supported_modes=(['i2v', 'v2v'] if key == 'ltx_i2v' else
+                                 ['v2v_one_condition_frame', 'v2v_future'] if key == 'cosmos' else [m.mode]),
+                future_prediction=(dict(history_frames=5, native_frames=81, evaluated_frames=77,
+                                        predicted_frames=76, fps=16, post_condition_seconds=4.75)
+                                   if key == 'cosmos' else None),
                 post_condition_seconds=(m.frames-1)/m.fps) for key,m in MODELS.items()}, indent=2))
         else:
             for key, m in MODELS.items():
                 settings = parameters(key)
-                print(f"{key:28} {m.frames:3} frames {m.fps:2} fps {m.mode:25} steps={settings['steps']} guidance={settings['guidance']}")
+                modes = ('i2v/v2v' if key == 'ltx_i2v' else 'i2v/v2v_future' if key == 'cosmos' else m.mode)
+                print(f"{key:28} {m.frames:3} frames {m.fps:2} fps {modes:25} steps={settings['steps']} guidance={settings['guidance']}")
         return
     if a.benchmark == 'phyediting':
         if a.cmd == 'status':

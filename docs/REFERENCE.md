@@ -1,8 +1,21 @@
 # 单视角物理参数测量
 
-PhysEdit从单视角目标观测中测量重力、初速度和动摩擦系数。SAM3.1提供目标掩膜和图像边界，解析运动模型预测三维轨迹，再用相机参数投影到图像平面，与目标观测拟合。各参数的输入条件和开发集误差见[性能评测](phyediting/validation.md)。
+PhysEdit从单视角目标观测中测量重力、动摩擦和初速度系数。SAM3.1提供目标掩膜和图像边界，解析运动模型预测三维轨迹，再用相机参数投影到图像平面，与目标观测拟合。各参数的输入条件和开发集误差见[性能评测](phyediting/validation.md)。
 
-GravTrace是项目中的重力测量模块，适用于自由落体、抛体和斜面运动。初速度与摩擦可随生成视频自动评测，也可使用[单独测量命令](phyediting/MOTION_PARAMETERS.md)。生成与评测的使用方法见[快速上手](phyediting/QUICKSTART.md)。
+三类参数均可随生成视频自动测量，也可处理已有视频观测。单独测量见[物理参数测量](phyediting/MOTION_PARAMETERS.md)，生成与评测见[快速上手](phyediting/QUICKSTART.md)。
+
+## 三类参数
+
+| 参数 | 估计方式 | 评分内容 |
+| :---: | :---: | :---: |
+| 重力 | 三维运动模型投影到图像，与SAM目标边界拟合 | 大小误差、响应斜率与排序 |
+| 动摩擦 | 已知重力和坡面条件下拟合滑动减速 | 有效系数误差、响应斜率与排序 |
+| 初速度 | 自由飞行三维拟合或沿坡滑动拟合 | 模长、向量与零目标误差、响应与排序 |
+
+三类参数在`summary.json.physical_parameters`下并列提供相同的样本数、误差、失败率和覆盖率字段。摩擦另保留静止片段的下界信息，初速度另报告方向误差。单独测量命令与条件清单见[物理参数测量](phyediting/MOTION_PARAMETERS.md)。
+
+<details>
+<summary>重力测量方法、输入与命令</summary>
 
 ## 重力测量方法
 
@@ -45,7 +58,7 @@ GravTrace是项目中的重力测量模块，适用于自由落体、抛体和�
 
 ```bash
 python -m pip install -e '.[test]'
-gravtrace fit samples.jsonl -o predictions.jsonl --workers 16
+physedit measure gravity samples.jsonl -o predictions.jsonl --workers 16
 gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ```
 
@@ -55,7 +68,7 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 
 生成视频使用参考场景的已知条件与同一初始时刻。`scripts/generated_manifest.py GT.jsonl VIDEOS.jsonl OUT.jsonl`将参考样本与生成视频观测关联；视频行提供`id/gt_id/masks/fps/start_s`，随后使用上述`fit/score`命令。
 
-一键流水线使用固定窗口评分，按配置记录重力、初速度与动摩擦对请求值的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](phyediting/QUICKSTART.md)，指标定义见[生成视频评测](phyediting/EVALUATION.md)。
+一键流水线使用固定窗口评分，按配置记录重力、动摩擦与初速度对请求值的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](phyediting/QUICKSTART.md)，指标定义见[生成视频评测](phyediting/EVALUATION.md)。
 
 ## 测量条件
 
@@ -66,6 +79,9 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ## 输入格式转换
 
 `scripts/convert_v22.py`提供历史清单到当前样本格式的转换；媒体、几何和初始状态按各自来源绑定。
+
+
+</details>
 
 ## 许可证
 

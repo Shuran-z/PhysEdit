@@ -76,8 +76,10 @@ def completion_path(row):
 
 def input_hashes(row):
     names = ['condition_image', 'prompt_file', 'negative_prompt_file']
-    if row.get('mode') == 'v2v':
+    if row.get('mode') in ('v2v', 'v2v_future'):
         names.append('conditioning_video')
+    if row.get('mode') == 'v2v_future':
+        names.extend(['conditioning_source_video', 'future_manifest'])
     return {k: sha256(row[k]) for k in names}
 
 

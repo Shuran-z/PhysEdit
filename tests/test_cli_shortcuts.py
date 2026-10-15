@@ -96,8 +96,9 @@ def test_measurement_aliases_pass_arguments_to_existing_entry(monkeypatch, comma
     target = importlib.import_module('scripts.' + module)
     calls = []
     monkeypatch.setattr(target, 'main', lambda: calls.append(sys.argv[1:]) or 0)
-    assert main([command, '--help']) == 0
-    assert calls == [['--help']]
+    arguments = ['--help'] if command == 'track' else ['friction', 'inputs.jsonl', 'results.json']
+    assert main([command, *arguments]) == 0
+    assert calls == [arguments]
 
 
 @pytest.mark.parametrize('command', ['track', 'measure'])
