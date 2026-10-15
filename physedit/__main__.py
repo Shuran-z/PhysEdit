@@ -8,14 +8,9 @@
 Multi-host tasks use benchmark keys declared in PHYSEDIT_FLEET_CONFIG.
 """
 import argparse
-import fcntl
 import os
 import sys
 import time
-
-from . import config
-from .driver import HUB_DIR, Driver
-
 
 def _short_command(argv):
     """Expand convenient local commands into the existing explicit CLI."""
@@ -41,6 +36,14 @@ def _short_command(argv):
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == 'boundary':
+        from .boundary import main as boundary_main
+        return boundary_main(argv[1:])
+    # The legacy fleet controller uses Unix file locking; keep that import out
+    # of the portable boundary-only command path.
+    import fcntl
+    from . import config
+    from .driver import HUB_DIR, Driver
     if argv[:1] == ['measure'] and (len(argv) == 1 or argv[1] in ('-h', '--help')):
         parser = argparse.ArgumentParser(prog='physedit measure',
                     description='Measure gravity, kinetic friction and initial velocity from single-view observations.')
