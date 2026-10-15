@@ -98,6 +98,8 @@ def validate(spec):
                                     any(not isinstance(x, str) for x in command)):
             raise ValueError(field + ' must be an argv list')
     pair_seeds=defaultdict(lambda:defaultdict(set))
+    pair_modes={}
+    pair_labels=defaultdict(dict)
     point_seeds=defaultdict(set)
     for row in rows:
         key=lookup[row['sample_id']]
@@ -107,13 +109,29 @@ def validate(spec):
             raise ValueError('duplicate seed for a registered point')
         point_seeds[point].add(row['seed'])
         for pair in key.get('pair_ids',[]):
-            pair_seeds[group+(pair,)][key['point_id']].add(row['seed'])
-    for members in pair_seeds.values():
+            pair_key=group+(pair,)
+            mode=key.get('pairing_mode','independent')
+            if mode not in ('independent','coupled_seed'):
+                raise ValueError('pairing_mode must be independent or coupled_seed')
+            if pair_key in pair_modes and pair_modes[pair_key]!=mode:
+                raise ValueError('both endpoints of a pair must use the same pairing_mode')
+            pair_modes[pair_key]=mode
+            pair_seeds[pair_key][key['point_id']].add(row['seed'])
+            label=key['events'][key['target_event']]
+            previous=pair_labels[pair_key].setdefault(key['point_id'],label)
+            if previous!=label:
+                raise ValueError('paired point has inconsistent reference target labels')
+    for pair_key,members in pair_seeds.items():
         if len(members)!=2:
             raise ValueError('pair must register both points before generation')
         left,right=members.values()
-        if left & right:
-            raise ValueError('independent pairing requires disjoint seed streams; coupled mode is not implemented')
+        if pair_modes[pair_key] == 'independent' and left & right:
+            raise ValueError('independent pairs require disjoint seed streams')
+        if pair_modes[pair_key] == 'coupled_seed' and left != right:
+            raise ValueError('coupled_seed pairs require identical seed sets at both endpoints')
+        labels=list(pair_labels[pair_key].values())
+        if len(labels)!=2 or labels[0]==labels[1]:
+            raise ValueError('cross-boundary pair must have opposite reference outcomes')
     return rows, keys
 
 
@@ -281,6 +299,7 @@ def score(root, annotations=None, gravity=None):
     annotations = _index_optional(annotations, known)
     gravity = _index_optional(gravity, known)
     horizon = {i['sample_id']: i['evaluation_duration_s'] for i in inputs}
+    seeds = {i['sample_id']: i['seed'] for i in inputs}
     scored, groups = [], defaultdict(list)
     for key in keys:
         sid = key['sample_id']
@@ -329,7 +348,7 @@ def score(root, annotations=None, gravity=None):
                    annotation_status='bound' if bound else 'missing_or_unbound',
                    annotation_method=annotation.get('method'),
                    annotation_evidence=annotation.get('evidence') if bound else None,
-                   video_sha256=observed.get('video_sha256'),
+                   video_sha256=observed.get('video_sha256'), seed=seeds[sid],
                    distance=distance(key), inversion_status=gstatus, gravity_relative_deviation=error)
         scored.append(row)
         groups[(key['scene_id'], key['source_group_id'], key['family_id'])].append((key,row))
@@ -353,17 +372,31 @@ def score(root, annotations=None, gravity=None):
         for pid,k in point_keys.items():
             for pair_id in k.get('pair_ids', []):
                 pairs.setdefault(pair_id, []).append(pid)
-        pair_scores = []
+        independent_pair_scores, coupled_pair_scores = [], []
         for pair_id,members in pairs.items():
             if len(members) != 2:
                 raise ValueError('pair must bind exactly two points')
             l,r = members
             if point_keys[l]['events'][point_keys[l]['target_event']] == point_keys[r]['events'][point_keys[r]['target_event']]:
                 raise ValueError('cross-outcome pair has same reference label')
-            # Pairing is explicitly registered; unknown boundary stays a sparse outcome pilot.
-            pair_scores.append(points[l]*points[r])
+            mode=point_keys[l].get('pairing_mode','independent')
+            if mode == 'independent':
+                # Product estimates success for two independent draws; it is not a matched-seed response rate.
+                independent_pair_scores.append(points[l]*points[r])
+            elif mode == 'coupled_seed':
+                by_seed={pid:{row['seed']:row['target_correct'] for row in point_rows[pid]}
+                         for pid in (l,r)}
+                common=set(by_seed[l]) & set(by_seed[r])
+                if not common or set(by_seed[l]) != set(by_seed[r]):
+                    raise ValueError('coupled_seed pair has unmatched seeds')
+                coupled_pair_scores.append(mean([by_seed[l][seed]*by_seed[r][seed]
+                                                 for seed in sorted(common)]))
+        independent_score=mean(independent_pair_scores)
         families.append(dict(scene_id=scene, source_group_id=source, family_id=family,
-                             points=points, balanced_accuracy=balanced, independent_pair_accuracy=mean(pair_scores),
+                             points=points, balanced_accuracy=balanced,
+                             independent_pair_success=independent_score,
+                             independent_pair_accuracy=independent_score,  # backward-compatible alias
+                             coupled_pair_accuracy=mean(coupled_pair_scores),
                              event_exact=mean([mean([r['event_exact'] for r in rs]) for rs in point_rows.values()])))
     def macro(getter):
         src = defaultdict(list)
@@ -380,7 +413,9 @@ def score(root, annotations=None, gravity=None):
                 balanced_accuracy=macro(lambda f:f['balanced_accuracy']['all']),
                 near_accuracy=macro(lambda f:f['balanced_accuracy']['near']),
                 near_covered_families=sum(f['balanced_accuracy']['near'] is not None for f in families),
-                independent_pair_accuracy=macro(lambda f:f['independent_pair_accuracy']),
+                independent_pair_success=macro(lambda f:f['independent_pair_success']),
+                independent_pair_accuracy=macro(lambda f:f['independent_pair_success']),  # backward-compatible alias
+                coupled_pair_accuracy=macro(lambda f:f['coupled_pair_accuracy']),
                 event_exact=macro(lambda f:f['event_exact']),
                 first_error_counts=dict(Counter(r['first_error_stage'] for r in scored if r['first_error_stage'])),
                 annotations_bound=sum(r['annotation_status']=='bound' for r in scored),

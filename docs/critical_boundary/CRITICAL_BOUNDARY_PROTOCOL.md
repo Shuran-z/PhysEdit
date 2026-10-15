@@ -14,7 +14,7 @@
 
 | 维度 | 问题 | 主结果 |
 |---|---|---|
-| 临界分支敏感性 | 越接近真实事件转换位置，生成结果是否仍正确？跨界后是否正确改变？ | 距离分层准确率、NearAcc、PairAcc |
+| 临界分支敏感性 | 越接近真实事件转换位置，生成结果是否仍正确？跨界后是否正确改变？ | 距离分层准确率、NearAcc、CoupledPairAcc |
 | 因果事件链 | 结果是否经过正确交互过程产生？局部变化是否正确传播？ | EventExact、首次错误阶段、事件变化匹配 |
 | 定量物理反演 | 生成运动实际体现的物理参数是否符合输入？ | GravTrace 重力反演误差、可测覆盖率及失败率 |
 
@@ -131,9 +131,11 @@ NearAcc 就是 b=Near 的 BalancedAcc 聚合。某族桶只有一类时，平衡
 
 ### 5.2 跨边界配对准确率 PairAcc
 
-主协议两端独立生成，配对点 l、r 的分数为 PairAcc_lr=A_l A_r，等价于全部 K_l K_r 输出组合中两端均正确的比例。它测量随机抽取两端各一次都正确的概率；K_l K_r 组合不是独立样本数。
+临界响应的主配对指标采用同 seed 配对。每个预登记参数点使用相同 seed 集合生成；对一对参考结局相反的端点 l、r，定义 `CoupledPairAcc_lr=(1/K)Σ_k C_lk C_rk`，其中 `C` 表示该端点的目标事件判断正确。二值相反标签下，这要求同一 seed 的两端都正确，也就要求生成结果按参考方向跨界翻转。不可判视频的 C=0。seed 只是配对控制变量，不是独立样本数；按来源组聚合并以来源组做置信区间。
 
-同 seed/共享噪声模式另名 CoupledPairAcc=(1/K)Σ_k C_lk C_rk，不能与独立模式混报。两种模式都要求参考两端是正确的相反结果，不能只看输出是否不同。按距离桶配对等级和来源组宏平均。
+独立 seed 流另报 `IndependentPairSuccess_lr=A_l A_r`，表示分别独立抽取一条两端生成视频、两条都正确的边际概率估计。它不是同一配对试次中的响应率，且 `K_l K_r` 组合不是独立样本数。代码同时实现两种估计，输出字段分开；不得统称为 PairAcc 或混合平均。
+
+两种模式都要求参考两端是正确的相反结果，不能只看输出是否不同。同一结局控制对另报 SameSideAcc，帮助区分跨界响应失败与普遍生成不稳定。
 
 SameSideAcc 以同标签控制对使用相同公式。它帮助判断模型是无法正确响应跨界干预，还是普遍无法稳定生成两条视频。
 
@@ -225,7 +227,7 @@ A 首先定义 θ=书本初速度，目标事件 e=笔记本跌落。事件图�
 | 2.14 | +0.04 | 0.04 | Near | 1 |
 | 2.30 | +0.20 | 0.20 | Far | 1 |
 
-不需要 θ=2.10 的视频。若近侧两点各生成 5 条，分别正确 4 条和 3 条，则 NearAcc=(4/5+3/5)/2=0.70；独立 PairAcc=(4/5)(3/5)=0.48。EventExact 和重力误差由另外的过程标注与拟合获得，不能从这两个数推出来。
+不需要 θ=2.10 的视频。若近侧两点各生成 5 条，分别正确 4 条和 3 条，则 NearAcc=(4/5+3/5)/2=0.70；若同 seed 配对中 2 个 seed 的两端都正确，则 CoupledPairAcc=2/5=0.40。独立抽样下的 IndependentPairSuccess=(4/5)(3/5)=0.48。两数回答的问题不同，不能相互替代。EventExact 和重力误差由另外的过程标注与拟合获得，不能从这两个数推出来。
 
 ### 6.4 已有数值复核如何解释
 
@@ -302,7 +304,7 @@ T15 当前 pilot 是开发观测，不再声称该上下文从未被指标开发
 
 ### 9.3 主表字段
 
-分支表：模型、事件/来源组数、点/生成数、NearAcc、MidAcc、FarAcc、PairAcc、双侧及分桶覆盖率、输出不可判率。
+分支表：模型、事件/来源组数、点/生成数、NearAcc、MidAcc、FarAcc、CoupledPairAcc、IndependentPairSuccess、双侧及分桶覆盖率、输出不可判率。
 
 过程表：模型、目标分支准确率、EventExact、ChainPairExact、首次错误分布、各阶段 precision/recall 与不可判率。
 
@@ -362,7 +364,7 @@ T15 当前目标是触发后 6 秒，不等于任意模型输出 6 秒。生成�
 
 远端 parameter_response 已实现同场景、同seed、不同重力的完整组斜率、排序和 Spearman；保留这些指标，不把普通参数响应声称为新增能力。现有 registration 固定 varying_parameter=gravity。
 
-临界任务另建 boundary_registration，记录可变速度/摩擦/位置等参数、固定条件、事件、局部边界、距离尺度及成员哈希；新增的边界距离与二值事件曲线不直接冒用当前重力响应 schema。PairAcc 的独立模式使用独立种子流；共享seed结果标 CoupledPairAcc。已有重力同seed响应组不自动满足独立生成假设。
+临界任务另建 boundary_registration，记录可变速度/摩擦/位置等参数、固定条件、事件、局部边界、距离尺度及成员哈希；新增的边界距离与二值事件曲线不直接冒用当前重力响应 schema。同 seed 配对的 CoupledPairAcc 是主跨界响应指标；独立 seed 流的 IndependentPairSuccess 是不同 estimand，单独报告。已有重力同 seed 响应组不自动满足边界样本配对合同。
 
 ### 13.4 Qwen 与视觉指标的职责
 
@@ -387,7 +389,7 @@ T15 当前目标是触发后 6 秒，不等于任意模型输出 6 秒。生成�
 | 冻结重力与单视角观测 | 已有固定窗口/哈希/失败保留实现 | 复用，保持冻结规则 |
 | 重力参数响应、V/P、Qwen | 已有独立指标与输出 | 作为已有维度保留，不冒充事件链评估 |
 | 速度与摩擦反演 | 独立开发模块 | 纳入研究规划，验收前单列 |
-| 临界距离、NearAcc、PairAcc、EventExact | 独立 boundary 入口实现登记、输入输出合同和聚合 | 事件标签仍须由人工或经过独立验证的评测器提供；自动事件评测器尚未接入 |
+| 临界距离、NearAcc、CoupledPairAcc、IndependentPairSuccess、EventExact | 独立 boundary 入口实现登记、输入输出合同和聚合 | 事件标签仍须由人工或经过独立验证的评测器提供；自动事件评测器尚未接入 |
 | 组级正式 ID/OOD | 文档仍为设计协议 | 消费实际冻结清单，不从名称猜 split |
 
 The legacy parameter-response and model evaluation APIs remain separate. Before combining their outputs with this protocol, verify the model version, native clock, input policy, and registration hashes for the exact benchmark release.

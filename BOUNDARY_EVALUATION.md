@@ -71,11 +71,12 @@ Optional frozen GravTrace predictions can be supplied with `--gravity prediction
 
 - **Balanced target accuracy**: average of positive-branch and negative-branch accuracy, first within registered points/seeds and then across source groups/scenes.
 - **NearAcc**: balanced accuracy for samples whose normalized distance interval lies wholly in the `near` bucket (distance ≤ 0.05 of the registered normalization span). Ambiguous bucket membership and unverified boundaries do not enter NearAcc; the output reports coverage.
-- **Independent PairAcc**: product of the two endpoint accuracies for each preregistered opposite-outcome pair, averaged at family/source level. Seed streams must be disjoint. The current implementation does not support coupled same-seed pair scoring.
+- **CoupledPairAcc (primary cross-boundary response)**: for each preregistered opposite-outcome pair, match the same registered seed at both parameter endpoints and average the indicator that both endpoint labels are correct. This directly measures correct branch response under matched random seeds.
+- **IndependentPairSuccess (secondary)**: multiply marginal endpoint accuracies for disjoint seed streams. This estimates joint success for two independently sampled generations; it is not a matched-seed response rate. The score JSON retains `independent_pair_accuracy` as a backward-compatible alias; use the explicit `independent_pair_success` field in new analyses.
 - **EventExact**: every registered event bit and every required temporal order must match. Report target accuracy separately so intermediate-chain errors remain visible.
 - **GravTrace**: optional relative gravity deviation on its registered eligible subset, with coverage and failure statuses. It is not merged into an arbitrary single score.
 
-The numerical bins are implementation defaults and must be frozen before the test set is scored. The T15 pilot registration has no verified boundary, so it can test obvious branch outcomes and the pipeline, but NearAcc must be `null`. One seed is an engineering smoke test, not a model-performance estimate.
+Pair mode is preregistered per family as `pairing_mode: "coupled_seed"` or `"independent"` in the answer rows. For coupled mode, both endpoints must have identical seed sets. The numerical bins are implementation defaults and must be frozen before the test set is scored. The T15 pilot registration has no verified boundary, so it can test obvious branch outcomes and the pipeline, but NearAcc must be `null`. One seed is an engineering smoke test, not a model-performance estimate.
 
 ## Status and reproducibility
 
