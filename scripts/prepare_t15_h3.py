@@ -8,7 +8,9 @@ a=p.parse_args()
 root=Path(__file__).resolve().parents[1]
 assets=root/'examples/t15_h3'
 for name, expected in json.loads((assets/'checksums.json').read_text()).items():
-    if hashlib.sha256((assets/name).read_bytes()).hexdigest() != expected:
+    data=(assets/name).read_bytes()
+    if name.endswith(('.txt','.json')):data=data.replace(b'\r\n',b'\n')
+    if hashlib.sha256(data).hexdigest() != expected:
         raise ValueError('input hash mismatch: '+name)
 rows=[]
 for seed in (41000,41001):
