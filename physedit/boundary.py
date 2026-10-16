@@ -284,7 +284,8 @@ def _index_optional(path, known):
     return {v['sample_id']: v for v in values}
 
 
-def score(root, annotations=None, gravity=None):
+def score(root, annotations=None, gravity=None, screening=None):
+    from .boundary_screening import gate
     root = Path(root)
     keys = read_rows(root/'answers.jsonl')
     inputs = read_rows(root/'inputs.jsonl')
@@ -298,6 +299,8 @@ def score(root, annotations=None, gravity=None):
     observations = _index_optional(root/'observed_rows.jsonl', known)
     annotations = _index_optional(annotations, known)
     gravity = _index_optional(gravity, known)
+    screening_enabled = screening is not None
+    screening = _index_optional(screening, known)
     horizon = {i['sample_id']: i['evaluation_duration_s'] for i in inputs}
     seeds = {i['sample_id']: i['seed'] for i in inputs}
     scored, groups = [], defaultdict(list)
@@ -310,7 +313,13 @@ def score(root, annotations=None, gravity=None):
             good = Path(observed['video']).is_file() and digest(observed['video']) == observed['video_sha256']
         bound = (good and annotation.get('video_sha256') == observed.get('video_sha256') and
                  annotation.get('method') not in (None, '', 'unannotated') and bool(annotation.get('evidence')))
-        events = annotation.get('events', {}) if bound else {}
+        decision = gate(screening.get(sid), observed, key, screening_enabled)
+        if not good:
+            decision = dict(status='media_unavailable', blocked_events=list(key['events']),
+                            block_inversion=True, reason='missing_failed_or_changed_media')
+        events = dict(annotation.get('events', {})) if bound else {}
+        for event in decision['blocked_events']:
+            events.pop(event, None)
         if any(v is not None and (type(v) is not int or v not in (0,1)) for v in events.values()):
             raise ValueError('generated event must be 0/1/null')
         target = key['target_event']
@@ -320,7 +329,12 @@ def score(root, annotations=None, gravity=None):
         first_unknown = next((e for e in key['events'] if events.get(e) is None), None)
         times = annotation.get('event_times_s', {})
         order_ok = bool(bits)
+        chain_assessable = bound and all(events.get(e) in (0, 1) for e in key['events'])
         for before, after in key.get('required_order', []):
+            if events.get(before) == 1 and events.get(after) == 1:
+                chain_assessable = chain_assessable and all(
+                    type(times.get(e)) in (int, float) and 0 <= times[e] <= horizon[sid]
+                    for e in (before, after))
             if key['events'][before] and key['events'][after]:
                 a, b = times.get(before), times.get(after)
                 if not (type(a) in (int,float) and type(b) in (int,float) and
@@ -330,6 +344,8 @@ def score(root, annotations=None, gravity=None):
         inv = key['inversion']
         g = gravity.get(sid, {})
         gstatus = inv['status'] if inv['status'] != 'eligible' else g.get('status', 'missing')
+        if inv['status'] == 'eligible' and decision['block_inversion']:
+            gstatus = 'screening_' + decision['status']
         gvalue, error = g.get('gravity'), None
         if inv['status'] == 'eligible' and gstatus == 'ok':
             if (not good or g.get('video_sha256') != observed.get('video_sha256') or
@@ -341,6 +357,14 @@ def score(root, annotations=None, gravity=None):
                 error = abs(gvalue / key['gravity'] - 1)
         row = dict(sample_id=sid, reference_target=key['events'][target],
                    target_prediction=events.get(target), target_correct=correct,
+                   target_assessable=events.get(target) in (0, 1),
+                   chain_assessable=bool(chain_assessable),
+                   event_assessable={e: events.get(e) in (0, 1) for e in key['events']},
+                   screening_status=decision['status'],
+                   screening_reason=decision['reason'],
+                   blocked_events=decision['blocked_events'],
+                   block_inversion=decision['block_inversion'],
+                   task_success=int(bool(bits and order_ok) and decision['status'] in ('pass', 'legacy_not_screened')),
                    event_bits_exact=int(bool(bits)), event_exact=int(bool(bits and order_ok)),
                    first_error_stage=first_error if first_error else ('order' if bits and not order_ok else None),
                    first_unassessable_stage=first_unknown,
@@ -408,6 +432,13 @@ def score(root, annotations=None, gravity=None):
         return mean([mean(v) for v in scenes.values()])
     eligible = sum(k['inversion']['status']=='eligible' for k in keys)
     errors = [r['gravity_relative_deviation'] for r in scored if r['gravity_relative_deviation'] is not None]
+    target_valid = [r for r in scored if r['target_assessable']]
+    chain_valid = [r for r in scored if r['chain_assessable']]
+    per_event = {}
+    for event in sorted({e for k in keys for e in k['events']}):
+        members = [r for r in scored if event in r['event_assessable']]
+        count = sum(r['event_assessable'][event] for r in members)
+        per_event[event] = dict(registered=len(members), assessable=count, coverage=count/len(members))
     return dict(model=receipt['model'], registered=len(keys), scored_rows=len(scored),
                 target_counts=dict(Counter(str(r['reference_target']) for r in scored)),
                 balanced_accuracy=macro(lambda f:f['balanced_accuracy']['all']),
@@ -420,6 +451,18 @@ def score(root, annotations=None, gravity=None):
                 first_error_counts=dict(Counter(r['first_error_stage'] for r in scored if r['first_error_stage'])),
                 annotations_bound=sum(r['annotation_status']=='bound' for r in scored),
                 target_assessable=sum(r['target_prediction'] is not None for r in scored),
+                screening=dict(enabled=screening_enabled,
+                    statuses=dict(Counter(r['screening_status'] for r in scored)),
+                    confirmed_failure_count=sum(r['screening_status']=='confirmed_failure' for r in scored),
+                    unresolved_count=sum(r['screening_status'] in ('missing','suspect','evaluator_failure') for r in scored)),
+                task_success_rate=mean([r['task_success'] for r in scored]),
+                event_measurement=dict(registered=len(keys), target_assessable=len(target_valid),
+                    target_coverage=len(target_valid)/len(keys), chain_assessable=len(chain_valid),
+                    chain_coverage=len(chain_valid)/len(keys),
+                    target_success_rate=mean([r['target_correct'] for r in scored]),
+                    conditional_target_accuracy=mean([r['target_correct'] for r in target_valid]),
+                    conditional_event_exact=mean([r['event_exact'] for r in chain_valid]),
+                    per_event=per_event, aggregation='sample_micro; primary balanced metrics retain group macro aggregation'),
                 inversion=dict(registered=len(keys), eligible=eligible, fitted=len(errors),
                      registered_coverage=len(errors)/len(keys),
                      eligibility_rate=eligible/len(keys), eligible_fit_coverage=len(errors)/eligible if eligible else None,
@@ -430,7 +473,7 @@ def score(root, annotations=None, gravity=None):
 
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(prog='python -m physedit boundary',description=__doc__)
+    parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest='command', required=True)
     run_parser=sub.add_parser('run')
     run_parser.add_argument('--spec', required=True)
@@ -440,13 +483,22 @@ def main(argv=None):
     score_parser.add_argument('--run-dir', required=True)
     score_parser.add_argument('--annotations')
     score_parser.add_argument('--gravity')
+    score_parser.add_argument('--screening', help='Hash-bound screening.jsonl; missing rows remain pending, never dropped')
     score_parser.add_argument('--out', required=True)
+    screen_parser=sub.add_parser('screen', help='Import VLM triage before event/inversion work')
+    screen_parser.add_argument('--run-dir', required=True)
+    screen_parser.add_argument('--judgements', required=True)
+    screen_parser.add_argument('--reviews')
+    screen_parser.add_argument('--out-dir', required=True)
     args=parser.parse_args(argv)
     if args.command=='run':
         spec=json.loads(Path(args.spec).read_text(encoding='utf-8'))
         result=run(spec,args.run_dir) if args.execute else plan(spec)
+    elif args.command=='screen':
+        from .boundary_screening import prepare
+        result=prepare(args.run_dir,args.judgements,args.reviews,args.out_dir)
     else:
-        result=score(args.run_dir,args.annotations,args.gravity)
+        result=score(args.run_dir,args.annotations,args.gravity,args.screening)
         write_json(args.out,result)
     print(json.dumps({k:v for k,v in result.items() if k not in ('rows','families')},ensure_ascii=False,allow_nan=False))
     return int(args.command=='run' and args.execute and result.get('generation_ok',0)<result['registered'])

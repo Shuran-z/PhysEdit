@@ -52,3 +52,8 @@ python -m unittest discover -s tests -p test_boundary.py -v
 ```
 
 回归覆盖：负例不被反演筛掉、答案不进入推理字段、全部生成失败保留、缺标注、恒定答案配对失败、at_bound、快照/视频漂移、陌生ID、区间距离跨桶、短时域拒绝、输出不覆盖，以及 Windows 构建 Linux 路径。合成测试与真实模型结果分开记录。
+
+
+2026-10-15: VLM screening, retained failure denominators and separate event/inversion coverage: [Failure handling](FAILURE_HANDLING.md). Use boundary screen, then boundary score --screening SCREEN/screening.jsonl.
+
+H3 T15 可执行交接（含仓库内条件图和四条任务脚本）：[H3_T15_HANDOFF.md](H3_T15_HANDOFF.md)。

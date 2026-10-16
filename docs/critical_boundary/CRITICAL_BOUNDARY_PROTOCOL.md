@@ -393,3 +393,6 @@ T15 当前目标是触发后 6 秒，不等于任意模型输出 6 秒。生成�
 | 组级正式 ID/OOD | 文档仍为设计协议 | 消费实际冻结清单，不从名称猜 split |
 
 The legacy parameter-response and model evaluation APIs remain separate. Before combining their outputs with this protocol, verify the model version, native clock, input policy, and registration hashes for the exact benchmark release.
+
+
+2026-10-15: VLM screening, retained failure denominators and separate event/inversion coverage: [Failure handling](FAILURE_HANDLING.md). Use boundary screen, then boundary score --screening SCREEN/screening.jsonl.

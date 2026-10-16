@@ -19,12 +19,9 @@ import torch
 from diffusers import ComponentsManager, ModularPipeline
 from diffusers.utils import load_image
 from diffusers.utils.export_utils import encode_video
-try:
-    from .model_parameters import split_minimax_workflow
-except ImportError:
-    from model_parameters import split_minimax_workflow
 
 
+MODEL = "/XYAIFS00/HDD_POOL/sysu_xdliang/sysu_xdliang_3/zhangshuran/models/MiniMax-H3-FL2VA-diffusers-20260903"
 H3_WIDTH = 896
 H3_HEIGHT = 512
 
@@ -104,7 +101,8 @@ def main():
     parser.add_argument("--out-root", required=True)
     parser.add_argument("--steps", type=int, default=50)
     parser.add_argument("--max-samples", type=int, default=0)
-    parser.add_argument("--model", required=True)
+    parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--pad-input", action="store_true", help="Preserve source pixels on a padded canvas and crop output back")
     args = parser.parse_args()
     model = args.model
 
@@ -127,13 +125,18 @@ def main():
         else:
             destination = out_root / "full" / "generated" / source["source_sample_id"] / source["prompt_granularity"]
             output, resized = destination / "generated_video.mp4", destination / "generated_video_resized_to_source.mp4"
-        generated_rows.append(output_row(source, output, resized))
+        row = output_row(source, output, resized)
+        row.update(sample_steps=args.steps, pad_input=args.pad_input,
+                   h3_resolution={"width": int(source.get("gen_width") or H3_WIDTH),
+                                  "height": int(source.get("gen_height") or H3_HEIGHT)})
+        generated_rows.append(row)
     canonical_path.parent.mkdir(parents=True, exist_ok=True)
     canonical_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in generated_rows), encoding="utf-8")
 
     base = ModularPipeline.from_pretrained(model, local_files_only=True)
     workflow = base.blocks.get_workflow("fl2va")
-    prep_block, text_block = split_minimax_workflow(workflow)
+    prep_block = workflow.sub_blocks.pop("before_encode")
+    text_block = workflow.sub_blocks.pop("text_encoder")
 
     prep = prep_block.init_pipeline(model)
     prep.load_components()
@@ -169,8 +172,22 @@ def main():
         try:
             prompt = pathlib.Path(source["prompt_file"]).read_text(encoding="utf-8").strip()
             image = load_image(source["condition_image"])
+            width, height = row["h3_resolution"]["width"], row["h3_resolution"]["height"]
+            left = top = 0
+            if args.pad_input:
+                import numpy as np
+                from PIL import Image
+                if image.size != (source["source_width"], source["source_height"]):
+                    raise ValueError("source dimensions disagree with manifest")
+                dw, dh = width - image.width, height - image.height
+                if dw < 0 or dh < 0:
+                    raise ValueError("padding canvas cannot be smaller than source")
+                left, top = dw // 2, dh // 2
+                image = Image.fromarray(np.pad(np.asarray(image),
+                    ((top, dh-top), (left, dw-left), (0, 0)), mode="edge"))
+            image.save(output.parent / "model_input.png")
             with torch.inference_mode():
-                state = prep(image=image, num_frames=124, height=int(source.get("gen_height") or H3_HEIGHT), width=int(source.get("gen_width") or H3_WIDTH))  # public211: per-row canvas keeps aspect
+                state = prep(image=image, height=int(source.get("gen_height") or H3_HEIGHT), width=int(source.get("gen_width") or H3_WIDTH))  # public211: per-row canvas keeps aspect
                 state = conditioner(state=state, prompt=prompt)
                 result = generator(
                     state=state,
@@ -186,7 +203,9 @@ def main():
             frames, streams = video_metadata(temp_output)
             if frames != 124 or not any(stream["type"] == "audio" for stream in streams):
                 raise RuntimeError(f"media contract failed: frames={frames}, streams={streams}")
-            subprocess.run([ffmpeg, "-y", "-v", "error", "-i", str(temp_output), "-vf", f"scale={source['source_width']}:{source['source_height']}", "-r", "24", "-an", str(temp_resized)], check=True)
+            transform = (f"crop={source['source_width']}:{source['source_height']}:{left}:{top}:exact=1"
+                         if args.pad_input else f"scale={source['source_width']}:{source['source_height']}")
+            subprocess.run([ffmpeg, "-y", "-v", "error", "-i", str(temp_output), "-vf", transform, "-r", "24", "-an", str(temp_resized)], check=True)
             ok, detail = probe(temp_resized, ffmpeg)
             if not ok:
                 raise RuntimeError(f"resized decode failed: {detail}")
@@ -201,7 +220,7 @@ def main():
             temp_output.unlink(missing_ok=True)
             temp_resized.unlink(missing_ok=True)
         with status_path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps({"time": now(), "sample_id": row["sample_id"], "state": event, "elapsed_seconds": round(time.time() - started, 3), "bytes": output.stat().st_size if output.exists() else 0, "error": error, "steps": args.steps, "resolution": "960x544"}, ensure_ascii=False) + "\n")
+            handle.write(json.dumps({"time": now(), "sample_id": row["sample_id"], "state": event, "elapsed_seconds": round(time.time() - started, 3), "bytes": output.stat().st_size if output.exists() else 0, "error": error, "steps": args.steps, "resolution": row["h3_resolution"], "pad_input": args.pad_input}, ensure_ascii=False) + "\n")
         if event == "failed":
             write_json(state_path, {"state": "failed", "completed": completed, "failed": failed, "total": len(generated_rows), "current": row["sample_id"], "error": error, "updated_at": now()})
             raise SystemExit(error)

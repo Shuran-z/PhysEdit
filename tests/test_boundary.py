@@ -112,10 +112,10 @@ class BoundaryTests(unittest.TestCase):
         with self.assertRaises(ValueError):plan(self.spec)
 
     def test_pilot_posix_condition_path_and_both_sides(self):
-        from scripts.build_t15_boundary_run import build
         audit=Path(__file__).resolve().parents[1]/'review/t15_boundary_pilot_20261014'
         if not (audit/'reference_audit.json').exists() or not (Path(__file__).resolve().parents[1]/'scripts/build_t15_boundary_run.py').exists():
             self.skipTest('local pilot evidence and builder are not distributed with the reusable core')
+        from scripts.build_t15_boundary_run import build
         rows,keys=build(audit,self.root/'pilot','/remote/conditions')
         self.assertEqual(rows[0]['condition_image'],'/remote/conditions/g03_earth.png')
         self.assertEqual([k['events']['laptop_falls_to_floor'] for k in keys],[0,1])
@@ -158,6 +158,97 @@ class BoundaryTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):check_gpu(0)
         with patch('subprocess.check_output',return_value='0, 20000, 50\n'):
             with self.assertRaises(RuntimeError):check_gpu(0)
+
+
+    def screen_record(self, root, status='confirmed_failure', **extra):
+        observed=[json.loads(s) for s in (root/'observed_rows.jsonl').read_text().splitlines()]
+        record=dict(sample_id='p1',video_sha256=observed[1]['video_sha256'],status=status,
+                    method='vlm_then_adjudication',reviewer='test reviewer',evidence='identity lost',
+                    blocked_events=['fall'],block_inversion=True)
+        record.update(extra)
+        path=self.root/'screening.jsonl'
+        other=dict(sample_id='p0',video_sha256=observed[0]['video_sha256'],status='pass',
+                   method='vlm',evidence='target maintained')
+        write_rows(path,[other,record]);return path
+
+    def test_screen_failure_keeps_denominator_and_separates_coverage(self):
+        root=self.prepared();ann=self.annotations(root)
+        s=self.screen_record(root)
+        r=score(root,ann,screening=s)
+        self.assertEqual(r['registered'],2)
+        self.assertEqual(r['balanced_accuracy'],.5)
+        self.assertEqual(r['independent_pair_accuracy'],0)
+        self.assertEqual(r['event_measurement']['target_coverage'],.5)
+        self.assertEqual(r['event_measurement']['conditional_target_accuracy'],1)
+        self.assertEqual(r['task_success_rate'],.5)
+        self.assertEqual(r['inversion']['eligible_fit_coverage'],0)
+        self.assertEqual(r['inversion']['statuses']['screening_confirmed_failure'],1)
+
+    def test_earlier_event_survives_later_inversion_failure(self):
+        root=self.prepared()
+        s=self.screen_record(root,blocked_events=[])
+        r=score(root,self.annotations(root),screening=s)
+        self.assertEqual(r['balanced_accuracy'],1)
+        self.assertEqual(r['event_measurement']['target_coverage'],1)
+        self.assertEqual(r['task_success_rate'],.5)
+        self.assertEqual(r['inversion']['fitted'],0)
+
+    def test_suspect_is_not_confirmed_generation_failure(self):
+        root=self.prepared();s=self.screen_record(root,status='suspect')
+        r=score(root,self.annotations(root),screening=s)
+        self.assertEqual(r['screening']['confirmed_failure_count'],0)
+        self.assertEqual(r['screening']['unresolved_count'],1)
+        self.assertEqual(r['event_measurement']['target_coverage'],.5)
+
+    def test_wrong_screen_hash_rejected(self):
+        root=self.prepared();s=self.screen_record(root,video_sha256='wrong')
+        with self.assertRaises(ValueError):score(root,screening=s)
+
+    def test_blocked_fit_cannot_leak_into_error(self):
+        root=self.prepared();s=self.screen_record(root)
+        obs=[json.loads(x) for x in (root/'observed_rows.jsonl').read_text().splitlines()]
+        g=self.root/'fit.jsonl'
+        write_rows(g,[dict(sample_id='p1',status='ok',gravity=9.81,
+                           video_sha256=obs[1]['video_sha256'],reference_registration_sha256='reference')])
+        r=score(root,self.annotations(root),g,s)
+        self.assertEqual(r['inversion']['fitted'],0)
+        self.assertIsNone(r['inversion']['relative_deviation_mean'])
+
+    def test_empty_screen_keeps_all_pending(self):
+        root=self.prepared();s=self.root/'empty_screen.jsonl';write_rows(s,[])
+        r=score(root,self.annotations(root),screening=s)
+        self.assertEqual(r['registered'],2)
+        self.assertEqual(r['screening']['unresolved_count'],2)
+        self.assertEqual(r['event_measurement']['target_coverage'],0)
+        self.assertIsNone(r['event_measurement']['conditional_target_accuracy'])
+
+    def test_coupled_pair_failure_retains_both_endpoints(self):
+        path=self.root/'inputs.jsonl';rows=[json.loads(x) for x in path.read_text().splitlines()]
+        for r in rows:r['seed']=0
+        path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
+        path=self.root/'answers.jsonl';rows=[json.loads(x) for x in path.read_text().splitlines()]
+        for r in rows:r['pairing_mode']='coupled_seed'
+        path.write_text(''.join(json.dumps(r)+'\n' for r in rows))
+        root=self.prepared();s=self.screen_record(root)
+        r=score(root,self.annotations(root),screening=s)
+        self.assertEqual(r['coupled_pair_accuracy'],0)
+        self.assertEqual(r['registered'],2)
+
+    def test_vlm_flags_route_to_review_not_deletion(self):
+        from physedit.boundary_screening import prepare
+        root=self.prepared()
+        obs=[json.loads(s) for s in (root/'observed_rows.jsonl').read_text().splitlines()]
+        path=self.root/'vlm.jsonl'
+        write_rows(path,[dict(sample_id=o['sample_id'],video_sha256=o['video_sha256'],status='ok',
+                             judgement=dict(quality_flags=['target_deformation'] if i else [],
+                                            assessable=True,reason='visible evidence')) for i,o in enumerate(obs)])
+        out=self.root/'screen'
+        summary=prepare(root,path,None,out)
+        self.assertEqual(summary['routing_rows'],2)
+        self.assertEqual(summary['statuses'],{'pass':1,'suspect':1})
+        r=score(root,self.annotations(root),screening=out/'screening.jsonl')
+        self.assertEqual(r['registered'],2)
+        self.assertEqual(r['event_measurement']['target_coverage'],.5)
 
 
 if __name__=='__main__':unittest.main()
