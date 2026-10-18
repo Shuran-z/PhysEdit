@@ -25,3 +25,7 @@ physedit run pipeline.json --execute
 | [生成与评分](docs/phyediting/GENERATION.md) | [V/P与Qwen](docs/phyediting/EVALUATION.md) | [性能数据](docs/phyediting/latest_results.json) |
 
 MIT · [LICENSE](LICENSE)
+
+## Boundary event evaluation
+
+Use `python -m physedit boundary-evaluate` for independent quality screening, event preannotations, human review and full-roster scoring. See [the two-stage pipeline](docs/critical_boundary/TWO_STAGE_PIPELINE.md). Automatic labels remain provisional; default scores use human-confirmed event labels.
