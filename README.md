@@ -20,8 +20,10 @@ physedit run pipeline.json --execute
 
 | 使用指南 | 参数测量 | 数据与部署 |
 | :---: | :---: | :---: |
-| [快速上手](docs/phyediting/QUICKSTART.md) | [SAM3.1跟踪](docs/phyediting/SAM31.md) | [评测划分](docs/joint_split_v3/PROTOCOL.md) |
+| [快速上手](docs/phyediting/QUICKSTART.md) | [SAM3.1跟踪](docs/phyediting/SAM31.md) | [100条重力评测](docs/phyediting/GRAVITY100.md) |
 | [模型与权重](docs/phyediting/MODELS.md) | [物理参数测量](docs/phyediting/MOTION_PARAMETERS.md) | [多机调度](docs/PIPELINE.md) |
 | [生成与评分](docs/phyediting/GENERATION.md) | [V/P与Qwen](docs/phyediting/EVALUATION.md) | [性能数据](docs/phyediting/latest_results.json) |
+
+[评测清单CSV](docs/phyediting/gravity100.csv) · [数据集划分与训练来源](docs/joint_split_v3/PROTOCOL.md)
 
 MIT · [LICENSE](LICENSE)

@@ -1,8 +1,12 @@
 # 评测划分与联合训练
 
-## 固定100条评测集
+## 条件帧重力评测100条
 
-当前小规模评测采用Hugging Face发布的[固定核心协议](https://huggingface.co/datasets/phy2/phydataset/blob/64ae065222f6893b7c06ed446aa20d3b8e3cdc86/benchmarks/fixed_core100_v1_20261014/PROTOCOL.md)：T01–T20每类5条，共100条单机位案例。成员、机位和视频SHA256固定，另有80条候补独立保存。
+当前重力评测采用[条件帧协议](../phyediting/GRAVITY100.md)与[100条CSV](../phyediting/gravity100.csv)：ID 80条、OOD-1和OOD-2各10条，每类场景5条。条件图为各任务第0帧，评测时域与来源绑定按CSV固定。参考测量平均误差2.667%、最大15.601%，有效覆盖100%。
+
+## 数据集核心协议
+
+数据集核心清单采用Hugging Face发布的[固定核心协议](https://huggingface.co/datasets/phy2/phydataset/blob/64ae065222f6893b7c06ed446aa20d3b8e3cdc86/benchmarks/fixed_core100_v1_20261014/PROTOCOL.md)：T01–T20每类5条，共100条单机位案例。成员、机位和视频SHA256固定，另有80条候补独立保存。
 
 | 集合 | 事件 | 核心案例 | 报告内容 |
 | :---: | :---: | :---: | :---: |
