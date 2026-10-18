@@ -461,7 +461,7 @@ def _resize_to_source(generated: Path, source: Path, output: Path, fps: float, d
         raise RuntimeError(f"could not read source dimensions: {source}")
     output.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
-        "ffmpeg",
+        os.environ.get("IMAGEIO_FFMPEG_EXE") or "ffmpeg",
         "-n",
         "-hide_banner",
         "-loglevel",

@@ -153,15 +153,18 @@ def read_inputs(spec):
     return members, by_id
 
 
-def observation_clock(member, task, fps, frames, native_runtime=None):
+def observation_clock(member, task, fps, frames, native_runtime=None, prefix=1):
     from .conditioned_measurement import descriptor, minimum_observations, native_control_clock
+    if type(prefix) is not int or not 1 <= prefix < frames:
+        raise ValueError('invalid_registered_condition_prefix')
+    origin = prefix - 1
     duration = (int(member['evaluation_frame_count']) - 1) / float(member['media_fps'])
-    scheduled = [f for f in range(frames) if f / fps <= duration + 1e-9]
+    scheduled = [f for f in range(frames-origin) if f / fps <= duration + 1e-9]
     scale = task['physical_times_s'][-1] / duration
     times = [f / fps * scale for f in scheduled]
     d, known, _ = descriptor(task)
     reason = None
-    if (frames - 1) / fps + 1e-9 < duration:
+    if (frames - prefix) / fps + 1e-9 < duration:
         reason = 'generation_duration_shorter_than_fixed_scope'
     elif len(scheduled) < minimum_observations(d):
         reason = 'native_frames_within_fixed_horizon_below_model_minimum'
@@ -171,9 +174,15 @@ def observation_clock(member, task, fps, frames, native_runtime=None):
         reason = 'registered_four_observation_model'
     elif len(times) >= 2:
         reason = native_control_clock(d, known, times)
-    return dict(generated_frames=scheduled, physical_times_s=times, media_horizon_s=duration,
+    clock = dict(generated_frames=scheduled, physical_times_s=times, media_horizon_s=duration,
                 physical_horizon_s=task['physical_times_s'][-1], physics_seconds_per_media_second=scale,
                 applicable=reason is None, reason=reason)
+    if prefix != 1:
+        clock.update(raw_origin_frame=origin, conditioning_input_frames=prefix,
+                     evaluation_output_frames=frames-origin,
+                     available_future_media_seconds=(frames-prefix)/fps,
+                     origin_rule='last_frame_of_registered_static_condition_prefix')
+    return clock
 
 
 def execution_plan(spec):
@@ -204,9 +213,10 @@ def execution_plan(spec):
     if not isinstance(spec.get('frames'), int) or spec['frames'] < 2 or float(spec.get('fps', 0)) <= 0:
         raise ValueError('invalid_generation_clock')
     members, tasks = read_inputs(spec)
+    prefix = 5 if spec['model'] == 'physrvg_ti2v5b' else 1
     clocks = {r['id']: observation_clock(r, tasks[r['id']], float(spec['fps']), spec['frames'],
-                                       spec.get('native_runtime')) for r in members}
-    return dict(protocol='gravity100', registered=100, model=spec['model'], conditioning_frame=0,
+                                       spec.get('native_runtime'), prefix=prefix) for r in members}
+    plan = dict(protocol='gravity100', registered=100, model=spec['model'], conditioning_frame=0,
                 evaluation_start_frame=0, single_view=True, input_ready=100,
                 group_counts=dict(Counter(r['split'] for r in members)),
                 frames=spec['frames'], fps=float(spec['fps']), native_output_frames=spec['frames'],
@@ -217,6 +227,12 @@ def execution_plan(spec):
                 tasks_sha256=spec['gravity100']['tasks_sha256'], execution_requested=False, gpu_started=False,
                 stages=['inputs', 'generation', 'sam31', 'conditional_gravity',
                         *[x for x in ('vp', 'qwen') if x in metrics], 'summary'])
+    if prefix != 1:
+        plan.update(raw_origin_frame=4, conditioning_input_frames=5,
+                    evaluation_output_frames=spec['frames']-4,
+                    available_future_media_seconds=(spec['frames']-5)/float(spec['fps']),
+                    origin_rule='last_frame_of_registered_static_condition_prefix')
+    return plan
 
 
 def build_inputs(spec, root):
@@ -263,6 +279,12 @@ def build_inputs(spec, root):
                    split=member['split'], event=member['event'], camera_id=member['camera'],
                    evaluation_horizon_seconds=clock['media_horizon_s'],
                    observation_clock=clock)
+        if spec['model'] == 'physrvg_ti2v5b':
+            row.update(prompt_granularity='registered_condition_continuation',
+                       raw_origin_frame=4, conditioning_input_frames=5,
+                       evaluation_video=str((out / 'evaluation.avi').resolve()),
+                       evaluation_output_frames=45,
+                       evaluation_origin_source='FastVideo static_frame: condition image repeated five times; first two condition latents clamped')
         rows.append(row)
         items.append(dict(id=member['id'], event=member['event'], split=member['split'],
                           camera_id=member['camera'], gravity=float(member['reference_gravity_m_s2']),
@@ -274,12 +296,128 @@ def build_inputs(spec, root):
     return plan, rows, tasks, items
 
 
+def evaluation_video(row):
+    """Use the registered origin; never infer a start from observed motion."""
+    native = row.get('final_resized') or row['generated_video_resized_to_source']
+    physrvg = row.get('protocol') == 'gravity100' and row.get('model_name') == 'physrvg_ti2v5b'
+    if not physrvg:
+        if any(k in row for k in ('evaluation_video', 'raw_origin_frame', 'conditioning_input_frames')):
+            raise ValueError('unexpected_evaluation_origin_override')
+        return native
+    if (row.get('raw_origin_frame') != 4 or row.get('conditioning_input_frames') != 5 or
+            row.get('evaluation_output_frames') != 45 or row.get('num_frames') != 49 or
+            float(row['output_fps']) != 15 or not row.get('evaluation_video') or
+            row.get('condition_frame_index') != 0 or row.get('condition_frames') != 1):
+        raise ValueError('physrvg_registered_evaluation_origin_required')
+    path = Path(row['evaluation_video'])
+    if path.suffix.lower() != '.avi' or path.resolve() in {Path(native).resolve(), Path(row['generated_video']).resolve()}:
+        raise ValueError('evaluation_clip_must_preserve_native_outputs')
+    return str(path)
+
+
+def verified_evaluation_video(row):
+    """Bind the lossless suffix to both original outputs and the generation row."""
+    from .runners.media_contract import row_digest, validate_video, completion_path
+    path = evaluation_video(row)
+    native = row.get('final_resized') or row['generated_video_resized_to_source']
+    if path == native:
+        return None
+    receipt = json.loads(Path(path).with_suffix('.evaluation.json').read_text())
+    if (receipt.get('row_sha256') != row_digest(row) or
+            receipt.get('raw_origin_frame') != 4 or receipt.get('conditioning_input_frames') != 5 or
+            receipt.get('native_completion_sha256') != sha256(completion_path(row)) or
+            receipt.get('raw_video_sha256') != sha256(row['generated_video']) or
+            receipt.get('resized_video_sha256') != sha256(native) or
+            receipt.get('evaluation_media') != validate_video(path, fps=15., frames=45,
+                width=int(row['source_width']), height=int(row['source_height'])) or
+            receipt.get('source_suffix_decoded_bgr_sha256') != receipt.get('evaluation_decoded_bgr_sha256')):
+        raise ValueError('evaluation_video_binding_changed')
+    return receipt
+
+
+def prepare_evaluation_video(row):
+    """Preserve raw49/resized49; copy the fixed resized[4:] suffix as FFV1."""
+    import cv2
+    from .runners.media_contract import row_digest, validate_video, verified_completion, completion_path
+    path = evaluation_video(row)
+    native = row.get('final_resized') or row['generated_video_resized_to_source']
+    if path == native:
+        return None
+    destination = Path(path)
+    verified_completion(row)
+    receipt_path = destination.with_suffix('.evaluation.json')
+    if receipt_path.exists():
+        return verified_evaluation_video(row)
+    partial = destination.with_name(destination.stem + '.partial.avi')
+    receipt_partial = receipt_path.with_suffix('.json.partial')
+    if destination.exists() or partial.exists() or receipt_partial.exists():
+        raise FileExistsError('unbound_evaluation_partial_retained: ' + str(destination))
+    raw_media = validate_video(row['generated_video'], fps=15., frames=49)
+    source_sha = sha256(native)
+    cap = cv2.VideoCapture(str(native))
+    writer = None
+    source_pixels = hashlib.sha256()
+    count = 0
+    first_pixel_sha = None
+    try:
+        width, height = int(row['source_width']), int(row['source_height'])
+        writer = cv2.VideoWriter(str(partial), cv2.VideoWriter_fourcc(*'FFV1'), 15., (width, height))
+        if not writer.isOpened():
+            raise ValueError('lossless_evaluation_writer_unavailable')
+        while True:
+            ok, image = cap.read()
+            if not ok:
+                break
+            if count >= 4:
+                pixels = image.tobytes()
+                if first_pixel_sha is None:
+                    first_pixel_sha = hashlib.sha256(pixels).hexdigest()
+                source_pixels.update(pixels)
+                writer.write(image)
+            count += 1
+    finally:
+        cap.release()
+        if writer is not None:
+            writer.release()
+    if count != 49 or sha256(native) != source_sha:
+        raise ValueError('native_video_changed_during_evaluation_copy')
+    media = validate_video(partial, fps=15., frames=45, width=width, height=height)
+    decoded = hashlib.sha256()
+    cap = cv2.VideoCapture(str(partial))
+    try:
+        while True:
+            ok, image = cap.read()
+            if not ok:
+                break
+            decoded.update(image.tobytes())
+    finally:
+        cap.release()
+    if decoded.hexdigest() != source_pixels.hexdigest():
+        raise ValueError('evaluation_suffix_pixels_changed')
+    receipt = dict(row_sha256=row_digest(row), raw_origin_frame=4, conditioning_input_frames=5,
+                   evaluation_origin_frame=0, origin_source=row['evaluation_origin_source'],
+                   raw_video_sha256=raw_media['video_sha256'], resized_video_sha256=source_sha,
+                   native_completion_sha256=sha256(completion_path(row)),
+                   native_output_frames=49, evaluation_output_frames=45,
+                   source_suffix_decoded_bgr_sha256=source_pixels.hexdigest(),
+                   evaluation_decoded_bgr_sha256=decoded.hexdigest(),
+                   evaluation_frame0_decoded_bgr_sha256=first_pixel_sha,
+                   evaluation_media=media, interpolation=False, fps_changed=False,
+                   generated_again=False)
+    verified_completion(row)
+    os.replace(partial, destination)
+    with receipt_partial.open('x') as f:
+        json.dump(receipt, f, sort_keys=True, allow_nan=False)
+    os.replace(receipt_partial, receipt_path)
+    return verified_evaluation_video(row)
+
+
 def tracking_jobs(rows, tasks):
     jobs = []
     for row in rows:
         t = tasks[row['item_id']]
         c = row['observation_clock']
-        path = Path(row['generated_video_resized_to_source'])
+        path = Path(evaluation_video(row))
         for role in t['initial_objects']:
             jobs.append(dict(id=row['sample_id'] + '_' + role, video=str(path),
                              video_sha256=sha256(path) if path.is_file() else None,
@@ -342,6 +480,8 @@ def score_generated(rows, tasks, sam_root, output, native_runtime=None):
                 p = dict(status=status,
                          gravity=None, reason=reason)
             else:
+                video = evaluation_video(row)
+                verified_evaluation_video(row)
                 masks = {}
                 for role in task['initial_objects']:
                     job_id = row['sample_id'] + '_' + role
@@ -351,17 +491,20 @@ def score_generated(rows, tasks, sam_root, output, native_runtime=None):
                     if (track.get('frames') != clock['generated_frames'] or
                             len(track.get('xyxy', [])) != len(clock['generated_frames']) or
                             (required_role and any(box is None for box in track.get('xyxy', []))) or
-                            observed.get('video_sha256') != sha256(row['generated_video_resized_to_source'])):
+                            observed.get('video_sha256') != sha256(video)):
                         raise ValueError('incomplete_or_unbound_generated_tracking: ' + role)
                     stem = hashlib.sha256((row['sample_id'] + '_' + role).encode()).hexdigest()[:12]
                     masks[role] = [str(Path(sam_root) / 'runs/sam31_visible_projection_full30_masks' /
                                        (stem + '_' + str(frame) + '.npz')) if box is not None else None
                                    for frame, box in zip(clock['generated_frames'], track['xyxy'])]
-                p = measure(task, row['generated_video_resized_to_source'], clock['generated_frames'],
+                p = measure(task, video, clock['generated_frames'],
                             clock['physical_times_s'], masks, output / row['sample_id'],
                             **({'native_runtime': native_runtime} if native_runtime else {}))
         except Exception as error:
             p = dict(status='measurement_failure', gravity=None, reason=type(error).__name__ + ': ' + str(error))
+        if row.get('model_name') == 'physrvg_ti2v5b':
+            p.update(raw_origin_frame=row['raw_origin_frame'], conditioning_input_frames=row['conditioning_input_frames'],
+                     evaluation_output_frames=row['evaluation_output_frames'])
         predictions.append(dict(p, id=row['sample_id'], item_id=row['item_id']))
     write_rows(output / 'predictions.jsonl', predictions)
     return predictions
@@ -413,6 +556,11 @@ def pipeline(spec, root):
                 verified_completion(row)
         except Exception as error:
             row['input_failure'] = 'generation_output_failure: ' + str(error)
+            continue
+        try:
+            prepare_evaluation_video(row)
+        except Exception as error:
+            row['input_failure'] = 'evaluation_video_failure: ' + str(error)
     write_rows(root / 'observed_rows.jsonl', rows)
     jobs = tracking_jobs(rows, tasks)
     write_rows(root / 'sam31_jobs.jsonl', jobs)
@@ -470,6 +618,10 @@ def existing_run(spec, run_dir, output_dir, execute=False):
     for key in ('protocol', 'source_manifest_sha256', 'tasks_sha256', 'model', 'frames', 'fps'):
         if prior[key] != plan[key]:
             raise ValueError('registered_gravity100_run_changed: ' + key)
+    if spec['model'] == 'physrvg_ti2v5b':
+        for key in ('raw_origin_frame', 'conditioning_input_frames', 'evaluation_output_frames', 'origin_rule'):
+            if prior.get(key) != plan[key]:
+                raise ValueError('registered_gravity100_temporal_origin_changed: ' + key)
     predictions_path = run / 'conditional_gravity/predictions.jsonl'
     completed = json.loads((run / 'completed.json').read_text())
     if sha256(predictions_path) != completed['predictions_sha256']:
@@ -479,6 +631,7 @@ def existing_run(spec, run_dir, output_dir, execute=False):
     for row in rows:
         if not row.get('input_failure'):
             verified_completion(row)
+            verified_evaluation_video(row)
     if not execute:
         return dict(protocol='gravity100', registered=100, generation_started=False,
                     tracking_started=False, gravity_refit=False, execution_requested=False)

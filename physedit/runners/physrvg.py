@@ -58,7 +58,15 @@ def read_manifest(path: Path, num_shards: int, shard_index: int) -> list[dict]:
     rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
     if not 0 <= shard_index < num_shards:
         raise ValueError("shard-index must satisfy 0 <= shard-index < num-shards")
-    return [row for index, row in enumerate(rows) if index % num_shards == shard_index]
+    selected = []
+    for index, row in enumerate(rows):
+        if index % num_shards != shard_index:
+            continue
+        granularity = row.get("prompt_granularity", "registered_condition_continuation")
+        if not isinstance(granularity, str) or not granularity.strip():
+            raise ValueError(f"invalid prompt_granularity at manifest row {index}")
+        selected.append({**row, "prompt_granularity": granularity})
+    return selected
 
 
 def append_status(path: Path, payload: dict) -> None:

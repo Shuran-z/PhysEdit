@@ -100,14 +100,34 @@ def minimum_observations(d):
 
 
 def native_control_clock(d, known, times):
-    """Adapt declared controls to observation times without changing the solver tick."""
+    """Validate frozen observation/control clocks before any tracking or fitting."""
+    tt = np.asarray(times, float)
+    if (tt.ndim != 1 or len(tt) < 2 or not np.isfinite(tt).all() or
+            tt[0] != 0 or not np.all(np.diff(tt) > 0)):
+        return 'invalid_condition_relative_physics_clock'
+    if d.get('module') == 'foreground_safe_control_RGB':
+        if len(tt) != 4:
+            return 'registered_four_observation_model'
+        intervals = np.diff(tt)
+        if not np.allclose(intervals, intervals[0], rtol=0, atol=1e-10):
+            return 'frozen_model_requires_uniform_observation_intervals'
+        h = known['known_interval']['integration_substep_s']
+        if not np.isfinite(h) or h <= 0:
+            return 'invalid_registered_integration_substep'
+        ticks = intervals[0] / h
+        if not np.isfinite(ticks) or abs(ticks - round(ticks)) > 1e-7:
+            return 'observation_interval_not_on_solver_step_grid'
+        return None
     if d.get('module') != 'known_group_outline':
         return None
     c = known['known_group_condition']
-    ct = np.asarray(d['registered_physical_times_s'])
+    ct = np.asarray(d['registered_physical_times_s'], float)
     if (len(ct) != len(c['world_force_updates_from_config']) or
+            ct[0] != 0 or not np.all(np.diff(ct) > 0) or
             np.max(np.abs(ct / c['step_s'] - np.rint(ct / c['step_s']))) > 1e-7):
         return 'declared_control_schedule_not_on_solver_step_grid'
+    if tt[-1] > ct[-1] + 1e-9:
+        return 'registered_control_schedule_shorter_than_observation_scope'
     return None
 
 

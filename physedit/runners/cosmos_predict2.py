@@ -108,10 +108,10 @@ def main() -> int:
             try:
                 raw_generated = Path(row["generated_video"])
                 if not raw_generated.is_file() and row.get('conditioning_video'):
-                    produced = [p for p in out_dir.rglob('*.mp4') if p != resized_path and p != Path(row['conditioning_video'])]
-                    if len(produced) != 1:
-                        raise RuntimeError('cosmos_raw_output_not_unique_or_missing')
-                    produced[0].replace(raw_generated)
+                    produced = out_dir / 'generated_video_raw.mp4'
+                    if not produced.is_file() or produced.stat().st_size == 0:
+                        raise RuntimeError('cosmos_original_named_raw_export_missing')
+                    produced.replace(raw_generated)
                 if row.get('mode') == 'v2v_future':
                     _validate_history(row)
                     _resize_to_source(raw_generated, Path(row['source_video']), resized_path,

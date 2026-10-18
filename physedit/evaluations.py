@@ -42,6 +42,9 @@ VP_NAMES = (
 
 
 def generated_video(row):
+    if row.get('protocol') == 'gravity100':
+        from .gravity100 import evaluation_video
+        return evaluation_video(row)
     return row.get("final_resized") or row["generated_video_resized_to_source"]
 
 
@@ -83,17 +86,30 @@ def context(row):
     condition = cv2.imread(row["condition_image"])
     if condition is None or not np.array_equal(condition, frame(source, c)):
         raise ValueError("condition_image_reference_pixel_mismatch")
-    return dict(
+    generated_media = receipt['media']
+    origin = None
+    if row.get('protocol') == 'gravity100':
+        from .gravity100 import verified_evaluation_video
+        origin = verified_evaluation_video(row)
+        if origin is not None:
+            generated_media = origin['evaluation_media']
+    ctx = dict(
         source_frames=media["frames"],
         condition_frame=c,
         source_fps=float(row["source_native_fps"]),
-        generated_frames=int(row["num_frames"]),
+        generated_frames=generated_media['frames'] if origin is not None else int(row["num_frames"]),
         generated_fps=float(row["output_fps"]),
         source_sha256=row["source_video_sha256"],
-        generated_sha256=receipt["media"]["video_sha256"],
+        generated_sha256=generated_media["video_sha256"],
         row_sha256=row_digest(row),
         completion_sha256=sha256(completion_path(row)),
     )
+    if origin is not None:
+        ctx.update(raw_origin_frame=4, conditioning_input_frames=5,
+                   native_generated_frames=49, native_generated_sha256=receipt['media']['video_sha256'],
+                   evaluation_origin_source=origin['origin_source'],
+                   evaluation_binding_sha256=sha256(Path(generated_video(row)).with_suffix('.evaluation.json')))
+    return ctx
 
 
 def frame(path, index):
