@@ -443,6 +443,9 @@ def summarize(rows, predictions):
             else:
                 failures.append(dict(id=row['item_id'], item_id=row['item_id'], sample_id=row['sample_id'],
                                      status=p.get('status'),
+                                     gravity=g if type(g) in (float, int) and math.isfinite(g) else None,
+                                     relative_error_percent=100 * abs(g / row['gravity_truth'] - 1)
+                                     if type(g) in (float, int) and math.isfinite(g) else None,
                                      reason=row.get('input_failure') or p.get('reason') or p.get('status')))
         n = len(selected)
         return dict(registered=n, scored=len(errors), failed=n-len(errors),

@@ -165,8 +165,13 @@ def test_summary_keeps_all_failures_and_never_uses_reference_estimates():
     assert result['failure_rate_percent'] == result['coverage_percent'] == 50
     assert result['numeric_output_coverage_percent'] == 75
     assert result['mean_error_percent'] == pytest.approx(10)
+    bound = result['groups']['ID']['failures'][0]
+    assert bound['status'] == 'at_bound'
+    assert bound['gravity'] == .1
+    assert bound['relative_error_percent'] == pytest.approx(99.)
     assert result['groups']['OOD-1']['registered'] == 1
     assert result['groups']['OOD-1']['scored'] == 0
+    assert result['groups']['OOD-1']['failures'][0]['gravity'] is None
 
 
 def test_fresh_gpu_check_defers_occupied_devices_without_launch(prepared, monkeypatch):
