@@ -188,3 +188,18 @@ def test_minimax_first_frame_and_clock_compatibility(key):
     with pytest.raises(ValueError,match='image_or_clock'):
         split_minimax_workflow(unsafe)
     assert key in unsafe.sub_blocks  # Refuse before altering a T2V-only workflow.
+
+
+def test_minimax_layout_keeps_clock_when_first_image_resize_no_longer_uses_it():
+    from physedit.runners.model_parameters import split_minimax_workflow
+    prep = SimpleNamespace(inputs=[SimpleNamespace(name=n) for n in ['image', 'height', 'width', 'last_image']])
+    layout = SimpleNamespace(inputs=[SimpleNamespace(name=n) for n in ['num_frames', 'height', 'width']])
+    text = SimpleNamespace(inputs=[SimpleNamespace(name='prompt')])
+    workflow = SimpleNamespace(sub_blocks={'before_encode': prep, 'text_encoder': text,
+                                         'denoise.prepare_layout': layout})
+    assert split_minimax_workflow(workflow) == (prep, text)
+    assert workflow.sub_blocks == {'denoise.prepare_layout': layout}
+    missing_clock = SimpleNamespace(sub_blocks={'before_encode': prep, 'text_encoder': text})
+    with pytest.raises(ValueError, match='image_or_clock'):
+        split_minimax_workflow(missing_clock)
+    assert missing_clock.sub_blocks == {'before_encode': prep, 'text_encoder': text}

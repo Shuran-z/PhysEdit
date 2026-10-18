@@ -20,8 +20,12 @@ physedit = "physedit.__main__:main"
 gravtrace = "gravtrace.__main__:main"
 
 [tool.setuptools]
-packages = ["gravtrace", "physedit", "physedit.runners", "scripts"]
+packages = ["gravtrace", "physedit", "physedit.runners", "physedit.conditioned_models", "scripts"]
 
 [tool.setuptools.package-data]
 scripts = ["sam31_frozen/*.py", "sam31_frozen/manifest.json"]
 physedit = ["qwen_prompt.json", "core100.json"]
+"physedit.conditioned_models" = ["registry.json"]
+
+[tool.setuptools.data-files]
+"share/physedit" = ["docs/phyediting/gravity100.csv"]

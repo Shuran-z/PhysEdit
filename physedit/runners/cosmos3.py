@@ -33,6 +33,15 @@ def probe(path, ffmpeg):
     return result.returncode == 0, result.stderr[-2000:]
 
 
+def claim_generation(output, resized, tmp_output, tmp_resized):
+    paths = [pathlib.Path(p) for p in (output, resized, tmp_output, tmp_resized)]
+    if any(p.exists() for p in paths):
+        raise FileExistsError("existing_output_or_partial_retained_no_overwrite")
+    claim = paths[0].with_name(paths[0].name + ".claim")
+    with claim.open("x") as handle:
+        json.dump({"output": str(paths[0]), "resized": str(paths[1])}, handle)
+
+
 def prompt_json(text, width, height, frames, fps):
     seconds = frames / fps
     return {
@@ -95,9 +104,10 @@ def main():
         tmp_output = output.with_name(output.stem + ".incomplete.mp4")
         tmp_resized = resized.with_name(resized.stem + ".incomplete.mp4")
         try:
+            claim_generation(output, resized, tmp_output, tmp_resized)
             prompt = pathlib.Path(row["prompt_file"]).read_text().strip()
             negative = pathlib.Path(row["negative_prompt_file"]).read_text().strip()
-            width, height = int(row.get("gen_width") or 832), int(row.get("gen_height") or 480)  # public211: per-row canvas keeps aspect
+            width, height = int(row.get("gen_width") or 832), int(row.get("gen_height") or 480)  # Preserve the canvas recorded for each input.
             frames = int(row.get("num_frames", 81))
             fps = float(row.get("output_fps", 16.0))
             result = pipe(
@@ -135,8 +145,6 @@ def main():
             failed += 1
             event_state = "failed"
             error = repr(exc)
-            tmp_output.unlink(missing_ok=True)
-            tmp_resized.unlink(missing_ok=True)
 
         with status_path.open("a") as handle:
             handle.write(json.dumps({"time": utc_now(), "node": args.node, "sample_id": row["sample_id"], "state": event_state, "elapsed_seconds": round(time.time() - started, 3), "bytes": output.stat().st_size if output.exists() else 0, "error": error, "safety_checker": False, "conditioning_track": "I2V_1F"}, ensure_ascii=False) + "\n")

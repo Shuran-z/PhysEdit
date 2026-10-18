@@ -235,6 +235,29 @@ def _enable_wan_offload(pipe, mode: str) -> None:
         pipe.to("cuda")
 
 
+def _bind_hunyuan_guider(pipe, guidance: float) -> dict[str, Any]:
+    """Set CFG through the guider API used by recent Hunyuan pipelines."""
+    guider = getattr(pipe, "guider", None)
+    try:
+        previous = dict(guider.config)
+        current = float(previous["guidance_scale"])
+    except (AttributeError, TypeError, KeyError, ValueError) as exc:
+        raise ValueError("hunyuan15_guider_guidance_unavailable") from exc
+    if current == float(guidance):
+        return previous
+    if not callable(getattr(guider, "new", None)):
+        raise ValueError("hunyuan15_guider_guidance_cannot_be_configured")
+    replacement = guider.new(guidance_scale=guidance)
+    updated = dict(replacement.config)
+    if float(updated.get("guidance_scale", math.nan)) != float(guidance):
+        raise ValueError("hunyuan15_guider_guidance_mismatch")
+    if any(updated.get(key) != value for key, value in previous.items()
+           if key != "guidance_scale" and not key.startswith("_")):
+        raise ValueError("hunyuan15_guider_policy_changed")
+    pipe.guider = replacement
+    return updated
+
+
 def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path: Path, log_path: Path) -> None:
     import torch
     from diffusers.utils import export_to_video, load_image
@@ -288,6 +311,21 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
         shift_key = 'flow_shift' if args.pipeline.startswith('wan_') else 'shift'
         pipe.scheduler = scheduler.from_config(pipe.scheduler.config, **{shift_key: flow_shift})
     accepted = set(inspect.signature(pipe.__call__).parameters)
+    guidance_binding = "call_argument"
+    guider_config = None
+    if args.pipeline == "hunyuan15_i2v" and "guidance_scale" not in accepted:
+        guider_config = _bind_hunyuan_guider(pipe, guidance)
+        guidance_binding = "guider"
+        required.remove("guidance_scale")
+        call_kwargs.pop("guidance_scale")
+    if args.pipeline == "hunyuan15_i2v" and not {"height", "width"} <= accepted:
+        processor = getattr(pipe, "video_processor", None)
+        bucket = getattr(processor, "calculate_default_height_width", None)
+        if not callable(bucket) or not hasattr(pipe, "target_size"):
+            raise ValueError("hunyuan15_native_canvas_unavailable")
+        actual_canvas = bucket(height=image.height, width=image.width, target_size=pipe.target_size)
+        if tuple(actual_canvas) != (height, width):
+            raise ValueError(f"hunyuan15_native_canvas_mismatch: {tuple(actual_canvas)} != {(height, width)}")
     if not required <= accepted:
         raise ValueError('pipeline_required_arguments_unavailable: ' + ','.join(sorted(required-accepted)))
     filtered = {key: value for key, value in call_kwargs.items() if key in accepted}
@@ -303,6 +341,8 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
             "num_frames": num_frames,
             "num_inference_steps": steps,
             "guidance_scale": guidance,
+            "guidance_binding": guidance_binding,
+            "guider_config": guider_config,
             "wan_invert_output": args.wan_invert_output,
             "accepted_call_args": sorted(filtered),
             "generation_fps": row["output_fps"],

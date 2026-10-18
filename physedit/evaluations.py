@@ -644,8 +644,12 @@ def run_additional(spec, rows, items, initial, root, *, gravity_predictions=None
                 try:
                     if sid in failures:
                         raise ValueError(failures[sid])
+                    case_vp = vp
+                    if row.get('protocol') == 'gravity100':
+                        case_vp = dict(vp, reference_duration_seconds=row['evaluation_horizon_seconds'],
+                                       trajectory_duration_seconds=row['evaluation_horizon_seconds'])
                     record = vp_case(
-                        row, contexts[sid], items[row["item_id"]], entries.get(sid), vp
+                        row, contexts[sid], items[row["item_id"]], entries.get(sid), case_vp
                     )
                     if sid in mask_failures:
                         record["mask_failure"] = mask_failures[sid]
@@ -841,6 +845,9 @@ def attach_summary(gravity, extra, metrics):
 
 def existing_run(spec, run_dir, output_dir, execute=False):
     """Evaluate a registered existing run, without generation or another gravity fit."""
+    if spec.get('protocol') == 'gravity100':
+        from .gravity100 import existing_run as condition_existing_run
+        return condition_existing_run(spec, run_dir, output_dir, execute)
     from .phyediting import validate_settings
     from scripts.sam31_frontend import lock
     from scripts.phyediting_gen_summary import report

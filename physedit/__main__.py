@@ -41,6 +41,9 @@ def _short_command(argv):
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] == ['prepare-gravity100']:
+        from .gravity100 import prepare_main
+        return prepare_main(argv[1:])
     if argv[:1] == ['measure'] and (len(argv) == 1 or argv[1] in ('-h', '--help')):
         parser = argparse.ArgumentParser(prog='physedit measure',
                     description='Measure gravity, kinetic friction and initial velocity from single-view observations.')

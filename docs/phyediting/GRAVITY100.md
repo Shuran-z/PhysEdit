@@ -52,4 +52,22 @@ CSV的`id`为稳定任务编号；`sample_id`、机位、原视频帧号及SHA25
 
 CSV SHA256：`8a0106b377fc66a6fd4e34d9996d202841a0e64b020a8586b7f2f7777769894f`。
 
-清单用于成员与时域登记。运行输入还需绑定对应条件图、物理时钟和逐条已知控制。一键入口的`items.jsonl`使用其运行配置格式；将CSV改扩展名不能完成导入。数据集核心协议与训练来源分配见[评测划分与联合训练](../joint_split_v3/PROTOCOL.md)。
+## 一键运行
+
+任务目录包含条件图、参考片段、逐条已知条件和测量定义，入口为`tasks.jsonl`。先填写[模型配置](../../examples/phyediting/gravity100.model.example.json)，再创建运行配置：
+
+```bash
+physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit plan gravity100.json
+physedit run gravity100.json --execute
+```
+
+`prepare-gravity100`校验完整100条成员及文件SHA256，将条件帧固定为0，并绑定独立的媒体与物理时钟。`plan`显示输入齐备数、各模型原生帧率下的观测数量和逐条不足原因。执行时沿用模型登记的帧数、帧率、采样参数及固定种子20261008。
+
+轮廓、表面RGB和接触动力学使用各条登记的测量模型。T02的耦合运动通过`native_runtime.command`连接CPU PhysX后端，按当前视频观测重新搜索重力；后端程序为[`native_physx_worker.py`](../../physedit/native_physx_worker.py)，使用CPU容器运行并校验源码SHA256。跨主机部署可用[`native_bridge.py`](../../physedit/native_bridge.py)转发固定后端会话；连接使用Unix socket，不传递登录凭据。参考视频的观测、估计值和自适应搜索候选不进入生成视频的估计过程。
+
+低帧率模型在短时域内的观测可能少于测量所需数量。这类任务保留身份与原因，计入覆盖率和失败率的固定分母。物理测量使用实际解码帧及其时间戳，保留原帧率。顺序读取模型使用固定范围内的无损帧前缀；不插入观测帧，也不改变播放速度。离散控制模型同时检查原物理子步与观测时刻是否兼容。
+
+重力结果按ID、OOD-1、OOD-2汇总。选用V/P时，参考图像比较与配对轨迹使用该条固定时域；1秒指标在时长足够的任务中统计。Qwen判断整段生成视频的视觉与物理表现。已有运行可用`physedit evaluate gravity100.json --run-dir runs/gravity100 --out runs/recheck --execute`重评选用的V/P和Qwen，并读取该次生成视频的重力结果。
+
+数据集核心协议与训练来源分配见[评测划分与联合训练](../joint_split_v3/PROTOCOL.md)。

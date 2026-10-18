@@ -12,11 +12,12 @@
 
 ```bash
 python -m pip install -e .
-physedit plan pipeline.json
-physedit run pipeline.json --execute
+physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit plan gravity100.json
+physedit run gravity100.json --execute
 ```
 
-配置文件集中填写路径和评测选项。一键流程执行生成与跟踪，并按配置评测重力、动摩擦、初速度、V/P与Qwen。结果默认写入`runs/pipeline`，详见[快速上手](docs/phyediting/QUICKSTART.md)。
+当前100条使用第0帧条件图与逐条时间范围，结果写入`runs/gravity100`。其他参数任务可分别选用动摩擦、初速度、V/P与Qwen评测，详见[快速上手](docs/phyediting/QUICKSTART.md)。
 
 | 使用指南 | 参数测量 | 数据与部署 |
 | :---: | :---: | :---: |

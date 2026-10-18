@@ -1,0 +1,14 @@
+{
+  "model": "ltx_i2v",
+  "model_dir": "/path/to/ltx-model",
+  "sam3": "/path/to/sam3",
+  "checkpoint": "/path/to/sam3.1_multiplex.pt",
+  "generation_runtime": {
+    "python": "/path/to/generation-env/bin/python",
+    "gpu_devices": "0"
+  },
+  "seed": 20261008,
+  "evaluation": {
+    "metrics": ["gravtrace"]
+  }
+}

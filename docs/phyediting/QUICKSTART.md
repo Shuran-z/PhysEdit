@@ -4,6 +4,8 @@
 
 ## 安装
 
+当前100条重力任务使用[条件帧评测入口](GRAVITY100.md#一键运行)。该入口直接读取任务第0帧和逐条物理时钟，配置中显式登记`protocol: gravity100`。
+
 在已有PyTorch/CUDA环境中安装项目：
 
 ```bash
@@ -31,7 +33,22 @@ source /path/to/physedit-env/activate_phyediting.sh
 
 </details>
 
-## 准备输入
+## 当前100条重力任务
+
+填写[模型配置](../../examples/phyediting/gravity100.model.example.json)后，使用已登记任务目录创建运行配置：
+
+```bash
+physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit plan gravity100.json
+physedit run gravity100.json --execute
+```
+
+该配置读取100条任务的第0帧、固定时间范围和逐条已知条件，按ID、OOD-1、OOD-2汇总重力结果。`plan`分别列出输入齐备数和模型原生时间网格下可测数量；低帧率短片段的不足原因逐条保留。数据字段和范围见[100条重力评测](GRAVITY100.md)。
+
+<details>
+<summary>其他数据与物理参数任务的输入配置</summary>
+
+### 准备输入
 
 | 输入 | 内容 |
 | :---: | :---: |
@@ -44,7 +61,7 @@ source /path/to/physedit-env/activate_phyediting.sh
 
 提示可通过`generation_prompt`提供；内置事件模板覆盖T03、T05、T08、T16–T20。`split`读取输入的集合标记，缺失时为`unspecified`。逐例结果保留全部样本及其缺源、失败和不适用原因。
 
-## 配置一次
+### 配置一次
 
 复制示例配置，填写数据、权重和环境路径：
 
@@ -75,6 +92,8 @@ cp examples/phyediting/pipeline.ltx.example.json pipeline.json
 
 </details>
 
+</details>
+
 ## 运行与查看结果
 
 ```bash
@@ -94,7 +113,7 @@ physedit run pipeline.json --run-dir runs/experiment_02 --execute
 | 结果文件 | 内容 |
 | :---: | :---: |
 | `summary.json` | 各项误差、覆盖率与分组统计 |
-| `predictions.jsonl` | 逐样本重力估计与拟合状态 |
+| `conditional_gravity/predictions.jsonl` | 当前100条的逐样本重力结果 |
 | `evaluation/` | 速度、摩擦、V/P与Qwen逐样本结果 |
 | `sam31/` | 目标轨迹、掩膜与观测记录 |
 | `registered.json` | 输入、配置与版本信息 |

@@ -77,6 +77,9 @@ def write_rows(path, rows):
 
 
 def execution_plan(spec):
+    if spec.get('protocol') == 'gravity100':
+        from .gravity100 import execution_plan as condition_execution_plan
+        return condition_execution_plan(spec)
     metrics = validate_settings(spec)
     if 'gravtrace' not in metrics:
         raise ValueError('Generation pipeline includes gravtrace; use evaluate for standalone Qwen/V/P evaluation')
@@ -163,6 +166,9 @@ def diffusers_launch(spec, manifest):
 
 def pipeline(spec, root):
     """Explicit execution only; caller must authorize it. Existing root is rejected."""
+    if spec.get('protocol') == 'gravity100':
+        from .gravity100 import pipeline as condition_pipeline
+        return condition_pipeline(spec, root)
     plan = execution_plan(spec)
     devices = spec.get('generation_runtime', {}).get('gpu_devices')
     previous = os.environ.get('CUDA_VISIBLE_DEVICES')

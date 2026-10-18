@@ -33,6 +33,11 @@ def split_minimax_workflow(workflow):
         raise ValueError('minimax_fl2va_workflow_incompatible')
     prep = workflow.sub_blocks[name]
     names = {value.name for value in prep.inputs}
-    if not {'image', 'height', 'width', 'num_frames'} <= names:
+    # Newer Modular Diffusers resolves the frame count in prepare_layout;
+    # before_encode only resizes the first image. Require both observations
+    # and the clock across the actual workflow before removing any blocks.
+    workflow_names = {value.name for block in workflow.sub_blocks.values()
+                      for value in getattr(block, 'inputs', ())}
+    if not {'image', 'height', 'width'} <= names or 'num_frames' not in workflow_names:
         raise ValueError('minimax_fl2va_image_or_clock_input_unavailable')
     return workflow.sub_blocks.pop(name), workflow.sub_blocks.pop('text_encoder')
