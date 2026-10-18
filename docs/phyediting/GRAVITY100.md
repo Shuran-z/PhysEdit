@@ -64,6 +64,8 @@ physedit run gravity100.json --execute
 
 `prepare-gravity100`校验完整100条成员及文件SHA256，将条件帧固定为0，并绑定独立的媒体与物理时钟。`plan`显示输入齐备数、各模型原生帧率下的观测数量和逐条不足原因。执行时沿用模型登记的帧数、帧率、采样参数及固定种子20261008。
 
+GPU阶段默认要求设备空闲。允许共享时，在`generation_runtime.gpu_sharing`中填写`allowed_gpu_uuids`、`minimum_free_mib`和`maximum_utilization_percent`，分别限定设备、剩余显存和已有负载。运行前重新读取资源，超出范围则保留输出并暂缓，不终止已有进程。
+
 轮廓、表面RGB和接触动力学使用各条登记的测量模型。T02的耦合运动通过`native_runtime.command`连接CPU PhysX后端，按当前视频观测重新搜索重力；后端程序为[`native_physx_worker.py`](../../physedit/native_physx_worker.py)，使用CPU容器运行并校验源码SHA256。跨主机部署可用[`native_bridge.py`](../../physedit/native_bridge.py)转发固定后端会话；连接使用Unix socket，不传递登录凭据。参考视频的观测、估计值和自适应搜索候选不进入生成视频的估计过程。
 
 低帧率模型在短时域内的观测可能少于测量所需数量。这类任务保留身份与原因，计入覆盖率和失败率的固定分母。物理测量使用实际解码帧及其时间戳，保留原帧率。顺序读取模型使用固定范围内的无损帧前缀；不插入观测帧，也不改变播放速度。离散控制模型同时检查原物理子步与观测时刻是否兼容。

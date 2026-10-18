@@ -348,3 +348,32 @@ def test_known_control_resampling_preserves_solver_tick():
     assert p['steps_per_observation'] == 4
     assert minimum_observations({'kind':'model','module':'closed_damped_visible_initial'}) == 4
     assert minimum_observations({'kind':'model','module':'known_push_gravity'}) == 6
+
+
+@pytest.mark.parametrize('fault', [None, 'device', 'memory', 'busy'])
+def test_explicit_shared_gpu_retains_other_processes_and_checks_budget(monkeypatch, fault):
+    calls = []
+    def resource(query, **kwargs):
+        calls.append(query)
+        field = next(x for x in query if x.startswith('--query-'))
+        if field == '--query-gpu=memory.free':
+            return SimpleNamespace(stdout='8000' if fault == 'memory' else '21500')
+        if 'compute-apps' in field:
+            return SimpleNamespace(stdout='GPU-fixture, 1234')
+        return SimpleNamespace(stdout='GPU-fixture, 3000, '+('80' if fault == 'busy' else '0'))
+    monkeypatch.setattr(g100.subprocess, 'run', resource)
+    spec = {'generation_runtime': {'gpu_devices':'1','gpu_sharing':{
+        'allowed_gpu_uuids':['GPU-other' if fault == 'device' else 'GPU-fixture'],
+        'minimum_free_mib':16384,'maximum_utilization_percent':30}}}
+    if fault == 'device':
+        with pytest.raises(ValueError, match='not_authorized'): g100.require_idle_gpu(spec)
+    elif fault:
+        with pytest.raises(RuntimeError, match='deferred_shared'): g100.require_idle_gpu(spec)
+    else:
+        g100.require_idle_gpu(spec)
+    assert all(q[0] == 'nvidia-smi' for q in calls)
+
+
+def test_sharing_rejects_implicit_or_unbounded_policy():
+    with pytest.raises(ValueError, match='requires_device_allowlist'):
+        g100.gpu_sharing_policy({'generation_runtime':{'gpu_sharing':True}})

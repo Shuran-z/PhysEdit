@@ -29,8 +29,26 @@ def write_rows(path, values):
             f.write(json.dumps(value, allow_nan=False) + '\n')
 
 
+def gpu_sharing_policy(spec):
+    policy = spec.get('generation_runtime', {}).get('gpu_sharing')
+    if policy is None:
+        return None
+    fields = {'allowed_gpu_uuids', 'minimum_free_mib', 'maximum_utilization_percent'}
+    if not isinstance(policy, dict) or set(policy) != fields:
+        raise ValueError('gpu_sharing_requires_device_allowlist_and_resource_limits')
+    uuids = policy['allowed_gpu_uuids']
+    if (not isinstance(uuids, list) or not uuids or
+            any(not isinstance(x, str) or not x.startswith('GPU-') for x in uuids) or
+            type(policy['minimum_free_mib']) is not int or policy['minimum_free_mib'] < 1024 or
+            type(policy['maximum_utilization_percent']) is not int or
+            not 0 <= policy['maximum_utilization_percent'] <= 100):
+        raise ValueError('invalid_gpu_sharing_device_or_resource_limits')
+    return policy
+
+
 def require_idle_gpu(spec):
-    """Read fresh device and compute-process state before each GPU stage."""
+    """Check exclusive access by default, or explicitly selected shared devices."""
+    sharing = gpu_sharing_policy(spec)
     devices = spec.get('generation_runtime', {}).get('gpu_devices')
     if not devices or not isinstance(devices, str):
         raise ValueError('explicit_generation_runtime_gpu_devices_required')
@@ -46,7 +64,18 @@ def require_idle_gpu(spec):
             p = subprocess.run(query, capture_output=True, text=True, timeout=15, check=True)
             outputs.append(p.stdout.strip())
         gpu = outputs[0].split(',')
-        if len(gpu) != 3 or outputs[1] or float(gpu[1]) > 128 or float(gpu[2]) != 0:
+        if len(gpu) != 3:
+            raise RuntimeError('gpu_deferred_invalid_resource_readback: ' + selected)
+        if sharing:
+            if gpu[0].strip() not in sharing['allowed_gpu_uuids']:
+                raise ValueError('gpu_sharing_device_not_authorized: ' + selected)
+            free = subprocess.run(['nvidia-smi', '-i', selected, '--query-gpu=memory.free',
+                                   '--format=csv,noheader,nounits'], capture_output=True,
+                                  text=True, timeout=15, check=True)
+            if (float(free.stdout.strip()) < sharing['minimum_free_mib'] or
+                    float(gpu[2]) > sharing['maximum_utilization_percent']):
+                raise RuntimeError('gpu_deferred_shared_resource_limit: ' + selected)
+        elif outputs[1] or float(gpu[1]) > 128 or float(gpu[2]) != 0:
             raise RuntimeError('gpu_deferred_not_fully_idle: ' + selected)
 
 
@@ -152,6 +181,7 @@ def execution_plan(spec):
     from .runners.oneclick_registry import validate_registration
     from .evaluation_settings import validate
     metrics = validate(spec.get('evaluation', {'metrics': ['gravtrace']}))
+    gpu_sharing_policy(spec)
     if 'gravtrace' not in metrics or set(metrics) - {'gravtrace', 'vp', 'qwen'}:
         raise ValueError('gravity100 supports gravity, VP and Qwen; motion parameters use their own tasks')
     if spec.get('protocol') != 'gravity100':
