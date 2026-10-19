@@ -1,0 +1,12 @@
+{
+  "model": "REPLACE_MODEL_AND_VERSION",
+  "inputs": "inputs.jsonl",
+  "answers": "answers.jsonl",
+  "generation_command": [
+    "python",
+    "REPLACE_RUNNER_PATH",
+    "--manifest",
+    "{manifest}"
+  ],
+  "timeout_seconds": 3600
+}

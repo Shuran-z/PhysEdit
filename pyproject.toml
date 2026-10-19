@@ -17,5 +17,5 @@ test = ["pytest"]
 [project.scripts]
 gravtrace = "gravtrace.__main__:main"
 
-[tool.setuptools]
-packages = ["gravtrace"]
+[tool.setuptools.packages.find]
+include = ["gravtrace*", "physedit*"]

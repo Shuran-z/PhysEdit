@@ -10,6 +10,10 @@ third_party/
 .venv311/
 .claude/
 
+# Raw, generated experiment runs and machine-local audits. Keep curated,
+# reproducible summaries under docs/ so the source repository stays small.
+/review/
+
 # Local research log and exploratory trials
 .local-research/
 /docs/phyediting/cross_window_edges15.json

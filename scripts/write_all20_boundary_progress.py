@@ -1,0 +1,68 @@
+"""Write evidence-tiered progress; configuration retrieval is not threshold completion."""
+import csv,json
+from pathlib import Path
+OUT=Path('review/scene_family_completion_20261018')
+NOTES={
+'T01':('A斜面/书面摩擦；B罐间距；C链条摩擦','540条反事实参数匹配原合同，原中心距离已保存','核对媒体身份及原标定目标事件；C保留非单调记录'),
+'T02':('A横向命中位置；B撞击初速；C探针初速','880条发布配置与45份原运行metadata物理上下文匹配；15个族×重力组的事件转变区间已接入距离登记','870条真实状态完成数值真值核验，63条near；已目视15条，渲染上下文及遮挡对应待核对；10条状态仍缺'),
+'T03':('原A/B/C三族，r014与r032/r034分别处理','原任务矩阵及早期因果审计已找回','155条后修复配置已全部回收，474/474配置齐全；修订后的边界尚需逐族核对'),
+'T04':('support_release；stack_sliding；terminal_transfer','原正式构建器已恢复：support_release=抽取速度、stack_sliding=书/坡面摩擦、terminal_transfer=杯位置；按实际物理字段校验','发布旁文件持续恢复；原star是设计值，不能替代三族各自的事件边界求解'),
+'T05':('motion_activation；gate_passage；terminal_transfer','880条配置；正式构建器的motion_activation=初速、gate_passage=间隙比、terminal_transfer=导轨摩擦已核对','105条配置含contact_stability_fix，实际间隙与原设计不同；已分别记录请求值/有效值/修复版本，须按修复后固定上下文求界'),
+'T06':('impact_force；gap','正式发布配置已按固定revision回收；bg01/地球原后端端点复算完成','按实际连续施力参数分族，不能把文件名J当冲量；数值搜索待接'),
+'T07':('A_surface_friction；B_initial_longitudinal_position_m；C_ramp_angle_deg','880条配置；找回旧五重力和后续细扫描报告','重建出现yaw/offset另一套族；须核对当前发布采用的版本'),
+'T08':('A初速；B碰撞偏心；C杯体总质量','880条配置；旧标定与V4/V6来源已定位','872条存在多个配置候选，须判定是否仅渲染变化并核对边界目标'),
+'T09':('pull_force；layer_friction','正式发布配置已按固定revision回收；bg01/地球原后端端点复算完成','按实际抽取力分族，不沿用pull=抽取距离的假设；数值搜索待接'),
+'T10':('v_roll；support_x','10点原后端复算完成；支撑笔位移4cm事件区间：support_x=[.1779,.217]m、v_roll=[1.7428571,2.3142857]m/s；已接距离','这是支撑笔位移事件，不等同文件夹失去支撑；其余背景/重力未外推'),
+'T11':('原四族：速度、接力间距、边缘距离、接力质量','240条历史发布配置；补找回r010四结局验收报告','r011速度名字段对应零初速+分段外力，需恢复实际控制映射'),
+'T12':('速度×摩擦×目标质量联合网格，按实际重力分层','正式发布配置已按固定revision回收','不能虚构A/B/C；需在固定其他参数的切片内建立边界'),
+'T13':('旧冻结校准来源与Isaac r4重建分别登记','旧构建器有44条校准来源；新版r4来源路径已知','历史冻结清单未收录；新版发布身份及临界任务仍待逐条核对'),
+'T14':('A通道宽度；B偏航；C冲量（以实际质量换算）','880条三机位媒体哈希匹配；bg03/地球A族正式后端两端点补验成功，区间[.018,.019]m','原标定timeconst=.005，正式=.001；其余背景/重力及B/C仍需同配置验证'),
+'T15':('A_force_transfer；B_support_loss；C_floor_target','恢复60原族条件组；原后端补算152次；4条H3已绑定区间并重评分','本次补算仅bg01/地球；A多转变，B/C已细化，其余上下文未补齐'),
+'T16':('Genesis接触位置/支撑角；Isaac d1/d2/d3','Genesis1196条配置候选；Isaac原8组/72条搜索与交付哈希匹配，已登记区间距离','原Isaac d2 72条cam01画面核验后已接入NearAcc答案；Genesis及修复版本仍待核对'),
+'T17':('Genesis初速/横向偏移；Isaac d1/d2/d3','Genesis1079条配置候选；Isaac修复版30条配置/QA哈希与原生产记录匹配，已登记修复搜索区间','原Isaac60组未找到转变，不代表后修复版本仍如此；需重查/补搜'),
+'T18':('Genesis摩擦/重叠长度；Isaac d1/d2/d3','Genesis630条配置候选；Isaac修复版10条配置/QA哈希匹配并登记搜索区间','原搜索未通过组需按当前抽取/传播事件重核，不直接拼接旧新参数'),
+'T19':('Genesis偏心/质量比/恢复系数；Isaac d1/d2/d3','Genesis712条配置候选；Isaac原32组/288条搜索记录已找回，但旧渲染已停用','旧288条因用户确认画面不合格标记retired_render，不进入正式评测；等待正在重渲染的新版本，再重新绑定及审核'),
+'T20':('Genesis三段间隙、书初速、杯边距；Isaac d1/d2/d3','Genesis1190条配置候选；Isaac原28组252条输入哈希匹配，已接入原搜索区间距离，单列于旧库存之外','原Isaac记录与当前发布/新划分分开；Genesis数值边界尚未绑定')}
+def main():
+ measured_path=OUT/'t04_measured_published_events.json'
+ if measured_path.exists():
+  measured=json.loads(measured_path.read_text(encoding='utf-8'))
+  transition_path=OUT/'t04_transition_candidates.json'
+  transitions=[t for r in json.loads(transition_path.read_text()) for t in r['transitions']] if transition_path.exists() else []
+  NOTES['T04']=(NOTES['T04'][0],f"原三族定义已核对；{len(measured)}条发布状态已提取事件；{sum(t.get('fixed_context_matches',False) for t in transitions)}个相邻异侧区间通过固定物理上下文检查；bg01/月球4点原后端复算完成；两端事件与发布一致；局部区间[0.1225,0.13125]已绑定3条原视频及分桶",'其余上下文/参数族补算、边界重复核验和画面审核未完成；不把观测区间称为精确临界点')
+ NOTES['T07']=(NOTES['T07'][0],'880条配置；已从原audit_t07_motion恢复最大位移≥1cm规则，并在同版本发布状态试跑','批量状态核验、原三族边界及画面审核未完成')
+ NOTES['T08']=(NOTES['T08'][0],'880条配置；已从原V4审计器恢复三物体下落/接触规则并在发布状态试跑，落地与离桌分开','批量状态、参数族边界、版本和画面审核未完成；不将8cm下落阈值冒充支撑失效瞬间')
+ NOTES['T05']=(NOTES['T05'][0],'880条配置已核对；105条物理配置偏离原构建器，其中54条有显式修复记录、51条无标记；都已要求独立求界','继续恢复发布状态和原族目标；检查实际固定上下文，不仅依据修复标记配对')
+ NOTES['T12']=(NOTES['T12'][0],'880条发布配置恢复出实际联合参数切片：速度260、摩擦268、目标质量228个多值切片','这些多值切片均包含不同随机种子；事件核验与固定上下文搜索未完成，不能直接当作单个确定性边界')
+ progress=json.loads((OUT/'all20_progress.json').read_text(encoding='utf-8'))
+ rows=[]
+ for p in progress:
+  family,done,next_step=NOTES[p['scene_id']]
+  rows.append(dict(scene=p['scene_id'],original_families=family,
+   historical_genesis_config_candidates=p['genesis_config_candidates'],historical_genesis_inventory=p['genesis_inventory'],
+   recovered_evidence=done,remaining=next_step,all_families_completed=False,completion_status='未完成（全场景全部参数族）'))
+ (OUT/'all20_evidence_progress.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+ with (OUT/'all20_evidence_progress.csv').open('w',encoding='utf-8-sig',newline='') as f:
+  w=csv.DictWriter(f,fieldnames=rows[0]);w.writeheader();w.writerows(rows)
+ lines=['# T01–T20 原参数族临界搜索与发布绑定进度（2026-10-18）','',
+ '**这是完整20场景的进度表，不是“20场景已经全部完成”的声明。** 本轮实际补算覆盖T15的bg01/地球条件、T14的bg03/地球A族两端点，以及T06/T09/T10的bg01/地球六轴12端点和T10两轴6个中间点。其余未闭环任务保留，不把未找到写成从未搜索。',
+ '', '配置计数来自冻结历史发布清单（dataset_splits_v2），用于身份匹配，不替代joint_split_v3划分，也不代表所有新版Isaac库存。配置候选数不等于质量通过数，更不等于可评分临界距离数。T13的0表示此历史清单未收录。', '',
+ '|场景|完成状态|按原参数族|Genesis配置候选/历史轨迹|已完成证据|剩余事项|','|---|---|---|---:|---|---|']
+ for r in rows:lines.append(f"|{r['scene']}|{r['completion_status']}|{r['original_families']}|{r['historical_genesis_config_candidates']}/{r['historical_genesis_inventory']}|{r['recovered_evidence']}|{r['remaining']}|")
+ lines+=['','“未完成”针对全场景全部版本/参数族的任务范围；T16 Isaac d2 的72条参考准入子任务已经完成。没有把局部完成冒充全场景完成。']
+ ledger=json.loads((OUT/'nearacc_readiness_summary.json').read_text(encoding='utf-8'))
+ lines+=['','## 可评分登记计数','',f"历史轨迹登记{ledger['total_historical_trajectories']}条；已接入事件区间距离{ledger['measured_interval_distance_registered']}条（T02 880、T04补算绑定3、T10补算10、Isaac原版T16 72/T19 288、修复版T17 30/T18 10/T19 19、T14 2；另有旧库存之外T20原来源252条）。正式NearAcc参考登记{ledger['completed_formal_near_reference_registrations']}条：目前事件真值/发布身份、边界确认或归一化登记尚未全部闭环。这是管线完成数，不是数据可用性的否定。每条阻塞原因见nearacc_readiness_ledger.jsonl。",'', f"数值真值、版本和归一化已核验{ledger['numerical_reference_verified']}条，其中near桶确定{ledger['near_numerical_eligible']}条。数值资格与参考RGB观察资格分开，尚未完成后者的记录不自动进入正式生成评测。candidate_reference_answers.jsonl保留答案和逐条待办；admitted_near_reference_answers.jsonl只导出完成准入的记录。", '', '## 已实际接入评分','',
+ 'T15：`h3_supplemental_bindings.json`通过参考state哈希、固定物理上下文、目标事件和参数值核对，把4条H3输出接入已有`--boundary-bindings`接口。`h3_supplemental_refined_score.json`为最新实际评分结果（旧score为细化前快照）。新计算的是观测转变区间距离；保留多次翻转，不伪装唯一精确阈值。',
+ '', 'T14：`t14_formal_probe_distance_registry.json`保存两条正式配置复算记录，经过现有distance函数实际计算区间距离。原renderer在p25/p26的SHA256一致，配置哈希与发布核验记录一致；只降低渲染分辨率并停用视频输出，保留正式物理设置和7秒观测时长。两条分别为two_sided_wedge与passed_and_hit_eraser，确认该条件下[.018,.019]m仍跨越passed_channel事件。不外推所有族；未生成新的模型输出，尚无T14模型分数。',
+ '', '原合同中心点距离（T01/T02）、原搜索区间距离（T14）、本轮原后端补算区间（T15）分开保存；前两类尚待上述闭环，不能因为字段有数字就自动进入NearAcc。',
+ '', '## T15 补算范围与结果','',
+ '沿用V11原Genesis脚本及其原配置：float64、每视频帧128求解步、dt=1/3840、timeconst=.002、box检测、1秒settle。28次粗扫+70次扩展重复+54次细化=152次，143次通过原QA。失败记录全部保存。重复使用原确定性设置，不能替代跨求解精度收敛实验。',
+ '', '- A初速：细扫中[2.142,2.151] m/s为跌落→不跌落，[2.151,2.160] m/s为不跌落→跌落；另有QA失败点阻断相邻区间恢复。不能声称只存在一个阈值。',
+ '- B支撑参数：跌落→不跌落区间[0.103125,0.1075] m；该轮每点两次，18/18通过原QA。',
+ '- C手机声明扫描坐标：未命中→命中区间[-0.125,-0.1140625] m，命中→未命中区间[0.165,0.175] m；36/36通过原QA。该坐标与实际手机世界坐标的仿射对应已核对，不能混写。',
+ '', '这些是该背景/重力/其余固定参数下的数值转变区间，不外推至全部60组。未改变现有视频或删除两侧样本。',
+ '', '## 本轮核验','', '已回收原报告/脚本1171份，另扩展报告树348份（214份此前未读取）；配置文件按来源保留路径和哈希。T14进一步读取192份实际标定配置，确认接触时间常数与正式版本不同。',
+ '', '边界恢复、绑定、评分及参考准入共40项unittest通过。H3继续使用已有开发标注，没有新增独立人工标签或生成模型实验。']
+ (OUT/'ALL20_PROGRESS.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+ print('wrote all20 evidence progress: 20 rows')
+if __name__=='__main__':main()
