@@ -3,19 +3,29 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gravtrace"
+name = "physedit"
 version = "0.1.0"
-description = "Recover the gravity a video shows from a tracked object's image box"
+description = "Physical video generation and evaluation with single-view motion parameter estimation"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
-dependencies = ["numpy", "scipy", "opencv-python-headless"]
+dependencies = ["numpy", "scipy", "opencv-python-headless", "scikit-image==0.24.0"]
 
 [project.optional-dependencies]
 test = ["pytest"]
+judge = ["transformers>=4.51.3", "accelerate", "pillow", "torch", "torchvision"]
 
 [project.scripts]
+physedit = "physedit.__main__:main"
 gravtrace = "gravtrace.__main__:main"
 
-[tool.setuptools.packages.find]
-include = ["gravtrace*", "physedit*"]
+[tool.setuptools]
+packages = ["gravtrace", "physedit", "physedit.runners", "physedit.conditioned_models", "scripts"]
+
+[tool.setuptools.package-data]
+scripts = ["sam31_frozen/*.py", "sam31_frozen/manifest.json"]
+physedit = ["qwen_prompt.json", "core100.json"]
+"physedit.conditioned_models" = ["registry.json"]
+
+[tool.setuptools.data-files]
+"share/physedit" = ["docs/phyediting/gravity100.csv"]

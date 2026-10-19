@@ -22,7 +22,7 @@ class Host:
         return self.argv + [remote] if self.argv else ["bash", "-c", remote]
 
     def sh(self, script, timeout=600, check=True):
-        """Run a bash script on the host; return its stdout. (stderr goes to a file, not a pipe: an NSCC ProxyCommand
+        """Run a bash script on the host; return its stdout. (stderr goes to a file, not a pipe: an cluster ProxyCommand
         that outlives its ssh would otherwise hold the pipe open until the timeout.)"""
         with tempfile.TemporaryFile() as err:
             p = subprocess.run(self.command("bash -s"), input=script, stdout=subprocess.PIPE, stderr=err, text=True,
@@ -58,7 +58,7 @@ class Host:
 
 
 def copy(src, src_dir, dst, dst_dir, files, streams=6):
-    """Copy `files` (relative to src_dir) to dst_dir as parallel tar streams through the hub (one NSCC stream is
+    """Copy `files` (relative to src_dir) to dst_dir as parallel tar streams through the hub (one cluster stream is
     throttled to ~160 KB/s; six reach ~3 MB/s). Symlinks are copied as the files they point to. The directories are
     made first: parallel extracts creating the same directory on NFS fail on cached negative lookups."""
     dirs = sorted({os.path.dirname(f) for f in files} - {""})

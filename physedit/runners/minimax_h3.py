@@ -19,9 +19,12 @@ import torch
 from diffusers import ComponentsManager, ModularPipeline
 from diffusers.utils import load_image
 from diffusers.utils.export_utils import encode_video
+try:
+    from .model_parameters import split_minimax_workflow
+except ImportError:
+    from model_parameters import split_minimax_workflow
 
 
-MODEL = "/XYAIFS00/HDD_POOL/sysu_xdliang/sysu_xdliang_3/zhangshuran/models/MiniMax-H3-FL2VA-diffusers-20260903"
 H3_WIDTH = 896
 H3_HEIGHT = 512
 
@@ -101,7 +104,7 @@ def main():
     parser.add_argument("--out-root", required=True)
     parser.add_argument("--steps", type=int, default=50)
     parser.add_argument("--max-samples", type=int, default=0)
-    parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--model", required=True)
     parser.add_argument("--pad-input", action="store_true", help="Preserve source pixels on a padded canvas and crop output back")
     args = parser.parse_args()
     model = args.model
@@ -135,8 +138,7 @@ def main():
 
     base = ModularPipeline.from_pretrained(model, local_files_only=True)
     workflow = base.blocks.get_workflow("fl2va")
-    prep_block = workflow.sub_blocks.pop("before_encode")
-    text_block = workflow.sub_blocks.pop("text_encoder")
+    prep_block, text_block = split_minimax_workflow(workflow)
 
     prep = prep_block.init_pipeline(model)
     prep.load_components()
@@ -187,7 +189,7 @@ def main():
                     ((top, dh-top), (left, dw-left), (0, 0)), mode="edge"))
             image.save(output.parent / "model_input.png")
             with torch.inference_mode():
-                state = prep(image=image, height=int(source.get("gen_height") or H3_HEIGHT), width=int(source.get("gen_width") or H3_WIDTH))  # public211: per-row canvas keeps aspect
+                state = prep(image=image, num_frames=124, height=int(source.get("gen_height") or H3_HEIGHT), width=int(source.get("gen_width") or H3_WIDTH))  # public211: per-row canvas keeps aspect
                 state = conditioner(state=state, prompt=prompt)
                 result = generator(
                     state=state,
