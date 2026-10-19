@@ -54,12 +54,30 @@ CSV的`id`为稳定任务编号；`sample_id`、机位、原视频帧号及SHA25
 
 CSV SHA256：`8a0106b377fc66a6fd4e34d9996d202841a0e64b020a8586b7f2f7777769894f`。
 
+## 任务包下载
+
+[下载完整100条任务包（约250 MB）](https://github.com/Shuran-z/PhysEdit/releases/download/gravity100-v1/gravity100-v1.tar.gz)，并下载[SHA256SUMS](https://github.com/Shuran-z/PhysEdit/releases/download/gravity100-v1/SHA256SUMS)。CSV只提供固定成员与评分清单；实际输入文件位于该任务包中。
+
+```bash
+curl -fLO https://github.com/Shuran-z/PhysEdit/releases/download/gravity100-v1/gravity100-v1.tar.gz
+curl -fLO https://github.com/Shuran-z/PhysEdit/releases/download/gravity100-v1/SHA256SUMS
+shasum -a 256 -c SHA256SUMS
+tar -xzf gravity100-v1.tar.gz
+python3 gravity100/verify.py
+```
+
+解压后的总入口为`gravity100/tasks.jsonl`；单条文件为`gravity100/G100_001/task.json`至`gravity100/G100_100/task.json`。每个目录包含条件图、参考视频、`estimator.json`、`known_conditions.json`和`prompt.txt`，相对路径可随整个目录移动。包内`checksums.json`和`verify.py`校验文件SHA256与100条唯一身份。
+
+提示词包括84条数据集原始`caption_zh`第1项原文和16条用户批准补写；补写明确标记为`USER_AUTHORIZED_NEW_CAPTION`，逐条来源和文本SHA256见`prompt_provenance.json`。模型与SAM权重、运行环境另行配置；本包不含生成结果或评测缓存。
+
+压缩包SHA256：`4b9bc0e517660a84d223820dbbbe5196302979fe23b27645ac2918e047c8e871`。
+
 ## 一键运行
 
 任务目录包含条件图、参考片段、逐条已知条件和测量定义，入口为`tasks.jsonl`。先填写[模型配置](../../examples/phyediting/gravity100.model.example.json)，再创建运行配置：
 
 ```bash
-physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit prepare-gravity100 gravity100/tasks.jsonl --model-config model.json --out gravity100.json
 physedit plan gravity100.json
 physedit run gravity100.json --execute
 ```
