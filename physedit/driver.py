@@ -1,8 +1,8 @@
 """Generation and evaluation of any set of models on a benchmark, driven from the hub.
 
 One pass: survey the hosts; deploy the runners, copy the benchmark inputs and build manifests where needed; keep up
-to two workers per model and run generating on free GPUs (one walks the manifest forwards, one backwards; finished
-rows are skipped); copy finished videos to the benchmark's home host; publish finished runs and start every
+to two workers per model and run generating on free GPUs (the manifests are disjoint; finished
+rows are fully validated); copy finished videos to the benchmark's home host; publish finished runs and start every
 evaluation stage whose inputs are ready; rebuild the table once all stages are done. All state lives on the hosts,
 so a pass can be repeated at any time, and `--watch` repeats it until nothing is left to do.
 """
@@ -10,6 +10,7 @@ import collections
 import concurrent.futures
 import json
 import os
+import shlex
 import time
 
 from . import config
@@ -19,7 +20,7 @@ from .fleet import Host, copy, mirror
 HERE = os.path.dirname(os.path.abspath(__file__))
 HUB = Host("hub")
 HUB_DIR = os.path.expanduser("~/.physedit")          # lock files and the logs of stages that run on the hub
-VIDEOS = "-path './generated/*/resized.mp4' -size +0"  # find expression for a run's finished videos
+VIDEOS = "-path './generated/*/resized.mp4'"  # transport filter only; survey fully validates completion
 RESTARTS, RESTART_WINDOW = 3, 3 * 3600                # a worker started this often recently is left for a human
 FAILED = object()
 
@@ -86,7 +87,8 @@ class Driver:
         h = self.host(site)
         if h is None:
             return None
-        args = {"dir": "%s/%s" % (self.root(site), self.bench)}
+        args = {"dir": "%s/%s" % (self.root(site), self.bench),
+                "media_contract_source": open(os.path.join(HERE, "runners/media_contract.py")).read()}
         if site == self.home:
             args["publish"] = {"%s/%s" % (r, m): p.format(model=m) for r, p in self.b.get("publish", {}).items()
                                for m in self.models}
@@ -108,7 +110,7 @@ class Driver:
                 key, it = "%s/%s" % (run, m), dict(model=m, run=run, site=None, rows=None, done=0, recent=[], events={})
                 for site in config.MODELS[m]["cmd"]:
                     info = self.site_items(site).get(key)
-                    if info and info["rows"]:
+                    if info and info["rows"] and not info.get("replica"):
                         it.update(info, site=site)
                         break
                 it["live"] = {job.rsplit(".", 1)[1]: (h, g) for h, (_, jobs) in self.up.items() for job, g in jobs.items()
@@ -264,7 +266,34 @@ class Driver:
             return
         self.act("copy the new videos of %s/%s from %s to %s (%d there, %d here)" % (
             it["run"], it["model"], it["site"], self.home, it["done"], it["at_home"]),
-            mirror, src, self.rundir(it["site"], it["run"], it["model"]), home, self.readable(it), VIDEOS)
+            self.transfer_media, it)
+
+    def transfer_media(self, it):
+        """Validated producer files only; keep prior/partial bytes and mark replicas."""
+        src, home = self.host(it['site']), self.host(self.home)
+        d, rd = self.rundir(it['site'], it['run'], it['model']), self.readable(it)
+        if d == rd:
+            return
+        home_info = self.site_items(self.home).get(it['run']+'/'+it['model'], {})
+        have = home_info.get('media_sha256', {})
+        files = [f for f in it.get('validated_files', []) if have.get(f) != it.get('media_sha256', {}).get(f)]
+        if files:
+            # Transport retries retain existing incomplete destinations instead of deleting them.
+            command = "%s - %s <<'PHYSEDIT_RETAIN'\n" % (config.SITES[self.home]['vars']['python'],
+                        shlex.quote(json.dumps({'root': rd, 'files': files})))
+            command += ("import json,sys,time,os\nfrom pathlib import Path\na=json.loads(sys.argv[1])\n"
+                        "for name in a['files']:\n p=Path(a['root'])/name\n"
+                        " if p.exists(): os.rename(p,str(p)+'.retained.'+str(time.time_ns()))\nPHYSEDIT_RETAIN\n")
+            home.sh(command)
+            copy(src, d, home, rd, files)
+        rows = [json.loads(l) for l in src.sh('cat '+shlex.quote(d+'/manifest.jsonl')).splitlines() if l.strip()]
+        for r in rows:
+            for key, value in list(r.items()):
+                if isinstance(value, str) and value.startswith((d+'/', d+'\\')):
+                    r[key] = rd+value[len(d):]
+        home.write(rd+'/replica.json', json.dumps({'producer':it['site'], 'source_dir':d}))
+        home.write(rd+'/manifest.jsonl', ''.join(json.dumps(r)+'\n' for r in rows))
+
 
     # ---------------------------------------------------------------- evaluation
     def running(self):
@@ -344,8 +373,8 @@ class Driver:
         path = self.b["publish"][it["run"]].format(model=it["model"])
 
         def run():
-            if rd != d:      # a copy interrupted earlier would have left a short file: compare sizes once more
-                mirror(src, d, home, rd, VIDEOS)
+            if rd != d:      # only the producer survey's fully validated media inventory is copied
+                self.transfer_media(it)
             rows = [json.loads(l) for l in src.sh("cat %s/manifest.jsonl" % d).splitlines() if l.strip()]
             for r in rows:
                 r["generated_video_resized_to_source"] = "%s/generated/%s/resized.mp4" % (rd, r["sample_id"])

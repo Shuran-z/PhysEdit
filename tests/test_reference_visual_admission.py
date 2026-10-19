@@ -26,7 +26,7 @@ class VisualAdmissionTests(unittest.TestCase):
 
     def test_admitted_roster_through_real_scorer_synthetic_predictions(self):
         # Real reference bindings; synthetic media/predictions strictly for plumbing.
-        keys=[json.loads(x) for x in (OUT/'admitted_near_reference_answers.jsonl').read_text().splitlines()]
+        keys=[json.loads(x) for x in (OUT/'admitted_near_reference_answers.jsonl').read_text(encoding='utf-8').splitlines()]
         self.assertEqual(len(keys),72)
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);image=root/'fixture.png';image.write_bytes(b'fixture only')

@@ -13,13 +13,16 @@ from pathlib import Path
 from typing import Any
 
 import cv2
-import torch
-from diffusers.utils import export_to_video, load_image
+try:
+    from .media_contract import validate_video, verified_completion, seal_completion, input_hashes, sha256
+except ImportError:
+    from media_contract import validate_video, verified_completion, seal_completion, input_hashes, sha256
 
 
 PIPELINE_CLASS = {
     "cogvideox_i2v": "CogVideoXImageToVideoPipeline",
     "ltx_i2v": "LTXImageToVideoPipeline",
+    "ltx_v2v": "LTXConditionPipeline",
     "hunyuan_i2v": "HunyuanVideoImageToVideoPipeline",
     "hunyuan15_i2v": "HunyuanVideo15ImageToVideoPipeline",
     "wan_i2v": "WanImageToVideoPipeline",
@@ -29,15 +32,16 @@ PIPELINE_CLASS = {
 
 DEFAULT_SETTINGS = {
     "cogvideox_i2v": {"height": 480, "width": 768, "steps": 50, "guidance": 6.0},
-    "ltx_i2v": {"height": 480, "width": 720, "steps": 30, "guidance": 3.0},
+    "ltx_i2v": {"height": 480, "width": 704, "steps": 50, "guidance": 3.0},
+    "ltx_v2v": {"height": 480, "width": 704, "steps": 50, "guidance": 3.0},
     "hunyuan_i2v": {"height": 480, "width": 720, "steps": 30, "guidance": 6.0},
-    "hunyuan15_i2v": {"height": 480, "width": 848, "steps": 12, "guidance": 6.0},
+    "hunyuan15_i2v": {"height": 480, "width": 848, "steps": 12, "guidance": 1.0},
     "wan_i2v": {"height": 480, "width": 720, "steps": 40, "guidance": 3.5},
-    "wan_ti2v5b": {"height": 480, "width": 720, "steps": 40, "guidance": 3.5},
+    "wan_ti2v5b": {"height": 480, "width": 832, "steps": 50, "guidance": 5.0},
 }
 
 
-def main() -> int:
+def main(argv=None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--generation-manifest", required=True)
     parser.add_argument("--model-dir", required=True)
@@ -48,6 +52,7 @@ def main() -> int:
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--num-inference-steps", type=int, default=None)
     parser.add_argument("--guidance-scale", type=float, default=None)
+    parser.add_argument("--flow-shift", type=float, default=None)
     parser.add_argument("--height", type=int, default=None)
     parser.add_argument("--width", type=int, default=None)
     parser.add_argument("--num-frames", type=int, default=None)
@@ -57,24 +62,13 @@ def main() -> int:
     parser.add_argument(
         "--wan-invert-output",
         action="store_true",
-        help="Invert decoded Wan RGB frames before export to repair the converted TI2V-5B checkpoint.",
+        help="Explicitly invert decoded Wan RGB frames before export for a checkpoint that requires it; disabled by default.",
     )
     parser.add_argument("--dry-run", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if args.wan_invert_output and not args.pipeline.startswith("wan_"):
         parser.error("--wan-invert-output is only valid with a Wan pipeline")
-
-    if args.pipeline == "wan_ti2v5b":
-        import diffusers
-
-        cls = getattr(diffusers, PIPELINE_CLASS[args.pipeline])
-        if "image" not in inspect.signature(cls.__call__).parameters:
-            parser.error(
-                "The installed Diffusers WanPipeline does not accept an image "
-                "condition. Use the official Wan2.2 TI2V runner; refusing to "
-                "silently run text-to-video from an I2V manifest."
-            )
 
     if args.cuda_visible_devices is not None:
         os.environ["CUDA_VISIBLE_DEVICES"] = str(args.cuda_visible_devices)
@@ -86,6 +80,8 @@ def main() -> int:
     if args.limit is not None:
         selected = selected[: args.limit]
 
+    settings_binding = {k: v for k, v in vars(args).items() if k not in (
+        "generation_manifest", "start_index", "limit", "skip_existing", "dry_run", "cuda_visible_devices")}
     status_path = manifest.parent / f"{args.pipeline}_generation_status.jsonl"
     failed = completed = skipped = 0
     pipe = None
@@ -98,22 +94,49 @@ def main() -> int:
             log_path = out_dir / f"{args.pipeline}_generate.log"
             raw_path = Path(row["generated_video"])
             resized_path = Path(row["generated_video_resized_to_source"])
-            if args.skip_existing and resized_path.exists() and resized_path.stat().st_size > 0:
-                skipped += 1
-                _write_status(status_handle, row, "skipped_existing", start, log_path, resized_path)
+            if row.get('input_failure'):
+                failed += 1
+                _write_status(status_handle, row, 'input_failure', start, log_path, resized_path, error=row['input_failure'])
                 continue
             if args.dry_run:
-                _write_status(status_handle, row, "dry_run", start, log_path, resized_path)
+                _write_status(status_handle, row, 'dry_run', start, log_path, resized_path)
                 continue
-
             try:
+                if row.get('mode', 'i2v') != ('v2v' if args.pipeline == 'ltx_v2v' else 'i2v'):
+                    raise ValueError('Only I2V rows are accepted; refusing conditioning mode drift')
+                if resized_path.exists():
+                    if not args.skip_existing:
+                        raise ValueError('existing_output_retained_no_overwrite')
+                    verified_completion(row, settings_binding)
+                    skipped += 1
+                    _write_status(status_handle, row, 'skipped_existing', start, log_path, resized_path)
+                    continue
+                # Persistent claim rejects concurrent writers AND interrupted retries.
+                with (out_dir/'generation.claim').open('x') as claim:
+                    claim.write(json.dumps({'sample_id': row['sample_id'], 'model_dir': args.model_dir}))
+                if raw_path.exists() or any(out_dir.glob('*.partial.mp4')):
+                    raise ValueError('existing_partial_retained_no_automatic_retry')
+                if args.num_frames is not None and args.num_frames != row['num_frames']:
+                    raise ValueError('cli_manifest_frame_count_mismatch')
+                generation_inputs = input_hashes(row)
+                if row.get('source_video_sha256') and sha256(row['source_video']) != row['source_video_sha256']:
+                    raise ValueError('registered_source_video_drift')
                 if pipe is None:
                     pipe = _load_pipeline(args.pipeline, args.model_dir, args.torch_dtype, args.offload_mode, args.device_map)
-                _generate_one(pipe, args, row, raw_path, log_path)
-                _resize_to_source(raw_path, Path(row["source_video"]), resized_path, fps=float(row.get("output_fps") or 16.0), dims=(int(row["source_width"]), int(row["source_height"])))
+                raw_partial = raw_path.with_suffix('.partial.mp4')
+                resized_partial = resized_path.with_suffix('.partial.mp4')
+                _generate_one(pipe, args, row, raw_partial, log_path)
+                validate_video(raw_partial, fps=float(row['output_fps']), frames=int(row['num_frames']))
+                os.replace(raw_partial, raw_path)
+                _resize_to_source(raw_path, Path(row['source_video']), resized_partial,
+                                  fps=float(row['output_fps']), dims=(int(row['source_width']), int(row['source_height'])))
+                validate_video(resized_partial, fps=float(row['output_fps']), frames=int(row['num_frames']),
+                               width=int(row['source_width']), height=int(row['source_height']))
+                os.replace(resized_partial, resized_path)
+                seal_completion(row, settings_binding, generation_inputs)
             except Exception as exc:
                 failed += 1
-                _write_status(status_handle, row, "failed", start, log_path, resized_path, error=repr(exc))
+                _write_status(status_handle, row, 'failed', start, log_path, resized_path, error=repr(exc))
                 _append_log(log_path, f"\n[runner_error] {repr(exc)}\n{traceback.format_exc()}\n")
                 continue
             completed += 1
@@ -135,11 +158,18 @@ def main() -> int:
 
 def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_mode: str | None, device_map: str | None):
     import diffusers
+    import torch
 
     cls_name = PIPELINE_CLASS[pipeline_key]
     cls = getattr(diffusers, cls_name)
+    if pipeline_key == 'ltx_v2v':
+        required = {'video', 'frame_rate', 'denoise_strength', 'strength', 'frame_index'}
+        if not required <= set(inspect.signature(cls.__call__).parameters):
+            raise ValueError('Installed LTXConditionPipeline lacks full editing arguments; use a compatible generation environment')
+    if ('video' if pipeline_key == 'ltx_v2v' else 'image') not in inspect.signature(cls.__call__).parameters:
+        raise ValueError('Installed pipeline does not accept an image; refusing I2V drift')
     dtype = torch.bfloat16 if dtype_name == "bfloat16" else torch.float16
-    load_kwargs = {"torch_dtype": dtype}
+    load_kwargs = {"torch_dtype": dtype, "local_files_only": True}
     if device_map:
         load_kwargs["device_map"] = device_map
     pipe = cls.from_pretrained(model_dir, **load_kwargs)
@@ -169,6 +199,7 @@ def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_m
 
 
 def _enable_wan_offload(pipe, mode: str) -> None:
+    import torch
     if mode == "none":
         pipe.to("cuda")
         return
@@ -204,7 +235,32 @@ def _enable_wan_offload(pipe, mode: str) -> None:
         pipe.to("cuda")
 
 
+def _bind_hunyuan_guider(pipe, guidance: float) -> dict[str, Any]:
+    """Set CFG through the guider API used by recent Hunyuan pipelines."""
+    guider = getattr(pipe, "guider", None)
+    try:
+        previous = dict(guider.config)
+        current = float(previous["guidance_scale"])
+    except (AttributeError, TypeError, KeyError, ValueError) as exc:
+        raise ValueError("hunyuan15_guider_guidance_unavailable") from exc
+    if current == float(guidance):
+        return previous
+    if not callable(getattr(guider, "new", None)):
+        raise ValueError("hunyuan15_guider_guidance_cannot_be_configured")
+    replacement = guider.new(guidance_scale=guidance)
+    updated = dict(replacement.config)
+    if float(updated.get("guidance_scale", math.nan)) != float(guidance):
+        raise ValueError("hunyuan15_guider_guidance_mismatch")
+    if any(updated.get(key) != value for key, value in previous.items()
+           if key != "guidance_scale" and not key.startswith("_")):
+        raise ValueError("hunyuan15_guider_policy_changed")
+    pipe.guider = replacement
+    return updated
+
+
 def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path: Path, log_path: Path) -> None:
+    import torch
+    from diffusers.utils import export_to_video, load_image
     settings = dict(DEFAULT_SETTINGS[args.pipeline])
     height = int(row.get("gen_height") or args.height or settings["height"])  # public211: per-row canvas keeps aspect
     width = int(row.get("gen_width") or args.width or settings["width"])
@@ -212,8 +268,6 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
     guidance = args.guidance_scale if args.guidance_scale is not None else float(settings["guidance"])
     if args.num_frames is not None:
         num_frames = args.num_frames
-    elif args.pipeline == "hunyuan15_i2v":
-        num_frames = 121
     else:
         num_frames = int(row.get("num_frames") or 81)
 
@@ -222,7 +276,7 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
     image = load_image(row["condition_image"])
     if args.pipeline.startswith("wan_"):
         height, width, image = _wan_resize_like_diffusers_example(pipe, image, height * width)
-    generator = torch.Generator(device="cuda").manual_seed(int(row.get("seed") or 42))
+    generator = torch.Generator(device="cuda").manual_seed(int(row.get("seed", 42)))
 
     call_kwargs = {
         "prompt": prompt,
@@ -235,7 +289,45 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
         "guidance_scale": guidance,
         "generator": generator,
     }
+    required = {'image', 'num_frames', 'num_inference_steps', 'guidance_scale'}
+    if args.pipeline.startswith('ltx_'):
+        call_kwargs['frame_rate'] = float(row['output_fps'])
+        required.add('frame_rate')
+    if args.pipeline == 'ltx_v2v':
+        from physedit.video_conditioning import load_frames
+        video = load_frames(row)
+        call_kwargs.pop('image')
+        # LTXConditionPipeline expects a list of video conditions, each of
+        # which is a full list of frames. A flat frame list is misinterpreted.
+        call_kwargs.update(video=[video], frame_index=[0],
+                           strength=[row['conditioning_strength']],
+                           denoise_strength=row['denoise_strength'])
+        required.remove('image')
+        required.update({'video', 'frame_index', 'strength', 'denoise_strength'})
+    flow_shift = getattr(args, 'flow_shift', None)
+    if flow_shift is not None:
+        from diffusers import FlowMatchEulerDiscreteScheduler, UniPCMultistepScheduler
+        scheduler = UniPCMultistepScheduler if args.pipeline.startswith('wan_') else FlowMatchEulerDiscreteScheduler
+        shift_key = 'flow_shift' if args.pipeline.startswith('wan_') else 'shift'
+        pipe.scheduler = scheduler.from_config(pipe.scheduler.config, **{shift_key: flow_shift})
     accepted = set(inspect.signature(pipe.__call__).parameters)
+    guidance_binding = "call_argument"
+    guider_config = None
+    if args.pipeline == "hunyuan15_i2v" and "guidance_scale" not in accepted:
+        guider_config = _bind_hunyuan_guider(pipe, guidance)
+        guidance_binding = "guider"
+        required.remove("guidance_scale")
+        call_kwargs.pop("guidance_scale")
+    if args.pipeline == "hunyuan15_i2v" and not {"height", "width"} <= accepted:
+        processor = getattr(pipe, "video_processor", None)
+        bucket = getattr(processor, "calculate_default_height_width", None)
+        if not callable(bucket) or not hasattr(pipe, "target_size"):
+            raise ValueError("hunyuan15_native_canvas_unavailable")
+        actual_canvas = bucket(height=image.height, width=image.width, target_size=pipe.target_size)
+        if tuple(actual_canvas) != (height, width):
+            raise ValueError(f"hunyuan15_native_canvas_mismatch: {tuple(actual_canvas)} != {(height, width)}")
+    if not required <= accepted:
+        raise ValueError('pipeline_required_arguments_unavailable: ' + ','.join(sorted(required-accepted)))
     filtered = {key: value for key, value in call_kwargs.items() if key in accepted}
     _write_log(
         log_path,
@@ -249,8 +341,16 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
             "num_frames": num_frames,
             "num_inference_steps": steps,
             "guidance_scale": guidance,
+            "guidance_binding": guidance_binding,
+            "guider_config": guider_config,
             "wan_invert_output": args.wan_invert_output,
             "accepted_call_args": sorted(filtered),
+            "generation_fps": row["output_fps"],
+            "conditioning_mode": row.get("mode", "i2v"),
+            "conditioning_video_sha256": row.get("conditioning_video_sha256"),
+            "denoise_strength": row.get("denoise_strength"),
+            "conditioning_strength": row.get("conditioning_strength"),
+            "flow_shift": flow_shift,
         },
     )
     with torch.inference_mode():
@@ -262,7 +362,7 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
         frames = [_invert_frame(frame) for frame in frames]
     frames = [_prepare_frame_for_export(frame) for frame in frames]
     raw_path.parent.mkdir(parents=True, exist_ok=True)
-    export_fps = 24 if args.pipeline == "hunyuan15_i2v" else int(float(row.get("output_fps") or 16.0))
+    export_fps = float(row["output_fps"])
     export_to_video(frames, str(raw_path), fps=export_fps)
 
 
@@ -297,6 +397,7 @@ def _flatten_frames(value: Any):
         if isinstance(first, (list, tuple)) and first:
             return list(first)
         return list(value)
+    import torch
     if isinstance(value, torch.Tensor):
         value = value.detach().float().cpu().numpy()
     try:
@@ -360,8 +461,8 @@ def _resize_to_source(generated: Path, source: Path, output: Path, fps: float, d
         raise RuntimeError(f"could not read source dimensions: {source}")
     output.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
-        "ffmpeg",
-        "-y",
+        os.environ.get("IMAGEIO_FFMPEG_EXE") or "ffmpeg",
+        "-n",
         "-hide_banner",
         "-loglevel",
         "error",

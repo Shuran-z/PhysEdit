@@ -1,29 +1,45 @@
-# Joint Dataset Split v3
+# 评测划分与联合训练
 
-This document records the user-confirmed target protocol for the PhysEdit dataset benchmark. It is a design specification; target counts do not imply that the media inventory, quality review, or frozen split manifests are complete.
+## 条件帧重力评测100条
 
-## Training and evaluation protocol
+当前重力评测采用[条件帧协议](../phyediting/GRAVITY100.md)与[100条CSV](../phyediting/gravity100.csv)：ID 80条、OOD-1和OOD-2各10条，每类场景5条。条件图为各任务第0帧，评测时域与来源绑定按CSV固定。参考测量平均误差2.667%、最大15.601%，有效覆盖100%。
 
-Train jointly on Genesis and Isaac data. Use 16 events for training, validation, and in-distribution (ID) testing, with an 80% / 10% / 10% split by source groups. Keep four entire event classes out of training:
+## 数据集核心协议
 
-| Partition | Events | Purpose |
-|---|---|---|
-| Train pool | T01, T02, T04–T10, T12–T18 | Joint train / validation / ID test, split by groups |
-| OOD-1 | T03, T20 | Transfer to unseen cascade events |
-| OOD-2 | T11, T19 | Transfer to unseen relay and multi-object interaction events |
+数据集核心清单采用Hugging Face发布的[固定核心协议](https://huggingface.co/datasets/phy2/phydataset/blob/64ae065222f6893b7c06ed446aa20d3b8e3cdc86/benchmarks/fixed_core100_v1_20261014/PROTOCOL.md)：T01–T20每类5条，共100条单机位案例。成员、机位和视频SHA256固定，另有80条候补独立保存。
 
-The OOD sets are whole-event transfer evaluations. OOD-1 is not claimed to be a pure short-chain-to-long-chain test; OOD-2 does not isolate a single changed factor. Neither OOD set is an engine holdout because training uses both engines.
+| 集合 | 事件 | 核心案例 | 报告内容 |
+| :---: | :---: | :---: | :---: |
+| ID | T01、T02、T04–T10、T12–T18 | 80 | 训练池事件内的表现 |
+| OOD-1 | T03、T20 | 10 | 未见级联事件迁移 |
+| OOD-2 | T11、T19 | 10 | 未见接力与多物体交互迁移 |
 
-## Target capacity
+核心1–3覆盖月球、火星、地球三档重力输入；核心4–5用于事件结果或连续参数响应。是否形成单变量对照，依据实际配置与配对证据判断。候补不自动替换核心，缺源、失败、不适用与缺少标签的成员均保留原ID及原因。
 
-The design target is 52,800 Genesis videos and 20,160 Isaac videos (72,960 total). At target capacity, the 16-event train pool contains 58,800 videos, split into 47,040 train, 5,880 validation, and 5,880 ID test. OOD-1 targets 6,240 videos and OOD-2 targets 7,920 videos. Isaac target counts are zero for events without planned Isaac data; missing media or cross-engine pairs must not be fabricated.
+[版本索引](../../physedit/core100.json)固定发布commit和四份输入文件的SHA256；[冻结记录](https://huggingface.co/datasets/phy2/phydataset/blob/64ae065222f6893b7c06ed446aa20d3b8e3cdc86/benchmarks/fixed_core100_v1_20261014/FREEZE.json)记录成员版本。按[执行说明](IMPLEMENTATION.md)生成本地ID、OOD-1、OOD-2清单，原始成员资料保存在数据集与本地工作目录。
 
-These are capacity targets, not a statement of current usable inventory. Final counts may change after complete media, state, metadata, and quality audits, and whole-group integrity takes priority over exact ratios.
+### 参数与结果评测
 
-## Grouping and release requirements
+重力、动摩擦、初速度按各自适用片段、有效标签与单位分别统计误差、失败率和覆盖率。先按场景及实际物理来源报告，再对有效场景等权汇总。没有真值或不满足测量条件的成员单列原因，数值记为`null`。
 
-Keep all views of a trajectory, background variants of one physical configuration, branches and repeats from one critical family, known cross-engine counterparts, aliases/duplicate media, and contiguous scan intervals together. Review numeric intervals and boundary guards before assigning continuous scans (especially T06, T09, and T10). Where feasible, retain all four backgrounds and both global and critical samples across train, validation, and ID test.
+T06的一条核心来自Isaac目录，物理来源仍待核验；不能根据仓库名推断自然动力学来源。固定清单中的T13五条保留原候选身份，后续发布的新批次不自动替换它们。T12按目标位移响应报告，T19使用已核验的连续参数或结果。逐场景测量条件以发布协议及原始成员记录为准。
 
-Before release, pin the actual media and state versions; audit views, metadata, states, and runtime parameters; validate event labels and visual physical quality; resolve cross-engine configuration mappings; separately audit metric-development exposure; then assign whole groups, verify coverage, and freeze manifests.
+### 来源组与测试隔离
 
+测试与训练按完整来源组隔离：同轨迹其他机位、背景变体、重复、临界族、重渲染版本及已核验跨引擎对应版本随测试样本一起留出。80条候补及其同源组单独保留，不进入训练。指标开发使用情况另行记录。当前清单使用本次分配的集合标签。
 
+模型输入使用`anonymous_id`重命名媒体，待预测参数、结果真值和含标签的源路径仅供加载器与评分器读取。当前导入命令只生成清单和状态，不启动生成、反演或训练。
+
+## Genesis与Isaac联合训练
+
+Genesis和Isaac共同组成训练来源。T03/T20、T11/T19四类事件全部留出，其余16类事件中，排除固定测试、候补及其同源组后的数据统一作为训练集，不另分验证集。
+
+| 用途 | 数据范围 | 分配规则 |
+| :---: | :---: | :---: |
+| 训练 | 其余16类事件 | 排除测试、候补及其同源组后的数据 |
+| ID测试 | 固定核心中的16类事件 | 80条单机位案例 |
+| OOD-1测试 | T03、T20 | 固定核心10条；两类事件全部留出 |
+| OOD-2测试 | T11、T19 | 固定核心10条；两类事件全部留出 |
+| 候补 | 固定候补清单 | 80条单独保留，按明确选用记录调整 |
+
+训练数量按实际版本清单去重，并在完成来源组排除后统计。连续扫描按实际参数区间与边界条件分组。媒体与状态版本、时间、单位、对象、运行参数、事件标签、视觉质量及跨引擎映射按来源记录核验；失败与不适用样本保留身份和原因。机器可读的当前规则见[plan.json](plan.json)中的`evaluation_sets.fixed_core100.training_policy`。

@@ -57,8 +57,8 @@ def reference_status(row):
 def catalog_sample_ids(path):
     """Exact directory IDs or normalized metadata filenames, never substrings."""
     parts = path.split("/")
-    stem = re.sub(r"\.(?:jsonl|json|npz)(?:\.gz)?$", "", parts[-1])
-    stem = re.sub(r"__(?:cam0[123](?:__.*)?|trajectory)$", "", stem)
+    stem = re.sub(r"\.(?:jsonl|json|npz|mp4)(?:\.gz)?$", "", parts[-1])
+    stem = re.sub(r"__(?:cam0[123](?:_.*)?|trajectory)$", "", stem)
     return set(parts[:-1]) | {stem}
 
 

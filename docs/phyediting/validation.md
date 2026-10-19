@@ -1,13 +1,58 @@
-# PhyEditing evaluation
+# 项目性能
 
-The accepted frozen pipeline uses SAM3.1 with integer image boundaries, visible-outline projection and the original anchor fitter. Inversion tuning is complete. Initial velocity is estimated jointly; no reference velocity is supplied.
+最新汇总见[结构化结果](latest_results.json)。本页为单视角开发集结果；ID、OOD-1和OOD-2的定义见[划分协议](../joint_split_v3/PROTOCOL.md)。
 
-Across all **1038 original single-view 30fps cases and 13918 observation frames**, mean relative gravity error is **2.704381%**, median **2.037109%**, p95 **7.473846%**, maximum **15.983240%**. Failure rate is **0%** and coverage **100%**. There are 1028/1038 cases within 10% and 1038/1038 within 20%. The user accepted this accuracy to preserve method simplicity; this is not a claim of maximum error below 10%. No subpixel refinement or further inversion tuning is planned.
+| 参数 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
+| :---: | :---: | :---: | :---: | :---: |
+| 重力 | 1038 | 2.700% | 15.148% | 100% |
+| 动摩擦系数 | 880 | 0.235% | 1.974% | 75% |
+| 初速度大小 | 1038 | 1.785% | 14.353% | 100% |
 
-These are inspected development data, not an untouched test. Background variants share physics groups and must not be counted as independent physical experiments. [Frozen aggregate evidence](sam31_frozen_result.json) includes event, gravity and camera statistics and source-result hashes; per-item research records remain local. The known-initial-velocity development protocol previously reached 1.11% mean / 6.2% maximum and is a separate information setting.
+摩擦误差使用660个滑动点值；220个静止样本报告下界。初速度相对误差使用1036个非零目标；2个零目标单列绝对误差。各参数的条件与详细统计如下。
 
-## Next evaluation
+## 重力估计与基线比较
 
-Freeze the current predictions before comparing direct 2D inversion and DepthPro, DA-V2 Metric, ZoeDepth, MoGe-2, UniDepthV2 and VGGT. Give each method the same declared camera, geometry and initial prompts; unknown-velocity methods must not receive reference velocity. Align actual observation frames and decoded pixels, report any representation or loss differences, and retain all failed items in the original coverage denominator. Existing known-velocity comparisons do not substitute for this frozen unknown-velocity comparison. Oracle-depth references receive extra truth and must be labelled accordingly.
+采用SAM3.1目标跟踪与GravTrace重力测量，1038例、13918原观察帧、30fps。各方法使用相同相机、初始几何与姿态、角运动、质量、阻尼、重力方向和时钟。参考线速度与目标重力仅用于评分。各方法使用相同观察帧；失败率以全部1038例计算。
 
-Report event, gravity, camera and physics-group summaries. Evaluate untouched physics settings without retuning, then verify the video-generation pipeline. Training remains last. Current evidence does not establish global optimality. Exploratory failures and trial logs remain local.
+| 估计器 | 成功/全部 | 平均误差 | 最大误差 | 失败率 |
+| :---: | :---: | :---: | :---: | :---: |
+| GravTrace + SAM3.1 | 1038/1038 | 2.700% | 15.148% | 0.00% |
+| Rotation-aware 2D | 1038/1038 | 5.294% | 36.364% | 0.00% |
+| DepthPro | 696/1038 | 45.963% | 446.762% | 32.95% |
+| DA-V2 Metric Indoor | 825/1038 | 48.949% | 687.830% | 20.52% |
+| ZoeDepth | 771/1038 | 48.291% | 425.521% | 25.72% |
+| MoGe-2 | 857/1038 | 49.975% | 703.529% | 17.44% |
+| UniDepthV2 | 809/1038 | 59.552% | 1895.673% | 22.06% |
+| VGGT | 1012/1038 | 43.859% | 684.525% | 2.50% |
+
+相对误差为100×abs(估计/目标−1)，平均和最大只统计成功拟合，失败率使用全部1038分母；覆盖率=1−失败率。深度模型的失败状态为`at_bound`。
+
+2D方法补偿场景给定的旋转；深度方法用相同ROI、尺度锚定和运动时间基。各实现使用相应损失、参数化与投影表示，相机和几何作为共同测量条件。
+
+## 动摩擦
+
+T07共880例，660例滑动样本给出动摩擦点值，220例静止样本给出静摩擦下界。
+
+| 平均相对误差 | 最大相对误差 | P95 | 点估计覆盖率 |
+| :---: | :---: | :---: | :---: |
+| 0.235420% | 1.973976% | 0.919195% | 660/880（75%） |
+
+660个可测滑动样本全部得到点值。静止样本的动摩擦为`null`，仅统计静摩擦下界；点值或下界的信息覆盖为880/880。
+
+动摩擦测量使用已知重力、坡面几何、相机、初始位置、时钟和阻尼，适用于固定支撑面的纯滑动片段。
+
+
+## 初速度大小
+
+1038例均有数值点估计，误差按目标是否为零分别统计：
+
+| 评分对象 | 平均误差 | 最大误差 | P95 |
+| :---: | :---: | :---: | :---: |
+| 1036个非零目标 | 1.785375% | 14.352886% | 5.506126% |
+| 2个零目标 | 0.041784m/s | 0.053687m/s | — |
+
+按运动平面和目标几何选择测量方法：721例采用平面模型，45例采用罐体模型，184例采用书本模型，其余88例沿用原估计。专项拟合中的6例罐体失败、1例书本失败和15例短窗口不适用也保留原估计及原因。100%统计整套流程的数值输出；参考速度仅用于拟合后的评分。
+
+三维速度向量平均误差4.429103%、最大62.596729%。速度大小与向量误差分别报告，以区分模长精度和方向精度。
+
+测量方法与输入条件见[物理参数测量](MOTION_PARAMETERS.md)。

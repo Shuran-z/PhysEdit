@@ -40,6 +40,11 @@ def save_video_ffmpeg(video_tensor, output_path, fps=24):
 
 
 def generate(args):
+    if args.lora_path:
+        adapter = Path(args.lora_path)
+        for filename in ("adapter_config.json", "adapter_model.safetensors"):
+            if not (adapter / filename).is_file():
+                raise FileNotFoundError(f"VideoGPA adapter missing {filename}: {adapter}")
     torch.cuda.set_device(args.gpu_id)
 
     # Load engine
@@ -55,7 +60,7 @@ def generate(args):
     # Mount LoRA (optional)
     if args.lora_path:
         if not Path(args.lora_path).exists():
-            print(f"LoRA path not found: {args.lora_path}, using base model")
+            raise FileNotFoundError(f"VideoGPA adapter disappeared: {args.lora_path}")
         else:
             print(f"Mounting LoRA: {args.lora_path} (weight={args.lora_weight})")
             engine.model = PeftModel.from_pretrained(
@@ -73,8 +78,7 @@ def generate(args):
             print("LoRA merged.")
 
     engine.model.eval()
-    # public211: bf16 DiT after the fp32 LoRA merge (same as official convert_model_dtype); the fp32 DiT (20 GB)
-    # no longer fits a 3090 that other users already occupy with ~2 GB
+    # Restore the configured inference dtype after merging the adapter.
     engine.model.to(engine.param_dtype)
     torch.cuda.empty_cache()
 

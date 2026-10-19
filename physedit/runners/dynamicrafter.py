@@ -46,7 +46,7 @@ def main() -> int:
     settings = {
         "resolution": [576, 1024],
         "video_length": 16,
-        "output_fps": 8,
+        "output_fps": 10,
         "frame_stride": 10,
         "ddim_steps": args.ddim_steps,
         "guidance_scale": 7.5,
@@ -79,7 +79,7 @@ def main() -> int:
     run_root.mkdir(parents=True, exist_ok=True)
     grouped: dict[int, list[dict]] = defaultdict(list)
     for row in pending:
-        grouped[int(row.get("seed") or 42)].append(row)
+        grouped[int(row.get("seed", 42))].append(row)
 
     status_path = manifest.parent / "dynamicrafter_i2v_generation_status.jsonl"
     completed = failed = 0
@@ -142,8 +142,11 @@ def main() -> int:
                     if not official_output.is_file() or official_output.stat().st_size == 0:
                         raise RuntimeError(f"official output missing: {official_output}")
                     raw_output.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(official_output, raw_output)
-                    _resize_to_source(raw_output, Path(row["source_video"]), resized_output, float(row.get("output_fps") or 8.0), dims=(int(row["source_width"]), int(row["source_height"])))
+                    # Official inference saves these 10-fps-conditioned frames
+                    # with an 8-fps header. Correct that header without duplicating
+                    # or dropping generated frames; retain the official file.
+                    _reclock_native_frames(official_output, raw_output, 10)
+                    _resize_to_source(raw_output, Path(row["source_video"]), resized_output, float(row.get("output_fps") or 10.0), dims=(int(row["source_width"]), int(row["source_height"])))
                     status = "completed"
                     completed += 1
                     error = None
@@ -167,6 +170,25 @@ def main() -> int:
 
     print(json.dumps({"selected": len(selected), "completed": completed, "skipped": skipped, "failed": failed, "settings": settings}, indent=2))
     return 1 if failed else 0
+
+
+def _reclock_native_frames(source, output, fps):
+    try:
+        from .media_contract import validate_video
+    except ImportError:
+        from media_contract import validate_video
+    import cv2
+    cap = cv2.VideoCapture(str(source))
+    count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    cap.release()
+    if count != 16:
+        raise ValueError('dynamicrafter_native_frame_count_mismatch')
+    partial = output.with_suffix('.partial.mp4')
+    subprocess.run(['ffmpeg', '-n', '-v', 'error', '-i', str(source), '-vf',
+                    f'setpts=N/({fps}*TB)', '-r', str(fps), '-vsync', '1',
+                    '-an', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', str(partial)], check=True)
+    validate_video(partial, fps=fps, frames=count)
+    os.replace(partial, output)
 
 
 def _resize_to_source(raw_path: Path, source_video: Path, output_path: Path, fps: float, dims=None) -> None:
