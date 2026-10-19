@@ -6,16 +6,24 @@
     python -m physedit status public211 --models all                        # progress, ETAs, evaluation stages
 """
 import argparse
-import fcntl
 import os
 import sys
 import time
 
-from . import config
-from .driver import HUB_DIR, Driver
 
 
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == 'boundary-evaluate':
+        from .boundary_pipeline import main as pipeline_main
+        return pipeline_main(argv[1:])
+    if argv and argv[0] == 'boundary':
+        from .boundary import main as boundary_main
+        return boundary_main(argv[1:])
+    # The fleet runner requires Unix; keep parser/help and read-only commands
+    # importable on Windows where the boundary workflow is also used.
+    from . import config
+    from .driver import HUB_DIR, Driver
     p = argparse.ArgumentParser(prog="physedit", description="Generate and evaluate video models on a PhysEdit benchmark.",
                                 formatter_class=argparse.RawDescriptionHelpFormatter, epilog=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -58,6 +66,7 @@ def main(argv=None):
         print(d.report(d.survey()))
         return
 
+    import fcntl
     os.makedirs(HUB_DIR, exist_ok=True)
     lock = open(os.path.join(HUB_DIR, d.bench + ".lock"), "w")
     try:
@@ -73,4 +82,4 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

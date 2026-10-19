@@ -1,0 +1,49 @@
+{
+  "scene": "T04",
+  "engine": "genesis",
+  "repo_id": "phyeditingvideo/Phyediting",
+  "pinned_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+  "live_huggingface_head_verified": false,
+  "target_event": "stack_motion",
+  "parameter": "bottom_book_friction_coefficient",
+  "observed_transition_interval": [0.1225, 0.13125],
+  "normalization_domain": [0.05, 0.2],
+  "normalization_span": 0.15,
+  "distance_definition": "For parameter theta and interval [a,b], report [max(a-theta, theta-b, 0)/span, max(abs(theta-a), abs(theta-b))/span].",
+  "samples": [
+    {
+      "sample_id": "T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_minus__rep01",
+      "cam01_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_minus__rep01/videos/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_minus__rep01__cam01.mp4",
+      "cam01_video_sha256": "2ce28df224f321b14b8dbf7626d563abd737edec6c90f5405bf8ee432d1ad3fe",
+      "theta": 0.08,
+      "reference_label": 1,
+      "normalized_distance_interval": [0.2833333333, 0.3416666667],
+      "bucket": "far"
+    },
+    {
+      "sample_id": "T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_star__rep01",
+      "cam01_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_star__rep01/videos/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_star__rep01__cam01.mp4",
+      "cam01_video_sha256": "e73eb65ccfde2ef4eb01fd6661e071eaaa435a50143b5dc67d6fe96fb0510a0e",
+      "theta": 0.105,
+      "reference_label": 1,
+      "normalized_distance_interval": [0.1166666667, 0.175],
+      "bucket": "ambiguous"
+    },
+    {
+      "sample_id": "T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_plus__rep01",
+      "cam01_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_plus__rep01/videos/T04F880V1__bg01_home_ase__g01_moon__cf_stack_sliding_plus__rep01__cam01.mp4",
+      "cam01_video_sha256": "dd5d2f0a1c404489a4b391172cd90f86dc09cc0707a0da5da89dc629d5ddb777",
+      "theta": 0.14,
+      "reference_label": 0,
+      "normalized_distance_interval": [0.0583333333, 0.1166666667],
+      "bucket": "mid"
+    }
+  ],
+  "formal_nearacc_reference_count_added": 0,
+  "limitations": [
+    "This is the latest Genesis release snapshot available in the local inventory; a newer live Hugging Face HEAD could not be ruled out.",
+    "The Isaac supportfix release is a different engine/version and is not mixed into this Genesis binding.",
+    "The bracket is an observed local transition interval, not a point estimate.",
+    "Repeatability of the additional probe points and RGB visual admission remain pending."
+  ]
+}

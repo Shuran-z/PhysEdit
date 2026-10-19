@@ -2,6 +2,8 @@
 
 Estimate gravity from a single-view video using **SAM3.1** object tracking and declared camera/object geometry. Current evaluation uses **PhyEditing**.
 
+The independent critical-boundary evaluation pipeline (`python -m physedit boundary`) supports preregistration, outcome-blind generation manifests, media validation, video-hash-bound event annotations, boundary-distance metrics, and optional import of frozen GravTrace outputs. See [Boundary evaluation: setup and workflow](BOUNDARY_EVALUATION.md) and the [full protocol](docs/critical_boundary/CRITICAL_BOUNDARY_PROTOCOL.md). Event annotations are supplied by humans or a separately validated evaluator; the pipeline does not automatically judge generated events.
+
 ## Validated development results
 
 | Protocol | Successful fits | Mean error | Maximum error |
@@ -26,5 +28,7 @@ Comparisons cover direct 2D inversion, DepthPro, DA-V2 Metric, ZoeDepth, MoGe-2,
 - [Method and sample format](docs/REFERENCE.md)
 - [Evaluation scope and frozen results](docs/phyediting/validation.md)
 - [Video-generation pipeline](docs/PIPELINE.md)
+- [Repository map and research scripts](scripts/README.md)
+- [Critical-boundary documents and results](docs/critical_boundary/README.md)
 
 MIT — see [LICENSE](LICENSE).
