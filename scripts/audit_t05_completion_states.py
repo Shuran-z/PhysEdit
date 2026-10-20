@@ -39,7 +39,7 @@ def main():
             cached=old.get(r['sample_id'])
             if cached and cached.get('sha256')==r['sha256'] and cached.get('extractor_sha256')==extractor_hash and cached.get('binding_sha256')==binding_hash:
                 rows.append(cached);continue
-            d=json.loads(gzip.decompress(raw));b=bindings[r['sample_id']]
+            d=json.loads(gzip.decompress(raw) if raw[:2]==b'\x1f\x8b' else raw);b=bindings[r['sample_id']]
             rows.append(dict(**r,**measure(d),fixed_context_sha256=fixed_context(d,b['family_id']),extractor_sha256=extractor_hash,binding_sha256=binding_hash,family_id=b['family_id'],theta=b['effective_parameter_value'],requested_theta=b['theta'],parameter_name=b['parameter_name'],repair_requires_separate_boundary=b['repair_requires_separate_boundary'],physical_revision_evidence=b['physical_revision_evidence'],source_group_id=b['source_group_id'],repeat=b['repeat'],status='measured_published_state_requires_context_binding'))
     (ROOT/'t05_measured_published_events.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
     print(json.dumps(dict(states=len(rows),passed=sum(r['events']['gate_passage'] for r in rows),contacts=sum(r['events']['terminal_contact']==1 for r in rows),repaired=sum(r['repair_requires_separate_boundary'] for r in rows))))

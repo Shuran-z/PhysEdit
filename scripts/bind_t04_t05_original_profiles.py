@@ -25,7 +25,7 @@ def main():
     if sid in candidates or not record.get('local_path'):continue
     path=Path(record['local_path'])
     if digest(path)!=record['sha256']:raise ValueError('recovered state identity changed')
-    state=json.loads(gzip.decompress(path.read_bytes()))
+    raw=path.read_bytes();state=json.loads(gzip.decompress(raw) if raw[:2]==b'\x1f\x8b' else raw)
     c={k:v for k,v in state.items() if k in ['experiment','manifest','scene_overrides','dynamic_objects','runtime_forces','render','time_diagnostic']}
     c['dynamic_objects']=[o.get('spec',o) for o in c['dynamic_objects']]
     if c['experiment'].get('trajectory_id')!=sid:raise ValueError('state sample identity mismatch')

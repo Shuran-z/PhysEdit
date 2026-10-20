@@ -19,6 +19,8 @@ See the [critical-boundary workflow](../BOUNDARY_EVALUATION.md) and [protocol in
 - `probe_t*_*.py`, `register_t*_*.py`, `extract_t*_*.py`: scene- and release-specific backend probes, boundary interval extraction, and distance registration. Read each script's constants and source hashes before reuse.
 - `prepare_*` and `build_*`: prepare immutable manifests, review sheets, or handoff packages. These do not by themselves mean inference, human review, or simulation has happened.
 - `collect_*`, `recover_*`, `finish_*`: retrieve existing artifacts or continue a bounded recovery workflow. Check the exact target host, revision, and output path first.
+- `inspect_live_boundary_releases.py`, `recover_t11_current_release.py`, `recover_t12_current_release.py`, `recover_t13_current_release.py`: recover immutable current HF release identities and verify server-side files against published hashes. `bind_current_release_parameter_families.py` checks actual parameter fields for these releases.
+- `t07_original_boundary_worker.py`: server-side T07 original-backend numerical worker; requires an authenticated local plan and isolated output root. `register_t07_original_searches.py` binds completed searches to published branches; `snapshot_boundary_completion.py` reads live job status. Neither status registration nor distance computation automatically admits reference videos.
 
 ## Output policy
 
