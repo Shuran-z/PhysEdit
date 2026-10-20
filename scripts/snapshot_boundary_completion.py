@@ -4,9 +4,18 @@ import gzip
 import json
 from pathlib import Path
 import subprocess
+import time
 from datetime import date
 
 ROOT=Path('review/scene_family_completion_20261018')
+
+
+def remote_status(host,code):
+    for attempt in range(3):
+        result=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30)
+        if result.returncode==0:return result
+        if attempt<2:time.sleep(2)
+    raise RuntimeError('Status snapshot SSH failed after retries: '+result.stderr.decode(errors='replace')[-500:])
 
 
 def main():
@@ -88,7 +97,7 @@ resource=json.loads((root/'resource_status.json').read_text()) if (root/'resourc
 queue=pathlib.Path(PIPELINE)/'queue_status.json'
 print(json.dumps(dict(running=p.exists() and PIPELINE.encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource,queue=json.loads(queue.read_text()) if queue.exists() else {})))
 '''.replace('ROOT',repr(launch['root'])).replace('PID',str(launch['pid'])).replace('PIPELINE',repr(launch.get('pipeline_root',launch['root'])))
-        run=subprocess.run(['ssh','-o','BatchMode=yes',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30);run.check_returncode()
+        run=remote_status(host,code)
         additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],**json.loads(run.stdout)))
     summaries={p.stem:json.loads(p.read_text()) for p in (ROOT/'original_value_distance_ledger').glob('*summary.json')}
     snapshot=dict(date=date.today().isoformat(),all_scenes_completed=False,
