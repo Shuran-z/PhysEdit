@@ -8,6 +8,7 @@ import argparse
 import copy
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -57,9 +58,17 @@ def compatibility(config):
         specs=[{k:o.get(k) for k in ['name','size','mass','friction','fixed']} for o in config['dynamic_objects']])
 
 
+def event_audit_usable(audit,event,allow_tail=False):
+    if audit['valid']:return True
+    errors=audit.get('errors',[]);frame=audit.get('event_frames',{}).get(event)
+    return bool(allow_tail and event!='all_objects_settle' and isinstance(frame,int) and 0<=frame<210
+        and errors and all(e.startswith('not_settled_tail_speed=') for e in errors))
+
+
 def main():
     import fcntl
-    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--gpu',default='3');p.add_argument('--scans',nargs='+',required=True);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--gpu',default='3');p.add_argument('--scans',nargs='+',required=True)
+    p.add_argument('--resume-status');p.add_argument('--allow-unsettled-tail-for-observed-event',action='store_true');args=p.parse_args()
     root=Path(args.root);root.mkdir(parents=True,exist_ok=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=[]
     for source_root in args.scans:
@@ -77,10 +86,22 @@ def main():
                     source_references=row['references'],status='refining',probes=[]))
     if len({r['job_id'] for r in jobs})!=len(jobs):raise ValueError('duplicate local window')
     state=root/'status.json'
-    if state.exists():
-        old={r['job_id']:r for r in json.loads(state.read_text(encoding='utf-8'))}
+    resume=state if state.exists() else Path(args.resume_status) if args.resume_status else None
+    if resume:
+        old={r['job_id']:r for r in json.loads(resume.read_text(encoding='utf-8'))}
         for i,r in enumerate(jobs):
             if r['job_id'] in old:jobs[i]=old[r['job_id']]
+    if args.allow_unsettled_tail_for_observed_event:
+        for job in jobs:
+            if job['status']!='stopped_at_original_audit_failure':continue
+            probe=job['probes'][-1];folder=Path(probe['output']);sp=folder/'metadata/physics.json'
+            if sha(sp)!=probe['state_sha256']:raise ValueError('stopped numeric state changed')
+            measured=next(r for r in json.loads((folder.parent/'results.json').read_text()) if r['sample_id']==folder.name)
+            if not event_audit_usable(measured['audit'],job['target_event'],True):continue
+            numeric=json.loads(sp.read_text())
+            if len(numeric['frames'])!=210 or any(not math.isfinite(v) for f in numeric['frames'] for o in f['objects'] for v in o['position']):raise ValueError('stopped state incomplete or nonfinite')
+            job['prior_stop_reason']=measured['audit']['errors'];job['event_audit_policy']='observed_target_before_unsettled_tail_only'
+            job['status']='refining';job['bracket'][0 if probe['label']==job['labels'][0] else 1]=probe['theta']
     save(root/'plan.json',jobs)
     for round_index in range(20):
         active=[r for r in jobs if r['status']=='refining' and r['bracket'][1]-r['bracket'][0]>r['tolerance']]
@@ -114,8 +135,11 @@ def main():
                 if m['sample_id']!=reference['sample_id'] or m['theta']!=theta:raise ValueError('batch identity mismatch')
                 event=job['target_event'];label=int(m['audit']['event_frames'].get(event) is not None)
                 sp=Path(reference['output'])/'metadata/physics.json'
-                job['probes'].append(dict(theta=theta,label=label,original_audit_valid=m['audit']['valid'],config_sha256=reference['config_sha256'],state_sha256=sha(sp),output=reference['output']))
-                if not m['audit']['valid']:job['status']='stopped_at_original_audit_failure'
+                event_usable=event_audit_usable(m['audit'],event,args.allow_unsettled_tail_for_observed_event)
+                numeric=json.loads(sp.read_text())
+                if len(numeric['frames'])!=210 or any(not math.isfinite(v) for f in numeric['frames'] for o in f['objects'] for v in o['position']):raise ValueError('numeric state incomplete or nonfinite')
+                job['probes'].append(dict(theta=theta,label=label,original_audit_valid=m['audit']['valid'],original_audit_errors=m['audit'].get('errors',[]),event_measurement_valid=event_usable,config_sha256=reference['config_sha256'],state_sha256=sha(sp),output=reference['output']))
+                if not event_usable:job['status']='stopped_at_original_audit_failure'
                 elif label==job['labels'][0]:job['bracket'][0]=theta
                 else:job['bracket'][1]=theta
                 if job['status']=='refining' and job['bracket'][1]-job['bracket'][0]<=job['tolerance']:job['status']='refined_local_interval'

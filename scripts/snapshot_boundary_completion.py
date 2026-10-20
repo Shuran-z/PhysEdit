@@ -76,7 +76,8 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('T18_legacy_table_contact','t18_legacy_search_launch_20261020.json','p25'),
         ('T09_missing_states','t09_missing_state_replay_v2_launch_20261020.json','p25'),
         ('T06_T10_missing_states','t06_t10_missing_state_replay_launch_20261020.json','p25'),
-        ('T13_remaining_full_retry','t13_remaining_full_retry_launch_20261020.json','p25')]:
+        ('T13_remaining_full_retry','t13_remaining_full_retry_launch_20261020.json','p25'),
+        ('T15_event_tail_refinement','t15_event_tail_refinement_launch_20261020.json','p25')]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)
