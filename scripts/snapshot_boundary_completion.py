@@ -68,7 +68,10 @@ print(json.dumps(dict(selected=880,recovered=sum(r['status']=='verified_publishe
     for token,filename,default_host in [('T15_refined','t15_refined_missing_launch_20261019.json','p25'),('T12_refined','t12_supplemental_refinement_launch.json','p26'),
         ('T09_table_contact','t09_table_contact_refinement_launch_20261020.json','p25'),
         ('T13_full_retry','t13_original_full_retry_launch_20261020.json','p25'),
-        ('T13_precontact_fix','t13_precontact_fix_launch_20261020.json','p25')]:
+        ('T13_precontact_fix','t13_precontact_fix_launch_20261020.json','p25'),
+        ('T09_positive_seed_retry','t09_positive_seed_retry_launch_20261020.json','p25'),
+        ('T18_table_contact','t18_table_contact_search_launch_20261020.json','p25'),
+        ('T18_legacy_table_contact','t18_legacy_search_launch_20261020.json','p25')]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text());host=launch.get('host',default_host)
@@ -94,6 +97,8 @@ print(json.dumps(dict(running=p.exists() and str(root).encode() in p.read_bytes(
         important='Recovered current release configs/states are evidence inputs; do not equate them with completed thresholds or formal NearAcc references.')
     correspondence=ROOT/'t16_t20_contact_summary_20261020.json'
     if correspondence.exists():snapshot['published_parameter_event_correspondence']=json.loads(correspondence.read_text())
+    t18=ROOT/'t18_table_contact_preparation_summary_20261020.json'
+    if t18.exists():snapshot['T18_original_recipe_recovery']=json.loads(t18.read_text())
     (ROOT/'LATEST_EXECUTION_STATUS_20261019.json').write_text(json.dumps(snapshot,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(snapshot,ensure_ascii=False,indent=2))
 
