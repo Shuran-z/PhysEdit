@@ -39,7 +39,7 @@ print(json.dumps(dict(running=proc.exists() and str(root).encode() in proc.read_
         p.check_returncode();data=json.loads(p.stdout)
         (ROOT/(scene.lower()+'_all_context_status_20261019.json')).write_text(json.dumps(data['rows'],indent=2),encoding='utf-8')
         jobs.append(dict(scene=scene,planned=registration.get('planned_contexts',registration.get('planned_intervals')),
-            completed=sum(r['status'] in ['scanned_original_domain','scanned_original_triplet','local_transition_bracket'] for r in data['rows']),
+            completed=sum(r['status'] in ['scanned_original_domain','scanned_expanded_domain','scanned_original_triplet','local_transition_bracket'] for r in data['rows']),
             failed=sum(r['status']=='failed' for r in data['rows']),running=data['running'],waiting_for_dependency=data['waiting_for_dependency'],pid=registration['pid'],root=registration['root']))
     recovered={}
     for scene in ['T01','T04','T05','T07','T08','T11','T12']:
@@ -63,13 +63,28 @@ print(json.dumps(dict(selected=880,recovered=sum(r['status']=='verified_publishe
 """
     p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
     p.check_returncode();t03=json.loads(p.stdout)
+    additional_jobs=[]
+    for token,filename,default_host in [('T15_refined','t15_refined_missing_launch_20261019.json','p25'),('T12_refined','t12_supplemental_refinement_launch.json','p26')]:
+        launch_path=ROOT/filename
+        if not launch_path.exists():continue
+        launch=json.loads(launch_path.read_text());host=launch.get('host',default_host)
+        code='''import pathlib,json,collections
+root=pathlib.Path(ROOT);pid=PID;p=pathlib.Path('/proc')/str(pid)/'cmdline'
+rows=json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []
+resource=json.loads((root/'resource_status.json').read_text()) if (root/'resource_status.json').exists() else {}
+print(json.dumps(dict(running=p.exists() and str(root).encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource)))
+'''.replace('ROOT',repr(launch['root'])).replace('PID',str(launch['pid']))
+        run=subprocess.run(['ssh','-o','BatchMode=yes',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30);run.check_returncode()
+        additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],**json.loads(run.stdout)))
+    summaries={p.stem:json.loads(p.read_text()) for p in (ROOT/'original_value_distance_ledger').glob('*summary.json')}
     snapshot=dict(date='2026-10-19',all_scenes_completed=False,
         live_releases=[{k:r[k] for k in ['repo','revision','last_modified']} for r in json.loads((ROOT/'live_release_layout_20261019.json').read_text(encoding='utf-8'))],
         existing_release_state_recovery=recovered,
         latest_release_recovery=dict(T03=t03,T11=dict(configs=len(latest_t11),quality_records=len(latest_t11),families=dict(families),binding='published per-file SHA256'),
           T12=dict(**t12,binding='HF Git/LFS IDs; see t12_latest_verified_records_20261019.jsonl.gz'),
           T13=dict(**t13,binding='four published archive SHA256 values')),
-        numerical_jobs=jobs,T19='user confirmed replacement still rendering; old release retired',
+        numerical_jobs=jobs,additional_numerical_jobs=additional_jobs,numerical_distance_outputs=summaries,
+        T19='user confirmed replacement still rendering; old release retired',
         release_selection=json.loads(Path('docs/critical_boundary/RELEASE_SELECTION.json').read_text(encoding='utf-8')),
         formal_near_reference_count=json.loads((ROOT/'nearacc_readiness_summary.json').read_text(encoding='utf-8'))['completed_formal_near_reference_registrations'],
         important='Recovered current release configs/states are evidence inputs; do not equate them with completed thresholds or formal NearAcc references.')

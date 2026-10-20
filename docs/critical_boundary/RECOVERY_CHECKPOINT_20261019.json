@@ -1,0 +1,280 @@
+{
+  "date": "2026-10-19",
+  "all20_completed": false,
+  "T12_user_selected_event": "maximum tissue-box 3D displacement from first frame >= 0.01 m",
+  "active_samples_with_numerical_distance": 5555,
+  "count_scope": "original recorded calibrated values/search intervals plus supplemental intervals; rendering star alone excluded; not formal NearAcc count",
+  "scenes": [
+    {
+      "scene_id": "T01",
+      "recovered_original": 540,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 540,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T02",
+      "recovered_original": 880,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 880,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T03",
+      "recovered_original": 0,
+      "rendering_star": 743,
+      "supplemental": 302,
+      "unique_samples_with_numerical_reference": 302,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T04",
+      "recovered_original": 0,
+      "rendering_star": 540,
+      "supplemental": 240,
+      "unique_samples_with_numerical_reference": 240,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T05",
+      "recovered_original": 0,
+      "rendering_star": 540,
+      "supplemental": 82,
+      "unique_samples_with_numerical_reference": 82,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T06",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 112,
+      "unique_samples_with_numerical_reference": 112,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T07",
+      "recovered_original": 0,
+      "rendering_star": 540,
+      "supplemental": 273,
+      "unique_samples_with_numerical_reference": 273,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T08",
+      "recovered_original": 0,
+      "rendering_star": 540,
+      "supplemental": 213,
+      "unique_samples_with_numerical_reference": 213,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T09",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 0,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T10",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 10,
+      "unique_samples_with_numerical_reference": 10,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T11",
+      "recovered_original": 0,
+      "rendering_star": 720,
+      "supplemental": 287,
+      "unique_samples_with_numerical_reference": 287,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T12",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 216,
+      "unique_samples_with_numerical_reference": 216,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T13",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 740,
+      "unique_samples_with_numerical_reference": 740,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T14",
+      "recovered_original": 540,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 540,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T15",
+      "recovered_original": 0,
+      "rendering_star": 540,
+      "supplemental": 540,
+      "unique_samples_with_numerical_reference": 540,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T16",
+      "recovered_original": 504,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 504,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T17",
+      "recovered_original": 30,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 30,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T18",
+      "recovered_original": 46,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 46,
+      "completion": "not_complete",
+      "retired": false
+    },
+    {
+      "scene_id": "T19",
+      "recovered_original": 379,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 379,
+      "completion": "not_complete",
+      "retired": true
+    },
+    {
+      "scene_id": "T20",
+      "recovered_original": 0,
+      "rendering_star": 0,
+      "supplemental": 0,
+      "unique_samples_with_numerical_reference": 0,
+      "completion": "not_complete",
+      "retired": false
+    }
+  ],
+  "details": {
+    "t03_binding_summary": {
+      "published_parameters": 880,
+      "original_event_reports": 880,
+      "recorded_star_distances": 743,
+      "conditional_contexts": 258,
+      "supplemental_sample_interval_records": 302,
+      "supplemental_unique_samples": 302,
+      "parameter_conflicts": [],
+      "local_intervals": 64
+    },
+    "t04_t05_supplemental_summary": {
+      "event_rows": 900,
+      "local_intervals": 122,
+      "by_scene": {
+        "T04": 89,
+        "T05": 33
+      },
+      "sample_interval_records": 358,
+      "unique_samples": 322,
+      "remaining_contexts": 225
+    },
+    "t06_supplemental_summary": {
+      "recovered_original_states": 280,
+      "physical_contexts": 160,
+      "local_event_intervals": 92,
+      "sample_event_interval_records": 644,
+      "unique_samples": 112,
+      "families": {
+        "impact_force": 92
+      }
+    },
+    "t08_supplemental_summary": {
+      "fixed_physical_contexts": 300,
+      "local_intervals": 120,
+      "sample_event_interval_records": 360,
+      "unique_samples": 213,
+      "families": {
+        "B_impact_eccentricity_m": 59,
+        "C_mug_total_mass_kg": 61
+      }
+    },
+    "t11_binding_summary": {
+      "published_parameters": 880,
+      "star_distance_samples": 720,
+      "contexts": 80,
+      "families": {
+        "driver_initial_speed_mps": 180,
+        "relay_case_gap_m": 180,
+        "case_edge_margin_m": 180,
+        "relay_block_mass_kg": 180
+      },
+      "conflicts": []
+    },
+    "t11_supplemental_summary": {
+      "states": 880,
+      "fixed_contexts": 199,
+      "local_event_intervals": 121,
+      "sample_event_interval_records": 664,
+      "unique_samples": 287,
+      "by_family": {
+        "driver_initial_speed_mps": 43,
+        "relay_case_gap_m": 19,
+        "case_edge_margin_m": 28,
+        "relay_block_mass_kg": 31
+      }
+    },
+    "t12_supplemental_summary": {
+      "user_target": "max tissue-box displacement >= 0.01 m",
+      "states": 880,
+      "fixed_axis_slices": 1648,
+      "local_brackets": 76,
+      "sample_interval_records": 220,
+      "unique_samples_with_distance": 216,
+      "by_axis": {
+        "speed": 72,
+        "target_mass": 4
+      },
+      "remaining_slices": 1572,
+      "scope": "conditional supplemental intervals from existing published simulations, not original pre-render search records"
+    },
+    "t15_supplemental_summary": {
+      "sample_interval_records": 711,
+      "unique_published_samples": 540,
+      "contexts": 60,
+      "mapping_failures": [],
+      "refined_records": 639
+    }
+  },
+  "T19": "old reference retired; user confirmed replacement still rendering",
+  "tests": "18 focused tests passed"
+}

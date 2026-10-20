@@ -6,6 +6,7 @@ converted to exact thresholds. Missing original values stay missing.
 """
 import collections
 import csv
+import functools
 import hashlib
 import json
 import math
@@ -29,6 +30,10 @@ def distances(theta,point=None,bracket=None):
 
 
 def load(path):return json.loads(path.read_text(encoding='utf-8'))
+
+
+@functools.lru_cache(maxsize=None)
+def source_hash(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def declared_star_rows():
@@ -70,17 +75,21 @@ def main():
     inventory=[json.loads(line) for line in Path('../dataset_splits_v2/all_selected_trajectories.jsonl').read_text(encoding='utf-8').splitlines()]
     published={(r['engine'],r['sample_id']):r for r in inventory}
     rows=[]
+    seen=set()
     def add(record,path,kind,point=None,bracket=None,version_note=None):
         sid=record['sample_id'];engine=record.get('engine','genesis');ref=published.get((engine,sid))
         theta=record.get('theta');scene=record.get('scene_id',sid[:3])
         if ref is None or theta is None:return
+        key=(engine,sid,record.get('family_id',record.get('family')),kind,point,tuple(bracket) if bracket is not None else None)
+        if key in seen:return
+        seen.add(key)
         rows.append(dict(scene_id=scene,engine=engine,sample_id=sid,repo_id=ref.get('repo_id'),revision=ref.get('revision'),release=ref.get('release'),
             videos=ref.get('videos',{}),family_id=record.get('family_id',record.get('family')),parameter_name=record.get('parameter_name',record.get('changed_variable')),
             parameter_unit=record.get('parameter_unit',record.get('unit')),theta=theta,original_reference_kind=kind,original_critical_value=point,original_boundary_interval=bracket,
-            **distances(theta,point,bracket),source_file=str(path.resolve()),source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+            **distances(theta,point,bracket),source_file=str(path.resolve()),source_sha256=source_hash(str(path.resolve())),
             original_source_path=record.get('contract_path',record.get('boundary',{}).get('source')),version_note=version_note,
             publication_status='retired_T19_render' if scene=='T19' else 'historical_frozen_release' if scene in ['T03','T11','T12','T13'] else 'published_reference',
-            extra_validation_separate=True))
+            original_search_status=record.get('original_search_status'),extra_validation_separate=True))
     for scene in ['T01','T02']:
         path=ORIGINAL/(scene.lower()+'_original_family_bindings.json')
         for r in load(path):
@@ -94,7 +103,19 @@ def main():
         if r['family']=='B':
             add(r,path,'original_calibrated_centre',point=calibration['B_yaw_boundaries'][r['gravity_id']]['theta_star_deg'],version_note='Selected old T14; original calibration solver .005, released solver .001. Original value retained; supplemental solver result separate.')
         else:add(r,path,'original_search_interval',bracket=r['original_search_interval'],version_note='Selected old T14; original calibration profile and released solver differ. Do not overwrite original record with supplemental results.')
-    for filename in ['isaac_original_distance_registry.json','isaac_repair_distance_registry.json']:
+    # Read measured_bracket directly from delivered metadata. Previous event/
+    # admission routes must not hide original numbers from this recovery task.
+    path=Path('review/release_boundary_binding_20261018/matched_registry.json')
+    for r in load(path):
+        prod=r.get('production',{});bracket=prod.get('measured_bracket')
+        if not bracket:continue
+        if not r.get('delivery_hashes_match') or not r.get('source_config_matches'):continue
+        p=r['parameter'];name='withdrawal_distance_m' if 'withdrawal_distance_m' in p else p['source_parameter']['name']
+        record=dict(sample_id=r['sample_id'],scene_id=r['scene_id'],engine='isaac',family_id='d'+str(prod['boundary_depth']),parameter_name=name,
+            parameter_unit='m' if name=='withdrawal_distance_m' else p['source_parameter']['unit'],theta=p.get('withdrawal_distance_m',p.get('value')),
+            original_search_status=r.get('search_group_status'))
+        add(record,path,'original_search_interval',bracket=bracket,version_note='Direct delivered production.measured_bracket. Original search repair/status retained separately; not a certification of endpoint outcomes.')
+    for filename in ['isaac_repair_distance_registry.json']:
         path=ROOT/filename
         for r in load(path):
             intervals=r.get('boundary',{}).get('intervals',[])
