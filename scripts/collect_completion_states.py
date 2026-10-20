@@ -15,14 +15,14 @@ def main():
     args=parser.parse_args();OUT.mkdir(exist_ok=True)
     inventory=[json.loads(x) for x in Path('../dataset_splits_v2/all_selected_trajectories.jsonl').read_text(encoding='utf-8').splitlines()]
     def fetch(x):
-        r=x['row'];dest=OUT/r['scene_id']/(r['sample_id']+'.json.gz');dest.parent.mkdir(exist_ok=True)
+        r=x['row'];dest=OUT/r['scene_id']/(r['sample_id']+('.json.gz' if r['sidecar'].endswith('.gz') else '.json'));dest.parent.mkdir(exist_ok=True)
         try:
             if x.get('error'):return {**r,'error':x['error']}
             if x.get('inline') is not None:b=base64.b64decode(x['inline'])
             else:
                 op=urllib.request.build_opener(urllib.request.ProxyHandler({'https':'http://127.0.0.1:7897'}))
                 with op.open(x['url'],timeout=40) as response:b=response.read()
-            d=json.loads(gzip.decompress(b))
+            d=json.loads(gzip.decompress(b) if r['sidecar'].endswith('.gz') else b)
             if not d.get('frames'):raise ValueError('no state frames')
             tmp=dest.with_suffix('.tmp');tmp.write_bytes(b);tmp.replace(dest)
             return {**r,'local_path':str(dest.resolve()),'sha256':hashlib.sha256(b).hexdigest(),'frames':len(d['frames'])}
@@ -32,16 +32,25 @@ def main():
         rows=[]
         for r in inventory:
             if r['event_id']!=scene or r['engine']!='genesis':continue
-            paths=[p for p in r.get('sidecar_paths',[]) if 'cam01' in p and p.endswith('.json.gz')]
+            paths=[p for p in r.get('sidecar_paths',[]) if 'cam01' in p and p.endswith(('.json.gz','.json'))]
             if paths:rows.append(dict(scene_id=scene,sample_id=r['sample_id'],repo_id=r['repo_id'],revision=r['revision'],sidecar=paths[0]))
         rows.sort(key=lambda r:r['sample_id'])
         if args.limit:rows=rows[:args.limit]
+        # Changing eligibility (e.g. adding uncompressed JSON) moves batch
+        # boundaries. Reuse by immutable identity, never by old batch number.
+        cached={}
+        for old_receipt in OUT.glob(scene+'_*.json'):
+            for record in json.loads(old_receipt.read_text(encoding='utf-8')):
+                if record.get('local_path') and Path(record['local_path']).exists() and hashlib.sha256(Path(record['local_path']).read_bytes()).hexdigest()==record['sha256']:
+                    cached[record['sample_id']]=record
         for i in range(0,len(rows),8):
             receipt=OUT/f'{scene}_{i//8:03}.json'
-            old=json.loads(receipt.read_text()) if receipt.exists() else []
-            good={r['sample_id']:r for r in old if r.get('local_path') and Path(r['local_path']).exists() and hashlib.sha256(Path(r['local_path']).read_bytes()).hexdigest()==r['sha256']}
+            selected={r['sample_id']:r for r in rows[i:i+8]}
+            good={sid:r for sid,r in cached.items() if sid in selected and all(r.get(k)==selected[sid].get(k) for k in ['repo_id','revision','sidecar'])}
             batch=[r for r in rows[i:i+8] if r['sample_id'] not in good]
-            if not batch:continue
+            if not batch:
+                receipt.write_text(json.dumps([good[r['sample_id']] for r in rows[i:i+8]],ensure_ascii=False),encoding='utf-8')
+                continue
             try:
                 code=REMOTE.replace('ROWS',repr(batch))
                 proc=subprocess.Popen(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10','-o','ExitOnForwardFailure=yes','-R','127.0.0.1:0:127.0.0.1:7897','p25','/home/wangzijun_p25/miniconda3/envs/genesis/bin/python -'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)

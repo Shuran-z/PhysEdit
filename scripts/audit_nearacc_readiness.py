@@ -40,6 +40,11 @@ def main():
   path=OUT/name
   if path.exists():
    for r in json.loads(path.read_text(encoding='utf-8')):known[(r['engine'],r['sample_id'])]=r
+ t07_path=OUT/'t07_original_search_distance_registry.json'
+ if t07_path.exists():
+  for r in json.loads(t07_path.read_text(encoding='utf-8')):
+   if digest(r['boundary']['source'])!=r['bracket_evidence_sha256']:raise ValueError('T07 search evidence changed')
+   known[('genesis',r['sample_id'])]=r
  reviews=load_reviews()
  known={k:apply_review(v,reviews.get(k)) for k,v in known.items()}
  rows=[]

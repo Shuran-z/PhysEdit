@@ -1,0 +1,200 @@
+{
+  "scene": "T07",
+  "engine": "Genesis",
+  "release_repository": "phyeditingvideo/Phyediting",
+  "release_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+  "context": "bg01_home_ase/g01_moon/A_surface_friction",
+  "target_event": "motion_ge_1cm",
+  "event_rule": "max_t ||phone_position(t)-phone_position(0)|| >= 0.01 m within original 210 frames at 30 fps",
+  "original_repeats": 3,
+  "local_boundary_interval": [
+    0.24906250000000002,
+    0.249375
+  ],
+  "normalization_domain": [
+    0.2,
+    0.28
+  ],
+  "rows": [
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_minus__rep01",
+      "theta": 0.2,
+      "reference_label": 1,
+      "reference_state_sha256": "4ad07cb8c12231626b24c61da2c18831ba60d44b0a0182f7c7b6ed3345deda4c",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.6132812500000001,
+          0.6171875
+        ],
+        "signed_interval": [
+          -0.049375,
+          -0.04906250000000001
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_star__rep01",
+      "theta": 0.24,
+      "reference_label": 1,
+      "reference_state_sha256": "24500c9d15f21fdee1527064b5ef0a07979151c4b87bc6556efa2caa862fa31f",
+      "distance": {
+        "status": "resolved",
+        "bin": "mid",
+        "normalized_absolute_interval": [
+          0.11328125000000036,
+          0.11718750000000028
+        ],
+        "signed_interval": [
+          -0.009375000000000022,
+          -0.009062500000000029
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_plus__rep01",
+      "theta": 0.28,
+      "reference_label": 0,
+      "reference_state_sha256": "ca6979505df3bfae45ec666b6f0abbff6e5b5efcb85c04ade81ea51b9ac316f9",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.38281250000000017,
+          0.38671875000000006
+        ],
+        "signed_interval": [
+          0.030625000000000013,
+          0.030937500000000007
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_minus__rep02",
+      "theta": 0.2,
+      "reference_label": 1,
+      "reference_state_sha256": "d2b0243ae4eb2c3d4c7fadbadab53c0b9fbf03235d6aab3de2581d7becb27b65",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.6132812500000001,
+          0.6171875
+        ],
+        "signed_interval": [
+          -0.049375,
+          -0.04906250000000001
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_star__rep02",
+      "theta": 0.24,
+      "reference_label": 1,
+      "reference_state_sha256": "98eaa93e9402716ee3e4d940c3ea9b0cb53c6a31a9f34cae9b2d8762096abec1",
+      "distance": {
+        "status": "resolved",
+        "bin": "mid",
+        "normalized_absolute_interval": [
+          0.11328125000000036,
+          0.11718750000000028
+        ],
+        "signed_interval": [
+          -0.009375000000000022,
+          -0.009062500000000029
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_plus__rep02",
+      "theta": 0.28,
+      "reference_label": 0,
+      "reference_state_sha256": "2106ad9bb7884969b14af0142342a5059034ff7d520427e47f133d4a07a488fd",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.38281250000000017,
+          0.38671875000000006
+        ],
+        "signed_interval": [
+          0.030625000000000013,
+          0.030937500000000007
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_minus__rep03",
+      "theta": 0.2,
+      "reference_label": 1,
+      "reference_state_sha256": "2f02e03dbd4185657c25b0239cae111f79265563e9dd82af9d07cafd19e8dd01",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.6132812500000001,
+          0.6171875
+        ],
+        "signed_interval": [
+          -0.049375,
+          -0.04906250000000001
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_star__rep03",
+      "theta": 0.24,
+      "reference_label": 1,
+      "reference_state_sha256": "89e085e96167105dd6ed3cebd95bb45df9b98e78cce279d35d65449b2913ed13",
+      "distance": {
+        "status": "resolved",
+        "bin": "mid",
+        "normalized_absolute_interval": [
+          0.11328125000000036,
+          0.11718750000000028
+        ],
+        "signed_interval": [
+          -0.009375000000000022,
+          -0.009062500000000029
+        ]
+      },
+      "repeat_contexts": 3
+    },
+    {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__cf_A_surface_friction_theta_plus__rep03",
+      "theta": 0.28,
+      "reference_label": 0,
+      "reference_state_sha256": "6b14d08956a03e4d49a6e5695a39270a4bdc63481b812dfda239ca49c42737fd",
+      "distance": {
+        "status": "resolved",
+        "bin": "far",
+        "normalized_absolute_interval": [
+          0.38281250000000017,
+          0.38671875000000006
+        ],
+        "signed_interval": [
+          0.030625000000000013,
+          0.030937500000000007
+        ]
+      },
+      "repeat_contexts": 3
+    }
+  ],
+  "formal_new_near_count": 0,
+  "limitations": [
+    "local transition under the original solver and observation horizon",
+    "no claim of a globally unique or solver-independent threshold",
+    "reference RGB admission pending",
+    "no new video-generation model score"
+  ],
+  "evidence_directory": "review/scene_family_completion_20261018",
+  "source_receipt_sha256_at_snapshot": "4de16838164c66ee62e15683c7c4006d07c115b5ad65750d76a290eb590e06cd"
+}
