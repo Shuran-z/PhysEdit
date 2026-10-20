@@ -45,17 +45,25 @@ def set_parameter(config,axis,theta):
 
 
 def main():
+    global SOURCE,RENDERER
     import fcntl
-    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--plan',required=True);p.add_argument('--wait-hours',type=float,default=12);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--plan',required=True);p.add_argument('--wait-hours',type=float,default=12)
+    p.add_argument('--gpu',help='Explicit GPU with sufficient free memory; does not stop resident processes')
+    p.add_argument('--minimum-free-gib',type=float,default=12);p.add_argument('--limit',type=int,default=0)
+    p.add_argument('--source',help='Hash-preserved copy of original Python backend');args=p.parse_args()
+    if args.source:SOURCE=Path(args.source);RENDERER=SOURCE/'12_render_motion_sequence.py'
     root=Path(args.root);root.mkdir(parents=True,exist_ok=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    jobs=json.loads(Path(args.plan).read_text(encoding='utf-8'));deadline=time.monotonic()+args.wait_hours*3600;gpu=None
+    jobs=json.loads(Path(args.plan).read_text(encoding='utf-8'));jobs=jobs[:args.limit or None];deadline=time.monotonic()+args.wait_hours*3600;gpu=None
     save(root/'resource_status.json',dict(status='waiting_for_unused_gpu',planned=len(jobs),backend_sha256=sha(RENDERER)))
     while gpu is None:
-        gpu=find_free_gpu()
+        if args.gpu is None:gpu=find_free_gpu()
+        else:
+            free=float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
+            gpu=args.gpu if free>=args.minimum_free_gib*1024 else None
         if gpu is not None:break
         if time.monotonic()>deadline:raise RuntimeError('no unused GPU before bounded wait deadline')
         time.sleep(30)
-    save(root/'resource_status.json',dict(status='running',gpu=gpu,planned=len(jobs),backend_sha256=sha(RENDERER)))
+    save(root/'resource_status.json',dict(status='running',gpu=gpu,planned=len(jobs),backend_sha256=sha(RENDERER),explicit_gpu=args.gpu is not None,minimum_free_gib=args.minimum_free_gib))
     results=[]
     for job in jobs:
         folder=root/job['job_id'];folder.mkdir(exist_ok=True);receipt=folder/'receipt.json'
@@ -65,15 +73,23 @@ def main():
             probes=[]
             def evaluate(theta):
                 if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk below 20GiB')
+                free=float(subprocess.check_output(['nvidia-smi','-i',gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
+                if free<args.minimum_free_gib*1024:raise RuntimeError('GPU reserve below requested free-memory floor; other processes retained')
                 out=folder/format(theta,'.12g');out.mkdir(exist_ok=True);rp=out/'receipt.json';sp=out/'physics.json';cp=out/'config.json'
-                if rp.exists():return json.loads(rp.read_text(encoding='utf-8'))
+                if rp.exists():
+                    cached=json.loads(rp.read_text(encoding='utf-8'))
+                    if cached['config_sha256']!=sha(cp) or cached['state_sha256']!=sha(sp) or cached['backend_sha256']!=sha(RENDERER):raise ValueError('cached numerical source changed')
+                    return cached
                 c=set_parameter(base,axis,theta);render=c['render']
                 render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False,camera_outputs=[])
                 for k in ['save_video','save_first_rgb','save_last_rgb']:
                     if k in render:render[k]=str(out/Path(render[k]).name)
                 c['annotations']['save_path']=str(sp);c['scene_overrides']['raytracing']=False;save(cp,c)
+                env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu)
+                lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib'
+                if Path(lib).exists():env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
                 with (out/'run.log').open('w') as log:
-                    run=subprocess.run([PYTHON,str(RENDERER),'--config',str(cp)],cwd=SOURCE,env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu),stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                    run=subprocess.run([PYTHON,str(RENDERER),'--config',str(cp)],cwd=SOURCE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
                 if run.returncode:raise RuntimeError('original renderer failed; '+str(out/'run.log'))
                 state=json.loads(sp.read_text(encoding='utf-8'));positions=[next(o['position'] for o in f['objects'] if o['name']=='t12_tissue_box') for f in state['frames']]
                 if len(positions)!=210 or any(not math.isfinite(x) for p in positions for x in p):raise ValueError('incomplete or nonfinite trajectory')

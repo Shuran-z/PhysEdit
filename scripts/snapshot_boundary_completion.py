@@ -4,6 +4,7 @@ import gzip
 import json
 from pathlib import Path
 import subprocess
+from datetime import date
 
 ROOT=Path('review/scene_family_completion_20261018')
 
@@ -64,7 +65,10 @@ print(json.dumps(dict(selected=880,recovered=sum(r['status']=='verified_publishe
     p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
     p.check_returncode();t03=json.loads(p.stdout)
     additional_jobs=[]
-    for token,filename,default_host in [('T15_refined','t15_refined_missing_launch_20261019.json','p25'),('T12_refined','t12_supplemental_refinement_launch.json','p26')]:
+    for token,filename,default_host in [('T15_refined','t15_refined_missing_launch_20261019.json','p25'),('T12_refined','t12_supplemental_refinement_launch.json','p26'),
+        ('T09_table_contact','t09_table_contact_refinement_launch_20261020.json','p25'),
+        ('T13_full_retry','t13_original_full_retry_launch_20261020.json','p25'),
+        ('T13_precontact_fix','t13_precontact_fix_launch_20261020.json','p25')]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text());host=launch.get('host',default_host)
@@ -77,7 +81,7 @@ print(json.dumps(dict(running=p.exists() and str(root).encode() in p.read_bytes(
         run=subprocess.run(['ssh','-o','BatchMode=yes',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30);run.check_returncode()
         additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],**json.loads(run.stdout)))
     summaries={p.stem:json.loads(p.read_text()) for p in (ROOT/'original_value_distance_ledger').glob('*summary.json')}
-    snapshot=dict(date='2026-10-19',all_scenes_completed=False,
+    snapshot=dict(date=date.today().isoformat(),all_scenes_completed=False,
         live_releases=[{k:r[k] for k in ['repo','revision','last_modified']} for r in json.loads((ROOT/'live_release_layout_20261019.json').read_text(encoding='utf-8'))],
         existing_release_state_recovery=recovered,
         latest_release_recovery=dict(T03=t03,T11=dict(configs=len(latest_t11),quality_records=len(latest_t11),families=dict(families),binding='published per-file SHA256'),
@@ -88,6 +92,8 @@ print(json.dumps(dict(running=p.exists() and str(root).encode() in p.read_bytes(
         release_selection=json.loads(Path('docs/critical_boundary/RELEASE_SELECTION.json').read_text(encoding='utf-8')),
         formal_near_reference_count=json.loads((ROOT/'nearacc_readiness_summary.json').read_text(encoding='utf-8'))['completed_formal_near_reference_registrations'],
         important='Recovered current release configs/states are evidence inputs; do not equate them with completed thresholds or formal NearAcc references.')
+    correspondence=ROOT/'t16_t20_contact_summary_20261020.json'
+    if correspondence.exists():snapshot['published_parameter_event_correspondence']=json.loads(correspondence.read_text())
     (ROOT/'LATEST_EXECUTION_STATUS_20261019.json').write_text(json.dumps(snapshot,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(snapshot,ensure_ascii=False,indent=2))
 

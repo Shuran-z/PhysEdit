@@ -29,8 +29,15 @@ def change(config,axis,theta):
     return c
 
 
-def event(config,state):
+def event(config,state,target_event='geometry_support_drop'):
     if len(state['frames'])!=210:raise ValueError('incomplete original simulation')
+    if target_event=='upper_nonpulled_book_on_table_at_end':
+        names=config['experiment']['supported_book_names'];frame=state['frames'][-1]
+        if 'contacts' not in frame:raise ValueError('final contact telemetry missing')
+        pairs={frozenset([c['entity_a'],c['entity_b']]) for c in frame['contacts']}
+        affected=[n for n in names if frozenset(['frozen_tabletop_collision_slab',n]) in pairs]
+        return dict(label=int(bool(affected)),upper_books_on_table=affected,target_event=target_event)
+    if target_event!='geometry_support_drop':raise ValueError('unsupported event')
     names=config['experiment']['supported_book_names'];extracted=config['experiment']['extracted_book_name'];o=next(o for o in config['dynamic_objects'] if o['name']==extracted)
     h=o.get('collision_proxy_size',o['size'])[2]
     z=lambda f:{o['name']:o['position'][2] for o in f['objects'] if o['name'] in names}
@@ -68,7 +75,7 @@ def main():
                 begin=time.monotonic()
                 with (dest/'run.log').open('w') as log:
                     run=subprocess.run([PYTHON,str(RENDERER),'--config',str(cp)],cwd=PROJECT,env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0'),stdout=log,stderr=subprocess.STDOUT,timeout=300)
-                raw=(dest/'physics.json').read_bytes();state=json.loads(raw);measured=event(c,state)
+                raw=(dest/'physics.json').read_bytes();state=json.loads(raw);measured=event(c,state,job.get('target_event','geometry_support_drop'))
                 result=dict(theta=theta,**measured,renderer_returncode=run.returncode,elapsed_s=time.monotonic()-begin,config_sha256=hashlib.sha256(cp.read_bytes()).hexdigest(),state_sha256=hashlib.sha256(raw).hexdigest(),state_path=str(dest/'physics.json'),seed=c['seed'])
                 # A visual post-check is independent of a complete numeric state.
                 save(rp,result);return result
@@ -80,8 +87,8 @@ def main():
                 if r['label']==labels[0]:a=middle
                 else:b=middle
             row=dict(job_id=job['job_id'],family_id=axis,status='refined_local_interval',bracket=[a,b],source_bracket=job['bracket'],endpoint_labels=labels,
-                fixed_context_sha256=job['fixed_context_sha256'],probes=probes,backend_sources=sources,threshold_m=.0135,
-                seed=base['seed'],scope='conditional local support-layer drop interval at the source endpoint seed')
+                fixed_context_sha256=job['fixed_context_sha256'],probes=probes,backend_sources=sources,target_event=job.get('target_event','geometry_support_drop'),
+                seed=base['seed'],scope='conditional local interval for the explicitly recorded event at the source endpoint seed')
             save(receipt,row)
         except Exception as exc:row=dict(job_id=job['job_id'],status='failed',error=str(exc),probes=probes)
         results.append(row);save(root/'status.json',results);print(json.dumps(dict(done=len(results),status=row['status'],bracket=row.get('bracket'),error=row.get('error'))),flush=True)

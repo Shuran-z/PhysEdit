@@ -33,7 +33,19 @@ def registrations(evidence,plan,current,source):
         if a not in receipts or b not in receipts or receipts[a]['events'][event]==receipts[b]['events'][event]:raise ValueError('missing actual opposite solver endpoints')
         if not job['bracket'][0]<=a<b<=job['bracket'][1]:raise ValueError('interval outside source range')
         intervals[(r['family'],refs[0]['fixed_context_sha256'],event)].append(dict(bracket=[a,b],job_id=r['job_id'],
-            endpoint_labels=[receipts[a]['events'][event],receipts[b]['events'][event]],backend_sha256=r['backend_sha256']))
+            endpoint_labels=[receipts[a]['events'][event],receipts[b]['events'][event]],backend_sha256=r['backend_sha256'],reference_kind='refined_replay_interval'))
+    # Original published opposite outcomes remain valid scan evidence even when
+    # a new replay fails. Refinement failure must not erase the released bracket.
+    solved={w['job_id'] for windows in intervals.values() for w in windows}
+    for job in plan:
+        if job['job_id'] in solved:continue
+        refs=[byid[e['sample_id']] for e in job['endpoints']];event=job['target_event']
+        if len({x['fixed_context_sha256'] for x in refs})!=1:raise ValueError('mixed published contexts')
+        if [x['state_sha256'] for x in refs]!=[x['state_sha256'] for x in job['endpoints']]:raise ValueError('published state identity changed')
+        labels=[x['events'][event] for x in refs]
+        if labels[0]==labels[1]:raise ValueError('published bracket has no opposite event results')
+        intervals[(job['family'],refs[0]['fixed_context_sha256'],event)].append(dict(bracket=job['bracket'],job_id=job['job_id'],
+            endpoint_labels=labels,reference_kind='original_published_opposite_outcomes_scan_interval',refinement_status='not_completed_or_not_reproduced'))
     rows=[]
     for (family,context,event),windows in intervals.items():
         points=groups[(family,context)];domain=[min(r['theta'] for r in points),max(r['theta'] for r in points)];span=domain[1]-domain[0]
@@ -51,10 +63,13 @@ def registrations(evidence,plan,current,source):
 
 
 def main():
-    launch=json.loads((ROOT/'t13_full_search_launch_20261019.json').read_text())
+    launches=[json.loads((ROOT/'t13_full_search_launch_20261019.json').read_text())]
+    for filename in ['t13_precontact_fix_launch_20261020.json','t13_original_full_retry_launch_20261020.json']:
+        retry=ROOT/filename
+        if retry.exists():launches.append(json.loads(retry.read_text()))
     code='''import pathlib,json,hashlib
 root=pathlib.Path(ROOT);rows=[]
-for result in json.loads((root/'status.json').read_text()):
+for result in json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []:
  if result['status']!='local_transition_bracket':continue
  receipts=[]
  for p in (root/result['job_id']).glob('*/receipt.json'):
@@ -65,12 +80,17 @@ for result in json.loads((root/'status.json').read_text()):
   receipts.append(r)
  rows.append(dict(result=result,receipts=receipts))
 print(json.dumps(rows))
-'''.replace('ROOT',repr(launch['root']))
-    p=subprocess.run(['ssh','-o','BatchMode=yes','p25','python3 -'],input=code.encode(),capture_output=True,timeout=90);p.check_returncode()
-    evidence=json.loads(p.stdout);source=ROOT/'t13_current_solver_evidence_20261019.json';source.write_text(json.dumps(evidence,indent=2),encoding='utf-8')
+'''
+    merged={}
+    for launch in launches:
+        p=subprocess.run(['ssh','-o','BatchMode=yes',launch.get('host','p25'),'python3 -'],input=code.replace('ROOT',repr(launch['root'])).encode(),capture_output=True,timeout=90);p.check_returncode()
+        for record in json.loads(p.stdout):
+            record['source_root']=launch['root'];merged[record['result']['job_id']]=record
+    evidence=list(merged.values());source=ROOT/'t13_current_solver_evidence_20261019.json';source.write_text(json.dumps(evidence,indent=2),encoding='utf-8')
     rows=registrations(evidence,json.loads((ROOT/'t13_current_search_plan_20261019.json').read_text()),json.loads((ROOT/'t13_current_measured_events_20261019.json').read_text()),source)
     (ROOT/'t13_current_solver_distance_registry.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
-    summary=dict(completed_intervals=len(evidence),sample_event_records=len(rows),unique_samples=len({r['sample_id'] for r in rows}),formal_new_near=0)
+    summary=dict(completed_refined_intervals=len(evidence),original_published_intervals=len(json.loads((ROOT/'t13_current_search_plan_20261019.json').read_text())),
+        sample_event_records=len(rows),unique_samples=len({r['sample_id'] for r in rows}),formal_new_near=0)
     (ROOT/'t13_current_solver_binding_summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary))
 
 
