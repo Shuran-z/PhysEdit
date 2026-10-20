@@ -23,7 +23,7 @@ NOTES={
 'T18':('Genesis摩擦/重叠长度；Isaac d1/d2/d3','Genesis630条配置候选；Isaac修复版10条配置/QA哈希匹配并登记搜索区间','原搜索未通过组需按当前抽取/传播事件重核，不直接拼接旧新参数'),
 'T19':('Genesis偏心/质量比/恢复系数；Isaac d1/d2/d3','Genesis712条配置候选；Isaac原32组/288条搜索记录已找回，但旧渲染已停用','旧288条因用户确认画面不合格标记retired_render，不进入正式评测；等待正在重渲染的新版本，再重新绑定及审核'),
 'T20':('Genesis三段间隙、书初速、杯边距；Isaac d1/d2/d3','Genesis1190条配置候选；Isaac原28组252条输入哈希匹配，已接入原搜索区间距离，单列于旧库存之外','原Isaac记录与当前发布/新划分分开；Genesis数值边界尚未绑定')}
-def main():
+def write_historical_progress():
  measured_path=OUT/'t04_measured_published_events.json'
  if measured_path.exists():
   measured=json.loads(measured_path.read_text(encoding='utf-8'))
@@ -65,4 +65,69 @@ def main():
  '', '边界恢复、绑定、评分及参考准入共40项unittest通过。H3继续使用已有开发标注，没有新增独立人工标签或生成模型实验。']
  (OUT/'ALL20_PROGRESS.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
  print('wrote all20 evidence progress: 20 rows')
+def main():
+ ledger=OUT/'original_value_distance_ledger/combined_all20_summary.json'
+ if not ledger.exists():return write_historical_progress()
+ combined=json.loads(ledger.read_text(encoding='utf-8'))
+ def load(name):
+  p=OUT/name
+  return json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+ snapshot=load('LATEST_EXECUTION_STATUS_20261019.json')
+ additional={r['scene']:r for r in snapshot.get('additional_numerical_jobs',[])}
+ metadata=load('t16_t20_contact_summary_20261020.json')
+ t09=load('original_value_distance_ledger/t09_table_contact_refinement_summary.json')
+ t12=load('original_value_distance_ledger/t12_refinement_binding_summary.json')
+ t13=load('t13_current_solver_binding_summary.json')
+ t18=load('t18_table_contact_preparation_summary_20261020.json')
+ search18=load('t18_event_distance_summary_20261020.json')
+ t02=load('t02_published_scoring_registry.json')
+ t02_complete=isinstance(t02,list) and len(t02)==880 and all(r.get('numerical_reference_verified') and r.get('mapping_status')=='matched' and r.get('boundary',{}).get('status')=='verified' for r in t02)
+ overrides={
+  'T09':(f"真实末帧触桌事件：580条原状态；12个已识别局部区间已细化{t09.get('refined_intervals',0)}/12；176条不同参考样本保留距离",'300条pull族原状态尚缺；下沉代理不计入事件边界，不把现有局部完成写成全880条完成'),
+  'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'余下切片继续求解；两侧样本及未细化原发布区间保留'),
+  'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间",'21个初始失败任务分开排查；4个窗口错误已修正并完成求解，其余原入口重试继续，失败不删除原发布区间'),
+  'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",'多书触桌按原版本、拓扑和种子分别求界；旧两书版及Isaac另列，不混用阈值'),
+  'T19':('旧渲染按用户要求停用；不计当前可用距离参考','等待新T19完成渲染并交付/发布；已知旧文件不能重新启用')}
+ for scene in ['T16','T17','T20']:
+  overrides[scene]=(f"Genesis发布metadata已全部逐字节对应：{metadata.get('verified_metadata',{}).get(scene,0)}条；原参数扫描已登记{metadata.get('unique_bound_samples',{}).get(scene,0)}条不同样本的接触事件区间",'保留各原参数轴和修复版本；已有扫描区间与精确原求解值分列，其余命名事件/上下文继续处理')
+ overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离",'B初始纵向位置族仍需完成，不能把A/C完成写成全场景完成')
+ if t02_complete:overrides['T02']=('选定发布880/880条的三参数族、事件真值、版本、边界区间及归一化已完成数值对应','此选定版本的数值对应已完成；参考画面准入与模型评分单列')
+ remaining={
+  'T01':'继续核对其余原任务及其明确目标事件，保留C族非单调转变记录',
+  'T03':'按当前发布的三个原参数族补齐剩余固定物理上下文的边界',
+  'T04':'补齐其余support_release、stack_sliding、terminal_transfer上下文；渲染star另列',
+  'T05':'分别补齐原版及105条物理修复配置所属的条件边界',
+  'T06':'按impact_force和gap补齐其余背景/重力条件的原值或求解区间',
+  'T08':'按初速、偏心、质量三族继续处理原版及修复后的物理上下文',
+  'T10':'补齐余下两轴上下文；4cm运动事件不改称支撑失效',
+  'T11':'按实际四族核对新版驱动及其边界，接力质量族不遗漏',
+  'T14':'已选旧笔穿通道正式版；180组原任务继续求解，T14S另列',
+  'T15':'原范围60组及扩展40组已扫描；保留未细化原区间，8个原审计失败区间另记'}
+ rows=[]
+ for item in combined['scenes']:
+  scene=item['scene_id'];family,old_done,old_next=NOTES[scene]
+  if scene=='T13':family='当前发布：桌缘距离；书簇位移；驱动枢轴间隙'
+  done,next_step=overrides.get(scene,(old_done,remaining.get(scene,old_next)))
+  if scene not in overrides:done=f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间；其余来源继续恢复"
+  rows.append(dict(scene=scene,original_families=family,recovered_evidence=done,remaining=next_step,
+   numerical_reference_samples=0 if item['retired'] else item['unique_samples_with_numerical_reference'],
+   retired_historical_samples=item['unique_samples_with_numerical_reference'] if item['retired'] else 0,
+   publication_metadata_mapping_completed=scene in ['T16','T17','T18','T20'],
+   all_families_completed=scene=='T02' and t02_complete,
+   completion_status='数值对应完成' if scene=='T02' and t02_complete else '等待新渲染' if scene=='T19' else '仍有未完成任务'))
+ (OUT/'all20_evidence_progress.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+ with (OUT/'all20_evidence_progress.csv').open('w',encoding='utf-8-sig',newline='') as f:
+  writer=csv.DictWriter(f,fieldnames=rows[0]);writer.writeheader();writer.writerows(rows)
+ target=OUT/'ALL20_PROGRESS.md';historical=OUT/'ALL20_PROGRESS_20261018_HISTORICAL.md'
+ if target.exists() and not historical.exists():historical.write_text(target.read_text(encoding='utf-8'),encoding='utf-8')
+ lines=['# T01–T20 临界搜索与发布参数对应：2026-10-20','',
+  '此表只报告原值恢复、参数/版本对应、数值求解和距离接入。视频质量准入与生成模型打分另行统计，不作为找回临界值的额外门槛。',
+  '', '| 场景 | 原参数族 | 当前有数值参考的不同样本 | 已完成事项 | 未完成事项 |', '|---|---|---:|---|---|']
+ for r in rows:lines.append(f"|{r['scene']}|{r['original_families']}|{r['numerical_reference_samples']}|{r['recovered_evidence']}|{r['remaining']}|")
+ lines+=['',f"当前活动版本共有{sum(r['numerical_reference_samples'] for r in rows)}条不同样本有数值参考。各场景按引擎、版本和样本ID去重；一个样本可能含多个事件或局部区间，不能累加记录行数当视频数量。原渲染star和T09旧下沉代理均不计入此数。",'',
+  '原参数网格没有观测到事件翻转时记录无已观测边界，不捏造阈值，不删除原参考视频。不同物理结构不能仅按相邻参数编号配对。', '',
+  '运行中的求解详见LATEST_EXECUTION_STATUS_20261019.json（文件名保留历史命名，内部date为当前快照日期）。数值参考数量不是生成模型NearAcc分数。']
+ target.write_text('\n'.join(lines)+'\n',encoding='utf-8');print('wrote current all20 search progress: 20 rows')
+
+
 if __name__=='__main__':main()
