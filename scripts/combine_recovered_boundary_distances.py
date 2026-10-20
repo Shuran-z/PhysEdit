@@ -38,6 +38,10 @@ def main():
         (out/'t03_recorded_rendering_star_distances.jsonl','rendering_star'),(out/'t11_recorded_rendering_star_distances.jsonl','rendering_star')]
     sources += [(out/name,'supplemental') for name in ['t03_supplemental_sample_distances.jsonl','t04_t05_supplemental_sample_distances.jsonl',
         't12_supplemental_sample_distances.jsonl','t15_supplemental_sample_distances.jsonl','t11_supplemental_sample_distances.jsonl','t08_supplemental_sample_distances.jsonl','t06_supplemental_sample_distances.jsonl']]
+    t09_base=out/'t09_geometry_drop_sample_distances.jsonl';t09_bound=out/'t09_bound_sample_distances.jsonl';t09_receipt=out/'t09_refinement_binding_summary.json'
+    current_bound=(t09_base.exists() and t09_bound.exists() and t09_receipt.exists() and
+        json.loads(t09_receipt.read_text(encoding='utf-8')).get('base_distance_source_sha256')==hashlib.sha256(t09_base.read_bytes()).hexdigest())
+    sources.append((t09_bound if current_bound else t09_base,'supplemental'))
     sources += [(ROOT/'t07_original_search_distance_registry.json','supplemental')]
     rows=[];source_counts=[]
     for path,kind in sources:

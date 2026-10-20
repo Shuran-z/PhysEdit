@@ -2,7 +2,7 @@
   "date": "2026-10-19",
   "all20_completed": false,
   "T12_user_selected_event": "maximum tissue-box 3D displacement from first frame >= 0.01 m",
-  "active_samples_with_numerical_distance": 5555,
+  "active_samples_with_numerical_distance": 5731,
   "count_scope": "original recorded calibrated values/search intervals plus supplemental intervals; rendering star alone excluded; not formal NearAcc count",
   "scenes": [
     {
@@ -81,8 +81,8 @@
       "scene_id": "T09",
       "recovered_original": 0,
       "rendering_star": 0,
-      "supplemental": 0,
-      "unique_samples_with_numerical_reference": 0,
+      "supplemental": 176,
+      "unique_samples_with_numerical_reference": 176,
       "completion": "not_complete",
       "retired": false
     },
@@ -273,8 +273,47 @@
       "contexts": 60,
       "mapping_failures": [],
       "refined_records": 639
+    },
+    "t09_geometry_drop_summary": {
+      "predicate_origin": "new geometry-derived operational definition",
+      "target_event": "upper_stack_support_layer_drop",
+      "extracted_support_thicknesses_m": [
+        0.027
+      ],
+      "drop_thresholds_m": [
+        0.0135
+      ],
+      "measured_original_states": 580,
+      "published_parameters": 880,
+      "current_transfer_config_matches": 880,
+      "positive": 216,
+      "negative": 364,
+      "largest_negative_final_drop_m": 0.00014491379261016846,
+      "smallest_positive_final_drop_m": 0.026955217123031616,
+      "sensitivity_label_counts": {
+        "0.25": 216,
+        "0.5": 216,
+        "0.75": 216
+      },
+      "local_intervals": 8,
+      "sample_interval_records": 176,
+      "unique_published_samples_with_distance": 176,
+      "interval_counts_by_axis": {
+        "layer_friction": 8
+      },
+      "all_T09_completed": false,
+      "global_collapse_definition_completed": false
+    },
+    "t09_refinement_binding_summary": {
+      "completed_intervals": 1,
+      "failed_intervals": 0,
+      "planned_intervals": 8,
+      "base_distance_source_sha256": "4a5067a91707537419ac25850e47f6ab3bc65ea24a521c8443fa0f4fe463c071",
+      "refined_sample_records": 22,
+      "retained_scan_records": 154
     }
   },
   "T19": "old reference retired; user confirmed replacement still rendering",
-  "tests": "18 focused tests passed"
+  "tests": "22 focused tests passed",
+  "T09_predicate_note": "User requested threshold computation; newly derived 13.5mm support-layer drop predicate, distinct from global overturning and any unavailable historic threshold."
 }
