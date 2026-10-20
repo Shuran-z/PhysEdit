@@ -74,6 +74,7 @@ def main():
   return json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
  snapshot=load('LATEST_EXECUTION_STATUS_20261019.json')
  additional={r['scene']:r for r in snapshot.get('additional_numerical_jobs',[])}
+ t15_refined=max(additional.get('T15_refined',{}).get('statuses',{}).get('refined_local_interval',0),additional.get('T15_event_tail_refinement',{}).get('statuses',{}).get('refined_local_interval',0))
  metadata=load('t16_t20_contact_summary_20261020.json')
  t09=load('original_value_distance_ledger/t09_table_contact_refinement_summary.json')
  t12=load('original_value_distance_ledger/t12_refinement_binding_summary.json')
@@ -89,6 +90,7 @@ def main():
   'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'余下切片继续求解；两侧样本及未细化原发布区间保留'),
   'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间",'原主队列147项已结束，31项初次失败；4个窗口错误已修复，原完整入口对照涵盖最初21项和新增10项；仍未复现的保留原发布区间'),
   'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"其余原三参数族继续运行；已完成组中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本；T14S另列"),
+  'T15':('原范围60组与扩展40组已扫描；原发布反事实参数对应和原范围归一化已接入',f"79个已观测局部区间已细化{t15_refined}个、剩余{79-t15_refined}个；6个仅尾部未静止的任务已排队按目标事件继续，其余出界等错误原样保留"),
   'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",'多书触桌按原版本、拓扑和种子分别求界；旧两书版及Isaac另列，不混用阈值'),
   'T19':('旧渲染按用户要求停用；不计当前可用距离参考','等待新T19完成渲染并交付/发布；已知旧文件不能重新启用')}
  for scene in ['T16','T17','T20']:
