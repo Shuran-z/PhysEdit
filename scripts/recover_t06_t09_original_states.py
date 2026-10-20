@@ -3,6 +3,7 @@
 Only compact parameters, exact physical-config correspondence and kinematics are
 returned. No new event threshold is invented by this recovery command.
 """
+import argparse
 import json
 import subprocess
 
@@ -12,7 +13,7 @@ REMOTE=r'''
 import concurrent.futures,gzip,hashlib,json,math,pathlib,re
 cache=pathlib.Path('/tmp/physedit_t06_t09_original_states_20261019');cache.mkdir(exist_ok=True)
 def correspondence(out,c,raw):
- text=raw.decode();decoder=json.JSONDecoder()
+ text=(gzip.decompress(raw) if raw[:2]==b'\x1f\x8b' else raw).decode();decoder=json.JSONDecoder()
  def field(name):
   match=re.search(r'(?m)^  "'+re.escape(name)+r'"\s*:',text)
   if match is None:raise ValueError('missing top-level '+name)
@@ -66,10 +67,11 @@ print(json.dumps(rows))
 
 
 def main():
-    rows=[r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text(encoding='utf-8')) if r['scene_id'] in ['T06','T09']]
+    parser=argparse.ArgumentParser();parser.add_argument('--scenes',nargs='+',choices=['T06','T09','T10'],default=['T06','T09']);parser.add_argument('--out',default='t06_t09_surviving_original_state_evidence.json');args=parser.parse_args()
+    rows=[r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text(encoding='utf-8')) if r['scene_id'] in args.scenes]
     p=subprocess.run(['ssh','-o','BatchMode=yes','p25','python3 -'],input=REMOTE.replace('INPUT',repr(rows)).encode(),capture_output=True,timeout=1800)
     p.check_returncode();data=json.loads(p.stdout)
-    (ROOT/'t06_t09_surviving_original_state_evidence.json').write_text(json.dumps(data),encoding='utf-8')
+    (ROOT/args.out).write_text(json.dumps(data),encoding='utf-8')
     import collections
     print(json.dumps(dict(counts={str(k):v for k,v in collections.Counter((r['scene_id'],r['status']) for r in data).items()})))
 

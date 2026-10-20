@@ -64,7 +64,7 @@ def registrations(evidence,plan,current,source):
 
 def main():
     launches=[json.loads((ROOT/'t13_full_search_launch_20261019.json').read_text())]
-    for filename in ['t13_precontact_fix_launch_20261020.json','t13_original_full_retry_launch_20261020.json']:
+    for filename in ['t13_precontact_fix_launch_20261020.json','t13_original_full_retry_launch_20261020.json','t13_remaining_full_retry_launch_20261020.json']:
         retry=ROOT/filename
         if retry.exists():launches.append(json.loads(retry.read_text()))
     code='''import pathlib,json,hashlib

@@ -60,7 +60,9 @@ print(json.dumps(dict(running=proc.exists() and str(root).encode() in proc.read_
     code="""import pathlib,json
 p=pathlib.Path('/data_cached/wangzijun_p25/liyuhan/t03_current_recovery_20261019/status.json')
 rows=json.loads(p.read_text()) if p.exists() else []
-print(json.dumps(dict(selected=880,recovered=sum(r['status']=='verified_published_state' for r in rows),failed=sum(r['status']=='failed' for r in rows),status='recovery_in_progress' if len(rows)<880 else 'recovery_finished')))
+verified={r['sample_id'] for f in p.parent.glob('*.receipt.json') for r in [json.loads(f.read_text())] if r.get('status')=='verified_published_state' and r.get('extraction_schema_version')==2 and pathlib.Path(r['extracted_path']).exists()}
+failed={r['sample_id'] for r in rows if r['status']=='failed'}-verified
+print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),status='recovery_finished' if len(verified)==880 else 'recovery_in_progress')))
 """
     p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
     p.check_returncode();t03=json.loads(p.stdout)
@@ -71,16 +73,20 @@ print(json.dumps(dict(selected=880,recovered=sum(r['status']=='verified_publishe
         ('T13_precontact_fix','t13_precontact_fix_launch_20261020.json','p25'),
         ('T09_positive_seed_retry','t09_positive_seed_retry_launch_20261020.json','p25'),
         ('T18_table_contact','t18_table_contact_search_launch_20261020.json','p25'),
-        ('T18_legacy_table_contact','t18_legacy_search_launch_20261020.json','p25')]:
+        ('T18_legacy_table_contact','t18_legacy_search_launch_20261020.json','p25'),
+        ('T09_missing_states','t09_missing_state_replay_v2_launch_20261020.json','p25'),
+        ('T06_T10_missing_states','t06_t10_missing_state_replay_launch_20261020.json','p25'),
+        ('T13_remaining_full_retry','t13_remaining_full_retry_launch_20261020.json','p25')]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
-        launch=json.loads(launch_path.read_text());host=launch.get('host',default_host)
+        launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)
         code='''import pathlib,json,collections
 root=pathlib.Path(ROOT);pid=PID;p=pathlib.Path('/proc')/str(pid)/'cmdline'
 rows=json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []
 resource=json.loads((root/'resource_status.json').read_text()) if (root/'resource_status.json').exists() else {}
-print(json.dumps(dict(running=p.exists() and str(root).encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource)))
-'''.replace('ROOT',repr(launch['root'])).replace('PID',str(launch['pid']))
+queue=pathlib.Path(PIPELINE)/'queue_status.json'
+print(json.dumps(dict(running=p.exists() and PIPELINE.encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource,queue=json.loads(queue.read_text()) if queue.exists() else {})))
+'''.replace('ROOT',repr(launch['root'])).replace('PID',str(launch['pid'])).replace('PIPELINE',repr(launch.get('pipeline_root',launch['root'])))
         run=subprocess.run(['ssh','-o','BatchMode=yes',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30);run.check_returncode()
         additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],**json.loads(run.stdout)))
     summaries={p.stem:json.loads(p.read_text()) for p in (ROOT/'original_value_distance_ledger').glob('*summary.json')}
