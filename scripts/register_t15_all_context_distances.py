@@ -25,13 +25,20 @@ def stable(x):
  if isinstance(x,list):return [stable(v) for v in x]
  if isinstance(x,dict):return {k:stable(v) for k,v in x.items()}
  return x
-scans={};receipts=[]
+scans={};receipts=[];original_domains={}
 for root in roots:
  for row in json.loads((root/'status.json').read_text(encoding='utf-8')):
+  if root==roots[0]:original_domains[tuple(row['context'])]=row['domain']
   if not row['transitions']:continue
   key=tuple(row['context']);scans[key]=row;receipts.append(row)
 refined=pathlib.Path('/data_cached/wangzijun_p25/liyuhan/t15_refined_missing_intervals_20261019/status.json')
 refined=json.loads(refined.read_text(encoding='utf-8')) if refined.exists() else []
+additional=pathlib.Path('/data_cached/wangzijun_p25/liyuhan/t15_event_specific_tail_refinement_20261020/status.json')
+if additional.exists():refined+=json.loads(additional.read_text(encoding='utf-8'))
+for record in refined:
+ for probe in record.get('probes',[]):
+  folder=pathlib.Path(probe['output']);state=folder/'metadata/physics.json';config=folder.parent/(folder.name+'.json')
+  if hashlib.sha256(state.read_bytes()).hexdigest()!=probe['state_sha256'] or hashlib.sha256(config.read_bytes()).hexdigest()!=probe['config_sha256']:raise ValueError('T15 refinement evidence changed')
 result=[]
 for ref in original:
  if not ref['slot'].startswith('cf'):continue
@@ -51,7 +58,10 @@ for ref in original:
  for window in scan['transitions']:
   replacement=next((r for r in refined if tuple(r['context'])==key and r['source_bracket']==window['bracket'] and r['status']=='refined_local_interval'),None)
   windows.append(dict(bracket=replacement['bracket'] if replacement else window['bracket'],labels=window['labels'],kind='supplemental_refined_interval' if replacement else 'supplemental_scan_interval',refinement_job_id=replacement['job_id'] if replacement else None))
- result.append(dict(scene_id='T15',engine='genesis',sample_id=ref['sample_id'],family_id=family,background=ref['background_id'],gravity=ref['gravity_id'],theta=theta,
+ domain=original_domains[key];span=domain[1]-domain[0]
+ if span<=0:raise ValueError('empty original T15 normalization domain')
+ result.append(dict(scene_id='T15',engine='genesis',sample_id=ref['sample_id'],family_id=family,background=ref['background_id'],gravity=ref['gravity_id'],theta=theta,target_event=scan['target_event'],
+  normalization_domain=domain,normalization_span=span,normalization_basis=dict(domain=domain,normalization_span=span,source='original published counterfactual endpoint scan domain; not expanded search range'),
   parameter_name=fields[family],parameter_unit='m/s' if family=='cfA' else 'm',source_config_path=str(cpath),source_config_sha256=hashlib.sha256(raw).hexdigest(),physical_mapping_matches=matched,
   intervals=windows,source_scan_output=scan['output'],original_reference_kind='supplemental_solver_interval',extra_validation_separate=True))
 print(json.dumps(dict(rows=result,scan_receipts=receipts,refinements=refined)))

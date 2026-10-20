@@ -14,6 +14,7 @@ import time
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't15_event_tail_refinement_launch_20261020.json':'scripts.register_t15_all_context_distances',
  't14_formal_search_launch_20261019.json':'scripts.register_t14_all_context_distances',
  't12_supplemental_refinement_launch.json':'scripts.register_t12_refined_distances',
  't13_full_search_launch_20261019.json':'scripts.register_t13_current_searches',
