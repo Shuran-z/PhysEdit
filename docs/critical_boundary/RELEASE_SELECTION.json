@@ -1,0 +1,23 @@
+{
+  "decision_date": "2026-10-19",
+  "authority": "explicit user release choices",
+  "scenes": {
+    "T14": {
+      "selected_repo": "phyeditingvideo/Phyediting",
+      "selected_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "selected_prefix": "data/T14/formal_r006_720p_20260904",
+      "mechanism": "elongated marker passage through book corridor",
+      "required_dataset_version": "everyday_bifurcation_T14_v2_pose_gate",
+      "separate_scene_id": "T14S",
+      "separate_repo": "phy2/phydataset",
+      "separate_prefix": "data/T14/genesis_880_720p_20261016",
+      "separate_mechanism": "spring launcher and multistage passage",
+      "policy": "Keep old T14 for formal evaluation. Never infer scene equivalence from directory name or publication date."
+    },
+    "T19": {
+      "status": "replacement_still_rendering_user_confirmed",
+      "old_reference_status": "retired_by_user",
+      "policy": "Do not admit old rejected T19 references. Bind replacement only after its release identity and quality are verified."
+    }
+  }
+}
