@@ -61,10 +61,21 @@ def metrics(state):
     return dict(t13_drink_box_motion_ge_1cm=int(peak>=.01),drink_drop_ge_5cm=int(drop>=.05)),tracks
 
 
+def precontact_indices(state):
+    """Exclude the first collision frame, including upstream book-book impact."""
+    hits=[f['frame_index'] for f in state['frames'] if any(
+        c.get('entity_a') in ACTORS and c.get('entity_b') in ACTORS
+        and c.get('entity_a')!=c.get('entity_b') for c in f.get('contacts',[]))]
+    return range(min(hits)) if hits else range(18)
+
+
 def main():
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--gpu',default='4');p.add_argument('--limit',type=int,default=0)
+    p.add_argument('--original-full-render',action='store_true',help='Replay original v6 renderer including original camera capture')
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
+    global RENDERER
+    if args.original_full_render:RENDERER=BASE/'scripts/12_render_motion_sequence_t13_realasset_v6_sync3cam.py'
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None];results=[]
     if len({j['job_id'] for j in jobs})!=len(jobs):raise ValueError('duplicate search job IDs')
@@ -96,20 +107,30 @@ def main():
                     row=json.loads(rp.read_text())
                     if row['config_sha256']==sha(cp) and row['state_sha256']==sha(sp) and row['backend_sha256']==sha(RENDERER):return row
                     raise ValueError('replay receipt drift')
+                if args.original_full_render:
+                    for key in ['save_video','save_first_rgb','save_last_rgb']:
+                        if c['render'].get(key):c['render'][key]=str(out/Path(c['render'][key]).name)
+                    for camera in c['render'].get('camera_outputs',[]):
+                        for key in ['save_video','save_first_rgb','save_last_rgb']:
+                            if camera.get(key):camera[key]=str(out/Path(camera[key]).name)
+                    c['annotations']['save_path']=str(sp)
                 save(cp,c)
                 env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0')
                 lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib'
                 env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
                 with (out/'run.log').open('w') as log:
-                    result=subprocess.run([PYTHON,str(RENDERER),'--config',str(cp),'--physics-only','--annotation-output',str(sp)],cwd=BASE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                    command=[PYTHON,str(RENDERER),'--config',str(cp)]
+                    if not args.original_full_render:command+=['--physics-only','--annotation-output',str(sp)]
+                    result=subprocess.run(command,cwd=BASE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
                 if result.returncode:raise RuntimeError('renderer failed: '+str(out/'run.log'))
                 state=json.loads(sp.read_text());events,tracks=metrics(state)
                 row=dict(theta=theta,events=events,config_sha256=sha(cp),state_sha256=sha(sp),backend_sha256=sha(RENDERER))
                 if theta in job['bracket']:
                     original=left if theta==job['bracket'][0] else right
-                    contact_frames=[f['frame_index'] for f in state['frames'] if any({ct.get('entity_a'),ct.get('entity_b')}=={'t13_falling_book','t13_drink_box'} for ct in f.get('contacts',[]))]
-                    end=min(contact_frames[0] if contact_frames else 110,110)
-                    row['precontact_max_position_error_m']=max(math.dist(original['tracks'][name][i]['position'],tracks[name][i]) for name in ACTORS for i in range(end+1))
+                    indices=list(precontact_indices(state))
+                    row['position_check_frame_indices']=indices
+                    row['position_check_scope']='strictly_before_first_dynamic_contact' if any('contacts' in f for f in state['frames']) else 'pre_intervention_only_original_v6_has_no_contacts'
+                    row['precontact_max_position_error_m']=max(math.dist(original['tracks'][name][i]['position'],tracks[name][i]) for name in ACTORS for i in indices)
                     row['published_label']=original['label'];row['label_matches']=events[event]==original['label']
                     if row['precontact_max_position_error_m']>.005 or not row['label_matches']:raise ValueError('published endpoint not reproduced: '+str(out))
                 save(rp,row);print(json.dumps(dict(job_id=job['job_id'],theta=theta,events=events)),flush=True);return row
@@ -119,7 +140,7 @@ def main():
                 mid=(a+b)/2;row=evaluate(mid)
                 if row['events'][event]==ends[0]['events'][event]:a=mid
                 else:b=mid
-            row=dict(job_id=job['job_id'],family=job['family'],target_event=event,status='local_transition_bracket',interval=[a,b],source_bracket=job['bracket'],reference_sample_ids=[x['sample_id'] for x in job['endpoints']],backend_sha256=sha(RENDERER),source_state_sha256=[x['state_sha256'] for x in job['endpoints']],scope='current release endpoint replay and local interval; repeats and RGB review pending')
+            row=dict(job_id=job['job_id'],family=job['family'],target_event=event,status='local_transition_bracket',interval=[a,b],source_bracket=job['bracket'],reference_sample_ids=[x['sample_id'] for x in job['endpoints']],backend_sha256=sha(RENDERER),source_state_sha256=[x['state_sha256'] for x in job['endpoints']],replay_profile='original_v6_full_render' if args.original_full_render else 'v7_physics_only',scope='current release endpoint replay and local interval; repeats and RGB review pending')
             save(receipt,row)
         except Exception as exc:row=dict(job_id=job['job_id'],status='failed',error=str(exc))
         results.append(row);save(root/'status.json',results)
