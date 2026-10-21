@@ -14,6 +14,7 @@ import time
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't11_p26_full_contract_control_repeat2_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  't11_p26_full_contract_control_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  't13_fixed_seed_control_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  't11_verified_p26_producer_launch_20261020.json':'scripts.register_five_scene_refinements',
