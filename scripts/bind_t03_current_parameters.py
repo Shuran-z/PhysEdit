@@ -46,6 +46,8 @@ def original_label(report,family):
 
 
 def main():
+    state_path=ROOT/'t03_completed_state_contracts_20261020.json'
+    states={r['sample_id']:r for r in json.loads(state_path.read_text(encoding='utf-8'))} if state_path.exists() else {}
     headers=json.loads((ROOT/'t03_current_parameter_headers_20261019.json').read_text(encoding='utf-8'))
     reports={r['sample_id']:r for r in json.loads((ROOT/'t03_current_original_event_reports.json').read_text(encoding='utf-8')) if 'data' in r}
     release=json.loads((ROOT/'t03_current_selection_20261019.json').read_text(encoding='utf-8'))[0]
@@ -66,6 +68,14 @@ def main():
             fixed_context_sha256=context(e,family),original_parameter_region=e.get('parameter_region'),reference_label=label,target_event=event,
             original_event_report_path=report['path'],original_event_report_sha256=report['sha256'],observed_outcome=report['data']['observed_outcome'],
             original_report_parameter_mismatches=mismatches,publication_recovery=header['publication_recovery'],extra_validation_separate=True)
+        row['simulation_seed']=e.get('seed',e.get('random_seed'))
+        row['seed_scope']='Published seed-varied scan; no claim of a unique same-seed exact threshold.'
+        if sid in states:
+            state=states[sid]
+            if state['revision']!=header['revision'] or state['experiment']['parameter']!=e['parameter']:raise ValueError('actual published state/header mismatch')
+            row.update(reference_state_sha256=state['reference_state_sha256'],solver_contract_sha256=state['solver_contract_sha256'],published_state_path=state['published_path'])
+            row['metadata_context_sha256']=row['fixed_context_sha256']
+            row['fixed_context_sha256']=hashlib.sha256((row['fixed_context_sha256']+state['solver_contract_sha256']).encode()).hexdigest()
         parameters.append(row);groups[(family,row['fixed_context_sha256'])].append(row)
     stars=[];intervals=[]
     for (family,signature),items in groups.items():
@@ -73,6 +83,7 @@ def main():
         if len(centres)==1:
             centre=next(iter(centres))
             for r in items:stars.append({**r,'original_rendering_star':centre,'reference_kind':'recorded_rendering_star_not_automatically_a_solved_boundary',**distances(r['theta'],point=centre)})
+        domain=[min(r['theta'] for r in items),max(r['theta'] for r in items)];span=domain[1]-domain[0]
         ordered=sorted(items,key=lambda r:r['theta']);values=collections.defaultdict(list)
         for r in ordered:values[r['theta']].append(r)
         consistent={t:rs for t,rs in values.items() if len({r['reference_label'] for r in rs})==1 and not any(r['original_report_parameter_mismatches'] for r in rs)}
@@ -81,13 +92,16 @@ def main():
             left,right=consistent[a][0],consistent[b][0]
             if left['reference_label']==right['reference_label']:continue
             for r in items:
-                intervals.append({**r,'original_boundary_interval':[a,b],**distances(r['theta'],bracket=[a,b]),
+                d=distances(r['theta'],bracket=[a,b])
+                intervals.append({**r,'original_boundary_interval':[a,b],**d,
+                    'normalization_domain':domain,'normalization_span':span,'normalized_distance_lower':d['distance_lower']/span,'normalized_distance_upper':d['distance_upper']/span,
                     'original_reference_kind':'supplemental_interval_from_original_published_event_reports',
                     'endpoint_sample_ids':[left['sample_id'],right['sample_id']],'endpoint_event_report_sha256':[left['original_event_report_sha256'],right['original_event_report_sha256']]})
     out=ROOT/'original_value_distance_ledger';out.mkdir(exist_ok=True)
     for filename,rows in [('t03_published_parameters.jsonl',parameters),('t03_recorded_rendering_star_distances.jsonl',stars),('t03_supplemental_sample_distances.jsonl',intervals)]:
         (out/filename).write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in rows),encoding='utf-8')
     summary=dict(published_parameters=len(parameters),original_event_reports=len(reports),recorded_star_distances=len(stars),conditional_contexts=len(groups),
+        recovered_state_bindings=sum('reference_state_sha256' in r for r in parameters),normalized_interval_records=sum(r.get('normalization_span',0)>0 for r in intervals),
         supplemental_sample_interval_records=len(intervals),supplemental_unique_samples=len({r['sample_id'] for r in intervals}),parameter_conflicts=conflicts,
         local_intervals=len({(r['fixed_context_sha256'],tuple(r['original_boundary_interval'])) for r in intervals}))
     (out/'t03_binding_summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary))

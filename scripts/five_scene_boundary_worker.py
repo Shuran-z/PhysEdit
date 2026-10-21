@@ -37,7 +37,8 @@ def isolate(value,folder):
 
 def main():
     import fcntl
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);parser.add_argument('--minimum-free-memory-mib',type=int,default=12288);args=parser.parse_args()
+    if args.minimum_free_memory_mib<2048:parser.error('numeric execution requires at least 2048 MiB of free-memory headroom')
     if args.published_endpoint_replay and not args.endpoints_only:parser.error('published endpoint replay is diagnostic only; requires --endpoints-only')
     root=Path(args.root);root.mkdir(exist_ok=True,parents=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None];results=[]
@@ -67,8 +68,8 @@ def main():
                 while True:
                     if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
                     free=float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
-                    if free>=12*1024:break
-                    save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu));time.sleep(20)
+                    if free>=args.minimum_free_memory_mib:break
+                    save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu,minimum_free_memory_mib=args.minimum_free_memory_mib));time.sleep(20)
                 c=copy.deepcopy(next(e['config'] for e in job['endpoints'] if e['theta']==theta)) if args.published_endpoint_replay else intervene(job,theta)
                 isolate(c['render'],dest);isolate(c['annotations'],dest)
                 c['render'].update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1);c['scene_overrides']['raytracing']=False
@@ -106,6 +107,7 @@ def main():
             row=dict(job_id=job['job_id'],scene_id=job['scene_id'],family_id=job['family_id'],target_event=job['target_event'],status='refined_local_interval',
                 bracket=[a,b],source_bracket=job['bracket'],backend_sources=sources,endpoint_labels=[r['label'] for r in ends],
                 source_state_sha256=[e['state_sha256'] for e in job['endpoints']],probes=probes,execution_sources=execution_sources,scope='named conditional local interval; original source labels retained separately')
+            row['conditional_seed_endpoint']=job.get('seed_endpoint',0)
             save(rp,row)
         except Exception as exc:row=dict(job_id=job['job_id'],scene_id=job['scene_id'],family_id=job['family_id'],status='failed',error=str(exc),probes=probes)
         results.append(row);save(root/'status.json',results);save(root/'resource_status.json',dict(status='running',planned=len(jobs),completed=len(results),scene_id=job['scene_id'],gpu=args.gpu))

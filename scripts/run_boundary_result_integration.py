@@ -14,6 +14,9 @@ import time
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't13_remaining_repetitions_launch_20261020.json':'scripts.register_t13_current_searches',
+ 'five_scene_alternate_seed_launch_20261020.json':'scripts.register_five_scene_refinements',
+ 't11_production_contract_control_launch_20261020.json':'scripts.collect_boundary_replay_diagnostics',
  't13_unreproduced_control_launch_20261020.json':'scripts.collect_boundary_replay_diagnostics',
  'five_scene_source_replay_launch_20261020.json':'scripts.collect_boundary_replay_diagnostics',
  't18_asset_retry_launch_20261020.json':'scripts.register_t18_table_contact_distances',
@@ -57,6 +60,7 @@ for name,launch in LAUNCHES.items():
  running=pid.exists() and scope.encode() in pid.read_bytes()
  files=[root/'status.json',root/'resource_status.json',pathlib.Path(scope)/'queue_status.json']
  if launch.get('canary_root'):files.append(pathlib.Path(launch['canary_root'])/'status.json')
+ for repetition in launch.get('repeat_roots',[]):files.append(pathlib.Path(repetition)/'status.json')
  fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in files if p.exists())).hexdigest()
  rows.append(dict(name=name,running=running,fingerprint=fingerprint))
 print(json.dumps(rows))

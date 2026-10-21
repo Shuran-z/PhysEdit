@@ -90,7 +90,8 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('T13_remaining_full_retry','t13_remaining_full_retry_launch_20261020.json','p25'),
         ('T15_event_tail_refinement','t15_event_tail_refinement_launch_20261020.json','p25'),
         ('five_scene_refinement','five_scene_boundary_launch_20261020.json','p25'),
-        ('T11_original_p29','t11_original_p29_boundary_launch_20261020.json','p29')]:
+        ('T11_original_p29','t11_original_p29_boundary_launch_20261020.json','p29'),
+        ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25')]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)

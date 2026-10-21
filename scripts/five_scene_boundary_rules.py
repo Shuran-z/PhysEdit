@@ -97,13 +97,16 @@ def intervene(job,theta):
     # At source points use exact original bytes' values, never rounded interpolation.
     if theta==a:c=copy.deepcopy(left)
     if theta==b:c=copy.deepcopy(right)
-    # Released scans can vary seeds across endpoints. A conditional refinement
-    # must keep the consumed source seed fixed, including at the right endpoint.
+    # A conditional refinement fixes one recorded endpoint seed throughout.
+    # T11 pairs already share a seed; other scene scans may use different ones.
+    seed_endpoint=job.get('seed_endpoint',0)
+    if seed_endpoint not in [0,1]:raise ValueError('conditional seed must come from a published endpoint')
+    seed_config=[left,right][seed_endpoint]
     for key in ['random_seed','seed']:
-        if key in left:c[key]=left[key]
+        if key in seed_config:c[key]=seed_config[key]
         else:c.pop(key,None)
     for key in ['random_seed','seed','simulation_seed']:
-        if key in left.get('experiment',{}):c.setdefault('experiment',{})[key]=left['experiment'][key]
+        if key in seed_config.get('experiment',{}):c.setdefault('experiment',{})[key]=seed_config['experiment'][key]
         else:c.setdefault('experiment',{}).pop(key,None)
     c.setdefault('experiment',{})['supplemental_intervention']=dict(family=job['family_id'],theta=theta,source_bracket=job['bracket'])
     return c

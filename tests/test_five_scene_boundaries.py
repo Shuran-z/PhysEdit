@@ -33,6 +33,11 @@ def test_refinement_holds_source_seed_even_at_opposite_published_endpoint():
     j=job();j['endpoints'][0]['config']['random_seed']=123;j['endpoints'][1]['config']['random_seed']=456
     assert intervene(j,.2)['random_seed']==123
     assert intervene(j,.15)['random_seed']==123
+    j['seed_endpoint']=1
+    assert intervene(j,.1)['random_seed']==456
+    assert intervene(j,.15)['random_seed']==456
+    j['seed_endpoint']=2
+    with pytest.raises(ValueError,match='published endpoint'):intervene(j,.15)
 
 
 def test_t11_uses_original_piecewise_force_and_integer_delay_recipe():
