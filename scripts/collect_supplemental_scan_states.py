@@ -13,7 +13,7 @@ def main():
     published={r['sample_id']:r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text())}
     receipts=[];queues=[]
     t09='t09_missing_state_replay_v2_launch_20261020.json' if (ROOT/'t09_missing_state_replay_v2_launch_20261020.json').exists() else 't09_missing_state_replay_launch_20261020.json'
-    for name in [t09,'t06_t10_missing_state_replay_launch_20261020.json']:
+    for name in [t09,'t06_t10_missing_state_replay_launch_20261020.json','t10_parallel_state_replay_launch_20261020.json']:
         path=ROOT/name
         if not path.exists():continue
         launch=json.loads(path.read_text(encoding='utf-8-sig'))

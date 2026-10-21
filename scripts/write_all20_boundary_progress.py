@@ -106,7 +106,8 @@ def main():
    f"待运行{values.get('pending',0)}项；端点未复现或执行失败{values.get('failed',0)}项保留原区间及两侧样本，继续诊断；固定来源种子的条件边界单独标记")
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
-  overrides[scene]=(f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间；新补算事件区间已绑定{replay_scans.get('bound_distinct_samples',{}).get(scene,0)}条不同样本",f"{count}条缺失原状态已进入原后端补算队列，当前完成{supplemental.get('completed_states',{}).get(scene,0)}条；GPU4持续运行，原参考视频及补算来源分别记录")
+  gpu=1 if scene=='T10' and (OUT/'t10_parallel_state_replay_launch_20261020.json').exists() else 4
+  overrides[scene]=(f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间；新补算事件区间已绑定{replay_scans.get('bound_distinct_samples',{}).get(scene,0)}条不同样本",f"{count}条缺失原状态已进入原后端补算队列，当前完成{supplemental.get('completed_states',{}).get(scene,0)}条；GPU{gpu}持续运行，原参考视频及补算来源分别记录")
  if t02_complete:overrides['T02']=('选定发布880/880条的三参数族、事件真值、版本、边界区间及归一化已完成数值对应','此选定版本的数值对应已完成；参考画面准入与模型评分单列')
  remaining={
   'T01':'继续核对其余原任务及其明确目标事件，保留C族非单调转变记录',
