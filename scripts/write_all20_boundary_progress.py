@@ -1,6 +1,7 @@
 """Write evidence-tiered progress; configuration retrieval is not threshold completion."""
 import csv,json
 from pathlib import Path
+from datetime import date
 OUT=Path('review/scene_family_completion_20261018')
 NOTES={
 'T01':('A斜面/书面摩擦；B罐间距；C链条摩擦','540条反事实参数匹配原合同，原中心距离已保存','核对媒体身份及原标定目标事件；C保留非单调记录'),
@@ -107,7 +108,9 @@ def main():
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
   gpu=1 if scene=='T10' and (OUT/'t10_parallel_state_replay_launch_20261020.json').exists() else 4
-  overrides[scene]=(f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间；新补算事件区间已绑定{replay_scans.get('bound_distinct_samples',{}).get(scene,0)}条不同样本",f"{count}条缺失原状态已进入原后端补算队列，当前完成{supplemental.get('completed_states',{}).get(scene,0)}条；GPU{gpu}持续运行，原参考视频及补算来源分别记录")
+  completed=supplemental.get('completed_states',{}).get(scene,0)
+  state='此批状态补算已完成' if completed>=count else f'GPU{gpu}继续补算剩余{count-completed}条'
+  overrides[scene]=(f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间；新补算事件区间已绑定{replay_scans.get('bound_distinct_samples',{}).get(scene,0)}条不同样本",f"缺失状态补算{completed}/{count}条；{state}；原参考视频及补算来源分别记录")
  if t02_complete:overrides['T02']=('选定发布880/880条的三参数族、事件真值、版本、边界区间及归一化已完成数值对应','此选定版本的数值对应已完成；参考画面准入与模型评分单列')
  remaining={
   'T01':'继续核对其余原任务及其明确目标事件，保留C族非单调转变记录',
@@ -137,7 +140,7 @@ def main():
   writer=csv.DictWriter(f,fieldnames=rows[0]);writer.writeheader();writer.writerows(rows)
  target=OUT/'ALL20_PROGRESS.md';historical=OUT/'ALL20_PROGRESS_20261018_HISTORICAL.md'
  if target.exists() and not historical.exists():historical.write_text(target.read_text(encoding='utf-8'),encoding='utf-8')
- lines=['# T01–T20 临界搜索与发布参数对应：2026-10-20','',
+ lines=['# T01–T20 临界搜索与发布参数对应：'+date.today().isoformat(),'',
   '此表只报告原值恢复、参数/版本对应、数值求解和距离接入。视频质量准入与生成模型打分另行统计，不作为找回临界值的额外门槛。',
   '', '| 场景 | 原参数族 | 当前有数值参考的不同样本 | 已完成事项 | 未完成事项 |', '|---|---|---:|---|---|']
  for r in rows:lines.append(f"|{r['scene']}|{r['original_families']}|{r['numerical_reference_samples']}|{r['recovered_evidence']}|{r['remaining']}|")

@@ -8,6 +8,9 @@ import collections
 import json
 from pathlib import Path
 import subprocess
+import inspect
+from scripts.probe_verification_cache import verify_probe_files
+from scripts.boundary_ssh import remote_text
 
 from physedit.boundary import digest,distance
 
@@ -95,34 +98,34 @@ def main():
         registration=json.loads(series.read_text())
         launches.extend([dict(registration,root=root) for root in registration['repeat_roots']])
         query="import pathlib,json;out={};roots="+repr(registration['repeat_roots'])+"\nfor root in roots:\n p=pathlib.Path(root)/'status.json';out[root]=json.loads(p.read_text()) if p.exists() else []\nprint(json.dumps(out))"
-        check=subprocess.run(['ssh','-o','BatchMode=yes',registration['host'],'python3 -'],input=query.encode(),capture_output=True,timeout=30);check.check_returncode()
-        repetition_outcomes=json.loads(check.stdout)
+        repetition_outcomes=json.loads(remote_text(registration['host'],query,timeout=60))
         (ROOT/'t13_repetition_execution_statuses_20261020.json').write_text(json.dumps(repetition_outcomes,indent=2))
     else:repetition_outcomes={}
-    code='''import pathlib,json,hashlib
+    code='''import pathlib,json,hashlib,os
+VERIFY_FUNCTION
 root=pathlib.Path(ROOT);rows=[]
+cp=root/'collector_probe_digest_cache.json';cache=json.loads(cp.read_text()) if cp.exists() else {}
 for result in json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []:
  if result['status']!='local_transition_bracket':continue
  receipts=[]
  for p in (root/result['job_id']).glob('*/receipt.json'):
   r=json.loads(p.read_text())
-  for name,file in [('config_sha256','config.json'),('state_sha256','physics.json')]:
-   assert hashlib.sha256((p.parent/file).read_bytes()).hexdigest()==r[name]
+  verify_probe_files(r,p.parent,cache)
   assert r['backend_sha256']==result['backend_sha256']
   receipts.append(r)
  rows.append(dict(result=result,receipts=receipts))
+temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(rows))
-'''
+'''.replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
     merged=collections.defaultdict(list)
     for launch in launches:
-        p=subprocess.run(['ssh','-o','BatchMode=yes',launch.get('host','p25'),'python3 -'],input=code.replace('ROOT',repr(launch['root'])).encode(),capture_output=True,timeout=90);p.check_returncode()
-        for record in json.loads(p.stdout):
+        data=remote_text(launch.get('host','p25'),code.replace('ROOT',repr(launch['root'])),timeout=300)
+        for record in json.loads(data):
             record['source_root']=launch['root']
             record['repetition_execution_statuses']=[dict(source_root=root,**outcome) for root,attempts in repetition_outcomes.items() for outcome in attempts if outcome['job_id']==record['result']['job_id']]
             if launch.get('repeat_control_root'):
                 query="import pathlib,json;p=pathlib.Path("+repr(launch['repeat_control_root'])+")/'comparison.json';print(p.read_text() if p.exists() else '{}')"
-                check=subprocess.run(['ssh','-o','BatchMode=yes',launch.get('host','p25'),'python3 -'],input=query.encode(),capture_output=True,timeout=30);check.check_returncode()
-                record['observed_repeat_variation']=json.loads(check.stdout)
+                record['observed_repeat_variation']=json.loads(remote_text(launch.get('host','p25'),query,timeout=60))
             merged[record['result']['job_id']].append(record)
     evidence=[]
     for records in merged.values():

@@ -3,6 +3,9 @@ import collections
 import hashlib
 import json
 import subprocess
+import inspect
+from scripts.probe_verification_cache import verify_probe_files
+from scripts.boundary_ssh import remote_text, SSHTransportError
 from scripts.export_original_boundary_distances import ROOT, distances
 
 BASES = ['t01_published_event_sample_distances', 't04_t05_supplemental_sample_distances',
@@ -11,6 +14,7 @@ LAUNCHES = [('five_scene_boundary_launch_20261020.json', 'five_scene_prepared_pl
             ('five_scene_alternate_seed_launch_20261020.json', 'five_scene_alternate_seed_plan_20261020.json'),
             ('t11_original_p29_boundary_launch_20261020.json', 't11_original_p29_boundary_plan_20261020.json'),
             ('t11_verified_p26_producer_launch_20261020.json', 't11_verified_p26_producer_plan_20261020.json')]
+LAUNCHES += [('five_scene_parallel_'+str(i)+'_launch_20261021.json','five_scene_parallel_'+str(i)+'_plan_20261021.json') for i in range(4)]
 
 
 def identity(row):
@@ -48,10 +52,12 @@ def bind(rows, matches):
 
 def collect(launch):
     code=r'''
-import pathlib,json,hashlib,gzip
+import pathlib,json,hashlib,gzip,os
+VERIFY_FUNCTION
 launch=LAUNCH
 root=pathlib.Path(launch['root']); p=root/'status.json'
 rows=json.loads(p.read_text()) if p.exists() else []
+cp=root/'collector_probe_digest_cache.json';cache=json.loads(cp.read_text()) if cp.exists() else {}
 sha=lambda b:hashlib.sha256(b).hexdigest()
 for row in rows:
  if row['status']!='refined_local_interval':continue
@@ -62,27 +68,42 @@ for row in rows:
  for probe in row['probes']:
   sp=pathlib.Path(probe['state_path'])
   if root.resolve() not in sp.resolve().parents:raise ValueError('state outside run')
-  stored=sp.read_bytes()
-  if sha(stored)!=probe['stored_state_sha256'] or sha(gzip.decompress(stored))!=probe['state_sha256']:raise ValueError('numeric state changed')
-  if sha((sp.parent/'config.json').read_bytes())!=probe['config_sha256']:raise ValueError('numeric config changed')
+  verify_probe_files(probe,sp.parent,cache)
   if probe['backend_sources']!=row['backend_sources'] or probe['execution_sources']!=row['execution_sources']:raise ValueError('probe provenance mismatch')
 canary=pathlib.Path(launch.get('canary_root',launch['root']))/'status.json'
 resource=root/'resource_status.json'
+temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(dict(rows=rows,canary=json.loads(canary.read_text()) if canary.exists() and 'canary_root' in launch else [],resource=json.loads(resource.read_text()) if resource.exists() else {})))
-'''.replace('LAUNCH',repr(launch))
-    p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12',launch['host'],'python3 -'],input=code.encode(),capture_output=True,timeout=240)
-    if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
-    return json.loads(p.stdout)
+'''.replace('LAUNCH',repr(launch)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
+    try:
+        data=json.loads(remote_text(launch['host'],code,timeout=300))
+        data['collection_access_host']=launch['host']
+    except SSHTransportError:
+        # These archive/result paths are the same mounted volume on p26/p29.
+        # This query checks files and hashes only, never another host's /proc.
+        if launch['host']!='p29' or not launch['root'].startswith('/21231_data1/'):raise
+        data=json.loads(remote_text('p26',code,timeout=300))
+        data['collection_access_host']='p26'
+        data['shared_volume_transport_fallback']=True
+    return data
 
 
 def main():
     matches={}; by_scene=collections.defaultdict(collections.Counter); evidence=[]
     planned=collections.defaultdict(set);outcomes={}
+    previous=ROOT/'five_scene_refinement_evidence_20261020.json'
+    cached={(r['launch']['host'],r['launch']['root']):r for r in json.loads(previous.read_text())} if previous.exists() else {}
     for filename,planfile in LAUNCHES:
         if not (ROOT/filename).exists():continue
         launch=json.loads((ROOT/filename).read_text(encoding='utf-8-sig'))
         jobs=json.loads((ROOT/planfile).read_text(encoding='utf-8')); plan={j['job_id']:dict(j,refinement_execution_host=launch['host']) for j in jobs}
-        data=collect(launch); evidence.append(dict(launch=launch,**data))
+        try:data=collect(launch)
+        except SSHTransportError as exc:
+            saved=cached.get((launch['host'],launch['root']))
+            if saved is None:raise
+            data={k:v for k,v in saved.items() if k!='launch'}
+            data.update(collection_status='unreachable_reusing_previously_verified_evidence',collection_error=str(exc))
+        evidence.append(dict(launch=launch,**data))
         for job in jobs:
             planned[job['scene_id']].add(job['job_id'])
             if job.get('seed_endpoint',0):by_scene[job['scene_id']]['alternate_seed_attempts']+=1

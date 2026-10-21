@@ -5,6 +5,7 @@ import json
 import inspect
 import subprocess
 from scripts.export_original_boundary_distances import ROOT,distances
+from scripts.boundary_ssh import remote_text
 from scripts.supplement_t09_published_support_boundaries import context
 from scripts.state_integrity_cache import state_identity
 
@@ -36,9 +37,7 @@ for row in rows:
 temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(dict(rows=rows,resource=json.loads((root/'resource_status.json').read_text()) if (root/'resource_status.json').exists() else {})))
 '''.replace('ROOT_DIRECTORY',repr(launch['root'])).replace('IDENTITY_FUNCTION',inspect.getsource(state_identity))
-        p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=code.encode(),capture_output=True,timeout=180)
-        if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
-        data=json.loads(p.stdout);queues.append(dict(root=launch['root'],resource=data['resource']))
+        data=json.loads(remote_text(launch['host'],code,timeout=180));queues.append(dict(root=launch['root'],resource=data['resource']))
         for r in data['rows']:
             if r['status']=='supplemental_original_backend_state' and r['source_config_sha256']!=published[r['sample_id']]['sha256']:raise ValueError('replay not bound to selected published config')
             receipts.append(dict(r,replay_root=launch['root']))
