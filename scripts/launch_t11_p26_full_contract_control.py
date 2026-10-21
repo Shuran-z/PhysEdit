@@ -1,17 +1,20 @@
 """One original three-camera control on its recorded p26 production GPU."""
 import json
+import argparse
 import subprocess
 from scripts.export_original_boundary_distances import ROOT
 
 
 def main():
-    receipt=ROOT/'t11_p26_full_contract_control_launch_20261021.json'
+    parser=argparse.ArgumentParser();parser.add_argument('--replicate',type=int,choices=[1,2],default=1);args=parser.parse_args()
+    suffix='' if args.replicate==1 else '_repeat2'
+    receipt=ROOT/('t11_p26_full_contract_control'+suffix+'_launch_20261021.json')
     if receipt.exists():raise RuntimeError('full producer control already launched')
     job=json.loads((ROOT/'t11_verified_p26_producer_plan_20261020.json').read_text())[0]
     endpoint=job['endpoints'][0];production=job['production_completion_receipts'][0]
     if production['production_host']!='p26':raise ValueError('producer not verified')
     gpu=int(production['worker'].split('_gpu')[1].split('_')[0])
-    directory='/21231_data1/liyuhan_t11_genesis_20261016/p26_full_contract_control_20261021'
+    directory='/21231_data1/liyuhan_t11_genesis_20261016/p26_full_contract_control_20261021'+suffix
     pipeline=r'''
 import pathlib,json,subprocess,hashlib,copy,os,time,gzip,math
 r=pathlib.Path(DIRECTORY);r.mkdir(parents=True,exist_ok=True);endpoint=ENDPOINT;production=PRODUCTION;gpu=GPU
@@ -47,7 +50,7 @@ out=dict(status='completed_full_producer_control',sample_id=endpoint['sample_id'
     code="import pathlib,subprocess,json\nr=pathlib.Path("+repr(directory)+");r.mkdir(parents=True,exist_ok=True)\n(r/'pipeline.py').write_text("+repr(pipeline)+")\nwith (r/'pipeline.log').open('w') as log:p=subprocess.Popen(['python3',str(r/'pipeline.py')],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)\nprint(json.dumps(dict(pid=p.pid)))"
     result=subprocess.run(['ssh','p26','python3 -'],input=code.encode(),capture_output=True,timeout=45)
     if result.returncode:raise RuntimeError(result.stderr.decode(errors='replace'))
-    launch=dict(host='p26',root=directory,gpu=gpu,sample_id=endpoint['sample_id'],diagnostic_only=True,**json.loads(result.stdout));receipt.write_text(json.dumps(launch,indent=2));print(json.dumps(launch))
+    launch=dict(host='p26',root=directory,gpu=gpu,replicate=args.replicate,sample_id=endpoint['sample_id'],diagnostic_only=True,**json.loads(result.stdout));receipt.write_text(json.dumps(launch,indent=2));print(json.dumps(launch))
 
 
 if __name__=='__main__':main()

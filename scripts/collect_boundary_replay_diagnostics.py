@@ -6,7 +6,7 @@ from scripts.export_original_boundary_distances import ROOT
 
 def main():
     output={}
-    for name in ['t11_p26_full_contract_control_launch_20261021.json','t13_fixed_seed_control_launch_20261021.json','t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
+    for name in ['t11_p26_full_contract_control_repeat2_launch_20261021.json','t11_p26_full_contract_control_launch_20261021.json','t13_fixed_seed_control_launch_20261021.json','t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
         if not (ROOT/name).exists():continue
         launch=json.loads((ROOT/name).read_text())
         code=r'''
@@ -26,6 +26,8 @@ print(json.dumps(out))
         if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
         output[name]=dict(launch=launch,results=json.loads(p.stdout),diagnostic_only=True)
     (ROOT/'boundary_replay_diagnostics_20261020.json').write_text(json.dumps(output,indent=2));print(json.dumps({name:list(data['results']) for name,data in output.items()}))
+    from scripts.analyze_boundary_controls import main as analyze
+    analyze()
 
 
 if __name__=='__main__':main()

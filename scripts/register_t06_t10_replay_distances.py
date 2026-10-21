@@ -50,10 +50,14 @@ def context(config, family):
     return hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
 
 
+def replay_launches(root):
+    return [root/name for name in ['t06_t10_missing_state_replay_launch_20261020.json','t10_parallel_state_replay_launch_20261020.json'] if (root/name).exists()]
+
+
 def main():
-    launch_path=ROOT/'t06_t10_missing_state_replay_launch_20261020.json'
-    if not launch_path.exists():return
-    launch=json.loads(launch_path.read_text());rule=inspect.getsource(replay_events)
+    launch_paths=replay_launches(ROOT)
+    if not launch_paths:return
+    rule=inspect.getsource(replay_events)
     code=r'''
 import pathlib,json,gzip,hashlib,math,os
 RULE
@@ -73,10 +77,16 @@ for row in rows:
  cache[str(path)]=dict(key=key,event=event);out.append(event)
 temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(out))
-'''.replace('RULE_TEXT',repr(rule)).replace('RULE',rule).replace('ROOT_DIRECTORY',repr(launch['root'])).replace('IDENTITY_FUNCTION',inspect.getsource(state_identity))
-    p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=code.encode(),capture_output=True,timeout=180)
-    if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
-    evidence=json.loads(p.stdout);published={r['sample_id']:r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text()) if r['scene_id'] in ['T06','T10']}
+'''.replace('RULE_TEXT',repr(rule)).replace('RULE',rule).replace('IDENTITY_FUNCTION',inspect.getsource(state_identity))
+    evidence=[]
+    for launch_path in launch_paths:
+        launch=json.loads(launch_path.read_text())
+        query=code.replace('ROOT_DIRECTORY',repr(launch['root']))
+        p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=query.encode(),capture_output=True,timeout=180)
+        if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
+        evidence.extend(json.loads(p.stdout))
+    if len({r['sample_id'] for r in evidence})!=len(evidence):raise ValueError('duplicate replay samples across queues')
+    published={r['sample_id']:r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text()) if r['scene_id'] in ['T06','T10']}
     domains=collections.defaultdict(list)
     for source in published.values():
         c=source['config'];family=c['experiment']['parameter']['parameter_name'];domains[(source['scene_id'],family,context(c,family))].append(c['experiment']['parameter']['parameter_value'])
