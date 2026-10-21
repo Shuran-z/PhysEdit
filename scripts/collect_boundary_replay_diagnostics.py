@@ -6,7 +6,7 @@ from scripts.export_original_boundary_distances import ROOT
 
 def main():
     output={}
-    for name in ['t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
+    for name in ['t11_p26_full_contract_control_launch_20261021.json','t13_fixed_seed_control_launch_20261021.json','t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
         if not (ROOT/name).exists():continue
         launch=json.loads((ROOT/name).read_text())
         code=r'''
