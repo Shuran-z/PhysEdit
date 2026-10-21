@@ -77,6 +77,7 @@ def main():
  t15_refined=max(additional.get('T15_refined',{}).get('statuses',{}).get('refined_local_interval',0),additional.get('T15_event_tail_refinement',{}).get('statuses',{}).get('refined_local_interval',0))
  metadata=load('t16_t20_contact_summary_20261020.json')
  t09=load('original_value_distance_ledger/t09_table_contact_refinement_summary.json')
+ t09_pull=load('original_value_distance_ledger/t09_pull_refinement_summary.json')
  t12=load('original_value_distance_ledger/t12_refinement_binding_summary.json')
  t13=load('t13_current_solver_binding_summary.json')
  t18=load('t18_table_contact_preparation_summary_20261020.json')
@@ -88,7 +89,7 @@ def main():
  t02=load('t02_published_scoring_registry.json')
  t02_complete=isinstance(t02,list) and len(t02)==880 and all(r.get('numerical_reference_verified') and r.get('mapping_status')=='matched' and r.get('boundary',{}).get('status')=='verified' for r in t02)
  overrides={
-  'T09':(f"真实末帧触桌事件：580条原状态；12个已识别局部区间已细化{t09.get('refined_intervals',0)}/12；176条不同参考样本保留距离",f"原状态缺失的300条pull样本已启动原后端补算，已回收{supplemental.get('completed_states',{}).get('T09',0)}/300；补算来源单列，下沉代理不计事件边界"),
+  'T09':(f"真实末帧触桌事件：580条原状态；摩擦轴细化{t09.get('refined_intervals',0)}/12，抽取力轴细化{t09_pull.get('refined_intervals',0)}/{t09_pull.get('planned',8)}；两轴距离均已接入",f"缺失300条pull状态已回收{supplemental.get('completed_states',{}).get('T09',0)}/300；抽取力待完成{t09_pull.get('pending',0)}项、失败{t09_pull.get('failed',0)}项；补算来源单列，下沉代理不计事件边界；无观测翻转的上下文保留原记录"),
   'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'余下切片继续求解；两侧样本及未细化原发布区间保留'),
   'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间",'原完整入口对照已完成；未复现项继续做同配置重复与环境差异诊断，保留原发布区间，不将运行中对照记为修复成功'),
   'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"其余原三参数族继续运行；已完成组中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本；T14S另列"),

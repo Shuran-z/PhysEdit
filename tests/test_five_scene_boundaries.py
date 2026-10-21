@@ -3,6 +3,7 @@ import pytest
 from scripts.five_scene_boundary_rules import intervene,t11_intervention,event
 from scripts.register_five_scene_refinements import bind,identity
 from scripts.prepare_five_scene_boundaries import metadata_header
+from scripts.five_scene_boundary_worker import numeric_render
 import json
 import gzip
 
@@ -82,3 +83,14 @@ def test_fast_header_reads_top_level_fields_even_after_large_frames():
                 frames=[{'experiment':{'manifest':'also wrong'}}],dynamic_objects=[{'name':'target'}],runtime_forces=[])
     raw=gzip.compress(json.dumps(source,indent=2).encode())
     assert metadata_header(raw)=={k:v for k,v in source.items() if k!='frames'}
+
+
+def test_original_render_mode_retains_raytracer_and_all_physics_timing():
+    c=dict(scene_overrides=dict(raytracing=True,dt=.001,substeps=4,gravity=[0,0,-15]),
+           render=dict(render_backend='raytracing',fps=30,frames=210,physics_steps_per_render_frame=67,pre_static_frames=60),dynamic_objects=[dict(mass=.1)])
+    original=copy.deepcopy(c);numeric_render(c,'original')
+    assert c['scene_overrides']==original['scene_overrides']
+    assert c['render']['render_backend']=='raytracing'
+    assert c['dynamic_objects']==original['dynamic_objects']
+    assert all(c['render'][k]==v for k,v in original['render'].items())
+    numeric_render(c,'raster');assert c['render']['render_backend']=='raster' and c['scene_overrides']['raytracing'] is False

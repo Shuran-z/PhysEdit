@@ -35,14 +35,22 @@ def isolate(value,folder):
         for item in value:isolate(item,folder)
 
 
+def numeric_render(config, backend):
+    if backend not in ['raster','original']:raise ValueError('unsupported numeric rendering backend')
+    config['render'].update(write_video=False,resolution=[160,96],raytracing_spp=1)
+    if backend=='raster':
+        config['render']['render_backend']='raster';config['scene_overrides']['raytracing']=False
+
+
 def main():
     import fcntl
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);parser.add_argument('--minimum-free-memory-mib',type=int,default=12288);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);parser.add_argument('--minimum-free-memory-mib',type=int,default=12288);parser.add_argument('--render-backend',choices=['raster','original'],default='raster');parser.add_argument('--renderer-bootstrap');args=parser.parse_args()
     if args.minimum_free_memory_mib<2048:parser.error('numeric execution requires at least 2048 MiB of free-memory headroom')
     if args.published_endpoint_replay and not args.endpoints_only:parser.error('published endpoint replay is diagnostic only; requires --endpoints-only')
     root=Path(args.root);root.mkdir(exist_ok=True,parents=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None];results=[]
     execution_sources={str(p):sha(p.read_bytes()) for p in [Path(__file__),Path(__file__).with_name('five_scene_boundary_rules.py')]}
+    if args.renderer_bootstrap:execution_sources[args.renderer_bootstrap]=sha(Path(args.renderer_bootstrap).read_bytes())
     for job in jobs:
         folder=root/job['job_id'];folder.mkdir(exist_ok=True);rp=folder/'result.json';probes=[]
         try:
@@ -72,14 +80,14 @@ def main():
                     save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu,minimum_free_memory_mib=args.minimum_free_memory_mib));time.sleep(20)
                 c=copy.deepcopy(next(e['config'] for e in job['endpoints'] if e['theta']==theta)) if args.published_endpoint_replay else intervene(job,theta)
                 isolate(c['render'],dest);isolate(c['annotations'],dest)
-                c['render'].update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1);c['scene_overrides']['raytracing']=False
+                numeric_render(c,args.render_backend)
                 sp=dest/'physics.json';c['annotations']['save_path']=str(sp);cp=dest/'config.json';save(cp,c)
                 env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0')
                 lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
-                command=[args.python,job['renderer'],'--config',str(cp)]
+                command=[args.python]+([args.renderer_bootstrap] if args.renderer_bootstrap else [])+[job['renderer'],'--config',str(cp)]
                 if job['scene_id']=='T11':command.append('--strict-live-physics')
                 with (dest/'run.log').open('w') as log:run=subprocess.run(command,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
-                if run.returncode:raise RuntimeError('original renderer failed; '+str(dest/'run.log'))
+                if run.returncode:raise RuntimeError('original renderer failed (exit '+str(run.returncode)+'); '+str(dest/'run.log'))
                 raw=sp.read_bytes();state=json.loads(raw)
                 if len(state['frames'])!=210 or any(not math.isfinite(v) for f in state['frames'] for o in f['objects'] for v in o['position']):raise ValueError('incomplete/nonfinite state')
                 specs={o['name']:o['spec'] for o in state['dynamic_objects']};expected={o['name']:o for o in c['dynamic_objects']}
