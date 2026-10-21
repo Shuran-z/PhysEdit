@@ -1,10 +1,12 @@
 """Bisect geometry-labeled T09 windows using original seeded Genesis renderer."""
 import argparse
 import copy
+import gzip
 import hashlib
 import json
 import math
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import time
@@ -53,7 +55,7 @@ def save(path,value):
 
 def main():
     import fcntl
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='3');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='3');parser.add_argument('--compress-states',action='store_true');args=parser.parse_args()
     root=Path(args.root);root.mkdir(parents=True,exist_ok=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text(encoding='utf-8'));results=[]
     sources={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [RENDERER,PROJECT/'scripts/render_t06_t10_physics_v2.py',PROJECT/'scripts/render_base_physical_v5.py']}
@@ -66,6 +68,9 @@ def main():
             def evaluate(theta):
                 dest=folder/format(theta,'.12g');dest.mkdir(exist_ok=True);rp=dest/'receipt.json'
                 if rp.exists():return json.loads(rp.read_text())
+                if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
+                while float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())<12*1024:
+                    save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu));time.sleep(20)
                 c=change(base,axis,theta);render=c['render'];render.update(resolution=[160,96],raytracing_spp=1,render_backend='raster')
                 for key in ['save_video','save_first_rgb','save_last_rgb']:
                     if key in render:render[key]=str(dest/Path(render[key]).name)
@@ -77,6 +82,13 @@ def main():
                     run=subprocess.run([PYTHON,str(RENDERER),'--config',str(cp)],cwd=PROJECT,env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0'),stdout=log,stderr=subprocess.STDOUT,timeout=300)
                 raw=(dest/'physics.json').read_bytes();state=json.loads(raw);measured=event(c,state,job.get('target_event','geometry_support_drop'))
                 result=dict(theta=theta,**measured,renderer_returncode=run.returncode,elapsed_s=time.monotonic()-begin,config_sha256=hashlib.sha256(cp.read_bytes()).hexdigest(),state_sha256=hashlib.sha256(raw).hexdigest(),state_path=str(dest/'physics.json'),seed=c['seed'])
+                result['config_path']=str(cp)
+                if args.compress_states:
+                    stored=gzip.compress(raw,compresslevel=3,mtime=0);sp=dest/'physics.json.gz';sp.write_bytes(stored)
+                    if gzip.decompress(sp.read_bytes())!=raw:raise ValueError('state compression failed')
+                    result.update(state_path=str(sp),stored_state_sha256=hashlib.sha256(stored).hexdigest())
+                    if root.resolve() not in (dest/'physics.json').resolve().parents:raise ValueError('state outside task root')
+                    (dest/'physics.json').unlink()
                 # A visual post-check is independent of a complete numeric state.
                 save(rp,result);return result
             for value,label in zip([a,b],labels):

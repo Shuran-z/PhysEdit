@@ -8,7 +8,7 @@ from scripts.export_original_boundary_distances import ROOT
 REMOTE=r'''
 import collections,hashlib,json,math,pathlib
 base=pathlib.Path('/data_cached/wangzijun_p25/liyuhan');actors=['t13_driver_book','t13_falling_book','t13_drink_box'];rows=[]
-for name in ['t13_current_boundary_context_bound_20261019','t13_original_full_retry_20261020']:
+for name in ['t13_current_boundary_context_bound_20261019','t13_original_full_retry_20261020','t13_remaining_full_retry_20261020']:
  root=base/name
  statuses=json.loads((root/'status.json').read_text())
  for failed in statuses:
@@ -28,11 +28,16 @@ for name in ['t13_current_boundary_context_bound_20261019','t13_original_full_re
    actual=int(motion>=.01) if job['target_event']=='t13_drink_box_motion_ge_1cm' else int(drop>=.05)
    pre=max(deltas[:first],default=0);label_match=actual==endpoint['label']
    cfg=json.loads((folder/'config.json').read_text());expected={o['name']:o for o in endpoint['config']['dynamic_objects']};got={o['name']:o for o in cfg['dynamic_objects']}
+   source_log=pathlib.Path('/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/outputs')/('t13_full_render_'+endpoint['config']['background_id'])/ 'logs'/(endpoint['sample_id']+'.log')
+   tokens=['version:','Genesis initialized','genesis_module_file=','precision','backend:','Running on','seed']
+   def runtime_lines(p):
+    return [line[-700:] for line in p.read_text(errors='replace').splitlines() if any(t in line for t in tokens)][:25] if p.exists() else []
    rows.append(dict(root=name,job_id=job['job_id'],sample_id=endpoint['sample_id'],theta=endpoint['theta'],event=job['target_event'],expected_label=endpoint['label'],actual_label=actual,
     precontact_error_m=pre,first_dynamic_contact_frame=first,first_over_5mm_frame=next((i for i,v in enumerate(deltas) if v>.005),None),
     motion_m=motion,drop_m=drop,source_objects_match=got==expected,scene_physics_match=cfg['scene_overrides']==endpoint['config']['scene_overrides'],
     classification='matches_under_corrected_window' if pre<=.005 and label_match else 'event_mismatch_after_matching_precontact' if pre<=.005 else 'precontact_mismatch',
-    state_sha256=hashlib.sha256(raw).hexdigest(),source_state_sha256=endpoint['state_sha256']))
+    state_sha256=hashlib.sha256(raw).hexdigest(),source_state_sha256=endpoint['state_sha256'],
+    original_log_path=str(source_log),original_runtime_lines=runtime_lines(source_log),replay_runtime_lines=runtime_lines(folder/'run.log')))
 print(json.dumps(rows))
 '''
 
