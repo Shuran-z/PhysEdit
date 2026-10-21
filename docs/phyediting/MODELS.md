@@ -13,6 +13,7 @@ physedit models --json
 | :---: | :---: | :---: |
 | LTX-Video 2B | I2V / V2V | [Hugging Face](https://huggingface.co/Lightricks/LTX-Video) |
 | LTX-Video 2B — PhyDataset SFT-LoRA (ZH) | I2V / V2V | [基础模型](https://huggingface.co/Lightricks/LTX-Video) · [中文 LoRA 权重](https://github.com/Shuran-z/PhysEdit/releases/download/ltx-video-2b-phydataset-zh-lora-v1/phydataset-zh-sft-lora-step188.safetensors) |
+| LTX-Video 2B — PhyDataset SFT-LoRA (EN) | I2V / V2V | [基础模型](https://huggingface.co/Lightricks/LTX-Video) · [英文 LoRA 权重](https://github.com/Shuran-z/PhysEdit/releases/download/ltx-video-2b-phydataset-en-lora-v1/phydataset-en-sft-lora-step188.safetensors) |
 | CogVideoX 1.5 | I2V | [Hugging Face](https://huggingface.co/zai-org/CogVideoX1.5-5B-I2V) |
 | Wan 2.2 5B | I2V | [Diffusers权重](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers) |
 | HunyuanVideo 1.5 | I2V | [480p步数蒸馏权重](https://huggingface.co/hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_i2v_step_distilled) |
