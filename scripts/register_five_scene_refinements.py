@@ -9,7 +9,8 @@ BASES = ['t01_published_event_sample_distances', 't04_t05_supplemental_sample_di
          't08_supplemental_sample_distances', 't11_supplemental_sample_distances']
 LAUNCHES = [('five_scene_boundary_launch_20261020.json', 'five_scene_prepared_plan_20261020.json'),
             ('five_scene_alternate_seed_launch_20261020.json', 'five_scene_alternate_seed_plan_20261020.json'),
-            ('t11_original_p29_boundary_launch_20261020.json', 't11_original_p29_boundary_plan_20261020.json')]
+            ('t11_original_p29_boundary_launch_20261020.json', 't11_original_p29_boundary_plan_20261020.json'),
+            ('t11_verified_p26_producer_launch_20261020.json', 't11_verified_p26_producer_plan_20261020.json')]
 
 
 def identity(row):
@@ -35,6 +36,9 @@ def bind(rows, matches):
                        backend_sources=result['backend_sources'], execution_sources=result['execution_sources'],
                        refinement_source_seed=job['endpoints'][job.get('seed_endpoint',0)]['config'].get('random_seed'),
                        refinement_seed_endpoint=job.get('seed_endpoint',0),
+                       refinement_execution_host=job.get('refinement_execution_host'),
+                       verified_production_host=job.get('production_host'),
+                       production_completion_receipts=job.get('production_completion_receipts'),
                        refinement_scope='source endpoint seed held fixed; published labels and states retained',
                        formal_nearacc_eligible=False)
             count+=1
@@ -77,7 +81,7 @@ def main():
     for filename,planfile in LAUNCHES:
         if not (ROOT/filename).exists():continue
         launch=json.loads((ROOT/filename).read_text(encoding='utf-8-sig'))
-        jobs=json.loads((ROOT/planfile).read_text(encoding='utf-8')); plan={j['job_id']:j for j in jobs}
+        jobs=json.loads((ROOT/planfile).read_text(encoding='utf-8')); plan={j['job_id']:dict(j,refinement_execution_host=launch['host']) for j in jobs}
         data=collect(launch); evidence.append(dict(launch=launch,**data))
         for job in jobs:
             planned[job['scene_id']].add(job['job_id'])
@@ -97,7 +101,7 @@ def main():
             labels={p['theta']:p['label'] for p in row['probes']}
             if labels.get(a)!=row['endpoint_labels'][0] or labels.get(b)!=row['endpoint_labels'][1]:raise ValueError('final endpoints lack opposite evidence')
             source=job['source_window'];key=identity(dict(scene_id=job['scene_id'],family_id=job['family_id'],target_event=job['target_event'],endpoint_sample_ids=source['endpoint_sample_ids'],original_boundary_interval=job['bracket']))
-            if key in matches:continue  # Keep a completed original-seed result if already present.
+            if key in matches and not (job.get('production_host')==launch['host'] and matches[key][0].get('production_host')!=launch['host']):continue
             matches[key]=(job,row)
     out=ROOT/'original_value_distance_ledger';summaries={}
     for stem in BASES:
