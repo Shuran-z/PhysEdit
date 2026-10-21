@@ -46,7 +46,7 @@ def main():
     out=ROOT/'original_value_distance_ledger'
     sources=[(out/'sample_distances.jsonl','recovered_original'),(out/'recorded_rendering_star_distances.jsonl','rendering_star'),
         (out/'t03_recorded_rendering_star_distances.jsonl','rendering_star'),(out/'t11_recorded_rendering_star_distances.jsonl','rendering_star')]
-    sources += [(out/name,'supplemental') for name in ['t03_supplemental_sample_distances.jsonl','t04_t05_supplemental_sample_distances.jsonl',
+    sources += [(out/name,'supplemental') for name in ['t01_published_event_sample_distances.jsonl','t03_supplemental_sample_distances.jsonl','t04_t05_supplemental_sample_distances.jsonl',
         't12_supplemental_sample_distances.jsonl','t15_supplemental_sample_distances.jsonl','t11_supplemental_sample_distances.jsonl','t08_supplemental_sample_distances.jsonl','t06_supplemental_sample_distances.jsonl']]
     t09_base=out/'t09_geometry_drop_sample_distances.jsonl';t09_bound=out/'t09_bound_sample_distances.jsonl';t09_receipt=out/'t09_refinement_binding_summary.json'
     current_bound=(t09_base.exists() and t09_bound.exists() and t09_receipt.exists() and
@@ -61,11 +61,24 @@ def main():
     sources.append((out/'t16_t20_published_contact_sample_distances.jsonl','supplemental'))
     sources.append((out/'t18_table_contact_sample_distances.jsonl','supplemental'))
     sources.append((out/'t09_pull_supplemental_sample_distances.jsonl','supplemental'))
+    pull_summary=out/'t09_pull_refinement_summary.json'
+    if pull_summary.exists() and (out/'t09_pull_refined_sample_distances.jsonl').exists() and json.loads(pull_summary.read_text()).get('base_sha256')==hashlib.sha256((out/'t09_pull_supplemental_sample_distances.jsonl').read_bytes()).hexdigest():
+        sources=[(out/'t09_pull_refined_sample_distances.jsonl',kind) if path==out/'t09_pull_supplemental_sample_distances.jsonl' else (path,kind) for path,kind in sources]
     sources.append((out/'t14_all_context_sample_distances.jsonl','supplemental'))
     t12_summary=out/'t12_refinement_binding_summary.json'
     if t12_summary.exists() and (out/'t12_refined_sample_distances.jsonl').exists() and json.loads(t12_summary.read_text()).get('base_sha256')==hashlib.sha256((out/'t12_supplemental_sample_distances.jsonl').read_bytes()).hexdigest():
         sources=[(out/'t12_refined_sample_distances.jsonl',kind) if path==out/'t12_supplemental_sample_distances.jsonl' else (path,kind) for path,kind in sources]
     sources += [(ROOT/'t07_original_search_distance_registry.json','supplemental')]
+    receipt=ROOT/'five_scene_refinement_summary_20261020.json'
+    if receipt.exists():
+        bindings=json.loads(receipt.read_text(encoding='utf-8')).get('sources',{})
+        selected=[]
+        for path,kind in sources:
+            overlay=path.with_name(path.stem+'_refined.jsonl')
+            proof=bindings.get(path.stem,{})
+            valid=path.exists() and overlay.exists() and proof.get('base_sha256')==hashlib.sha256(path.read_bytes()).hexdigest() and proof.get('overlay_sha256')==hashlib.sha256(overlay.read_bytes()).hexdigest()
+            selected.append((overlay if valid else path,kind))
+        sources=selected
     rows=[];source_counts=[]
     for path,kind in sources:
         loaded=read(path);rows.extend(normalize(r,path,kind) for r in loaded);source_counts.append(dict(path=str(path),records=len(loaded)))

@@ -96,6 +96,10 @@ def main():
  for scene in ['T16','T17','T20']:
   overrides[scene]=(f"Genesis发布metadata已全部逐字节对应：{metadata.get('verified_metadata',{}).get(scene,0)}条；原参数扫描已登记{metadata.get('unique_bound_samples',{}).get(scene,0)}条不同样本的接触事件区间",'保留各原参数轴和修复版本；已有扫描区间与精确原求解值分列，其余命名事件/上下文继续处理')
  overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离",'B初始位置族180条原状态已查：三位置均发生1cm运动，不能沿用A/C启动事件强造边界；继续查B原目标定义，不把末帧接触改称跌落')
+ five=load('five_scene_refinement_summary_20261020.json')
+ for scene,values in five.get('scenes',{}).items():
+  overrides[scene]=(f"原发布异侧区间任务{values.get('planned',0)}项；已接入原后端细化区间{values.get('refined_local_interval',0)}项",
+   f"待运行{values.get('pending',0)}项；端点未复现或执行失败{values.get('failed',0)}项保留原区间及两侧样本，继续诊断；固定来源种子的条件边界单独标记")
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
   overrides[scene]=(f"已登记{item['unique_samples_with_numerical_reference']}条不同参考样本的原值/补算区间",f"{count}条缺失原状态已进入原后端补算队列，当前完成{supplemental.get('completed_states',{}).get(scene,0)}条；等待本任务T09释放GPU4，原参考视频保留")

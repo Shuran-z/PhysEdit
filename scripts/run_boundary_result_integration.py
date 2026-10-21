@@ -14,6 +14,12 @@ import time
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't13_unreproduced_control_launch_20261020.json':'scripts.collect_boundary_replay_diagnostics',
+ 'five_scene_source_replay_launch_20261020.json':'scripts.collect_boundary_replay_diagnostics',
+ 't18_asset_retry_launch_20261020.json':'scripts.register_t18_table_contact_distances',
+ 't09_pull_refinement_launch_20261020.json':'scripts.register_t09_pull_refinement',
+ 'five_scene_boundary_launch_20261020.json':'scripts.register_five_scene_refinements',
+ 't11_original_p29_boundary_launch_20261020.json':'scripts.register_five_scene_refinements',
  't15_event_tail_refinement_launch_20261020.json':'scripts.register_t15_all_context_distances',
  't14_formal_search_launch_20261019.json':'scripts.register_t14_all_context_distances',
  't12_supplemental_refinement_launch.json':'scripts.register_t12_refined_distances',
@@ -49,15 +55,21 @@ for name,launch in LAUNCHES.items():
  scope=launch.get('pipeline_root',str(root))
  if 'pipeline_root' not in launch and root.name in ['run','legacy_run','run_v2']:scope=str(root.parent)
  running=pid.exists() and scope.encode() in pid.read_bytes()
- files=[root/'status.json',root/'resource_status.json']
+ files=[root/'status.json',root/'resource_status.json',pathlib.Path(scope)/'queue_status.json']
+ if launch.get('canary_root'):files.append(pathlib.Path(launch['canary_root'])/'status.json')
  fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in files if p.exists())).hexdigest()
  rows.append(dict(name=name,running=running,fingerprint=fingerprint))
 print(json.dumps(rows))
 '''.replace('LAUNCHES',repr(launches))
         try:
-            p=subprocess.run(['ssh','-o','BatchMode=yes','p25','python3 -'],input=remote.encode(),capture_output=True,timeout=45)
-            if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
-            statuses=json.loads(p.stdout);changed=[r for r in statuses if cache.get(r['name'])!=r['fingerprint']]
+            statuses=[]
+            for host in sorted({v.get('host','p25') for v in launches.values()}):
+                subset={k:v for k,v in launches.items() if v.get('host','p25')==host}
+                code=remote.replace(repr(launches),repr(subset))
+                p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12',host,'python3 -'],input=code.encode(),capture_output=True,timeout=45)
+                if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
+                statuses.extend(json.loads(p.stdout))
+            changed=[r for r in statuses if cache.get(r['name'])!=r['fingerprint']]
             modules=sorted({TARGETS[r['name']] for r in changed})
             succeeded=set()
             def run(module):
