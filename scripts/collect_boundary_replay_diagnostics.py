@@ -6,13 +6,13 @@ from scripts.export_original_boundary_distances import ROOT
 
 def main():
     output={}
-    for name in ['t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json']:
+    for name in ['t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
         if not (ROOT/name).exists():continue
         launch=json.loads((ROOT/name).read_text())
         code=r'''
 import pathlib,json
 l=LAUNCH;r=pathlib.Path(l['root']);out={}
-for name in ['status.json','comparison.json','resource_status.json']:
+for name in ['status.json','comparison.json','resource_status.json','source_contract.json']:
  p=r/name
  if p.exists():out[name]=json.loads(p.read_text())
 checks=[]

@@ -8,6 +8,7 @@ from scripts.export_original_boundary_distances import ROOT, distances
 BASES = ['t01_published_event_sample_distances', 't04_t05_supplemental_sample_distances',
          't08_supplemental_sample_distances', 't11_supplemental_sample_distances']
 LAUNCHES = [('five_scene_boundary_launch_20261020.json', 'five_scene_prepared_plan_20261020.json'),
+            ('five_scene_alternate_seed_launch_20261020.json', 'five_scene_alternate_seed_plan_20261020.json'),
             ('t11_original_p29_boundary_launch_20261020.json', 't11_original_p29_boundary_plan_20261020.json')]
 
 
@@ -32,7 +33,8 @@ def bind(rows, matches):
                        normalized_distance_upper=d['distance_upper']/span,
                        refinement_job_id=job['job_id'], refinement_status='original_backend_conditional_interval',
                        backend_sources=result['backend_sources'], execution_sources=result['execution_sources'],
-                       refinement_source_seed=job['endpoints'][0]['config'].get('random_seed'),
+                       refinement_source_seed=job['endpoints'][job.get('seed_endpoint',0)]['config'].get('random_seed'),
+                       refinement_seed_endpoint=job.get('seed_endpoint',0),
                        refinement_scope='source endpoint seed held fixed; published labels and states retained',
                        formal_nearacc_eligible=False)
             count+=1
@@ -71,17 +73,23 @@ print(json.dumps(dict(rows=rows,canary=json.loads(canary.read_text()) if canary.
 
 def main():
     matches={}; by_scene=collections.defaultdict(collections.Counter); evidence=[]
+    planned=collections.defaultdict(set);outcomes={}
     for filename,planfile in LAUNCHES:
         if not (ROOT/filename).exists():continue
         launch=json.loads((ROOT/filename).read_text(encoding='utf-8-sig'))
         jobs=json.loads((ROOT/planfile).read_text(encoding='utf-8')); plan={j['job_id']:j for j in jobs}
         data=collect(launch); evidence.append(dict(launch=launch,**data))
-        for job in jobs:by_scene[job['scene_id']]['planned']+=1
+        for job in jobs:
+            planned[job['scene_id']].add(job['job_id'])
+            if job.get('seed_endpoint',0):by_scene[job['scene_id']]['alternate_seed_attempts']+=1
         for row in data['canary']:by_scene[row['scene_id']]['canary_'+row['status']]+=1
         for row in data['rows']:
-            job=plan[row['job_id']];by_scene[row['scene_id']][row['status']]+=1
+            job=plan[row['job_id']]
+            prior=outcomes.get(row['job_id'])
+            if prior is None or prior['status']!='refined_local_interval':outcomes[row['job_id']]=row
             if row['status']!='refined_local_interval':continue
             if row['backend_sources']!=job['backend_sources']:raise ValueError('wrong original backend')
+            if row.get('conditional_seed_endpoint',0)!=job.get('seed_endpoint',0):raise ValueError('conditional seed origin mismatch')
             if row['source_state_sha256']!=[e['state_sha256'] for e in job['endpoints']]:raise ValueError('wrong published states')
             if row['endpoint_labels']!=[e['label'] for e in job['endpoints']] or len(set(row['endpoint_labels']))!=2:raise ValueError('wrong source outcomes')
             a,b=row['bracket'];lo,hi=job['bracket']
@@ -89,7 +97,7 @@ def main():
             labels={p['theta']:p['label'] for p in row['probes']}
             if labels.get(a)!=row['endpoint_labels'][0] or labels.get(b)!=row['endpoint_labels'][1]:raise ValueError('final endpoints lack opposite evidence')
             source=job['source_window'];key=identity(dict(scene_id=job['scene_id'],family_id=job['family_id'],target_event=job['target_event'],endpoint_sample_ids=source['endpoint_sample_ids'],original_boundary_interval=job['bracket']))
-            if key in matches:raise ValueError('duplicate refined source interval')
+            if key in matches:continue  # Keep a completed original-seed result if already present.
             matches[key]=(job,row)
     out=ROOT/'original_value_distance_ledger';summaries={}
     for stem in BASES:
@@ -99,7 +107,10 @@ def main():
         bound,count=bind(rows,matches)
         overlay=out/(stem+'_refined.jsonl');overlay.write_text(''.join(json.dumps(r)+'\n' for r in bound),encoding='utf-8')
         summaries[stem]=dict(base_sha256=hashlib.sha256(base.read_bytes()).hexdigest(),overlay_sha256=hashlib.sha256(overlay.read_bytes()).hexdigest(),records=len(rows),refined_records=count)
-    for values in by_scene.values():values['pending']=values['planned']-values['refined_local_interval']-values['failed']
+    for row in outcomes.values():by_scene[row['scene_id']][row['status']]+=1
+    for scene,ids in planned.items():
+        values=by_scene[scene];values['planned']=len(ids)
+        values['pending']=values['planned']-values['refined_local_interval']-values['failed']
     summary=dict(all20_completed=False,scenes=dict(by_scene),sources=summaries,
                  refined_intervals=len(matches),formal_admission_granted=False)
     (ROOT/'five_scene_refinement_evidence_20261020.json').write_text(json.dumps(evidence,indent=2),encoding='utf-8')

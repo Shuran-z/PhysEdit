@@ -14,6 +14,22 @@ from physedit.boundary import digest,distance
 ROOT=Path('review/scene_family_completion_20261018')
 
 
+def merge_realization_windows(windows):
+    grouped=collections.defaultdict(list)
+    for w in windows:grouped[w['job_id']].append(w)
+    output=[]
+    for items in grouped.values():
+        row=dict(items[0])
+        if len(items)>1:
+            if len({w['backend_sha256'] for w in items})!=1 or len({tuple(w['endpoint_labels']) for w in items})!=1:raise ValueError('incompatible numerical realizations')
+            row['realization_intervals']=[dict(bracket=w['bracket'],source_root=w.get('source_root')) for w in items]
+            row['bracket']=[min(w['bracket'][0] for w in items),max(w['bracket'][1] for w in items)]
+            row['reference_kind']='observed_transition_span_across_original_backend_realizations'
+            row['uncertainty_scope']='span of successful observed numerical realizations; not a statistical confidence interval or universal exact threshold'
+        output.append(row)
+    return output
+
+
 def registrations(evidence,plan,current,source):
     jobs={r['job_id']:r for r in plan};byid={r['sample_id']:r for r in current};groups=collections.defaultdict(list)
     for row in current:groups[(row['family'],row['fixed_context_sha256'])].append(row)
@@ -33,7 +49,10 @@ def registrations(evidence,plan,current,source):
         if a not in receipts or b not in receipts or receipts[a]['events'][event]==receipts[b]['events'][event]:raise ValueError('missing actual opposite solver endpoints')
         if not job['bracket'][0]<=a<b<=job['bracket'][1]:raise ValueError('interval outside source range')
         intervals[(r['family'],refs[0]['fixed_context_sha256'],event)].append(dict(bracket=[a,b],job_id=r['job_id'],
-            endpoint_labels=[receipts[a]['events'][event],receipts[b]['events'][event]],backend_sha256=r['backend_sha256'],reference_kind='refined_replay_interval'))
+            endpoint_labels=[receipts[a]['events'][event],receipts[b]['events'][event]],backend_sha256=r['backend_sha256'],
+            published_scan_interval=job['bracket'],reference_kind='refined_replay_interval',
+            observed_repeat_variation=record.get('observed_repeat_variation'),repetition_execution_statuses=record.get('repetition_execution_statuses'),source_root=record.get('source_root'),stable_unique_threshold_claim=False))
+    intervals={key:merge_realization_windows(windows) for key,windows in intervals.items()}
     # Original published opposite outcomes remain valid scan evidence even when
     # a new replay fails. Refinement failure must not erase the released bracket.
     solved={w['job_id'] for windows in intervals.values() for w in windows}
@@ -67,6 +86,19 @@ def main():
     for filename in ['t13_precontact_fix_launch_20261020.json','t13_original_full_retry_launch_20261020.json','t13_remaining_full_retry_launch_20261020.json']:
         retry=ROOT/filename
         if retry.exists():launches.append(json.loads(retry.read_text()))
+    control=ROOT/'t13_unreproduced_control_launch_20261020.json'
+    if control.exists():
+        registration=json.loads(control.read_text())
+        launches.extend([dict(registration,root=registration['root']+'/repeat_'+str(i),repeat_control_root=registration['root']) for i in range(2)])
+    series=ROOT/'t13_remaining_repetitions_launch_20261020.json'
+    if series.exists():
+        registration=json.loads(series.read_text())
+        launches.extend([dict(registration,root=root) for root in registration['repeat_roots']])
+        query="import pathlib,json;out={};roots="+repr(registration['repeat_roots'])+"\nfor root in roots:\n p=pathlib.Path(root)/'status.json';out[root]=json.loads(p.read_text()) if p.exists() else []\nprint(json.dumps(out))"
+        check=subprocess.run(['ssh','-o','BatchMode=yes',registration['host'],'python3 -'],input=query.encode(),capture_output=True,timeout=30);check.check_returncode()
+        repetition_outcomes=json.loads(check.stdout)
+        (ROOT/'t13_repetition_execution_statuses_20261020.json').write_text(json.dumps(repetition_outcomes,indent=2))
+    else:repetition_outcomes={}
     code='''import pathlib,json,hashlib
 root=pathlib.Path(ROOT);rows=[]
 for result in json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []:
@@ -81,16 +113,29 @@ for result in json.loads((root/'status.json').read_text()) if (root/'status.json
  rows.append(dict(result=result,receipts=receipts))
 print(json.dumps(rows))
 '''
-    merged={}
+    merged=collections.defaultdict(list)
     for launch in launches:
         p=subprocess.run(['ssh','-o','BatchMode=yes',launch.get('host','p25'),'python3 -'],input=code.replace('ROOT',repr(launch['root'])).encode(),capture_output=True,timeout=90);p.check_returncode()
         for record in json.loads(p.stdout):
-            record['source_root']=launch['root'];merged[record['result']['job_id']]=record
-    evidence=list(merged.values());source=ROOT/'t13_current_solver_evidence_20261019.json';source.write_text(json.dumps(evidence,indent=2),encoding='utf-8')
+            record['source_root']=launch['root']
+            record['repetition_execution_statuses']=[dict(source_root=root,**outcome) for root,attempts in repetition_outcomes.items() for outcome in attempts if outcome['job_id']==record['result']['job_id']]
+            if launch.get('repeat_control_root'):
+                query="import pathlib,json;p=pathlib.Path("+repr(launch['repeat_control_root'])+")/'comparison.json';print(p.read_text() if p.exists() else '{}')"
+                check=subprocess.run(['ssh','-o','BatchMode=yes',launch.get('host','p25'),'python3 -'],input=query.encode(),capture_output=True,timeout=30);check.check_returncode()
+                record['observed_repeat_variation']=json.loads(check.stdout)
+            merged[record['result']['job_id']].append(record)
+    evidence=[]
+    for records in merged.values():
+        # Prefer the original full producer over the later physics-only entry;
+        # preserve every successful realization of that selected entry.
+        full=[r for r in records if r['result'].get('replay_profile')=='original_v6_full_render']
+        evidence.extend(full or records)
+    source=ROOT/'t13_current_solver_evidence_20261019.json';source.write_text(json.dumps(evidence,indent=2),encoding='utf-8')
     rows=registrations(evidence,json.loads((ROOT/'t13_current_search_plan_20261019.json').read_text()),json.loads((ROOT/'t13_current_measured_events_20261019.json').read_text()),source)
     (ROOT/'t13_current_solver_distance_registry.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
-    summary=dict(completed_refined_intervals=len(evidence),original_published_intervals=len(json.loads((ROOT/'t13_current_search_plan_20261019.json').read_text())),
-        sample_event_records=len(rows),unique_samples=len({r['sample_id'] for r in rows}),formal_new_near=0)
+    summary=dict(completed_refined_intervals=len(merged),successful_numerical_realizations=len(evidence),original_published_intervals=len(json.loads((ROOT/'t13_current_search_plan_20261019.json').read_text())),
+        sample_event_records=len(rows),unique_samples=len({r['sample_id'] for r in rows}),formal_new_near=0,
+        intervals_with_observed_repeat_variation=sum(bool(r.get('observed_repeat_variation')) for r in evidence))
     (ROOT/'t13_current_solver_binding_summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary))
 
 

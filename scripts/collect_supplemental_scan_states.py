@@ -2,9 +2,11 @@
 import collections
 import hashlib
 import json
+import inspect
 import subprocess
 from scripts.export_original_boundary_distances import ROOT,distances
 from scripts.supplement_t09_published_support_boundaries import context
+from scripts.state_integrity_cache import state_identity
 
 
 def main():
@@ -16,16 +18,24 @@ def main():
         if not path.exists():continue
         launch=json.loads(path.read_text(encoding='utf-8-sig'))
         code=r'''
-import pathlib,json,gzip,hashlib
+import pathlib,json,gzip,hashlib,os
+IDENTITY_FUNCTION
 root=pathlib.Path(ROOT_DIRECTORY)
 rows=json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []
+cp=root/'collector_verified_state_cache.json';cache=json.loads(cp.read_text()) if cp.exists() else {}
 for row in rows:
  if row['status']!='supplemental_original_backend_state':continue
- raw=pathlib.Path(row['state_path']).read_bytes()
- if hashlib.sha256(raw).hexdigest()!=row['stored_state_sha256']:raise ValueError('compressed state changed')
- if hashlib.sha256(gzip.decompress(raw)).hexdigest()!=row['state_sha256']:raise ValueError('numeric state changed')
+ path=pathlib.Path(row['state_path']);key=state_identity(path,row)
+ if cache.get(str(path))!=key:
+  raw=path.read_bytes()
+  if hashlib.sha256(raw).hexdigest()!=row['stored_state_sha256']:raise ValueError('compressed state changed')
+  if hashlib.sha256(gzip.decompress(raw)).hexdigest()!=row['state_sha256']:raise ValueError('numeric state changed')
+  if state_identity(path,row)!=key:raise ValueError('state changed during verification')
+  cache[str(path)]=key
+ row['state_integrity_verification']='full digest checked, then cached against expected digests and unchanged filesystem identity'
+temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(dict(rows=rows,resource=json.loads((root/'resource_status.json').read_text()) if (root/'resource_status.json').exists() else {})))
-'''.replace('ROOT_DIRECTORY',repr(launch['root']))
+'''.replace('ROOT_DIRECTORY',repr(launch['root'])).replace('IDENTITY_FUNCTION',inspect.getsource(state_identity))
         p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=code.encode(),capture_output=True,timeout=180)
         if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
         data=json.loads(p.stdout);queues.append(dict(root=launch['root'],resource=data['resource']))
@@ -72,6 +82,8 @@ print(json.dumps(dict(rows=rows,resource=json.loads((root/'resource_status.json'
         failed_states=sum(r['status']=='failed' for r in receipts),pull_observed_points=len(measured),pull_local_intervals=len(plans),
         pull_bound_distinct_samples=len({r['sample_id'] for r in bindings}),contexts_without_observed_flip=no_flip,formal_new_admissions=0)
     (ROOT/'supplemental_scan_state_summary_20261020.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary))
+    from scripts.register_t06_t10_replay_distances import main as register_other_scenes
+    register_other_scenes()
 
 
 if __name__=='__main__':main()
