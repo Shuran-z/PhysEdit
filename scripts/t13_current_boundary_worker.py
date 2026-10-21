@@ -10,6 +10,7 @@ import hashlib
 import json
 import math
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -73,7 +74,10 @@ def main():
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--gpu',default='4');p.add_argument('--limit',type=int,default=0)
     p.add_argument('--original-full-render',action='store_true',help='Replay original v6 renderer including original camera capture')
+    p.add_argument('--init-seed',type=int);p.add_argument('--seed-bootstrap');p.add_argument('--supplemental-scan',action='store_true')
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
+    if (args.init_seed is None)!=(args.seed_bootstrap is None):p.error('seed control requires both seed and bootstrap')
+    if args.supplemental_scan and args.init_seed is None:p.error('supplemental scan requires a declared seed')
     global RENDERER
     if args.original_full_render:RENDERER=BASE/'scripts/12_render_motion_sequence_t13_realasset_v6_sync3cam.py'
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -85,6 +89,7 @@ def main():
         if receipt.exists():
             row=json.loads(receipt.read_text())
             if row['backend_sha256']!=sha(RENDERER):raise ValueError('backend changed')
+            if row.get('supplemental_init_seed')!=args.init_seed:raise ValueError('cached result seed contract changed')
             if row['reference_sample_ids']!=[e['sample_id'] for e in job['endpoints']] or row['source_state_sha256']!=[e['state_sha256'] for e in job['endpoints']]:raise ValueError('cached result belongs to another reference context')
             results.append(row);save(root/'status.json',results);continue
         try:
@@ -100,11 +105,18 @@ def main():
                 out=folder/format(theta,'.12g');out.mkdir(exist_ok=True)
                 c=copy.deepcopy(left['config']);mapped={o['name']:o for o in c['dynamic_objects']}
                 for path in changed:put(mapped,path,get(objects[0],path)+(theta-job['bracket'][0])/(job['bracket'][1]-job['bracket'][0])*(get(objects[1],path)-get(objects[0],path)))
+                if args.supplemental_scan:
+                    exact=next((r['config'] for r in job['supplemental_grid'] if r['theta']==theta),None)
+                    if exact is not None:
+                        actual={o['name']:o for o in exact['dynamic_objects']}
+                        if any(abs(get(actual,path)-get(mapped,path))>1e-8 for path in changed):raise ValueError('recovered intervention differs from actual published grid')
+                        c=copy.deepcopy(exact)
                 c['sample_metadata']['main_parameter_value']=theta
                 c['sample_metadata']['calibration_only']=True
                 cp=out/'config.json';sp=out/'physics.json';rp=out/'receipt.json'
                 if rp.exists():
                     row=json.loads(rp.read_text())
+                    if row.get('supplemental_init_seed')!=args.init_seed:raise ValueError('cached probe seed contract changed')
                     if row['config_sha256']==sha(cp) and row['state_sha256']==sha(sp) and row['backend_sha256']==sha(RENDERER):return row
                     raise ValueError('replay receipt drift')
                 if args.original_full_render:
@@ -119,12 +131,17 @@ def main():
                 lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib'
                 env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
                 with (out/'run.log').open('w') as log:
-                    command=[PYTHON,str(RENDERER),'--config',str(cp)]
+                    command=[PYTHON]+([args.seed_bootstrap,'--seed',str(args.init_seed)] if args.init_seed is not None else [])+[str(RENDERER),'--config',str(cp)]
                     if not args.original_full_render:command+=['--physics-only','--annotation-output',str(sp)]
                     result=subprocess.run(command,cwd=BASE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
                 if result.returncode:raise RuntimeError('renderer failed: '+str(out/'run.log'))
+                if args.init_seed is not None:
+                    text=re.sub(r'\x1b\[[0-9;]*m','',(out/'run.log').read_text(errors='replace'))
+                    if not re.search(r'seed:\s*'+str(args.init_seed)+r'\b',text):raise ValueError('actual Genesis seed not confirmed')
                 state=json.loads(sp.read_text());events,tracks=metrics(state)
                 row=dict(theta=theta,events=events,config_sha256=sha(cp),state_sha256=sha(sp),backend_sha256=sha(RENDERER))
+                if args.init_seed is not None:
+                    row.update(supplemental_init_seed=args.init_seed,seed_origin='new declared supplemental control, not recovered original seed',seed_bootstrap_sha256=sha(Path(args.seed_bootstrap)))
                 if theta in job['bracket']:
                     original=left if theta==job['bracket'][0] else right
                     indices=list(precontact_indices(state))
@@ -132,8 +149,21 @@ def main():
                     row['position_check_scope']='strictly_before_first_dynamic_contact' if any('contacts' in f for f in state['frames']) else 'pre_intervention_only_original_v6_has_no_contacts'
                     row['precontact_max_position_error_m']=max(math.dist(original['tracks'][name][i]['position'],tracks[name][i]) for name in ACTORS for i in indices)
                     row['published_label']=original['label'];row['label_matches']=events[event]==original['label']
-                    if row['precontact_max_position_error_m']>.005 or not row['label_matches']:raise ValueError('published endpoint not reproduced: '+str(out))
+                    if not args.supplemental_scan and (row['precontact_max_position_error_m']>.005 or not row['label_matches']):raise ValueError('published endpoint not reproduced: '+str(out))
                 save(rp,row);print(json.dumps(dict(job_id=job['job_id'],theta=theta,events=events)),flush=True);return row
+            if args.supplemental_scan:
+                grid=sorted({r['theta'] for r in job['supplemental_grid']});observed=[evaluate(t) for t in grid];intervals=[]
+                for low,high in zip(observed,observed[1:]):
+                    if low['events'][event]==high['events'][event]:continue
+                    lo,hi=low['theta'],high['theta']
+                    while hi-lo>.0005:
+                        mid=(lo+hi)/2;probe=evaluate(mid)
+                        if probe['events'][event]==low['events'][event]:lo=mid
+                        else:hi=mid
+                    intervals.append(dict(bracket=[lo,hi],endpoint_labels=[low['events'][event],high['events'][event]]))
+                row=dict(job_id=job['job_id'],status='supplemental_grid_completed',family=job['family'],target_event=event,supplemental_init_seed=args.init_seed,seed_origin='new control, original seed not recovered',source_state_sha256=[e['state_sha256'] for e in job['endpoints']],grid_observations=observed,local_intervals=intervals,backend_sha256=sha(RENDERER),seed_bootstrap_sha256=sha(Path(args.seed_bootstrap)),scope='conditional observed scan; no unique original-release boundary claim',formal_nearacc_eligible=False)
+                row['reference_sample_ids']=[e['sample_id'] for e in job['endpoints']]
+                save(receipt,row);results.append(row);save(root/'status.json',results);continue
             ends=[evaluate(t) for t in [a,b]]
             if ends[0]['events'][event]==ends[1]['events'][event]:raise ValueError('same-label endpoints')
             while b-a>.0005:

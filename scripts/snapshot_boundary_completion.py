@@ -6,16 +6,14 @@ from pathlib import Path
 import subprocess
 import time
 from datetime import date
+from types import SimpleNamespace
+from scripts.boundary_ssh import remote_text, SSHTransportError
 
 ROOT=Path('review/scene_family_completion_20261018')
 
 
 def remote_status(host,code):
-    for attempt in range(3):
-        result=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12',host,'python3 -'],input=code.encode(),capture_output=True,timeout=30)
-        if result.returncode==0:return result
-        if attempt<2:time.sleep(2)
-    raise RuntimeError('Status snapshot SSH failed after retries: '+result.stderr.decode(errors='replace')[-500:])
+    return SimpleNamespace(stdout=remote_text(host,code,timeout=60).encode())
 
 
 def main():
@@ -93,7 +91,7 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('five_scene_refinement','five_scene_boundary_launch_20261020.json','p25'),
         ('T11_original_p29','t11_original_p29_boundary_launch_20261020.json','p29'),
         ('T11_verified_producer_p26','t11_verified_p26_producer_launch_20261020.json','p26'),
-        ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25')]:
+        ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)
@@ -104,7 +102,10 @@ resource=json.loads((root/'resource_status.json').read_text()) if (root/'resourc
 queue=pathlib.Path(PIPELINE)/'queue_status.json'
 print(json.dumps(dict(running=p.exists() and PIPELINE.encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource,queue=json.loads(queue.read_text()) if queue.exists() else {})))
 '''.replace('ROOT',repr(launch['root'])).replace('PID',str(launch['pid'])).replace('PIPELINE',repr(launch.get('pipeline_root',launch['root'])))
-        run=remote_status(host,code)
+        try:run=remote_status(host,code)
+        except SSHTransportError as exc:
+            additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],running=None,collection_status='unreachable',error=str(exc)))
+            continue
         additional_jobs.append(dict(scene=token,host=host,root=launch['root'],pid=launch['pid'],**json.loads(run.stdout)))
     summaries={p.stem:json.loads(p.read_text()) for p in (ROOT/'original_value_distance_ledger').glob('*summary.json')}
     snapshot=dict(date=date.today().isoformat(),all_scenes_completed=False,

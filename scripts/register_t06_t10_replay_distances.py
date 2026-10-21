@@ -9,6 +9,7 @@ import subprocess
 from scripts.export_original_boundary_distances import ROOT, distances
 from scripts.supplement_t06_published_boundaries import context as t06_context
 from scripts.state_integrity_cache import state_identity
+from scripts.boundary_ssh import remote_text
 
 
 def replay_events(experiment, frames, tracked_metrics):
@@ -82,9 +83,7 @@ print(json.dumps(out))
     for launch_path in launch_paths:
         launch=json.loads(launch_path.read_text())
         query=code.replace('ROOT_DIRECTORY',repr(launch['root']))
-        p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=query.encode(),capture_output=True,timeout=180)
-        if p.returncode:raise RuntimeError(p.stderr.decode(errors='replace'))
-        evidence.extend(json.loads(p.stdout))
+        evidence.extend(json.loads(remote_text(launch['host'],query,timeout=180)))
     if len({r['sample_id'] for r in evidence})!=len(evidence):raise ValueError('duplicate replay samples across queues')
     published={r['sample_id']:r for f in ROOT.glob('published_batch_*.json') for r in json.loads(f.read_text()) if r['scene_id'] in ['T06','T10']}
     domains=collections.defaultdict(list)

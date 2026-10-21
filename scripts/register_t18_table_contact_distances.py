@@ -7,6 +7,9 @@ import collections
 import json
 from pathlib import Path
 import subprocess
+import inspect
+from scripts.probe_verification_cache import verify_probe_files
+from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT, distances
 
 
@@ -18,9 +21,11 @@ def nearest_distance(theta,intervals,span):
                 scope='nearest of the observed left/right local intervals, not a globally unique critical root')
 
 
-REMOTE='''import json,gzip,hashlib
+REMOTE='''import json,gzip,hashlib,os
 from pathlib import Path
+VERIFY_FUNCTION
 base=Path(BASE);allplans=json.loads((base/'inputs/plan_all567.json').read_text());plans=[];results=[]
+cache_path=base/'collector_probe_digest_cache.json';cache=json.loads(cache_path.read_text()) if cache_path.exists() else {}
 for j in allplans:
  c=j['base_config'];plans.append(dict(job_id=j['job_id'],sample_id=j['sample_id'],revision=j['revision'],theta=c['experiment']['parameter']['parameter_value'],parameter_unit=c['experiment']['parameter']['parameter_unit'],
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
@@ -35,13 +40,16 @@ for rootname in ['run','legacy_run','asset_retry_run']:
   for path in (root/r['job_id']).glob('*/receipt.json'):
    v=json.loads(path.read_text());sp=Path(v['state_path'])
    if not sp.exists() and sp.suffix=='.json' and sp.with_suffix('.json.gz').exists():sp=sp.with_suffix('.json.gz');v['state_path']=str(sp)
-   raw=sp.read_bytes()
-   if v.get('stored_state_sha256') and hashlib.sha256(raw).hexdigest()!=v['stored_state_sha256']:raise ValueError('stored state changed')
-   if sp.suffix=='.gz':raw=gzip.decompress(raw)
-   if hashlib.sha256(raw).hexdigest()!=v['state_sha256']:raise ValueError('numeric state changed')
-   if hashlib.sha256((path.parent/'config.json').read_bytes()).hexdigest()!=v['config_sha256']:raise ValueError('probe config changed')
+   v['state_path']=verify_probe_files(v,path.parent,cache)
+   # Full per-frame contact evidence remains in the immutable remote receipt.
+   # Transfer its hash and measurement fields once, not again inside r.probes.
+   v.pop('contact_evidence',None)
+   v['receipt_sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+   v['receipt_path']=str(path)
    receipts.append(v)
+  r.pop('probes',None)
   results.append(dict(r,verified_probe_receipts=receipts,source_root=str(root),canonical_result_sha256=hashlib.sha256(canonical.read_bytes()).hexdigest()))
+temp=cache_path.with_name(cache_path.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cache_path)
 print(json.dumps(dict(plans=plans,results=results)))
 '''
 
@@ -49,8 +57,8 @@ print(json.dumps(dict(plans=plans,results=results)))
 def main():
     launch=json.loads((ROOT/'t18_table_contact_search_launch_20261020.json').read_text())
     base=str(Path(launch['root']).parent).replace('\\','/')
-    p=subprocess.run(['ssh','-o','BatchMode=yes',launch['host'],'python3 -'],input=REMOTE.replace('BASE',repr(base)).encode(),capture_output=True,timeout=180);p.check_returncode()
-    evidence=json.loads(p.stdout);(ROOT/'t18_search_evidence_20261020.json').write_text(json.dumps(evidence,indent=2))
+    query=REMOTE.replace('BASE',repr(base)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
+    evidence=json.loads(remote_text(launch['host'],query,timeout=600));(ROOT/'t18_search_evidence_20261020.json').write_text(json.dumps(evidence,indent=2))
     plans={r['job_id']:r for r in evidence['plans']};results={r['job_id']:r for r in evidence['results']}
     originals={r['sample_id']:r for r in map(json.loads,(ROOT/'t18_table_contact_source_events_20261020.jsonl').read_text().splitlines())}
     candidates=[];bindings=[]
