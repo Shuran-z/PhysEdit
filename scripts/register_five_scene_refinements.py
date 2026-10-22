@@ -58,6 +58,11 @@ VERIFY_FUNCTION
 launch=LAUNCH
 root=pathlib.Path(launch['root']); p=root/'status.json'
 rows=json.loads(p.read_text()) if p.exists() else []
+indexed={r['job_id']:r for r in rows}
+for path in root.glob('*/result.json'):
+ row=json.loads(path.read_text())
+ if row['job_id'] not in indexed or indexed[row['job_id']]['status']!='refined_local_interval':indexed[row['job_id']]=row
+rows=list(indexed.values())
 cp=root/'collector_probe_digest_cache.json';cache=json.loads(cp.read_text()) if cp.exists() else {}
 sha=lambda b:hashlib.sha256(b).hexdigest()
 for row in rows:

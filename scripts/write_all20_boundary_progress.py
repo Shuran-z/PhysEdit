@@ -82,30 +82,36 @@ def main():
  t12=load('original_value_distance_ledger/t12_refinement_binding_summary.json')
  t13=load('t13_current_solver_binding_summary.json')
  t13_seeded=load('t13_seeded_supplement_summary_20261021.json')
+ t07_B=load('t07_B_E4_preparation_summary_20261022.json')
+ t07_B_refined=load('t07_B_E4_refinement_summary_20261022.json')
  t18=load('t18_table_contact_preparation_summary_20261020.json')
  search18=load('t18_event_distance_summary_20261020.json')
  supplemental=load('supplemental_scan_state_summary_20261020.json')
  replay_scans=load('t06_t10_replay_distance_summary_20261020.json')
  t03=load('original_value_distance_ledger/t03_binding_summary.json')
  t14=load('t14_all_context_distance_summary_20261020.json')
+ t14_complete=t14.get('planned_contexts')==180 and t14.get('completed_contexts')==180 and t14.get('failed_contexts')==0
  t02=load('t02_published_scoring_registry.json')
  t02_complete=isinstance(t02,list) and len(t02)==880 and all(r.get('numerical_reference_verified') and r.get('mapping_status')=='matched' and r.get('boundary',{}).get('status')=='verified' for r in t02)
  overrides={
   'T09':(f"真实末帧触桌事件：580条原状态；摩擦轴细化{t09.get('refined_intervals',0)}/12，抽取力轴细化{t09_pull.get('refined_intervals',0)}/{t09_pull.get('planned',8)}；两轴距离均已接入",f"缺失300条pull状态已回收{supplemental.get('completed_states',{}).get('T09',0)}/300；抽取力待完成{t09_pull.get('pending',0)}项、失败{t09_pull.get('failed',0)}项；补算来源单列，下沉代理不计事件边界；无观测翻转的上下文保留原记录"),
-  'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'余下切片继续求解；两侧样本及未细化原发布区间保留'),
-  'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间；seed0补充扫描{t13_seeded.get('completed_jobs',0)}/8，另存{t13_seeded.get('local_intervals',0)}个条件区间",'8项原端点未复现仍保留原区间；补充seed0扫描不覆盖原发布真值，不能把新种子当作找回的原种子'),
-  'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"其余原三参数族继续运行；已完成组中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本；T14S另列"),
+  'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'已登记的76项求解已结束；其余联合参数切片的边界覆盖尚未闭环，不能表述为仍在运行；两侧样本保留'),
+  'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间；seed0补充扫描{t13_seeded.get('completed_jobs',0)}/8，另存{t13_seeded.get('local_intervals',0)}个条件区间",f"原8项端点未复现：原初始化seed=None，复跑标签存在差异；保留原发布区间。两项seed0完整网格完成{t13_seeded.get('full_grid_completed_jobs',0)}/{t13_seeded.get('full_grid_planned_jobs',2)}；新种子结果不覆盖原发布真值"),
+  'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"选定180组任务已全部结束，失败{t14.get('failed_contexts',0)}项；其中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本且不捏造边界；T14S另列"),
   'T15':('原范围60组与扩展40组已扫描；原发布反事实参数对应和原范围归一化已接入',f"79个已观测局部区间已细化{t15_refined}个、剩余{79-t15_refined}个；尾部未静止任务已运行，余下原审计失败项继续定位，出界等错误原样保留"),
-  'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",'多书触桌按原版本、拓扑和种子分别求界；旧两书版及Isaac另列，不混用阈值'),
+  'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",f"旧显存不足错误跳过的200项已修复等待逻辑并置于队列前部，已完成{search18.get('resource_recovery_cohort',{}).get('completed',0)}/200；总待算{search18.get('pending_contexts',0)}、实际失败{search18.get('failed_contexts',0)}。按原版本/拓扑/种子分别求界，旧两书版及Isaac另列"),
   'T19':('旧渲染按用户要求停用；不计当前可用距离参考','等待新T19完成渲染并交付/发布；已知旧文件不能重新启用')}
  for scene in ['T16','T17','T20']:
   overrides[scene]=(f"Genesis发布metadata已全部逐字节对应：{metadata.get('verified_metadata',{}).get(scene,0)}条；原参数扫描已登记{metadata.get('unique_bound_samples',{}).get(scene,0)}条不同样本的接触事件区间",'保留各原参数轴和修复版本；已有扫描区间与精确原求解值分列，其余命名事件/上下文继续处理')
- overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离",'B初始位置族180条原状态已查：三位置均发生1cm运动，不能沿用A/C启动事件强造边界；继续查B原目标定义，不把末帧接触改称跌落')
+ overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离；B采用用户确认E4桌面接触，{t07_B.get('reference_videos',0)}条真值已绑定，{t07_B.get('bound_distinct_samples',0)}条有原区间距离",f"B原60组三点中{t07_B.get('contexts_without_observed_flip',0)}组未观测到E4翻转，均保留；已观测{t07_B.get('original_intervals',0)}组区间，细化成功{t07_B_refined.get('refined',0)}、端点复现失败{t07_B_refined.get('failed',0)}；原0.16–0.22m区间不因复跑失败删除")
  overrides['T03']=(f"880份选定原状态均已回收；{t03.get('recovered_state_bindings',0)}条已绑定状态身份及实际求解设置；{t03.get('normalized_interval_records',0)}条原事件区间记录已补齐归一化",'原报告中的64个相邻事件区间保留；其余原参数族和没有观测翻转的上下文继续处理，不把渲染star当求解边界')
  five=load('five_scene_refinement_summary_20261020.json')
  for scene,values in five.get('scenes',{}).items():
   overrides[scene]=(f"原发布异侧区间任务{values.get('planned',0)}项；已接入原后端细化区间{values.get('refined_local_interval',0)}项",
    f"待运行{values.get('pending',0)}项；端点未复现或执行失败{values.get('failed',0)}项保留原区间及两侧样本，继续诊断；固定来源种子的条件边界单独标记")
+ if 'T11' in overrides:
+  done,left=overrides['T11'];audit=load('t11_failed_endpoint_audit_summary_20261021.json')
+  overrides['T11']=(done,left+f"；已核查{audit.get('compared_endpoints',0)}个端点，{audit.get('changed_event_labels',0)}个结果改变，配置匹配，接触后轨迹/触发施力存在差异")
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
   gpu=1 if scene=='T10' and (OUT/'t10_parallel_state_replay_launch_20261020.json').exists() else 4
@@ -134,8 +140,8 @@ def main():
    numerical_reference_samples=0 if item['retired'] else item['unique_samples_with_numerical_reference'],
    retired_historical_samples=item['unique_samples_with_numerical_reference'] if item['retired'] else 0,
    publication_metadata_mapping_completed=scene in ['T16','T17','T18','T20'],
-   all_families_completed=scene=='T02' and t02_complete,
-   completion_status='数值对应完成' if scene=='T02' and t02_complete else '等待新渲染' if scene=='T19' else '仍有未完成任务'))
+   all_families_completed=(scene=='T02' and t02_complete) or (scene=='T14' and t14_complete),
+   completion_status='数值对应完成' if scene=='T02' and t02_complete else '选定180组任务完成' if scene=='T14' and t14_complete else '等待新渲染' if scene=='T19' else '仍有未完成任务'))
  (OUT/'all20_evidence_progress.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
  with (OUT/'all20_evidence_progress.csv').open('w',encoding='utf-8-sig',newline='') as f:
   writer=csv.DictWriter(f,fieldnames=rows[0]);writer.writeheader();writer.writerows(rows)

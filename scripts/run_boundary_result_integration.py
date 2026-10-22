@@ -16,6 +16,7 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't07_B_E4_search_launch_20261022.json':'scripts.register_t07_position_contact',
  't13_dense_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  'five_scene_timeout_retry_launch_20261021.json':'scripts.register_five_scene_refinements',
  't13_remaining_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
@@ -69,7 +70,7 @@ for name,launch in LAUNCHES.items():
  scope=launch.get('pipeline_root',str(root))
  if 'pipeline_root' not in launch and root.name in ['run','legacy_run','run_v2']:scope=str(root.parent)
  running=pid.exists() and scope.encode() in pid.read_bytes()
- files=[root/'status.json',root/'resource_status.json',pathlib.Path(scope)/'queue_status.json']
+ files=[root/'status.json',root/'results.json',root/'resource_status.json',pathlib.Path(scope)/'queue_status.json']
  if launch.get('canary_root'):files.append(pathlib.Path(launch['canary_root'])/'status.json')
  for repetition in launch.get('repeat_roots',[]):files.append(pathlib.Path(repetition)/'status.json')
  fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in files if p.exists())).hexdigest()

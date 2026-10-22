@@ -12,3 +12,10 @@ def test_memory_pressure_waits_instead_of_marking_physics_failure(monkeypatch,tm
     assert waits==[20]
     status=json.loads((tmp_path/'resource_status.json').read_text())
     assert status['status']=='waiting_for_memory' and status['free_memory_mib']==9000
+
+
+def test_explicit_headroom_can_resume_without_changing_physics(monkeypatch,tmp_path):
+    monkeypatch.setattr(worker.shutil,'disk_usage',lambda _:SimpleNamespace(free=100*1024**3))
+    monkeypatch.setattr(worker.subprocess,'check_output',lambda *a,**k:b'9000')
+    monkeypatch.setattr(worker.time,'sleep',lambda _:(_ for _ in ()).throw(AssertionError('should not wait')))
+    worker.wait_for_resources(tmp_path,'5',8192)
