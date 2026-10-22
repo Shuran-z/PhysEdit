@@ -23,6 +23,14 @@ def identity(row):
             tuple(row['endpoint_sample_ids']), tuple(row['original_boundary_interval']))
 
 
+def index_attempts(history,rows):
+    indexed={r['job_id']:r for r in history}
+    for row in rows:
+        previous=indexed.get(row['job_id'])
+        if previous is None or previous['status']!='refined_local_interval' or row['status']=='refined_local_interval':indexed[row['job_id']]=row
+    return indexed
+
+
 def bind(rows, matches):
     output=[]; count=0
     for source in rows:
@@ -55,10 +63,12 @@ def collect(launch):
     code=r'''
 import pathlib,json,hashlib,gzip,os
 VERIFY_FUNCTION
+HISTORY_FUNCTION
 launch=LAUNCH
 root=pathlib.Path(launch['root']); p=root/'status.json'
 rows=json.loads(p.read_text()) if p.exists() else []
-indexed={r['job_id']:r for r in rows}
+history=root/'status_before_queue_repair_20261022.json'
+indexed=index_attempts(json.loads(history.read_text()) if history.exists() else [],rows)
 for path in root.glob('*/result.json'):
  row=json.loads(path.read_text())
  if row['job_id'] not in indexed or indexed[row['job_id']]['status']!='refined_local_interval':indexed[row['job_id']]=row
@@ -80,7 +90,7 @@ canary=pathlib.Path(launch.get('canary_root',launch['root']))/'status.json'
 resource=root/'resource_status.json'
 temp=cp.with_name(cp.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cp)
 print(json.dumps(dict(rows=rows,canary=json.loads(canary.read_text()) if canary.exists() and 'canary_root' in launch else [],resource=json.loads(resource.read_text()) if resource.exists() else {})))
-'''.replace('LAUNCH',repr(launch)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
+'''.replace('LAUNCH',repr(launch)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files)).replace('HISTORY_FUNCTION',inspect.getsource(index_attempts))
     try:
         data=json.loads(remote_text(launch['host'],code,timeout=300))
         data['collection_access_host']=launch['host']
