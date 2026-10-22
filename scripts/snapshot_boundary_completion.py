@@ -27,8 +27,7 @@ running=command.exists() and str(root).encode() in command.read_bytes()
 rows=json.loads((root/'results.json').read_text()) if (root/'results.json').exists() else []
 print(json.dumps(dict(root=str(root),pid=pid,running=running,worker_sha256=hashlib.sha256((root/'worker.py').read_bytes()).hexdigest(),results=rows)))
 '''.replace('ROOT',repr(registration['root'])).replace('PID',str(registration['pid']))
-        p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
-        p.check_returncode();data=json.loads(p.stdout)
+        data=json.loads(remote_status('p25',code).stdout)
         (ROOT/('t07_original_'+token+'_results_20261019.json')).write_text(json.dumps(data['results'],indent=2),encoding='utf-8')
         jobs.append(dict(family=token,planned=registration.get('planned_contexts',60),completed=sum(r['status']=='local_transition_bracket' for r in data['results']),failed=sum(r['status']=='failed' for r in data['results']),running=data['running'],pid=data['pid'],root=data['root'],worker_sha256=data['worker_sha256']))
     for scene,launch in [('T15','t15_all_context_search_launch_20261019.json'),('T15_expanded','t15_expanded_context_search_launch_20261019.json'),('T13','t13_full_search_launch_20261019.json'),('T14','t14_formal_search_launch_20261019.json')]:
@@ -43,8 +42,7 @@ dependency=DEPENDENCY
 waiting=dependency is not None and (pathlib.Path('/proc')/str(dependency)/'cmdline').exists()
 print(json.dumps(dict(running=proc.exists() and str(root).encode() in proc.read_bytes(),waiting_for_dependency=waiting,rows=rows)))
 '''.replace('ROOT',repr(registration['root'])).replace('PID',str(registration['pid'])).replace('DEPENDENCY',repr(registration.get('wait_for_pid')))
-        p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
-        p.check_returncode();data=json.loads(p.stdout)
+        data=json.loads(remote_status('p25',code).stdout)
         (ROOT/(scene.lower()+'_all_context_status_20261019.json')).write_text(json.dumps(data['rows'],indent=2),encoding='utf-8')
         jobs.append(dict(scene=scene,planned=registration.get('planned_contexts',registration.get('planned_intervals')),
             completed=sum(r['status'] in ['scanned_original_domain','scanned_expanded_domain','scanned_original_triplet','local_transition_bracket'] for r in data['rows']),
@@ -71,8 +69,7 @@ verified={r['sample_id'] for f in p.parent.glob('*.receipt.json') for r in [json
 failed={r['sample_id'] for r in rows if r['status']=='failed'}-verified
 print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),status='recovery_finished' if len(verified)==880 else 'recovery_in_progress')))
 """
-    p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=12','p25','python3 -'],input=code.encode(),capture_output=True,timeout=30)
-    p.check_returncode();t03=json.loads(p.stdout)
+    t03=json.loads(remote_status('p25',code).stdout)
     additional_jobs=[]
     for token,filename,default_host in [('T15_refined','t15_refined_missing_launch_20261019.json','p25'),('T12_refined','t12_supplemental_refinement_launch.json','p26'),
         ('T09_table_contact','t09_table_contact_refinement_launch_20261020.json','p25'),
@@ -91,7 +88,9 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('five_scene_refinement','five_scene_boundary_launch_20261020.json','p25'),
         ('T11_original_p29','t11_original_p29_boundary_launch_20261020.json','p29'),
         ('T11_verified_producer_p26','t11_verified_p26_producer_launch_20261020.json','p26'),
-        ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
+        ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25'),
+        ('timeout_retry','five_scene_timeout_retry_launch_20261021.json','p25'),
+        ('T13_seeded_supplement','t13_remaining_seeded_scans_launch_20261021.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)

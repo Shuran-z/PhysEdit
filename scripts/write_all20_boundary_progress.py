@@ -81,6 +81,7 @@ def main():
  t09_pull=load('original_value_distance_ledger/t09_pull_refinement_summary.json')
  t12=load('original_value_distance_ledger/t12_refinement_binding_summary.json')
  t13=load('t13_current_solver_binding_summary.json')
+ t13_seeded=load('t13_seeded_supplement_summary_20261021.json')
  t18=load('t18_table_contact_preparation_summary_20261020.json')
  search18=load('t18_event_distance_summary_20261020.json')
  supplemental=load('supplemental_scan_state_summary_20261020.json')
@@ -92,7 +93,7 @@ def main():
  overrides={
   'T09':(f"真实末帧触桌事件：580条原状态；摩擦轴细化{t09.get('refined_intervals',0)}/12，抽取力轴细化{t09_pull.get('refined_intervals',0)}/{t09_pull.get('planned',8)}；两轴距离均已接入",f"缺失300条pull状态已回收{supplemental.get('completed_states',{}).get('T09',0)}/300；抽取力待完成{t09_pull.get('pending',0)}项、失败{t09_pull.get('failed',0)}项；补算来源单列，下沉代理不计事件边界；无观测翻转的上下文保留原记录"),
   'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'余下切片继续求解；两侧样本及未细化原发布区间保留'),
-  'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间",'原完整入口对照已完成；未复现项继续做同配置重复与环境差异诊断，保留原发布区间，不将运行中对照记为修复成功'),
+  'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间；seed0补充扫描{t13_seeded.get('completed_jobs',0)}/8，另存{t13_seeded.get('local_intervals',0)}个条件区间",'8项原端点未复现仍保留原区间；补充seed0扫描不覆盖原发布真值，不能把新种子当作找回的原种子'),
   'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"其余原三参数族继续运行；已完成组中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本；T14S另列"),
   'T15':('原范围60组与扩展40组已扫描；原发布反事实参数对应和原范围归一化已接入',f"79个已观测局部区间已细化{t15_refined}个、剩余{79-t15_refined}个；尾部未静止任务已运行，余下原审计失败项继续定位，出界等错误原样保留"),
   'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",'多书触桌按原版本、拓扑和种子分别求界；旧两书版及Isaac另列，不混用阈值'),

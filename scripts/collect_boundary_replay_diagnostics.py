@@ -7,7 +7,7 @@ from scripts.boundary_ssh import remote_text
 
 def main():
     output={}
-    for name in ['t13_remaining_seeded_scans_launch_20261021.json','t11_p26_full_contract_control_repeat2_launch_20261021.json','t11_p26_full_contract_control_launch_20261021.json','t13_fixed_seed_control_launch_20261021.json','t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
+    for name in ['t13_dense_seeded_scans_launch_20261021.json','t13_remaining_seeded_scans_launch_20261021.json','t11_p26_full_contract_control_repeat2_launch_20261021.json','t11_p26_full_contract_control_launch_20261021.json','t13_fixed_seed_control_launch_20261021.json','t13_unreproduced_control_launch_20261020.json','five_scene_source_replay_launch_20261020.json','t11_production_contract_control_launch_20261020.json']:
         if not (ROOT/name).exists():continue
         launch=json.loads((ROOT/name).read_text())
         code=r'''
@@ -27,6 +27,8 @@ print(json.dumps(out))
     (ROOT/'boundary_replay_diagnostics_20261020.json').write_text(json.dumps(output,indent=2));print(json.dumps({name:list(data['results']) for name,data in output.items()}))
     from scripts.analyze_boundary_controls import main as analyze
     analyze()
+    from scripts.register_t13_seeded_supplement import main as register_seeded
+    register_seeded()
 
 
 if __name__=='__main__':main()

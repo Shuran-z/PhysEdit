@@ -44,7 +44,9 @@ def numeric_render(config, backend):
 
 def main():
     import fcntl
-    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);parser.add_argument('--minimum-free-memory-mib',type=int,default=12288);parser.add_argument('--render-backend',choices=['raster','original'],default='raster');parser.add_argument('--renderer-bootstrap');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--plan',required=True);parser.add_argument('--root',required=True);parser.add_argument('--gpu',default='0');parser.add_argument('--limit',type=int,default=0);parser.add_argument('--endpoints-only',action='store_true');parser.add_argument('--published-endpoint-replay',action='store_true');parser.add_argument('--python',default=PYTHON);parser.add_argument('--minimum-free-memory-mib',type=int,default=12288);parser.add_argument('--render-backend',choices=['raster','original'],default='raster');parser.add_argument('--renderer-bootstrap')
+    parser.add_argument('--renderer-timeout-seconds',type=int,default=1200);args=parser.parse_args()
+    if not 1200<=args.renderer_timeout_seconds<=7200:parser.error('renderer timeout must be between 1200 and 7200 seconds')
     if args.minimum_free_memory_mib<2048:parser.error('numeric execution requires at least 2048 MiB of free-memory headroom')
     if args.published_endpoint_replay and not args.endpoints_only:parser.error('published endpoint replay is diagnostic only; requires --endpoints-only')
     root=Path(args.root);root.mkdir(exist_ok=True,parents=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -86,7 +88,7 @@ def main():
                 lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
                 command=[args.python]+([args.renderer_bootstrap] if args.renderer_bootstrap else [])+[job['renderer'],'--config',str(cp)]
                 if job['scene_id']=='T11':command.append('--strict-live-physics')
-                with (dest/'run.log').open('w') as log:run=subprocess.run(command,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                with (dest/'run.log').open('w') as log:run=subprocess.run(command,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=args.renderer_timeout_seconds)
                 if run.returncode:raise RuntimeError('original renderer failed (exit '+str(run.returncode)+'); '+str(dest/'run.log'))
                 raw=sp.read_bytes();state=json.loads(raw)
                 if len(state['frames'])!=210 or any(not math.isfinite(v) for f in state['frames'] for o in f['objects'] for v in o['position']):raise ValueError('incomplete/nonfinite state')
