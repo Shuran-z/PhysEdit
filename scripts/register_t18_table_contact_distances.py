@@ -29,7 +29,7 @@ cache_path=base/'collector_probe_digest_cache.json';cache=json.loads(cache_path.
 for j in allplans:
  c=j['base_config'];plans.append(dict(job_id=j['job_id'],sample_id=j['sample_id'],revision=j['revision'],theta=c['experiment']['parameter']['parameter_value'],parameter_unit=c['experiment']['parameter']['parameter_unit'],
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
-for rootname in ['run','legacy_run','asset_retry_run']:
+for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for p in base.glob('resource_parallel_20261022_*') if p.is_dir()):
  root=base/rootname;p=root/'status.json';status=json.loads(p.read_text()) if p.exists() else []
  history=root/'status_before_resource_recovery_20261021.json'
  if history.exists():

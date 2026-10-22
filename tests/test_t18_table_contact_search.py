@@ -1,5 +1,13 @@
 import copy
 from scripts.t18_table_contact_boundary_worker import table_event,change
+
+
+def test_omitted_empty_contacts_require_explicit_original_recording_contract():
+    import pytest
+    config=dict(scene_overrides=dict(record_contacts=True),experiment=dict(supported_book_names=['upper'],surface_z=0),dynamic_objects=[dict(name='upper')])
+    assert table_event(config,dict(frame_index=209))['label']==0
+    config['scene_overrides']['record_contacts']=False
+    with pytest.raises(ValueError,match='telemetry absent'):table_event(config,dict(frame_index=209))
 from scripts.register_t18_table_contact_distances import nearest_distance
 from physedit.boundary import distance
 
