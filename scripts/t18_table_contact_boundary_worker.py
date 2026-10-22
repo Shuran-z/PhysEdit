@@ -16,6 +16,7 @@ import shutil
 import functools
 import types
 import gzip
+import time
 
 PROJECT=Path('/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1')
 PYTHON='/home/wangzijun_p25/miniconda3/envs/genesis/bin/python'
@@ -88,10 +89,21 @@ def save(path,value):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(value,indent=2));tmp.replace(path)
 
 
+def wait_for_resources(root,gpu):
+    while True:
+        if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
+        free=float(subprocess.check_output(['nvidia-smi','-i',str(gpu),'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
+        if free>=12*1024:return
+        save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=gpu,free_memory_mib=free,minimum_free_memory_mib=12288))
+        time.sleep(20)
+
+
 def main():
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--gpu',default='2');p.add_argument('--limit',type=int,default=0);p.add_argument('--source-only',action='store_true')
+    p.add_argument('--renderer-timeout-seconds',type=int,default=600)
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
+    if not 600<=args.renderer_timeout_seconds<=7200:p.error('renderer timeout must be between 600 and 7200 seconds')
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None];results=[];build,bgs=builder()
     backend=PROJECT/'scripts/render_sample.py';baseline_hashes={str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [backend,PROJECT/'scripts/build_project.py',PROJECT.parent/'scripts/render_t16_t20_physical_v5_20260816.py']}
@@ -120,15 +132,13 @@ def main():
                     raw=gzip.decompress(stored) if state_path.suffix=='.gz' else stored
                     if hashlib.sha256(raw).hexdigest()!=cached['state_sha256']:raise ValueError('cached state bytes changed')
                     return cached
-                if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
-                free=float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
-                if free<12*1024:raise RuntimeError('GPU free-memory reserve below 12GiB; resident processes retained')
+                wait_for_resources(root,args.gpu)
                 c=change(base,theta,build,bgs);render=c['render'];render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False)
                 for key in ['save_video','save_first_rgb','save_last_rgb']:
                     if render.get(key):render[key]=str(dest/Path(render[key]).name)
                 c['scene_overrides']['raytracing']=False;c['annotations']['save_path']=str(dest/'physics.json');cp=dest/'config.json';save(cp,c)
                 env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0');lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
-                with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=PROJECT,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=600)
+                with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=PROJECT,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=args.renderer_timeout_seconds)
                 if run.returncode:raise RuntimeError('original renderer failed: '+str(dest/'run.log'))
                 raw=(dest/'physics.json').read_bytes();state=json.loads(raw)
                 if len(state['frames'])!=210:raise ValueError('incomplete state')

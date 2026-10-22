@@ -31,6 +31,13 @@ for j in allplans:
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
 for rootname in ['run','legacy_run','asset_retry_run']:
  root=base/rootname;p=root/'status.json';status=json.loads(p.read_text()) if p.exists() else []
+ status_by_id={r['job_id']:r for r in status}
+ # A resumed worker may currently be before an already completed job in its
+ # sequential plan. Canonical results remain valid during that partial status.
+ for canonical in root.glob('*/result.json'):
+  r=json.loads(canonical.read_text())
+  if r['job_id'] not in status_by_id or status_by_id[r['job_id']]['status']!='conditional_event_search_completed':status_by_id[r['job_id']]=r
+ status=list(status_by_id.values())
  for r in status:
   if r['status']=='source_event_reproduced':continue
   if r['status']!='conditional_event_search_completed':results.append(dict(r,source_root=str(root)));continue
@@ -59,7 +66,10 @@ def main():
     base=str(Path(launch['root']).parent).replace('\\','/')
     query=REMOTE.replace('BASE',repr(base)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
     evidence=json.loads(remote_text(launch['host'],query,timeout=600));(ROOT/'t18_search_evidence_20261020.json').write_text(json.dumps(evidence,indent=2))
-    plans={r['job_id']:r for r in evidence['plans']};results={r['job_id']:r for r in evidence['results']}
+    plans={r['job_id']:r for r in evidence['plans']};results={}
+    for r in evidence['results']:
+        previous=results.get(r['job_id'])
+        if previous is None or previous['status']!='conditional_event_search_completed':results[r['job_id']]=r
     originals={r['sample_id']:r for r in map(json.loads,(ROOT/'t18_table_contact_source_events_20261020.jsonl').read_text().splitlines())}
     candidates=[];bindings=[]
     for key,plan in plans.items():

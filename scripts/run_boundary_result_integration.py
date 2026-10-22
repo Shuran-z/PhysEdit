@@ -16,6 +16,8 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't13_dense_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
+ 'five_scene_timeout_retry_launch_20261021.json':'scripts.register_five_scene_refinements',
  't13_remaining_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  't11_p26_full_contract_control_repeat2_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  't11_p26_full_contract_control_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
