@@ -49,6 +49,7 @@ TARGETS={
 TARGETS.update({'five_scene_parallel_'+str(i)+'_launch_20261021.json':'scripts.register_five_scene_refinements' for i in range(4)})
 TARGETS.update({'t18_parallel_'+str(i)+'_launch_20261022.json':'scripts.register_t18_table_contact_distances' for i in range(4)})
 TARGETS.update({'t12_remaining_grid_'+str(i)+'_launch_20261022.json':'scripts.register_t12_remaining_grid' for i in range(2)})
+TARGETS.update({'t12_remaining_grid_p26_'+str(i)+'_launch_20261022.json':'scripts.register_t12_remaining_grid' for i in range(4)})
 
 
 def main():

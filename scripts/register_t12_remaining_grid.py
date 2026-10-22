@@ -26,6 +26,8 @@ def bind(job,result):
                 original_reference_kind=job['reference_kind'],normalization_scope='full actual released axis grid; distinct from an older narrower slice span',
                 search_scope='All released axis values scanned; local sign changes refined. Hidden between-sample transitions are not ruled out.',
                 source_job_id=job['job_id'],backend_sha256=result['backend_sha256'],inversion_eligibility='independent',formal_nearacc_eligible=False))
+            out[-1]['refinement_execution_host']=result.get('execution_host')
+            out[-1]['refinement_runtime_environment']=result.get('execution_environment')
     return out
 
 
@@ -54,11 +56,15 @@ for l in LAUNCHES:
     if receipt['label']!=int(receipt['max_displacement_m']>=.01):raise ValueError('event rule changed')
     verified.append(receipt)
    row['verified_probes']=verified;row.pop('probes',None)
-  out.append(row)
+  row['execution_host']=l['host'];row['execution_environment']=l.get('runtime_environment');out.append(row)
  temp=cache_path.with_name(cache_path.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cache_path)
 print(json.dumps(out))
 '''.replace('VERIFY',inspect.getsource(verify_probe_files)).replace('LAUNCHES',repr(launches))
-    evidence=json.loads(remote_text('p25',code,timeout=300));bindings=[]
+    evidence=[]
+    for host in sorted({l['host'] for l in launches}):
+        subset=[l for l in launches if l['host']==host]
+        evidence.extend(json.loads(remote_text(host,code.replace(repr(launches),repr(subset)),timeout=300)))
+    bindings=[]
     for row in evidence:
         if row['status']=='remaining_grid_completed':bindings.extend(bind(byid[row['job_id']],row))
     (ROOT/'t12_remaining_grid_evidence_20261022.json').write_text(json.dumps(evidence))

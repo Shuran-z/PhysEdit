@@ -107,7 +107,8 @@ def main():
  overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离；B采用用户确认E4桌面接触，{t07_B.get('reference_videos',0)}条真值已绑定，{t07_B.get('bound_distinct_samples',0)}条有原区间距离",f"B原60组三点中{t07_B.get('contexts_without_observed_flip',0)}组未观测到E4翻转，均保留；已观测{t07_B.get('original_intervals',0)}组区间，细化成功{t07_B_refined.get('refined',0)}、端点复现失败{t07_B_refined.get('failed',0)}；原0.16–0.22m区间不因复跑失败删除")
  if (OUT/'t12_remaining_grid_launch_20261022.json').exists():
   done,_=overrides['T12']
-  overrides['T12']=(done,f"剩余1572个原单点/无翻转切片已启动两路全发布取值网格补算；完成{t12_remaining.get('completed',0)}、失败{t12_remaining.get('failed',0)}、待算{t12_remaining.get('pending',1572)}。新补算单列，不覆盖原标签，归一化使用本批实际完整发布轴范围")
+  queue_count=len(load('t12_remaining_grid_launch_20261022.json'))
+  overrides['T12']=(done,f"剩余1572个原单点/无翻转切片已启动{queue_count}路全发布取值网格补算；完成{t12_remaining.get('completed',0)}、失败{t12_remaining.get('failed',0)}、待算{t12_remaining.get('pending',1572)}。新补算单列，不覆盖原标签，归一化使用本批实际完整发布轴范围")
  overrides['T03']=(f"880份选定原状态均已回收；{t03.get('recovered_state_bindings',0)}条已绑定状态身份及实际求解设置；{t03.get('normalized_interval_records',0)}条原事件区间记录已补齐归一化",'原报告中的64个相邻事件区间保留；其余原参数族和没有观测翻转的上下文继续处理，不把渲染star当求解边界')
  five=load('five_scene_refinement_summary_20261020.json')
  for scene,values in five.get('scenes',{}).items():
