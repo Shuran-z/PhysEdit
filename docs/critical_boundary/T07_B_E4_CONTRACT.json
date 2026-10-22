@@ -1,0 +1,21 @@
+{
+  "version": "t07-b-e4-20261022",
+  "scene_id": "T07",
+  "family_id": "B_initial_longitudinal_position_m",
+  "user_selected_event": "phone_table_contact_after_release",
+  "event_stage": "E4",
+  "event_definition": "At least one recorded native contact between t07_smartphone and frozen_tabletop_collision_slab during the action window.",
+  "action_window": "From render.pre_static_frames through the last recorded frame, inclusive.",
+  "ground_truth_source": "Hash-bound published per-frame native contact telemetry.",
+  "incomplete_telemetry": "Unknown; never silently label absence of an unrecorded contact as a negative.",
+  "contact_recording_contract": "The original renderer with scene_overrides.record_contacts=true may omit empty contact lists. Any observed phone/table contact is positive; ramp contact alone is not positive.",
+  "preserve_auxiliary_events": ["motion_ge_1cm", "phone_ramp_contact_at_end", "phone_table_contact_at_end"],
+  "parameter_unit": "m",
+  "published_parameters": [0.1, 0.16, 0.22],
+  "normalization_domain": [0.1, 0.22],
+  "groups": "Identical released background, gravity, repeat and fixed physical context; never pair arbitrary opposite outcomes across groups.",
+  "no_observed_flip": "Keep all reference answers. Mark the boundary unavailable within the original sampled range.",
+  "refinement_failure": "Keep the original released opposite-outcome interval and both sides. Do not replace it with an invented point.",
+  "inversion_eligibility": "Independent; does not filter these reference answers or parameter branches.",
+  "formal_admission": "Ground-truth and distance registration do not automatically grant formal NearAcc admission."
+}

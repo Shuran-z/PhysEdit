@@ -24,13 +24,18 @@ def nearest_distance(theta,intervals,span):
 REMOTE='''import json,gzip,hashlib,os
 from pathlib import Path
 VERIFY_FUNCTION
-base=Path(BASE);allplans=json.loads((base/'inputs/plan_all567.json').read_text());plans=[];results=[]
+base=Path(BASE);allplans=json.loads((base/'inputs/plan_all567.json').read_text());plans=[];results=[];resource_recovery_ids=set();probe_progress={}
 cache_path=base/'collector_probe_digest_cache.json';cache=json.loads(cache_path.read_text()) if cache_path.exists() else {}
 for j in allplans:
  c=j['base_config'];plans.append(dict(job_id=j['job_id'],sample_id=j['sample_id'],revision=j['revision'],theta=c['experiment']['parameter']['parameter_value'],parameter_unit=c['experiment']['parameter']['parameter_unit'],
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
 for rootname in ['run','legacy_run','asset_retry_run']:
  root=base/rootname;p=root/'status.json';status=json.loads(p.read_text()) if p.exists() else []
+ history=root/'status_before_resource_recovery_20261021.json'
+ if history.exists():
+  cohort={r['job_id'] for r in json.loads(history.read_text()) if r['status']=='failed' and 'GPU free-memory' in r.get('error','')}
+  resource_recovery_ids.update(cohort)
+  for job_id in cohort:probe_progress[job_id]=max(probe_progress.get(job_id,0),len(list((root/job_id).glob('*/receipt.json'))))
  status_by_id={r['job_id']:r for r in status}
  # A resumed worker may currently be before an already completed job in its
  # sequential plan. Canonical results remain valid during that partial status.
@@ -57,7 +62,7 @@ for rootname in ['run','legacy_run','asset_retry_run']:
   r.pop('probes',None)
   results.append(dict(r,verified_probe_receipts=receipts,source_root=str(root),canonical_result_sha256=hashlib.sha256(canonical.read_bytes()).hexdigest()))
 temp=cache_path.with_name(cache_path.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cache_path)
-print(json.dumps(dict(plans=plans,results=results)))
+print(json.dumps(dict(plans=plans,results=results,resource_recovery_ids=sorted(resource_recovery_ids),resource_recovery_probe_progress=probe_progress)))
 '''
 
 
@@ -105,6 +110,12 @@ def main():
         failed_contexts=sum(r['search_status']=='failed' for r in candidates),pending_contexts=sum(r['search_status']=='pending' for r in candidates),
         unique_bound_samples=len({r['sample_id'] for r in bindings}),distance_bins=dict(collections.Counter(r.get('distance',{}).get('bin') for r in candidates if r.get('distance'))),
         original_source_candidates_retained=True,formal_nearacc_admissions=0)
+    cohort=set(evidence.get('resource_recovery_ids',[]))
+    if cohort-set(plans):raise ValueError('resource recovery cohort outside original T18 plan')
+    recovered=[dict(job_id=r['job_id'],sample_id=r['sample_id'],status=r['search_status'],boundary_status=r.get('boundary_status'),distance=r.get('distance'),completed_probe_files=evidence.get('resource_recovery_probe_progress',{}).get(r['job_id'],0)) for r in candidates if r['job_id'] in cohort]
+    recovery=dict(total=len(cohort),completed=sum(r['status']=='conditional_event_search_completed' for r in recovered),failed=sum(r['status']=='failed' for r in recovered),pending=sum(r['status']=='pending' for r in recovered),with_distances=sum(r['distance'] is not None for r in recovered),started_jobs=sum(r['completed_probe_files']>0 for r in recovered),completed_probe_files=sum(r['completed_probe_files'] for r in recovered),probe_count_scope='progress only; complete jobs retain full state and config digest verification')
+    summary['resource_recovery_cohort']=recovery
+    (ROOT/'t18_resource_recovery_cohort_progress_20261021.json').write_text(json.dumps(dict(summary=recovery,jobs=recovered),indent=2))
     (ROOT/'t18_event_distance_summary_20261020.json').write_text(json.dumps(summary,indent=2));print(json.dumps(summary))
 
 

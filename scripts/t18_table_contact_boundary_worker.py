@@ -89,12 +89,12 @@ def save(path,value):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(value,indent=2));tmp.replace(path)
 
 
-def wait_for_resources(root,gpu):
+def wait_for_resources(root,gpu,minimum_free_memory_mib=12288):
     while True:
         if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
         free=float(subprocess.check_output(['nvidia-smi','-i',str(gpu),'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
-        if free>=12*1024:return
-        save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=gpu,free_memory_mib=free,minimum_free_memory_mib=12288))
+        if free>=minimum_free_memory_mib:return
+        save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=gpu,free_memory_mib=free,minimum_free_memory_mib=minimum_free_memory_mib))
         time.sleep(20)
 
 
@@ -102,8 +102,10 @@ def main():
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--gpu',default='2');p.add_argument('--limit',type=int,default=0);p.add_argument('--source-only',action='store_true')
     p.add_argument('--renderer-timeout-seconds',type=int,default=600)
+    p.add_argument('--minimum-free-memory-mib',type=int,default=12288)
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
     if not 600<=args.renderer_timeout_seconds<=7200:p.error('renderer timeout must be between 600 and 7200 seconds')
+    if args.minimum_free_memory_mib<8192:p.error('at least 8GiB free memory required')
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None];results=[];build,bgs=builder()
     backend=PROJECT/'scripts/render_sample.py';baseline_hashes={str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [backend,PROJECT/'scripts/build_project.py',PROJECT.parent/'scripts/render_t16_t20_physical_v5_20260816.py']}
@@ -132,7 +134,7 @@ def main():
                     raw=gzip.decompress(stored) if state_path.suffix=='.gz' else stored
                     if hashlib.sha256(raw).hexdigest()!=cached['state_sha256']:raise ValueError('cached state bytes changed')
                     return cached
-                wait_for_resources(root,args.gpu)
+                wait_for_resources(root,args.gpu,args.minimum_free_memory_mib)
                 c=change(base,theta,build,bgs);render=c['render'];render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False)
                 for key in ['save_video','save_first_rgb','save_last_rgb']:
                     if render.get(key):render[key]=str(dest/Path(render[key]).name)

@@ -90,13 +90,16 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('T11_verified_producer_p26','t11_verified_p26_producer_launch_20261020.json','p26'),
         ('alternate_source_seed','five_scene_alternate_seed_launch_20261020.json','p25'),
         ('timeout_retry','five_scene_timeout_retry_launch_20261021.json','p25'),
-        ('T13_seeded_supplement','t13_remaining_seeded_scans_launch_20261021.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
+        ('T13_seeded_supplement','t13_remaining_seeded_scans_launch_20261021.json','p25'),
+        ('T13_dense_seeded','t13_dense_seeded_scans_launch_20261021.json','p25'),
+        ('T07_B_E4','t07_B_E4_search_launch_20261022.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)
         code='''import pathlib,json,collections
 root=pathlib.Path(ROOT);pid=PID;p=pathlib.Path('/proc')/str(pid)/'cmdline'
-rows=json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []
+status=root/'status.json' if (root/'status.json').exists() else root/'results.json'
+rows=json.loads(status.read_text()) if status.exists() else []
 resource=json.loads((root/'resource_status.json').read_text()) if (root/'resource_status.json').exists() else {}
 queue=pathlib.Path(PIPELINE)/'queue_status.json'
 print(json.dumps(dict(running=p.exists() and PIPELINE.encode() in p.read_bytes(),statuses=dict(collections.Counter(r['status'] for r in rows)),resource=resource,queue=json.loads(queue.read_text()) if queue.exists() else {})))

@@ -60,6 +60,12 @@ def main():
         sources=[(out/'t09_table_contact_refined_distances.jsonl',kind) if path==out/'t09_table_contact_sample_distances.jsonl' else (path,kind) for path,kind in sources]
     sources.append((out/'t16_t20_published_contact_sample_distances.jsonl','supplemental'))
     sources.append((out/'t18_table_contact_sample_distances.jsonl','supplemental'))
+    sources.append((out/'t07_B_E4_sample_distances.jsonl','supplemental'))
+    b_summary=ROOT/'t07_B_E4_refinement_summary_20261022.json';b_base=out/'t07_B_E4_sample_distances.jsonl';b_refined=out/'t07_B_E4_sample_distances_refined.jsonl'
+    if b_summary.exists() and b_base.exists() and b_refined.exists():
+        proof=json.loads(b_summary.read_text())
+        if proof.get('base_sha256')==hashlib.sha256(b_base.read_bytes()).hexdigest() and proof.get('overlay_sha256')==hashlib.sha256(b_refined.read_bytes()).hexdigest():
+            sources=[(b_refined if p==b_base else p,kind) for p,kind in sources]
     sources.append((out/'t06_t10_replay_sample_distances.jsonl','supplemental'))
     sources.append((out/'t09_pull_supplemental_sample_distances.jsonl','supplemental'))
     pull_summary=out/'t09_pull_refinement_summary.json'
