@@ -16,6 +16,8 @@ physedit models --json
 | LTX-Video 2B — PhyDataset SFT-LoRA (EN) | I2V / V2V | [基础模型](https://huggingface.co/Lightricks/LTX-Video) · [英文 LoRA 权重](https://github.com/Shuran-z/PhysEdit/releases/download/ltx-video-2b-phydataset-en-lora-v1/phydataset-en-sft-lora-step188.safetensors) |
 | CogVideoX 1.5 | I2V | [Hugging Face](https://huggingface.co/zai-org/CogVideoX1.5-5B-I2V) |
 | Wan 2.2 5B | I2V | [Diffusers权重](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B-Diffusers) |
+| Wan2.2-TI2V-5B — PhyDataset SFT-LoRA (ZH) | I2V | [基础模型](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B) · [中文 LoRA 权重](https://github.com/Shuran-z/PhysEdit/releases/download/wan2.2-ti2v-5b-phydataset-zh-lora-v1/phydataset-wan22-ti2v5b-zh-lora-750updates.safetensors) |
+| Wan2.2-TI2V-5B — PhyDataset SFT-LoRA (EN) | I2V | [基础模型](https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B) · [英文 LoRA 权重](https://github.com/Shuran-z/PhysEdit/releases/download/wan2.2-ti2v-5b-phydataset-en-lora-v1/phydataset-wan22-ti2v5b-en-lora-700plus50.safetensors) |
 | HunyuanVideo 1.5 | I2V | [480p步数蒸馏权重](https://huggingface.co/hunyuanvideo-community/HunyuanVideo-1.5-Diffusers-480p_i2v_step_distilled) |
 | Cosmos-Predict2 | I2V / V2V未来帧预测 | [Hugging Face](https://huggingface.co/nvidia/Cosmos-Predict2-2B-Video2World) |
 | DynamiCrafter | I2V | [1024权重](https://huggingface.co/Doubiiu/DynamiCrafter_1024) |
