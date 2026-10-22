@@ -92,7 +92,7 @@ print(json.dumps(dict(selected=880,recovered=len(verified),failed=len(failed),st
         ('timeout_retry','five_scene_timeout_retry_launch_20261021.json','p25'),
         ('T13_seeded_supplement','t13_remaining_seeded_scans_launch_20261021.json','p25'),
         ('T13_dense_seeded','t13_dense_seeded_scans_launch_20261021.json','p25'),
-        ('T07_B_E4','t07_B_E4_search_launch_20261022.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]:
+        ('T07_B_E4','t07_B_E4_search_launch_20261022.json','p25')]+[('five_scene_parallel_'+str(i),'five_scene_parallel_'+str(i)+'_launch_20261021.json','p25') for i in range(4)]+[('T18_parallel_'+str(i),'t18_parallel_'+str(i)+'_launch_20261022.json','p25') for i in range(4)]+[('T12_remaining_grid_'+str(i),'t12_remaining_grid_'+str(i)+'_launch_20261022.json','p25') for i in range(2)]:
         launch_path=ROOT/filename
         if not launch_path.exists():continue
         launch=json.loads(launch_path.read_text(encoding='utf-8-sig'));host=launch.get('host',default_host)

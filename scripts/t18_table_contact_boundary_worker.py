@@ -24,10 +24,13 @@ EVENT='upper_nonpulled_book_on_table_at_end'
 
 
 def table_event(config,frame):
-    if 'contacts' not in frame:raise ValueError('native final contact telemetry absent')
+    # The original base renderer adds the contacts key only for nonempty lists.
+    # An explicit recording contract therefore makes an omitted list a valid
+    # negative, but absent telemetry without that contract stays unknown.
+    if 'contacts' not in frame and config.get('scene_overrides',{}).get('record_contacts') is not True:raise ValueError('native final contact telemetry absent')
     e=config['experiment'];supported=set(e['supported_book_names']);actors={o['name'] for o in config['dynamic_objects']}
     evidence=[]
-    for c in frame['contacts']:
+    for c in frame.get('contacts',[]):
         names={c['entity_a'],c['entity_b']};upper=names&supported
         if len(upper)!=1 or not names-actors:continue
         # Numerical tolerance classifies an existing collision's surface. It
@@ -89,6 +92,17 @@ def save(path,value):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(value,indent=2));tmp.replace(path)
 
 
+def job_folder(root,job_id):
+    if Path(job_id).name!=job_id or job_id in ['.','..']:raise ValueError('invalid job directory')
+    folder=root/job_id
+    if folder.is_symlink():
+        resolved=folder.resolve()
+        if resolved.name!=job_id or resolved.parent.parent!=root.parent.resolve() or resolved.parent.name not in ['run','legacy_run','asset_retry_run']:
+            raise ValueError('shared job directory outside original task roots')
+    folder.mkdir(exist_ok=True)
+    return folder
+
+
 def wait_for_resources(root,gpu,minimum_free_memory_mib=12288):
     while True:
         if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
@@ -115,7 +129,7 @@ def main():
         if exp['parameter']['parameter_name']=='overlap_length' and ('v3_' in version or 'v4_' in version):
             legacy,_=builder('v3' if 'v3_' in version else 'v4');path=legacy.original_source_path
             source_hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
-        folder=root/job['job_id'];folder.mkdir(exist_ok=True);rp=folder/'result.json'
+        folder=job_folder(root,job['job_id']);rp=folder/'result.json'
         if rp.exists():
             cached=json.loads(rp.read_text())
             if cached['backend_sources']!=source_hashes or cached['reference_state_sha256']!=job['reference_state_sha256']:raise ValueError('cached job source changed')
@@ -146,7 +160,7 @@ def main():
                 if len(state['frames'])!=210:raise ValueError('incomplete state')
                 compressed=gzip.compress(raw,compresslevel=3,mtime=0);stored=dest/'physics.json.gz';stored.write_bytes(compressed)
                 if hashlib.sha256(gzip.decompress(stored.read_bytes())).digest()!=hashlib.sha256(raw).digest():raise ValueError('lossless state compression failed')
-                if root.resolve() not in (dest/'physics.json').resolve().parents:raise ValueError('generated state outside task root')
+                if folder.resolve() not in (dest/'physics.json').resolve().parents:raise ValueError('generated state outside job root')
                 (dest/'physics.json').unlink()
                 result=dict(theta=theta,**table_event(c,state['frames'][-1]),config_sha256=hashlib.sha256(cp.read_bytes()).hexdigest(),state_sha256=hashlib.sha256(raw).hexdigest(),stored_state_sha256=hashlib.sha256(compressed).hexdigest(),state_path=str(stored),backend_sources=source_hashes)
                 save(receipt,result);return result
