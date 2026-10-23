@@ -59,6 +59,8 @@ def main():
     if t09_event_summary.exists() and (out/'t09_table_contact_refined_distances.jsonl').exists() and json.loads(t09_event_summary.read_text()).get('base_sha256')==hashlib.sha256((out/'t09_table_contact_sample_distances.jsonl').read_bytes()).hexdigest():
         sources=[(out/'t09_table_contact_refined_distances.jsonl',kind) if path==out/'t09_table_contact_sample_distances.jsonl' else (path,kind) for path,kind in sources]
     sources.append((out/'t16_t20_published_contact_sample_distances.jsonl','supplemental'))
+    sources.append((out/'remaining_family_scan_sample_distances.jsonl','supplemental'))
+    sources.append((out/'conditional_family_sample_distances.jsonl','supplemental'))
     sources.append((out/'t18_table_contact_sample_distances.jsonl','supplemental'))
     sources.append((out/'t12_remaining_grid_sample_distances.jsonl','supplemental'))
     sources.append((out/'t07_B_E4_sample_distances.jsonl','supplemental'))

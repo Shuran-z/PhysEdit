@@ -16,6 +16,12 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't18_original_render_control_launch_20261023.json':'scripts.collect_family_failure_diagnostics',
+ 'remaining_family_scans_launch_20261023.json':'scripts.register_remaining_family_distances',
+ 'conditional_contacts_launch_20261023.json':'scripts.register_remaining_family_distances',
+ 'conditional_library_recovery_launch_20261023.json':'scripts.register_remaining_family_distances',
+ 'conditional_t03_launch_20261023.json':'scripts.register_remaining_family_distances',
+ 'conditional_t03_repaired_launch_20261023.json':'scripts.register_remaining_family_distances',
  't11_p29_original_runtime_retry_launch_20261022.json':'scripts.register_five_scene_refinements',
  't07_B_E4_search_launch_20261022.json':'scripts.register_t07_position_contact',
  't13_dense_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
