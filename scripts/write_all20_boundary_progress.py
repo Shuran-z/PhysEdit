@@ -110,6 +110,28 @@ def main():
   queue_count=len(load('t12_remaining_grid_launch_20261022.json'))
   overrides['T12']=(done,f"剩余1572个原单点/无翻转切片已启动{queue_count}路全发布取值网格补算；完成{t12_remaining.get('completed',0)}、失败{t12_remaining.get('failed',0)}、待算{t12_remaining.get('pending',1572)}。新补算单列，不覆盖原标签，归一化使用本批实际完整发布轴范围")
  overrides['T03']=(f"880份选定原状态均已回收；{t03.get('recovered_state_bindings',0)}条已绑定状态身份及实际求解设置；{t03.get('normalized_interval_records',0)}条原事件区间记录已补齐归一化",'原报告中的64个相邻事件区间保留；其余原参数族和没有观测翻转的上下文继续处理，不把渲染star当求解边界')
+ preparation=load('conditional_family_preparation_summary_20261023.json')
+ conditional=load('conditional_family_progress_20261023.json')
+ scans=load('remaining_family_scan_summary_20261023.json')
+ if preparation:
+  done,left=overrides['T03']
+  overrides['T03']=(done+f"；A/B/C共{preparation.get('by_scene',{}).get('T03',0)}个上下文已备齐补算输入，包括15个r035修复配置，按发布状态恢复步长和子步数",
+   left+f"；输入准备未完成{preparation.get('pending',0)}项；实际补算状态见conditional_family_progress_20261023.json，任务登记不算求解完成")
+ if scans:
+  for scene in ['T16','T17','T20']:
+   done,left=overrides[scene]
+   overrides[scene]=(done+f"；原族扫描覆盖{scans.get('contexts',{}).get(scene,0)}个上下文、{scans.get('intervals',{}).get(scene,0)}个局部事件区间，完整链的逐段接触单列",
+    left+'；固定来源种子的补算已接入回收流程；旧library_shelf_v1.json缺失的上下文保留失败记录，不能用新版背景替代')
+  restoration=load('original_library_background_restore_20261023.json')
+  if restoration:
+   for scene in ['T16','T17','T20']:
+    done,left=overrides[scene]
+    overrides[scene]=(done+'；已由原v1生成器恢复书架网格，SHA256与历史配置一致',
+     left.replace('旧library_shelf_v1.json缺失的上下文保留失败记录，不能用新版背景替代','旧背景已重建到独立目录，45个受影响上下文单独重试；原失败记录保留，不与旧运行混记'))
+ failure18=load('t18_failure_diagnostics_20261023.json')
+ if failure18:
+  done,left=overrides['T18'];diagnosis=failure18['summary']
+  overrides['T18']=(done,left+f"；已诊断{diagnosis.get('examined',0)}项失败；原720p光追对照{len(failure18.get('controls',[]))}次仍未复现，不能归因于低清数值渲染；底层执行/资产差异尚未唯一定位")
  five=load('five_scene_refinement_summary_20261020.json')
  for scene,values in five.get('scenes',{}).items():
   overrides[scene]=(f"原发布异侧区间任务{values.get('planned',0)}项；已接入原后端细化区间{values.get('refined_local_interval',0)}项",
@@ -117,6 +139,10 @@ def main():
  if 'T11' in overrides:
   done,left=overrides['T11'];audit=load('t11_failed_endpoint_audit_summary_20261021.json')
   overrides['T11']=(done,left+f"；已核查{audit.get('compared_endpoints',0)}个端点，{audit.get('changed_event_labels',0)}个结果改变，配置匹配，接触后轨迹/触发施力存在差异")
+  original_runtime=load('t11_original_runtime_endpoint_audit_20261023.json')
+  if original_runtime:
+   done,left=overrides['T11']
+   overrides['T11']=(done,left+f"；新增原p29运行时复核{len(original_runtime)}个端点，{sum(r['original_label']!=r['replay_label'] for r in original_runtime)}个结果变化，动态物体和物理场景配置匹配")
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
   gpu=1 if scene=='T10' and (OUT/'t10_parallel_state_replay_launch_20261020.json').exists() else 4
