@@ -16,6 +16,7 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 't11_p29_original_runtime_retry_launch_20261022.json':'scripts.register_five_scene_refinements',
  't07_B_E4_search_launch_20261022.json':'scripts.register_t07_position_contact',
  't13_dense_seeded_scans_launch_20261021.json':'scripts.collect_boundary_replay_diagnostics',
  'five_scene_timeout_retry_launch_20261021.json':'scripts.register_five_scene_refinements',

@@ -16,6 +16,7 @@ LAUNCHES = [('five_scene_boundary_launch_20261020.json', 'five_scene_prepared_pl
             ('t11_verified_p26_producer_launch_20261020.json', 't11_verified_p26_producer_plan_20261020.json')]
 LAUNCHES += [('five_scene_parallel_'+str(i)+'_launch_20261021.json','five_scene_parallel_'+str(i)+'_plan_20261021.json') for i in range(4)]
 LAUNCHES += [('five_scene_timeout_retry_launch_20261021.json','five_scene_timeout_retry_plan_20261021.json')]
+LAUNCHES += [('t11_p29_original_runtime_retry_launch_20261022.json','t11_p29_original_runtime_retry_plan_20261022.json')]
 
 
 def identity(row):
