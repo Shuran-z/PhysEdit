@@ -21,11 +21,14 @@ def nearest_distance(theta,intervals,span):
                 scope='nearest of the observed left/right local intervals, not a globally unique critical root')
 
 
-REMOTE='''import json,gzip,hashlib,os
+REMOTE='''import json,gzip,hashlib,os,time
 from pathlib import Path
 VERIFY_FUNCTION
 base=Path(BASE);allplans=json.loads((base/'inputs/plan_all567.json').read_text());plans=[];results=[];resource_recovery_ids=set();probe_progress={}
 cache_path=base/'collector_probe_digest_cache.json';cache=json.loads(cache_path.read_text()) if cache_path.exists() else {}
+seen_completed_paths=set();last_checkpoint=time.monotonic()
+def checkpoint():
+ temp=cache_path.with_name(cache_path.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cache_path)
 for j in allplans:
  c=j['base_config'];plans.append(dict(job_id=j['job_id'],sample_id=j['sample_id'],revision=j['revision'],theta=c['experiment']['parameter']['parameter_value'],parameter_unit=c['experiment']['parameter']['parameter_unit'],
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
@@ -48,6 +51,9 @@ for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for p in ba
   if r['status']!='conditional_event_search_completed':results.append(dict(r,source_root=str(root)));continue
   canonical=root/r['job_id']/'result.json'
   if not canonical.exists():raise ValueError('completed job has no final receipt')
+  canonical_key=str(canonical.resolve())
+  if canonical_key in seen_completed_paths:continue
+  seen_completed_paths.add(canonical_key)
   r=json.loads(canonical.read_text());receipts=[]
   for path in (root/r['job_id']).glob('*/receipt.json'):
    v=json.loads(path.read_text());sp=Path(v['state_path'])
@@ -59,9 +65,11 @@ for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for p in ba
    v['receipt_sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
    v['receipt_path']=str(path)
    receipts.append(v)
+   if time.monotonic()-last_checkpoint>=10:
+    checkpoint();last_checkpoint=time.monotonic()
   r.pop('probes',None)
   results.append(dict(r,verified_probe_receipts=receipts,source_root=str(root),canonical_result_sha256=hashlib.sha256(canonical.read_bytes()).hexdigest()))
-temp=cache_path.with_name(cache_path.name+'.'+str(os.getpid())+'.tmp');temp.write_text(json.dumps(cache));temp.replace(cache_path)
+checkpoint()
 print(json.dumps(dict(plans=plans,results=results,resource_recovery_ids=sorted(resource_recovery_ids),resource_recovery_probe_progress=probe_progress)))
 '''
 

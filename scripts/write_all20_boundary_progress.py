@@ -96,7 +96,7 @@ def main():
  t02_complete=isinstance(t02,list) and len(t02)==880 and all(r.get('numerical_reference_verified') and r.get('mapping_status')=='matched' and r.get('boundary',{}).get('status')=='verified' for r in t02)
  overrides={
   'T09':(f"真实末帧触桌事件：580条原状态；摩擦轴细化{t09.get('refined_intervals',0)}/12，抽取力轴细化{t09_pull.get('refined_intervals',0)}/{t09_pull.get('planned',8)}；两轴距离均已接入",f"缺失300条pull状态已回收{supplemental.get('completed_states',{}).get('T09',0)}/300；抽取力待完成{t09_pull.get('pending',0)}项、失败{t09_pull.get('failed',0)}项；补算来源单列，下沉代理不计事件边界；无观测翻转的上下文保留原记录"),
-  'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；使用p25 GPU1原后端迁移副本",'已登记的76项求解已结束；其余联合参数切片的边界覆盖尚未闭环，不能表述为仍在运行；两侧样本保留'),
+  'T12':(f"新版880条配置与状态对应；已细化{t12.get('refined_intervals',0)}/76个已识别切片区间；原后端副本与各主机执行环境分别登记",'已登记的76项求解已结束；其余联合参数切片的边界覆盖尚未闭环，不能表述为仍在运行；两侧样本保留'),
   'T13':(f"原发布147个异侧区间均已接回；已细化{t13.get('completed_refined_intervals',0)}/147；740条不同参考样本有区间；seed0补充扫描{t13_seeded.get('completed_jobs',0)}/8，另存{t13_seeded.get('local_intervals',0)}个条件区间",f"原8项端点未复现：原初始化seed=None，复跑标签存在差异；保留原发布区间。两项seed0完整网格完成{t13_seeded.get('full_grid_completed_jobs',0)}/{t13_seeded.get('full_grid_planned_jobs',2)}；新种子结果不覆盖原发布真值"),
   'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"选定180组任务已全部结束，失败{t14.get('failed_contexts',0)}项；其中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本且不捏造边界；T14S另列"),
   'T15':('原范围60组与扩展40组已扫描；原发布反事实参数对应和原范围归一化已接入',f"79个已观测局部区间已细化{t15_refined}个、剩余{79-t15_refined}个；尾部未静止任务已运行，余下原审计失败项继续定位，出界等错误原样保留"),
