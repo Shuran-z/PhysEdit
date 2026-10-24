@@ -143,6 +143,16 @@ def main():
   if original_runtime:
    done,left=overrides['T11']
    overrides['T11']=(done,left+f"；新增原p29运行时复核{len(original_runtime)}个端点，{sum(r['original_label']!=r['replay_label'] for r in original_runtime)}个结果变化，动态物体和物理场景配置匹配")
+ source_searches=load('five_scene_conditional_source_preparation_20261023.json')
+ if source_searches:
+  for scene,count in source_searches['by_scene'].items():
+   done,left=overrides[scene]
+   overrides[scene]=(done+f"；新增{count}个端点来源配置的原种子条件搜索已启动",
+    left+'；新搜索覆盖原发布轴范围，不强迫另一个种子的端点复现原标签；每个来源仍须先复现自身事件，结果自动绑定且保留原区间')
+ shifted=load('t13_conditional_boundary_shift_20261024.json')
+ if shifted:
+  done,left=overrides['T13'];s=shifted['summary']
+  overrides['T13']=(done,left+f"；逐项比较发现{s['outside_original_interval']}/8个新seed0转变区间在原区间之外，{s['overlap_or_touch']}/8个仍重叠或相接；不能据此断言唯一根因")
  for scene,count in [('T06',600),('T10',880)]:
   item=next(r for r in combined['scenes'] if r['scene_id']==scene)
   gpu=1 if scene=='T10' and (OUT/'t10_parallel_state_replay_launch_20261020.json').exists() else 4

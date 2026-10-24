@@ -25,6 +25,24 @@ def test_conditional_distance_only_binds_its_source_without_granting_admission()
     assert rows[0]['formal_nearacc_eligible'] is False
 
 
+def test_unseeded_scan_stays_diagnostic_instead_of_claiming_a_fixed_seed_boundary():
+    job,result=evidence();job['base_config']={};result['source_seed']=None
+    assert bind(job,result)==[]
+
+
+def test_own_source_seed_is_preserved_when_scanning_beyond_the_old_bracket():
+    from scripts.conditional_family_search import intervene
+    left={'dynamic_objects':[{'name':'t04v3_stack_book_bottom','friction':.1}],
+          'runtime_forces':[],'scene_overrides':{},'render':{},'random_seed':1,'experiment':{'random_seed':1}}
+    right=copy.deepcopy(left);right['dynamic_objects'][0]['friction']=.3;right['random_seed']=2;right['experiment']['random_seed']=2
+    legacy={'scene_id':'T04','family_id':'stack_sliding','bracket':[.1,.3],
+            'endpoints':[{'config':left},{'config':right}],'seed_endpoint':1}
+    job={'theta':.3,'base_config':right,'original_pair_job':legacy}
+    changed=intervene(job,.5)
+    assert changed['dynamic_objects'][0]['friction']==pytest.approx(.5)
+    assert changed['random_seed']==2 and changed['experiment']['random_seed']==2
+
+
 @pytest.mark.parametrize('field,value', [('source_seed',8),('source_state_sha256','another_state'),('sample_id','another_video')])
 def test_other_seed_state_or_video_cannot_inherit_conditional_boundary(field,value):
     job,result=evidence();result[field]=value
