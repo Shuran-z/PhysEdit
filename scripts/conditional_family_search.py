@@ -36,6 +36,10 @@ def intervene(job,theta):
     config=copy.deepcopy(job['base_config'])
     if theta==job['theta']:
         return config
+    if job.get('original_pair_job'):
+        try:from scripts.five_scene_boundary_rules import intervene as original_intervene
+        except ModuleNotFoundError:from five_scene_boundary_rules import intervene as original_intervene
+        return original_intervene(job['original_pair_job'],theta)
     e=config['experiment'];objects={o['name']:o for o in config['dynamic_objects']}
     if job['scene_id']=='T03':
         p=e['parameter'];g=e['geometry_contract'];delta=theta-job['theta'];axis=job['family_id']
@@ -72,6 +76,16 @@ def events(job,config,state,state_path=None):
     frames=state['frames']
     if len(frames)!=210 or any(not math.isfinite(v) for f in frames for o in f['objects'] for v in o['position']):
         raise ValueError('incomplete/nonfinite original simulation')
+    if job.get('original_pair_job'):
+        target=job['original_pair_job']['target_event']
+        if job['scene_id']=='T01':
+            audit=module(job['auditor'],'conditional_t01_auditor').analyze(Path(state_path))
+            label=int(audit['outcome_label']=='full_chain') if job['family_id']=='C' else int(audit['stage_frames']['book_can_1' if job['family_id']=='A' else 'can_1_can_2'] is not None)
+        else:
+            try:from scripts.five_scene_boundary_rules import event
+            except ModuleNotFoundError:from five_scene_boundary_rules import event
+            label=event(config,state,target)
+        return {target:label}
     if job['scene_id']=='T03':
         if state_path is None:raise ValueError('original T03 auditor requires state file')
         audit=module(job['auditor'],'conditional_t03_auditor').audit_one(Path(state_path))
@@ -112,6 +126,22 @@ def restore_visual_manifest(config,job):
     config['manifest']=str(manifest)
 
 
+def acquire_gpu(root,preferred):
+    import fcntl
+    while True:
+        if shutil.disk_usage(root).free<20*1024**3:
+            save(root/'resource_status.json',dict(status='waiting_for_disk',minimum_free_GiB=20));time.sleep(20);continue
+        csv=subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.free','--format=csv,noheader,nounits']).decode()
+        cards=sorted((tuple(map(int,r.split(','))) for r in csv.splitlines() if r.strip()),key=lambda r:r[1],reverse=True)
+        for gpu,free in cards:
+            if free<8192 or preferred!='auto' and str(gpu)!=preferred:continue
+            lease=Path('/tmp/physedit_conditional_gpu_'+str(gpu)+'.lock').open('a')
+            try:fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError:lease.close();continue
+            return str(gpu),lease
+        save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=preferred));time.sleep(20)
+
+
 def main():
     import fcntl
     parser=argparse.ArgumentParser()
@@ -133,11 +163,6 @@ def main():
                     if hashlib.sha256(stored).hexdigest()!=r['stored_state_sha256'] or hashlib.sha256(gzip.decompress(stored)).hexdigest()!=r['state_sha256'] or hashlib.sha256((dest/'config.json').read_bytes()).hexdigest()!=r['config_sha256']:
                         raise ValueError('cached original probe changed')
                     probes[theta]=r;return r
-                while True:
-                    if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
-                    free=float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode())
-                    if free>=8192:break
-                    save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu));time.sleep(20)
                 config=intervene(job,theta);restore_visual_manifest(config,job)
                 render=config['render'];render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False,save_rgb_frames=False,camera_outputs=[])
                 for key in ['save_video','save_first_rgb','save_last_rgb','save_rgb_frames_dir']:
@@ -145,13 +170,16 @@ def main():
                 config['scene_overrides']['raytracing']=False
                 config.setdefault('annotations',{}).update(enabled=True,save_path=str(dest/'physics.json'))
                 cp=dest/'config.json';save(cp,config)
-                env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0',OMP_NUM_THREADS='2',MKL_NUM_THREADS='2')
-                save(root/'resource_status.json',dict(status='running_original_search',scene=job['scene_id'],family=job['family_id'],job_id=job['job_id'],theta=theta,gpu=args.gpu))
+                probe_gpu,lease=acquire_gpu(root,args.gpu)
+                env=dict(os.environ,CUDA_VISIBLE_DEVICES=probe_gpu,TI_OFFLINE_CACHE='0',OMP_NUM_THREADS='2',MKL_NUM_THREADS='2')
+                save(root/'resource_status.json',dict(status='running_original_search',scene=job['scene_id'],family=job['family_id'],job_id=job['job_id'],theta=theta,gpu=probe_gpu))
                 with (dest/'run.log').open('w') as log:
                     command=[args.python]
                     if job.get('renderer_bootstrap'):command.append(job['renderer_bootstrap'])
                     command += [job['renderer'],'--config',str(cp)]
-                    run=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=job.get('probe_timeout_seconds',1800))
+                    if job['scene_id']=='T11':command.append('--strict-live-physics')
+                    try:run=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=job.get('probe_timeout_seconds',1800))
+                    finally:lease.close()
                 if run.returncode:raise RuntimeError('original renderer failed: '+str(dest/'run.log'))
                 sp=dest/'physics.json';raw=sp.read_bytes();labels=events(job,config,json.loads(raw),sp)
                 stored=gzip.compress(raw,compresslevel=3,mtime=0);gz=dest/'physics.json.gz';gz.write_bytes(stored);sp.unlink()

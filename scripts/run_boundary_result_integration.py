@@ -16,6 +16,9 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
 TARGETS={
+ 'conditional_t03_timeout_recovery_launch_20261024.json':'scripts.register_remaining_family_distances',
+ 'five_scene_own_seed_0_launch_20261023.json':'scripts.register_remaining_family_distances',
+ 'five_scene_own_seed_1_launch_20261023.json':'scripts.register_remaining_family_distances',
  't18_original_render_control_launch_20261023.json':'scripts.collect_family_failure_diagnostics',
  'remaining_family_scans_launch_20261023.json':'scripts.register_remaining_family_distances',
  'conditional_contacts_launch_20261023.json':'scripts.register_remaining_family_distances',
@@ -72,6 +75,13 @@ def main():
     cache={};errors=[];last_statuses={};post_pending=False;deadline=time.monotonic()+args.hours*3600
     while True:
         launches={name:json.loads((ROOT/name).read_text(encoding='utf-8-sig')) for name in TARGETS if (ROOT/name).exists() and not (name=='t09_missing_state_replay_launch_20261020.json' and (ROOT/'t09_missing_state_replay_v2_launch_20261020.json').exists())}
+        # New conditional queues are discovered on every cycle, including
+        # retries added after this watcher started.
+        marker=ROOT/'conditional_family_launches_20261023.json'
+        if marker.exists():
+            for launch in json.loads(marker.read_text()):
+                name='conditional_auto_'+hashlib.sha256((launch['host']+launch['root']).encode()).hexdigest()[:16]
+                launches[name]=launch;TARGETS[name]='scripts.register_remaining_family_distances'
         remote=r'''
 import pathlib,json,hashlib
 rows=[]

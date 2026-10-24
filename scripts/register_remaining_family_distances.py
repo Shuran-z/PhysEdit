@@ -27,6 +27,9 @@ def bind(job,result):
             raise ValueError('invalid conditional interval')
         if [probes[t]['labels'][event] for t in [a,b]]!=interval['labels'] or len(set(interval['labels']))!=2:
             raise ValueError('missing opposite endpoint evidence')
+        # Retain an unseeded run as diagnostic evidence without promoting it
+        # to a fixed-seed boundary. Its grid and endpoints are still checked.
+        if result['source_seed'] is None:continue
         distance=distances(job['theta'],bracket=[a,b])
         out.append(dict(scene_id=job['scene_id'],engine='genesis',revision=job['revision'],sample_id=job['sample_id'],
             family_id=job['family_id'],theta=job['theta'],parameter_unit=job['parameter_unit'],target_event=event,
@@ -62,8 +65,8 @@ def main():
     launches=json.loads(marker.read_text()) if marker.exists() else []
     output=[];progress=[]
     for launch in launches:
-        jobs=json.loads(gzip.decompress((ROOT/('conditional_'+launch['kind']+'_jobs_20261023.json.gz')).read_bytes()))
-        if launch.get('local_plan'):jobs=json.loads(gzip.decompress((ROOT/launch['local_plan']).read_bytes()))
+        plan_name=launch.get('local_plan','conditional_'+launch['kind']+'_jobs_20261023.json.gz')
+        jobs=json.loads(gzip.decompress((ROOT/plan_name).read_bytes()))
         byid={j['job_id']:j for j in jobs}
         code=r'''
 import pathlib,json,hashlib,gzip,base64,os,time
@@ -102,7 +105,8 @@ checkpoint();print(base64.b64encode(gzip.compress(json.dumps(dict(results=rows,s
             if job['job_id'] in failed:counts[key]['failed_attempt']+=1
             if job['job_id'] in checks:counts[key]['source_checked']+=1
         progress.append(dict(launch=launch,phase=data['phase'],completed=len(done),failed_attempts=len(failed),
-            source_checks=len(checks),families=dict(counts),source_event_mismatches=sum(len(r['source_event_mismatches']) for r in checks.values())))
+            source_checks=len(checks),families=dict(counts),source_event_mismatches=sum(len(r['source_event_mismatches']) for r in checks.values()),
+            unseeded_completed_scans=sum(r['source_seed'] is None for r in data['results'])))
     (ledger/'conditional_family_sample_distances.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in output))
     result=dict(queues=progress,conditional_bound_samples=len({(r['scene_id'],r['sample_id']) for r in output}),
                 conditional_intervals=len(output),formal_admissions=0,source_scan_summary=summary)

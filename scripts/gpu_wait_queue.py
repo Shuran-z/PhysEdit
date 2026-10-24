@@ -40,6 +40,15 @@ def main():
         csv = subprocess.check_output(['nvidia-smi', '--query-gpu=index,memory.free',
                                        '--format=csv,noheader,nounits']).decode()
         gpu = choose_gpu(csv, manifest['minimum_free_memory_mib'])
+        reservation=None
+        if manifest.get('startup_gpu_reservation_seconds'):
+            while gpu is not None:
+                reservation=Path('/tmp/physedit_conditional_gpu_'+str(gpu)+'.lock').open('a')
+                try:fcntl.flock(reservation,fcntl.LOCK_EX|fcntl.LOCK_NB);break
+                except BlockingIOError:
+                    reservation.close();reservation=None
+                    csv='\n'.join(r for r in csv.splitlines() if int(r.split(',')[0])!=gpu)
+                    gpu=choose_gpu(csv,manifest['minimum_free_memory_mib'])
         if gpu is None:
             save(root / 'resource_status.json', dict(status='waiting_for_memory', gpu='auto',
                  minimum_free_memory_mib=manifest['minimum_free_memory_mib'], checked_at=time.time()))
@@ -50,6 +59,8 @@ def main():
             child = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT)
             save(root / 'gpu_wait_supervisor_status.json', dict(status='worker_started',
                  gpu=gpu, child_pid=child.pid, started_at=time.time()))
+            if reservation is not None:
+                time.sleep(manifest['startup_gpu_reservation_seconds']);reservation.close()
             code = child.wait()
         save(root / 'gpu_wait_supervisor_status.json', dict(status='worker_ended',
              gpu=gpu, child_pid=child.pid, returncode=code, ended_at=time.time()))
