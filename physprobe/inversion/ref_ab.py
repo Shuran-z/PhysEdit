@@ -1,7 +1,8 @@
 """A/B of two reference known-answer runs (results3 and a variant such as results3_<TAG>) on the results both contain:
 per parameter the number of point estimates and their |error| median / p90, the measured results (point + interval) with
 the best-fit |error| median / p90 / share within 10 %, truth in band, not explained; then every result whose kind changed.
-T19/T20 friction is left out (B20). Usage: python ref_ab.py VARIANT_DIR [BASE_DIR=results3] [--out FILE.json]"""
+Also takes two synthetic generated-like sets (results_gen/<set>.jsonl). T19/T20 friction is left out (B20).
+Usage: python ref_ab.py VARIANT [BASE=results3] [--out FILE.json]   (directories or .jsonl files, relative to WORK or absolute)"""
 import glob, json, os, sys
 import numpy as np
 
@@ -11,12 +12,10 @@ MEAS = ('point', 'interval')
 
 
 def load(d):
-    R = {}
-    for f in glob.glob(os.path.join(d, 'ref_*.json')):
-        if f.endswith('_summary.json'): continue
-        r = json.load(open(f))
-        if 'param' in r and not (r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20')): R[(r['clip'], r['param'])] = r
-    return R
+    """a result directory (ref_*.json) or a synthetic set's .jsonl (one known-truth result per clip and parameter)"""
+    if d.endswith('.jsonl'): rs = [json.loads(l) for l in open(d)]
+    else: rs = [json.load(open(f)) for f in glob.glob(os.path.join(d, 'ref_*.json')) if not f.endswith('_summary.json')]
+    return {(r['clip'], r['param']): r for r in rs if 'param' in r and not (r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20'))}
 
 
 args = sys.argv[1:]; out_file = None
@@ -29,7 +28,7 @@ q = lambda x, f: float(np.percentile(x, f)) if len(x) else float('nan')
 for p in ('g', 'mu', 'v'):
     for name, R in (('base', base), ('variant', var)):
         x = [R[k] for k in keys if k[1] == p]
-        pts = np.abs([r['err_pct'] for r in x if r['kind'] == 'point'])
+        pts = np.abs([r['err_pct'] for r in x if r['kind'] == 'point' and r.get('err_pct') is not None])
         m = np.abs([r['best_err_pct'] for r in x if r['kind'] in MEAS and r.get('best_err_pct') is not None])
         s = dict(n=len(x), points=len(pts), point_median=q(pts, 50), point_p90=q(pts, 90), measured=len(m),
                  measured_median=q(m, 50), measured_p90=q(m, 90), measured_within10=float(np.mean(m <= 10)) if len(m) else None,
