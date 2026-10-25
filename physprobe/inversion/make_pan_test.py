@@ -5,12 +5,13 @@ Usage: python make_pan_test.py -> sam_gen/s15v_pan/{items.json, tracks_moved.jso
 import json
 from pathlib import Path
 import cv2, numpy as np
-B = Path('.'); S = B / 'sam_gen/s15v'; D = B / 'sam_gen/s15v_pan'; (D / 'videos').mkdir(parents=True, exist_ok=True)
+from paths import WORK as B, gt
+S = B / 'sam_gen/s15v'; D = B / 'sam_gen/s15v_pan'; (D / 'videos').mkdir(parents=True, exist_ok=True)
 def Mk(k, W, H):
     s = 1 + 0.002 * k; return np.float32([[s, 0, (1 - s) * W / 2 + 1.2 * k], [0, s, (1 - s) * H / 2 + 0.4 * k]])
 items = json.load(open(S / 'items.json'))
 for x in items['items']:
-    src = x['path']; dst = D / 'videos' / Path(src).name
+    src = gt(x['path']); dst = D / 'videos' / Path(src).name
     cap = cv2.VideoCapture(src); W, H = int(cap.get(3)), int(cap.get(4)); fps = cap.get(5)
     vw = cv2.VideoWriter(str(dst), cv2.VideoWriter_fourcc(*'mp4v'), fps, (W, H)); k = 0
     while True:

@@ -4,13 +4,14 @@ inversion, so videos with camera motion cannot be explained by any simulated par
 import json, random, sys, collections, statistics as st
 from multiprocessing import get_context
 import cv2, numpy as np
-items = json.load(open('sam_gen/all/items.json'))['items']
-res = {json.loads(l)['key'] + '|' + json.loads(l)['param']: json.loads(l) for l in open('results_gen/generated_v3_final.jsonl') if 'param' in json.loads(l)}
+from paths import WORK as B, gt
+items = json.load(open(B / 'sam_gen/all/items.json'))['items']
+res = {json.loads(l)['key'] + '|' + json.loads(l)['param']: json.loads(l) for l in open(B / 'results_gen/all_cc.jsonl') if 'param' in json.loads(l)}
 random.seed(0); by = collections.defaultdict(list)
 for x in items: by[x['model']].append(x)
 sample = [x for m in sorted(by) for x in random.sample(by[m], min(int(sys.argv[1]), len(by[m])))]
 def motion(x):
-    cap = cv2.VideoCapture(x['path']); n = int(cap.get(7)); ok, a = cap.read(); cap.set(1, n // 2); ok2, b = cap.read(); cap.release()
+    cap = cv2.VideoCapture(gt(x['path'])); n = int(cap.get(7)); ok, a = cap.read(); cap.set(1, n // 2); ok2, b = cap.read(); cap.release()
     if not (ok and ok2): return x['key'], None
     sz = (427, 240); A = cv2.cvtColor(cv2.resize(a, sz), cv2.COLOR_BGR2GRAY).astype(np.float32) / 255; Bm = cv2.cvtColor(cv2.resize(b, sz), cv2.COLOR_BGR2GRAY).astype(np.float32) / 255
     try: cc, M = cv2.findTransformECC(A, Bm, np.eye(2, 3, dtype=np.float32), cv2.MOTION_AFFINE, (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 100, 1e-5), None, 5)
@@ -24,4 +25,4 @@ for m in sorted(by):
     ne = lambda kk: sum(res.get(k + '|g', {}).get('kind') == 'not_explained' for k in kk) / max(1, len(kk))
     st_ = [k for k in ks if k not in mv]
     print(f"{m:26s} {len(ks):3d} {st.median(out[k]['shift'] for k in ks) if ks else float('nan'):15.1f} {100 * len(mv) / max(1, len(ks)):18.0f}% {100 * ne(mv):16.0f}% vs {100 * ne(st_):3.0f}%")
-json.dump(out, open('results_gen/camera_motion_sample.json', 'w'))
+json.dump(out, open(B / 'results_gen/camera_motion_sample.json', 'w'))
