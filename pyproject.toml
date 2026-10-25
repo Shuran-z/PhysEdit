@@ -3,9 +3,9 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "physedit"
+name = "physprobe"
 version = "0.1.0"
-description = "Physical video generation and evaluation with single-view motion parameter estimation"
+description = "PhysProbe: physical video generation and evaluation; gravity, friction and speed measured in real and generated videos by single-view estimation and simulation inversion"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
@@ -20,7 +20,7 @@ physedit = "physedit.__main__:main"
 gravtrace = "gravtrace.__main__:main"
 
 [tool.setuptools]
-packages = ["gravtrace", "physedit", "physedit.runners", "physedit.conditioned_models", "scripts"]
+packages = ["gravtrace", "physedit", "physedit.runners", "physedit.conditioned_models", "physprobe", "physprobe.inversion", "scripts"]
 
 [tool.setuptools.package-data]
 scripts = ["sam31_frozen/*.py", "sam31_frozen/manifest.json"]
