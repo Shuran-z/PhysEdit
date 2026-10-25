@@ -82,7 +82,7 @@ for r in sample:
         for n in names:
             fr, ob = obs[n]; raw_fr = dict(zip(*RAW[r['key']][n]))
             rb = raw_fr.get(k)
-            if rb is not None: cv2.rectangle(im, (int(rb[0]), int(rb[1])), (int(rb[2]), int(rb[3])), COL['obs'], 2)
+            if rb is not None and np.all(np.isfinite(rb)): cv2.rectangle(im, (int(rb[0]), int(rb[1])), (int(rb[2]), int(rb[3])), COL['obs'], 2)
             i0 = np.where(fr == 0)[0]
             if not len(i0) or np.isnan(ob[i0[0], 0]): continue
             for tag, ((v, boxes), d) in preds.items():
@@ -93,6 +93,7 @@ for r in sample:
                 pb = (1 - w) * sbv[f0] + w * sbv[f1] + (ob[i0[0]] - sbv[4])          # condition-frame offset calibration
                 if inv is not None:
                     P = np.array([[pb[0], pb[1], 1], [pb[2], pb[3], 1]]) @ inv.T; pb = [P[0, 0], P[0, 1], P[1, 0], P[1, 1]]
+                if not np.all(np.isfinite(pb)): continue
                 cv2.rectangle(im, (int(pb[0]), int(pb[1])), (int(pb[2]), int(pb[3])), COL[tag], 1 if tag == 'best' else 2)
         cv2.putText(im, f'k={k} t={k * x["dt_obs"]:.2f}s', (8, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
         tiles.append(cv2.resize(im, (427, 240)))
