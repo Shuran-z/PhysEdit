@@ -35,7 +35,7 @@ OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent wit
 KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
 REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
-JOINT = os.environ.get('PHYSPROBE_JOINT', 'strict')   # D40 candidate: 'impute' = unobservable cells cost the object's worst finite loss
+JOINT = os.environ.get('PHYSPROBE_JOINT', 'impute')   # D40: unobservable cells cost the object's worst best-shift loss ('strict' = old rule)
 MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
