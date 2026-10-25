@@ -3,15 +3,15 @@ make_synth.py, SAM 3.1 lean tracks, library v3. Each item, each applicable param
 speed) -> estimate (point / interval / bound / unidentifiable / no_observation) with band, loss curve and per-object
 diagnostics. Real generated videos use the library plus the true-parameter replays (--with-truth); synthetic known-answer
 runs do not. Parallel over tasks (fork pool); library boxes are cached first.
-Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-truth] [--workers 8] [--clock realtime|reference]
-  -> results_gen/<NAME>.jsonl + summary per model and parameter"""
+Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-truth] [--workers 8] [--clock realtime|reference] [--out OUT]
+  -> results_gen/<OUT or NAME>.jsonl + summary per model and parameter"""
 import argparse, collections, json, statistics as st
 from multiprocessing import get_context
 import numpy as np
 import evaluator as ev
 
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--with-truth', action='store_true')
-ap.add_argument('--params', default='g,mu,v'); ap.add_argument('--workers', type=int, default=8)
+ap.add_argument('--params', default='g,mu,v'); ap.add_argument('--workers', type=int, default=8); ap.add_argument('--out', help='output name (default NAME)')
 ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime', help='E2: realtime for generated videos, reference for synthetic ones')
 a = ap.parse_args()
 D = ev.B / 'sam_gen' / a.name
@@ -51,7 +51,7 @@ def run_clip(clip):
 with get_context('fork').Pool(a.workers) as pool:
     results = [r for rs in pool.map(run_clip, sorted(by_clip), chunksize=1) for r in rs]
 (ev.B / 'results_gen').mkdir(exist_ok=True)
-with open(ev.B / 'results_gen' / f'{a.name}.jsonl', 'w') as f:
+with open(ev.B / 'results_gen' / f'{a.out or a.name}.jsonl', 'w') as f:
     for r in results: f.write(json.dumps(r, default=float) + '\n')
 summ = collections.defaultdict(list)
 for r in results:

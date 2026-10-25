@@ -27,7 +27,7 @@ _src = open(c2.CODE / 'projection.py').read()
 exec(_src[_src.index('def huber('):_src.index('def rmse3d(')], ns)
 exec(_src[_src.index('def estimate('):_src.index('SIGMA_PX = ')], ns)
 huber, estimate = ns['huber'], ns['estimate']
-SIGMA_PX, MIN_FRAMES, MIN_VIS = 1.5, 3, 0.5
+SIGMA_PX, MIN_FRAMES, MIN_VIS = float(os.environ.get('PHYSPROBE_SIGMA_PX', '1.5')), 3, 0.5   # env override only for sensitivity runs
 _cal = B / 'results3' / 'band_calibration.json'
 DELTA = json.load(open(_cal))['delta'] if _cal.exists() else 1.0   # identifiability threshold (D13: empirical calibration)
 E_BEYOND = 1.0   # per-frame loss of frames inside the truth window but beyond a value's own (shorter) window
