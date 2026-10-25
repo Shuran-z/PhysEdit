@@ -6,6 +6,7 @@ Fig. 3 shows the generated results that pass the known-truth validation gate (va
 counts the gated ones."""
 import argparse, collections, glob, json, math, os, statistics as st
 import matplotlib
+import matplotlib.ticker
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import evaluator as ev
@@ -50,14 +51,15 @@ for ax, (p, lab) in zip(axs, PARAMS):
         ax.plot([lo, hi], [i, i], color=c, lw=2, solid_capstyle='round')
         if r.get('est'): ax.plot([r['est'] / r['truth']], [i], 'o', ms=4.5, color=c, mec='#fcfcfb', mew=1)
     ax.axvline(1.0, color=TXT, lw=1, ls='--'); ax.set_xscale('log'); ax.set_xlim(0.2, 5); ax.set_yticks([])
+    ax.set_xticks([0.25, 0.5, 1, 2, 4]); ax.set_xticklabels(['0.25', '0.5', '1', '2', '4']); ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     ax.set_xlabel('estimate / truth (band as line)'); ax.set_title(lab, color=TXT, loc='left'); ax.grid(axis='x', color=GRID, lw=0.6)
     pts = sorted(abs(r['err_pct']) for r in rs if r.get('kind') == 'point' and 'err_pct' in r)
     rows.append(f"| {lab} | {len(rs)} | {len(pts)} | {st.median(pts):.1f}% | {pts[min(len(pts) - 1, int(0.9 * len(pts)))]:.1f}% | "
                 f"{sum(bool(r.get('truth_in_band')) for r in rs)}/{len(rs)} |" if pts else f"| {lab} | {len(rs)} | 0 | - | - | - |")
 axs[0].plot([], [], color=SLOT[0], lw=2, marker='o', label='point estimate + band'); axs[0].plot([], [], color=SLOT[1], lw=2, label='interval / one-sided bound')
-axs[0].legend(loc='lower left', frameon=False)
+fig.legend(loc='upper right', ncol=2, frameon=False, bbox_to_anchor=(0.995, 0.995))
 fig.suptitle('Known-answer test on the reference videos (truth not in the simulation library)', x=0.01, ha='left', color=TXT)
-fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig1_known_answer.png'), dpi=160); plt.close(fig)
+fig.tight_layout(rect=(0, 0, 1, 0.97)); fig.savefig(os.path.join(a.out, 'fig1_known_answer.png'), dpi=160, bbox_inches='tight'); plt.close(fig)
 tables.append('### Fig. 1 — known-answer accuracy (reference videos)\n\n' + '\n'.join(rows))
 
 # 2. result kinds: reference and synthetic generated-like sets
@@ -78,8 +80,8 @@ for j, (k, kl) in enumerate(KINDS):
     left = [sum(s[:j]) for s in shares]
     ax.barh(range(len(labels)), [s[j] for s in shares], left=left, color=SLOT[j], edgecolor='#fcfcfb', linewidth=2, label=kl, height=0.72)
 ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels); ax.invert_yaxis(); ax.set_xlim(0, 1); ax.set_xlabel('share of results')
-ax.legend(ncol=6, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title('Result kinds — reference videos and synthetic generated-like videos (known truth)', loc='left', color=TXT)
-fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig2_kinds_known_truth.png'), dpi=160); plt.close(fig)
+ax.legend(ncol=3, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title('Result kinds — reference videos and synthetic generated-like videos (known truth)', loc='left', color=TXT)
+fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig2_kinds_known_truth.png'), dpi=160, bbox_inches='tight'); plt.close(fig)
 tables.append('### Fig. 2 — result kinds with known truth\n\n' + '\n'.join(rows))
 
 # 3. generated videos per model
@@ -97,8 +99,8 @@ for p, lab in PARAMS:
     for j, (k, kl) in enumerate(KINDS):
         ax.barh(range(len(models)), [s[j] for s in sh], left=[sum(s[:j]) for s in sh], color=SLOT[j], edgecolor='#fcfcfb', linewidth=2, label=kl, height=0.72)
     ax.set_yticks(range(len(models))); ax.set_yticklabels(models); ax.invert_yaxis(); ax.set_xlim(0, 1); ax.set_xlabel('share of validated videos')
-    ax.legend(ncol=6, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title(f'Generated videos — {lab}: result kinds per model (tasks that pass the known-truth validation)', loc='left', color=TXT)
-    fig.tight_layout(); fig.savefig(os.path.join(a.out, f'fig3_generated_{p}.png'), dpi=160); plt.close(fig)
+    ax.legend(ncol=3, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title(f'Generated videos — {lab}: result kinds per model (tasks that pass the known-truth validation)', loc='left', color=TXT)
+    fig.tight_layout(); fig.savefig(os.path.join(a.out, f'fig3_generated_{p}.png'), dpi=160, bbox_inches='tight'); plt.close(fig)
     tables.append(f'### Fig. 3 ({p}) — generated videos, result kinds per model\n\n' + '\n'.join(rows))
 
 # 4. gravity prompt response (C01/C02/C03 prompt 1.62 / 3.71 / 9.81); point estimate or band centre
@@ -114,9 +116,9 @@ for i, m in enumerate(models):
     rows.append(f'| {m} | ' + ' | '.join(cells) + ' |')
 for j, g in enumerate(prompts): ax.axhline(g, color=SLOT[j], lw=1, ls='--', zorder=1)
 ax.set_yscale('log'); ax.set_xticks(range(len(models))); ax.set_xticklabels(models, rotation=30, ha='right'); ax.set_ylabel('measured g (m/s^2)')
-ax.grid(axis='y', color=GRID, lw=0.6); ax.legend(frameon=False, loc='upper left', ncol=3)
+ax.grid(axis='y', color=GRID, lw=0.6); ax.legend(frameon=False, loc='upper left', bbox_to_anchor=(1.0, 1.0))
 ax.set_title('Gravity prompt response: measured g of generated videos (point estimates and interval centres), dashed = prompted value', loc='left', color=TXT)
-fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig4_gravity_prompt.png'), dpi=160); plt.close(fig)
+fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig4_gravity_prompt.png'), dpi=160, bbox_inches='tight'); plt.close(fig)
 tables.append('### Fig. 4 — gravity prompt response\n\n' + '\n'.join(rows))
 open(os.path.join(a.out, 'tables.md'), 'w').write('\n\n'.join(tables) + '\n')
 print('figures and tables ->', a.out)
