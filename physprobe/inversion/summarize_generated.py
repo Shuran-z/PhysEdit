@@ -32,6 +32,20 @@ for m in sorted({r['model'] for r in R}):
               if r['model'] == m and r['param'] == 'g' and r['clip'][4:] in ('C01', 'C02', 'C03') and abs(r['truth'] - g) < 0.01 and r.get('kind') in ('point', 'interval')]
         cells.append(f"{st.median(xs):.2f} ({len(xs)})" if xs else '-')
     lines.append(f"| {m} | " + ' | '.join(cells) + ' |')
+# direction: results with a band (point, interval, one-sided bound, unidentifiable): is the whole band below the prompted value,
+# does it contain it, or is it above? g below = falls slower than prompted; mu above = more friction; v below = slower
+lines += ['', '偏离方向（有不确定带的结果：带整体低于提示值 / 包含提示值 / 整体高于提示值；单侧界按半无限区间算）', '',
+          '| 模型 | 参数 | 有带的结果数 | 低于提示 | 包含提示 | 高于提示 |', '|---|---|---|---|---|---|']
+for (m, p), rs in sorted(by.items()):
+    c = collections.Counter()
+    for r in rs:
+        if r.get('kind') not in ('point', 'interval', 'upper_bound', 'lower_bound', 'unidentifiable') or not r.get('band'): continue
+        lo, hi = r['band']
+        if r['kind'] == 'upper_bound': lo = 0.0
+        if r['kind'] == 'lower_bound': hi = float('inf')
+        c['below' if hi < r['truth'] else ('above' if lo > r['truth'] else 'inside')] += 1
+    n = sum(c.values())
+    lines.append(f"| {m} | {p} | {n} | {pct(c['below'], n)} | {pct(c['inside'], n)} | {pct(c['above'], n)} |")
 out = B / 'results_gen' / f'{name}_by_model.md'
 out.write_text('\n'.join(lines) + '\n')
 print('\n'.join(lines))
