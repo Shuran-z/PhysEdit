@@ -21,8 +21,8 @@ def mask_for(boxes, W, H):
     return m
 
 
-def compensate(args):
-    key, path, tracks = args          # tracks: {name: (frames list, xyxy list)}
+def camera_mats(path, tracks):
+    """per tracked frame f: 2x3 matrix mapping frame-f pixels into frame-0 pixels, ECC correlation, frame size"""
     cap = cv2.VideoCapture(path); W, H = cap.get(3), cap.get(4)
     frames = sorted({f for fr, _ in tracks.values() for f in fr})
     imgs = {}; k = 0; last = max(frames) if frames else 0
@@ -46,6 +46,12 @@ def compensate(args):
         # M maps frame-0 coords -> frame-f coords (small size); invert to map frame f -> frame 0, in full-resolution pixels
         S = np.diag([SZ[0] / W, SZ[1] / H, 1.0]); A = np.vstack([M, [0, 0, 1]])
         mats[f] = (np.linalg.inv(S) @ np.linalg.inv(A) @ S)[:2]
+    return mats, corr, W, H, frames
+
+
+def compensate(args):
+    key, path, tracks = args          # tracks: {name: (frames list, xyxy list)}
+    mats, corr, W, H, frames = camera_mats(path, tracks)
     out, shifts = {}, []
     for n, (fr, xy) in tracks.items():
         nxy = []

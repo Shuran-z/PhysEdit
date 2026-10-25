@@ -23,7 +23,7 @@ import common2 as c2
 
 B = c2.B
 ns = {'np': np}
-_src = open(CODE / 'eval_batch1.py').read()
+_src = open(c2.CODE / 'eval_batch1.py').read()
 exec(_src[_src.index('def huber('):_src.index('def rmse3d(')], ns)
 exec(_src[_src.index('def estimate('):_src.index('SIGMA_PX = ')], ns)
 huber, estimate = ns['huber'], ns['estimate']
