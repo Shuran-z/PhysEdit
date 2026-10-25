@@ -157,8 +157,10 @@ def library(clip, param, with_truth=False, workers=8):
             val = float(v) if not tag.startswith('G0') else truth_of(clip, param)
             items.append((val, tag, v)); todo.append((clip, tag, v, names, r['poses']))
     todo = [t for t in todo if not (CACHE / f'{t[1]}__{t[2]}.npz').exists()]
-    if todo:
+    if todo and workers > 1:
         with get_context("fork").Pool(workers) as p: p.map(_boxes_job, todo, chunksize=1)   # fork: entry scripts need no main guard
+    elif todo:
+        for t in todo: _boxes_job(t)                                  # inside a pool worker (no nested pools)
     out = []
     for val, tag, v in sorted(items):
         z = np.load(CACHE / f'{tag}__{v}.npz')
@@ -342,20 +344,26 @@ def ref_meta(clip):
     return dict(dt_obs=dt, scale=(W / cam[5], H / cam[6]))
 
 
+def _ref_clip(clip):
+    """reference known-answer run of one task (all its parameters); returns the printed lines"""
+    obs, kc = load_obs(B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl', clip)
+    if not obs: return [f'{clip} no tracks']
+    meta = ref_meta(clip); lines = []
+    for param in ('g', 'mu', 'v'):
+        if (clip, param) not in LIBMAP: continue
+        lib = library(clip, param, workers=1)
+        if len(lib) < 3: lines.append(f'{clip} {param}: library has {len(lib)} values so far'); continue
+        r = evaluate(clip, param, obs, kc, meta['dt_obs'], meta['scale'], lib, truth_of(clip, param))
+        json.dump(r, open(B / REF_OUT / f'ref_{clip}_{param}.json', 'w'), indent=1)
+        band = f"[{r['band'][0]:.4g}, {r['band'][1]:.4g}]" if r.get('band') else '-'
+        lines.append(f"{clip} {param:2s} truth {r['truth']:<8.4g} {r['kind']:15s} est {r['est'] if r['est'] is None else round(r['est'], 4)!s:9s} "
+                     f"err {r.get('err_pct', float('nan')):+6.1f}% band {band} in_band {r.get('truth_in_band')} lib {r['n_lib']} objs {len(r['objects'])} "
+                     f"best {r.get('best', float('nan')):.4g}")
+    return lines
+
+
 if __name__ == '__main__' and sys.argv[1] == 'ref':
-    tracks = B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl'
     clips = sys.argv[2:] or sorted({m for L in LIBS for m in L['members']})
-    (B / REF_OUT).mkdir(exist_ok=True); rows = []
-    for clip in clips:
-        obs, kc = load_obs(tracks, clip)
-        if not obs: print(clip, 'no tracks'); continue
-        meta = ref_meta(clip)
-        for param in ('g', 'mu', 'v'):
-            if (clip, param) not in LIBMAP: continue
-            lib = library(clip, param)
-            if len(lib) < 3: print(f'{clip} {param}: library has {len(lib)} values so far'); continue
-            r = evaluate(clip, param, obs, kc, meta['dt_obs'], meta['scale'], lib, truth_of(clip, param))
-            json.dump(r, open(B / REF_OUT / f'ref_{clip}_{param}.json', 'w'), indent=1)
-            band = f"[{r['band'][0]:.4g}, {r['band'][1]:.4g}]" if r.get('band') else '-'
-            print(f"{clip} {param:2s} truth {r['truth']:<8.4g} {r['kind']:15s} est {r['est'] if r['est'] is None else round(r['est'], 4)!s:9s} "
-                  f"err {r.get('err_pct', float('nan')):+6.1f}% band {band} in_band {r.get('truth_in_band')} lib {r['n_lib']} objs {len(r['objects'])}", flush=True)
+    (B / REF_OUT).mkdir(exist_ok=True)
+    with get_context('fork').Pool(int(os.environ.get('PHYSPROBE_WORKERS', '8'))) as pool:   # parallel over tasks
+        for lines in pool.imap(_ref_clip, clips): print('\n'.join(lines), flush=True)

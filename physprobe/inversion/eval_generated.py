@@ -32,7 +32,7 @@ for clip in by_clip:                                       # warm the visible-bo
 
 def run_clip(clip):
     out = []
-    libs = {p: ev.library(clip, p, with_truth=a.with_truth) for p in params if (clip, p) in ev.LIBMAP}
+    libs = {p: ev.library(clip, p, with_truth=a.with_truth, workers=1) for p in params if (clip, p) in ev.LIBMAP}
     for x in by_clip[clip]:
         obs = OBS.get(x['key'])
         if not obs: out.append(dict(key=x['key'], clip=clip, model=x['model'], status='no_tracks')); continue

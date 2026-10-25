@@ -7,7 +7,7 @@
 # Usage (on the server, detached): VAR=VALUE ... bash evaluate_variant.sh ROOT TAG [WORKERS]
 ROOT=$1; TAG=$2; NW=${3:-24}
 . $ROOT/physprobe/inversion/deploy/sam_env.sh
-export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1 PHYSPROBE_REF_OUT=results3_$TAG
+export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1 PHYSPROBE_REF_OUT=results3_$TAG PHYSPROBE_WORKERS=$NW
 W=$ROOT/.local-research/evaluation/core100_inversion_workspace/trial/batch2; R=$W/runs; mkdir -p $R; rm -f $R/variant_$TAG.done
 cd $ROOT/physprobe/inversion
 step() { local n=$1; shift; echo "$(date) start $n" >> $R/variant_${TAG}_progress.log; $SAM_PY "$@" > $R/variant_${TAG}_$n.log 2>&1; local rc=$?; echo "$(date) end $n exit=$rc" >> $R/variant_${TAG}_progress.log; }

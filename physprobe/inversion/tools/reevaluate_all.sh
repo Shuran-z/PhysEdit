@@ -7,7 +7,7 @@
 # Usage (on the server): bash reevaluate_all.sh ROOT [WORKERS] [FROM_STEP: 1 = all, 2 = keep step 1 results]
 ROOT=$1; NW=${2:-12}
 . $ROOT/physprobe/inversion/deploy/sam_env.sh
-export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1
+export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1 PHYSPROBE_WORKERS=$NW
 W=$ROOT/.local-research/evaluation/core100_inversion_workspace/trial/batch2; R=$W/runs; mkdir -p $R; rm -f $R/reeval.done
 cd $ROOT/physprobe/inversion
 step() { local n=$1; shift; echo "$(date) start $n" >> $R/reeval_progress.log; $SAM_PY "$@" > $R/reeval_$n.log 2>&1; local rc=$?; echo "$(date) end $n exit=$rc" >> $R/reeval_progress.log; }

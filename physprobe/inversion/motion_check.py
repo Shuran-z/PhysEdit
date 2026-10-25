@@ -41,7 +41,7 @@ def run_clip(clip):
     dt, _ = ev.clock(clip); hz = ev.HZ[clip]['objects']; out = []; libs = {}
     for r in by_clip[clip]:
         p = r['param']
-        if p not in libs: libs[p] = ev.library(clip, p, with_truth=a.with_truth)
+        if p not in libs: libs[p] = ev.library(clip, p, with_truth=a.with_truth, workers=1)
         lib = libs[p]; truth = ev.truth_of(clip, p)
         if not lib: continue
         _, boxes = min(lib, key=lambda t: abs(math.log(t[0] / truth)))
