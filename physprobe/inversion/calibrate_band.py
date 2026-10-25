@@ -9,10 +9,10 @@ import argparse, glob, json, math
 import numpy as np
 from paths import WORK as B
 
-ap = argparse.ArgumentParser(); ap.add_argument('--coverage', type=float, default=0.9)
+ap = argparse.ArgumentParser(); ap.add_argument('--coverage', type=float, default=0.9); ap.add_argument('--dir', default='results3')
 a = ap.parse_args()
 need, rows = [], []
-for f in sorted(glob.glob(str(B / 'results3' / 'ref_*.json'))):
+for f in sorted(glob.glob(str(B / a.dir / 'ref_*.json'))):
     r = json.load(open(f))
     if f.endswith('_summary.json') or not r.get('curve') or not r.get('truth'): continue
     c = np.array(r['curve']); v, y = c[:, 0], c[:, 1]
@@ -26,5 +26,5 @@ need = np.array(need)
 q = float(np.quantile(need, a.coverage)) if len(need) else 1.0
 cal = dict(coverage_target=a.coverage, n=len(need), delta=max(1.0, q), delta_needed_quantiles={str(p): float(np.quantile(need, p)) for p in (0.5, 0.75, 0.9, 0.95)} if len(need) else {},
            coverage_at_delta1=float(np.mean(need <= 1.0)) if len(need) else None)
-json.dump(dict(cal, cases=rows), open(B / 'results3' / 'band_calibration.json', 'w'), indent=1)
+json.dump(dict(cal, cases=rows), open(B / a.dir / 'band_calibration.json', 'w'), indent=1)
 print(json.dumps(cal, indent=1))

@@ -43,31 +43,29 @@ LIBMAP = {(m, L['param']): L for L in LIBS for m in L['members']}
 CACHE = B / 'libbox3'; CACHE.mkdir(exist_ok=True)
 
 
-def estimate_v3(vs, ys, delta=1.0):
-    """Noise-calibrated identifiability on a continuous parameter axis. The library is a grid (ratio 1.12-1.15), so the set
-    of grid values within delta of the minimum is too coarse; instead a quadratic in log(value) is fitted to the minimum
-    and its neighbours and the band is where it stays within delta of its vertex, clipped to the nearest grid values whose
-    loss exceeds min + delta on each side. Minimum on the grid edge -> bound; every value within delta -> unidentifiable;
-    band wider than x1.25 -> interval (as before); otherwise point = vertex."""
+def estimate_band(vs, ys, delta=1.0):
+    """Noise-calibrated identifiability (D13, D25). Every library value whose loss is within delta of the minimum is
+    indistinguishable from it, wherever it lies: a chaotic or multimodal loss curve gives a wide band, never a sharp
+    spurious minimum from one lucky simulation. On the continuous axis the band is that set's extent, extended by a
+    quadratic in log(value) fitted at the minimum where it stays within delta, and clipped to the nearest grid values
+    beyond the set that exceed the threshold. Set touching the low / high grid edge -> upper / lower bound; both edges
+    -> unidentifiable; band wider than x1.25 -> interval; otherwise point = vertex of the quadratic."""
     vs, ys = np.asarray(vs, float), np.asarray(ys, float)
-    o = np.argsort(vs); vs, ys = vs[o], ys[o]
-    i = int(np.argmin(ys)); m = ys <= ys[i] + delta
-    if m.all(): return dict(kind='unidentifiable', est=None, band=(float(vs[0]), float(vs[-1])))
-    left = np.where(~m[:i])[0]; right = np.where(~m[i:])[0]
-    lo_lim = float(vs[left.max()]) if len(left) else None; hi_lim = float(vs[i + right.min()]) if len(right) else None
-    if lo_lim is None: return dict(kind='upper_bound', est=None, band=(float(vs[0]), float(hi_lim)))
-    if hi_lim is None: return dict(kind='lower_bound', est=None, band=(float(lo_lim), float(vs[-1])))
-    sel = np.arange(max(i - 2, 0), min(i + 3, len(vs)))
+    o = np.argsort(vs); vs, ys = vs[o], ys[o]; n = len(vs)
+    i = int(np.argmin(ys)); m = ys <= ys[i] + delta; idx = np.where(m)[0]; jlo, jhi = int(idx.min()), int(idx.max())
+    if m[0] and m[-1]: return dict(kind='unidentifiable', est=None, band=(float(vs[0]), float(vs[-1])))
+    if m[0]: return dict(kind='upper_bound', est=None, band=(float(vs[0]), float(vs[min(jhi + 1, n - 1)])))
+    if m[-1]: return dict(kind='lower_bound', est=None, band=(float(vs[max(jlo - 1, 0)]), float(vs[-1])))
+    lo_lim, hi_lim = float(vs[jlo - 1]), float(vs[jhi + 1])
+    sel = np.arange(max(i - 2, 0), min(i + 3, n))
     x = np.log(vs[sel]); w = np.exp(-(ys[sel] - ys[i]) / (4 * delta))        # weight the points near the minimum
     a, b, c = np.polyfit(x, ys[sel], 2, w=w)
-    if a <= 0:
-        band = (float(vs[m].min()), float(vs[m].max())); est = float(vs[i])
+    if a > 0:
+        x0 = -b / (2 * a); hw = math.sqrt(delta / a); est = float(math.exp(x0)); qlo, qhi = math.exp(x0 - hw), math.exp(x0 + hw)
     else:
-        x0 = -b / (2 * a); hw = math.sqrt(delta / a); est = float(math.exp(x0))
-        band = (max(math.exp(x0 - hw), lo_lim), min(math.exp(x0 + hw), hi_lim))
-        if band[0] > band[1]:          # vertex outside the bracket of grid values exceeding the threshold: use the grid band
-            band = (float(vs[m].min()), float(vs[m].max()))
-        est = min(max(est, band[0]), band[1])
+        est = float(vs[i]); qlo, qhi = float(vs[jlo]), float(vs[jhi])
+    band = (max(min(qlo, float(vs[jlo])), lo_lim), min(max(qhi, float(vs[jhi])), hi_lim))
+    est = min(max(est, band[0]), band[1])
     kind = 'interval' if band[1] / band[0] > 1.25 else 'point'
     return dict(kind=kind, est=est if kind == 'point' else None, center=est, band=(float(band[0]), float(band[1])))
 
@@ -283,7 +281,7 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     res = dict(clip=clip, param=param, truth=truth, objects=used_objs or [], object_diagnostics=diag, n_lib=len(vals), delta=DELTA)
     if len(vals) >= 3 and np.isfinite(losses).any():
         vs, ys = np.array(vals), np.array(losses)
-        e = estimate_v3(vs, np.where(np.isfinite(ys), ys, np.nanmax(ys[np.isfinite(ys)]) + 1e6), DELTA)
+        e = estimate_band(vs, np.where(np.isfinite(ys), ys, np.nanmax(ys[np.isfinite(ys)]) + 1e6), DELTA)
         res.update(e, curve=[[float(x), float(y), float(s)] for x, y, s in zip(vs, ys, shifts)])
         if e.get('est') is not None and truth: res['err_pct'] = 100 * (e['est'] - truth) / truth
         lo, hi = e['band']
