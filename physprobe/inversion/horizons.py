@@ -10,7 +10,7 @@ seeds), rule D7 of the issue log. For every moving object (> 1 cm):
   The first difference (sensitivity) is reported, never used to cut.
 Frames where an object is below z = -1 m (fell through a missing floor collider, B16) are ignored.
 Inputs: existing replays (runs_for() of integration_report.py), g0h32/H32R_<clip>.json (extra truth repeats),
-g0h32/H32P_<clip>.json (perturbed pair). Usage: python horizon32.py [--fetch] -> horizons32.json + summary"""
+g0h32/H32P_<clip>.json (perturbed pair). Usage: python horizons.py [--fetch] -> horizons32.json + summary"""
 import collections, json, subprocess, sys
 from pathlib import Path
 import numpy as np

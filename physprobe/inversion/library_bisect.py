@@ -1,12 +1,12 @@
 """Adaptive refinement of library v3 where the dynamics bifurcate: for every library whose main grid is complete locally,
 adjacent simulations whose visible-box tracks of the task's usable objects differ by more than half of their motion
-amplitude (the same test eval_v3.refine_library uses before interpolating) get their geometric midpoint simulated, until
+amplitude (the same test evaluator.refine_library uses before interpolating) get their geometric midpoint simulated, until
 the interval ratio is below MIN_RATIO. Video-independent (part of the library), so every generated video benefits.
-Usage: python lib3_bisect.py [--round K] [--min-ratio 1.03] -> lib3_queues_bisect<K>/<queue>.json + summary"""
+Usage: python library_bisect.py [--round K] [--min-ratio 1.03] -> lib3_queues_bisect<K>/<queue>.json + summary"""
 import argparse, json, math
 from pathlib import Path
 import numpy as np
-import eval_v3 as ev
+import evaluator as ev
 
 ap = argparse.ArgumentParser(); ap.add_argument('--round', type=int, default=1); ap.add_argument('--min-ratio', type=float, default=1.03)
 a = ap.parse_args()

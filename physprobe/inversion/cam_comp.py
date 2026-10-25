@@ -78,7 +78,7 @@ if __name__ == '__main__':
             r = json.loads(l); v, n = r['id'].split('__', 1)
             if v not in items or (keys and v not in keys): continue
             T[v][n] = (r['tracks'][n]['frames'], r['tracks'][n]['xyxy']); meta[v] = r.get('prompt_frame', 0)
-    import common2 as c2
+    import common as c2
     jobs = [(v, c2.gt(items[v]['path']), T[v]) for v in T]
     with get_context('fork').Pool(a.workers) as pool, open(a.out, 'w') as f, open(a.out.replace('.jsonl', '_stats.jsonl'), 'w') as fs:
         for v, out, stats in pool.imap_unordered(compensate, jobs, chunksize=4):

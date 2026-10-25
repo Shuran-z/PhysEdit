@@ -1,13 +1,13 @@
-"""Jobs for the SAM 3.1 lean tracker (server_code/sam31_lean.py) on reference videos: one job per video, every non-fixed
+"""Jobs for the SAM 3.1 lean tracker (server_code/sam_tracker.py) on reference videos: one job per video, every non-fixed
 scene object prompted at the condition frame (index 4) with the box of its VISIBLE part (z-buffer over all scene objects
-at the known initial poses, common2.visible_boxes), scaled from the camera resolution to the video's; objects less than
+at the known initial poses, common.visible_boxes), scaled from the camera resolution to the video's; objects less than
 20 % visible are not prompted. Usage: python make_lean_jobs.py NAME REMOTE_DIR CLIP [CLIP ...] | --all
   -> sam_lean/<NAME>/jobs.jsonl (video paths under REMOTE_DIR/videos) + videos/ (local copies to upload)"""
 import json, shutil, sys
 from pathlib import Path
 import cv2
 import numpy as np
-import common2 as c2
+import common as c2
 
 name, remote, clips = sys.argv[1], sys.argv[2].rstrip('/'), sys.argv[3:]
 hz = json.load(open(c2.B / 'horizons32.json'))

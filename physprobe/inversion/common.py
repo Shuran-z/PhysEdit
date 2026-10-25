@@ -15,7 +15,7 @@ cams = json.load(open(B.parent / 'batch1/cams.json'))
 T13_DIR = W.parent / 'core100_known_condition_readiness_20261021_v1/bound_metadata/T13_server'
 NO_SANITIZE = {'T16', 'T17', 'T18', 'T19', 'T20'}
 _ns = {'np': np, 'Rot': Rot}
-_src = open(CODE / 'eval_batch1.py').read()
+_src = open(CODE / 'projection.py').read()
 exec(_src[_src.index('def size_of(s):'):_src.index('def huber(')], _ns)
 size_of, silhouette_points, boxes = _ns['size_of'], _ns['silhouette_points'], _ns['boxes']
 

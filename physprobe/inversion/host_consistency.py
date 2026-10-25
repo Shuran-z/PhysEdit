@@ -4,8 +4,8 @@ same threshold (1.5 px at the object's distance, >= 1 mm) and the same perturbed
 task when no object's horizon moves earlier. Also reported: max distance of the A800 run to the 4090 truth runs / record
 inside the original window, and over the whole video (0 for deterministic tasks).
 The same check validates truncated runs (physics_only.py --frames N, compared on their N frames) and any new host.
-Inputs: g0a800/<tag>.json (refine_queue2 output, fetched with --fetch), horizons32.json, the 4090 replays.
-Usage: python a800_compare.py [--fetch] [--plan a800_g0_plan.json] [--host nscc-xdliang3-a800] [--out a800_compare.json] [CLIP ...]
+Inputs: g0a800/<tag>.json (refine_queue output, fetched with --fetch), horizons32.json, the 4090 replays.
+Usage: python host_consistency.py [--fetch] [--plan a800_g0_plan.json] [--host nscc-xdliang3-a800] [--out a800_compare.json] [CLIP ...]
        -> prints a table, writes the --out json"""
 import json, os, subprocess, sys
 from pathlib import Path
@@ -26,7 +26,7 @@ H = json.load(open(B / 'horizons32.json'))
 (B / 'g0a800').mkdir(exist_ok=True)
 
 
-def camera_scale(clip):   # same as horizon32.py
+def camera_scale(clip):   # same as horizons.py
     import math
     f = B / 'cfg' / f'{clip}.json'
     cfg = json.load(open(f)) if f.exists() else json.load(open(B / 't15' / f'{clip}_config.json'))

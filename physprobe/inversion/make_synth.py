@@ -8,7 +8,7 @@ import argparse, json
 from pathlib import Path
 import cv2
 import numpy as np
-import common2 as c2
+import common as c2
 import make_gen_jobs as mg
 
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('remote'); ap.add_argument('clips', nargs='*')

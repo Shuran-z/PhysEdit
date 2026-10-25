@@ -16,7 +16,7 @@ for try in 1 2 3; do
 done
 echo "$(date) $H upload done in $(( $(date +%s) - t0 )) s"
 case $H in
-  hupanwen) scp -q -o BatchMode=yes $CODE/server/run_lean_hupanwen.sh $A:$T/ && ssh -o BatchMode=yes $A "chmod +x $T/run_lean_hupanwen.sh; rm -f $P/done; (setsid nohup $T/run_lean_hupanwen.sh $P 3,4,5,6,7 2 > $P/run.log 2>&1 < /dev/null &)" ;;
-  h100-2)   ssh -o BatchMode=yes $A "rm -f $P/done; (setsid nohup $T/run_lean.sh $P 3 0 /workspace/wz/sam/data2/zhangshuran/physedit/gen_s15v/done > $P/run.log 2>&1 < /dev/null &)" ;;
+  hupanwen) scp -q -o BatchMode=yes $CODE/server/run_sam_tracker_hupanwen.sh $A:$T/ && ssh -o BatchMode=yes $A "chmod +x $T/run_sam_tracker_hupanwen.sh; rm -f $P/done; (setsid nohup $T/run_sam_tracker_hupanwen.sh $P 3,4,5,6,7 2 > $P/run.log 2>&1 < /dev/null &)" ;;
+  h100-2)   ssh -o BatchMode=yes $A "rm -f $P/done; (setsid nohup $T/run_sam_tracker.sh $P 3 0 /workspace/wz/sam/data2/zhangshuran/physedit/gen_s15v/done > $P/run.log 2>&1 < /dev/null &)" ;;
 esac
 echo "$(date) $H SAM started"

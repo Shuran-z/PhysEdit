@@ -1,20 +1,20 @@
-# PhysProbe 仿真反演评测：Core100 流程 v3（2026-10-24）
+# PhysProbe 仿真反演评测：Core100 流程（2026-10-24）
 
 对每条视频（参考视频或生成视频），在其他条件都已知的前提下，分别反演三个参数：重力 g、主接触面摩擦 μ、初速度 v（只对有指定速度的 62 条任务）。方法对 99 条 Genesis 任务完全统一（T06_C04 是 Isaac，按用户决定跳过）。问题与决策的完整记录在 `.local-research/evaluation/CORE100_INVERSION_ISSUES.md`（不进 git，下文的 D7、C12 等编号指那里的条目）。
 
-代码在本目录（git）；文中的 `results3/`、`results_gen/`、`sam_gen/`、`libs3/` 等数据路径都在 `PHYSPROBE_WORK` 下（默认为 `.local-research/evaluation/core100_inversion_workspace/trial/batch2`，见 `paths.py`）。脚本在本目录下运行，例如 `python physprobe/inversion/eval_v3.py ref`；服务器端脚本在 `server/`，部署脚本在 `deploy/`，上传和监控工具在 `tools/`。
+代码在本目录（git）；文中的 `results3/`、`results_gen/`、`sam_gen/`、`libs3/` 等数据路径都在 `PHYSPROBE_WORK` 下（默认为 `.local-research/evaluation/core100_inversion_workspace/trial/batch2`，见 `paths.py`）。脚本在本目录下运行，例如 `python physprobe/inversion/evaluator.py ref`；服务器端脚本在 `server/`，部署脚本在 `deploy/`，上传和监控工具在 `tools/`。
 
 ## 1. 方法（统一规则）
 
-1. **仿真库**（`lib3_plan.py`，D11）。每个（任务, 参数）一个库，与视频无关，同一任务的所有生成视频共用。
+1. **仿真库**（`library_plan.py`，D11）。每个（任务, 参数）一个库，与视频无关，同一任务的所有生成视频共用。
    - g：绝对对数网格 0.5–25 m/s²，相邻比 1.12，共 35 个。
    - μ：真值 × 1.15^k；v：真值 × 1.12^k。另补真值 × r^(±0.5) 两个半步（D16），真值不进库。
    - 用作者原始渲染脚本、原始 32 位设置做纯物理重放，只算到 max(horizon) + 31 帧（F16），保存所有物体的位姿。
-   - 分叉区间的二分加密（`lib3_bisect.py`）在运行中，见第 6 节。
+   - 分叉区间的二分加密（`library_bisect.py`）在运行中，见第 6 节。
 2. **可预测窗口**（D7、D10）。每个物体只在"仿真自己能复现"的帧段内参与比较。
    - 判据：真值重复之间、真值重复与记录之间的差异 < 1.5 px，并且二阶差分也 < 1.5 px。
    - 新的评测机器先过 14 条一致性检查，它的重复并入窗口的计算。
-3. **观测**（C12）。SAM 3.1 精简版跟踪器 `server_code/sam31_lean.py`。
+3. **观测**（C12）。SAM 3.1 精简版跟踪器 `server_code/sam_tracker.py`。
    - 同一模型、同一权重、同样的两角点提示；一条视频里所有非固定物体一次会话、联合跟踪。
    - 提示框用条件帧上可见部分的框。
    - 只跟踪到最后一个窗口结束 + 平移余量对应的那一帧。
@@ -23,7 +23,7 @@
    - 允许 ±20 仿真帧的连续时间平移（起动时刻未知）。
    - 像素：相机像素 → 视频像素的仿射映射。生成视频的映射由条件图到第 0 帧的 ECC 配准得到，配准失败时用该模型的中位映射（`gen_register.py`）。
 5. **相机运动补偿**（生成视频，`cam_comp.py`，C14）。每帧用背景（挖掉物体框）做 ECC 仿射配准到第 0 帧，物体框变换回第 0 帧坐标。很多模型会自己加镜头运动；不补偿的话所有物体都会"无法解释"。
-6. **损失与估计**（`eval_v3.py`）。
+6. **损失与估计**（`evaluator.py`）。
    - 损失：可见部分框的 Huber 残差，按每个物体条件帧框的对角线和 σ = 1.5 px 归一化。所有取值都在同一组帧（真值窗口）上比较，取值自己窗口以外的帧按噪声水平计。
    - 插值：相邻库取值之间在参数空间插值（D14，分叉区间不插）。
    - 物体筛选（D15）：
@@ -78,7 +78,7 @@
 ```
 cd physprobe/inversion   # 数据在 PHYSPROBE_WORK；服务器上设 PHYSPROBE_ROOT=<镜像根目录>
 python make_gen_jobs.py NAME REMOTE_DIR --seeds 0,1,2 --annotations 1,2,3   # 配准 + SAM 任务（sam_gen/NAME/）
-# 上传视频并跑 SAM：upload_and_run_gen.sh（hupanwen：server_code/run_lean_hupanwen.sh；xdliang3 主机：server_code/run_lean.sh）
+# 上传视频并跑 SAM：upload_and_run_gen.sh（hupanwen：server_code/run_sam_tracker_hupanwen.sh；xdliang3 主机：server_code/run_sam_tracker.sh）
 python cam_comp.py sam_gen/NAME/items.json sam_gen/NAME/tracks_*.jsonl --out sam_gen/NAME/tracks_camcomp.jsonl   # 相机运动补偿
 python eval_generated.py NAME sam_gen/NAME/tracks_camcomp.jsonl --with-truth --workers 9   # -> results_gen/NAME.jsonl
 python summarize_generated.py NAME   # -> results_gen/NAME_by_model.md
@@ -88,9 +88,9 @@ python summarize_generated.py NAME   # -> results_gen/NAME_by_model.md
 
 ## 5. 主机与环境（F8–F19）
 
-- **仿真**：nscc-xdliang3-h100-1（2× H100，28 核）、a800-7（2× A800，12 核）、a800（1× A800，6 核），都部署在 `/workspace/wz`。环境为 `batch2/a800_env.sh`：LD_PRELOAD 路径重定向、GL 旁路、PYTHONNOUSERSITE、线程限制、MPS。另外用 nscc-wangzijun-4090 的 GPU 0 和 GPU 2（作者的机器，每卡不超过 6 条，不开 MPS）。
+- **仿真**：nscc-xdliang3-h100-1（2× H100，28 核）、a800-7（2× A800，12 核）、a800（1× A800，6 核），都部署在 `/workspace/wz`。环境为 `batch2/genesis_env.sh`：LD_PRELOAD 路径重定向、GL 旁路、PYTHONNOUSERSITE、线程限制、MPS。另外用 nscc-wangzijun-4090 的 GPU 0 和 GPU 2（作者的机器，每卡不超过 6 条，不开 MPS）。
 - **SAM**：nscc-hupanwen 的 GPU 3–7、h100-2（驱动 550，只能跑 SAM），以及上面几台 xdliang3 主机。
-- **部署包**：`deploy_cache_a800/deploy_a800.sh`（`DEPLOY_HOST=...`），或者 Storage01 上的 `zhangshuran_eval_20261024/wz_stack.tar`（h100-1、h100-2、a800-7 共享）。
+- **部署包**：`deploy_cache_a800/deploy_host.sh`（`DEPLOY_HOST=...`），或者 Storage01 上的 `zhangshuran_eval_20261024/wz_stack.tar`（h100-1、h100-2、a800-7 共享）。
 - **h100 占卡池**（codex_v3/infra2）：借卡用 `gpu_acquire.sh physedit_eval N`，还卡用 `GPU_PACKAGE=physedit_eval gpu_release.sh K`。h100-2 的 GPU 0 已于 2026-10-24 归还。
 
 ## 6. 生成视频结果（2026-10-24 第一版）
@@ -102,9 +102,9 @@ python summarize_generated.py NAME   # -> results_gen/NAME_by_model.md
 
 ## 7. 局限与待办
 
-- **评测迁到服务器**（用户要求 Mac 只用作 SSH 连接器和静态脚本检查器）。`eval_v3.py`、`eval_generated.py`、`cam_comp.py`、`make_gen_jobs.py` 和它们需要的数据（libs3、libbox3、cfg、horizons、readiness）要打包放到服务器（如 Storage01 + h100-1/a800-7，或 hupanwen）。`common2.recorded()` 里绑定的元数据是本地绝对路径，只有参考视频的 3D 对照需要它。
+- **评测迁到服务器**（用户要求 Mac 只用作 SSH 连接器和静态脚本检查器）。`evaluator.py`、`eval_generated.py`、`cam_comp.py`、`make_gen_jobs.py` 和它们需要的数据（libs3、libbox3、cfg、horizons、readiness）要打包放到服务器（如 Storage01 + h100-1/a800-7，或 hupanwen）。`common.recorded()` 里绑定的元数据是本地绝对路径，只有参考视频的 3D 对照需要它。
 - **抽样可视化检查**：每个模型随机抽取"无法解释"和单侧界的结果，在服务器上画 SAM 框和仿真投影框的叠加图，区分模型的物理错误和跟踪失败。
-- **分叉区间二分加密**（1316 条仿真）正在 7 个队列上运行。跑完后执行 `fetch_lib3.py`，再重跑 `eval_v3.py ref` 和 `eval_generated.py`（可见框有缓存，只需几分钟）。预计 T05/T15 这类临界任务会从区间或单侧界变为点估计。
+- **分叉区间二分加密**（1316 条仿真）正在 7 个队列上运行。跑完后执行 `fetch_library.py`，再重跑 `evaluator.py ref` 和 `eval_generated.py`（可见框有缓存，只需几分钟）。预计 T05/T15 这类临界任务会从区间或单侧界变为点估计。
 - **T19/T20 的 μ**（B20）：支撑面是背景桌子，固定为 Genesis 默认摩擦 1.0。低于 1.0 的值在当前仿真设置下无法表示，只能判断 μ 是否高于 1。要做到更低，需要改作者加载背景的代码。
 - **T09_C03/C04 的 g** 仍然给出错误的下界，原因待查。
 - **待用户决定**：

@@ -2,7 +2,7 @@
 # Throughput benchmark on an evaluation host: N concurrent true-parameter replays of one task (the job of batch2/a800_g0_plan.json),
 # sampled after SECONDS (covering start-up, kernel compile and part of the stepping), then stopped by PID. Reports per-sim physics
 # step rate (median of Genesis' own "Running at X FPS" over the last 200 reports), progress, and the total over all sims.
-# Run from the core100_inversion dir with the host environment sourced (. batch2/a800_env.sh; plus MPS variables when testing MPS).
+# Run from the core100_inversion dir with the host environment sourced (. batch2/genesis_env.sh; plus MPS variables when testing MPS).
 # Usage: gpu_bench.sh CLIP N LABEL SECONDS [GPU]
 set -u
 C=$1; N=$2; LB=$3; S=$4; G=${5:-0}
@@ -13,7 +13,7 @@ j = [j for j in json.load(open('batch2/a800_g0_plan.json')) if j['clip'] == c][0
 json.dump([dict(j, tag=f'BENCH_{lb}_{i}_{c}') for i in range(n)], open(f'batch2/bench_{lb}_plan.json', 'w'), indent=1)
 EOF
 rm -rf BENCH_${LB}_* batch1/BENCH_${LB}_* batch1/bench_${LB}_*
-python3 batch1/refine_queue2.py batch2/bench_${LB}_plan.json $G bench_${LB} --max-sims $N > batch2/bench_${LB}.log 2>&1 &
+python3 batch1/refine_queue.py batch2/bench_${LB}_plan.json $G bench_${LB} --max-sims $N > batch2/bench_${LB}.log 2>&1 &
 Q=$!
 sleep $S
 python3 - "$LB" "$S" <<'EOF'

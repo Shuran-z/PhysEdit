@@ -3,7 +3,7 @@ Physical clock: simulation frame j <-> t = j * dt (dt = the task's physical seco
 <-> t = 4 dt + (k - k_c) dt_obs, k_c = the video's condition frame (4 for references, 0 for generated videos), dt_obs =
 dt for references and playback_vs_physics / fps for generated videos (they keep the reference's playback convention,
 T06/T09/T10 0.6x slow motion; issue log E2). A free continuous time shift d (|d| <= 20 sim frames, step 0.25) covers
-the unknown onset. Pixels: simulated visible-part boxes (camera pixels, common2.visible_boxes, cached per library
+the unknown onset. Pixels: simulated visible-part boxes (camera pixels, common.visible_boxes, cached per library
 simulation) are mapped into the video by x' = a x + b (references: pure resolution scaling; generated videos: the
 registration of the condition image onto their first frame); then the per-object condition-frame offset calibration.
 Per object: Huber loss of the box residuals over the frames inside its predictability window [4, start + (h - start) k]
@@ -13,17 +13,17 @@ drops a used object below MIN_FRAMES is not allowed. Loss(v) = min over shifts o
 within 1 of the minimum are indistinguishable (point estimate / interval / bound / unidentifiable).
 Library: lib3 (libs3/LIB3_<lib>_<chunk>.json), truth never in it; --with-truth adds the true-parameter replays (generated
 videos only). Usage:
-  python eval_v3.py ref [CLIP ...]          known-answer test on the reference videos (lean SAM tracks) -> results3/ref_*.json
+  python evaluator.py ref [CLIP ...]          known-answer test on the reference videos (lean SAM tracks) -> results3/ref_*.json
   (generated videos: see eval_generated.py, which calls evaluate())"""
 import glob, json, math, os, sys
 from multiprocessing import get_context
 from pathlib import Path
 import numpy as np
-import common2 as c2
+import common as c2
 
 B = c2.B
 ns = {'np': np}
-_src = open(c2.CODE / 'eval_batch1.py').read()
+_src = open(c2.CODE / 'projection.py').read()
 exec(_src[_src.index('def huber('):_src.index('def rmse3d(')], ns)
 exec(_src[_src.index('def estimate('):_src.index('SIGMA_PX = ')], ns)
 huber, estimate = ns['huber'], ns['estimate']
@@ -148,6 +148,19 @@ def library(clip, param, with_truth=False, workers=8):
     for val, tag, v in sorted(items):
         z = np.load(CACHE / f'{tag}__{v}.npz')
         out.append((val, {n: (z[f'{n}__frac'], z[f'{n}__box']) for n in names if f'{n}__frac' in z.files}))
+    return out
+
+
+def load_tracks_indexed(path, clip):
+    """{name: boxes (frames, 4)} indexed by video frame (NaN = missing), for reference tracks 'CLIP__NAME'"""
+    out = {}
+    for line in open(path):
+        r = json.loads(line); c, n = r['id'].split('__', 1)
+        if c != clip: continue
+        tr = r['tracks'][n]; a = np.full((max(tr['frames']) + 1, 4), np.nan)
+        for f, b in zip(tr['frames'], tr['xyxy']):
+            if b is not None: a[f] = b
+        out[n] = a
     return out
 
 

@@ -6,11 +6,11 @@
 #   /data_cached/wangzijun_p25 -> /workspace/wz/data_cached/wangzijun_p25
 #   /data2/zhangshuran         -> /workspace/wz/sam/data2/zhangshuran
 #   /data1/zhangshuran         -> /workspace/wz/sam/data1/zhangshuran
-# Usage (on the Mac): [DEPLOY_HOST=alias] deploy_a800.sh [item ...]   items: genesis_env genesis_src genesis_cache assets assets_py ours sam31_code
+# Usage (on the Mac): [DEPLOY_HOST=alias] deploy_host.sh [item ...]   items: genesis_env genesis_src genesis_cache assets assets_py ours sam31_code
 #                     sam31_weights sam31_base_env shims rewrite check     (default: all, in that order)
 # rewrite covers only the Genesis env and SAM trees (default REWRITE_TOPS below); author files
 # and our configs must keep their original bytes (sha256 checks) and are reached through the preload redirect instead.
-# After deploying, the 'ours' scripts still need PY switched to the /workspace interpreter path (run_batch.py, refine_queue2.py).
+# After deploying, the 'ours' scripts still need PY switched to the /workspace interpreter path (run_batch.py, refine_queue.py).
 set -euo pipefail
 C=/Users/zhangshuran/data/projects/gravtrace/.local-research/deploy_cache_a800
 H=${DEPLOY_HOST:-nscc-xdliang3-a800}; R=/workspace/wz   # same layout on every xdliang3 container host
@@ -35,8 +35,8 @@ for it in $items; do case $it in
     ssh -o BatchMode=yes $H "mkdir -p $R/lib/pyshim $R/lib/gl $B"
     ssh -o BatchMode=yes $H "cat > $R/lib/pathredirect.c && gcc -shared -fPIC -O2 -o $R/lib/libpathredirect.so $R/lib/pathredirect.c -ldl" < $C/pathredirect.c
     ssh -o BatchMode=yes $H "cat > $R/lib/pyshim/sitecustomize.py" < $C/sitecustomize.py
-    ssh -o BatchMode=yes $H "cat > $B/a800_env.sh" < $C/a800_env.sh
-    ssh -o BatchMode=yes $H "cat > $B/a800_sam_env.sh" < $C/a800_sam_env.sh
+    ssh -o BatchMode=yes $H "cat > $B/genesis_env.sh" < $C/genesis_env.sh
+    ssh -o BatchMode=yes $H "cat > $B/sam_env.sh" < $C/sam_env.sh
     ssh -o BatchMode=yes $H "cat > $B/mps_on.sh && chmod +x $B/mps_on.sh" < $C/mps_on.sh
     ssh -o BatchMode=yes $H "E=$R/home/wangzijun_p25/miniconda3/envs/genesis/lib; cd $R/lib/gl && cp -p \$E/libGL.so.1.7.0 \$E/libGLX.so.0.0.0 \$E/libGLdispatch.so.0.0.0 . && ln -sf libGL.so.1.7.0 libGL.so.1 && ln -sf libGLX.so.0.0.0 libGLX.so.0 && ln -sf libGLdispatch.so.0.0.0 libGLdispatch.so.0"
     ;;
@@ -72,6 +72,6 @@ print('rewritten files', nfile, 'symlinks', nlink)
 PYEOF
     ;;
   check)
-    ssh -o BatchMode=yes $H "cd $R && . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/a800_env.sh && $R/home/wangzijun_p25/miniconda3/envs/genesis/bin/python -c 'import genesis, torch; print(\"genesis\", genesis.__version__, genesis.__file__, \"torch\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2;
-      unset LD_PRELOAD; . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/a800_sam_env.sh; PYTHONPATH=$R/sam/data2/zhangshuran/physedit/sam31_official_v1/source $R/sam/data2/zhangshuran/physedit/full_chain_smoke_20261012_v2/env/bin/python -c 'import torch, sam3; print(\"sam3 ok\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2; df -h /workspace | tail -1" ;;
+    ssh -o BatchMode=yes $H "cd $R && . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/genesis_env.sh && $R/home/wangzijun_p25/miniconda3/envs/genesis/bin/python -c 'import genesis, torch; print(\"genesis\", genesis.__version__, genesis.__file__, \"torch\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2;
+      unset LD_PRELOAD; . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/sam_env.sh; PYTHONPATH=$R/sam/data2/zhangshuran/physedit/sam31_official_v1/source $R/sam/data2/zhangshuran/physedit/full_chain_smoke_20261012_v2/env/bin/python -c 'import torch, sam3; print(\"sam3 ok\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2; df -h /workspace | tail -1" ;;
 esac; done

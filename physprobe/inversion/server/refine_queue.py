@@ -2,7 +2,7 @@
 Idempotent (skips chunks whose <tag>/<param>_poses.json exists), can be restricted to a subset of tags by prefix, and
 can wait for a running process to exit first (hand-over from the v1 queue without overlapping simulations).
 With --max-sims N, several small chunks run at once as long as the total number of simulations stays <= N.
-Usage: python refine_queue2.py PLAN GPU NAME [--prefix P1,P2] [--wait-pid PID] [--max-sims N]"""
+Usage: python refine_queue.py PLAN GPU NAME [--prefix P1,P2] [--wait-pid PID] [--max-sims N]"""
 import argparse, json, os, subprocess, time
 from pathlib import Path
 

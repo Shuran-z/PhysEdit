@@ -8,7 +8,7 @@ Job (one line per video): {"id": VIDEO_ID, "video": PATH, "prompt_frame": K, "la
                            "objects": {NAME: [x0, y0, x1, y1] in video pixels at the prompt frame}}
 Output (one line per object, V4-compatible): {"id": "VIDEO_ID__NAME", "video": ..., "tracks": {NAME: {"frames": [...],
 "xyxy": [... or null], "area": [...]}}, "model": "facebook/sam3.1", "mode": "lean_v1_joint_box_prompt", "seconds": ...}
-Usage: python sam31_lean.py JOBS OUT --sam3 SRC --checkpoint PT [--shard I/N] [--tmp /dev/shm]"""
+Usage: python sam_tracker.py JOBS OUT --sam3 SRC --checkpoint PT [--shard I/N] [--tmp /dev/shm]"""
 import argparse, inspect, json, os, shutil, sys, tempfile, time
 from pathlib import Path
 

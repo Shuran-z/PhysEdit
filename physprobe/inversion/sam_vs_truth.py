@@ -1,18 +1,18 @@
 """Which of several SAM 3.1 tracks files is closer to the truth? For each tracked object: SAM box vs the visible-part box of
-the recorded trajectory (common2.visible_boxes, z-buffer over every scene object), after the frame-4 offset calibration,
+the recorded trajectory (common.visible_boxes, z-buffer over every scene object), after the frame-4 offset calibration,
 on frames where >= MIN_VIS of the object is visible; reported inside the predictability window and over the whole video.
 Used when two tracking hosts disagree (A800 vs hupanwen, issue log F8).
 Usage: python sam_vs_truth.py CLIP TRACKS1.jsonl [TRACKS2.jsonl ...]"""
 import json, sys
 import numpy as np
-import common2 as c2
+import common as c2
 sys.argv, rest = sys.argv[:1], sys.argv[1:]
-import eval_batch2 as e2
+import evaluator as e2
 
 clip, files = rest[0], rest[1:]
 hz = json.load(open(c2.B / 'horizons32.json'))[clip]['objects']
 meta, cam = c2.recorded(clip), c2.camera(clip)
-obs = {f: e2.load_tracks(f, clip) for f in files}
+obs = {f: e2.load_tracks_indexed(f, clip) for f in files}
 names = sorted(n for n in set().union(*obs.values()) if n in hz)   # moving objects only
 traj = {}
 for n in names:

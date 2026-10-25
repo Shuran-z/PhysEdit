@@ -9,7 +9,7 @@ Usage: python qa_overlay.py RESULTS.jsonl ITEMS.json RAW_TRACKS.jsonl[,..] CAMCO
 import argparse, collections, json, math, os, random
 import cv2
 import numpy as np
-import eval_v3 as ev
+import evaluator as ev
 import cam_comp as cc
 
 ap = argparse.ArgumentParser(); ap.add_argument('results'); ap.add_argument('items'); ap.add_argument('raw'); ap.add_argument('comp'); ap.add_argument('out')

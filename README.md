@@ -27,7 +27,7 @@ physedit run gravity100.json --execute
 
 [评测清单CSV](docs/phyediting/gravity100.csv) · [数据集划分与训练来源](docs/joint_split_v3/PROTOCOL.md)
 
-## 仿真反演评测（Core100，v3）
+## 仿真反演评测（Core100）
 
 `physprobe/inversion/`：用作者原始 Genesis 场景建立仿真库，结合 SAM 3.1 联合跟踪，按物理时间对齐，并做逐视频配准与相机运动补偿，对参考视频和生成视频统一反演 g、μ、v，给出点估计或经过校准的不确定区间。已知答案测试中，点估计误差中位数为 g 2.2%、μ 1.6%、v 1.2%。方法、验证与运行步骤见 [physprobe/inversion/README.md](physprobe/inversion/README.md)。数据、仿真库和结果不进 git，通过 `PHYSPROBE_WORK` / `PHYSPROBE_ROOT` 指定位置。
 

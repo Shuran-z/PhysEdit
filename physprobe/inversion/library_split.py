@@ -5,7 +5,7 @@ concurrent simulation. New hosts get the 14 true-parameter consistency replays (
 queue. Jobs already finished (tags listed in lib3_done_tags.json, if present) are skipped, so re-running rebalances.
 Queues listed with --pin keep their existing lib3_queues file unchanged (they are already running); only jobs not in any
 pinned file are distributed over the other queues.
-Usage: python lib3_split.py [--pin FILE_STEM ...] -> lib3_queues/<host>_gpu<k>.json + summary"""
+Usage: python library_split.py [--pin FILE_STEM ...] -> lib3_queues/<host>_gpu<k>.json + summary"""
 import sys
 import json, statistics as st
 from pathlib import Path

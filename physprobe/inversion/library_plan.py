@@ -9,7 +9,7 @@ Values are ordered nearest-to-truth first and chunked (<= 6 per job, T15 frictio
 frame min(210, max horizon + 31) (physics_only.py --frames, validated per family, issue log F16) and keeps all objects
 (occluders for the visible-part boxes). The truth itself is never in a library (known-answer tests); for generated videos
 the existing true-parameter replays are added at evaluation time.
-Usage: python lib3_plan.py -> lib3_plan.json + summary"""
+Usage: python library_plan.py -> lib3_plan.json + summary"""
 import json, math
 from pathlib import Path
 

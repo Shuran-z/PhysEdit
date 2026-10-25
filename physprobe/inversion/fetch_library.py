@@ -1,6 +1,6 @@
 """Fetch finished library v3 chunks (and the new hosts' consistency replays) from every host queue into libs3/<tag>.json.
-One tar stream per host; chunks already fetched are skipped. Also writes lib3_done_tags.json (for lib3_split.py rebalancing).
-Usage: python fetch_lib3.py [HOST ...]"""
+One tar stream per host; chunks already fetched are skipped. Also writes lib3_done_tags.json (for library_split.py rebalancing).
+Usage: python fetch_library.py [HOST ...]"""
 import io, json, subprocess, sys, tarfile
 from pathlib import Path
 

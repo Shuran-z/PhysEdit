@@ -2,7 +2,7 @@
 number of results by kind, point-estimate |error| median / p90 / max, and the share of bands that contain the truth.
 Friction of T19/T20 is left out (issue log B20). Usage: python ref_stats.py [RESULT_DIR] [--compare OTHER_DIR]"""
 import collections, glob, json, os, statistics as st, sys
-import eval_v3 as ev
+import evaluator as ev
 
 d = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else str(ev.B / 'results3')
 R = [json.load(open(f)) for f in glob.glob(os.path.join(d, 'ref_*.json')) if not f.endswith('_summary.json')]

@@ -1,7 +1,7 @@
-"""Re-classify existing result files with eval_v3.apply_carrier_rule (D22) without re-running the evaluation.
-Usage: python apply_carrier_rule.py IN.jsonl OUT.jsonl  |  python apply_carrier_rule.py --ref (results3/ref_*.json in place)"""
+"""Re-classify existing result files with evaluator.apply_carrier_rule (D22) without re-running the evaluation.
+Usage: python apply_object_rules.py IN.jsonl OUT.jsonl  |  python apply_object_rules.py --ref (results3/ref_*.json in place)"""
 import glob, json, sys
-import eval_v3 as ev
+import evaluator as ev
 
 if sys.argv[1] == '--ref':
     n = 0

@@ -1,4 +1,4 @@
-"""Evaluate generated (or synthetic generated-like) videos with eval_v3.evaluate(): items.json from make_gen_jobs.py /
+"""Evaluate generated (or synthetic generated-like) videos with evaluator.evaluate(): items.json from make_gen_jobs.py /
 make_synth.py, SAM 3.1 lean tracks, library v3. Each item, each applicable parameter (g; mu; v where the task inverts
 speed) -> estimate (point / interval / bound / unidentifiable / no_observation) with band, loss curve and per-object
 diagnostics. Real generated videos use the library plus the true-parameter replays (--with-truth); synthetic known-answer
@@ -8,7 +8,7 @@ Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-tr
 import argparse, collections, json, statistics as st
 from multiprocessing import get_context
 import numpy as np
-import eval_v3 as ev
+import evaluator as ev
 
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--with-truth', action='store_true')
 ap.add_argument('--params', default='g,mu,v'); ap.add_argument('--workers', type=int, default=8)

@@ -2,7 +2,7 @@
 grid leaves k = 0 out, which made the interval containing the truth twice as wide as every other interval (r^2), i.e. the
 known-answer video sat in the sparsest spot of its library; with the half steps the truth lies in the middle of a normal
 interval [truth r^-0.5, truth r^0.5] (the least favourable position on a uniform grid). Each job goes to the host queue that
-holds its library's chunk 00 (warm kernel cache). Usage: python lib3_half.py -> lib3_queues_half/<queue>.json"""
+holds its library's chunk 00 (warm kernel cache). Usage: python library_half_steps.py -> lib3_queues_half/<queue>.json"""
 import json
 from pathlib import Path
 

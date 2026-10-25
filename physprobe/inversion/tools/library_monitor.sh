@@ -1,6 +1,6 @@
 #!/bin/bash
-# Library v3 progress across all host queues (refine_queue2 progress files), every INTERVAL s; tolerant of SSH drops.
-# Exits when every queue has written its done file. Usage: lib3_monitor.sh [INTERVAL_S]
+# Library progress across all host queues (refine_queue progress files), every INTERVAL s; tolerant of SSH drops.
+# Exits when every queue has written its done file. Usage: library_monitor.sh [INTERVAL_S]
 I=${1:-600}
 Q="nscc-xdliang3-h100-1:xdliang3-h100-1_g0 nscc-xdliang3-h100-1:xdliang3-h100-1_g1 nscc-xdliang3-a800-7:xdliang3-a800-7_g0 nscc-xdliang3-a800-7:xdliang3-a800-7_g1 nscc-xdliang3-a800:a800_g0 nscc-wangzijun-4090:4090_g0 nscc-wangzijun-4090:4090_g2"
 while :; do

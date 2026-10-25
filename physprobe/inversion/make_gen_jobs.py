@@ -11,7 +11,7 @@ import argparse, json, math, statistics as st
 from pathlib import Path
 import cv2
 import numpy as np
-import common2 as c2
+import common as c2
 import gen_register as gr
 
 G = Path(c2.gt('/Users/zhangshuran/data/projects/PhysProbe/data/generated/author_core100_english_three_variants_v3_20261020'))
