@@ -19,7 +19,8 @@ def load(d):
     return R
 
 
-args = [a for a in sys.argv[1:] if not a.startswith('--')]
+args = sys.argv[1:]; out_file = None
+if '--out' in args: i = args.index('--out'); out_file = args[i + 1]; del args[i:i + 2]
 var = load(args[0] if os.path.isabs(args[0]) else str(B / args[0]))
 base = load(args[1] if len(args) > 1 and os.path.isabs(args[1]) else str(B / (args[1] if len(args) > 1 else 'results3')))
 keys = sorted(set(var) & set(base)); out = dict(n=len(keys), params={}, changed=[])
@@ -45,4 +46,4 @@ for k in keys:
         f = lambda v: '—' if v is None else f'{v:+.1f}%'
         print(f"  {k[0]} {k[1]:2s} {a['kind']} -> {b['kind']}  best {f(c['best_err_pct'][0])} -> {f(c['best_err_pct'][1])}  "
               f"in band {c['in_band'][0]} -> {c['in_band'][1]}")
-if '--out' in sys.argv: json.dump(out, open(sys.argv[sys.argv.index('--out') + 1], 'w'), indent=1)
+if out_file: json.dump(out, open(out_file, 'w'), indent=1)
