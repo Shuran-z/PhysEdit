@@ -63,6 +63,8 @@ def estimate_v3(vs, ys, delta=1.0):
     else:
         x0 = -b / (2 * a); hw = math.sqrt(delta / a); est = float(math.exp(x0))
         band = (max(math.exp(x0 - hw), lo_lim), min(math.exp(x0 + hw), hi_lim))
+        if band[0] > band[1]:          # vertex outside the bracket of grid values exceeding the threshold: use the grid band
+            band = (float(vs[m].min()), float(vs[m].max()))
         est = min(max(est, band[0]), band[1])
     kind = 'interval' if band[1] / band[0] > 1.25 else 'point'
     return dict(kind=kind, est=est if kind == 'point' else None, center=est, band=(float(band[0]), float(band[1])))
@@ -88,13 +90,21 @@ def carrier_of(clip, param):
 
 
 def apply_carrier_rule(res):
-    """D22: a result whose carrier object was observable but rejected (not explained / inconsistent) does not measure the
+    """D23 majority rule, then D22: a result whose carrier object was observable but rejected (not explained / inconsistent) does not measure the
     parameter's main effect -> kind not_explained; a carrier that is not usable at all (no motion in its window) leaves
     the result as measured through the other objects (flag indirect)"""
     car = carrier_of(res['clip'], res['param']); res['carrier'] = car
-    st = (res.get('object_diagnostics') or {}).get(car, {}).get('status') if car else None
+    diag = res.get('object_diagnostics') or {}
+    st = diag.get(car, {}).get('status') if car else None
+    n_rej = sum(d['status'] in ('not_explained', 'inconsistent') for d in diag.values())
+    n_use = sum(d['status'] == 'used' for d in diag.values())
+    if n_use and n_rej >= n_use and res.get('kind') not in ('not_explained', 'no_observation'):
+        # D23: an estimate must be supported by at least as many objects as reject it
+        res.update(kind_before_object_rules=res['kind'], kind='not_explained', est=None, truth_in_band=False, rejected_by='majority')
+        res.pop('err_pct', None)
+        return res
     if car and st in ('not_explained', 'inconsistent') and res.get('kind') not in ('not_explained', 'no_observation'):
-        res.update(kind_before_carrier_rule=res['kind'], kind='not_explained', est=None, truth_in_band=False)
+        res.update(kind_before_object_rules=res['kind'], kind='not_explained', est=None, truth_in_band=False, rejected_by='carrier')
         res.pop('err_pct', None)
     elif car and st not in ('used', None) and res.get('kind') not in ('not_explained', 'no_observation'):
         res['indirect'] = True
