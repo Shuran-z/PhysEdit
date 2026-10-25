@@ -80,9 +80,12 @@ cd physprobe/inversion   # 数据在 PHYSPROBE_WORK；服务器上设 PHYSPROBE_
 python make_gen_jobs.py NAME REMOTE_DIR --seeds 0,1,2 --annotations 1,2,3   # 配准 + SAM 任务（sam_gen/NAME/）
 # 上传视频并跑 SAM：upload_and_run_gen.sh（hupanwen：server_code/run_sam_tracker_hupanwen.sh；xdliang3 主机：server_code/run_sam_tracker.sh）
 python cam_comp.py sam_gen/NAME/items.json sam_gen/NAME/tracks_*.jsonl --out sam_gen/NAME/tracks_camcomp.jsonl   # 相机运动补偿
-python eval_generated.py NAME sam_gen/NAME/tracks_camcomp.jsonl --with-truth --workers 9   # -> results_gen/NAME.jsonl
-python summarize_generated.py NAME   # -> results_gen/NAME_by_model.md
+python eval_generated.py NAME sam_gen/NAME/tracks_camcomp.jsonl --with-truth --workers 9 --clock realtime   # -> results_gen/NAME.jsonl
+python validation_gate.py NAME NAME   # 真值验证门（D28）-> results_gen/NAME_gated.jsonl
+python summarize_generated.py NAME_gated   # -> results_gen/NAME_gated_by_model.md
 ```
+
+真值验证门:同一任务、同一参数的参考视频,以及同一视频格式的合成视频(真值已知),只要有一个没给出估计(无法解释、无观测或出错),这组(任务, 参数)在该格式下的生成视频结果就记为 `not_validated`,不计入模型的统计。这些地方是测量工具本身解释不了正确的物理,所以"无法解释"不能算作模型的错。
 
 每条结果包含：key（seed / annotation / 模型 / 任务）、param、kind、est、band、truth、objects、object_diagnostics、map_source。如果某条视频的某个物体判为 not_explained 或 inconsistent，说明没有任何参数值能解释它的运动，可以作为"物理不合理"的独立信号单独统计。
 

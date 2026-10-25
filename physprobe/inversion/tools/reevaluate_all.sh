@@ -1,7 +1,8 @@
 #!/bin/bash
 # Full re-evaluation on a server mirror after a library or rule change (run detached via run_on_mirror-style setsid):
 #  1 reference known-answer run  2 threshold calibration  3 reference run with the calibrated threshold + statistics
-#  4 generated videos (camera-compensated tracks) + per-model summary  5 synthetic generated-like known-answer sets.
+#  4 generated videos (camera-compensated tracks)  5 synthetic generated-like known-answer sets
+#  6 known-truth validation gate (D28) + per-model summary + report figures.
 # Each step logs to <WORK>/runs/reeval_<step>.log; <WORK>/runs/reeval.done marks the end.
 # Usage (on the server): bash reevaluate_all.sh ROOT [WORKERS] [FROM_STEP: 1 = all, 2 = keep step 1 results]
 ROOT=$1; NW=${2:-12}
@@ -17,8 +18,10 @@ step 3_ref evaluator.py ref
 step 3_stats ref_stats.py
 T=$W/sam_gen/all/tracks
 step 4_generated eval_generated.py all_cc $T/all_camcomp.jsonl --with-truth --workers $NW --clock realtime
-step 4_summary summarize_generated.py all_cc
 for s in s15v s10f16 s30f121; do
   [ -e $W/sam_gen/$s/tracks_lean.jsonl ] && step 5_synth_$s eval_generated.py $s $W/sam_gen/$s/tracks_lean.jsonl --workers $NW --clock reference
 done
+step 6_gate validation_gate.py all_cc
+step 6_summary summarize_generated.py all_cc_gated
+step 6_figures report_figures.py $W/report
 date > $R/reeval.done

@@ -1,14 +1,16 @@
 """Figures and tables for the acceptance report (static PNG + markdown tables; every figure has a table view).
 Palette: the dataviz reference categorical order (blue, orange, aqua, yellow, magenta, green) — adjacent pairs validated
 for stacked bars, first three slots validated all-pairs for the scatter; low-contrast slots are backed by the tables.
-Usage: python report_figures.py OUT_DIR [--synth s15v,s10f16,s30f121] [--generated all_cc]"""
+Usage: python report_figures.py OUT_DIR [--synth s15v,s10f16,s30f121,s15v_pan,s15v_pan_raw] [--generated all_cc_gated]
+Fig. 3 shows the generated results that pass the known-truth validation gate (validation_gate.py, D28); the table also
+counts the gated ones."""
 import argparse, collections, glob, json, math, os, statistics as st
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import evaluator as ev
 
-ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--synth', default='s15v,s10f16,s30f121'); ap.add_argument('--generated', default='all_cc')
+ap = argparse.ArgumentParser(); ap.add_argument('out'); ap.add_argument('--synth', default='s15v,s10f16,s30f121,s15v_pan,s15v_pan_raw'); ap.add_argument('--generated', default='all_cc_gated')
 a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
 SLOT = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300']
 TXT, MUTED, GRID = '#0b0b0b', '#52514e', '#e4e3df'
@@ -18,6 +20,8 @@ PARAMS = [('g', 'gravity g'), ('mu', 'friction mu'), ('v', 'initial speed v')]
 plt.rcParams.update({'font.size': 9, 'axes.edgecolor': MUTED, 'axes.labelcolor': TXT, 'xtick.color': MUTED, 'ytick.color': MUTED,
                      'axes.spines.top': False, 'axes.spines.right': False, 'figure.facecolor': '#fcfcfb', 'axes.facecolor': '#fcfcfb'})
 tables = []
+SYNTH_LABEL = {'s15v': 'synthetic 15 fps, x1.026 warp', 's10f16': 'synthetic 10 fps, 16 frames', 's30f121': 'synthetic 30 fps, 121 frames',
+               's15v_pan': 'synthetic 15 fps + camera pan, compensated', 's15v_pan_raw': 'synthetic 15 fps + camera pan, not compensated'}
 
 
 def kind_of(r):
@@ -57,7 +61,7 @@ fig.tight_layout(); fig.savefig(os.path.join(a.out, 'fig1_known_answer.png'), dp
 tables.append('### Fig. 1 — known-answer accuracy (reference videos)\n\n' + '\n'.join(rows))
 
 # 2. result kinds: reference and synthetic generated-like sets
-sets = [('reference 30 fps', ref)] + [({'s15v': 'synthetic 15 fps, x1.026 warp', 's10f16': 'synthetic 10 fps, 16 frames', 's30f121': 'synthetic 30 fps, 121 frames'}.get(s, s), rs) for s, rs in syn.items()]
+sets = [('reference 30 fps', ref)] + [(SYNTH_LABEL.get(s, s), rs) for s, rs in syn.items()]
 labels, shares = [], []
 rows = ['| set | parameter | n | ' + ' | '.join(k[1] for k in KINDS) + ' | point median abs error | truth inside band |', '|---|---|---|' + '---|' * len(KINDS) + '---|---|']
 for name, rs in sets:
@@ -83,16 +87,17 @@ gen = [json.loads(l) for l in open(ev.B / 'results_gen' / f'{a.generated}.jsonl'
 gen = [r for r in gen if 'param' in r and not skip(r)]
 models = sorted({r['model'] for r in gen})
 for p, lab in PARAMS:
-    sh, rows = [], ['| model | n | ' + ' | '.join(k[1] for k in KINDS) + ' | prompt inside band |', '|---|---|' + '---|' * len(KINDS) + '---|']
+    sh, rows = [], ['| model | videos | not validated (gated) | validated | ' + ' | '.join(k[1] for k in KINDS) + ' | prompt inside band |', '|---|---|---|---|' + '---|' * len(KINDS) + '---|']
     for m in models:
-        x = [r for r in gen if r['model'] == m and r['param'] == p]; c = collections.Counter(kind_of(r) for r in x); n = max(1, len(x))
+        allx = [r for r in gen if r['model'] == m and r['param'] == p]; x = [r for r in allx if r.get('kind') != 'not_validated']
+        c = collections.Counter(kind_of(r) for r in x); n = max(1, len(x))
         sh.append([c[k] / n for k, _ in KINDS]); nb = [r for r in x if r.get('band')]
-        rows.append(f"| {m} | {len(x)} | " + ' | '.join(f'{100 * c[k] / n:.0f}%' for k, _ in KINDS) + f" | {sum(bool(r.get('truth_in_band')) for r in nb)}/{len(nb)} |")
+        rows.append(f"| {m} | {len(allx)} | {len(allx) - len(x)} | {len(x)} | " + ' | '.join(f'{100 * c[k] / n:.0f}%' for k, _ in KINDS) + f" | {sum(bool(r.get('truth_in_band')) for r in nb)}/{len(nb)} |")
     fig, ax = plt.subplots(figsize=(11, 0.34 * len(models) + 1.4))
     for j, (k, kl) in enumerate(KINDS):
         ax.barh(range(len(models)), [s[j] for s in sh], left=[sum(s[:j]) for s in sh], color=SLOT[j], edgecolor='#fcfcfb', linewidth=2, label=kl, height=0.72)
-    ax.set_yticks(range(len(models))); ax.set_yticklabels(models); ax.invert_yaxis(); ax.set_xlim(0, 1); ax.set_xlabel('share of videos')
-    ax.legend(ncol=6, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title(f'Generated videos — {lab}: result kinds per model', loc='left', color=TXT)
+    ax.set_yticks(range(len(models))); ax.set_yticklabels(models); ax.invert_yaxis(); ax.set_xlim(0, 1); ax.set_xlabel('share of validated videos')
+    ax.legend(ncol=6, loc='upper left', bbox_to_anchor=(0, -0.08), frameon=False); ax.set_title(f'Generated videos — {lab}: result kinds per model (tasks that pass the known-truth validation)', loc='left', color=TXT)
     fig.tight_layout(); fig.savefig(os.path.join(a.out, f'fig3_generated_{p}.png'), dpi=160); plt.close(fig)
     tables.append(f'### Fig. 3 ({p}) — generated videos, result kinds per model\n\n' + '\n'.join(rows))
 
