@@ -235,12 +235,12 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
         prep[n] = (s0, ob, i0, float(np.linalg.norm(ob[i0, 2:] - ob[i0, :2])))
     if interp: lib = refine_library(lib, list(prep))
     # per-object loss tables L[n][value index, shift index] (inf where the object lacks MIN_FRAMES frames)
-    tables, vals = {}, []
+    tables, rms_tabs, vals = {}, {}, []
     for vi, (v, boxes) in enumerate(lib):
         kf = min(1.0, math.sqrt(truth / v)) if (param == 'g' and KSCALE) else 1.0
         vals.append(v)
         for n, (s0, ob, i0, d0) in prep.items():
-            row = np.full(len(SHIFTS), np.inf)
+            row = np.full(len(SHIFTS), np.inf); rrow = np.full(len(SHIFTS), np.nan)
             if n in boxes and d0 > 0:
                 frac, sb = boxes[n]
                 sbv = np.where((frac >= MIN_VIS)[:, None], sb * a + b, np.nan); F = len(sbv)
@@ -263,8 +263,11 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
                     row = np.where((cnt >= MIN_FRAMES) & (moving >= MIN_FRAMES), per, np.inf)
                     z = np.argmin(np.abs(SHIFTS))
                     if moving[z] < MIN_FRAMES and moving.max() < MIN_FRAMES: row[:] = np.inf
-            tables.setdefault(n, []).append(row)
-    tables = {n: np.array(t) for n, t in tables.items()}
+                    # box-edge residual in video pixels (rms over the compared frames and the 4 edges), for reporting
+                    rms = np.sqrt(np.where(good[..., None], (rr * d0) ** 2, 0.0).sum((1, 2)) / np.maximum(4 * good.sum(1), 1))
+                    rrow = np.where(np.isfinite(row), rms, np.nan)
+            tables.setdefault(n, []).append(row); rms_tabs.setdefault(n, []).append(rrow)
+    tables = {n: np.array(t) for n, t in tables.items()}; rms_tabs = {n: np.array(t) for n, t in rms_tabs.items()}
     vals = np.array(vals)
     # objects: observable (finite somewhere) and explainable (best fit over the whole library within GATE)
     diag = {}
@@ -284,12 +287,12 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
         worst = max(per, key=per.get)
         if per[worst] <= OBJ_MAX: break
         used_objs = [n for n in used_objs if n != worst]; diag[worst]['status'] = 'inconsistent'; diag[worst]['loss_at_joint'] = round(per[worst], 2)
-    vals_out, losses, shifts = [], [], []
+    vals_out, losses, shifts, cells = [], [], [], []
     if used_objs:
         tot, keep = joint(used_objs)
         for vi in np.where(keep)[0]:
-            i = int(np.argmin(tot[vi])); vals_out.append(float(vals[vi])); losses.append(float(tot[vi, i])); shifts.append(float(SHIFTS[i]))
-    vals = vals_out
+            i = int(np.argmin(tot[vi])); vals_out.append(float(vals[vi])); losses.append(float(tot[vi, i])); shifts.append(float(SHIFTS[i])); cells.append((vi, i))
+    lib_vals = vals; vals = vals_out
     res = dict(clip=clip, param=param, truth=truth, objects=used_objs or [], object_diagnostics=diag, n_lib=len(vals), delta=DELTA)
     if len(vals) >= 3 and np.isfinite(losses).any():
         vs, ys = np.array(vals), np.array(losses)
@@ -303,7 +306,32 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     else:
         unexplained = any(d['status'] in ('not_explained', 'inconsistent') for d in diag.values())
         res.update(kind='not_explained' if unexplained else 'no_observation', est=None, band=None)   # no value explains the observed motion
+    best_fit(res, tables, rms_tabs, lib_vals, used_objs, vals_out, losses, cells)
     return apply_carrier_rule(res)
+
+
+def best_fit(res, tables, rms_tabs, lib_vals, used_objs, vals_out, losses, cells):
+    """A precise value for every result (D35): 'best' = the best-fitting parameter value with the box-edge residual (rms,
+    video pixels) of every object at that value and time shift. From the used objects' joint curve when there is one (the
+    quadratic vertex where the band has one, else the curve minimum); otherwise a forced joint fit of all observable
+    objects (best_source 'all_objects'), whose residual says how badly even the best value fits. The result kind and band
+    are unchanged: they say how far 'best' can be trusted."""
+    fin = lambda x: x is not None and np.isfinite(x)
+    if vals_out and np.isfinite(losses).any():
+        j = int(np.nanargmin(np.where(np.isfinite(losses), losses, np.nan))); vi, si = cells[j]; objs = used_objs
+        best = res['center'] if fin(res.get('center')) else vals_out[j]; src = 'used_objects'
+    else:
+        objs = [n for n in tables if np.isfinite(tables[n]).any()]
+        if not objs: return
+        tot = sum(tables[n] for n in objs)
+        if not np.isfinite(tot).any():                          # objects never valid at the same value and shift: best single object
+            objs = [min(objs, key=lambda n: float(np.min(tables[n])))]; tot = tables[objs[0]]
+        vi, si = np.unravel_index(np.argmin(np.where(np.isfinite(tot), tot, np.inf)), tot.shape)
+        best = float(lib_vals[vi]); src = 'all_objects'
+    rms = {n: round(float(rms_tabs[n][vi, si]), 2) for n in objs if np.isfinite(rms_tabs[n][vi, si])}
+    res.update(best=float(best), best_source=src, best_shift_frames=float(SHIFTS[si]), best_rms_px=rms,
+               best_rms_px_max=max(rms.values()) if rms else None)
+    if res.get('truth'): res['best_err_pct'] = 100 * (float(best) - res['truth']) / res['truth']
 
 
 def ref_meta(clip):
