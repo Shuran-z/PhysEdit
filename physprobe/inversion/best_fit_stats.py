@@ -1,7 +1,8 @@
 """How precise is the best-fit value (D35), and what does it say about the generated videos?
 A. Known truth (reference results3 and the synthetic generated-like sets): |best / truth - 1| per result kind and parameter
    (median, 75th / 90th percentile, share within 5 / 10 / 25 %), and by the fit residual (best_rms_px_max).
-B. Generated videos (gated file): per model and parameter, over the informative results (point, interval, one-sided bound),
+B. Generated videos (gated file): per model and parameter, over the measured results (point and interval: a finite band whose
+   best value is meaningful; a one-sided bound's best value sits at a grid edge),
    the median ratio best / prompt (geometric), the median |best / prompt - 1| and the share within 10 / 25 % of the prompt;
    gravity prompt response C01 / C02 / C03 (1.62 / 3.71 / 9.81) from the same results.
 T19/T20 friction is left out (B20). Usage: python best_fit_stats.py [GENERATED_NAME=all_cc_gated]
@@ -12,7 +13,7 @@ import numpy as np
 from paths import WORK as B
 
 KINDS = ('point', 'interval', 'upper_bound', 'lower_bound', 'unidentifiable', 'not_explained')
-INF = ('point', 'interval', 'upper_bound', 'lower_bound')
+MEAS = ('point', 'interval')
 skip = lambda r: r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20')
 
 
@@ -52,24 +53,24 @@ for p in ('g', 'mu', 'v'):
 
 G = [json.loads(l) for l in open(B / 'results_gen' / f'{name}.jsonl')]
 G = [r for r in G if 'param' in r and r['kind'] != 'not_validated' and not skip(r)]
-lines += ['', '## B. Generated videos: best / prompt over the informative results (point, interval, one-sided bound)', '',
+lines += ['', '## B. Generated videos: best / prompt over the measured results (point and interval)', '',
           '| model | parameter | n | median best / prompt | median abs deviation | within 10 % | within 25 % |', '|---|---|---|---|---|---|---|']
 by = collections.defaultdict(list)
 for r in G:
-    if r['kind'] in INF and r.get('best') and r.get('truth'): by[(r['model'], r['param'])].append(r)
+    if r['kind'] in MEAS and r.get('best') and r.get('truth'): by[(r['model'], r['param'])].append(r)
 for (m, p), rs in sorted(by.items()):
     ratio = np.array([r['best'] / r['truth'] for r in rs]); dev = np.abs(ratio - 1) * 100
     d = dict(n=len(rs), median_ratio=float(np.exp(np.median(np.log(ratio)))), median_dev=float(np.median(dev)),
              within10=float(np.mean(dev <= 10)), within25=float(np.mean(dev <= 25)))
     out[f'gen|{m}|{p}'] = d
     lines.append(f"| {m} | {p} | {d['n']} | {d['median_ratio']:.3f} | {d['median_dev']:.1f}% | {100 * d['within10']:.1f}% | {100 * d['within25']:.1f}% |")
-lines += ['', '## C. Gravity prompt response (best g of the informative results; median, 25th-75th pct, n)', '',
+lines += ['', '## C. Gravity prompt response (best g of the measured results; median, 25th-75th pct, n)', '',
           '| model | prompt 1.62 | prompt 3.71 | prompt 9.81 |', '|---|---|---|---|']
 for m in sorted({r['model'] for r in G}):
     cells = []
     for g in (1.62, 3.71, 9.81):
         xs = np.array([r['best'] for r in G if r['model'] == m and r['param'] == 'g' and r['clip'][4:] in ('C01', 'C02', 'C03')
-                       and abs(r['truth'] - g) < 0.01 and r['kind'] in INF and r.get('best')])
+                       and abs(r['truth'] - g) < 0.01 and r['kind'] in MEAS and r.get('best')])
         out[f'gravity|{m}|{g}'] = dict(n=len(xs), median=float(np.median(xs)) if len(xs) else None)
         cells.append(f'{np.median(xs):.2f} [{np.percentile(xs, 25):.2f}, {np.percentile(xs, 75):.2f}] ({len(xs)})' if len(xs) else '— (0)')
     lines.append(f'| {m} | ' + ' | '.join(cells) + ' |')
