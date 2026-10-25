@@ -230,19 +230,21 @@ def refine_library(lib, names, n_sub=7, max_rel=0.5):
         if cub:
             from scipy.interpolate import PchipInterpolator
             F = {n: min(len(b[n][1]) for _, b in seg) for n in common}
-            fit = {n: (PchipInterpolator(lv, np.stack([b[n][0][:F[n]] for _, b in seg]), axis=0),
-                       PchipInterpolator(lv, np.stack([b[n][1][:F[n]] for _, b in seg]), axis=0)) for n in common}
+            def pchip(Y):                                 # NaN (not visible) anywhere in the run -> linear there
+                return PchipInterpolator(lv, np.nan_to_num(Y), axis=0), np.isnan(Y).any(0)
+            fit = {n: (pchip(np.stack([b[n][0][:F[n]] for _, b in seg])), pchip(np.stack([b[n][1][:F[n]] for _, b in seg]))) for n in common}
         for k, ((v0, b0), (v1, b1)) in enumerate(zip(seg, seg[1:])):
             out.append((v0, b0))
             cm = [n for n in names if n in b0 and n in b1]
             for j in range(1, n_sub + 1):
                 lam = j / (n_sub + 1); x = (1 - lam) * math.log(v0) + lam * math.log(v1); bb = {}
                 for n in cm:
+                    Fn = min(len(b0[n][1]), len(b1[n][1]))
+                    lin = ((1 - lam) * b0[n][0][:Fn] + lam * b1[n][0][:Fn], (1 - lam) * b0[n][1][:Fn] + lam * b1[n][1][:Fn])
                     if cub and n in fit:
-                        bb[n] = (fit[n][0](x), fit[n][1](x))
+                        Fc = F[n]; bb[n] = tuple(np.where(m, l[:Fc], f(x)) for (f, m), l in zip(fit[n], lin))
                     else:
-                        Fn = min(len(b0[n][1]), len(b1[n][1]))
-                        bb[n] = ((1 - lam) * b0[n][0][:Fn] + lam * b1[n][0][:Fn], (1 - lam) * b0[n][1][:Fn] + lam * b1[n][1][:Fn])
+                        bb[n] = lin
                 out.append((math.exp(x), bb))
         out.append(seg[-1])
     return out
