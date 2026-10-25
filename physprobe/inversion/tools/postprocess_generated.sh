@@ -1,6 +1,7 @@
 #!/bin/bash
 # After eval_generated.py: known-truth validation gate (D28), per-model summary, motion amplitude / onset check, the
-# sigma x2 sensitivity comparison (when results_gen/<NAME>_sigma3.jsonl exists) and the report figures.
+# sigma x2 sensitivity comparison (when results_gen/<NAME>_sigma3.jsonl exists), the report figures and the best-fit
+# statistics (best_fit_stats.py).
 # Logs to <WORK>/runs/post_<step>.log; <WORK>/runs/post.done marks the end. Run detached (setsid) on a server mirror.
 # Usage (on the server): bash postprocess_generated.sh ROOT [NAME=all_cc] [WORKERS=12]
 ROOT=$1; NAME=${2:-all_cc}; NW=${3:-12}
@@ -17,4 +18,5 @@ if [ -e $W/results_gen/${NAME}_sigma3.jsonl ]; then
 fi
 step motion motion_check.py ${NAME}_gated $W/sam_gen/all/tracks/all_camcomp.jsonl --items $NAME --with-truth --workers $NW
 step figures report_figures.py $W/report --generated ${NAME}_gated
+step bestfit best_fit_stats.py ${NAME}_gated
 date > $R/post.done

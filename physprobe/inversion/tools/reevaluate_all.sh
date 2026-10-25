@@ -27,4 +27,5 @@ done
 step 6_gate validation_gate.py all_cc
 step 6_summary summarize_generated.py all_cc_gated
 step 6_figures report_figures.py $W/report
+step 6_bestfit best_fit_stats.py all_cc_gated
 date > $R/reeval.done
