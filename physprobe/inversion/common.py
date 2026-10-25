@@ -5,6 +5,7 @@ default 0.08 / 0.18, issue B2). Projection = shape-aware silhouette points (issu
 import gzip, json, math, os
 from pathlib import Path
 import numpy as np
+from scipy.ndimage import minimum_filter
 from scipy.spatial.transform import Rotation as Rot
 
 from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
@@ -153,6 +154,9 @@ def surface_points(s, n=3000, seed=0):
     return u
 
 
+OCC_FILL = os.environ.get('PHYSPROBE_OCC_FILL', '0') == '1'
+
+
 def visible_boxes(clip, cam, traj, scale=0.25, n=3000, eps=0.004):
     """per-pixel occlusion over a trajectory. traj: {moving name: array (frames, 7)}. Every visible scene object of the
     config takes part (fixed ones at their spec pose). Returns {name: (fraction visible (frames,), visible box (frames, 4)
@@ -182,11 +186,15 @@ def visible_boxes(clip, cam, traj, scale=0.25, n=3000, eps=0.004):
             ui = np.floor(u * scale).astype(int); vi = np.floor(v * scale).astype(int)
             inb = (ui >= 0) & (ui < W2) & (vi >= 0) & (vi < H2)
             proj.append((name, u[inb], v[inb], ui[inb], vi[inb], z[ok][inb]))
-        depth = np.full((H2, W2), np.inf)
-        for name, u, v, ui, vi, z in proj: np.minimum.at(depth, (vi, ui), z)
+        own = {}
+        for name, u, v, ui, vi, z in proj:
+            d = np.full((H2, W2), np.inf); np.minimum.at(d, (vi, ui), z); own[name] = d
         for name, u, v, ui, vi, z in proj:
             if name not in traj or len(z) == 0: continue
-            vis = z <= depth[vi, ui] + eps
+            others = [own[o] for o in own if o != name]
+            occ = np.minimum.reduce(others) if others else np.full((H2, W2), np.inf)
+            if OCC_FILL: occ = minimum_filter(occ, size=3)   # D38: close the gaps between splatted points of the occluders
+            vis = z <= np.minimum(occ, own[name])[vi, ui] + eps
             cov = len(np.unique(vi * W2 + ui)); seen = len(np.unique(vi[vis] * W2 + ui[vis]))
             out[name][0][f] = seen / cov if cov else 0.0
             if vis.any(): out[name][1][f] = [u[vis].min(), v[vis].min(), u[vis].max(), v[vis].max()]

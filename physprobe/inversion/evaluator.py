@@ -42,7 +42,7 @@ HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons33.json' if (B /
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
 LIBS = json.load(open(B / 'lib3_libraries.json'))['libraries']
 LIBMAP = {(m, L['param']): L for L in LIBS for m in L['members']}
-CACHE = B / 'libbox3'; CACHE.mkdir(exist_ok=True)
+CACHE = B / os.environ.get('PHYSPROBE_BOXCACHE', 'libbox3'); CACHE.mkdir(exist_ok=True)   # visible boxes of every library simulation
 
 
 def estimate_band(vs, ys, delta=1.0):
