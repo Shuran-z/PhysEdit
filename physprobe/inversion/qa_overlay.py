@@ -5,7 +5,8 @@ rejected (label = object, status). Predicted boxes are computed in the condition
 (camera-compensated) and drawn back into frame k with the inverse camera transform. Header: model, task, parameter,
 result kind, estimate, band, prompt value, per-object status. Runs on a server (needs the videos).
 Usage: python qa_overlay.py RESULTS.jsonl ITEMS.json RAW_TRACKS.jsonl[,..] CAMCOMP_TRACKS.jsonl OUT_DIR --video-dirs D1,D2
-       [--per-cell 2] [--seed 0] [--keys key|param,...]"""
+       [--per-cell 2] [--seed 0] [--keys key|param,...] [--kinds point,not_explained,...]
+(--kinds samples only those result kinds, e.g. to leave out the 'not_validated' items of a gated file.)"""
 import argparse, collections, json, math, os, random
 import cv2
 import numpy as np
@@ -14,7 +15,7 @@ import cam_comp as cc
 
 ap = argparse.ArgumentParser(); ap.add_argument('results'); ap.add_argument('items'); ap.add_argument('raw'); ap.add_argument('comp'); ap.add_argument('out')
 ap.add_argument('--video-dirs', required=True); ap.add_argument('--per-cell', type=int, default=2); ap.add_argument('--seed', type=int, default=0)
-ap.add_argument('--keys'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime')
+ap.add_argument('--keys'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--kinds')
 a = ap.parse_args()
 os.makedirs(a.out, exist_ok=True)
 items = {x['key']: x for x in json.load(open(a.items))['items'] if x.get('map')}
@@ -26,6 +27,7 @@ def video_of(key):
     return None
 R = [json.loads(l) for l in open(a.results)]
 R = [r for r in R if 'param' in r and r['key'] in items and video_of(r['key'])]
+if a.kinds: R = [r for r in R if r.get('kind') in a.kinds.split(',')]
 if a.keys:
     want = set(a.keys.split(',')); sample = [r for r in R if f"{r['key']}|{r['param']}" in want]
 else:
