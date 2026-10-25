@@ -17,7 +17,7 @@ step 2_calibrate calibrate_band.py --coverage 0.9
 step 3_ref evaluator.py ref
 step 3_stats ref_stats.py
 T=$W/sam_gen/all/tracks
-step 4_generated eval_generated.py all_cc $T/all_camcomp.jsonl --with-truth --workers $NW --clock realtime
+step 4_generated eval_generated.py all_cc $T/all_camcomp.jsonl --workers $NW --clock realtime
 for s in s15v s10f16 s30f121; do
   [ -e $W/sam_gen/$s/tracks_lean.jsonl ] && step 5_synth_$s eval_generated.py $s $W/sam_gen/$s/tracks_lean.jsonl --workers $NW --clock reference
 done

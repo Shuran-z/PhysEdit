@@ -48,17 +48,17 @@ COL = {'obs': (60, 220, 60), 'truth': (40, 40, 230), 'best': (230, 120, 30)}
 index = []
 for r in sample:
     x = items[r['key']]; clip, p = x['clip'], r['param']
-    if (clip, p) not in libs: libs[(clip, p)] = ev.library(clip, p, with_truth=True)
-    lib = libs[(clip, p)]
+    if (clip, p) not in libs: libs[(clip, p)] = (ev.library(clip, p), ev.library(clip, p, with_truth=True))
+    lib, lib_t = libs[(clip, p)]          # scoring library (as validated, D30) / with the prompted-value replay for the red boxes
     obs = {n: (np.array(fr), np.array([b if b is not None else [np.nan] * 4 for b in xy], float)) for n, (fr, xy) in COMP[r['key']].items()}
     m = x['cam_to_video']; truth = ev.truth_of(clip, p); DT = ev.generated_dt(clip, x['fps'], a.clock)
     res = ev.evaluate(clip, p, obs, 0, DT, m['scale'], lib, truth, offset=m['offset'])
     curve = res.get('curve') or []
-    def nearest(v):
-        return min(lib, key=lambda t: abs(math.log(t[0] / v)))
+    def nearest(v, L=lib):
+        return min(L, key=lambda t: abs(math.log(t[0] / v)))
     shift_of = lambda v: min(curve, key=lambda c: abs(math.log(c[0] / v)))[2] if curve else 0.0
     vbest = res.get('est') or res.get('center') or (min(curve, key=lambda c: c[1])[0] if curve else None)
-    preds = {'truth': (nearest(truth), shift_of(truth))}
+    preds = {'truth': (nearest(truth, lib_t), shift_of(truth))}
     if vbest: preds['best'] = (nearest(vbest), shift_of(vbest))
     mats, corr, W, H, frames = cc.camera_mats(video_of(r['key']), RAW[r['key']])
     dt, _ = ev.clock(clip); hz = ev.HZ[clip]['objects']

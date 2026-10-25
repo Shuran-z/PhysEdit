@@ -80,7 +80,7 @@ cd physprobe/inversion   # 数据在 PHYSPROBE_WORK；服务器上设 PHYSPROBE_
 python make_gen_jobs.py NAME REMOTE_DIR --seeds 0,1,2 --annotations 1,2,3   # 配准 + SAM 任务（sam_gen/NAME/）
 # 上传视频并跑 SAM：upload_and_run_gen.sh（hupanwen：server_code/run_sam_tracker_hupanwen.sh；xdliang3 主机：server_code/run_sam_tracker.sh）
 python cam_comp.py sam_gen/NAME/items.json sam_gen/NAME/tracks_*.jsonl --out sam_gen/NAME/tracks_camcomp.jsonl   # 相机运动补偿
-python eval_generated.py NAME sam_gen/NAME/tracks_camcomp.jsonl --with-truth --workers 9 --clock realtime   # -> results_gen/NAME.jsonl
+python eval_generated.py NAME sam_gen/NAME/tracks_camcomp.jsonl --workers 9 --clock realtime   # -> results_gen/NAME.jsonl（库与已知答案测试相同，不含真值重放，D30）
 python validation_gate.py NAME NAME   # 真值验证门（D28）-> results_gen/NAME_gated.jsonl
 python summarize_generated.py NAME_gated   # -> results_gen/NAME_gated_by_model.md
 ```

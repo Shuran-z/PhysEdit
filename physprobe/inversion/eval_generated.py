@@ -1,8 +1,9 @@
 """Evaluate generated (or synthetic generated-like) videos with evaluator.evaluate(): items.json from make_gen_jobs.py /
 make_synth.py, SAM 3.1 lean tracks, library v3. Each item, each applicable parameter (g; mu; v where the task inverts
 speed) -> estimate (point / interval / bound / unidentifiable / no_observation) with band, loss curve and per-object
-diagnostics. Real generated videos use the library plus the true-parameter replays (--with-truth); synthetic known-answer
-runs do not. Parallel over tasks (fork pool); library boxes are cached first.
+diagnostics. Generated and synthetic videos are scored with the same library as the validated known-answer tests (D30:
+without the true-parameter replays; --with-truth adds them and is kept only for comparison). Parallel over tasks (fork
+pool); library boxes are cached first.
 Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-truth] [--workers 8] [--clock realtime|reference] [--out OUT]
   -> results_gen/<OUT or NAME>.jsonl + summary per model and parameter"""
 import argparse, collections, json, statistics as st

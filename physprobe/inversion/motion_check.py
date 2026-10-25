@@ -3,7 +3,9 @@ edge from the condition frame, 3-frame median filter against single-frame SAM gl
 next to the motion the simulation at the PROMPTED value shows in the same window (scaled into the video's pixels).
 A 'not explained' result where no evaluated object moves more than STATIC_PX while the prompted scene moves at least
 SHOULD_PX is a 'static' failure: the prompted event never happens. The rest are videos whose objects move, but in a way no
-parameter value explains. Same clock and windows as evaluator.evaluate (realtime for generated, reference for synthetic).
+parameter value explains; they are split by observed / simulated motion: hardly moves (< 0.25), moves too little
+(0.25-0.67), similar amount (0.67-1.5), moves too much (> 1.5). Also the motion onsets (first motion > STATIC_PX) of both.
+Same clock and windows as evaluator.evaluate (realtime for generated, reference for synthetic).
 Usage: python motion_check.py NAME TRACKS.jsonl [--items SET] [--clock realtime|reference] [--workers 24] [--with-truth]
   -> results_gen/<NAME>_motion.jsonl and a summary (per model, per task family) on stdout"""
 import argparse, collections, json, math
@@ -95,9 +97,26 @@ def table(group):
               f"static among the other kinds={v['other_static'] / max(1, v['n'] - v['ne']):.2f}")
 
 
+AMP = (('hardly moves', 0, 0.25), ('moves too little', 0.25, 0.67), ('similar amount', 0.67, 1.5), ('moves too much', 1.5, float('inf')))
+
+
+def amplitude(group):
+    """'not explained' results by observed / prompted-simulation motion (prompted scene moves >= SHOULD_PX)"""
+    c = collections.defaultdict(collections.Counter)
+    for o in res:
+        if o['kind'] != 'not_explained' or not (np.isfinite(o['max_obs_px']) and np.isfinite(o['max_sim_px'])) or o['max_sim_px'] < SHOULD_PX: continue
+        q = o['max_obs_px'] / o['max_sim_px']; c[group(o)][next(lab for lab, lo, hi in AMP if lo <= q < hi)] += 1
+    print(f"{'':28s} " + '  '.join(f'{lab:>16s}' for lab, _, _ in AMP))
+    for g, v in sorted(c.items()):
+        n = sum(v.values()); print(f'{g:28s} ' + '  '.join(f'{v[lab] / n:16.2f}' for lab, _, _ in AMP) + f'   (n={n})')
+
+
 print('== per model'); table(lambda o: o['model'])
 print('== per task family'); table(lambda o: o['clip'][:3])
 print('== all'); table(lambda o: 'all')
+print('== not explained by motion amplitude (observed / prompted simulation), per model'); amplitude(lambda o: o['model'])
+print('== per task family'); amplitude(lambda o: o['clip'][:3])
+print('== all'); amplitude(lambda o: 'all')
 # onset: observed motion start minus the prompted simulation's (both > STATIC_PX), per task family; the evaluation allows +-20
 # reference frames of time shift
 print('== onset difference (observed - simulated, s), not explained vs other kinds')
