@@ -148,6 +148,8 @@ def library(clip, param, with_truth=False, workers=8):
     L = LIBMAP[(clip, param)]
     names = sorted({n for m in L['members'] for n in usable(m)})
     files = sorted(glob.glob(str(B / 'libs3' / f"LIB3_{L['lib']}_*.json")))   # main chunks 00.., half steps h*, bisection b*
+    for extra in filter(None, os.environ.get('PHYSPROBE_EXTRA_LIBS', '').split(',')):   # experimental chunks kept apart (D36 tests)
+        files += sorted(glob.glob(str(B / extra / f"LIB3_{L['lib']}_*.json")))
     if with_truth:
         files += sorted(glob.glob(str(B / 'g0' / f'G0b2_{clip}.json')))
     todo, items = [], []
