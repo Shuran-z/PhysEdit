@@ -21,6 +21,9 @@ step 4_generated eval_generated.py all_cc $T/all_camcomp.jsonl --workers $NW --c
 for s in s15v s10f16 s30f121; do
   [ -e $W/sam_gen/$s/tracks_lean.jsonl ] && step 5_synth_$s eval_generated.py $s $W/sam_gen/$s/tracks_lean.jsonl --workers $NW --clock reference
 done
+# camera-pan known-answer test (make_pan_test.py): compensated and uncompensated tracks of the same moved videos
+[ -e $W/sam_gen/s15v_pan/tracks_comp.jsonl ] && step 5_pan eval_generated.py s15v_pan $W/sam_gen/s15v_pan/tracks_comp.jsonl --workers $NW --clock reference
+[ -e $W/sam_gen/s15v_pan/tracks_moved.jsonl ] && step 5_pan_raw eval_generated.py s15v_pan_raw $W/sam_gen/s15v_pan/tracks_moved.jsonl --workers $NW --clock reference
 step 6_gate validation_gate.py all_cc
 step 6_summary summarize_generated.py all_cc_gated
 step 6_figures report_figures.py $W/report
