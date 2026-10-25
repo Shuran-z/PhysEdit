@@ -6,7 +6,7 @@ or occluded objects, object rules with two objects), so a 'not explained' there 
 generated result becomes kind 'not_validated' (the original kind is kept in kind_before_gate).
 Format -> synthetic set: <= 24 frames -> s10f16 (DynamiCrafter); <= 16 fps -> s15v (16 fps x 81, PhysRVG 15 fps x 49);
 otherwise s30f121 (24-25 fps x 121-189).
-Usage: python validation_gate.py NAME [ITEMS_SET] -> results_gen/<NAME>_gated.jsonl + results_gen/validation_gate.json"""
+Usage: python validation_gate.py NAME [ITEMS_SET] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json"""
 import collections, glob, json, sys
 
 from paths import WORK as B
@@ -50,6 +50,6 @@ if __name__ == '__main__':
         for r in out: f.write(json.dumps(r) + '\n')
     rep = {'failed_known_truth': {k: sorted(f'{c}|{p}' for c, p in v) for k, v in sorted(bad.items())},
            'gated_share': {f'{s}|{p}': f"{n[(s, p, 'gated')]}/{n[(s, p, 'all')]}" for s in SETS for p in ('g', 'mu', 'v') if n[(s, p, 'all')]}}
-    json.dump(rep, open(B / 'results_gen' / 'validation_gate.json', 'w'), indent=1)
+    json.dump(rep, open(B / 'results_gen' / f'{name}_gate.json', 'w'), indent=1)
     for k, v in rep['failed_known_truth'].items(): print(k, len(v), ' '.join(v))
     print(json.dumps(rep['gated_share']))
