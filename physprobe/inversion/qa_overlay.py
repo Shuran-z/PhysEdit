@@ -14,7 +14,7 @@ import cam_comp as cc
 
 ap = argparse.ArgumentParser(); ap.add_argument('results'); ap.add_argument('items'); ap.add_argument('raw'); ap.add_argument('comp'); ap.add_argument('out')
 ap.add_argument('--video-dirs', required=True); ap.add_argument('--per-cell', type=int, default=2); ap.add_argument('--seed', type=int, default=0)
-ap.add_argument('--keys')
+ap.add_argument('--keys'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime')
 a = ap.parse_args()
 os.makedirs(a.out, exist_ok=True)
 items = {x['key']: x for x in json.load(open(a.items))['items'] if x.get('map')}
@@ -49,8 +49,8 @@ for r in sample:
     if (clip, p) not in libs: libs[(clip, p)] = ev.library(clip, p, with_truth=True)
     lib = libs[(clip, p)]
     obs = {n: (np.array(fr), np.array([b if b is not None else [np.nan] * 4 for b in xy], float)) for n, (fr, xy) in COMP[r['key']].items()}
-    m = x['cam_to_video']; truth = ev.truth_of(clip, p)
-    res = ev.evaluate(clip, p, obs, 0, x['dt_obs'], m['scale'], lib, truth, offset=m['offset'])
+    m = x['cam_to_video']; truth = ev.truth_of(clip, p); DT = ev.generated_dt(clip, x['fps'], a.clock)
+    res = ev.evaluate(clip, p, obs, 0, DT, m['scale'], lib, truth, offset=m['offset'])
     curve = res.get('curve') or []
     def nearest(v):
         return min(lib, key=lambda t: abs(math.log(t[0] / v)))
@@ -62,7 +62,7 @@ for r in sample:
     dt, _ = ev.clock(clip); hz = ev.HZ[clip]['objects']
     names = [n for n in ev.usable(clip) if n in obs]
     h_end = max([hz[n]['horizon'] for n in names] or [30])
-    kmax = max(1, min(max(frames) if frames else 1, int((h_end - 4) * dt / x['dt_obs'])))
+    kmax = max(1, min(max(frames) if frames else 1, int((h_end - 4) * dt / DT)))
     ks = sorted({int(round(i * kmax / 7)) for i in range(8)})
     cap = cv2.VideoCapture(video_of(r['key'])); imgs = {}; k = 0
     while k <= max(ks):
@@ -87,7 +87,7 @@ for r in sample:
             if not len(i0) or np.isnan(ob[i0[0], 0]): continue
             for tag, ((v, boxes), d) in preds.items():
                 if n not in boxes: continue
-                frac, sb = boxes[n]; sbv = sb * a4 + b4; s = 4 + k * x['dt_obs'] / dt + d
+                frac, sb = boxes[n]; sbv = sb * a4 + b4; s = 4 + k * DT / dt + d
                 if s > len(sbv) - 1 or frac[min(int(s), len(frac) - 1)] < ev.MIN_VIS: continue
                 f0 = int(math.floor(s)); w = s - f0; f1 = min(f0 + 1, len(sbv) - 1)
                 pb = (1 - w) * sbv[f0] + w * sbv[f1] + (ob[i0[0]] - sbv[4])          # condition-frame offset calibration
@@ -95,7 +95,7 @@ for r in sample:
                     P = np.array([[pb[0], pb[1], 1], [pb[2], pb[3], 1]]) @ inv.T; pb = [P[0, 0], P[0, 1], P[1, 0], P[1, 1]]
                 if not np.all(np.isfinite(pb)): continue
                 cv2.rectangle(im, (int(pb[0]), int(pb[1])), (int(pb[2]), int(pb[3])), COL[tag], 1 if tag == 'best' else 2)
-        cv2.putText(im, f'k={k} t={k * x["dt_obs"]:.2f}s', (8, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+        cv2.putText(im, f'k={k} t={k * DT:.2f}s', (8, 22), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
         tiles.append(cv2.resize(im, (427, 240)))
     while len(tiles) < 8: tiles.append(np.zeros((240, 427, 3), np.uint8))
     sheet = np.vstack([np.hstack(tiles[:4]), np.hstack(tiles[4:8])])

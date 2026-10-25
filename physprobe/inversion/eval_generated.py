@@ -3,7 +3,7 @@ make_synth.py, SAM 3.1 lean tracks, library v3. Each item, each applicable param
 speed) -> estimate (point / interval / bound / unidentifiable / no_observation) with band, loss curve and per-object
 diagnostics. Real generated videos use the library plus the true-parameter replays (--with-truth); synthetic known-answer
 runs do not. Parallel over tasks (fork pool); library boxes are cached first.
-Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-truth] [--workers 8]
+Usage: python eval_generated.py NAME TRACKS.jsonl [TRACKS2.jsonl ...] [--with-truth] [--workers 8] [--clock realtime|reference]
   -> results_gen/<NAME>.jsonl + summary per model and parameter"""
 import argparse, collections, json, statistics as st
 from multiprocessing import get_context
@@ -12,6 +12,7 @@ import evaluator as ev
 
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--with-truth', action='store_true')
 ap.add_argument('--params', default='g,mu,v'); ap.add_argument('--workers', type=int, default=8)
+ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime', help='E2: realtime for generated videos, reference for synthetic ones')
 a = ap.parse_args()
 D = ev.B / 'sam_gen' / a.name
 items = [x for x in json.load(open(D / 'items.json'))['items'] if x.get('map')]
@@ -37,7 +38,7 @@ def run_clip(clip):
         for p, lib in libs.items():
             if len(lib) < 3: continue
             m = x['cam_to_video']
-            r = ev.evaluate(clip, p, obs, KC[x['key']], x['dt_obs'], m['scale'], lib, ev.truth_of(clip, p), offset=m['offset'])
+            r = ev.evaluate(clip, p, obs, KC[x['key']], ev.generated_dt(clip, x['fps'], a.clock), m['scale'], lib, ev.truth_of(clip, p), offset=m['offset'])
             r.pop('curve', None)   # 30k results: keep estimate, band, diagnostics only
             r.update(key=x['key'], model=x['model'], seed=x['seed'], annotation=x['annotation'], map_source=x['map']['source'])
             out.append(r)

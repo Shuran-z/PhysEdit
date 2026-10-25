@@ -76,6 +76,14 @@ def clock(clip):
     r = RD[clip]; return float(r['physical_seconds_per_frame']), float(r['playback_vs_physics'])
 
 
+def generated_dt(clip, fps, clock='realtime'):
+    """physical seconds per frame of a generated video (E2). realtime: 1 / fps — the prompts give physical values
+    (m/s^2, m/s) and never ask for slow motion, so the clip is judged at its playback speed; reference: the reference
+    video's playback convention (T06/T09/T10 are 0.6x slow motion), used for synthetic videos resampled from references"""
+    _, pvp = clock(clip)
+    return (pvp if clock == 'reference' else 1.0) / fps
+
+
 def usable(clip):
     """uniform object rule (as make_sam_jobs2): >= 2 usable frames and >= 2x the horizon threshold of motion in the window"""
     return [n for n, o in HZ[clip]['objects'].items() if o['usable_frames'] >= 2 and o['moved_in_window_cm'] * 10 >= 2 * o['threshold_mm']]
