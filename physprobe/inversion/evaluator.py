@@ -74,12 +74,12 @@ def clock(clip):
     r = RD[clip]; return float(r['physical_seconds_per_frame']), float(r['playback_vs_physics'])
 
 
-def generated_dt(clip, fps, clock='realtime'):
+def generated_dt(clip, fps, mode='realtime'):
     """physical seconds per frame of a generated video (E2). realtime: 1 / fps — the prompts give physical values
     (m/s^2, m/s) and never ask for slow motion, so the clip is judged at its playback speed; reference: the reference
     video's playback convention (T06/T09/T10 are 0.6x slow motion), used for synthetic videos resampled from references"""
     _, pvp = clock(clip)
-    return (pvp if clock == 'reference' else 1.0) / fps
+    return (pvp if mode == 'reference' else 1.0) / fps
 
 
 def usable(clip):
