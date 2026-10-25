@@ -14,6 +14,7 @@ import evaluator as ev
 ap = argparse.ArgumentParser(); ap.add_argument('--tol', type=float, default=4.5); ap.add_argument('--min-ratio', type=float, default=1.01)
 ap.add_argument('--round', type=int, default=1); ap.add_argument('--count', action='store_true'); ap.add_argument('--workers', type=int, default=24)
 ap.add_argument('--max-diff', type=float, default=1e9, help='skip pairs that differ by more (bifurcations do not converge)')
+ap.add_argument('--libs', help='comma-separated library names (default: all)'); ap.add_argument('--out', help='write one flat plan file instead of per-queue files')
 a = ap.parse_args()
 B = ev.B
 
@@ -37,8 +38,9 @@ def pairs(L):
     return L['lib'], L['clip'], L['param'], out
 
 
+LIBS = [L for L in ev.LIBS if not a.libs or L['lib'] in a.libs.split(',')]
 with get_context('fork').Pool(a.workers) as pool:
-    res = pool.map(pairs, ev.LIBS, chunksize=1)
+    res = pool.map(pairs, LIBS, chunksize=1)
 if a.count:
     for tol in (2.25, 4.5, 9.0):
         r1 = sum(1 for _, _, _, ps in res for v0, v1, d in ps if tol < d <= a.max_diff and v1 / v0 >= a.min_ratio)
@@ -63,6 +65,8 @@ else:
         step = 1 if (clip.startswith('T15') and p == 'mu') else 6
         for i in range(0, len(mids), step):
             out.setdefault(owner[tags[0]], []).append(dict(base, tag=f"LIB3_{lib}_p{a.round}{i // step:03d}", values=mids[i:i + step]))
+    if a.out:
+        json.dump([j for jobs in out.values() for j in jobs], open(a.out, 'w'), indent=1); print(f'{n} midpoints at tol {a.tol} px -> {a.out}'); raise SystemExit
     D = B / f'lib3_queues_refine{a.round}'; D.mkdir(exist_ok=True)
     for q, jobs in out.items():
         json.dump(jobs, open(D / f'{q}.json', 'w'), indent=1)
