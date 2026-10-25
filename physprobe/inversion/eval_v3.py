@@ -77,6 +77,32 @@ def usable(clip):
     return [n for n, o in HZ[clip]['objects'].items() if o['usable_frames'] >= 2 and o['moved_in_window_cm'] * 10 >= 2 * o['threshold_mm']]
 
 
+def carrier_of(clip, param):
+    """the object that carries the parameter: the object given the initial speed (v), the moving object of the main
+    contact pair (mu); gravity has none"""
+    L = LIBMAP.get((clip, param))
+    if not L: return None
+    if param == 'v': return L.get('speed_object')
+    if param == 'mu' and L.get('friction_objects'): return L['friction_objects'].split(',')[0]
+    return None
+
+
+def apply_carrier_rule(res):
+    """D22: a result whose carrier object was observable but rejected (not explained / inconsistent) does not measure the
+    parameter's main effect -> kind not_explained; a carrier that is not usable at all (no motion in its window) leaves
+    the result as measured through the other objects (flag indirect)"""
+    car = carrier_of(res['clip'], res['param']); res['carrier'] = car
+    st = (res.get('object_diagnostics') or {}).get(car, {}).get('status') if car else None
+    if car and st in ('not_explained', 'inconsistent') and res.get('kind') not in ('not_explained', 'no_observation'):
+        res.update(kind_before_carrier_rule=res['kind'], kind='not_explained', est=None, truth_in_band=False)
+        res.pop('err_pct', None)
+    elif car and st not in ('used', None) and res.get('kind') not in ('not_explained', 'no_observation'):
+        res['indirect'] = True
+    elif car and st is None:
+        res['indirect'] = True
+    return res
+
+
 def truth_of(clip, param):
     L = LIBMAP[(clip, param)]
     return L['truths'][L['members'].index(clip)]
@@ -234,7 +260,7 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     else:
         unexplained = any(d['status'] in ('not_explained', 'inconsistent') for d in diag.values())
         res.update(kind='not_explained' if unexplained else 'no_observation', est=None, band=None)   # no value explains the observed motion
-    return res
+    return apply_carrier_rule(res)
 
 
 def ref_meta(clip):
