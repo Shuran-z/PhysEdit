@@ -38,7 +38,7 @@ GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3
 MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
-HZ = json.load(open(B / ('horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))
+HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))   # predictability windows (D7)
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
 LIBS = json.load(open(B / 'lib3_libraries.json'))['libraries']
 LIBMAP = {(m, L['param']): L for L in LIBS for m in L['members']}
