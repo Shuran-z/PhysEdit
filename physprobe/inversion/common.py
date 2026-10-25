@@ -5,7 +5,7 @@ default 0.08 / 0.18, issue B2). Projection = shape-aware silhouette points (issu
 import gzip, json, math, os
 from pathlib import Path
 import numpy as np
-from scipy.ndimage import minimum_filter
+from scipy.ndimage import binary_closing, minimum_filter
 from scipy.spatial.transform import Rotation as Rot
 
 from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
@@ -193,7 +193,9 @@ def visible_boxes(clip, cam, traj, scale=0.25, n=3000, eps=0.004):
             if name not in traj or len(z) == 0: continue
             others = [own[o] for o in own if o != name]
             occ = np.minimum.reduce(others) if others else np.full((H2, W2), np.inf)
-            if OCC_FILL: occ = minimum_filter(occ, size=3)   # D38: close the gaps between splatted points of the occluders
+            if OCC_FILL:                                  # D38: close the gaps between splatted points of the occluders (interior only)
+                hole = np.isinf(occ) & binary_closing(np.isfinite(occ), structure=np.ones((3, 3), bool))
+                if hole.any(): occ = np.where(hole, minimum_filter(occ, size=3), occ)
             vis = z <= np.minimum(occ, own[name])[vi, ui] + eps
             cov = len(np.unique(vi * W2 + ui)); seen = len(np.unique(vi[vis] * W2 + ui[vis]))
             out[name][0][f] = seen / cov if cov else 0.0
