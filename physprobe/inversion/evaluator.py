@@ -35,6 +35,7 @@ OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent wit
 KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
 REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
+MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0'))   # D31 candidate: share of the window's video frames with a SAM box
 SHIFTS = np.arange(-20, 20.01, 0.25)
 HZ = json.load(open(B / ('horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
@@ -217,13 +218,17 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     dt, _ = clock(clip); hz = HZ[clip]['objects']
     a = np.array([scale[0], scale[1], scale[0], scale[1]]); b = np.array([offset[0], offset[1], offset[0], offset[1]])
     use = [n for n in usable(clip) if n in obs]
-    prep = {}
+    prep, low_cover = {}, {}
     for n in use:
         k, ob = obs[n]
         if kc not in set(k.tolist()): continue
         i0 = int(np.where(k == kc)[0][0])
         if np.isnan(ob[i0, 0]): continue
-        prep[n] = (4 + (k - kc) * dt_obs / dt, ob, i0, float(np.linalg.norm(ob[i0, 2:] - ob[i0, :2])))
+        s0 = 4 + (k - kc) * dt_obs / dt
+        inwin = (s0 >= 4) & (s0 <= hz[n]['horizon'])
+        cover = float(np.isfinite(ob[inwin, 0]).mean()) if inwin.any() else 0.0
+        if cover < MIN_COVER: low_cover[n] = round(cover, 2); continue   # SAM lost it for most of its window
+        prep[n] = (s0, ob, i0, float(np.linalg.norm(ob[i0, 2:] - ob[i0, :2])))
     if interp: lib = refine_library(lib, list(prep))
     # per-object loss tables L[n][value index, shift index] (inf where the object lacks MIN_FRAMES frames)
     tables, vals = {}, []
@@ -262,6 +267,7 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     for n, t in tables.items():
         best = float(np.min(t)) if np.isfinite(t).any() else float('inf')
         diag[n] = dict(best_loss=round(best, 2), status='used' if best <= GATE else ('not_observable' if not np.isfinite(best) else 'not_explained'))
+    for n, c in low_cover.items(): diag[n] = dict(best_loss=None, status='not_observable', coverage=c)
     used_objs = [n for n in tables if diag[n]['status'] == 'used']
     def joint(objs):
         tot = sum(tables[n] for n in objs); keep = np.isfinite(tot).any(1)

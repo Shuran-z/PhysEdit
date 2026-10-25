@@ -6,7 +6,8 @@ or occluded objects, object rules with two objects), so a 'not explained' there 
 generated result becomes kind 'not_validated' (the original kind is kept in kind_before_gate).
 Format -> synthetic set: <= 24 frames -> s10f16 (DynamiCrafter); <= 16 fps -> s15v (16 fps x 81, PhysRVG 15 fps x 49);
 otherwise s30f121 (24-25 fps x 121-189).
-Usage: python validation_gate.py NAME [ITEMS_SET] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json"""
+Usage: python validation_gate.py NAME [ITEMS_SET] [TRUTH_TAG] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json
+(TRUTH_TAG: use the known-truth results of a rule variant, results3_<TAG>/ and results_gen/<set>_<TAG>.jsonl)"""
 import collections, glob, json, sys
 
 from paths import WORK as B
@@ -19,24 +20,24 @@ def format_set(fps, frames):
     return 's10f16' if frames <= 24 else ('s15v' if fps <= 16 else 's30f121')
 
 
-def failed():
+def failed(tag=''):
     """(set name) -> {(clip, param)} where the known-truth result is not an estimate; 'reference' = results3."""
     bad = collections.defaultdict(set)
-    for f in glob.glob(str(B / 'results3' / 'ref_*.json')):
+    for f in glob.glob(str(B / ('results3' + tag) / 'ref_*.json')):
         if f.endswith('_summary.json'): continue
         r = json.load(open(f))
         if r.get('kind') not in PASS: bad['reference'].add((r['clip'], r['param']))
     for s in SETS:
-        for line in open(B / 'results_gen' / f'{s}.jsonl'):
+        for line in open(B / 'results_gen' / f'{s}{tag}.jsonl'):
             r = json.loads(line)
             if 'param' in r and r.get('kind') not in PASS: bad[s].add((r['clip'], r['param']))
     return bad
 
 
 if __name__ == '__main__':
-    name = sys.argv[1]; items_set = sys.argv[2] if len(sys.argv) > 2 else 'all'
+    name = sys.argv[1]; items_set = sys.argv[2] if len(sys.argv) > 2 else 'all'; tag = '_' + sys.argv[3] if len(sys.argv) > 3 else ''
     fmt = {x['key']: format_set(x['fps'], x['frames']) for x in json.load(open(B / 'sam_gen' / items_set / 'items.json'))['items']}
-    bad = failed(); n = collections.Counter(); out = []
+    bad = failed(tag); n = collections.Counter(); out = []
     for line in open(B / 'results_gen' / f'{name}.jsonl'):
         r = json.loads(line)
         if 'param' in r:
