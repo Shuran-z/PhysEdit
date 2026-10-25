@@ -193,30 +193,58 @@ def load_obs(path, video_id):
     return out, kc
 
 
+INTERP = os.environ.get('PHYSPROBE_INTERP', 'linear')   # D37 candidate: 'pchip' = monotone cubic along the parameter axis
+
+
+def _smooth_pair(b0, b1, names, max_rel):
+    """True when no object's box track bifurcates between the two simulations (difference <= max_rel of the motion + 2 px)"""
+    common = [n for n in names if n in b0 and n in b1]
+    if not common: return False
+    for n in common:
+        F = min(len(b0[n][1]), len(b1[n][1])); x0, x1 = b0[n][1][:F], b1[n][1][:F]
+        amp = max(np.nanmax(np.abs(x0 - x0[4])), np.nanmax(np.abs(x1 - x1[4])), 4.0)
+        if np.nanmax(np.abs(x0 - x1)) > max_rel * amp + 2.0: return False
+    return True
+
+
 def refine_library(lib, names, n_sub=7, max_rel=0.5):
     """Parameter-space interpolation between adjacent library simulations (the predictability windows are, by the D7 rule,
     where trajectories depend smoothly on the parameter): n_sub log-spaced values inside each interval, visible boxes and
-    visible fractions blended linearly. An interval is only filled when the two neighbouring box tracks differ by at most
-    max_rel of their own motion amplitude for every object (no bifurcation between them); otherwise it stays a gap."""
+    visible fractions blended linearly (INTERP 'pchip': monotone cubic in log(value) through every simulation of the run of
+    smooth intervals, so a curved dependence is not cut short; no overshoot). An interval is only filled when the two
+    neighbouring box tracks differ by at most max_rel of their own motion amplitude for every object (no bifurcation between
+    them); otherwise it stays a gap."""
     lib = sorted(lib, key=lambda t: t[0]); out = []
-    for (v0, b0), (v1, b1) in zip(lib, lib[1:]):
-        out.append((v0, b0))
-        common = [n for n in names if n in b0 and n in b1]
-        if not common: continue
-        ok = True
-        for n in common:
-            F = min(len(b0[n][1]), len(b1[n][1])); x0, x1 = b0[n][1][:F], b1[n][1][:F]
-            amp = max(np.nanmax(np.abs(x0 - x0[4])), np.nanmax(np.abs(x1 - x1[4])), 4.0)
-            if np.nanmax(np.abs(x0 - x1)) > max_rel * amp + 2.0: ok = False; break
-        if not ok: continue
-        for j in range(1, n_sub + 1):
-            lam = j / (n_sub + 1); v = math.exp((1 - lam) * math.log(v0) + lam * math.log(v1))
-            bb = {}
-            for n in common:
-                F = min(len(b0[n][1]), len(b1[n][1]))
-                bb[n] = ((1 - lam) * b0[n][0][:F] + lam * b1[n][0][:F], (1 - lam) * b0[n][1][:F] + lam * b1[n][1][:F])
-            out.append((v, bb))
-    if lib: out.append(lib[-1])
+    if not lib: return out
+    smooth = [_smooth_pair(b0, b1, names, max_rel) for (_, b0), (_, b1) in zip(lib, lib[1:])]
+    runs, start = [], 0                                   # maximal runs of simulations joined by smooth intervals
+    for i, ok in enumerate(smooth):
+        if not ok: runs.append((start, i)); start = i + 1
+    runs.append((start, len(lib) - 1))
+    for r0, r1 in runs:
+        seg = lib[r0:r1 + 1]
+        if len(seg) == 1: out.append(seg[0]); continue
+        common = [n for n in names if all(n in b for _, b in seg)]
+        lv = np.log([v for v, _ in seg])
+        cub = INTERP == 'pchip' and len(seg) >= 3 and bool(common) and bool(np.all(np.diff(lv) > 0))
+        if cub:
+            from scipy.interpolate import PchipInterpolator
+            F = {n: min(len(b[n][1]) for _, b in seg) for n in common}
+            fit = {n: (PchipInterpolator(lv, np.stack([b[n][0][:F[n]] for _, b in seg]), axis=0),
+                       PchipInterpolator(lv, np.stack([b[n][1][:F[n]] for _, b in seg]), axis=0)) for n in common}
+        for k, ((v0, b0), (v1, b1)) in enumerate(zip(seg, seg[1:])):
+            out.append((v0, b0))
+            cm = [n for n in names if n in b0 and n in b1]
+            for j in range(1, n_sub + 1):
+                lam = j / (n_sub + 1); x = (1 - lam) * math.log(v0) + lam * math.log(v1); bb = {}
+                for n in cm:
+                    if cub and n in fit:
+                        bb[n] = (fit[n][0](x), fit[n][1](x))
+                    else:
+                        Fn = min(len(b0[n][1]), len(b1[n][1]))
+                        bb[n] = ((1 - lam) * b0[n][0][:Fn] + lam * b1[n][0][:Fn], (1 - lam) * b0[n][1][:Fn] + lam * b1[n][1][:Fn])
+                out.append((math.exp(x), bb))
+        out.append(seg[-1])
     return out
 
 
