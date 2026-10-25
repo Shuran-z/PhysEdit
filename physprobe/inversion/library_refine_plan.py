@@ -13,6 +13,7 @@ import evaluator as ev
 
 ap = argparse.ArgumentParser(); ap.add_argument('--tol', type=float, default=4.5); ap.add_argument('--min-ratio', type=float, default=1.01)
 ap.add_argument('--round', type=int, default=1); ap.add_argument('--count', action='store_true'); ap.add_argument('--workers', type=int, default=24)
+ap.add_argument('--max-diff', type=float, default=1e9, help='skip pairs that differ by more (bifurcations do not converge)')
 a = ap.parse_args()
 B = ev.B
 
@@ -40,14 +41,14 @@ with get_context('fork').Pool(a.workers) as pool:
     res = pool.map(pairs, ev.LIBS, chunksize=1)
 if a.count:
     for tol in (2.25, 4.5, 9.0):
-        r1 = sum(1 for _, _, _, ps in res for v0, v1, d in ps if d > tol and v1 / v0 >= a.min_ratio)
+        r1 = sum(1 for _, _, _, ps in res for v0, v1, d in ps if tol < d <= a.max_diff and v1 / v0 >= a.min_ratio)
         tot = sum(min(math.ceil(math.log2(d / tol)), max(0, math.floor(math.log(v1 / v0) / math.log(a.min_ratio))))
-                  for _, _, _, ps in res for v0, v1, d in ps if d > tol and v1 / v0 >= a.min_ratio)
+                  for _, _, _, ps in res for v0, v1, d in ps if tol < d <= a.max_diff and v1 / v0 >= a.min_ratio)
         print(f'tol {tol} px: {r1} midpoints in round 1, about {tot} pair-levels in total (an upper estimate of later rounds)')
     worst = sorted(((d, lib, p, v0, v1) for lib, c, p, ps in res for v0, v1, d in ps), reverse=True)[:15]
     for d, lib, p, v0, v1 in worst: print(f'  {lib} {p}: {v0:.4g} - {v1:.4g} differ by {d:.1f} px')
     by = {}
-    for lib, c, p, ps in res: by[p] = by.get(p, 0) + sum(1 for v0, v1, d in ps if d > a.tol and v1 / v0 >= a.min_ratio)
+    for lib, c, p, ps in res: by[p] = by.get(p, 0) + sum(1 for v0, v1, d in ps if a.tol < d <= a.max_diff and v1 / v0 >= a.min_ratio)
     print('round-1 midpoints by parameter at tol', a.tol, by)
 else:
     plan = {j['tag']: j for j in json.load(open(B / 'lib3_plan.json'))}
@@ -56,7 +57,7 @@ else:
         for j in json.load(open(f)): owner[j['tag']] = f.stem
     out, n = {}, 0
     for lib, clip, p, ps in res:
-        mids = [round(math.sqrt(v0 * v1), 6) for v0, v1, d in ps if d > a.tol and v1 / v0 >= a.min_ratio]
+        mids = [round(math.sqrt(v0 * v1), 6) for v0, v1, d in ps if a.tol < d <= a.max_diff and v1 / v0 >= a.min_ratio]
         if not mids: continue
         tags = [t for t in plan if plan[t]['lib'] == lib]; base = plan[tags[0]]; n += len(mids)
         step = 1 if (clip.startswith('T15') and p == 'mu') else 6
