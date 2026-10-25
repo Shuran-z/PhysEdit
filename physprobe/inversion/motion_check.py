@@ -59,18 +59,25 @@ def run_clip(clip):
             frac, sb = boxes[n]; F = len(sb); sbv = sb * sa + sb_
             fr = [f for f in range(4, min(h, F - 1) + 1) if frac[f] >= ev.MIN_VIS]
             sim_px = float(np.max(np.abs(sbv[fr] - sbv[4]))) if fr and frac[4] >= ev.MIN_VIS else float('nan')
-            per[n] = (round(obs_px, 1), round(sim_px, 1))
+            # motion onset (s after the condition frame): first frame moved > STATIC_PX (whole video for the observation)
+            mv = np.nanmax(np.abs(medfilt3(ob) - ob[i0]), 1) > STATIC_PX; ko = k[mv & (k >= kc)]
+            on_obs = float((ko.min() - kc) * DT) if len(ko) else None
+            fo = [f for f in fr if np.max(np.abs(sbv[f] - sbv[4])) > STATIC_PX]
+            on_sim = float((fo[0] - 4) * dt) if fo and frac[4] >= ev.MIN_VIS else None
+            per[n] = (round(obs_px, 1), round(sim_px, 1), on_obs, on_sim)
         if not per: continue
         mo = max((v[0] for v in per.values() if np.isfinite(v[0])), default=float('nan'))
         ms = max((v[1] for v in per.values() if np.isfinite(v[1])), default=float('nan'))
         static = bool(np.isfinite(mo) and np.isfinite(ms) and mo < STATIC_PX and ms >= SHOULD_PX)
+        oo = [v[2] for v in per.values() if v[2] is not None]; os_ = [v[3] for v in per.values() if v[3] is not None]
         out.append(dict(key=r['key'], model=r['model'], clip=clip, param=p, kind=r['kind'], kind_before_gate=r.get('kind_before_gate'),
-                        max_obs_px=mo, max_sim_px=ms, static=static, objects=per))
+                        max_obs_px=mo, max_sim_px=ms, static=static, onset_obs_s=min(oo) if oo else None, onset_sim_s=min(os_) if os_ else None,
+                        objects=per))
     return out
 
 
 with get_context('fork').Pool(a.workers) as pool:
-    res = [o for os_ in pool.map(run_clip, sorted(by_clip), chunksize=1) for o in os_]
+    res = [o for xs in pool.map(run_clip, sorted(by_clip), chunksize=1) for o in xs]
 with open(ev.B / 'results_gen' / f'{a.name}_motion.jsonl', 'w') as f:
     for o in res: f.write(json.dumps(o) + '\n')
 
@@ -91,3 +98,10 @@ def table(group):
 print('== per model'); table(lambda o: o['model'])
 print('== per task family'); table(lambda o: o['clip'][:3])
 print('== all'); table(lambda o: 'all')
+# onset: observed motion start minus the prompted simulation's (both > STATIC_PX), per task family; the evaluation allows +-20
+# reference frames of time shift
+print('== onset difference (observed - simulated, s), not explained vs other kinds')
+for fam in sorted({o['clip'][:3] for o in res}):
+    for lab, sel in (('not_explained', lambda o: o['kind'] == 'not_explained'), ('other', lambda o: o['kind'] not in ('not_explained', 'not_validated'))):
+        d = np.array([o['onset_obs_s'] - o['onset_sim_s'] for o in res if o['clip'][:3] == fam and sel(o) and o['onset_obs_s'] is not None and o['onset_sim_s'] is not None])
+        if len(d): print(f"{fam} {lab:14s} n={len(d):5d} median={np.median(d):+.2f}  |d|>0.67 s: {np.mean(np.abs(d) > 0.67):.2f}  |d|>1.5 s: {np.mean(np.abs(d) > 1.5):.2f}")
