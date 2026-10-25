@@ -60,8 +60,10 @@ def estimate_band(vs, ys, delta=1.0):
     sel = np.arange(max(i - 2, 0), min(i + 3, n))
     x = np.log(vs[sel]); w = np.exp(-(ys[sel] - ys[i]) / (4 * delta))        # weight the points near the minimum
     a, b, c = np.polyfit(x, ys[sel], 2, w=w)
-    if a > 0:
-        x0 = -b / (2 * a); hw = math.sqrt(delta / a); est = float(math.exp(x0)); qlo, qhi = math.exp(x0 - hw), math.exp(x0 + hw)
+    llo, lhi = math.log(lo_lim), math.log(hi_lim)
+    if a > 0 and np.isfinite([a, b]).all():
+        x0 = -b / (2 * a); hw = math.sqrt(delta / a)          # clip in log space before exp (a flat curve gives a huge half width)
+        est = math.exp(min(max(x0, llo), lhi)); qlo, qhi = math.exp(min(max(x0 - hw, llo), lhi)), math.exp(min(max(x0 + hw, llo), lhi))
     else:
         est = float(vs[i]); qlo, qhi = float(vs[jlo]), float(vs[jhi])
     band = (max(min(qlo, float(vs[jlo])), lo_lim), min(max(qhi, float(vs[jhi])), hi_lim))

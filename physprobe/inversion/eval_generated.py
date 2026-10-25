@@ -38,7 +38,10 @@ def run_clip(clip):
         for p, lib in libs.items():
             if len(lib) < 3: continue
             m = x['cam_to_video']
-            r = ev.evaluate(clip, p, obs, KC[x['key']], ev.generated_dt(clip, x['fps'], a.clock), m['scale'], lib, ev.truth_of(clip, p), offset=m['offset'])
+            try:
+                r = ev.evaluate(clip, p, obs, KC[x['key']], ev.generated_dt(clip, x['fps'], a.clock), m['scale'], lib, ev.truth_of(clip, p), offset=m['offset'])
+            except Exception as e:   # one bad item must not stop 30k evaluations
+                r = dict(clip=clip, param=p, kind='error', est=None, band=None, error=f'{type(e).__name__}: {str(e)[:200]}')
             r.pop('curve', None)   # 30k results: keep estimate, band, diagnostics only
             r.update(key=x['key'], model=x['model'], seed=x['seed'], annotation=x['annotation'], map_source=x['map']['source'])
             out.append(r)
