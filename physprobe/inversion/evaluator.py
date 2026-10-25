@@ -32,7 +32,7 @@ _cal = B / 'results3' / 'band_calibration.json'
 DELTA = json.load(open(_cal))['delta'] if _cal.exists() else 1.0   # identifiability threshold (D13: empirical calibration)
 E_BEYOND = 1.0   # per-frame loss of frames inside the truth window but beyond a value's own (shorter) window
 OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent with the others: drop the worst, re-fit
-KSCALE = os.environ.get('PHYSPROBE_KSCALE', '1') == '1'   # shorten gravity windows by sqrt(g_truth/g) (D17); 0 = same window for every value
+KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
 REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
 SHIFTS = np.arange(-20, 20.01, 0.25)
