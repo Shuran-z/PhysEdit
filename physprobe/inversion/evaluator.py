@@ -35,7 +35,7 @@ OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent wit
 KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
 REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
-MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0'))   # D31 candidate: share of the window's video frames with a SAM box
+MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
 SHIFTS = np.arange(-20, 20.01, 0.25)
 HZ = json.load(open(B / ('horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
@@ -50,11 +50,15 @@ def estimate_band(vs, ys, delta=1.0):
     spurious minimum from one lucky simulation. On the continuous axis the band is that set's extent, extended by a
     quadratic in log(value) fitted at the minimum where it stays within delta, and clipped to the nearest grid values
     beyond the set that exceed the threshold. Set touching the low / high grid edge -> upper / lower bound; both edges
-    -> unidentifiable; band wider than x1.25 -> interval; otherwise point = vertex of the quadratic."""
+    (or one edge and all but the last value before the other) -> unidentifiable; band wider than x1.25 -> interval;
+    otherwise point = vertex of the quadratic."""
     vs, ys = np.asarray(vs, float), np.asarray(ys, float)
     o = np.argsort(vs); vs, ys = vs[o], ys[o]; n = len(vs)
     i = int(np.argmin(ys)); m = ys <= ys[i] + delta; idx = np.where(m)[0]; jlo, jhi = int(idx.min()), int(idx.max())
-    if m[0] and m[-1]: return dict(kind='unidentifiable', est=None, band=(float(vs[0]), float(vs[-1])))
+    # a set touching both grid edges, or one edge and reaching the last value before the other (the bound would exclude
+    # nothing but that one grid value, D32), says nothing about the parameter
+    if (m[0] and m[-1]) or (m[0] and jhi >= n - 2) or (m[-1] and jlo <= 1):
+        return dict(kind='unidentifiable', est=None, band=(float(vs[0]), float(vs[-1])))
     if m[0]: return dict(kind='upper_bound', est=None, band=(float(vs[0]), float(vs[min(jhi + 1, n - 1)])))
     if m[-1]: return dict(kind='lower_bound', est=None, band=(float(vs[max(jlo - 1, 0)]), float(vs[-1])))
     lo_lim, hi_lim = float(vs[jlo - 1]), float(vs[jhi + 1])
