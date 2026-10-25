@@ -314,8 +314,10 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     used_objs = [n for n in tables if diag[n]['status'] == 'used']
     if JOINT == 'impute':
         # D40: an object that cannot be compared at a value / shift (its simulated self is hidden or not moving there) does not
-        # forbid that cell for the others; it costs its own worst finite loss ("as bad as its worst fit") instead
-        filled = {n: np.where(np.isfinite(t), t, np.max(t[np.isfinite(t)])) if np.isfinite(t).any() else t for n, t in tables.items()}
+        # forbid that cell for the others; it costs the worst value of its own best-shift loss curve ("as bad as its worst fit")
+        def worst_fit(t):                                 # worst value of the object's best-shift curve
+            m = np.min(t, axis=1); return float(np.max(m[np.isfinite(m)]))
+        filled = {n: np.where(np.isfinite(t), t, worst_fit(t)) if np.isfinite(t).any() else t for n, t in tables.items()}
     def joint(objs):
         if JOINT == 'impute':
             tot = sum(filled[n] for n in objs); keep = np.zeros(len(tot), bool)
