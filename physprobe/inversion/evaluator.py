@@ -35,6 +35,7 @@ OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent wit
 KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
 REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
+JOINT = os.environ.get('PHYSPROBE_JOINT', 'strict')   # D40 candidate: 'impute' = unobservable cells cost the object's worst finite loss
 MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
@@ -311,14 +312,22 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
         diag[n] = dict(best_loss=round(best, 2), status='used' if best <= GATE else ('not_observable' if not np.isfinite(best) else 'not_explained'))
     for n, c in low_cover.items(): diag[n] = dict(best_loss=None, status='not_observable', coverage=c)
     used_objs = [n for n in tables if diag[n]['status'] == 'used']
+    if JOINT == 'impute':
+        # D40: an object that cannot be compared at a value / shift (its simulated self is hidden or not moving there) does not
+        # forbid that cell for the others; it costs its own worst finite loss ("as bad as its worst fit") instead
+        filled = {n: np.where(np.isfinite(t), t, np.max(t[np.isfinite(t)])) if np.isfinite(t).any() else t for n, t in tables.items()}
     def joint(objs):
+        if JOINT == 'impute':
+            tot = sum(filled[n] for n in objs); keep = np.zeros(len(tot), bool)
+            for n in objs: keep |= np.isfinite(tables[n]).any(1)          # at least one object really compared at the value
+            return np.where(keep[:, None], tot, np.inf), keep
         tot = sum(tables[n] for n in objs); keep = np.isfinite(tot).any(1)
         return tot, keep
     while len(used_objs) >= 2:                                    # drop objects inconsistent with the joint optimum
         tot, keep = joint(used_objs)
         if not keep.any(): break
         vi, di = np.unravel_index(np.argmin(np.where(np.isfinite(tot), tot, np.inf)), tot.shape)
-        per = {n: float(tables[n][vi, di]) for n in used_objs}
+        per = {n: float((filled if JOINT == 'impute' else tables)[n][vi, di]) for n in used_objs}
         worst = max(per, key=per.get)
         if per[worst] <= OBJ_MAX: break
         used_objs = [n for n in used_objs if n != worst]; diag[worst]['status'] = 'inconsistent'; diag[worst]['loss_at_joint'] = round(per[worst], 2)
