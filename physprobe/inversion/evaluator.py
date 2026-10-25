@@ -32,6 +32,8 @@ _cal = B / 'results3' / 'band_calibration.json'
 DELTA = json.load(open(_cal))['delta'] if _cal.exists() else 1.0   # identifiability threshold (D13: empirical calibration)
 E_BEYOND = 1.0   # per-frame loss of frames inside the truth window but beyond a value's own (shorter) window
 OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent with the others: drop the worst, re-fit
+KSCALE = os.environ.get('PHYSPROBE_KSCALE', '1') == '1'   # shorten gravity windows by sqrt(g_truth/g) (D17); 0 = same window for every value
+REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
 SHIFTS = np.arange(-20, 20.01, 0.25)
 HZ = json.load(open(B / ('horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))
@@ -218,7 +220,7 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
     # per-object loss tables L[n][value index, shift index] (inf where the object lacks MIN_FRAMES frames)
     tables, vals = {}, []
     for vi, (v, boxes) in enumerate(lib):
-        kf = min(1.0, math.sqrt(truth / v)) if param == 'g' else 1.0
+        kf = min(1.0, math.sqrt(truth / v)) if (param == 'g' and KSCALE) else 1.0
         vals.append(v)
         for n, (s0, ob, i0, d0) in prep.items():
             row = np.full(len(SHIFTS), np.inf)
@@ -297,7 +299,7 @@ def ref_meta(clip):
 if __name__ == '__main__' and sys.argv[1] == 'ref':
     tracks = B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl'
     clips = sys.argv[2:] or sorted({m for L in LIBS for m in L['members']})
-    (B / 'results3').mkdir(exist_ok=True); rows = []
+    (B / REF_OUT).mkdir(exist_ok=True); rows = []
     for clip in clips:
         obs, kc = load_obs(tracks, clip)
         if not obs: print(clip, 'no tracks'); continue
@@ -307,7 +309,7 @@ if __name__ == '__main__' and sys.argv[1] == 'ref':
             lib = library(clip, param)
             if len(lib) < 3: print(f'{clip} {param}: library has {len(lib)} values so far'); continue
             r = evaluate(clip, param, obs, kc, meta['dt_obs'], meta['scale'], lib, truth_of(clip, param))
-            json.dump(r, open(B / 'results3' / f'ref_{clip}_{param}.json', 'w'), indent=1)
+            json.dump(r, open(B / REF_OUT / f'ref_{clip}_{param}.json', 'w'), indent=1)
             band = f"[{r['band'][0]:.4g}, {r['band'][1]:.4g}]" if r.get('band') else '-'
             print(f"{clip} {param:2s} truth {r['truth']:<8.4g} {r['kind']:15s} est {r['est'] if r['est'] is None else round(r['est'], 4)!s:9s} "
                   f"err {r.get('err_pct', float('nan')):+6.1f}% band {band} in_band {r.get('truth_in_band')} lib {r['n_lib']} objs {len(r['objects'])}", flush=True)
