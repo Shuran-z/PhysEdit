@@ -1,18 +1,15 @@
-"""Generated-video metrics on the results that give a value (user definition, 2026-10-25):
+"""Generated-video metrics (definitions agreed with the user, 2026-10-25, issue log E3):
 A. evaluability per model: share of the validated results that give a value (point / interval), a one-sided bound, are
    unidentifiable, not explained, or no observation (the 'cannot evaluate' share is to be checked against human scores);
-B. inversion error of the results with a value: |best / prompt - 1| (median, 75th pct, within 10 / 25 %);
-C. parameter response: rank agreement between the prompted and the measured value, counted only between videos of the
-   same task (a different scene is a different experiment, and the mu / v library grid of each task is centred on that
-   task's prompted value, so a ranking across tasks follows the prompt by construction): within-task Kendall tau =
-   (concordant - discordant) / pairs over all same-task pairs with different prompted values, 95 % CI from a bootstrap
-   over tasks. The pooled Spearman rho over all results is kept for g only (absolute grid 0.5-25 for every task).
-   g: C01-C03 prompt 1.62 / 3.71 / 9.81 in every task (C04/C05 9.81); mu changes within a task only in T07/T14/T18;
-   v changes within most of its tasks.
-D. option (not yet the official definition): the response also from one-sided bounds, by ordering the bands. Each result
-   with a band (point / interval: its band; upper bound: (0, bound]; lower bound: [bound, inf)) is compared with every
-   same-model same-task result of a different prompted value; a pair is decided when the bands do not overlap.
-   tau_band = (concordant - discordant) / decided pairs, with the share of decided pairs.
+B. inversion error, from the results with a value: |best / prompt - 1| (median, 75th pct, within 10 / 25 %), g, mu, v;
+C. parameter response, g and v (mu: error only; its prompt changes within a task only in T07/T14/T18). Rank agreement
+   between the prompted and the measured value, counted only between one model's videos of the same task with different
+   prompted values (a different scene is a different experiment, and the mu / v grid of each task is centred on that
+   task's prompt, so a ranking across tasks follows the prompt by construction, D42). One-sided bounds count: every
+   result with a band (point / interval: its band; upper bound: (0, bound]; lower bound: [bound, inf)) is compared with
+   the others, and a pair is decided when the two bands do not overlap. tau = (concordant - discordant) / decided pairs,
+   95 % CI from a bootstrap over (model, task), with the number of decided pairs.
+   Appendix: the same tau from the best values of the results with a value only.
 The same B and C on the known-truth videos (reference, synthetic sets) give the instrument's floor / ceiling.
 Also writes results_gen/per_video_status.csv (one row per generated video: its key and the kind of each parameter) for the
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
@@ -80,18 +77,6 @@ def response_bands(rs):
     d = dict(n=len(rs)); d.update(within_task_tau(rs, order, 'tau_band', 'tau_band_ci')); return d
 
 
-def cell_band(d):
-    if 'tau_band' not in d: return f"{d.get('n', 0)} | — ({d.get('decided', 0)}/{d.get('pairs', 0)})"
-    return (f"{d['n']} | {d['tau_band']:+.2f} [{d['tau_band_ci'][0]:+.2f}, {d['tau_band_ci'][1]:+.2f}] "
-            f"({d['decided']}/{d['pairs']} decided)")
-
-
-def cell(d):
-    if not d.get('n'): return '— | — | — | —'
-    tau = f"{d['tau_within']:+.2f} [{d['tau_ci'][0]:+.2f}, {d['tau_ci'][1]:+.2f}] ({d['pairs']})" if 'tau_within' in d else f"— ({d.get('pairs', 0)})"
-    return f"{d['n']} | {d['err_median']:.1f}% | {100 * d['within25']:.0f}% | {tau}"
-
-
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
 known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results3' / 'ref_*.json')) if not f.endswith('_summary.json')]}
 for s in ('s15v', 's30f121', 's10f16'):
@@ -109,30 +94,26 @@ for m in models + ['all']:
     rs = [r for r in V if m == 'all' or r['model'] == m]; c = collections.Counter(r['kind'] for r in rs)
     sh = {k: sum(c[x] for x in kinds) / len(rs) for k, kinds in CATS}; out['evaluability'][m] = dict(n=len(rs), **sh)
     L.append(f"| {m} | {len(rs)} | " + ' | '.join(f'{100 * sh[k]:.1f}%' for k, _ in CATS) + ' |')
-L += ['', '## B + C. Known-truth videos (instrument floor / ceiling): results with a value', '',
-      '| set | parameter | n | median abs error | within 25 % | within-task tau [95 % CI] (pairs) |', '|---|---|---|---|---|---|']
-for s, R in known.items():
+err = lambda d: f"{d['n']} | {d['err_median']:.1f}% | {100 * d['within25']:.0f}%" if d.get('n') else '— | — | —'
+tau = lambda d, k='tau_band', c='tau_band_ci': (f"{d[k]:+.2f} [{d[c][0]:+.2f}, {d[c][1]:+.2f}] ({d['decided']})" if k in d
+                                               else f"— ({d.get('decided', 0)})")
+sets = list(known.items()) + [(m, [r for r in V if m == 'all' or r['model'] == m]) for m in models + ['all']]
+out['bands'] = {}
+for s, R in sets:
     R = [r for r in R if 'param' in r and not skip(r)]
     for p in ('g', 'mu', 'v'):
-        d = response([r for r in R if r['param'] == p]); out['known'][f'{s}|{p}'] = d
-        L.append(f'| {s} | {p} | {cell(d)} |')
-L += ['', '## B + C. Generated videos: results with a value, error and response relative to the prompted value', '',
-      '| model | g: n | g: median abs error | g: within 25 % | g: tau [95 % CI] (pairs) | mu: n | mu: median abs error | mu: within 25 % | mu: tau (pairs) '
-      '| v: n | v: median abs error | v: within 25 % | v: tau (pairs) |', '|---|' + '---|' * 12]
-for m in models + ['all']:
-    cells = []
-    for p in ('g', 'mu', 'v'):
-        d = response([r for r in V if (m == 'all' or r['model'] == m) and r['param'] == p]); out['generated'][f'{m}|{p}'] = d
-        cells.append(cell(d))
-    L.append(f'| {m} | ' + ' | '.join(cells) + ' |')
-L += ['', '## D. Option: response including one-sided bounds (band ordering)', '',
-      '| set / model | g: n | g: tau_band [95 % CI] (decided / pairs) | mu: n | mu: tau_band | v: n | v: tau_band |', '|---|---|---|---|---|---|---|']
-out['bands'] = {}
-for s, R in list(known.items()) + [(m, [r for r in V if m == 'all' or r['model'] == m]) for m in models + ['all']]:
-    R = [r for r in R if 'param' in r and not skip(r)]; cells = []
-    for p in ('g', 'mu', 'v'):
-        d = response_bands([r for r in R if r['param'] == p]); out['bands'][f'{s}|{p}'] = d; cells.append(cell_band(d))
-    L.append(f'| {s} | ' + ' | '.join(cells) + ' |')
+        (out['known'] if s in known else out['generated'])[f'{s}|{p}'] = response([r for r in R if r['param'] == p])
+        out['bands'][f'{s}|{p}'] = response_bands([r for r in R if r['param'] == p])
+rows = [(s, s in known) for s, _ in sets]
+L += ['', '## B. Inversion error of the results with a value (|best / prompt - 1|; known-truth sets: |best / truth - 1|)', '',
+      '| set / model | g: n | g: median | g: within 25 % | mu: n | mu: median | mu: within 25 % | v: n | v: median | v: within 25 % |', '|---|' + '---|' * 9]
+L += [f"| {s} | " + ' | '.join(err((out['known'] if k else out['generated'])[f'{s}|{p}']) for p in ('g', 'mu', 'v')) + ' |' for s, k in rows]
+L += ['', '## C. Parameter response: within-task Kendall tau from the bands, one-sided bounds included [95 % CI] (decided pairs)', '',
+      '| set / model | g: results | g: tau | v: results | v: tau |', '|---|---|---|---|---|']
+L += [f"| {s} | " + ' | '.join(f"{out['bands'][f'{s}|{p}']['n']} | {tau(out['bands'][f'{s}|{p}'])}" for p in ('g', 'v')) + ' |' for s, _ in rows]
+L += ['', '## Appendix. Response from the best values of the results with a value only [95 % CI] (pairs)', '',
+      '| set / model | g: tau | v: tau |', '|---|---|---|']
+L += [f"| {s} | " + ' | '.join(tau((out['known'] if k else out['generated'])[f'{s}|{p}'], 'tau_within', 'tau_ci') for p in ('g', 'v')) + ' |' for s, k in rows]
 (B / 'results_gen' / 'response_metrics.md').write_text('\n'.join(L) + '\n')
 json.dump(out, open(B / 'results_gen' / 'response_metrics.json', 'w'), indent=1)
 vid = collections.OrderedDict()
