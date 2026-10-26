@@ -93,7 +93,7 @@ for p, lab in PARAMS:
     for m in models:
         allx = [r for r in gen if r['model'] == m and r['param'] == p]; x = [r for r in allx if r.get('kind') != 'not_validated']
         c = collections.Counter(kind_of(r) for r in x); n = max(1, len(x))
-        sh.append([c[k] / n for k, _ in KINDS]); nb = [r for r in x if r.get('band')]
+        sh.append([c[k] / n for k, _ in KINDS]); nb = [r for r in x if r.get('band') and r.get('truth')]
         rows.append(f"| {m} | {len(allx)} | {len(allx) - len(x)} | {len(x)} | " + ' | '.join(f'{100 * c[k] / n:.0f}%' for k, _ in KINDS) + f" | {sum(bool(r.get('truth_in_band')) for r in nb)}/{len(nb)} |")
     fig, ax = plt.subplots(figsize=(11, 0.34 * len(models) + 1.4))
     for j, (k, kl) in enumerate(KINDS):

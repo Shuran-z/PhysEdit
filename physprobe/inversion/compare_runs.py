@@ -20,7 +20,7 @@ def measures(R):
     for r in R: by[(r['model'], r['param'])].append(r)
     out = {}
     for k, rs in by.items():
-        nb = [r for r in rs if r.get('band') and r['kind'] != 'not_explained']
+        nb = [r for r in rs if r.get('band') and r['kind'] != 'not_explained' and r.get('truth')]
         out[k] = dict(ne=sum(r['kind'] == 'not_explained' for r in rs) / len(rs), inband=sum(bool(r.get('truth_in_band')) for r in nb) / max(1, len(nb)),
                       point=sum(r['kind'] == 'point' for r in rs) / len(rs))
     return out

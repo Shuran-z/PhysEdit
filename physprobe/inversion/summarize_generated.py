@@ -19,7 +19,7 @@ pct = lambda a, n: f"{100 * a / max(1, n):.0f}%"
 for (m, p), rs in sorted(by.items()):
     pts = [abs(r['est'] / r['truth'] - 1) * 100 for r in rs if r.get('kind') == 'point' and r.get('est') and r.get('truth')]
     k = collections.Counter(r.get('kind') for r in rs); n = len(rs)
-    nb = [r for r in rs if r.get('band') and r.get('kind') != 'not_validated']
+    nb = [r for r in rs if r.get('band') and r.get('kind') != 'not_validated' and r.get('truth')]   # no prompted value: no in-band test
     lines.append(f"| {m} | {p} | {n} | {pct(k['point'], n)} | {pct(k['interval'], n)} | {pct(k['upper_bound'] + k['lower_bound'], n)} | {pct(k['unidentifiable'], n)} | "
                  f"{pct(k['not_explained'], n)} | {pct(k['no_observation'], n)} | {pct(k['not_validated'], n)} | {pct(sum(bool(r.get('truth_in_band')) for r in nb), len(nb))} | {st.median(pts) if pts else float('nan'):.0f}% |")
 # gravity prompt response: C01/C02/C03 ask for moon / Mars / Earth gravity; median of the estimate (point) or band centre
@@ -39,7 +39,7 @@ lines += ['', '偏离方向（有不确定带的结果：带整体低于提示�
 for (m, p), rs in sorted(by.items()):
     c = collections.Counter()
     for r in rs:
-        if r.get('kind') not in ('point', 'interval', 'upper_bound', 'lower_bound', 'unidentifiable') or not r.get('band'): continue
+        if r.get('kind') not in ('point', 'interval', 'upper_bound', 'lower_bound', 'unidentifiable') or not r.get('band') or not r.get('truth'): continue
         lo, hi = r['band']
         if r['kind'] == 'upper_bound': lo = 0.0
         if r['kind'] == 'lower_bound': hi = float('inf')

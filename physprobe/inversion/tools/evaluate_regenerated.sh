@@ -3,9 +3,11 @@
 # it into the generated-video results: camera compensation, evaluation, merge (the new results replace the same keys; rows
 # carry prompt_version), known-truth gate, per-model summary, generated-video metrics, the comparison with the official
 # gated results, and the paired before / after comparison of the replaced results. Official files are not overwritten.
+# With KNOWN_CONDITIONS (the known conditions of the new prompt release), mu of the new rows is scored against the friction
+# that their prompts declare for the measured contact (apply_declared_mu.py, issue log E4).
 # Logs: <WORK>/runs/regen_<NAME>_<step>.log; <WORK>/runs/regen_<NAME>.done marks the end.
-# Usage (on the server, detached): bash evaluate_regenerated.sh ROOT NAME [BASE=all_cc] [WORKERS=24]
-ROOT=$1; NAME=$2; BASE=${3:-all_cc}; NW=${4:-24}
+# Usage (on the server, detached): bash evaluate_regenerated.sh ROOT NAME [BASE=all_cc] [WORKERS=24] [KNOWN_CONDITIONS]
+ROOT=$1; NAME=$2; BASE=${3:-all_cc}; NW=${4:-24}; KC=${5:-}
 . $ROOT/physprobe/inversion/deploy/sam_env.sh
 export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1
 W=$ROOT/.local-research/evaluation/core100_inversion_workspace/trial/batch2; R=$W/runs; G=$W/sam_gen/$NAME; M=${BASE}_$NAME
@@ -15,6 +17,7 @@ step() { local n=$1; shift; echo "$(date) start $n" >> $R/regen_${NAME}_progress
 step camcomp cam_comp.py $G/items.json $G/tracks_lean.jsonl --out $G/tracks_camcomp.jsonl --workers $NW
 step eval eval_generated.py $NAME $G/tracks_camcomp.jsonl --workers $NW --clock realtime
 step merge merge_generated.py $BASE $NAME $M
+[ -n "$KC" ] && step declared apply_declared_mu.py $M $KC --version v6
 step gate validation_gate.py $M $BASE,$NAME
 step summary summarize_generated.py ${M}_gated
 step metrics response_metrics.py ${M}_gated
