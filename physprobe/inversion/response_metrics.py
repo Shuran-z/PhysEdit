@@ -35,7 +35,7 @@ def response(rs):
              within10=float(np.mean(e <= 10)), within25=float(np.mean(e <= 25)), n_prompts=len(set(np.round(t, 4))))
     if rs[0]['param'] == 'g' and d['n_prompts'] >= 2 and len(rs) >= 5: d['rho_pooled'] = float(stats.spearmanr(t, b)[0])
     by = collections.defaultdict(list)
-    for r in rs: by[r['clip'][:3]].append((r['truth'], r['best']))
+    for r in rs: by[(r.get('model'), r['clip'][:3])].append((r['truth'], r['best']))   # pairs within one model's videos of one task
     per = {}                                                    # task -> (concordant - discordant, pairs)
     for task, xs in by.items():
         cd = npair = 0
