@@ -32,6 +32,30 @@ def distances(theta,point=None,bracket=None):
 def load(path):return json.loads(path.read_text(encoding='utf-8'))
 
 
+def publication_status(scene, reference):
+    if scene == 'T19':
+        return 'retired_T19_render'
+    if not reference.get('repo_id') or not reference.get('revision'):
+        return 'server_only_publication_binding_pending'
+    return 'historical_frozen_release' if scene in ['T03','T11','T12','T13'] else 'published_reference'
+
+
+def attach_publication_verification(rows, receipt):
+    """Attach current-media proof only to the exact original identity and hashes."""
+    index={(r.get('repo_id'),r.get('original_revision'),r.get('engine'),r['sample_id']):r
+           for r in receipt.get('records',[])}
+    for row in rows:
+        proof=index.get((row.get('repo_id'),row.get('revision'),row.get('engine'),row['sample_id']))
+        if not proof or proof.get('status')!='same_media_at_current_revision':continue
+        expected={c:(v['path'],v.get('sha256'),v.get('git_oid')) for c,v in row.get('videos',{}).items()}
+        checked={v['camera']:(v['path'],v.get('sha256'),v.get('git_oid')) for v in proof.get('media_identity',[])}
+        if not expected or expected!=checked or not all(proof.get('camera_checks',{}).get(c) is True for c in expected):continue
+        row['publication_verification']=dict(status=proof['status'],checked_revision=proof['checked_revision'],
+            original_revision=row['revision'],all_recorded_cameras_match=True,
+            current_release_selection_confirmed=False,formal_admission=False)
+    return rows
+
+
 @functools.lru_cache(maxsize=None)
 def source_hash(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -88,7 +112,7 @@ def main():
             parameter_unit=record.get('parameter_unit',record.get('unit')),theta=theta,original_reference_kind=kind,original_critical_value=point,original_boundary_interval=bracket,
             **distances(theta,point,bracket),source_file=str(path.resolve()),source_sha256=source_hash(str(path.resolve())),
             original_source_path=record.get('contract_path',record.get('boundary',{}).get('source')),version_note=version_note,
-            publication_status='retired_T19_render' if scene=='T19' else 'historical_frozen_release' if scene in ['T03','T11','T12','T13'] else 'published_reference',
+            publication_status=publication_status(scene,ref),
             original_search_status=record.get('original_search_status'),extra_validation_separate=True))
     for scene in ['T01','T02']:
         path=ORIGINAL/(scene.lower()+'_original_family_bindings.json')
@@ -122,6 +146,9 @@ def main():
             for interval in intervals:
                 add(r,path,'original_search_interval',bracket=interval['bracket'],version_note='Original-source linkage retained; repair/version review is a separate column, not a distance gate.')
     # T20 search-source inputs are intentionally not promoted to published IDs.
+    publication_receipt=ROOT/'original_reference_publication_verification_20261026.json'
+    if publication_receipt.exists():
+        attach_publication_verification(rows,load(publication_receipt))
     out=ROOT/'original_value_distance_ledger';out.mkdir(exist_ok=True)
     (out/'sample_distances.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in rows),encoding='utf-8')
     stars=declared_star_rows()
