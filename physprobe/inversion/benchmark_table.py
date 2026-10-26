@@ -11,7 +11,8 @@ import numpy as np
 
 from paths import WORK as B
 
-COMMON = (('ade', 'ADE (median) ↓', '{:.4f}'), ('fde', 'FDE (median) ↓', '{:.4f}'), ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
+COMMON = (('ade', 'ADE (median) ↓', '{:.4f}'), ('fde', 'FDE (median) ↓', '{:.4f}'), ('ade_rel', 'ADE / no-motion ADE (median) ↓', '{:.2f}'),
+          ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
           ('spatiotemporal_iou', 'Spatiotemporal IoU ↑', '{:.3f}'), ('weighted_spatial_iou', 'Weighted spatial IoU ↑', '{:.3f}'),
           ('mse', 'MSE ↓', '{:.4f}'), ('motion_area_gen', 'moving pixels', '{:.2%}'), ('cond_psnr', 'Condition PSNR ↑', '{:.2f}'),
           ('cond_ssim', 'Condition SSIM ↑', '{:.3f}'))
@@ -21,7 +22,7 @@ NAMES = {'cogvideox_i2v': 'CogVideoX', 'cosmos': 'Cosmos', 'cosmos3_nano': 'Cosm
 DIAG = math.hypot(854, 480)
 
 
-MEDIAN = ('ade', 'fde')   # trajectory errors have heavy tails (objects thrown out of the scene, lost tracks): medians
+MEDIAN = ('ade', 'fde', 'ade_rel')   # trajectory errors have heavy tails (objects thrown out of the scene, lost tracks): medians
 
 
 def means(rows):
@@ -38,7 +39,13 @@ def fmt(v, f): return '—' if v is None else f.format(v)
 ap = argparse.ArgumentParser(); ap.add_argument('common'); ap.add_argument('response'); ap.add_argument('camstats')
 ap.add_argument('--synthetic', default='s15v,s30f121,s10f16'); ap.add_argument('--out', default='official')
 a = ap.parse_args()
-rows = [json.loads(l) for l in open(B / 'results_gen' / f'common_{a.common}.jsonl')]
+def with_rel(rs):   # ADE relative to a video in which nothing moves (scale-free across windows); tiny reference motion -> no value
+    for r in rs:
+        if r.get('ade') is not None and (r.get('ade_static') or 0) > 0.002: r['ade_rel'] = r['ade'] / r['ade_static']
+    return rs
+
+
+rows = with_rel([json.loads(l) for l in open(B / 'results_gen' / f'common_{a.common}.jsonl')])
 by = collections.defaultdict(list)
 for r in rows: by[r['model']].append(r)
 cam = collections.defaultdict(list)
@@ -59,7 +66,7 @@ for m in models:
 for s in a.synthetic.split(','):
     f = B / 'results_gen' / f'common_{s}.jsonl'
     if not f.exists(): continue
-    sr = [json.loads(l) for l in open(f)]; mm = means(sr); out['common'][f'synthetic_{s}'] = mm
+    sr = with_rel([json.loads(l) for l in open(f)]); mm = means(sr); out['common'][f'synthetic_{s}'] = mm
     L.append(f'| ceiling: synthetic {s} | {len(sr)} | ' + ' | '.join(fmt(mm[k][0], f) for k, _, f in COMMON) + ' | — | — |')
 static = [r['ade_static'] for r in rows if r.get('ade_static') is not None]
 ref_move = [r['motion_area_ref'] for r in rows if r.get('motion_area_ref') is not None]
