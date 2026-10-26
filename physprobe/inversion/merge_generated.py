@@ -13,7 +13,8 @@ a = ap.parse_args()
 load = lambda n: [json.loads(l) for l in open(B / 'results_gen' / f'{n}.jsonl')]
 base, new = load(a.base), load(a.new)
 newk = {(r['key'], r.get('param')) for r in new}
-out = [dict(r, prompt_version=r.get('prompt_version', a.base_tag)) for r in base if (r['key'], r.get('param')) not in newk] + [dict(r, prompt_version=a.new_tag) for r in new]
+kept = [dict(r, prompt_version=r.get('prompt_version', a.base_tag)) for r in base if (r['key'], r.get('param')) not in newk]
+out = kept + [dict(r, prompt_version=a.new_tag) for r in new]
 (B / 'results_gen' / f'{a.out}.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in out))
 c = collections.Counter(r['prompt_version'] for r in out)
-print(f'{len(base)} base + {len(new)} new -> {len(out)} rows ({dict(c)}); replaced {len(base) - c[a.base_tag]} base rows')
+print(f'{len(base)} base + {len(new)} new -> {len(out)} rows ({dict(c)}); replaced {len(base) - len(kept)} base rows')
