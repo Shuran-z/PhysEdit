@@ -92,7 +92,7 @@ for s in ('reference', 's15v', 's30f121', 's10f16'):
              f"{tau(bands.get(f'{s}|g'))} | {tau(bands.get(f'{s}|v'))} |")
 L += ['', 'Explainable = share of results whose motion some value of the parameter explains (not "not explained", not "no observation"); '
       'to be checked against human scores. Errors: median |best / prompt − 1| of the results with a value (n). Response: within-task Kendall τ '
-      'of the bands (one-sided bounds included), 95 % CI over (model, task) groups; per-model values come from 1–8 groups.']
+      'of the bands (one-sided bounds included), 95 % CI over (model, task) groups; per-model values come from 1–7 groups.']
 (B / 'results_gen' / f'benchmark_{a.out}.md').write_text('\n'.join(L) + '\n')
 json.dump(out, open(B / 'results_gen' / f'benchmark_{a.out}.json', 'w'), indent=1, default=float)
 print('\n'.join(L))
