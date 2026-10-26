@@ -6,9 +6,10 @@ model's median mapping and is flagged. Prompts: visible-part boxes of every non-
 (camera pixels -> condition image -> video), prompt frame 0. Tracking stops at the frame where the last predictability
 window of the task ends plus the 20-frame shift margin (later frames are never used).
 Prompt-corrected deliveries (v6, 31 scenes, 2026-10-25) keep the same layout with V6_ITEM_VERIFIED.json: --gen-dir.
-Usage: python make_gen_jobs.py NAME REMOTE_DIR [--gen-dir DIR] [--models m1,m2] [--seeds 0,1,2] [--annotations 1,2,3] [--limit N]
+Usage: python make_gen_jobs.py NAME REMOTE_DIR [--gen-dir DIR] [--workers N] [--models m1,m2] [--seeds 0,1,2] [--annotations 1,2,3] [--limit N]
   -> sam_gen/<NAME>/jobs.jsonl (videos REMOTE_DIR/videos/<item key>.mp4), items.json, upload list"""
 import argparse, json, math, statistics as st
+from multiprocessing import get_context
 from pathlib import Path
 import cv2
 import numpy as np
@@ -21,12 +22,20 @@ HZ = json.load(open(c2.B / ('horizons33.json' if (c2.B / 'horizons33.json').exis
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
 
 
-def build(items, name, remote):
+def _register(x):
+    r = gr.register(CI / f"{x['item']}.png", x['path'])
+    cap = cv2.VideoCapture(x['path']); fps, frames = cap.get(cv2.CAP_PROP_FPS), int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); cap.release()
+    return r, fps, frames
+
+
+def build(items, name, remote, workers=1):
     OUT = c2.B / 'sam_gen' / name; OUT.mkdir(parents=True, exist_ok=True)
     # registration (per item, model median as fallback)
-    for x in items:
-        r = gr.register(CI / f"{x['item']}.png", x['path']); x['registration'] = r
-        cap = cv2.VideoCapture(x['path']); x['fps'] = cap.get(cv2.CAP_PROP_FPS); x['frames'] = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); cap.release()
+    if workers > 1:
+        cv2.setNumThreads(1)
+        with get_context('fork').Pool(workers) as pool: regs = pool.map(_register, items, chunksize=4)
+    else: regs = [_register(x) for x in items]
+    for x, (r, fps, frames) in zip(items, regs): x['registration'] = r; x['fps'] = fps; x['frames'] = frames
     med = {}
     for m in {x['model'] for x in items}:
         ok = [x['registration'] for x in items if x['model'] == m and x['registration'].get('ok')]
@@ -75,6 +84,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('remote')
     ap.add_argument('--models'); ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--annotations', default='1,2,3'); ap.add_argument('--limit', type=int)
     ap.add_argument('--gen-dir', help='generation delivery root (default: the v3 three-variant run)')
+    ap.add_argument('--workers', type=int, default=1, help='parallel registration processes')
     a = ap.parse_args()
     if a.gen_dir: G = Path(c2.gt(a.gen_dir))
     items = []
@@ -89,4 +99,4 @@ if __name__ == '__main__':
                     if clip == 'T06_C04' or HZ.get(clip, {}).get('status') != 'OK': continue
                     items.append(dict(key=f"s{s}a{an}_{md.name}_{clip}", seed=int(s), annotation=int(an), model=md.name, clip=clip, item=it.name, path=str(it / 'resized.mp4')))
     if a.limit: items = items[:a.limit]
-    build(items, a.name, a.remote)
+    build(items, a.name, a.remote, a.workers)
