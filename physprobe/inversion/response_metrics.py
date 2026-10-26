@@ -9,11 +9,15 @@ C. parameter response: rank agreement between the prompted and the measured valu
    over tasks. The pooled Spearman rho over all results is kept for g only (absolute grid 0.5-25 for every task).
    g: C01-C03 prompt 1.62 / 3.71 / 9.81 in every task (C04/C05 9.81); mu changes within a task only in T07/T14/T18;
    v changes within most of its tasks.
+D. option (not yet the official definition): the response also from one-sided bounds, by ordering the bands. Each result
+   with a band (point / interval: its band; upper bound: (0, bound]; lower bound: [bound, inf)) is compared with every
+   same-model same-task result of a different prompted value; a pair is decided when the bands do not overlap.
+   tau_band = (concordant - discordant) / decided pairs, with the share of decided pairs.
 The same B and C on the known-truth videos (reference, synthetic sets) give the instrument's floor / ceiling.
 Also writes results_gen/per_video_status.csv (one row per generated video: its key and the kind of each parameter) for the
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
 Usage: python response_metrics.py [GENERATED_NAME=all_cc_gated] -> results_gen/response_metrics.md / .json"""
-import collections, csv, glob, json, sys
+import collections, csv, glob, json, math, sys
 import numpy as np
 from scipy import stats
 
@@ -34,26 +38,52 @@ def response(rs):
     d = dict(n=len(rs), err_median=float(np.median(e)), err_p75=float(np.percentile(e, 75)),
              within10=float(np.mean(e <= 10)), within25=float(np.mean(e <= 25)), n_prompts=len(set(np.round(t, 4))))
     if rs[0]['param'] == 'g' and d['n_prompts'] >= 2 and len(rs) >= 5: d['rho_pooled'] = float(stats.spearmanr(t, b)[0])
+    d.update(within_task_tau(rs, lambda a, b: np.sign(a['best'] - b['best']), 'tau_within', 'tau_ci'))
+    return d
+
+
+def within_task_tau(rs, order, key, ci_key):
+    """pairs within one model's videos of one task with different prompted values; order(a, b) = sign of the measured
+    a - b (0 = undecided). tau = (concordant - discordant) / decided pairs, CI from a bootstrap over (model, task)"""
     by = collections.defaultdict(list)
-    for r in rs: by[(r.get('model'), r['clip'][:3])].append((r['truth'], r['best']))   # pairs within one model's videos of one task
-    per = {}                                                    # task -> (concordant - discordant, pairs)
+    for r in rs: by[(r.get('model'), r['clip'][:3])].append(r)
+    per = {}                                                    # (model, task) -> (concordant - discordant, decided, pairs)
     for task, xs in by.items():
-        cd = npair = 0
+        cd = dec = npair = 0
         for i in range(len(xs)):
             for j in range(i + 1, len(xs)):
-                dt = xs[i][0] - xs[j][0]
+                dt = xs[i]['truth'] - xs[j]['truth']
                 if abs(dt) < 1e-9: continue
-                cd += np.sign(dt) * np.sign(xs[i][1] - xs[j][1]); npair += 1
-        if npair: per[task] = (cd, npair)
-    d['pairs'] = sum(v[1] for v in per.values()); d['tasks_with_pairs'] = len(per)
-    if d['pairs'] >= 5:
-        d['tau_within'] = float(sum(v[0] for v in per.values()) / d['pairs'])
+                o = order(xs[i], xs[j]); npair += 1; dec += o != 0; cd += np.sign(dt) * o
+        if npair: per[task] = (cd, dec, npair)
+    d = dict(pairs=sum(v[2] for v in per.values()), decided=sum(v[1] for v in per.values()), tasks_with_pairs=len(per))
+    if d['decided'] >= 5:
+        d[key] = float(sum(v[0] for v in per.values()) / d['decided'])
         ks = list(per); bs = []
         for _ in range(1000):
             smp = [per[ks[k]] for k in rng.integers(0, len(ks), len(ks))]; n_ = sum(v[1] for v in smp)
             if n_: bs.append(sum(v[0] for v in smp) / n_)
-        d['tau_ci'] = [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))]
+        d[ci_key] = [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))]
     return d
+
+
+def band_of(r):
+    lo, hi = r['band']
+    return (0.0 if r['kind'] == 'upper_bound' else lo, math.inf if r['kind'] == 'lower_bound' else hi)
+
+
+def response_bands(rs):
+    rs = [r for r in rs if r['kind'] in MEAS + ('upper_bound', 'lower_bound') and r.get('band') and r.get('truth')]
+    def order(a, b):
+        (alo, ahi), (blo, bhi) = band_of(a), band_of(b)
+        return 1 if alo > bhi else -1 if ahi < blo else 0
+    d = dict(n=len(rs)); d.update(within_task_tau(rs, order, 'tau_band', 'tau_band_ci')); return d
+
+
+def cell_band(d):
+    if 'tau_band' not in d: return f"{d.get('n', 0)} | — ({d.get('decided', 0)}/{d.get('pairs', 0)})"
+    return (f"{d['n']} | {d['tau_band']:+.2f} [{d['tau_band_ci'][0]:+.2f}, {d['tau_band_ci'][1]:+.2f}] "
+            f"({d['decided']}/{d['pairs']} decided)")
 
 
 def cell(d):
@@ -95,6 +125,14 @@ for m in models + ['all']:
         d = response([r for r in V if (m == 'all' or r['model'] == m) and r['param'] == p]); out['generated'][f'{m}|{p}'] = d
         cells.append(cell(d))
     L.append(f'| {m} | ' + ' | '.join(cells) + ' |')
+L += ['', '## D. Option: response including one-sided bounds (band ordering)', '',
+      '| set / model | g: n | g: tau_band [95 % CI] (decided / pairs) | mu: n | mu: tau_band | v: n | v: tau_band |', '|---|---|---|---|---|---|---|']
+out['bands'] = {}
+for s, R in list(known.items()) + [(m, [r for r in V if m == 'all' or r['model'] == m]) for m in models + ['all']]:
+    R = [r for r in R if 'param' in r and not skip(r)]; cells = []
+    for p in ('g', 'mu', 'v'):
+        d = response_bands([r for r in R if r['param'] == p]); out['bands'][f'{s}|{p}'] = d; cells.append(cell_band(d))
+    L.append(f'| {s} | ' + ' | '.join(cells) + ' |')
 (B / 'results_gen' / 'response_metrics.md').write_text('\n'.join(L) + '\n')
 json.dump(out, open(B / 'results_gen' / 'response_metrics.json', 'w'), indent=1)
 vid = collections.OrderedDict()
