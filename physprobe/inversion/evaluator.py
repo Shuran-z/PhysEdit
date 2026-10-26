@@ -37,6 +37,7 @@ REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory o
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
 JOINT = os.environ.get('PHYSPROBE_JOINT', 'impute')   # D40: unobservable cells cost the object's worst best-shift loss ('strict' = old rule)
 MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
+VERTEX = os.environ.get('PHYSPROBE_VERTEX', 'local5')   # quadratic fit at the minimum: 5 nearest library values, or 'set' (D41 candidate)
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
 HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))   # predictability windows (D7)
@@ -65,6 +66,7 @@ def estimate_band(vs, ys, delta=1.0):
     if m[-1]: return dict(kind='lower_bound', est=None, band=(float(vs[max(jlo - 1, 0)]), float(vs[-1])))
     lo_lim, hi_lim = float(vs[jlo - 1]), float(vs[jhi + 1])
     sel = np.arange(max(i - 2, 0), min(i + 3, n))
+    if VERTEX == 'set': sel = np.union1d(sel, idx)          # D41 candidate: fit over the whole indistinguishable set, not 5 neighbours
     x = np.log(vs[sel]); w = np.exp(-(ys[sel] - ys[i]) / (4 * delta))        # weight the points near the minimum
     a, b, c = np.polyfit(x, ys[sel], 2, w=w)
     llo, lhi = math.log(lo_lim), math.log(hi_lim)
