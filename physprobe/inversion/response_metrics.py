@@ -56,7 +56,7 @@ def within_task_tau(rs, order, key, ci_key):
                 if abs(dt) < 1e-9: continue
                 o = order(xs[i], xs[j]); npair += 1; dec += o != 0; cd += np.sign(dt) * o
         if npair: per[task] = (cd, dec, npair)
-    d = dict(pairs=sum(v[2] for v in per.values()), decided=sum(v[1] for v in per.values()), tasks_with_pairs=len(per))
+    d = dict(pairs=int(sum(v[2] for v in per.values())), decided=int(sum(v[1] for v in per.values())), tasks_with_pairs=len(per))
     if d['decided'] >= 5:
         d[key] = float(sum(v[0] for v in per.values()) / d['decided'])
         ks = list(per); bs = []
