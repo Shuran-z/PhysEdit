@@ -15,7 +15,8 @@ The same B and C on the known-truth videos (reference, synthetic sets) give the 
 Also writes results_gen/per_video_status.csv (one row per generated video: key = s<seed>a<prompt variant>_<model>_<clip>,
 the anonymous clip id, the video path under data/generated/, and the kind / value / prompt of each parameter) for the
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
-Usage: python response_metrics.py [GENERATED_NAME=all_cc_gated] -> results_gen/response_metrics.md / .json"""
+Usage: python response_metrics.py [GENERATED_NAME=all_cc_gated] -> results_gen/response_metrics.md / .json
+(another name, e.g. a rule variant all_cc_sigma3_gated: response_metrics_<NAME>.md / .json, no per-video table)"""
 import collections, csv, glob, json, math, sys
 import numpy as np
 from scipy import stats
@@ -81,6 +82,7 @@ def response_bands(rs):
 
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
+suffix = '' if name == 'all_cc_gated' else f'_{name}'
 known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results3' / 'ref_*.json')) if not f.endswith('_summary.json')]}
 for s in ('s15v', 's30f121', 's10f16'):
     known[s] = [json.loads(l) for l in open(B / 'results_gen' / f'{s}.jsonl')]
@@ -117,8 +119,9 @@ L += [f"| {s} | " + ' | '.join(f"{out['bands'][f'{s}|{p}']['n']} | {tau(out['ban
 L += ['', '## Appendix. Response from the best values of the results with a value only [95 % CI] (pairs / model-task groups)', '',
       '| set / model | g: tau | v: tau |', '|---|---|---|']
 L += [f"| {s} | " + ' | '.join(tau((out['known'] if k else out['generated'])[f'{s}|{p}'], 'tau_within', 'tau_ci') for p in ('g', 'v')) + ' |' for s, k in rows]
-(B / 'results_gen' / 'response_metrics.md').write_text('\n'.join(L) + '\n')
-json.dump(out, open(B / 'results_gen' / 'response_metrics.json', 'w'), indent=1)
+(B / 'results_gen' / f'response_metrics{suffix}.md').write_text('\n'.join(L) + '\n')
+json.dump(out, open(B / 'results_gen' / f'response_metrics{suffix}.json', 'w'), indent=1)
+if suffix: print('\n'.join(L)); raise SystemExit
 items = {it['key']: it for it in json.load(open(B / 'sam_gen' / 'all' / 'items.json'))['items']}   # anonymous clip id, video path
 rel = lambda p: p.split('/data/generated/', 1)[-1] if p else None
 vid = collections.OrderedDict()
