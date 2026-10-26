@@ -12,7 +12,8 @@ C. parameter response, g and v (mu: error only; its prompt changes within a task
    one or two groups is degenerate).
    Appendix: the same tau from the best values of the results with a value only.
 The same B and C on the known-truth videos (reference, synthetic sets) give the instrument's floor / ceiling.
-Also writes results_gen/per_video_status.csv (one row per generated video: its key and the kind of each parameter) for the
+Also writes results_gen/per_video_status.csv (one row per generated video: key = s<seed>a<prompt variant>_<model>_<clip>,
+the anonymous clip id, the video path under data/generated/, and the kind / value / prompt of each parameter) for the
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
 Usage: python response_metrics.py [GENERATED_NAME=all_cc_gated] -> results_gen/response_metrics.md / .json"""
 import collections, csv, glob, json, math, sys
@@ -118,11 +119,15 @@ L += ['', '## Appendix. Response from the best values of the results with a valu
 L += [f"| {s} | " + ' | '.join(tau((out['known'] if k else out['generated'])[f'{s}|{p}'], 'tau_within', 'tau_ci') for p in ('g', 'v')) + ' |' for s, k in rows]
 (B / 'results_gen' / 'response_metrics.md').write_text('\n'.join(L) + '\n')
 json.dump(out, open(B / 'results_gen' / 'response_metrics.json', 'w'), indent=1)
+items = {it['key']: it for it in json.load(open(B / 'sam_gen' / 'all' / 'items.json'))['items']}   # anonymous clip id, video path
+rel = lambda p: p.split('/data/generated/', 1)[-1] if p else None
 vid = collections.OrderedDict()
 for r in G:
-    k = vid.setdefault(r['key'], dict(key=r['key'], model=r['model'], clip=r['clip'], annotation=r.get('annotation'), seed=r.get('seed')))
+    it = items.get(r['key'], {})
+    k = vid.setdefault(r['key'], dict(key=r['key'], model=r['model'], clip=r['clip'], annotation=r.get('annotation'), seed=r.get('seed'),
+                                      item=it.get('item'), video=rel(it.get('path'))))
     k[f"{r['param']}_kind"] = r['kind']; k[f"{r['param']}_best"] = r.get('best') if r['kind'] in MEAS else None; k[f"{r['param']}_prompt"] = r.get('truth')
-cols = ['key', 'model', 'clip', 'annotation', 'seed'] + [f'{p}_{x}' for p in ('g', 'mu', 'v') for x in ('kind', 'best', 'prompt')]
+cols = ['key', 'model', 'clip', 'annotation', 'seed', 'item', 'video'] + [f'{p}_{x}' for p in ('g', 'mu', 'v') for x in ('kind', 'best', 'prompt')]
 with open(B / 'results_gen' / 'per_video_status.csv', 'w', newline='') as f:
     w = csv.DictWriter(f, cols); w.writeheader(); [w.writerow({c: v.get(c) for c in cols}) for v in vid.values()]
 print('\n'.join(L)); print(f'{len(vid)} videos -> per_video_status.csv')
