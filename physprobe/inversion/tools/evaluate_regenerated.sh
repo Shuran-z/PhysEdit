@@ -15,7 +15,7 @@ step() { local n=$1; shift; echo "$(date) start $n" >> $R/regen_${NAME}_progress
 step camcomp cam_comp.py $G/items.json $G/tracks_lean.jsonl --out $G/tracks_camcomp.jsonl --workers $NW
 step eval eval_generated.py $NAME $G/tracks_camcomp.jsonl --workers $NW --clock realtime
 step merge merge_generated.py $BASE $NAME $M
-step gate validation_gate.py $M all
+step gate validation_gate.py $M $BASE,$NAME
 step summary summarize_generated.py ${M}_gated
 step metrics response_metrics.py ${M}_gated
 step compare compare_runs.py ${BASE}_gated ${M}_gated

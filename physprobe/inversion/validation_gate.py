@@ -6,7 +6,7 @@ or occluded objects, object rules with two objects), so a 'not explained' there 
 generated result becomes kind 'not_validated' (the original kind is kept in kind_before_gate).
 Format -> synthetic set: <= 24 frames -> s10f16 (DynamiCrafter); <= 16 fps -> s15v (16 fps x 81, PhysRVG 15 fps x 49);
 otherwise s30f121 (24-25 fps x 121-189).
-Usage: python validation_gate.py NAME [ITEMS_SET] [TRUTH_TAG] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json
+Usage: python validation_gate.py NAME [ITEMS_SET[,ITEMS_SET...]] [TRUTH_TAG] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json
 (TRUTH_TAG: use the known-truth results of a rule variant, results3_<TAG>/ and results_gen/<set>_<TAG>.jsonl)"""
 import collections, glob, json, sys
 
@@ -36,7 +36,8 @@ def failed(tag=''):
 
 if __name__ == '__main__':
     name = sys.argv[1]; items_set = sys.argv[2] if len(sys.argv) > 2 else 'all'; tag = '_' + sys.argv[3] if len(sys.argv) > 3 else ''
-    fmt = {x['key']: format_set(x['fps'], x['frames']) for x in json.load(open(B / 'sam_gen' / items_set / 'items.json'))['items']}
+    fmt = {x['key']: format_set(x['fps'], x['frames']) for n in items_set.split(',')   # several sets: the later ones win
+           for x in json.load(open(B / 'sam_gen' / n / 'items.json'))['items']}
     bad = failed(tag); n = collections.Counter(); out = []
     for line in open(B / 'results_gen' / f'{name}.jsonl'):
         r = json.loads(line)
