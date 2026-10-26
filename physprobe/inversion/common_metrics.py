@@ -24,7 +24,7 @@ from skimage.metrics import structural_similarity
 import evaluator as ev
 from paths import gt
 
-T_MAX, GRID_HZ, SMALL, MOTION_THR = 5.0, 10.0, (256, 144), 0.05
+T_MAX, GRID_HZ = 5.0, 10.0
 REF = ev.B / 'sam_lean' / 'ref99'
 
 
@@ -81,9 +81,10 @@ def trajectory(gen, ref, to_ref, dt_g, dt_r, T, diag):
 
 
 def motion_masks(frames):
-    g = [cv2.GaussianBlur(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255, (3, 3), 0) for f in frames]
-    k = np.ones((3, 3), np.uint8)
-    return [cv2.morphologyEx((np.abs(b - a) > MOTION_THR).astype(np.uint8), cv2.MORPH_OPEN, k).astype(bool) for a, b in zip(g, g[1:])]
+    g = [cv2.GaussianBlur(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255, (5, 5), 0) for f in frames]
+    m = [(np.abs(b - a) > A.motion_thr).astype(np.uint8) for a, b in zip(g, g[1:])]
+    if A.open: m = [cv2.morphologyEx(x, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8)) for x in m]
+    return [x.astype(bool) for x in m]
 
 
 def iou(a, b):
@@ -128,7 +129,7 @@ def run_clip(job):
                 r['cond_psnr'] = float(cv2.PSNR(g0, c0))
                 r['cond_ssim'] = float(structural_similarity(g0, c0, channel_axis=2, gaussian_weights=True, sigma=1.5,
                                                              use_sample_covariance=False, data_range=255))
-                small = lambda im: cv2.resize(im, SMALL, interpolation=cv2.INTER_AREA)
+                small = lambda im: cv2.resize(im, tuple(A.mask_size), interpolation=cv2.INTER_AREA)
                 r.update(physics_iq([small(warp(vg[i])) for i in ig], [small(ref_cache[i]) for i in ir]))
             else: r['video_status'] = 'frames_missing'
         except Exception as e:
@@ -140,6 +141,9 @@ def run_clip(job):
 ap = argparse.ArgumentParser(); ap.add_argument('set'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--out', required=True)
 ap.add_argument('--video-dir'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--workers', type=int, default=16)
 ap.add_argument('--limit', type=int, help='first N items (tests)')
+ap.add_argument('--mask-size', type=int, nargs=2, default=[427, 240], help='motion-mask resolution (half of 854x480)')
+ap.add_argument('--motion-thr', type=float, default=0.03, help='frame-difference threshold (grey level in [0, 1], 5x5 blur)')
+ap.add_argument('--open', type=int, default=0, help='3x3 opening of the masks')
 A = ap.parse_args()
 ITEMS = [x for x in json.load(open(ev.B / 'sam_gen' / A.set / 'items.json'))['items'] if x.get('cam_to_video')][:A.limit]
 TR = tracks(A.tracks, {x['key'] for x in ITEMS})
