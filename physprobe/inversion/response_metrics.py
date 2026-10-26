@@ -8,7 +8,8 @@ C. parameter response, g and v (mu: error only; its prompt changes within a task
    task's prompt, so a ranking across tasks follows the prompt by construction, D42). One-sided bounds count: every
    result with a band (point / interval: its band; upper bound: (0, bound]; lower bound: [bound, inf)) is compared with
    the others, and a pair is decided when the two bands do not overlap. tau = (concordant - discordant) / decided pairs,
-   95 % CI from a bootstrap over (model, task), with the number of decided pairs.
+   95 % CI from a bootstrap over (model, task) groups, with the decided pairs and the groups they come from (a CI from
+   one or two groups is degenerate).
    Appendix: the same tau from the best values of the results with a value only.
 The same B and C on the known-truth videos (reference, synthetic sets) give the instrument's floor / ceiling.
 Also writes results_gen/per_video_status.csv (one row per generated video: its key and the kind of each parameter) for the
@@ -53,7 +54,8 @@ def within_task_tau(rs, order, key, ci_key):
                 if abs(dt) < 1e-9: continue
                 o = order(xs[i], xs[j]); npair += 1; dec += o != 0; cd += np.sign(dt) * o
         if npair: per[task] = (cd, dec, npair)
-    d = dict(pairs=int(sum(v[2] for v in per.values())), decided=int(sum(v[1] for v in per.values())), tasks_with_pairs=len(per))
+    d = dict(pairs=int(sum(v[2] for v in per.values())), decided=int(sum(v[1] for v in per.values())), tasks_with_pairs=len(per),
+             tasks_decided=sum(1 for v in per.values() if v[1]))
     if d['decided'] >= 5:
         d[key] = float(sum(v[0] for v in per.values()) / d['decided'])
         ks = list(per); bs = []
@@ -95,8 +97,8 @@ for m in models + ['all']:
     sh = {k: sum(c[x] for x in kinds) / len(rs) for k, kinds in CATS}; out['evaluability'][m] = dict(n=len(rs), **sh)
     L.append(f"| {m} | {len(rs)} | " + ' | '.join(f'{100 * sh[k]:.1f}%' for k, _ in CATS) + ' |')
 err = lambda d: f"{d['n']} | {d['err_median']:.1f}% | {100 * d['within25']:.0f}%" if d.get('n') else '— | — | —'
-tau = lambda d, k='tau_band', c='tau_band_ci': (f"{d[k]:+.2f} [{d[c][0]:+.2f}, {d[c][1]:+.2f}] ({d['decided']})" if k in d
-                                               else f"— ({d.get('decided', 0)})")
+tau = lambda d, k='tau_band', c='tau_band_ci': (f"{d[k]:+.2f} [{d[c][0]:+.2f}, {d[c][1]:+.2f}] ({d['decided']} / {d['tasks_decided']})" if k in d
+                                               else f"— ({d.get('decided', 0)} / {d.get('tasks_decided', 0)})")
 sets = list(known.items()) + [(m, [r for r in V if m == 'all' or r['model'] == m]) for m in models + ['all']]
 out['bands'] = {}
 for s, R in sets:
@@ -108,10 +110,10 @@ rows = [(s, s in known) for s, _ in sets]
 L += ['', '## B. Inversion error of the results with a value (|best / prompt - 1|; known-truth sets: |best / truth - 1|)', '',
       '| set / model | g: n | g: median | g: within 25 % | mu: n | mu: median | mu: within 25 % | v: n | v: median | v: within 25 % |', '|---|' + '---|' * 9]
 L += [f"| {s} | " + ' | '.join(err((out['known'] if k else out['generated'])[f'{s}|{p}']) for p in ('g', 'mu', 'v')) + ' |' for s, k in rows]
-L += ['', '## C. Parameter response: within-task Kendall tau from the bands, one-sided bounds included [95 % CI] (decided pairs)', '',
+L += ['', '## C. Parameter response: within-task Kendall tau from the bands, one-sided bounds included [95 % CI] (decided pairs / model-task groups)', '',
       '| set / model | g: results | g: tau | v: results | v: tau |', '|---|---|---|---|---|']
 L += [f"| {s} | " + ' | '.join(f"{out['bands'][f'{s}|{p}']['n']} | {tau(out['bands'][f'{s}|{p}'])}" for p in ('g', 'v')) + ' |' for s, _ in rows]
-L += ['', '## Appendix. Response from the best values of the results with a value only [95 % CI] (pairs)', '',
+L += ['', '## Appendix. Response from the best values of the results with a value only [95 % CI] (pairs / model-task groups)', '',
       '| set / model | g: tau | v: tau |', '|---|---|---|']
 L += [f"| {s} | " + ' | '.join(tau((out['known'] if k else out['generated'])[f'{s}|{p}'], 'tau_within', 'tau_ci') for p in ('g', 'v')) + ' |' for s, k in rows]
 (B / 'results_gen' / 'response_metrics.md').write_text('\n'.join(L) + '\n')
