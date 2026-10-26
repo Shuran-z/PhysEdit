@@ -6,7 +6,7 @@ model's median mapping and is flagged. Prompts: visible-part boxes of every non-
 (camera pixels -> condition image -> video), prompt frame 0. Tracking stops at the frame where the last predictability
 window of the task ends plus the 20-frame shift margin (later frames are never used).
 Prompt-corrected deliveries (v6, 31 scenes, 2026-10-25) keep the same layout with V6_ITEM_VERIFIED.json: --gen-dir.
-Usage: python make_gen_jobs.py NAME REMOTE_DIR [--gen-dir DIR] [--workers N] [--models m1,m2] [--seeds 0,1,2] [--annotations 1,2,3] [--limit N]
+Usage: python make_gen_jobs.py NAME REMOTE_DIR [--gen-dir DIR] [--workers N] [--skip NAME1,NAME2] [--models m1,m2] [--seeds 0,1,2] [--annotations 1,2,3] [--limit N]
   -> sam_gen/<NAME>/jobs.jsonl (videos REMOTE_DIR/videos/<item key>.mp4), items.json, upload list"""
 import argparse, json, math, statistics as st
 from multiprocessing import get_context
@@ -85,6 +85,7 @@ if __name__ == '__main__':
     ap.add_argument('--models'); ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--annotations', default='1,2,3'); ap.add_argument('--limit', type=int)
     ap.add_argument('--gen-dir', help='generation delivery root (default: the v3 three-variant run)')
     ap.add_argument('--workers', type=int, default=1, help='parallel registration processes')
+    ap.add_argument('--skip', help='comma-separated job names (sam_gen/<name>/items.json) whose keys are already tracked (incremental deliveries)')
     a = ap.parse_args()
     if a.gen_dir: G = Path(c2.gt(a.gen_dir))
     items = []
@@ -98,5 +99,8 @@ if __name__ == '__main__':
                     meta = json.load(open(f)); clip = meta['clip_id']
                     if clip == 'T06_C04' or HZ.get(clip, {}).get('status') != 'OK': continue
                     items.append(dict(key=f"s{s}a{an}_{md.name}_{clip}", seed=int(s), annotation=int(an), model=md.name, clip=clip, item=it.name, path=str(it / 'resized.mp4')))
+    if a.skip:
+        done = {x['key'] for n in a.skip.split(',') for x in json.load(open(c2.B / 'sam_gen' / n / 'items.json'))['items']}
+        items = [x for x in items if x['key'] not in done]
     if a.limit: items = items[:a.limit]
     build(items, a.name, a.remote, a.workers)
