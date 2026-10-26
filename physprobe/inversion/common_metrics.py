@@ -98,7 +98,8 @@ def physics_iq(gs, rs):
     wg, wr = np.sum(mg, 0).astype(float), np.sum(mr, 0).astype(float); den = np.maximum(wg, wr).sum()
     mse = float(np.mean([np.mean(((a.astype(np.float32) - b.astype(np.float32)) / 255) ** 2) for a, b in zip(gs[1:], rs[1:])]))
     return dict(spatial_iou=sp, spatiotemporal_iou=float(np.mean(st)) if st else 1.0,
-                weighted_spatial_iou=1.0 if den == 0 else float(np.minimum(wg, wr).sum() / den), mse=mse)
+                weighted_spatial_iou=1.0 if den == 0 else float(np.minimum(wg, wr).sum() / den), mse=mse,
+                motion_area_gen=float(np.mean(mg)), motion_area_ref=float(np.mean(mr)))   # mean share of moving pixels per step
 
 
 def run_clip(job):
@@ -140,12 +141,12 @@ def run_clip(job):
 
 ap = argparse.ArgumentParser(); ap.add_argument('set'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--out', required=True)
 ap.add_argument('--video-dir'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--workers', type=int, default=16)
-ap.add_argument('--limit', type=int, help='first N items (tests)')
+ap.add_argument('--limit', type=int, help='first N items (tests)'); ap.add_argument('--sample', type=int, help='every N-th item (tests)')
 ap.add_argument('--mask-size', type=int, nargs=2, default=[427, 240], help='motion-mask resolution (half of 854x480)')
 ap.add_argument('--motion-thr', type=float, default=0.03, help='frame-difference threshold (grey level in [0, 1], 5x5 blur)')
 ap.add_argument('--open', type=int, default=0, help='3x3 opening of the masks')
 A = ap.parse_args()
-ITEMS = [x for x in json.load(open(ev.B / 'sam_gen' / A.set / 'items.json'))['items'] if x.get('cam_to_video')][:A.limit]
+ITEMS = [x for x in json.load(open(ev.B / 'sam_gen' / A.set / 'items.json'))['items'] if x.get('cam_to_video')][::A.sample or 1][:A.limit]
 TR = tracks(A.tracks, {x['key'] for x in ITEMS})
 if __name__ == '__main__':
     by = collections.defaultdict(list)
