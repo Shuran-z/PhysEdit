@@ -11,7 +11,7 @@ import numpy as np
 
 from paths import WORK as B
 
-COMMON = (('ade', 'ADE ↓', '{:.4f}'), ('fde', 'FDE ↓', '{:.4f}'), ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
+COMMON = (('ade', 'ADE (median) ↓', '{:.4f}'), ('fde', 'FDE (median) ↓', '{:.4f}'), ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
           ('spatiotemporal_iou', 'Spatiotemporal IoU ↑', '{:.3f}'), ('weighted_spatial_iou', 'Weighted spatial IoU ↑', '{:.3f}'),
           ('mse', 'MSE ↓', '{:.4f}'), ('motion_area_gen', 'moving pixels', '{:.2%}'), ('cond_psnr', 'Condition PSNR ↑', '{:.2f}'),
           ('cond_ssim', 'Condition SSIM ↑', '{:.3f}'))
@@ -21,11 +21,14 @@ NAMES = {'cogvideox_i2v': 'CogVideoX', 'cosmos': 'Cosmos', 'cosmos3_nano': 'Cosm
 DIAG = math.hypot(854, 480)
 
 
+MEDIAN = ('ade', 'fde')   # trajectory errors have heavy tails (objects thrown out of the scene, lost tracks): medians
+
+
 def means(rows):
     out = {}
     for k, _, _ in COMMON:
         v = [r[k] for r in rows if r.get(k) is not None and np.isfinite(r[k])]
-        out[k] = (float(np.mean(v)), len(v)) if v else (None, 0)
+        out[k] = (float(np.median(v) if k in MEDIAN else np.mean(v)), len(v)) if v else (None, 0)
     return out
 
 
@@ -45,14 +48,14 @@ for l in open(a.camstats):
 resp = json.load(open(a.response)); models = sorted(by)
 out = dict(common={}, camera={}, parameters={})
 L = ['# Benchmark table: common metrics and the benchmark\'s own physical-parameter metrics', '',
-     '## 1. Common metrics (generated video vs the reference continuation of its task; means over videos)', '',
-     '| model | videos | ' + ' | '.join(h for _, h, _ in COMMON) + ' | camera drift ↓ | camera drift > 2 % |', '|---|---|' + '---|' * (len(COMMON) + 2)]
+     '## 1. Common metrics (generated video vs the reference continuation of its task; means over videos, medians where marked)', '',
+     '| model | videos | ' + ' | '.join(h for _, h, _ in COMMON) + ' | camera drift (median) ↓ | camera drift > 2 % |', '|---|---|' + '---|' * (len(COMMON) + 2)]
 for m in models:
     mm = means(by[m]); out['common'][m] = mm
     dr = [s['max_shift_px'] / DIAG for s in cam.get(m, []) if s.get('max_shift_px') is not None]
-    out['camera'][m] = dict(drift_mean=float(np.mean(dr)) if dr else None, drift_over_2pct=float(np.mean(np.array(dr) > 0.02)) if dr else None, n=len(dr))
+    out['camera'][m] = dict(drift_median=float(np.median(dr)) if dr else None, drift_over_2pct=float(np.mean(np.array(dr) > 0.02)) if dr else None, n=len(dr))
     L.append(f'| {NAMES.get(m, m)} | {len(by[m])} | ' + ' | '.join(fmt(mm[k][0], f) for k, _, f in COMMON)
-             + f" | {fmt(out['camera'][m]['drift_mean'], '{:.4f}')} | {fmt(out['camera'][m]['drift_over_2pct'] and 100 * out['camera'][m]['drift_over_2pct'], '{:.0f}%')} |")
+             + f" | {fmt(out['camera'][m]['drift_median'], '{:.4f}')} | {fmt(out['camera'][m]['drift_over_2pct'] and 100 * out['camera'][m]['drift_over_2pct'], '{:.0f}%')} |")
 for s in a.synthetic.split(','):
     f = B / 'results_gen' / f'common_{s}.jsonl'
     if not f.exists(): continue
