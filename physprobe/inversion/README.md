@@ -106,10 +106,12 @@ python summarize_generated.py NAME_gated   # -> results_gen/NAME_gated_by_model.
 - 结果:`results_gen/all_cc.jsonl`(10,295 条视频 × 适用参数,共 27,164 组,已做相机运动补偿,实时时钟,库与已知答案测试相同);过门后为 `all_cc_gated.jsonl`,按模型的汇总在 `all_cc_gated_by_model.md`。
 - 后处理一次跑完:`tools/postprocess_generated.sh <镜像根目录> all_cc 24`。依次做真值验证门、汇总、σ 加倍的敏感性对比(有 `all_cc_sigma3.jsonl` 时)、运动幅度与起动检查、报告图表。
 - 人工判读:`qa_overlay.py`(分层抽样叠加图;绿 = SAM,红 = 提示值下的仿真,蓝 = 最佳拟合),判读记录在 `.local-research/evaluation/qa_view/`。
+- 生成视频指标(问题记录 E3):`response_metrics.py [NAME]` -> `results_gen/response_metrics.md`:可评测性(各类结果的比例,不能评测 = 无法解释 + 无观测,待与人工打分做相关性检验)、反演误差(给出数值的结果,|最优值 / 提示值 − 1|,g/μ/v)、参数响应(g、v;同一模型同一任务内提示值不同的视频对,按不确定带排先后,单侧界也算,Kendall τ,按任务组重采样给区间)。同时写逐视频状态表 `results_gen/per_video_status.csv`(key、匿名片段 id、视频路径、各参数的类别和数值),用来对齐人工打分。
+- 仿真库加密(D36):`library_refine_plan.py`(规划,只看仿真)→ `server/refine_queue.py`(运行)→ `collect_library.py PLAN libs3`(收集)。第一轮已并入 `libs3/`;第二轮(4.5 px 以下)A/B 变差,不采用。试验块放在单独目录,用 `PHYSPROBE_EXTRA_LIBS` 做 A/B(`ref_ab.py` 比较两次参考结果,`refined_clips.py` 列出已全部加密的参考片段)。
 
 ## 7. 局限与待办
 
 - **T19/T20 的 μ**(B20):支撑面是背景桌子,固定为 Genesis 默认摩擦 1.0,低于 1.0 的值在当前仿真设置下无法表示。
 - **T11**:提示词没写起动时间(仿真里 2.0 s 才推),生成视频的"无法解释"可能部分来自时间未知(D29)。
 - **DynamiCrafter**:16 帧、10 fps,大多数视频第 0 帧已不是条件图(用模型中位映射),跟踪噪声偏大,结论要谨慎。
-- **待用户决定**:E1(T02、T16 主接触面的另一种映射)。
+- **待用户决定**:E1(T02、T16 主接触面的另一种映射);人工打分的数据(相关性检验);T07_C05、T09_C05(参考视频静止)是否补进评测。
