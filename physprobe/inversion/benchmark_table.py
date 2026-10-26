@@ -13,7 +13,8 @@ from paths import WORK as B
 
 COMMON = (('ade', 'ADE ↓', '{:.4f}'), ('fde', 'FDE ↓', '{:.4f}'), ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
           ('spatiotemporal_iou', 'Spatiotemporal IoU ↑', '{:.3f}'), ('weighted_spatial_iou', 'Weighted spatial IoU ↑', '{:.3f}'),
-          ('mse', 'MSE ↓', '{:.4f}'), ('cond_psnr', 'Condition PSNR ↑', '{:.2f}'), ('cond_ssim', 'Condition SSIM ↑', '{:.3f}'))
+          ('mse', 'MSE ↓', '{:.4f}'), ('motion_area_gen', 'moving pixels', '{:.2%}'), ('cond_psnr', 'Condition PSNR ↑', '{:.2f}'),
+          ('cond_ssim', 'Condition SSIM ↑', '{:.3f}'))
 NAMES = {'cogvideox_i2v': 'CogVideoX', 'cosmos': 'Cosmos', 'cosmos3_nano': 'Cosmos3-nano', 'dynamicrafter_i2v': 'DynamiCrafter',
          'hunyuan15_i2v': 'Hunyuan', 'ltx_i2v': 'LTX', 'minimax_h3': 'MiniMax', 'physalign_wan22_i2v_a14b': 'PhysAlign',
          'physrvg_ti2v5b': 'PhysRVG', 'videogpa_ti2v5b': 'VideoGPA', 'wan22_i2v_a14b': 'Wan2.2-I2V-A14B', 'wan_ti2v5b': 'Wan-TI2V-5B'}
@@ -58,8 +59,10 @@ for s in a.synthetic.split(','):
     sr = [json.loads(l) for l in open(f)]; mm = means(sr); out['common'][f'synthetic_{s}'] = mm
     L.append(f'| ceiling: synthetic {s} | {len(sr)} | ' + ' | '.join(fmt(mm[k][0], f) for k, _, f in COMMON) + ' | — | — |')
 static = [r['ade_static'] for r in rows if r.get('ade_static') is not None]
+ref_move = [r['motion_area_ref'] for r in rows if r.get('motion_area_ref') is not None]
 L += ['', f'Reference scale: a video in which nothing moves would have ADE {np.mean(static):.4f} (mean displacement of the reference objects, '
-      'normalised by the image diagonal). Camera drift: largest background shift of a video relative to its first frame / image diagonal (cam_comp).', '',
+      f'normalised by the image diagonal); in the reference continuations {np.mean(ref_move):.2%} of the pixels move per 0.1 s step (moving pixels '
+      'of the generated videos for comparison). Camera drift: largest background shift of a video relative to its first frame / image diagonal (cam_comp).', '',
       '## 2. The benchmark\'s own metrics (physical parameters; validated results)', '',
       '| model | explainable ↑ | with a value | g error ↓ | μ error ↓ | v error ↓ | g response τ ↑ | v response τ ↑ |', '|---|---|---|---|---|---|---|---|']
 ev_ = resp['evaluability']; gen = resp['generated']; bands = resp['bands']
