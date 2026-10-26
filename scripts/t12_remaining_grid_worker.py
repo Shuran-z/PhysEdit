@@ -13,7 +13,10 @@ def save(path,value):
 
 def main():
     import fcntl
-    p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--source',required=True);p.add_argument('--gpu',required=True);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--source',required=True);p.add_argument('--gpu',required=True)
+    p.add_argument('--renderer-timeout-seconds',type=int,default=1200)
+    args=p.parse_args()
+    if not 1200<=args.renderer_timeout_seconds<=7200:p.error('renderer timeout must be between 1200 and 7200 seconds')
     root=Path(args.root);root.mkdir(exist_ok=True);lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     source=Path(args.source);renderer=source/'12_render_motion_sequence.py';backend_hash=hashlib.sha256(renderer.read_bytes()).hexdigest();results=[]
     for job in json.loads(Path(args.plan).read_text()):
@@ -38,7 +41,7 @@ def main():
                     if k in render:render[k]=str(dest/Path(render[k]).name)
                 c['scene_overrides']['raytracing']=False;c['annotations']['save_path']=str(dest/'physics.json');cp=dest/'config.json';save(cp,c)
                 env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0');lib=PYTHON.rsplit('/bin/python',1)[0]+'/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
-                with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(renderer),'--config',str(cp)],cwd=source,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(renderer),'--config',str(cp)],cwd=source,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=args.renderer_timeout_seconds)
                 if run.returncode:raise RuntimeError('original renderer failed: '+str(dest/'run.log'))
                 raw=(dest/'physics.json').read_bytes();state=json.loads(raw);positions=[next(o['position'] for o in f['objects'] if o['name']=='t12_tissue_box') for f in state['frames']]
                 if len(positions)!=210 or any(not math.isfinite(x) for point in positions for x in point):raise ValueError('invalid trajectory')

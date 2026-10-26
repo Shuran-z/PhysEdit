@@ -4,6 +4,7 @@ import collections
 import gzip
 import inspect
 import json
+import hashlib
 from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT,distances
 from scripts.probe_verification_cache import verify_probe_files
@@ -52,18 +53,55 @@ def packed(host,path):
     return json.loads(gzip.decompress(base64.b64decode(remote_text(host,code,timeout=120))))
 
 
+def atomic_text(path, text):
+    temp=path.with_name(path.name+'.tmp')
+    temp.write_text(text,encoding='utf-8')
+    temp.replace(path)
+
+
+def fetch_queue(launch, code, cache_root):
+    """Checkpoint each verified transport payload instead of restarting all queues."""
+    identity={k:launch[k] for k in ['host','root','plan_sha256']}
+    name=hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()
+    path=cache_root/(name+'.json.gz')
+    try:
+        data=json.loads(gzip.decompress(base64.b64decode(remote_text(launch['host'],code,timeout=600))))
+    except Exception as exc:
+        if not path.exists():raise
+        saved=json.loads(gzip.decompress(path.read_bytes()))
+        if saved['identity']!=identity:raise ValueError('queue checkpoint identity changed')
+        return saved['data'],str(exc)
+    temp=path.with_name(path.name+'.tmp')
+    temp.write_bytes(gzip.compress(json.dumps(dict(identity=identity,data=data)).encode(),mtime=0))
+    temp.replace(path)
+    return data,None
+
+
 def main():
     scan=json.loads((ROOT/'remaining_family_scans_launch_20261023.json').read_text())
     base=scan['root']+'/results/'
-    summary=packed(scan['host'],base+'summary.json');coverage=packed(scan['host'],base+'coverage.json')
-    bindings=packed(scan['host'],base+'bindings.json')
-    (ROOT/'remaining_family_scan_summary_20261023.json').write_text(json.dumps(summary,indent=2))
-    (ROOT/'remaining_family_scan_coverage_20261023.json').write_text(json.dumps(coverage,indent=2))
     ledger=ROOT/'original_value_distance_ledger'
-    (ledger/'remaining_family_scan_sample_distances.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in bindings))
+    scan_errors=[]
+    try:
+        summary=packed(scan['host'],base+'summary.json');coverage=packed(scan['host'],base+'coverage.json')
+        bindings=packed(scan['host'],base+'bindings.json')
+    except Exception as exc:
+        old=ROOT/'remaining_family_scan_summary_20261023.json'
+        if not old.exists():raise
+        summary=json.loads(old.read_text())
+        scan_errors.append(dict(host=scan['host'],root=scan['root'],error=str(exc),retained_previous_scan=True))
+    else:
+        atomic_text(ROOT/'remaining_family_scan_summary_20261023.json',json.dumps(summary,indent=2))
+        atomic_text(ROOT/'remaining_family_scan_coverage_20261023.json',json.dumps(coverage,indent=2))
+        atomic_text(ledger/'remaining_family_scan_sample_distances.jsonl',''.join(json.dumps(r)+'\n' for r in bindings))
     marker=ROOT/'conditional_family_launches_20261023.json'
     launches=json.loads(marker.read_text()) if marker.exists() else []
-    output=[];progress=[]
+    output=[];progress=[];errors=list(scan_errors)
+    cache_root=ROOT/'conditional_collector_checkpoints';cache_root.mkdir(exist_ok=True)
+    old_ledger=ledger/'conditional_family_sample_distances.jsonl'
+    previous=[json.loads(line) for line in old_ledger.read_text().splitlines()] if old_ledger.exists() else []
+    previous_progress_path=ROOT/'conditional_family_progress_20261023.json'
+    previous_progress=json.loads(previous_progress_path.read_text()).get('queues',[]) if previous_progress_path.exists() else []
     for launch in launches:
         plan_name=launch.get('local_plan','conditional_'+launch['kind']+'_jobs_20261023.json.gz')
         jobs=json.loads(gzip.decompress((ROOT/plan_name).read_bytes()))
@@ -90,11 +128,30 @@ phase=json.loads((root/'pipeline_phase.json').read_text()) if (root/'pipeline_ph
 status=json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []
 checkpoint();print(base64.b64encode(gzip.compress(json.dumps(dict(results=rows,source_checks=checks,status=status,phase=phase)).encode())).decode())
 '''.replace('VERIFY',inspect.getsource(verify_probe_files)).replace('LAUNCH',repr(launch))
-        data=json.loads(gzip.decompress(base64.b64decode(remote_text(launch['host'],code,timeout=600))))
-        for result in data['results']:
-            bound=bind(byid[result['job_id']],result)
-            for row in bound:row['refinement_execution_host']=launch['host']
-            output.extend(bound)
+        try:
+            data,error=fetch_queue(launch,code,cache_root)
+        except Exception as exc:
+            # Retain already verified bindings for this queue while other hosts
+            # continue collecting. No fresh result is inferred from a failure.
+            output.extend(r for r in previous if r.get('refinement_job_id') in byid)
+            old=next((r for r in previous_progress if r['launch']['root']==launch['root'] and r['launch']['host']==launch['host']),dict(launch=launch))
+            progress.append(dict(old,collection_stale=True,collection_error=str(exc)))
+            errors.append(dict(host=launch['host'],root=launch['root'],error=str(exc)))
+            continue
+        if error:errors.append(dict(host=launch['host'],root=launch['root'],error=error))
+        queue_output=[]
+        try:
+            for result in data['results']:
+                bound=bind(byid[result['job_id']],result)
+                for row in bound:row['refinement_execution_host']=launch['host']
+                queue_output.extend(bound)
+        except Exception as exc:
+            output.extend(r for r in previous if r.get('refinement_job_id') in byid)
+            old=next((r for r in previous_progress if r['launch']['root']==launch['root'] and r['launch']['host']==launch['host']),dict(launch=launch))
+            progress.append(dict(old,collection_stale=True,collection_error=str(exc)))
+            errors.append(dict(host=launch['host'],root=launch['root'],error=str(exc),validation_failed=True))
+            continue
+        output.extend(queue_output)
         done={r['job_id'] for r in data['results']}
         failed={r['job_id'] for r in data['status'] if r['status']=='failed'}-done
         checks={r['job_id']:r for r in data['source_checks']}
@@ -106,11 +163,13 @@ checkpoint();print(base64.b64encode(gzip.compress(json.dumps(dict(results=rows,s
             if job['job_id'] in checks:counts[key]['source_checked']+=1
         progress.append(dict(launch=launch,phase=data['phase'],completed=len(done),failed_attempts=len(failed),
             source_checks=len(checks),families=dict(counts),source_event_mismatches=sum(len(r['source_event_mismatches']) for r in checks.values()),
-            unseeded_completed_scans=sum(r['source_seed'] is None for r in data['results'])))
-    (ledger/'conditional_family_sample_distances.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in output))
+            unseeded_completed_scans=sum(r['source_seed'] is None for r in data['results']),collection_stale=bool(error),collection_error=error))
+    atomic_text(ledger/'conditional_family_sample_distances.jsonl',''.join(json.dumps(r)+'\n' for r in output))
     result=dict(queues=progress,conditional_bound_samples=len({(r['scene_id'],r['sample_id']) for r in output}),
-                conditional_intervals=len(output),formal_admissions=0,source_scan_summary=summary)
-    (ROOT/'conditional_family_progress_20261023.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))
+                conditional_intervals=len(output),formal_admissions=0,source_scan_summary=summary,collection_errors=errors)
+    atomic_text(ROOT/'conditional_family_progress_20261023.json',json.dumps(result,indent=2))
+    print(json.dumps({k:v for k,v in result.items() if k not in ['queues','source_scan_summary']}),flush=True)
+    if errors:raise RuntimeError('Some queues could not refresh; previous verified results retained; see collection_errors')
 
 
 if __name__=='__main__':main()

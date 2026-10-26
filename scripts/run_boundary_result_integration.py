@@ -11,7 +11,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 
@@ -60,6 +60,9 @@ TARGETS.update({'five_scene_parallel_'+str(i)+'_launch_20261021.json':'scripts.r
 TARGETS.update({'t18_parallel_'+str(i)+'_launch_20261022.json':'scripts.register_t18_table_contact_distances' for i in range(4)})
 TARGETS.update({'t12_remaining_grid_'+str(i)+'_launch_20261022.json':'scripts.register_t12_remaining_grid' for i in range(2)})
 TARGETS.update({'t12_remaining_grid_p26_'+str(i)+'_launch_20261022.json':'scripts.register_t12_remaining_grid' for i in range(4)})
+TARGETS.update({'t18_disk_recovery_'+str(i)+'_launch_20261025.json':'scripts.register_t18_table_contact_distances' for i in range(5)})
+TARGETS.update({'t12_timeout_recovery_'+str(i)+'_launch_20261025.json':'scripts.register_t12_remaining_grid' for i in range(4)})
+TARGETS['t13_seed0_repeat_launch_20261025.json']='scripts.collect_t13_repeatability'
 
 
 def main():
@@ -73,6 +76,10 @@ def main():
         import fcntl
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     cache={};errors=[];last_statuses={};post_pending=False;deadline=time.monotonic()+args.hours*3600
+    def heartbeat(**fields):
+        report=dict(collector_pid=os.getpid(),collector_mode='watch' if args.watch else 'single_pass',all20_completed=False,updated_at=time.time(),**fields)
+        temp=root/('status.'+str(os.getpid())+'.tmp')
+        temp.write_text(json.dumps(report,indent=2));temp.replace(root/'status.json')
     while True:
         launches={name:json.loads((ROOT/name).read_text(encoding='utf-8-sig')) for name in TARGETS if (ROOT/name).exists() and not (name=='t09_missing_state_replay_launch_20261020.json' and (ROOT/'t09_missing_state_replay_v2_launch_20261020.json').exists())}
         # New conditional queues are discovered on every cycle, including
@@ -111,6 +118,9 @@ print(json.dumps(rows))
                     statuses.extend(dict(last_statuses.get(name,dict(name=name,fingerprint=None)),running=None,unreachable=True) for name in subset)
             changed=[r for r in statuses if not r.get('unreachable') and cache.get(r['name'])!=r['fingerprint']]
             modules=sorted({TARGETS[r['name']] for r in changed})
+            # Publish a fresh heartbeat before potentially long collectors. A
+            # stopped process must not leave its last snapshot looking live.
+            heartbeat(status='collecting',jobs=statuses,unreachable_hosts=unreachable,modules=modules,errors=errors[-30:])
             succeeded=set()
             def run(module):
                 with (root/(module.split('.')[-1]+'.log')).open('a',encoding='utf-8') as log:
@@ -118,10 +128,14 @@ print(json.dumps(rows))
                 if result.returncode:raise RuntimeError(module+' failed; retained previous output, inspect its log')
             with ThreadPoolExecutor(max_workers=3) as executor:
                 futures={executor.submit(run,module):module for module in modules}
-                for future in as_completed(futures):
-                    module=futures[future]
-                    try:future.result();succeeded.add(module)
-                    except Exception as exc:errors.append(dict(module=module,error=str(exc),time=time.time()))
+                pending=set(futures)
+                while pending:
+                    finished,pending=wait(pending,timeout=30,return_when=FIRST_COMPLETED)
+                    for future in finished:
+                        module=futures[future]
+                        try:future.result();succeeded.add(module)
+                        except Exception as exc:errors.append(dict(module=module,error=str(exc),time=time.time()))
+                    heartbeat(status='collecting',jobs=statuses,unreachable_hosts=unreachable,modules=modules,pending_modules=sorted(futures[f] for f in pending),completed_modules=sorted(succeeded),errors=errors[-30:])
             post_failed=False
             if succeeded or post_pending:
                 for module in ['scripts.combine_recovered_boundary_distances','scripts.snapshot_boundary_completion','scripts.write_all20_boundary_progress']:
@@ -134,7 +148,7 @@ print(json.dumps(rows))
             running=any(r['running'] for r in statuses) or bool(unreachable)
             retry_needed=bool(unreachable) or len(succeeded)<len(modules) or post_failed
             report=dict(status='running' if running else 'binding_retry_pending' if retry_needed else 'listed_jobs_ended_review_results',jobs=statuses,unreachable_hosts=unreachable,errors=errors[-30:],all20_completed=False,updated_at=time.time())
-            (root/'status.json').write_text(json.dumps(report,indent=2));print(json.dumps(dict(status=report['status'],changed_jobs=len(changed),errors=len(errors))),flush=True)
+            heartbeat(**{k:v for k,v in report.items() if k not in ['all20_completed','updated_at']});print(json.dumps(dict(status=report['status'],changed_jobs=len(changed),errors=len(errors))),flush=True)
             if not args.watch or (not running and not retry_needed):break
         except Exception as exc:
             errors.append(dict(error=str(exc),time=time.time()));(root/'status.json').write_text(json.dumps(dict(status='integration_error_retry_pending',errors=errors[-30:],all20_completed=False,updated_at=time.time()),indent=2))

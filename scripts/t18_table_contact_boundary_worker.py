@@ -105,10 +105,36 @@ def job_folder(root,job_id):
 
 def wait_for_resources(root,gpu,minimum_free_memory_mib=12288):
     while True:
-        if shutil.disk_usage(root).free<20*1024**3:raise RuntimeError('disk reserve below 20GiB')
+        if shutil.disk_usage(root).free<20*1024**3:
+            save(root/'resource_status.json',dict(status='waiting_for_disk',minimum_free_GiB=20))
+            time.sleep(20)
+            continue
         free=float(subprocess.check_output(['nvidia-smi','-i',str(gpu),'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
         if free>=minimum_free_memory_mib:return
         save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=gpu,free_memory_mib=free,minimum_free_memory_mib=minimum_free_memory_mib))
+        time.sleep(20)
+
+
+def acquire_gpu(root, preferred, minimum_free_memory_mib):
+    """Share GPU leases with conditional searches; resource shortages wait."""
+    import fcntl
+    while True:
+        if shutil.disk_usage(root).free < 20*1024**3:
+            save(root/'resource_status.json',dict(status='waiting_for_disk',minimum_free_GiB=20))
+            time.sleep(20)
+            continue
+        rows=subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.free','--format=csv,noheader,nounits']).decode().splitlines()
+        for row in rows:
+            gpu,free=[x.strip() for x in row.split(',')]
+            if float(free)<minimum_free_memory_mib or preferred!='auto' and gpu!=preferred:
+                continue
+            lease=Path('/tmp/physedit_conditional_gpu_'+gpu+'.lock').open('a')
+            try:fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError:
+                lease.close()
+                continue
+            return gpu,lease
+        save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=preferred))
         time.sleep(20)
 
 
@@ -148,13 +174,15 @@ def main():
                     raw=gzip.decompress(stored) if state_path.suffix=='.gz' else stored
                     if hashlib.sha256(raw).hexdigest()!=cached['state_sha256']:raise ValueError('cached state bytes changed')
                     return cached
-                wait_for_resources(root,args.gpu,args.minimum_free_memory_mib)
                 c=change(base,theta,build,bgs);render=c['render'];render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False)
                 for key in ['save_video','save_first_rgb','save_last_rgb']:
                     if render.get(key):render[key]=str(dest/Path(render[key]).name)
                 c['scene_overrides']['raytracing']=False;c['annotations']['save_path']=str(dest/'physics.json');cp=dest/'config.json';save(cp,c)
-                env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0');lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
-                with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=PROJECT,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=args.renderer_timeout_seconds)
+                probe_gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib)
+                env=dict(os.environ,CUDA_VISIBLE_DEVICES=probe_gpu,TI_OFFLINE_CACHE='0');lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
+                try:
+                    with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=PROJECT,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=args.renderer_timeout_seconds)
+                finally:lease.close()
                 if run.returncode:raise RuntimeError('original renderer failed: '+str(dest/'run.log'))
                 raw=(dest/'physics.json').read_bytes();state=json.loads(raw)
                 if len(state['frames'])!=210:raise ValueError('incomplete state')
