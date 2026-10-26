@@ -2,10 +2,13 @@
 A. evaluability per model: share of the validated results that give a value (point / interval), a one-sided bound, are
    unidentifiable, not explained, or no observation (the 'cannot evaluate' share is to be checked against human scores);
 B. inversion error of the results with a value: |best / prompt - 1| (median, 75th pct, within 10 / 25 %);
-C. parameter response: Spearman rho and Kendall tau between the prompted and the measured value, with a bootstrap 95 % CI.
-   g: C01-C03 prompt 1.62 / 3.71 / 9.81 in every task (C04/C05 9.81), so its response is within the same scenes;
-   mu is the same in all conditions of a task except T07/T14/T18, so its response is mostly a ranking across scenes;
-   v varies within and across tasks.
+C. parameter response: rank agreement between the prompted and the measured value, counted only between videos of the
+   same task (a different scene is a different experiment, and the mu / v library grid of each task is centred on that
+   task's prompted value, so a ranking across tasks follows the prompt by construction): within-task Kendall tau =
+   (concordant - discordant) / pairs over all same-task pairs with different prompted values, 95 % CI from a bootstrap
+   over tasks. The pooled Spearman rho over all results is kept for g only (absolute grid 0.5-25 for every task).
+   g: C01-C03 prompt 1.62 / 3.71 / 9.81 in every task (C04/C05 9.81); mu changes within a task only in T07/T14/T18;
+   v changes within most of its tasks.
 The same B and C on the known-truth videos (reference, synthetic sets) give the instrument's floor / ceiling.
 Also writes results_gen/per_video_status.csv (one row per generated video: its key and the kind of each parameter) for the
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
@@ -30,21 +33,33 @@ def response(rs):
     t = np.array([r['truth'] for r in rs]); b = np.array([r['best'] for r in rs]); e = np.abs(b / t - 1) * 100
     d = dict(n=len(rs), err_median=float(np.median(e)), err_p75=float(np.percentile(e, 75)),
              within10=float(np.mean(e <= 10)), within25=float(np.mean(e <= 25)), n_prompts=len(set(np.round(t, 4))))
-    if d['n_prompts'] >= 2 and len(rs) >= 5:
-        d['rho'] = float(stats.spearmanr(t, b)[0]); d['tau'] = float(stats.kendalltau(t, b)[0])
-        bs = []
+    if rs[0]['param'] == 'g' and d['n_prompts'] >= 2 and len(rs) >= 5: d['rho_pooled'] = float(stats.spearmanr(t, b)[0])
+    by = collections.defaultdict(list)
+    for r in rs: by[r['clip'][:3]].append((r['truth'], r['best']))
+    per = {}                                                    # task -> (concordant - discordant, pairs)
+    for task, xs in by.items():
+        cd = npair = 0
+        for i in range(len(xs)):
+            for j in range(i + 1, len(xs)):
+                dt = xs[i][0] - xs[j][0]
+                if abs(dt) < 1e-9: continue
+                cd += np.sign(dt) * np.sign(xs[i][1] - xs[j][1]); npair += 1
+        if npair: per[task] = (cd, npair)
+    d['pairs'] = sum(v[1] for v in per.values()); d['tasks_with_pairs'] = len(per)
+    if d['pairs'] >= 5:
+        d['tau_within'] = float(sum(v[0] for v in per.values()) / d['pairs'])
+        ks = list(per); bs = []
         for _ in range(1000):
-            i = rng.integers(0, len(rs), len(rs))
-            if len(set(t[i])) >= 2: bs.append(stats.spearmanr(t[i], b[i])[0])
-        bs = np.array([x for x in bs if np.isfinite(x)])
-        if len(bs): d['rho_ci'] = [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))]
+            smp = [per[ks[k]] for k in rng.integers(0, len(ks), len(ks))]; n_ = sum(v[1] for v in smp)
+            if n_: bs.append(sum(v[0] for v in smp) / n_)
+        d['tau_ci'] = [float(np.percentile(bs, 2.5)), float(np.percentile(bs, 97.5))]
     return d
 
 
 def cell(d):
     if not d.get('n'): return '— | — | — | —'
-    rho = f"{d['rho']:+.2f} [{d['rho_ci'][0]:+.2f}, {d['rho_ci'][1]:+.2f}]" if 'rho_ci' in d else '—'
-    return f"{d['n']} | {d['err_median']:.1f}% | {100 * d['within25']:.0f}% | {rho}"
+    tau = f"{d['tau_within']:+.2f} [{d['tau_ci'][0]:+.2f}, {d['tau_ci'][1]:+.2f}] ({d['pairs']})" if 'tau_within' in d else f"— ({d.get('pairs', 0)})"
+    return f"{d['n']} | {d['err_median']:.1f}% | {100 * d['within25']:.0f}% | {tau}"
 
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
@@ -65,15 +80,15 @@ for m in models + ['all']:
     sh = {k: sum(c[x] for x in kinds) / len(rs) for k, kinds in CATS}; out['evaluability'][m] = dict(n=len(rs), **sh)
     L.append(f"| {m} | {len(rs)} | " + ' | '.join(f'{100 * sh[k]:.1f}%' for k, _ in CATS) + ' |')
 L += ['', '## B + C. Known-truth videos (instrument floor / ceiling): results with a value', '',
-      '| set | parameter | n | median abs error | within 25 % | Spearman rho [95 % CI] |', '|---|---|---|---|---|---|']
+      '| set | parameter | n | median abs error | within 25 % | within-task tau [95 % CI] (pairs) |', '|---|---|---|---|---|---|']
 for s, R in known.items():
     R = [r for r in R if 'param' in r and not skip(r)]
     for p in ('g', 'mu', 'v'):
         d = response([r for r in R if r['param'] == p]); out['known'][f'{s}|{p}'] = d
         L.append(f'| {s} | {p} | {cell(d)} |')
 L += ['', '## B + C. Generated videos: results with a value, error and response relative to the prompted value', '',
-      '| model | g: n | g: median abs error | g: within 25 % | g: rho [95 % CI] | mu: n | mu: median abs error | mu: within 25 % | mu: rho [95 % CI] '
-      '| v: n | v: median abs error | v: within 25 % | v: rho [95 % CI] |', '|---|' + '---|' * 12]
+      '| model | g: n | g: median abs error | g: within 25 % | g: tau [95 % CI] (pairs) | mu: n | mu: median abs error | mu: within 25 % | mu: tau (pairs) '
+      '| v: n | v: median abs error | v: within 25 % | v: tau (pairs) |', '|---|' + '---|' * 12]
 for m in models + ['all']:
     cells = []
     for p in ('g', 'mu', 'v'):
