@@ -14,10 +14,16 @@ except ModuleNotFoundError:
 
 
 def contact_history(config, frames):
-    labels = [table_event(config, frame)['label'] for frame in frames]
-    return dict(ever=int(any(labels)), terminal=labels[-1],
+    labels=[]
+    for frame in frames:
+        try:labels.append(table_event(config,frame)['label'])
+        except ValueError as exc:
+            if str(exc)!='native final contact telemetry absent':raise
+            labels.append(None)
+    # Missing contact telemetry is unknown, including intermediate frames.
+    return dict(ever=1 if 1 in labels else 0 if all(v==0 for v in labels) else None, terminal=labels[-1],
                 first_frame=next((i for i, value in enumerate(labels) if value), None),
-                contact_frame_count=sum(labels), terminal_sequence=labels[-10:])
+                contact_frame_count=sum(v==1 for v in labels),unknown_frame_count=labels.count(None),terminal_sequence=labels[-10:])
 
 
 def compare(config, source, replay):
@@ -35,6 +41,8 @@ def compare(config, source, replay):
     same_specs = ({o['name']: o['spec'] for o in source['dynamic_objects']} ==
                   {o['name']: o['spec'] for o in replay['dynamic_objects']})
     category = ('physical_configuration_mismatch' if not same_specs else
+                'terminal_contact_unknown' if a['terminal'] is None or b['terminal'] is None else
+                'different_terminal_contact_partial_history' if a['terminal']!=b['terminal'] and (a['ever'] is None or b['ever'] is None) else
                 'same_ever_contact_different_terminal_contact' if a['ever'] == b['ever'] and a['terminal'] != b['terminal'] else
                 'different_contact_history' if a['ever'] != b['ever'] else
                 'event_matches_on_recheck')
@@ -54,12 +62,12 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     jobs = {j['job_id']: j for j in json.loads((base / 'inputs/plan_all567.json').read_text())}
     completed, failures = set(), {}
-    for root in [base / name for name in ['run', 'legacy_run', 'asset_retry_run']] + sorted(base.glob('resource_parallel_20261022_*')):
+    for root in [base / name for name in ['run', 'legacy_run', 'asset_retry_run']] + sorted(base.glob('resource_parallel_20261022_*'))+sorted(base.glob('source_retry_20261025_*')):
         completed.update(p.parent.name for p in root.glob('*/result.json'))
-        status = root / 'status.json'
-        if status.exists():
+        for status in [root/'status_before_disk_recovery_20261025.json',root/'status.json']:
+            if not status.exists():continue
             for row in json.loads(status.read_text()):
-                if row['status'] == 'failed':
+                if row['status'] == 'failed' and row.get('error')=='published source event did not reproduce':
                     failures[row['job_id']] = (root, row)
     records = []
     for key, (root, failed) in failures.items():
@@ -70,8 +78,10 @@ def main():
         folder = root / key / format(theta, '.12g')
         cache = out / (key + '.json')
         if cache.exists():
-            records.append(json.loads(cache.read_text()))
-            continue
+            cached=json.loads(cache.read_text())
+            if cached.get('category')!='audit_pending':
+                records.append(cached)
+                continue
         try:
             receipt = json.loads((folder / 'receipt.json').read_text())
             source_path = Path(job['source_event']['source_state_path'])
@@ -85,7 +95,7 @@ def main():
                 raise ValueError('replay state digest mismatch')
             replay = json.loads(raw)
             result = compare(job['base_config'], source, replay)
-            if result['source_contact']['terminal'] != job['reference_label']:
+            if result['source_contact']['terminal'] is not None and result['source_contact']['terminal'] != job['reference_label']:
                 raise ValueError('reference rule differs from existing job')
             row = dict(job_id=key, sample_id=job['sample_id'], original_error=failed['error'],
                        source_state_sha256=job['reference_state_sha256'], replay_state_sha256=receipt['state_sha256'],

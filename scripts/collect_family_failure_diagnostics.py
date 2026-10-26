@@ -10,12 +10,16 @@ def main():
     code=r'''
 import pathlib,json,subprocess,gzip,base64,hashlib
 b=pathlib.Path('/data_cached/wangzijun_p25/liyuhan/t18_table_contact_search_20261020')
-a=b/'failure_audit_20261023';script=a/'audit_t18_source_failures.py'
-if not script.exists():script=b/'audit_t18_source_failures.py'
-if not script.exists():raise ValueError('original audit script not found')
-subprocess.run(['/home/wangzijun_p25/miniconda3/envs/genesis/bin/python',str(script),'--base',str(b),'--out',str(a/'results')],check=True,stdout=subprocess.DEVNULL)
-summary=json.loads((a/'results/summary.json').read_text())
-cases=[json.loads(p.read_text()) for p in (a/'results').glob('*.json') if p.name not in ['summary.json','progress.json']]
+current=b/'failure_audit_20261026'
+if (current/'summary.json').exists():results=current
+else:
+ a=b/'failure_audit_20261023';script=a/'audit_t18_source_failures.py'
+ if not script.exists():script=b/'audit_t18_source_failures.py'
+ if not script.exists():raise ValueError('original audit script not found')
+ subprocess.run(['/home/wangzijun_p25/miniconda3/envs/genesis/bin/python',str(script),'--base',str(b),'--out',str(a/'results')],check=True,stdout=subprocess.DEVNULL)
+ results=a/'results'
+summary=json.loads((results/'summary.json').read_text())
+cases=[json.loads(p.read_text()) for p in results.glob('*.json') if p.name not in ['summary.json','progress.json']]
 controls=[]
 for p in (b/'original_render_control_20261023/results').glob('*/comparison.json'):
  row=json.loads(p.read_text())
