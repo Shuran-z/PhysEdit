@@ -13,8 +13,11 @@ mapped back with its registration, as in the evaluation).
 - Video fidelity (PhysEdit SSIM / PSNR of the reference continuation, user 2026-10-26: video, not the condition image):
   PSNR and SSIM of every grid frame after the condition time (RGB at the mask resolution 427x240, scikit-image 0.24 SSIM
   with a Gaussian window, sigma 1.5), averaged over the video; identical frames are capped at 100 dB.
-Window: from the condition time to min(5 s, end of either video). Usage:
+Window: from the condition time to min(5 s, end of either video).
+--frozen: the no-motion baseline instead of the generated videos, one row per clip of SET: the condition frame (reference
+frame 4) held still for the whole reference window (what a model scores by not moving anything). Usage:
 python common_metrics.py SET TRACKS.jsonl [...] --out NAME [--video-dir DIR] [--clock realtime|reference] [--workers N]
+python common_metrics.py SET --frozen --out frozen
   (SET: sam_gen/<SET>/items.json; videos DIR/<key>.mp4, default the item's path) -> results_gen/common_<NAME>.jsonl"""
 import argparse, collections, json, math
 from multiprocessing import get_context
@@ -104,13 +107,42 @@ def physics_iq(gs, rs):
                 motion_area_gen=float(np.mean(mg)), motion_area_ref=float(np.mean(mr)))   # mean share of moving pixels per step
 
 
+def fidelity(gs, rs):
+    """video PSNR / SSIM over the continuation (the grid frames after the condition time)"""
+    ps = [min(float(cv2.PSNR(g, c)), 100.0) for g, c in zip(gs[1:], rs[1:])]
+    ss = [float(structural_similarity(g, c, channel_axis=2, gaussian_weights=True, sigma=1.5, use_sample_covariance=False,
+                                      data_range=255)) for g, c in zip(gs[1:], rs[1:])]
+    return dict(video_psnr=float(np.mean(ps)), video_ssim=float(np.mean(ss)))
+
+
+def ref_clip(clip):
+    meta = ev.ref_meta(clip); cap = cv2.VideoCapture(str(REF / 'videos' / f'{clip}.mp4')); n_ref = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    W, H = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)); cap.release()
+    ref_tr = {n: (np.arange(len(b)), b) for n, b in ev.load_tracks_indexed(REF / 'tracks_lean.jsonl', clip).items()}
+    return meta['dt_obs'], np.array(meta['scale']), n_ref, W, H, ref_tr
+
+
+def run_frozen(job):
+    """no-motion baseline: the condition frame held still for the whole reference window"""
+    clip, _ = job
+    dt_r, _, n_ref, W, H, ref_tr = ref_clip(clip); diag = math.hypot(W, H)
+    T = min(T_MAX, (n_ref - 1 - 4) * dt_r); r = dict(key=f'frozen_{clip}', clip=clip, model='frozen', window_s=round(T, 3))
+    try:
+        K = int(T / dt_r) + 2
+        still = {n: (np.arange(K), np.repeat(b[4:5], K, 0)) for n, (_, b) in ref_tr.items() if len(b) > 4}
+        r.update(trajectory(still, ref_tr, lambda p: p, dt_r, dt_r, T, diag))
+        ir = [4 + int(math.floor(t / dt_r + 0.5 - 1e-9)) for t in np.arange(0, int(T * GRID_HZ) + 1) / GRID_HZ]
+        fr = read_frames(REF / 'videos' / f'{clip}.mp4', set(ir))
+        rs = [cv2.resize(fr[i], tuple(A.mask_size), interpolation=cv2.INTER_AREA) for i in ir]; gs = [rs[0]] * len(rs)
+        r.update(physics_iq(gs, rs)); r.update(fidelity(gs, rs))
+    except Exception as e:
+        r['error'] = f'{type(e).__name__}: {str(e)[:160]}'
+    return [r]
+
+
 def run_clip(job):
     clip, xs = job
-    meta = ev.ref_meta(clip); dt_r = meta['dt_obs']; sr = np.array(meta['scale'])
-    cap = cv2.VideoCapture(str(REF / 'videos' / f'{clip}.mp4')); n_ref = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    W, H = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)); cap.release(); diag = math.hypot(W, H)
-    ref_tr = {n: v for n, v in ev.load_tracks_indexed(REF / 'tracks_lean.jsonl', clip).items()}
-    ref_tr = {n: (np.arange(len(b)), b) for n, b in ref_tr.items()}
+    dt_r, sr, n_ref, W, H, ref_tr = ref_clip(clip); diag = math.hypot(W, H)
     ref_cache = {}; out = []
     for x in xs:
         r = dict(key=x['key'], clip=clip, model=x['model'], seed=x.get('seed'), annotation=x.get('annotation'))
@@ -130,11 +162,7 @@ def run_clip(job):
                 warp = lambda im: cv2.warpAffine(im, Mi, (W, H), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP, borderMode=cv2.BORDER_REPLICATE)
                 small = lambda im: cv2.resize(im, tuple(A.mask_size), interpolation=cv2.INTER_AREA)
                 gs, rs = [small(warp(vg[i])) for i in ig], [small(ref_cache[i]) for i in ir]
-                r.update(physics_iq(gs, rs))
-                ps = [min(float(cv2.PSNR(g, c)), 100.0) for g, c in zip(gs[1:], rs[1:])]   # video PSNR / SSIM over the continuation
-                ss = [float(structural_similarity(g, c, channel_axis=2, gaussian_weights=True, sigma=1.5, use_sample_covariance=False,
-                                                  data_range=255)) for g, c in zip(gs[1:], rs[1:])]
-                r['video_psnr'], r['video_ssim'] = float(np.mean(ps)), float(np.mean(ss))
+                r.update(physics_iq(gs, rs)); r.update(fidelity(gs, rs))
             else: r['video_status'] = 'frames_missing'
         except Exception as e:
             r['error'] = f'{type(e).__name__}: {str(e)[:160]}'
@@ -142,12 +170,13 @@ def run_clip(job):
     return out
 
 
-ap = argparse.ArgumentParser(); ap.add_argument('set'); ap.add_argument('tracks', nargs='+'); ap.add_argument('--out', required=True)
+ap = argparse.ArgumentParser(); ap.add_argument('set'); ap.add_argument('tracks', nargs='*'); ap.add_argument('--out', required=True)
 ap.add_argument('--video-dir'); ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--workers', type=int, default=16)
 ap.add_argument('--limit', type=int, help='first N items (tests)'); ap.add_argument('--sample', type=int, help='every N-th item (tests)')
 ap.add_argument('--mask-size', type=int, nargs=2, default=[427, 240], help='motion-mask resolution (half of 854x480)')
 ap.add_argument('--motion-thr', type=float, default=0.03, help='frame-difference threshold (grey level in [0, 1], 5x5 blur)')
 ap.add_argument('--open', type=int, default=0, help='3x3 opening of the masks')
+ap.add_argument('--frozen', action='store_true', help='no-motion baseline (condition frame held still), one row per clip of SET')
 A = ap.parse_args()
 ITEMS = [x for x in json.load(open(ev.B / 'sam_gen' / A.set / 'items.json'))['items'] if x.get('cam_to_video')][::A.sample or 1][:A.limit]
 TR = tracks(A.tracks, {x['key'] for x in ITEMS})
@@ -156,7 +185,7 @@ if __name__ == '__main__':
     for x in ITEMS: by[x['clip']].append(x)
     cv2.setNumThreads(1)
     with get_context('fork').Pool(A.workers) as pool:
-        rows = [r for rs in pool.imap_unordered(run_clip, sorted(by.items()), chunksize=1) for r in rs]
+        rows = [r for rs in pool.imap_unordered(run_frozen if A.frozen else run_clip, sorted(by.items()), chunksize=1) for r in rs]
     (ev.B / 'results_gen' / f'common_{A.out}.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows))
     keys = ('ade', 'fde', 'ade_static', 'spatial_iou', 'spatiotemporal_iou', 'weighted_spatial_iou', 'mse', 'video_psnr', 'video_ssim')
     by_m = collections.defaultdict(list)
