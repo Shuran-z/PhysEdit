@@ -1,15 +1,15 @@
 """Empirical calibration of the identifiability threshold (issue log D13). For every reference known-answer result
-(results3/ref_*.json) with an interior minimum, the loss at the truth is interpolated on the loss curve (log-linear between
+(results_reference/ref_*.json) with an interior minimum, the loss at the truth is interpolated on the loss curve (log-linear between
 the neighbouring library values) and delta_needed = L(truth) - L(min) is the threshold that would just include the truth.
 The calibrated threshold is the COVERAGE quantile of delta_needed over all results (one per task and parameter), so that
 the band covers the truth in that fraction of the known-answer cases; it replaces the theoretical value 1 (sigma = 1.5 px,
 independent frames), which ignores the frame-to-frame correlation of SAM errors and replay noise.
-Usage: python calibrate_band.py [--coverage 0.9] -> results3/band_calibration.json"""
+Usage: python calibrate_band.py [--coverage 0.9] -> results_reference/band_calibration.json"""
 import argparse, glob, json, math
 import numpy as np
 from paths import WORK as B
 
-ap = argparse.ArgumentParser(); ap.add_argument('--coverage', type=float, default=0.9); ap.add_argument('--dir', default='results3')
+ap = argparse.ArgumentParser(); ap.add_argument('--coverage', type=float, default=0.9); ap.add_argument('--dir', default='results_reference')
 a = ap.parse_args()
 need, rows = [], []
 for f in sorted(glob.glob(str(B / a.dir / 'ref_*.json'))):

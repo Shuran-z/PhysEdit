@@ -1,5 +1,5 @@
 """Known-truth validation gate (issue log D28). A generated video's (task, parameter) is scored only where the evaluation
-explains the TRUE physics of that task in the same video format: the reference known-answer result (results3/ref_*.json)
+explains the TRUE physics of that task in the same video format: the reference known-answer result (results_reference/ref_*.json)
 and the synthetic generated-like set of that format must both be an estimate (point / interval / bound / unidentifiable),
 not not_explained / no_observation / error. Elsewhere the instrument itself fails on correct physics (tracking of stacked
 or occluded objects, object rules with two objects), so a 'not explained' there says nothing about the model: the
@@ -7,7 +7,7 @@ generated result becomes kind 'not_validated' (the original kind is kept in kind
 Format -> synthetic set: <= 24 frames -> s10f16 (DynamiCrafter); <= 16 fps -> s15v (16 fps x 81, PhysRVG 15 fps x 49);
 otherwise s30f121 (24-25 fps x 121-189).
 Usage: python validation_gate.py NAME [ITEMS_SET[,ITEMS_SET...]] [TRUTH_TAG] -> results_gen/<NAME>_gated.jsonl + results_gen/<NAME>_gate.json
-(TRUTH_TAG: use the known-truth results of a rule variant, results3_<TAG>/ and results_gen/<set>_<TAG>.jsonl)"""
+(TRUTH_TAG: use the known-truth results of a rule variant, results_reference_<TAG>/ and results_gen/<set>_<TAG>.jsonl)"""
 import collections, glob, json, sys
 
 from paths import WORK as B
@@ -21,9 +21,9 @@ def format_set(fps, frames):
 
 
 def failed(tag=''):
-    """(set name) -> {(clip, param)} where the known-truth result is not an estimate; 'reference' = results3."""
+    """(set name) -> {(clip, param)} where the known-truth result is not an estimate; 'reference' = results_reference."""
     bad = collections.defaultdict(set)
-    for f in glob.glob(str(B / ('results3' + tag) / 'ref_*.json')):
+    for f in glob.glob(str(B / ('results_reference' + tag) / 'ref_*.json')):
         if f.endswith('_summary.json'): continue
         r = json.load(open(f))
         if r.get('kind') not in PASS: bad['reference'].add((r['clip'], r['param']))

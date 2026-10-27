@@ -6,7 +6,7 @@
 ROOT=$1; NAME=$2; shift 2
 . $ROOT/physprobe/inversion/deploy/sam_env.sh
 export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=${OMP_NUM_THREADS:-1}
-W=$ROOT/.local-research/evaluation/core100_inversion_workspace/trial/batch2; mkdir -p $W/runs; rm -f $W/runs/$NAME.done
+W=${PHYSPROBE_WORK:-$ROOT/.local-research/evaluation/core100_inversion_workspace/evaluation}; mkdir -p $W/runs; rm -f $W/runs/$NAME.done
 cd $ROOT/physprobe/inversion
 ( $SAM_PY "$@" > $W/runs/$NAME.log 2>&1; echo "exit=$? $(date)" > $W/runs/$NAME.done ) < /dev/null > /dev/null 2>&1 &
 disown

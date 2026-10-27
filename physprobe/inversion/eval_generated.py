@@ -1,5 +1,5 @@
 """Evaluate generated (or synthetic generated-like) videos with evaluator.evaluate(): items.json from make_gen_jobs.py /
-make_synth.py, SAM 3.1 lean tracks, library v3. Each item, each applicable parameter (g; mu; v where the task inverts
+make_synth.py, SAM 3.1 lean tracks, the simulation libraries. Each item, each applicable parameter (g; mu; v where the task inverts
 speed) -> estimate (point / interval / bound / unidentifiable / no_observation) with band, loss curve and per-object
 diagnostics. Generated and synthetic videos are scored with the same library as the validated known-answer tests (D30:
 without the true-parameter replays; --with-truth adds them and is kept only for comparison). Parallel over tasks (fork
