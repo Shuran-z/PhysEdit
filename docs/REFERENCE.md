@@ -78,7 +78,7 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 
 ## 输入格式转换
 
-`scripts/convert_v22.py`提供历史清单到当前样本格式的转换；媒体、几何和初始状态按各自来源绑定。
+`scripts/convert_gravtrace_manifest.py`提供历史清单到当前样本格式的转换；媒体、几何和初始状态按各自来源绑定。
 
 
 </details>

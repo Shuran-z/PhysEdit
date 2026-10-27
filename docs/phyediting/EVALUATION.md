@@ -1,5 +1,7 @@
 # 生成视频评测
 
+> 注：本页描述的是旧版评测流程。生成视频的正式评测已改为 PhysProbe，见[验收报告](../physprobe/ACCEPTANCE_CORE100.md)和[评测指标](../physprobe/METRICS.md)。
+
 一键生成后，PhysEdit通过SAM3.1跟踪目标，按配置测量重力、动摩擦和初速度，并执行V/P与Qwen评测。V衡量视觉质量与运动差异；P报告物理参数偏差、响应与排序；Qwen判断可见问题。
 
 | 评测类别 | 主要指标 | 观察范围 |

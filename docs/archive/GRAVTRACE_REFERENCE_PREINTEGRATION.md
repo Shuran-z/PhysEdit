@@ -304,6 +304,6 @@ MIT, see [LICENSE](LICENSE).
 
 ## Converting the earlier manifests
 
-`scripts/convert_v22.py` turns a GravTrace v22 manifest (PISA, NewtonBench and the self-rendered
+`scripts/convert_gravtrace_manifest.py` turns the earlier GravTrace manifest (PISA, NewtonBench and the self-rendered
 scenes) into this format, resolving the target from the declared segmentation label and reading
 object geometry from Google Scanned Objects or the primitive's dimensions.

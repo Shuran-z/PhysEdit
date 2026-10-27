@@ -2,6 +2,18 @@
 
 物理视频生成与评测工具，提供图像生成视频、视频编辑与未来帧预测、SAM3.1单视角跟踪、重力、动摩擦与初速度测量，以及视觉指标和Qwen视频判断。
 
+## PhysProbe：Core100 物理参数反演评测（正式评测）
+
+生成视频的正式评测由 [`physprobe/`](physprobe/inversion/README.md) 完成：对 Core100 的每条视频（参考视频或以第 5 帧为条件生成的视频），把 SAM 3.1 跟踪到的物体运动和作者原始 Genesis 场景在不同参数下的仿真逐帧比较，分别测出重力 g、主接触面摩擦 μ 和初速度 v，并给出校准过的不确定带。
+
+| 文档 | 内容 |
+| :---: | :---: |
+| [验收报告](docs/physprobe/ACCEPTANCE_CORE100.md) | 方法、已知答案测试（参考视频与合成视频）、合理性证据、12 个模型的结果 |
+| [评测指标](docs/physprobe/METRICS.md) | 通用指标（轨迹 ADE/FDE、Physics-IQ 运动一致、视频 PSNR/SSIM、相机漂移）与本基准独有的指标（物理可解释率、反演误差、参数响应） |
+| [运行手册](physprobe/inversion/README.md) | 仿真库、SAM 跟踪、评测、真值验证门、指标总表的命令 |
+
+仓库结构：`physedit/` 生成流水线与临界边界评测，`physprobe/` 物理参数反演评测，`gravtrace/` 早期重力反演模块（被 `physedit` 的旧评测阶段使用），`scripts/` 研究与渲染脚本（含与其他方法的对比：2D/深度提升基线 `baselines.py`、单目/多视深度模型 `depth_probe.py`（DepthPro、Depth Anything V2、ZoeDepth、MoGe-2、UniDepthV2、VGGT）、相同观测帧对比 `phyediting_common_*`、未知初速对比 `phyediting_unknown_*`、`phyediting_bounded_*`、VGGT 公共帧 `phyediting_vggt_common_*`、SAM2 跟踪 `track_sam2.py`；结果见 [docs/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md](docs/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md)），`docs/` 文档。
+
 | 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
 | :---: | :---: | :---: | :---: | :---: |
 | 重力 | 1038 | 2.700% | 15.148% | 100% |
