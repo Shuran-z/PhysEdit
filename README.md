@@ -57,7 +57,7 @@ Some events change their outcome at a parameter boundary: an object tips over or
 
 ## Why simulator inversion
 
-<p align="center"><img src="docs/figures/inversion_approaches.svg" width="95%"></p>
+<p align="center"><img src="docs/figures/inversion_method_comparison.svg" width="95%"></p>
 
 There are three ways to measure gravity, friction or speed from a single video:
 

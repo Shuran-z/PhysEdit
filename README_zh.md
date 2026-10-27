@@ -57,7 +57,7 @@
 
 ## 为什么用仿真器反演
 
-<p align="center"><img src="docs/figures/inversion_approaches.svg" width="95%"></p>
+<p align="center"><img src="docs/figures/inversion_method_comparison.svg" width="95%"></p>
 
 从一条视频测量重力、摩擦或速度，有三类做法：
 
