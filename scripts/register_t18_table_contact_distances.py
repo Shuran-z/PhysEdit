@@ -32,7 +32,7 @@ def checkpoint():
 for j in allplans:
  c=j['base_config'];plans.append(dict(job_id=j['job_id'],sample_id=j['sample_id'],revision=j['revision'],theta=c['experiment']['parameter']['parameter_value'],parameter_unit=c['experiment']['parameter']['parameter_unit'],
   family_id=c['experiment']['parameter']['parameter_name'],seed=c['seed'],normalization_domain=j['normalization_domain'],reference_label=j['reference_label'],reference_state_sha256=j['reference_state_sha256']))
-for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for pattern in ['resource_parallel_20261022_*','source_retry_20261025_*'] for p in base.glob(pattern) if p.is_dir()):
+for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for pattern in ['resource_parallel_20261022_*','source_retry_20261025_*','original_render_retry_20261027','original_render_retry_cwd_fix_20261027','cwd_fix_parallel_20261027_*'] for p in base.glob(pattern) if p.is_dir()):
  root=base/rootname;p=root/'status.json';status=json.loads(p.read_text()) if p.exists() else []
  history=root/'status_before_resource_recovery_20261021.json'
  if (root/'status_before_disk_recovery_20261025.json').exists():
@@ -56,6 +56,8 @@ for rootname in ['run','legacy_run','asset_retry_run']+sorted(p.name for pattern
  status=list(status_by_id.values())
  for r in status:
   if r['status']=='source_event_reproduced':continue
+  if 'cwd_fix' not in rootname:
+   r.pop('probes',None);results.append(dict(r,source_root=str(root),retired_reason='wrong_relative_asset_working_directory'));continue
   if r['status']!='conditional_event_search_completed':results.append(dict(r,source_root=str(root)));continue
   canonical=root/r['job_id']/'result.json'
   if not canonical.exists():raise ValueError('completed job has no final receipt')
@@ -82,15 +84,28 @@ print(json.dumps(dict(plans=plans,results=results,resource_recovery_ids=sorted(r
 '''
 
 
+def select_repaired_results(records):
+    results={}
+    for r in records:
+        if 'cwd_fix' not in r.get('source_root',''):
+            continue
+        previous=results.get(r['job_id'])
+        if previous is None or previous['status']!='conditional_event_search_completed':
+            results[r['job_id']]=r
+    return results
+
+
 def main():
     launch=json.loads((ROOT/'t18_table_contact_search_launch_20261020.json').read_text())
     base=str(Path(launch['root']).parent).replace('\\','/')
     query=REMOTE.replace('BASE',repr(base)).replace('VERIFY_FUNCTION',inspect.getsource(verify_probe_files))
-    evidence=json.loads(remote_text(launch['host'],query,timeout=600));(ROOT/'t18_search_evidence_20261020.json').write_text(json.dumps(evidence,indent=2))
-    plans={r['job_id']:r for r in evidence['plans']};results={}
-    for r in evidence['results']:
-        previous=results.get(r['job_id'])
-        if previous is None or previous['status']!='conditional_event_search_completed':results[r['job_id']]=r
+    evidence=json.loads(remote_text(launch['host'],query,timeout=600))
+    external=ROOT/'t18_p26_verified_results_20261027.json'
+    if external.exists():
+        migrated=json.loads(external.read_text())
+        evidence['results'].extend(migrated.get('results',[]))
+    (ROOT/'t18_search_evidence_20261020.json').write_text(json.dumps(evidence,indent=2))
+    plans={r['job_id']:r for r in evidence['plans']};results=select_repaired_results(evidence['results'])
     originals={r['sample_id']:r for r in map(json.loads,(ROOT/'t18_table_contact_source_events_20261020.jsonl').read_text().splitlines())}
     candidates=[];bindings=[]
     for key,plan in plans.items():
@@ -101,6 +116,8 @@ def main():
         if r and r['status']=='conditional_event_search_completed':
             if r['reference_state_sha256']!=plan['reference_state_sha256'] or r['source_seed']!=plan['seed']:raise ValueError('result belongs to another source context')
             probes={v['theta']:v for v in r['verified_probe_receipts']}
+            if any(v.get('execution_context',{}).get('contract')!='importer_root_relative_assets_v1' for v in probes.values()):
+                raise ValueError('probe lacks corrected relative-asset execution contract')
             if probes[plan['theta']]['label']!=plan['reference_label']:raise ValueError('source event not reproduced')
             for w in r['local_intervals']:
                 a,b=w['bracket']

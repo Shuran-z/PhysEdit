@@ -88,6 +88,22 @@ def change(config,theta,build=None,backgrounds=None):
     return c
 
 
+def renderer_working_directory(project, config):
+    """Resolve manifest meshes from importer root; never fall back to a colliding bbox."""
+    root=Path(project).parent
+    manifest=Path(config['manifest'])
+    if not manifest.is_absolute():manifest=root/manifest
+    data=json.loads(manifest.read_text())
+    for obj in data.get('objects',[]):
+        if obj.get('is_proxy'):continue
+        raw=obj.get('visual_mesh_path') or obj.get('mesh_path') or obj.get('resolved_mesh')
+        if not raw:continue
+        asset=Path(raw)
+        if not asset.is_absolute():asset=root/asset
+        if not asset.is_file():raise FileNotFoundError('declared background mesh missing; bbox fallback prohibited: '+str(asset))
+    return root
+
+
 def save(path,value):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(value,indent=2));tmp.replace(path)
 
@@ -115,7 +131,7 @@ def wait_for_resources(root,gpu,minimum_free_memory_mib=12288):
         time.sleep(20)
 
 
-def acquire_gpu(root, preferred, minimum_free_memory_mib):
+def acquire_gpu(root, preferred, minimum_free_memory_mib, fair_queue=False):
     """Share GPU leases with conditional searches; resource shortages wait."""
     import fcntl
     while True:
@@ -129,21 +145,33 @@ def acquire_gpu(root, preferred, minimum_free_memory_mib):
             if float(free)<minimum_free_memory_mib or preferred!='auto' and gpu!=preferred:
                 continue
             lease=Path('/tmp/physedit_conditional_gpu_'+gpu+'.lock').open('a')
-            try:fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            if fair_queue:save(root/'resource_status.json',dict(status='queued_for_gpu_lease',gpu=gpu))
+            try:fcntl.flock(lease,fcntl.LOCK_EX if fair_queue else fcntl.LOCK_EX|fcntl.LOCK_NB)
             except BlockingIOError:
                 lease.close()
                 continue
+            if fair_queue:
+                current=float(subprocess.check_output(['nvidia-smi','-i',gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode().strip())
+                if current<minimum_free_memory_mib:
+                    lease.close();continue
             return gpu,lease
         save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=preferred))
         time.sleep(20)
 
 
 def main():
+    global PROJECT, PYTHON
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True);p.add_argument('--gpu',default='2');p.add_argument('--limit',type=int,default=0);p.add_argument('--source-only',action='store_true')
     p.add_argument('--renderer-timeout-seconds',type=int,default=600)
     p.add_argument('--minimum-free-memory-mib',type=int,default=12288)
+    p.add_argument('--project',default=str(PROJECT))
+    p.add_argument('--python',default=PYTHON)
+    p.add_argument('--preserve-render-settings',action='store_true')
+    p.add_argument('--fair-gpu-queue',action='store_true',help='Queue on an explicit GPU lease instead of polling competing workers')
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
+    PROJECT=Path(args.project);PYTHON=args.python
+    if args.fair_gpu_queue and args.gpu=='auto':p.error('--fair-gpu-queue requires an explicit GPU')
     if not 600<=args.renderer_timeout_seconds<=7200:p.error('renderer timeout must be between 600 and 7200 seconds')
     if args.minimum_free_memory_mib<8192:p.error('at least 8GiB free memory required')
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -174,23 +202,27 @@ def main():
                     raw=gzip.decompress(stored) if state_path.suffix=='.gz' else stored
                     if hashlib.sha256(raw).hexdigest()!=cached['state_sha256']:raise ValueError('cached state bytes changed')
                     return cached
-                c=change(base,theta,build,bgs);render=c['render'];render.update(write_video=False,render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False)
+                c=change(base,theta,build,bgs);render=c['render'];render['write_video']=False
+                if not args.preserve_render_settings:
+                    render.update(render_backend='raster',resolution=[160,96],raytracing_spp=1,use_native_recording=False)
                 for key in ['save_video','save_first_rgb','save_last_rgb']:
                     if render.get(key):render[key]=str(dest/Path(render[key]).name)
-                c['scene_overrides']['raytracing']=False;c['annotations']['save_path']=str(dest/'physics.json');cp=dest/'config.json';save(cp,c)
-                probe_gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib)
+                if not args.preserve_render_settings:c['scene_overrides']['raytracing']=False
+                c['annotations']['save_path']=str(dest/'physics.json');cp=dest/'config.json';save(cp,c)
+                probe_gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib,args.fair_gpu_queue)
+                save(root/'resource_status.json',dict(status='rendering',gpu=probe_gpu,job_id=job['job_id'],theta=theta))
                 env=dict(os.environ,CUDA_VISIBLE_DEVICES=probe_gpu,TI_OFFLINE_CACHE='0');lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib';env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
                 try:
-                    with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=PROJECT,stdout=log,stderr=subprocess.STDOUT,env=env,timeout=args.renderer_timeout_seconds)
+                    with (dest/'run.log').open('w') as log:run=subprocess.run([PYTHON,str(backend),'--config',str(cp)],cwd=renderer_working_directory(PROJECT,c),stdout=log,stderr=subprocess.STDOUT,env=env,timeout=args.renderer_timeout_seconds)
                 finally:lease.close()
-                if run.returncode:raise RuntimeError('original renderer failed: '+str(dest/'run.log'))
+                if run.returncode:raise RuntimeError('original renderer failed (exit '+str(run.returncode)+'): '+str(dest/'run.log'))
                 raw=(dest/'physics.json').read_bytes();state=json.loads(raw)
                 if len(state['frames'])!=210:raise ValueError('incomplete state')
                 compressed=gzip.compress(raw,compresslevel=3,mtime=0);stored=dest/'physics.json.gz';stored.write_bytes(compressed)
                 if hashlib.sha256(gzip.decompress(stored.read_bytes())).digest()!=hashlib.sha256(raw).digest():raise ValueError('lossless state compression failed')
                 if folder.resolve() not in (dest/'physics.json').resolve().parents:raise ValueError('generated state outside job root')
                 (dest/'physics.json').unlink()
-                result=dict(theta=theta,**table_event(c,state['frames'][-1]),config_sha256=hashlib.sha256(cp.read_bytes()).hexdigest(),state_sha256=hashlib.sha256(raw).hexdigest(),stored_state_sha256=hashlib.sha256(compressed).hexdigest(),state_path=str(stored),backend_sources=source_hashes)
+                result=dict(theta=theta,**table_event(c,state['frames'][-1]),config_sha256=hashlib.sha256(cp.read_bytes()).hexdigest(),state_sha256=hashlib.sha256(raw).hexdigest(),stored_state_sha256=hashlib.sha256(compressed).hexdigest(),state_path=str(stored),backend_sources=source_hashes,execution_context=dict(cwd=str(PROJECT.parent),contract='importer_root_relative_assets_v1'))
                 save(receipt,result);return result
             source=evaluate(original_theta);probes.append(source)
             if source['label']!=job['reference_label']:raise ValueError('published source event did not reproduce')
@@ -212,6 +244,7 @@ def main():
                     previous=trial
             row=dict(job_id=job['job_id'],sample_id=job['sample_id'],status='conditional_event_search_completed',target_event=EVENT,
                      local_intervals=neighbors,probes=probes,backend_sources=source_hashes,source_seed=base['seed'],reference_state_sha256=job['reference_state_sha256'],
+                     execution_context=dict(cwd=str(PROJECT.parent),contract='importer_root_relative_assets_v1'),
                      scope='first observed transition on either side along original grid, refined at fixed published topology and seed; hidden between-grid transitions not ruled out')
             save(rp,row)
         except Exception as exc:row=dict(job_id=job['job_id'],sample_id=job['sample_id'],status='failed',error=str(exc),probes=probes)

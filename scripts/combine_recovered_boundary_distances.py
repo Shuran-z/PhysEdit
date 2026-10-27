@@ -64,6 +64,7 @@ def main():
     sources.append((out/'t18_table_contact_sample_distances.jsonl','supplemental'))
     sources.append((out/'t12_remaining_grid_sample_distances.jsonl','supplemental'))
     sources.append((out/'t07_B_E4_sample_distances.jsonl','supplemental'))
+    sources.append((out/'t07_B_full_grid_distances.jsonl','supplemental'))
     b_summary=ROOT/'t07_B_E4_refinement_summary_20261022.json';b_base=out/'t07_B_E4_sample_distances.jsonl';b_refined=out/'t07_B_E4_sample_distances_refined.jsonl'
     if b_summary.exists() and b_base.exists() and b_refined.exists():
         proof=json.loads(b_summary.read_text())

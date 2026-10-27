@@ -41,6 +41,19 @@ def table_contact(state):
     return dict(label=int(bool(hits)),first_table_contact_frame=hits[0] if hits else None,table_contact_frames=hits)
 
 
+def search_grid(evaluate, values, tolerance):
+    grid=[evaluate(t) for t in sorted(set(values))];intervals=[]
+    for left,right in zip(grid,grid[1:]):
+        if left['label']==right['label']:continue
+        a,b=left['theta'],right['theta']
+        while b-a>tolerance:
+            mid=(a+b)/2;r=evaluate(mid)
+            if r['label']==left['label']:a=mid
+            else:b=mid
+        intervals.append(dict(bracket=[a,b],labels=[left['label'],right['label']]))
+    return grid,intervals
+
+
 def main():
     import fcntl
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True)
@@ -86,13 +99,16 @@ def main():
                 r=json.loads(receipt.read_text())
                 if r['renderer_sha256']==sha(RENDERER) and r['config']==c and sha(out/'physics.json')==r['state_sha256']:return r
                 raise ValueError('existing replay provenance mismatch')
-            while float(subprocess.check_output(['nvidia-smi','-i',args.gpu,'--query-gpu=memory.free','--format=csv,noheader,nounits']).decode())<args.minimum_free_memory_mib:
-                save(root/'resource_status.json',dict(status='waiting_for_memory',gpu=args.gpu));time.sleep(20)
-            save(path,c);env=dict(os.environ,CUDA_VISIBLE_DEVICES=args.gpu,TI_OFFLINE_CACHE='0')
+            from t18_table_contact_boundary_worker import acquire_gpu
+            gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib)
+            save(root/'resource_status.json',dict(status='rendering',gpu=gpu,sample_id=job['sample_id'],theta=theta))
+            save(path,c);env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu,TI_OFFLINE_CACHE='0')
             lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib'
             env['LD_LIBRARY_PATH']=lib+(':'+env['LD_LIBRARY_PATH'] if env.get('LD_LIBRARY_PATH') else '')
-            with (out/'run.log').open('w') as log:
-                r=subprocess.run([PYTHON,str(RENDERER),'--config',str(path)],cwd=BASE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+            try:
+                with (out/'run.log').open('w') as log:
+                    r=subprocess.run([PYTHON,str(RENDERER),'--config',str(path)],cwd=BASE,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+            finally:lease.close()
             if r.returncode:raise RuntimeError('renderer failed: '+str(out/'run.log'))
             state=json.loads((out/'physics.json').read_text())
             if len(state['frames'])!=210:raise ValueError('incomplete state')
@@ -103,6 +119,16 @@ def main():
             if contact is not None:r.update(target_event=job['target_event'],contact_evidence=contact)
             save(receipt,r);print(json.dumps(dict(sample_id=job['sample_id'],theta=theta,label=label)),flush=True);return r
         try:
+            if job.get('search_grid'):
+                source=evaluate(job['source_theta'])
+                if source['label']!=job['source_label']:
+                    raise ValueError('published source event did not reproduce')
+                grid,intervals=search_grid(evaluate,job['search_grid']+[job['source_theta']],args.tolerance)
+                result=dict(sample_id=job['sample_id'],family=family,status='conditional_grid_completed',
+                    intervals=intervals,target_event=job['target_event'],source_state_sha256=job['state_sha256'],
+                    original_config_sha256=sha(config_path),grid_observations=[dict(theta=r['theta'],label=r['label']) for r in grid],
+                    scope='fixed-source context; no flip is not an exact boundary',source_group_id=job['source_group_id'])
+                results.append(result);save(root/'results.json',results);continue
             lower,upper=job.get('endpoints',[.24,.28])
             endpoints=[evaluate(t) for t in [lower,upper]]
             if [r['label'] for r in endpoints]!=job['endpoint_labels']:raise ValueError('published endpoint reproduction failed')
