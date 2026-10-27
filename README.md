@@ -12,7 +12,7 @@
 | [评测指标](docs/physprobe/METRICS.md) | 通用指标（轨迹 ADE/FDE、Physics-IQ 运动一致、视频 PSNR/SSIM、相机漂移）与本基准独有的指标（物理可解释率、反演误差、参数响应） |
 | [运行手册](physprobe/inversion/README.md) | 仿真库、SAM 跟踪、评测、真值验证门、指标总表的命令 |
 
-仓库结构：`physedit/` 生成流水线与临界边界评测，`physprobe/` 物理参数反演评测，`gravtrace/` 早期重力反演模块（被 `physedit` 的旧评测阶段使用），`scripts/` 研究与渲染脚本，`docs/` 文档。
+仓库结构：`physedit/` 生成流水线与临界边界评测，`physprobe/` 物理参数反演评测，`gravtrace/` 早期重力反演模块（被 `physedit` 的旧评测阶段使用），`scripts/` 研究与渲染脚本（含与其他方法的对比：2D/深度提升基线 `baselines.py`、单目/多视深度模型 `depth_probe.py`（DepthPro、Depth Anything V2、ZoeDepth、MoGe-2、UniDepthV2、VGGT）、相同观测帧对比 `phyediting_common_*`、未知初速对比 `phyediting_unknown_*`、`phyediting_bounded_*`、VGGT 公共帧 `phyediting_vggt_common_*`、SAM2 跟踪 `track_sam2.py`；结果见 [docs/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md](docs/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md)），`docs/` 文档。
 
 | 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
 | :---: | :---: | :---: | :---: | :---: |
