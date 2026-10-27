@@ -2,9 +2,12 @@
 the camera stability of cam_comp.py (both reused from the PhysEdit V metrics in the form common in papers), next to the
 benchmark's own physical-parameter metrics of response_metrics.py (explainability, inversion error, parameter response).
 Means over videos; the synthetic generated-like sets (correct physics in the same formats) give the ceiling of the common
-metrics, the known-truth videos the floor / ceiling of the parameter metrics.
+metrics, the frozen condition frame (common_metrics.py --frozen) what a video scores by not moving at all, the known-truth
+videos the floor / ceiling of the parameter metrics.
 Usage: python benchmark_table.py COMMON_NAME RESPONSE_JSON CAMCOMP_STATS [--synthetic s15v,s30f121,s10f16] [--out NAME]
-  (COMMON_NAME: results_gen/common_<COMMON_NAME>.jsonl; RESPONSE_JSON: results_gen/response_metrics*.json)
+  (COMMON_NAME: results_gen/common_<COMMON_NAME>.jsonl, or NAME1+NAME2+... where later sets replace the same video keys,
+  e.g. all_cc+v6all+v6de+v6f for the v6 prompt-corrected deliveries; CAMCOMP_STATS likewise comma-separated, later files
+  replace the same keys; RESPONSE_JSON: results_gen/response_metrics*.json)
   -> results_gen/benchmark_<NAME>.md / .json"""
 import argparse, collections, json, math
 import numpy as np
@@ -45,12 +48,19 @@ def with_rel(rs):   # ADE relative to a video in which nothing moves (scale-free
     return rs
 
 
-rows = with_rel([json.loads(l) for l in open(B / 'results_gen' / f'common_{a.common}.jsonl')])
+def by_key(lines):   # later sets replace the same video keys (re-generated deliveries)
+    d = {}
+    for l in lines:
+        r = json.loads(l); d[r['key']] = r
+    return list(d.values())
+
+
+rows = with_rel(by_key(l for n in a.common.split('+') for l in open(B / 'results_gen' / f'common_{n}.jsonl')))
 by = collections.defaultdict(list)
 for r in rows: by[r['model']].append(r)
 cam = collections.defaultdict(list)
-for l in open(a.camstats):
-    s = json.loads(l); m = next((mm for mm in NAMES if s['key'].split('_', 1)[1].startswith(mm + '_')), None)
+for s in by_key(l for f in a.camstats.split(',') for l in open(f)):
+    m = next((mm for mm in NAMES if s['key'].split('_', 1)[1].startswith(mm + '_')), None)
     if m: cam[m].append(s)
 resp = json.load(open(a.response)); models = sorted(by)
 out = dict(common={}, camera={}, parameters={})
@@ -68,11 +78,15 @@ for s in a.synthetic.split(','):
     if not f.exists(): continue
     sr = with_rel([json.loads(l) for l in open(f)]); mm = means(sr); out['common'][f'synthetic_{s}'] = mm
     L.append(f'| ceiling: synthetic {s} | {len(sr)} | ' + ' | '.join(fmt(mm[k][0], f) for k, _, f in COMMON) + ' | — | — |')
+f = B / 'results_gen' / 'common_frozen.jsonl'
+if f.exists():
+    fr = with_rel([json.loads(l) for l in open(f)]); mm = means(fr); out['common']['frozen'] = mm
+    L.append(f'| baseline: condition frame held still | {len(fr)} clips | ' + ' | '.join(fmt(mm[k][0], f) for k, _, f in COMMON) + ' | — | — |')
 static = [r['ade_static'] for r in rows if r.get('ade_static') is not None]
 ref_move = [r['motion_area_ref'] for r in rows if r.get('motion_area_ref') is not None]
 L += ['', f'Reference scale: a video in which nothing moves would have ADE {np.mean(static):.4f} (mean displacement of the reference objects, '
       f'normalised by the image diagonal); in the reference continuations {np.mean(ref_move):.2%} of the pixels move per 0.1 s step (moving pixels '
-      'of the generated videos for comparison). Camera drift: largest background shift of a video relative to its first frame / image diagonal (cam_comp).', '',
+      'of the generated videos for comparison). The held-still condition frame shows what not moving at all scores: its trajectory error equals the no-motion ADE (ratio 1), it has no motion to overlap, and its PSNR / SSIM are the highest because the reference continuations change little. Camera drift: largest background shift of a video relative to its first frame / image diagonal (cam_comp).', '',
       '## 2. The benchmark\'s own metrics (physical parameters; validated results)', '',
       '| model | explainable ↑ | with a value | g error ↓ | μ error ↓ | v error ↓ | g response τ ↑ | v response τ ↑ |', '|---|---|---|---|---|---|---|---|']
 ev_ = resp['evaluability']; gen = resp['generated']; bands = resp['bands']
