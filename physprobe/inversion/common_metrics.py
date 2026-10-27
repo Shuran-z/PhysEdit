@@ -10,7 +10,9 @@ mapped back with its registration, as in the evaluation).
 - Motion agreement (PhysEdit 'motion-region IoU' -> Physics-IQ, Motamed et al. 2025): binary motion masks from frame
   differences on a 10 Hz grid; spatial IoU (where motion happens), spatiotemporal IoU (where and when), weighted spatial
   IoU (where and how much), MSE of the frames (RGB in [0, 1]). No camera compensation: the prompts ask for a fixed camera.
-- Condition fidelity (PhysEdit condition-frame SSIM / PSNR): generated frame 0 vs the condition image (reference frame 4).
+- Video fidelity (PhysEdit SSIM / PSNR of the reference continuation, user 2026-10-26: video, not the condition image):
+  PSNR and SSIM of every grid frame after the condition time (RGB, reference resolution, scikit-image 0.24 SSIM with a
+  Gaussian window, sigma 1.5), averaged over the video; identical frames are capped at 100 dB.
 Window: from the condition time to min(5 s, end of either video). Usage:
 python common_metrics.py SET TRACKS.jsonl [...] --out NAME [--video-dir DIR] [--clock realtime|reference] [--workers N]
   (SET: sam_gen/<SET>/items.json; videos DIR/<key>.mp4, default the item's path) -> results_gen/common_<NAME>.jsonl"""
@@ -126,10 +128,13 @@ def run_clip(job):
             if len(ts) >= 3 and all(i in vg for i in ig) and all(i in ref_cache for i in ir):
                 Mi = np.array([[sg[0] / sr[0], 0, og[0]], [0, sg[1] / sr[1], og[1]]], np.float32)   # reference pixel -> generated pixel
                 warp = lambda im: cv2.warpAffine(im, Mi, (W, H), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP, borderMode=cv2.BORDER_REPLICATE)
-                g0, c0 = warp(vg[ig[0]]), ref_cache[4]
-                r['cond_psnr'] = float(cv2.PSNR(g0, c0))
-                r['cond_ssim'] = float(structural_similarity(g0, c0, channel_axis=2, gaussian_weights=True, sigma=1.5,
-                                                             use_sample_covariance=False, data_range=255))
+                ps, ss = [], []                                                 # video PSNR / SSIM over the continuation
+                for i, k in zip(ig[1:], ir[1:]):
+                    g, c = warp(vg[i]), ref_cache[k]
+                    ps.append(min(float(cv2.PSNR(g, c)), 100.0))
+                    ss.append(float(structural_similarity(g, c, channel_axis=2, gaussian_weights=True, sigma=1.5,
+                                                          use_sample_covariance=False, data_range=255)))
+                r['video_psnr'], r['video_ssim'] = float(np.mean(ps)), float(np.mean(ss))
                 small = lambda im: cv2.resize(im, tuple(A.mask_size), interpolation=cv2.INTER_AREA)
                 r.update(physics_iq([small(warp(vg[i])) for i in ig], [small(ref_cache[i]) for i in ir]))
             else: r['video_status'] = 'frames_missing'
@@ -155,7 +160,7 @@ if __name__ == '__main__':
     with get_context('fork').Pool(A.workers) as pool:
         rows = [r for rs in pool.imap_unordered(run_clip, sorted(by.items()), chunksize=1) for r in rs]
     (ev.B / 'results_gen' / f'common_{A.out}.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows))
-    keys = ('ade', 'fde', 'ade_static', 'spatial_iou', 'spatiotemporal_iou', 'weighted_spatial_iou', 'mse', 'cond_psnr', 'cond_ssim')
+    keys = ('ade', 'fde', 'ade_static', 'spatial_iou', 'spatiotemporal_iou', 'weighted_spatial_iou', 'mse', 'video_psnr', 'video_ssim')
     by_m = collections.defaultdict(list)
     for r in rows: by_m[r['model']].append(r); by_m['all'].append(r)
     print(f"{'model':26s} {'n':>5s} " + ' '.join(f'{k:>10s}' for k in keys))

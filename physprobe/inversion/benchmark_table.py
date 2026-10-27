@@ -14,8 +14,8 @@ from paths import WORK as B
 COMMON = (('ade', 'ADE (median) ↓', '{:.4f}'), ('fde', 'FDE (median) ↓', '{:.4f}'), ('ade_rel', 'ADE / no-motion ADE (median) ↓', '{:.2f}'),
           ('spatial_iou', 'Spatial IoU ↑', '{:.3f}'),
           ('spatiotemporal_iou', 'Spatiotemporal IoU ↑', '{:.3f}'), ('weighted_spatial_iou', 'Weighted spatial IoU ↑', '{:.3f}'),
-          ('mse', 'MSE ↓', '{:.4f}'), ('motion_area_gen', 'moving pixels', '{:.2%}'), ('cond_psnr', 'Condition PSNR ↑', '{:.2f}'),
-          ('cond_ssim', 'Condition SSIM ↑', '{:.3f}'))
+          ('mse', 'MSE ↓', '{:.4f}'), ('motion_area_gen', 'moving pixels', '{:.2%}'), ('video_psnr', 'video PSNR ↑', '{:.2f}'),
+          ('video_ssim', 'video SSIM ↑', '{:.3f}'))
 NAMES = {'cogvideox_i2v': 'CogVideoX', 'cosmos': 'Cosmos', 'cosmos3_nano': 'Cosmos3-nano', 'dynamicrafter_i2v': 'DynamiCrafter',
          'hunyuan15_i2v': 'Hunyuan', 'ltx_i2v': 'LTX', 'minimax_h3': 'MiniMax', 'physalign_wan22_i2v_a14b': 'PhysAlign',
          'physrvg_ti2v5b': 'PhysRVG', 'videogpa_ti2v5b': 'VideoGPA', 'wan22_i2v_a14b': 'Wan2.2-I2V-A14B', 'wan_ti2v5b': 'Wan-TI2V-5B'}
