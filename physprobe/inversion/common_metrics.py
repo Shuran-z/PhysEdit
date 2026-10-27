@@ -11,8 +11,8 @@ mapped back with its registration, as in the evaluation).
   differences on a 10 Hz grid; spatial IoU (where motion happens), spatiotemporal IoU (where and when), weighted spatial
   IoU (where and how much), MSE of the frames (RGB in [0, 1]). No camera compensation: the prompts ask for a fixed camera.
 - Video fidelity (PhysEdit SSIM / PSNR of the reference continuation, user 2026-10-26: video, not the condition image):
-  PSNR and SSIM of every grid frame after the condition time (RGB, reference resolution, scikit-image 0.24 SSIM with a
-  Gaussian window, sigma 1.5), averaged over the video; identical frames are capped at 100 dB.
+  PSNR and SSIM of every grid frame after the condition time (RGB at the mask resolution 427x240, scikit-image 0.24 SSIM
+  with a Gaussian window, sigma 1.5), averaged over the video; identical frames are capped at 100 dB.
 Window: from the condition time to min(5 s, end of either video). Usage:
 python common_metrics.py SET TRACKS.jsonl [...] --out NAME [--video-dir DIR] [--clock realtime|reference] [--workers N]
   (SET: sam_gen/<SET>/items.json; videos DIR/<key>.mp4, default the item's path) -> results_gen/common_<NAME>.jsonl"""
@@ -128,15 +128,13 @@ def run_clip(job):
             if len(ts) >= 3 and all(i in vg for i in ig) and all(i in ref_cache for i in ir):
                 Mi = np.array([[sg[0] / sr[0], 0, og[0]], [0, sg[1] / sr[1], og[1]]], np.float32)   # reference pixel -> generated pixel
                 warp = lambda im: cv2.warpAffine(im, Mi, (W, H), flags=cv2.INTER_LINEAR | cv2.WARP_INVERSE_MAP, borderMode=cv2.BORDER_REPLICATE)
-                ps, ss = [], []                                                 # video PSNR / SSIM over the continuation
-                for i, k in zip(ig[1:], ir[1:]):
-                    g, c = warp(vg[i]), ref_cache[k]
-                    ps.append(min(float(cv2.PSNR(g, c)), 100.0))
-                    ss.append(float(structural_similarity(g, c, channel_axis=2, gaussian_weights=True, sigma=1.5,
-                                                          use_sample_covariance=False, data_range=255)))
-                r['video_psnr'], r['video_ssim'] = float(np.mean(ps)), float(np.mean(ss))
                 small = lambda im: cv2.resize(im, tuple(A.mask_size), interpolation=cv2.INTER_AREA)
-                r.update(physics_iq([small(warp(vg[i])) for i in ig], [small(ref_cache[i]) for i in ir]))
+                gs, rs = [small(warp(vg[i])) for i in ig], [small(ref_cache[i]) for i in ir]
+                r.update(physics_iq(gs, rs))
+                ps = [min(float(cv2.PSNR(g, c)), 100.0) for g, c in zip(gs[1:], rs[1:])]   # video PSNR / SSIM over the continuation
+                ss = [float(structural_similarity(g, c, channel_axis=2, gaussian_weights=True, sigma=1.5, use_sample_covariance=False,
+                                                  data_range=255)) for g, c in zip(gs[1:], rs[1:])]
+                r['video_psnr'], r['video_ssim'] = float(np.mean(ps)), float(np.mean(ss))
             else: r['video_status'] = 'frames_missing'
         except Exception as e:
             r['error'] = f'{type(e).__name__}: {str(e)[:160]}'
