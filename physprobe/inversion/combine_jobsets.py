@@ -1,4 +1,5 @@
-"""Combine tracked job sets of one delivery that arrived in parts (e.g. v6 and its increment v6b, issue log E4) into one set
+"""Combine tracked job sets of one delivery that arrived in parts (e.g. the prompt-corrected re-generation and its
+increments, issue log E4) into one set
 for evaluation: sam_gen/<OUT>/items.json (items of all sets; a key present in several sets keeps the last one) and
 sam_gen/<OUT>/tracks_lean.jsonl (all tracks). Usage: python combine_jobsets.py OUT NAME1 NAME2 [...]"""
 import json, sys

@@ -83,7 +83,7 @@ def response_bands(rs):
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
 suffix = '' if name == 'all_cc_gated' else f'_{name}'
-known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results3' / 'ref_*.json')) if not f.endswith('_summary.json')]}
+known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results_reference' / 'ref_*.json')) if not f.endswith('_summary.json')]}
 for s in ('s15v', 's30f121', 's10f16'):
     known[s] = [json.loads(l) for l in open(B / 'results_gen' / f'{s}.jsonl')]
 G = [json.loads(l) for l in open(B / 'results_gen' / f'{name}.jsonl')]

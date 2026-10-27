@@ -9,7 +9,7 @@ import evaluator as ev
 
 THRESH_PX = 5.0
 args = sys.argv[1:]
-tracks = ev.B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl'
+tracks = ev.B / 'sam_lean' / 'reference' / 'tracks_lean.jsonl'
 for clip, param in zip(args[::2], args[1::2]):
     obs, kc = ev.load_obs(tracks, clip); meta = ev.ref_meta(clip); truth = ev.truth_of(clip, param)
     lib = ev.library(clip, param, with_truth=True, workers=1)

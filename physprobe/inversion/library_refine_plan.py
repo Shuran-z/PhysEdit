@@ -53,9 +53,9 @@ if a.count:
     for lib, c, p, ps in res: by[p] = by.get(p, 0) + sum(1 for v0, v1, d in ps if a.tol < d <= a.max_diff and v1 / v0 >= a.min_ratio)
     print('round-1 midpoints by parameter at tol', a.tol, by)
 else:
-    plan = {j['tag']: j for j in json.load(open(B / 'lib3_plan.json'))}
+    plan = {j['tag']: j for j in json.load(open(B / 'library_plan.json'))}
     owner = {}
-    for f in (B / 'lib3_queues').glob('*.json'):
+    for f in (B / 'library_queues').glob('*.json'):
         for j in json.load(open(f)): owner[j['tag']] = f.stem
     out, n = {}, 0
     for lib, clip, p, ps in res:
@@ -64,10 +64,10 @@ else:
         tags = [t for t in plan if plan[t]['lib'] == lib]; base = plan[tags[0]]; n += len(mids)
         step = 1 if (clip.startswith('T15') and p == 'mu') else 6
         for i in range(0, len(mids), step):
-            out.setdefault(owner[tags[0]], []).append(dict(base, tag=f"LIB3_{lib}_p{a.round}{i // step:03d}", values=mids[i:i + step]))
+            out.setdefault(owner[tags[0]], []).append(dict(base, tag=f"{lib}_p{a.round}{i // step:03d}", values=mids[i:i + step]))
     if a.out:
         json.dump([j for jobs in out.values() for j in jobs], open(a.out, 'w'), indent=1); print(f'{n} midpoints at tol {a.tol} px -> {a.out}'); raise SystemExit
-    D = B / f'lib3_queues_refine{a.round}'; D.mkdir(exist_ok=True)
+    D = B / f'library_queues_refine{a.round}'; D.mkdir(exist_ok=True)
     for q, jobs in out.items():
         json.dump(jobs, open(D / f'{q}.json', 'w'), indent=1)
         print(q, len(jobs), 'jobs', sum(len(j['values']) for j in jobs), 'sims')

@@ -2,7 +2,7 @@
 add camera motion, which makes every object 'not explained'). Per tracked frame k: ECC affine from frame k onto frame 0 on
 the BACKGROUND (tracked objects' boxes at frames 0 and k, dilated, masked out; 427x240 grey), initialised with frame k-1's
 estimate; each object box at frame k is mapped into frame-0 coordinates (box of the 4 mapped corners). Frames whose ECC fails
-or correlates < MIN_CORR keep NaN boxes. Output: tracks in the same format with mode 'lean_v1+camcomp' and per-video motion
+or correlates < MIN_CORR keep NaN boxes. Output: tracks in the same format with mode 'lean+camcomp' and per-video motion
 statistics. Usage: python cam_comp.py ITEMS_JSON TRACKS.jsonl [...] --out OUT.jsonl [--workers 9] [--keys KEYFILE]"""
 import argparse, collections, json
 from multiprocessing import get_context
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     with get_context('fork').Pool(a.workers) as pool, open(a.out, 'w') as f, open(a.out.replace('.jsonl', '_stats.jsonl'), 'w') as fs:
         for v, out, stats in pool.imap_unordered(compensate, jobs, chunksize=4):
             for n, (fr, xy) in out.items():
-                f.write(json.dumps(dict(id=f'{v}__{n}', prompt_frame=meta[v], tracks={n: dict(frames=fr, xyxy=xy)}, mode='lean_v1+camcomp')) + '\n')
+                f.write(json.dumps(dict(id=f'{v}__{n}', prompt_frame=meta[v], tracks={n: dict(frames=fr, xyxy=xy)}, mode='lean+camcomp')) + '\n')
             fs.write(json.dumps(dict(key=v, **stats)) + '\n')
     print('compensated', len(jobs), 'videos ->', a.out)

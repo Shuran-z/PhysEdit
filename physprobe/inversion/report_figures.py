@@ -32,7 +32,7 @@ def kind_of(r):
 def skip(r): return r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20')     # B20
 
 
-ref = [json.load(open(f)) for f in glob.glob(str(ev.B / 'results3' / 'ref_*.json')) if not f.endswith('_summary.json')]
+ref = [json.load(open(f)) for f in glob.glob(str(ev.B / 'results_reference' / 'ref_*.json')) if not f.endswith('_summary.json')]
 ref = [r for r in ref if not skip(r)]
 syn = {s: [json.loads(l) for l in open(ev.B / 'results_gen' / f'{s}.jsonl')] for s in a.synth.split(',') if os.path.exists(ev.B / 'results_gen' / f'{s}.jsonl')}
 syn = {s: [r for r in rs if 'param' in r and not skip(r)] for s, rs in syn.items()}

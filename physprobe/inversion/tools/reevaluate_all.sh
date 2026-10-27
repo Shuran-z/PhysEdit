@@ -8,11 +8,11 @@
 ROOT=$1; NW=${2:-12}
 . $ROOT/physprobe/inversion/deploy/sam_env.sh
 export PHYSPROBE_ROOT=$ROOT OMP_NUM_THREADS=1 PHYSPROBE_WORKERS=$NW
-W=$ROOT/.local-research/evaluation/core100_inversion_workspace/trial/batch2; R=$W/runs; mkdir -p $R; rm -f $R/reeval.done
+W=${PHYSPROBE_WORK:-$ROOT/.local-research/evaluation/core100_inversion_workspace/evaluation}; R=$W/runs; mkdir -p $R; rm -f $R/reeval.done
 cd $ROOT/physprobe/inversion
 step() { local n=$1; shift; echo "$(date) start $n" >> $R/reeval_progress.log; $SAM_PY "$@" > $R/reeval_$n.log 2>&1; local rc=$?; echo "$(date) end $n exit=$rc" >> $R/reeval_progress.log; }
 FROM=${3:-1}
-[ $FROM -le 1 ] && { rm -f $W/results3/band_calibration.json; step 1_ref evaluator.py ref; }
+[ $FROM -le 1 ] && { rm -f $W/results_reference/band_calibration.json; step 1_ref evaluator.py ref; }
 step 2_calibrate calibrate_band.py --coverage 0.9
 step 3_ref evaluator.py ref
 step 3_stats ref_stats.py

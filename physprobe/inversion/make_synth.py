@@ -22,7 +22,7 @@ OUT = c2.B / 'sam_gen' / a.name / 'synth_videos'; OUT.mkdir(parents=True, exist_
 M = np.float32([[a.ax, 0, a.bx], [0, a.ay, a.by]])
 items = []
 for clip in clips:
-    src = c2.B / 'sam_lean' / 'ref99' / 'videos' / f'{clip}.mp4'
+    src = c2.B / 'sam_lean' / 'reference' / 'videos' / f'{clip}.mp4'
     cap = cv2.VideoCapture(str(src)); fps = cap.get(cv2.CAP_PROP_FPS); W, H = int(cap.get(3)), int(cap.get(4))
     frames = []
     k = 0

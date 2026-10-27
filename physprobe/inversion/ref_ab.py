@@ -1,8 +1,8 @@
-"""A/B of two reference known-answer runs (results3 and a variant such as results3_<TAG>) on the results both contain:
+"""A/B of two reference known-answer runs (results_reference and a variant such as results_reference_<TAG>) on the results both contain:
 per parameter the number of point estimates and their |error| median / p90, the measured results (point + interval) with
 the best-fit |error| median / p90 / share within 10 %, truth in band, not explained; then every result whose kind changed.
 Also takes two synthetic generated-like sets (results_gen/<set>.jsonl). T19/T20 friction is left out (B20).
-Usage: python ref_ab.py VARIANT [BASE=results3] [--out FILE.json]   (directories or .jsonl files, relative to WORK or absolute)"""
+Usage: python ref_ab.py VARIANT [BASE=results_reference] [--out FILE.json]   (directories or .jsonl files, relative to WORK or absolute)"""
 import glob, json, os, sys
 import numpy as np
 
@@ -21,7 +21,7 @@ def load(d):
 args = sys.argv[1:]; out_file = None
 if '--out' in args: i = args.index('--out'); out_file = args[i + 1]; del args[i:i + 2]
 var = load(args[0] if os.path.isabs(args[0]) else str(B / args[0]))
-base = load(args[1] if len(args) > 1 and os.path.isabs(args[1]) else str(B / (args[1] if len(args) > 1 else 'results3')))
+base = load(args[1] if len(args) > 1 and os.path.isabs(args[1]) else str(B / (args[1] if len(args) > 1 else 'results_reference')))
 keys = sorted(set(var) & set(base)); out = dict(n=len(keys), params={}, changed=[])
 print(f'compared {len(keys)} results')
 q = lambda x, f: float(np.percentile(x, f)) if len(x) else float('nan')

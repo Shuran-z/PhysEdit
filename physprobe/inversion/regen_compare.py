@@ -3,8 +3,8 @@ present in both (same seed / prompt variant / model / task, earlier prompts vs c
 gate of the merged set. Per model and parameter: share with a value (point / interval), one-sided bound, unidentifiable,
 not explained, no observation, for the earlier and the new videos; and how many results changed kind.
 T19/T20 friction is left out (B20). Usage: python regen_compare.py BASE_GATED NEW_GATED [--out FILE.md]
-(BASE_GATED: the gated official results, e.g. all_cc_gated; NEW_GATED: the gated merged results, e.g. all_cc_v6_gated;
-the new rows are those with prompt_version != the base tag)"""
+(BASE_GATED: the gated official results, e.g. all_cc_gated; NEW_GATED: the gated merged results, e.g. all_cc_revised_gated;
+the new rows are those with prompts != original)"""
 import collections, json, sys
 
 from paths import WORK as B
@@ -18,7 +18,7 @@ if out: args = [x for x in args if x != out]
 load = lambda n: [json.loads(l) for l in open(B / 'results_gen' / f'{n}.jsonl')]
 skip = lambda r: 'param' not in r or (r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20'))
 base = {(r['key'], r['param']): r for r in load(args[0]) if not skip(r)}
-new = {(r['key'], r['param']): r for r in load(args[1]) if not skip(r) and r.get('prompt_version') not in (None, 'v3')}
+new = {(r['key'], r['param']): r for r in load(args[1]) if not skip(r) and r.get('prompts') not in (None, 'original')}
 keys = [k for k in new if k in base and base[k]['kind'] != 'not_validated' and new[k]['kind'] != 'not_validated']
 L = [f'# Re-generated videos vs the videos they replace ({args[1]} vs {args[0]})', '',
      f'Paired results (same key and parameter, both past the known-truth gate): {len(keys)}; tasks: '

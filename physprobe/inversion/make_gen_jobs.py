@@ -1,11 +1,11 @@
 """Generated videos -> SAM 3.1 lean jobs + per-item metadata for eval_generated.py.
-Per item (seed / annotation / model / anonymous clip): task from FORMAL_V3_ITEM_VERIFIED.json, video = resized.mp4 (the
+Per item (seed / annotation / model / anonymous clip): task from the item's *ITEM_VERIFIED.json record, video = resized.mp4 (the
 model output resized back to the reference resolution), native fps from the item record. Pixel mapping = affine ECC
 registration of the condition image onto the first frame (gen_register.py); an item whose registration fails uses its
 model's median mapping and is flagged. Prompts: visible-part boxes of every non-fixed object at the condition state
 (camera pixels -> condition image -> video), prompt frame 0. Tracking stops at the frame where the last predictability
 window of the task ends plus the 20-frame shift margin (later frames are never used).
-Prompt-corrected deliveries (v6, 31 scenes, 2026-10-25) keep the same layout with V6_ITEM_VERIFIED.json: --gen-dir.
+Prompt-corrected re-generations (31 scenes, 2026-10-25) keep the same layout: --gen-dir (e.g. data/generated/revised_prompts).
 Usage: python make_gen_jobs.py NAME REMOTE_DIR [--gen-dir DIR] [--workers N] [--skip NAME1,NAME2] [--models m1,m2] [--seeds 0,1,2] [--annotations 1,2,3] [--limit N]
   -> sam_gen/<NAME>/jobs.jsonl (videos REMOTE_DIR/videos/<item key>.mp4), items.json, upload list"""
 import argparse, json, math, statistics as st
@@ -16,10 +16,10 @@ import numpy as np
 import common as c2
 import gen_register as gr
 
-G = Path(c2.gt('/Users/zhangshuran/data/projects/PhysProbe/data/generated/author_core100_english_three_variants_v3_20261020'))
-CI = c2.W.parent / 'author_core100_preparation_20261019_v1/condition_images'
-HZ = json.load(open(c2.B / ('horizons33.json' if (c2.B / 'horizons33.json').exists() else 'horizons32.json')))
-RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
+G = c2.GENERATED / 'original_prompts'
+CI = c2.PREPARATION / 'condition_images'
+HZ = json.load(open(c2.B / 'horizons.json'))
+RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.READINESS)}
 
 
 def _register(x):
@@ -83,7 +83,7 @@ def build(items, name, remote, workers=1):
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('remote')
     ap.add_argument('--models'); ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--annotations', default='1,2,3'); ap.add_argument('--limit', type=int)
-    ap.add_argument('--gen-dir', help='generation delivery root (default: the v3 three-variant run)')
+    ap.add_argument('--gen-dir', help='generation delivery root (default: data/generated/original_prompts, the three-variant run)')
     ap.add_argument('--workers', type=int, default=1, help='parallel registration processes')
     ap.add_argument('--skip', help='comma-separated job names (sam_gen/<name>/items.json) whose keys are already tracked (incremental deliveries)')
     a = ap.parse_args()
@@ -94,7 +94,7 @@ if __name__ == '__main__':
             for md in sorted((G / f'seed{s}' / f'annotation{an}').iterdir()):
                 if a.models and md.name not in a.models.split(','): continue
                 for it in sorted((md / 'generated').iterdir()):
-                    f = next((it / n for n in ('FORMAL_V3_ITEM_VERIFIED.json', 'V6_ITEM_VERIFIED.json') if (it / n).exists()), None)
+                    f = next(iter(sorted(it.glob('*ITEM_VERIFIED.json'))), None)
                     if f is None or not (it / 'resized.mp4').exists(): continue
                     meta = json.load(open(f)); clip = meta['clip_id']
                     if clip == 'T06_C04' or HZ.get(clip, {}).get('status') != 'OK': continue

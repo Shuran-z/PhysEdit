@@ -2,11 +2,11 @@
 # Upload the staged generated videos + jobs of one host (sam_gen/all/stage_<host>) and start the SAM 3.1 lean tracker there.
 # Usage: upload_and_run_gen.sh hupanwen|h100-2
 CODE=/Users/zhangshuran/data/projects/PhysProbe/physprobe/inversion
-B=/Users/zhangshuran/data/projects/PhysProbe/.local-research/evaluation/core100_inversion_workspace/trial/batch2
+B=/Users/zhangshuran/data/projects/PhysProbe/.local-research/evaluation/core100_inversion_workspace/evaluation
 H=$1; ST=$B/sam_gen/all/stage_$H
 case $H in
   hupanwen) A=nscc-hupanwen; P=/data2/zhangshuran/physedit/gen_all; T=/data2/zhangshuran/physedit/lean_tools ;;
-  h100-2)   A=nscc-xdliang3-h100-2; P=/workspace/wz/sam/data2/zhangshuran/physedit/gen_all; T=/workspace/wz/home/wangzijun_p25/zhangshuran/core100_inversion/batch2 ;;
+  h100-2)   A=nscc-xdliang3-h100-2; P=/workspace/wz/sam/data2/zhangshuran/physedit/gen_all; T=/workspace/wz/home/wangzijun_p25/zhangshuran/core100_inversion/deploy ;;
 esac
 t0=$(date +%s)
 ssh -o BatchMode=yes -o ConnectTimeout=60 $A "mkdir -p $P/videos"

@@ -10,10 +10,10 @@ import numpy as np
 import common as c2
 
 name, remote, clips = sys.argv[1], sys.argv[2].rstrip('/'), sys.argv[3:]
-hz = json.load(open(c2.B / 'horizons32.json'))
+hz = json.load(open(c2.B / 'horizons.json'))
 if clips == ['--all']: clips = sorted(c for c, h in hz.items() if h.get('status') == 'OK' and c != 'T06_C04')
 LOCAL = c2.B / 'sam_lean' / name; (LOCAL / 'videos').mkdir(parents=True, exist_ok=True)
-s1 = {x['clip']: x['path'] for x in json.load(open(c2.W / 'ready/s1.json'))}
+s1 = {x['clip']: x['path'] for x in json.load(open(c2.READY / 'reference_videos.json'))}
 jobs = []
 for clip in clips:
     cam = c2.camera(clip); poses = c2.initial_poses(clip)

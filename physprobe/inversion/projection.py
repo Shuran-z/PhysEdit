@@ -1,4 +1,4 @@
-"""Batch-1 known-answer evaluation (onset unknown, truth not in library, primary mover only, SAM3.1 observations).
+"""First known-answer test of the projection method (onset unknown, truth not in library, primary mover only, SAM3.1 observations).
 
 For each (scene, parameter): projected-box loss vs SAM track with a continuous free time shift, explosion filter,
 unweighted local quadratic fit in log-parameter, bound detection; plus a 3D-trajectory oracle with the same rules.
@@ -8,9 +8,8 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation as Rot
 
-W = Path('/Users/zhangshuran/data/projects/PhysProbe/.local-research/evaluation/core100_inversion_workspace')
-B = W / 'trial/batch1'
-bound = json.load(open(W / 'ready/s4_bound.json'))
+from paths import WORKSPACE as W, PROJECTION as B, READY
+bound = json.load(open(READY / 'bound.json'))
 cams = json.load(open(B / 'cams.json'))
 plan = json.load(open(B / 'lib_plan.json'))
 SANITIZE_SCENES = {'T01', 'T02', 'T03', 'T04', 'T05', 'T11', 'T15'}
@@ -123,7 +122,7 @@ def delta_box(obs):
 
 def sam_obs():
     out = {}
-    for f in sorted((W / 'trial/batch1/sam').glob('tracks_*.jsonl')):
+    for f in sorted((B / 'sam').glob('tracks_*.jsonl')):
         for line in open(f):
             r = json.loads(line); clip, n = r['id'].split('__')
             a = np.full((210, 4), np.nan)
@@ -141,7 +140,7 @@ if __name__ == '__main__':
         lib_path = B / 'libs' / f"LIB_{clip}_{param}.json"
         if not lib_path.exists(): continue
         lib = json.load(open(lib_path)); meta = load_meta(clip)
-        for extra in sorted([*(B / 'libs').glob(f'REF_{clip}_{param}_*.json'), *(B / 'libs').glob(f'R3_{clip}_{param}_*.json')]):
+        for extra in sorted((B / 'libs').glob(f'*_{clip}_{param}_*.json')):   # reference replays and refinement runs of the same library
             for v, r in json.load(open(extra)).items():
                 if r['poses'] is not None or v not in lib: lib[v] = r
         ref = np.array([[*next(o['position'] for o in fr['objects'] if o['name'] == n), *next(o for o in fr['objects'] if o['name'] == n).get('quaternion_xyzw', [0, 0, 0, 1])] for fr in meta['frames'] for n in [primary]])
@@ -165,4 +164,4 @@ if __name__ == '__main__':
         results.append(row)
         fmt = lambda r: '-' if r is None else (f"{r['est']:.4g} ({100 * (r['est'] - truth) / truth:+.1f}%) band[{r['band'][0]:.3g},{r['band'][1]:.3g}]" if r['kind'] == 'point' else f"{r['kind']} [{r['band'][0]:.3g},{r['band'][1]:.3g}]")
         print(f"{clip} {param:2s} truth {truth:<9.4g} | lib {len(vs)} drop {len(dropped)} | 3D oracle {fmt(row['oracle'])} | SAM {fmt(row.get('sam'))}", flush=True)
-    json.dump(results, open(B / 'results_batch1.json', 'w'), indent=1, default=float)
+    json.dump(results, open(B / 'results.json', 'w'), indent=1, default=float)

@@ -1,13 +1,13 @@
 """SAM 3.1 lean tracker (2026-10-24): one forward pass per VIDEO, every object of the scene prompted jointly.
-Same model, checkpoint and prompt form as the frozen V4 frontend's identity tracker (facebook/sam3.1 multiplex predictor,
+Same model, checkpoint and prompt form as the identity tracker of PhysEdit's frozen SAM 3.1 frontend (facebook/sam3.1 multiplex predictor,
 box given as its two corners with SAM labels 2/3 at the prompt frame, box = largest connected component of the raw mask,
-the two V4 compatibility shims that change no neural output), but instead of ~8 passes per object (identity x2, semantic,
+the frontend's two compatibility shims that change no neural output), but instead of ~8 passes per object (identity x2, semantic,
 foreground x4, integrated, RGB health, certification) all objects share one session and one propagation, so each object
 keeps its own mask and identity swaps between neighbours are suppressed by construction.
 Job (one line per video): {"id": VIDEO_ID, "video": PATH, "prompt_frame": K, "last_frame": optional,
                            "objects": {NAME: [x0, y0, x1, y1] in video pixels at the prompt frame}}
-Output (one line per object, V4-compatible): {"id": "VIDEO_ID__NAME", "video": ..., "tracks": {NAME: {"frames": [...],
-"xyxy": [... or null], "area": [...]}}, "model": "facebook/sam3.1", "mode": "lean_v1_joint_box_prompt", "seconds": ...}
+Output (one line per object, the frontend's track format): {"id": "VIDEO_ID__NAME", "video": ..., "tracks": {NAME: {"frames": [...],
+"xyxy": [... or null], "area": [...]}}, "model": "facebook/sam3.1", "mode": "lean_joint_box_prompt", "seconds": ...}
 Usage: python sam_tracker.py JOBS OUT --sam3 SRC --checkpoint PT [--shard I/N] [--tmp /dev/shm]"""
 import argparse, inspect, json, os, shutil, sys, tempfile, time
 from pathlib import Path
@@ -35,13 +35,13 @@ def main():
     cv2.setNumThreads(1); torch.manual_seed(20261010)
     predictor = build_sam3_multiplex_video_predictor(checkpoint_path=a.checkpoint, use_fa3=False, use_rope_real=False,
                                                      compile=False, warm_up=False, async_loading_frames=False)
-    original_init = predictor.model.init_state            # V4 shim 1: unsupported false-default option
+    original_init = predictor.model.init_state            # compatibility shim 1: unsupported false-default option
     if 'offload_state_to_cpu' not in inspect.signature(original_init).parameters:
         def init_compat(*x, offload_state_to_cpu=False, **k):
             assert offload_state_to_cpu is False
             return original_init(*x, **k)
         predictor.model.init_state = init_compat
-    original_merge = predictor.model._build_sam2_output   # V4 shim 2: keep tracker masks the refinement merge drops
+    original_merge = predictor.model._build_sam2_output   # compatibility shim 2: keep tracker masks the refinement merge drops
     def merge_compat(state, frame_idx, refined_obj_id_to_mask=None):
         if frame_idx not in state['cached_frame_outputs'] and refined_obj_id_to_mask: return refined_obj_id_to_mask.copy()
         return original_merge(state, frame_idx, refined_obj_id_to_mask)
@@ -95,7 +95,7 @@ def main():
                 dt = round(time.time() - t0, 1)
                 for n in names:
                     out.write(json.dumps(dict(id=f"{j['id']}__{n}", video=j['video'], prompt_frame=j['prompt_frame'], tracks={n: rec[n]},
-                                              model='facebook/sam3.1', mode='lean_v1_joint_box_prompt', seconds=dt, exception=err)) + '\n')
+                                              model='facebook/sam3.1', mode='lean_joint_box_prompt', seconds=dt, exception=err)) + '\n')
                 out.flush()
                 print(json.dumps(dict(id=j['id'], objects=len(names), frames=len(frames), seconds=dt, exception=err)), flush=True)
     finally:

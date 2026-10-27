@@ -1,29 +1,28 @@
 """Integration (G0) verdict for all 100 Core100 tasks: can the original simulation be replayed at the true parameters?
-Sources: batch-1 C03 replays (g0/, g0v2/, g0rep/), batch-2 replays (G0b2_*, follow-ups G0b2r_*), video-only overlays
+Sources: the C03 replays of the first projection test (projection/truth_replays*/), the true-parameter replays
+(truth_replays/<clip>.json, follow-ups <clip>_repeats.json), video-only overlays
 (T06/T09/T10, visual check), the reference explosion audit. Primary object = moving object of the readiness table's
 main-contact-friction pair. Writes INTEGRATION_STATUS.json and prints the table."""
 import gzip, json, sys
 from pathlib import Path
 import numpy as np
 
-from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
-W = B.parents[1]
+from paths import WORK as B, CODE, gt, PROJECTION as B1, READINESS, KNOWN   # data dir (outside git) / code dir
+from common import man, bound, recorded
 sys.argv = ['x']
-exec(open(B / 'g0_compare2.py').read().split("prefix = sys.argv")[0])   # man, bound, recorded()
-rows = {json.loads(l)['clip_id']: json.loads(l) for l in open(W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
+rows = {json.loads(l)['clip_id']: json.loads(l) for l in open(READINESS)}
 import csv
-mcf = {r['clip_id']: json.loads(r['main_contact_friction']) for r in csv.DictReader(open(W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.csv'))}
-B1 = B.parent / 'batch1'
+mcf = {r['clip_id']: json.loads(r['main_contact_friction']) for r in csv.DictReader(open(KNOWN / 'readiness100.csv'))}
 
 
 def runs_for(clip):
-    """all true-parameter replays of a task made with its current (v2) config: list of {mover: poses}"""
+    """all true-parameter replays of a task made with its current config: list of {mover: poses}"""
     out = []
-    for f in [B / 'g0' / f'G0b2_{clip}.json', B / 'g0' / f'G0b2r_{clip}.json']:
+    for f in [B / 'truth_replays' / f'{clip}.json', B / 'truth_replays' / f'{clip}_repeats.json']:
         if f.exists(): out += [v['poses'] for v in json.load(open(f)).values() if v.get('poses')]
     if clip.endswith('C03'):
-        v2 = json.load(open(B1 / 'cfg/v2_changes.json'))
-        for f in ([B1 / 'g0v2' / f'{clip}.json'] if clip in v2 else [B1 / 'g0' / f'{clip}.json']) + [B1 / 'g0rep' / f'{clip}.json']:
+        changed = json.load(open(B1 / 'cfg/config_changes.json'))
+        for f in ([B1 / 'truth_replays_changed_config' / f'{clip}.json'] if clip in changed else [B1 / 'truth_replays' / f'{clip}.json']) + [B1 / 'truth_replays_repeats' / f'{clip}.json']:
             if f.exists(): out += [v['poses'] for v in json.load(open(f)).values() if v.get('poses')]
     return out
 

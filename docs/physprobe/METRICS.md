@@ -1,13 +1,13 @@
 # PhysProbe 评测指标体系
 
-日期：2026-10-26 · 代码：`physprobe/inversion/`（`common_metrics.py`、`response_metrics.py`、`benchmark_table.py`）· 结果：`results_gen/benchmark_official.md`（原提示词）、`results_gen/benchmark_v6.md`（用上 v6 视频）
+日期：2026-10-26 · 代码：`physprobe/inversion/`（`common_metrics.py`、`response_metrics.py`、`benchmark_table.py`）· 结果：`results_gen/benchmark_official.md`（原提示词）、`results_gen/benchmark_revised.md`（用上修正提示词的视频）
 
 指标分两类：
 
 - **通用指标**：复用 PhysEdit 已有的 V/P 指标，改写成物理视频生成论文里常用的形式，方便和其他工作对照。
 - **本基准独有的指标**：基于物理参数反演，回答"视频里的运动能不能用某个物理参数解释、解释出来的参数和提示差多少、参数改变时运动有没有跟着变"。
 
-下面的数字都按原提示词的正式视频计算（12 个模型、10,295 条）。已交付的 v6 提示词修正视频（2,723 条，Cosmos-Predict2 尚未交付）按视频替换后的总表在 `results_gen/benchmark_v6.md`，各项结论不变（报告 5.4 节）。
+下面的数字都按原提示词的正式视频计算（12 个模型、10,295 条）。已交付的 v6 提示词修正视频（2,723 条，Cosmos-Predict2 尚未交付）按视频替换后的总表在 `results_gen/benchmark_revised.md`，各项结论不变（报告 5.4 节）。
 
 ## 1. 指标一览
 
@@ -123,15 +123,15 @@ ADE 和比值是中位数，其余是均值。参考续段每 0.1 秒只有 0.21
 
 ```bash
 # 通用指标（生成视频、三种合成视频）
-python common_metrics.py all_cc sam_gen/all/tracks/all_camcomp.jsonl --out all_cc --video-dir gen_videos_v3/videos --clock realtime --workers 24
+python common_metrics.py all_cc sam_gen/all/tracks/all_camcomp.jsonl --out all_cc --video-dir gen_videos/videos --clock realtime --workers 24
 python common_metrics.py s15v sam_gen/s15v/tracks_lean.jsonl --out s15v --clock reference
 python common_metrics.py all_cc --frozen --out frozen          # 基线：条件帧静止不动
-python common_metrics.py v6all sam_gen/v6all/tracks_camcomp.jsonl --out v6all   # v6 交付（v6de、v6f、v6g 同样）
+python common_metrics.py revised sam_gen/revised/tracks_camcomp.jsonl --out revised   # 修正提示词的视频
 # 独有指标
 python response_metrics.py all_cc_gated
 # 总表
 python benchmark_table.py all_cc results_gen/response_metrics.json sam_gen/all/tracks/all_camcomp_stats.jsonl --out official
-# v6 版总表：后面的集合按视频 key 替换前面的
-python benchmark_table.py all_cc+v6all+v6de+v6f+v6g results_gen/response_metrics_all_cc_v6all_v6de_v6f_v6g_gated.json \
-  sam_gen/all/tracks/all_camcomp_stats.jsonl,sam_gen/v6all/tracks_camcomp_stats.jsonl,sam_gen/v6de/tracks_camcomp_stats.jsonl,sam_gen/v6f/tracks_camcomp_stats.jsonl,sam_gen/v6g/tracks_camcomp_stats.jsonl --out v6
+# 用上修正提示词视频的总表：后面的集合按视频 key 替换前面的
+python benchmark_table.py all_cc+revised results_gen/response_metrics_all_cc_revised_gated.json \
+  sam_gen/all/tracks/all_camcomp_stats.jsonl,sam_gen/revised/tracks_camcomp_stats.jsonl --out revised
 ```

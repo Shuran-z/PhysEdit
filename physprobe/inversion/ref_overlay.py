@@ -8,7 +8,7 @@ import numpy as np
 import evaluator as ev
 
 out = sys.argv[1]; args = sys.argv[2:]; os.makedirs(out, exist_ok=True)
-tracks = ev.B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl'
+tracks = ev.B / 'sam_lean' / 'reference' / 'tracks_lean.jsonl'
 for clip, param in zip(args[::2], args[1::2]):
     obs, kc = ev.load_obs(tracks, clip); meta = ev.ref_meta(clip); truth = ev.truth_of(clip, param)
     lib = ev.library(clip, param, with_truth=True, workers=1)
@@ -18,7 +18,7 @@ for clip, param in zip(args[::2], args[1::2]):
     h_end = max([hz[n]['horizon'] for n in names] or [60])
     kmax = int((h_end - 4) * dt / meta['dt_obs']) + kc
     ks = sorted({int(round(kc + i * (kmax - kc) / 7)) for i in range(8)})
-    cap = cv2.VideoCapture(str(ev.B / 'sam_lean' / 'ref99' / 'videos' / f'{clip}.mp4')); imgs = {}; k = 0
+    cap = cv2.VideoCapture(str(ev.B / 'sam_lean' / 'reference' / 'videos' / f'{clip}.mp4')); imgs = {}; k = 0
     while k <= max(ks):
         ok, im = cap.read()
         if not ok: break

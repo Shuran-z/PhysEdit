@@ -9,8 +9,8 @@ seeds), rule D7 of the issue log. For every moving object (> 1 cm):
   earlier: T19_C01 3 mm, T12_C03 0.6 mm) that are far below what any video can show.
   The first difference (sensitivity) is reported, never used to cut.
 Frames where an object is below z = -1 m (fell through a missing floor collider, B16) are ignored.
-Inputs: existing replays (runs_for() of integration_report.py), g0h32/H32R_<clip>.json (extra truth repeats),
-g0h32/H32P_<clip>.json (perturbed pair). Usage: python horizons.py [--fetch] -> horizons32.json + summary"""
+Inputs: existing replays (runs_for() of integration_report.py), horizon_replays/repeats_<clip>.json (extra truth repeats),
+horizon_replays/perturbed_<clip>.json (perturbed pair). Usage: python horizons.py [--fetch] -> horizons.json + summary"""
 import collections, json, subprocess, sys
 from pathlib import Path
 import numpy as np
@@ -21,11 +21,11 @@ argv_clips = [a for a in sys.argv[1:] if not a.startswith('--')]
 sys.argv = ['x']
 exec(open(CODE / 'integration_report.py').read().split("audit = json.load")[0])   # runs_for(), recorded(), man
 R = '/home/wangzijun_p25/zhangshuran/core100_inversion'
-(B / 'g0h32').mkdir(exist_ok=True)
-jobs = json.load(open(B / 'h32_jobs.json'))
+(B / 'horizon_replays').mkdir(exist_ok=True)
+jobs = json.load(open(B / 'horizon_jobs.json'))
 if fetch:
     for j in jobs:
-        dst = B / 'g0h32' / f"{j['tag']}.json"
+        dst = B / 'horizon_replays' / f"{j['tag']}.json"
         if not dst.exists():
             subprocess.run(['scp', '-q', '-o', 'BatchMode=yes', f"nscc-wangzijun-4090:{R}/{j['tag']}/{j['param']}_poses.json", str(dst)], stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 import os
@@ -42,10 +42,10 @@ def camera_scale(clip):
 out = {}
 for clip in sorted({j['clip'] for j in jobs}):
     if argv_clips and clip not in argv_clips: continue
-    pf = B / 'g0h32' / f'H32P_{clip}.json'
+    pf = B / 'horizon_replays' / f'perturbed_{clip}.json'
     if not pf.exists(): out[clip] = dict(status='MISSING_PERTURBED'); continue
     truths = runs_for(clip)
-    rf = B / 'g0h32' / f'H32R_{clip}.json'
+    rf = B / 'horizon_replays' / f'repeats_{clip}.json'
     if rf.exists(): truths += [v['poses'] for v in json.load(open(rf)).values() if v.get('poses')]
     pert = [v['poses'] for v in json.load(open(pf)).values() if v.get('poses')]
     if len(pert) < 2 or not truths: out[clip] = dict(status='RUN_FAILED', n_truth=len(truths), n_pert=len(pert)); continue
@@ -86,7 +86,7 @@ for clip in sorted({j['clip'] for j in jobs}):
     best = max(objs, key=lambda k: (objs[k]['full'], objs[k]['usable_frames'] * objs[k]['moved_in_window_cm']))
     zero_sens = all(o['sensitivity_mm_per_1em4'] == 0 for o in objs.values())
     out[clip] = dict(status='GRAVITY_OVERRIDE_NO_EFFECT' if zero_sens else 'OK', objects=objs, best=dict(object=best, **objs[best]))
-json.dump(out, open(B / 'horizons32.json', 'w'), indent=1)
+json.dump(out, open(B / 'horizons.json', 'w'), indent=1)
 groups = collections.defaultdict(list)
 for clip, v in out.items():
     if v.get('status') != 'OK': groups[v.get('status')].append(clip); continue

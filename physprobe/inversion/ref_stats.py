@@ -1,11 +1,11 @@
-"""Known-answer statistics of the reference results (results3/ref_*.json, or another directory): per parameter the
+"""Known-answer statistics of the reference results (results_reference/ref_*.json, or another directory): per parameter the
 number of results by kind, point-estimate |error| median / p90 / max, and the share of bands that contain the truth.
 Friction of T19/T20 is left out (issue log B20). Also takes a synthetic set's .jsonl.
 Usage: python ref_stats.py [RESULT_DIR | SET.jsonl] [--compare OTHER_DIR]"""
 import collections, glob, json, os, statistics as st, sys
 import evaluator as ev
 
-d = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else str(ev.B / 'results3')
+d = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else str(ev.B / 'results_reference')
 R = [json.loads(l) for l in open(d)] if d.endswith('.jsonl') else [json.load(open(f)) for f in glob.glob(os.path.join(d, 'ref_*.json')) if not f.endswith('_summary.json')]
 R = [r for r in R if 'param' in r]
 R = [r for r in R if not (r['param'] == 'mu' and r['clip'][:3] in ('T19', 'T20'))]

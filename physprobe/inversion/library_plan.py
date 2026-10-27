@@ -1,4 +1,4 @@
-"""Library plan v3 (2026-10-24): every (task, parameter) of the 99 Genesis tasks, one rule for all.
+"""Library plan (2026-10-24): every (task, parameter) of the 99 Genesis tasks, one rule for all.
   g : absolute log grid 0.5 .. 25 m/s^2, ratio 1.12 (35 values) -> covers moon 1.62 .. 2.5x Earth for every task; tasks of a
       scene whose configs differ only in gravity (C01/C02/C03) share one library.
   mu: main contact pair of the readiness table (moving object + supporting plane, both set to the value -> effective pair
@@ -9,16 +9,15 @@ Values are ordered nearest-to-truth first and chunked (<= 6 per job, T15 frictio
 frame min(210, max horizon + 31) (physics_only.py --frames, validated per family, issue log F16) and keeps all objects
 (occluders for the visible-part boxes). The truth itself is never in a library (known-answer tests); for generated videos
 the existing true-parameter replays are added at evaluation time.
-Usage: python library_plan.py -> lib3_plan.json + summary"""
+Usage: python library_plan.py -> library_plan.json + summary"""
 import json, math
 from pathlib import Path
 
-from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
-W = B.parents[1]
-man = json.load(open(B / 'manifest2.json'))
-H = json.load(open(B / 'horizons32.json'))
-R = {json.loads(l)['clip_id']: json.loads(l) for l in open(W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
-REMOTE = '/home/wangzijun_p25/zhangshuran/core100_inversion/batch2'
+from paths import WORK as B, CODE, gt, READINESS   # data dir (outside git) / code dir
+man = json.load(open(B / 'manifest.json'))
+H = json.load(open(B / 'horizons.json'))
+R = {json.loads(l)['clip_id']: json.loads(l) for l in open(READINESS)}
+REMOTE = '/home/wangzijun_p25/zhangshuran/core100_inversion/deploy'
 G_GRID = [round(0.5 * 1.12 ** k, 5) for k in range(35)]
 CHUNK = 6
 
@@ -110,7 +109,7 @@ for j in jobs:
     n = 1 if (j['clip'].startswith('T15') and j['param'] == 'mu') else CHUNK
     movers = [j['speed_object']] if j.get('speed_object') else []
     for i in range(0, len(j['values']), n):
-        q = dict(tag=f"LIB3_{j['lib']}_{i // n:02d}", lib=j['lib'], clip=j['clip'], param=j['param'], values=j['values'][i:i + n],
+        q = dict(tag=f"{j['lib']}_{i // n:02d}", lib=j['lib'], clip=j['clip'], param=j['param'], values=j['values'][i:i + n],
                  renderer=m['renderer'], renderer_args=m.get('renderer_args', ''), movers=movers + ['ALL'] if movers else ['ALL'],
                  config=f"{REMOTE}/cfg/{j['clip']}.json", wrapper_args=(m.get('wrapper_args', '') + f" --frames {j['frames']}").strip())
         if j.get('friction_objects'): q['friction_objects'] = j['friction_objects']
@@ -118,8 +117,8 @@ for j in jobs:
             q.update(runner='t15', config=f"{REMOTE}/t15/{j['clip']}_config.json", physics=f"{REMOTE}/t15/{j['clip']}_physics.json")
             q.pop('wrapper_args')
         plan.append(q)
-json.dump(dict(libraries=jobs, notes=notes), open(B / 'lib3_libraries.json', 'w'), indent=1)
-json.dump(plan, open(B / 'lib3_plan.json', 'w'), indent=1)
+json.dump(dict(libraries=jobs, notes=notes), open(B / 'library_index.json', 'w'), indent=1)
+json.dump(plan, open(B / 'library_plan.json', 'w'), indent=1)
 shared = [j for j in jobs if j['param'] == 'g' and len(j['members']) > 1]
 print(f"{len(jobs)} libraries ({sum(j['param'] == 'g' for j in jobs)} g [{len(shared)} shared by {sum(len(j['members']) for j in shared)} tasks], "
       f"{sum(j['param'] == 'mu' for j in jobs)} mu, {sum(j['param'] == 'v' for j in jobs)} v), {len(plan)} queue jobs, {sum(len(q['values']) for q in plan)} simulations")

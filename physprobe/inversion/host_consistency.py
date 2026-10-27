@@ -4,8 +4,8 @@ same threshold (1.5 px at the object's distance, >= 1 mm) and the same perturbed
 task when no object's horizon moves earlier. Also reported: max distance of the A800 run to the 4090 truth runs / record
 inside the original window, and over the whole video (0 for deterministic tasks).
 The same check validates truncated runs (physics_only.py --frames N, compared on their N frames) and any new host.
-Inputs: g0a800/<tag>.json (refine_queue output, fetched with --fetch), horizons32.json, the 4090 replays.
-Usage: python host_consistency.py [--fetch] [--plan a800_g0_plan.json] [--host nscc-xdliang3-a800] [--out a800_compare.json] [CLIP ...]
+Inputs: host_replays/<tag>.json (refine_queue output, fetched with --fetch), horizons.json, the 4090 replays.
+Usage: python host_consistency.py [--fetch] [--plan host_check_plan.json] [--host nscc-xdliang3-a800] [--out host_check.json] [CLIP ...]
        -> prints a table, writes the --out json"""
 import json, os, subprocess, sys
 from pathlib import Path
@@ -14,16 +14,16 @@ import numpy as np
 from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
 import argparse
 ap = argparse.ArgumentParser(); ap.add_argument('clips', nargs='*'); ap.add_argument('--fetch', action='store_true')
-ap.add_argument('--plan', default='a800_g0_plan.json'); ap.add_argument('--host', default='nscc-xdliang3-a800')
-ap.add_argument('--out', default='a800_compare.json')
+ap.add_argument('--plan', default='host_check_plan.json'); ap.add_argument('--host', default='nscc-xdliang3-a800')
+ap.add_argument('--out', default='host_check.json')
 args = ap.parse_args(); fetch, argv_clips = args.fetch, args.clips
 sys.argv = ['x']
 exec(open(CODE / 'integration_report.py').read().split("audit = json.load")[0])   # runs_for(), recorded(), man
 SIGMA_PX, MIN_THRESH, FLOOR = float(os.environ.get('HORIZON_PX', 1.5)), 1e-3, -1.0
 R = '/workspace/wz/home/wangzijun_p25/zhangshuran/core100_inversion'
 plan = json.load(open(B / args.plan))
-H = json.load(open(B / 'horizons32.json'))
-(B / 'g0a800').mkdir(exist_ok=True)
+H = json.load(open(B / 'horizons.json'))
+(B / 'host_replays').mkdir(exist_ok=True)
 
 
 def camera_scale(clip):   # same as horizons.py
@@ -38,7 +38,7 @@ out = {}
 for j in plan:
     tag = j['tag']; clip = j['clip']
     if argv_clips and clip not in argv_clips: continue
-    dst = B / 'g0a800' / f'{tag}.json'
+    dst = B / 'host_replays' / f'{tag}.json'
     if fetch and not dst.exists():
         subprocess.run(['scp', '-q', '-o', 'BatchMode=yes', f"{args.host}:{R}/{tag}/{j['param']}_poses.json", str(dst)],
                        stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -47,9 +47,9 @@ for j in plan:
     if not A: out[clip] = dict(status='A800_RUN_FAILED'); print(f'{clip}: A800 RUN FAILED'); continue
     A = A[0]
     truths = runs_for(clip)
-    rf = B / 'g0h32' / f'H32R_{clip}.json'
+    rf = B / 'horizon_replays' / f'repeats_{clip}.json'
     if rf.exists(): truths += [v['poses'] for v in json.load(open(rf)).values() if v.get('poses')]
-    pf = B / 'g0h32' / f'H32P_{clip}.json'
+    pf = B / 'horizon_replays' / f'perturbed_{clip}.json'
     pert = [v['poses'] for v in json.load(open(pf)).values() if v.get('poses')] if pf.exists() else []
     meta = recorded(clip) if (man[clip].get('metadata') or man[clip].get('metadata_local')) else None
     focal, eye = camera_scale(clip)
