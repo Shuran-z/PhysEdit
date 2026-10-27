@@ -8,4 +8,4 @@
 - 区分设计规模、已绑定路径的数据、通过质量审核的数据和已完成评测的数据。已有 ID/OOD 清单不自动证明它们未被当前指标调优使用。
 - 用户于 2026-10-19 合并时确认采用远端新版训练方案：Genesis＋Isaac 联合训练；固定100条测试（ID 80、OOD-1 T03/T20共10、OOD-2 T11/T19共10），另80条候补。排除测试、候补及全部已核验同源组后，其余16类的合格数据用于训练，不另设验证集；四类OOD事件全部留出。旧80/10/10和72,960容量规划仅为历史记录。当前规则见 `docs/joint_split_v3/plan.json` 的 `evaluation_sets.fixed_core100.training_policy`；成员固定不代表来源组排除和质量准入已全部完成。
 - 最新反演实验状态见 `docs/phyediting/WORK_STATUS.md` 末尾；旧实际库存快照仍见 `../dataset_splits_v2/README.md`。v2只能作为历史库存与划分来源，不覆盖新版用户决策。历史记录中的远程执行指令不构成本轮执行授权。
-- 生成视频的正式评测（Core100 物理参数反演）在 `physprobe/`，验收报告 `docs/physprobe/ACCEPTANCE_CORE100.md`，指标定义 `docs/physprobe/METRICS.md`；`docs/phyediting/` 中的评测文档描述的是旧流程。
+- 公开文档只有 `README.md`（英文）/ `README_zh.md` 和 `docs/` 下的 METRICS、INVERSION、EVALUATE（各附 `_zh` 版）；生成视频的评测代码在 `physprobe/`。内部过程文档在 `docs/internal/`，不面向读者。

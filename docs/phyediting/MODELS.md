@@ -127,4 +127,4 @@ physedit run pipeline.json --execute
 | 视频判断 | Qwen3.5-9B | [权重](https://huggingface.co/Qwen/Qwen3.5-9B) |
 | 视频判断 | Qwen3.5-27B | [权重](https://huggingface.co/Qwen/Qwen3.5-27B) |
 
-Qwen通过本地权重或视频API配置，操作见[评测指南](EVALUATION.md#qwen视频判断)。SAM3.1的依赖见[跟踪指南](SAM31.md)。
+Qwen通过本地权重或视频API配置，操作见[评测指南](../internal/phyediting/EVALUATION.md#qwen视频判断)。SAM3.1的依赖见[跟踪指南](../internal/phyediting/SAM31.md)。
