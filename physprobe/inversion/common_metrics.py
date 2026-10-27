@@ -30,7 +30,7 @@ import evaluator as ev
 from paths import gt
 
 T_MAX, GRID_HZ = 5.0, 10.0
-REF = ev.B / 'sam_lean' / 'ref99'
+REF = ev.B / 'sam_lean' / 'reference'
 
 
 def read_frames(path, wanted):
@@ -70,7 +70,7 @@ def trajectory(gen, ref, to_ref, dt_g, dt_r, T, diag):
     """{ade, fde, ade_static, n_obj}; gen boxes in generated pixels (frame 0 = condition), ref boxes in reference pixels"""
     grid = np.arange(1, int(T * GRID_HZ * 3) + 1) / (GRID_HZ * 3)            # 30 Hz grid after the condition time
     per = []
-    for n in set(gen) & set(ref):
+    for n in sorted(set(gen) & set(ref)):   # fixed order: the means are then bit-reproducible across processes
         (fg, bg), (fr, br) = gen[n], ref[n]
         g0, r0 = centre_at(fg, bg, 0.0, dt_g, 0), centre_at(fr, br, 0.0, dt_r, 4)
         if not (np.isfinite(g0).all() and np.isfinite(r0).all()): continue

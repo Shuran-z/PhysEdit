@@ -1,4 +1,4 @@
-"""Compare two SAM 3.1 tracks files (tracks_v4.jsonl) job by job: frames present in only one of them, and per-frame box
+"""Compare two SAM 3.1 tracks files job by job: frames present in only one of them, and per-frame box
 differences (max |dx| over the four xyxy coordinates, px) on the common frames. Used to check that a new tracking host
 reproduces the reference host (A800 vs hupanwen, issue log F8).
 Usage: python sam_compare.py REF.jsonl NEW.jsonl   -> prints a table"""

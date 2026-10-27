@@ -2,7 +2,7 @@
 import json, os, subprocess, sys, time
 from pathlib import Path
 import os as _os
-R = _os.environ.get("RENDERER", "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T01_v2_7s/scripts/render_t01_t05_production_v3_multicam.py")
+R = _os.environ["RENDERER"]   # the task's renderer script, set by refine_queue.py from the task manifest
 PY = "/home/wangzijun_p25/miniconda3/envs/genesis/bin/python"
 tag, cfg, param, gpu, movers = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5].split(",")
 values = [float(v) for v in sys.argv[6:]]

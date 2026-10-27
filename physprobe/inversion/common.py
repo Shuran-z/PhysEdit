@@ -1,4 +1,4 @@
-"""Shared helpers for batch-2 (SAM jobs and the windowed evaluator), so that both use exactly the same camera, object
+"""Shared helpers of the SAM jobs and the windowed evaluator, so that both use exactly the same camera, object
 geometry and projection. Camera = the benchmark camera of each task (cams.json), with the renderer's camera
 sanitising reproduced (every renderer except the T16-T20 base clamps look_at.z / position.z; limits from the config,
 default 0.08 / 0.18, issue B2). Projection = shape-aware silhouette points (issue C9)."""
@@ -8,12 +8,11 @@ import numpy as np
 from scipy.ndimage import binary_closing, minimum_filter
 from scipy.spatial.transform import Rotation as Rot
 
-from paths import WORK as B, CODE, gt   # data dir (outside git) / code dir
-W = B.parents[1]
-man = json.load(open(B / 'manifest2.json'))
-bound = json.load(open(W / 'ready/s4_bound.json'))
-cams = json.load(open(B.parent / 'batch1/cams.json'))
-T13_DIR = W.parent / 'core100_known_condition_readiness_20261021_v1/bound_metadata/T13_server'
+from paths import WORK as B, CODE, gt, WORKSPACE as W, PROJECTION, READY, KNOWN, READINESS, PREPARATION, GENERATED   # data dir (outside git) / code dir
+man = json.load(open(B / 'manifest.json'))
+bound = json.load(open(READY / 'bound.json'))
+cams = json.load(open(PROJECTION / 'cams.json'))
+T13_DIR = KNOWN / 'bound_metadata/T13_server'
 NO_SANITIZE = {'T16', 'T17', 'T18', 'T19', 'T20'}
 _ns = {'np': np, 'Rot': Rot}
 _src = open(CODE / 'projection.py').read()
@@ -88,7 +87,7 @@ def initial_poses(clip, frame=4):
                 except KeyError: q = [0, 0, 0, 1]
             out[o['name']] = [*o['position'], *q]
         return out
-    run = json.load(open(B / 'g0' / f'G0b2_{clip}.json'))
+    run = json.load(open(B / 'truth_replays' / f'{clip}.json'))
     return {n: p[frame] for n, p in next(iter(run.values()))['poses'].items()}
 
 

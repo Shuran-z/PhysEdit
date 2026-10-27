@@ -6,19 +6,25 @@
 #   /data_cached/wangzijun_p25 -> /workspace/wz/data_cached/wangzijun_p25
 #   /data2/zhangshuran         -> /workspace/wz/sam/data2/zhangshuran
 #   /data1/zhangshuran         -> /workspace/wz/sam/data1/zhangshuran
-# Usage (on the Mac): [DEPLOY_HOST=alias] deploy_host.sh [item ...]   items: genesis_env genesis_src genesis_cache assets assets_py ours sam31_code
-#                     sam31_weights sam31_base_env shims rewrite check     (default: all, in that order)
+# Usage (on the Mac): [DEPLOY_HOST=alias] deploy_host.sh [item ...]   items: genesis_env genesis_src genesis_cache assets assets_py ours sam_code
+#                     sam_weights sam_base_env shims rewrite check     (default: all, in that order)
+# Host layout: core100_inversion/deploy (environment files, runners, task configs) and core100_inversion/queue (queue
+# state); physedit/sam_env, sam_code, sam_source, sam_weights (SAM 3.1). These names are links to the unpacked trees.
 # rewrite covers only the Genesis env and SAM trees (default REWRITE_TOPS below); author files
 # and our configs must keep their original bytes (sha256 checks) and are reached through the preload redirect instead.
 # After deploying, the 'ours' scripts still need PY switched to the /workspace interpreter path (run_batch.py, refine_queue.py).
 set -euo pipefail
-C=/Users/zhangshuran/data/projects/gravtrace/.local-research/deploy_cache_a800
+C=/Users/zhangshuran/data/projects/PhysProbe/.local-research/deploy_cache
 H=${DEPLOY_HOST:-nscc-xdliang3-a800}; R=/workspace/wz   # same layout on every xdliang3 container host
-items=${@:-genesis_env genesis_src genesis_cache assets assets_py ours sam31_code sam31_weights sam31_base_env shims rewrite check}
+items=${@:-genesis_env genesis_src genesis_cache assets assets_py ours sam_code sam_weights sam_base_env shims rewrite check}
 put() { # tarball  target-dir
   echo "$(date) upload $1 -> $2"
   ssh -o BatchMode=yes -o ServerAliveInterval=60 $H "mkdir -p $2"
   ssh -o BatchMode=yes -o ServerAliveInterval=60 $H "tar -xzf - -C $2" < $C/$1.tar.gz
+}
+links() { # dir  name:marker (-> the directory holding marker) | name=pattern (-> the one match) ...; existing names are kept
+  local d=$1; shift
+  ssh -o BatchMode=yes $H "cd $d && for a in $*; do case \$a in *=*) n=\${a%%=*}; t=\$(ls -d \${a#*=} 2>/dev/null) ;; *) n=\${a%%:*}; t=\$(ls -d */\${a#*:} 2>/dev/null | xargs -r -n1 dirname) ;; esac; [ -e \$n ] && continue; [ \$(echo \$t | wc -w) = 1 ] && ln -s \$t \$n || echo \"\$n: expected one match, found: \$t\"; done"
 }
 for it in $items; do case $it in
   genesis_env)   put genesis_env   $R/home/wangzijun_p25/miniconda3/envs ;;
@@ -26,12 +32,15 @@ for it in $items; do case $it in
   genesis_cache) put genesis_cache $R/cache ;;
   assets)        put assets        $R ;;            # tar of absolute paths stored relative to / (home/..., data_cached/...)
   assets_py)     put assets_py     $R ;;            # .py sources of every author dir the replays import from (only .pyc were opened)
-  ours)          put ours          $R/home/wangzijun_p25/zhangshuran ;;
-  sam31_code)    put sam31_code    $R/sam/data2/zhangshuran/physedit ;;
-  sam31_weights) put sam31_weights $R/sam/data2/zhangshuran/physedit ;;
-  sam31_base_env) put sam31_base_env $R/sam/data1/zhangshuran/miniconda3/envs ;;
+  ours)          put ours          $R/home/wangzijun_p25/zhangshuran
+                 links $R/home/wangzijun_p25/zhangshuran/core100_inversion deploy:t15 queue:refine_queue.py ;;
+  sam_code)      put sam_code      $R/sam/data2/zhangshuran/physedit
+                 links $R/sam/data2/zhangshuran/physedit 'sam_env=*/env' 'sam_code=*/code' 'sam_source=*/source' ;;
+  sam_weights)   put sam_weights   $R/sam/data2/zhangshuran/physedit
+                 links $R/sam/data2/zhangshuran/physedit 'sam_weights=*/weights' ;;
+  sam_base_env)  put sam_base_env  $R/sam/data1/zhangshuran/miniconda3/envs ;;
   shims)   # path-redirect preload lib, GL bypass, minimal libGL for SAM's opencv, environment files (issue log F9-F11)
-    B=$R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2
+    B=$R/home/wangzijun_p25/zhangshuran/core100_inversion/deploy
     ssh -o BatchMode=yes $H "mkdir -p $R/lib/pyshim $R/lib/gl $B"
     ssh -o BatchMode=yes $H "cat > $R/lib/pathredirect.c && gcc -shared -fPIC -O2 -o $R/lib/libpathredirect.so $R/lib/pathredirect.c -ldl" < $C/pathredirect.c
     ssh -o BatchMode=yes $H "cat > $R/lib/pyshim/sitecustomize.py" < $C/sitecustomize.py
@@ -72,6 +81,6 @@ print('rewritten files', nfile, 'symlinks', nlink)
 PYEOF
     ;;
   check)
-    ssh -o BatchMode=yes $H "cd $R && . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/genesis_env.sh && $R/home/wangzijun_p25/miniconda3/envs/genesis/bin/python -c 'import genesis, torch; print(\"genesis\", genesis.__version__, genesis.__file__, \"torch\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2;
-      unset LD_PRELOAD; . $R/home/wangzijun_p25/zhangshuran/core100_inversion/batch2/sam_env.sh; PYTHONPATH=$R/sam/data2/zhangshuran/physedit/sam31_official_v1/source $R/sam/data2/zhangshuran/physedit/full_chain_smoke_20261012_v2/env/bin/python -c 'import torch, sam3; print(\"sam3 ok\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2; df -h /workspace | tail -1" ;;
+    ssh -o BatchMode=yes $H "cd $R && . $R/home/wangzijun_p25/zhangshuran/core100_inversion/deploy/genesis_env.sh && $R/home/wangzijun_p25/miniconda3/envs/genesis/bin/python -c 'import genesis, torch; print(\"genesis\", genesis.__version__, genesis.__file__, \"torch\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2;
+      unset LD_PRELOAD; . $R/home/wangzijun_p25/zhangshuran/core100_inversion/deploy/sam_env.sh; PYTHONPATH=$R/sam/data2/zhangshuran/physedit/sam_source $R/sam/data2/zhangshuran/physedit/sam_env/bin/python -c 'import torch, sam3; print(\"sam3 ok\", torch.__version__, torch.cuda.is_available())' 2>&1 | tail -2; df -h /workspace | tail -1" ;;
 esac; done

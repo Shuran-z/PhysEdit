@@ -10,7 +10,7 @@ sys.argv, rest = sys.argv[:1], sys.argv[1:]
 import evaluator as e2
 
 clip, files = rest[0], rest[1:]
-hz = json.load(open(c2.B / 'horizons32.json'))[clip]['objects']
+hz = json.load(open(c2.B / 'horizons.json'))[clip]['objects']
 meta, cam = c2.recorded(clip), c2.camera(clip)
 obs = {f: e2.load_tracks_indexed(f, clip) for f in files}
 names = sorted(n for n in set().union(*obs.values()) if n in hz)   # moving objects only

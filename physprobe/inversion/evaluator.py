@@ -1,4 +1,4 @@
-"""Evaluator v3 (2026-10-24): one method for reference AND generated videos, any frame rate / resolution / length.
+"""Evaluator (2026-10-24): one method for reference AND generated videos, any frame rate / resolution / length.
 Physical clock: simulation frame j <-> t = j * dt (dt = the task's physical seconds per reference frame). Observation frame k
 <-> t = 4 dt + (k - k_c) dt_obs, k_c = the video's condition frame (4 for references, 0 for generated videos), dt_obs =
 dt for references and playback_vs_physics / fps for generated videos (they keep the reference's playback convention,
@@ -11,9 +11,9 @@ Per object: Huber loss of the box residuals over the frames inside its predictab
 its noise level 2 (sigma / d0)^2; objects with fewer than MIN_FRAMES frames at zero shift are not used, and a shift that
 drops a used object below MIN_FRAMES is not allowed. Loss(v) = min over shifts of the sum over objects; estimate(): values
 within 1 of the minimum are indistinguishable (point estimate / interval / bound / unidentifiable).
-Library: lib3 (libs3/LIB3_<lib>_<chunk>.json), truth never in it; --with-truth adds the true-parameter replays (generated
+Library: libraries/<lib>_<chunk>.json, truth never in it; --with-truth adds the true-parameter replays (generated
 videos only). Usage:
-  python evaluator.py ref [CLIP ...]          known-answer test on the reference videos (lean SAM tracks) -> results3/ref_*.json
+  python evaluator.py ref [CLIP ...]          known-answer test on the reference videos (lean SAM tracks) -> results_reference/ref_*.json
   (generated videos: see eval_generated.py, which calls evaluate())"""
 import glob, json, math, os, sys
 from multiprocessing import get_context
@@ -28,23 +28,23 @@ exec(_src[_src.index('def huber('):_src.index('def rmse3d(')], ns)
 exec(_src[_src.index('def estimate('):_src.index('SIGMA_PX = ')], ns)
 huber, estimate = ns['huber'], ns['estimate']
 SIGMA_PX, MIN_FRAMES, MIN_VIS = float(os.environ.get('PHYSPROBE_SIGMA_PX', '1.5')), 3, 0.5   # env override only for sensitivity runs
-_cal = B / 'results3' / 'band_calibration.json'
+_cal = B / 'results_reference' / 'band_calibration.json'
 DELTA = json.load(open(_cal))['delta'] if _cal.exists() else 1.0   # identifiability threshold (D13: empirical calibration)
 E_BEYOND = 1.0   # per-frame loss of frames inside the truth window but beyond a value's own (shorter) window
 OBJ_MAX = 5.0    # at the joint optimum an object above this is inconsistent with the others: drop the worst, re-fit
 KSCALE = os.environ.get('PHYSPROBE_KSCALE', '0') == '1'   # D26: every library value is compared on the same (truth) window; 1 = old sqrt(g_truth/g) shortening
-REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results3')   # output directory of the reference run
+REF_OUT = os.environ.get('PHYSPROBE_REF_OUT', 'results_reference')   # output directory of the reference run
 GATE = 10.0   # an object whose best fit over the whole library exceeds this (~3 sigma rms) is not explained by any value
 JOINT = os.environ.get('PHYSPROBE_JOINT', 'impute')   # D40: unobservable cells cost the object's worst best-shift loss ('strict' = old rule)
 MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an object needs a SAM box in >= half of its window's video frames
 VERTEX = os.environ.get('PHYSPROBE_VERTEX', 'local5')   # quadratic fit at the minimum: 5 nearest library values, or 'set' (D41, not adopted)
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
-HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons33.json' if (B / 'horizons33.json').exists() else 'horizons32.json')))   # predictability windows (D7)
-RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.W.parent / 'core100_known_condition_readiness_20261021_v1/readiness100.jsonl')}
-LIBS = json.load(open(B / 'lib3_libraries.json'))['libraries']
+HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons.json')))   # predictability windows (D7)
+RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.READINESS)}
+LIBS = json.load(open(B / 'library_index.json'))['libraries']
 LIBMAP = {(m, L['param']): L for L in LIBS for m in L['members']}
-CACHE = B / os.environ.get('PHYSPROBE_BOXCACHE', 'libbox3'); CACHE.mkdir(exist_ok=True)   # visible boxes of every library simulation
+CACHE = B / os.environ.get('PHYSPROBE_BOXCACHE', 'box_cache'); CACHE.mkdir(exist_ok=True)   # visible boxes of every library simulation
 
 
 def estimate_band(vs, ys, delta=1.0):
@@ -94,7 +94,7 @@ def generated_dt(clip, fps, mode='realtime'):
 
 
 def usable(clip):
-    """uniform object rule (as make_sam_jobs2): >= 2 usable frames and >= 2x the horizon threshold of motion in the window"""
+    """uniform object rule (as in the SAM job builder): >= 2 usable frames and >= 2x the horizon threshold of motion in the window"""
     return [n for n, o in HZ[clip]['objects'].items() if o['usable_frames'] >= 2 and o['moved_in_window_cm'] * 10 >= 2 * o['threshold_mm']]
 
 
@@ -147,20 +147,20 @@ def _boxes_job(args):
 
 
 def library(clip, param, with_truth=False, workers=8):
-    """[(value, {name: (frac (F,), box (F, 4))})] for the task's library, visible boxes cached in libbox3/"""
+    """[(value, {name: (frac (F,), box (F, 4))})] for the task's library, visible boxes cached in box_cache/ (key = the stem of
+    the chunk file the simulation comes from, so a renamed or linked chunk keeps its cache)"""
     L = LIBMAP[(clip, param)]
     names = sorted({n for m in L['members'] for n in usable(m)})
-    files = sorted(glob.glob(str(B / 'libs3' / f"LIB3_{L['lib']}_*.json")))   # main chunks 00.., half steps h*, bisection b*
+    files = sorted(glob.glob(str(B / 'libraries' / f"{L['lib']}_*.json")))   # main chunks 00.., half steps h*, bisection b*
     for extra in filter(None, os.environ.get('PHYSPROBE_EXTRA_LIBS', '').split(',')):   # experimental chunks kept apart (D36 tests)
-        files += sorted(glob.glob(str(B / extra / f"LIB3_{L['lib']}_*.json")))
-    if with_truth:
-        files += sorted(glob.glob(str(B / 'g0' / f'G0b2_{clip}.json')))
+        files += sorted(glob.glob(str(B / extra / f"{L['lib']}_*.json")))
+    truth_files = sorted(glob.glob(str(B / 'truth_replays' / f'{clip}.json'))) if with_truth else []
     todo, items = [], []
-    for f in files:
-        tag = Path(f).stem
+    for f in files + truth_files:
+        tag = Path(f).resolve().stem
         for v, r in json.load(open(f)).items():
             if r.get('poses') is None: continue
-            val = float(v) if not tag.startswith('G0') else truth_of(clip, param)
+            val = float(v) if f not in truth_files else truth_of(clip, param)
             items.append((val, tag, v)); todo.append((clip, tag, v, names, r['poses']))
     todo = [t for t in todo if not (CACHE / f'{t[1]}__{t[2]}.npz').exists()]
     if todo and workers > 1:
@@ -384,7 +384,7 @@ def best_fit(res, tables, rms_tabs, lib_vals, used_objs, vals_out, losses, cells
 
 def ref_meta(clip):
     import cv2
-    v = B / 'sam_lean' / 'ref99' / 'videos' / f'{clip}.mp4'
+    v = B / 'sam_lean' / 'reference' / 'videos' / f'{clip}.mp4'
     cap = cv2.VideoCapture(str(v)); W, H = cap.get(cv2.CAP_PROP_FRAME_WIDTH), cap.get(cv2.CAP_PROP_FRAME_HEIGHT); cap.release()
     cam = c2.camera(clip); dt, _ = clock(clip)
     return dict(dt_obs=dt, scale=(W / cam[5], H / cam[6]))
@@ -392,7 +392,7 @@ def ref_meta(clip):
 
 def _ref_clip(clip):
     """reference known-answer run of one task (all its parameters); returns the printed lines"""
-    obs, kc = load_obs(B / 'sam_lean' / 'ref99' / 'tracks_lean.jsonl', clip)
+    obs, kc = load_obs(B / 'sam_lean' / 'reference' / 'tracks_lean.jsonl', clip)
     if not obs: return [f'{clip} no tracks']
     meta = ref_meta(clip); lines = []
     for param in ('g', 'mu', 'v'):

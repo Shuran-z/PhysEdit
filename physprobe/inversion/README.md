@@ -2,7 +2,7 @@
 
 对每条视频（参考视频或生成视频），在其他条件都已知的前提下，分别反演三个参数：重力 g、主接触面摩擦 μ、初速度 v（只对有指定速度的 62 条任务）。方法对 99 条 Genesis 任务完全统一（T06_C04 是 Isaac，按用户决定跳过）。问题与决策的完整记录在 `.local-research/evaluation/CORE100_INVERSION_ISSUES.md`（不进 git，下文的 D7、C12 等编号指那里的条目）。
 
-代码在本目录（git）；文中的 `results3/`、`results_gen/`、`sam_gen/`、`libs3/` 等数据路径都在 `PHYSPROBE_WORK` 下（默认为 `.local-research/evaluation/core100_inversion_workspace/trial/batch2`，见 `paths.py`）。脚本在本目录下运行，例如 `python physprobe/inversion/evaluator.py ref`；服务器端脚本在 `server/`，部署脚本在 `deploy/`，上传和监控工具在 `tools/`。
+代码在本目录（git）；文中的 `results_reference/`、`results_gen/`、`sam_gen/`、`libraries/` 等数据路径都在 `PHYSPROBE_WORK` 下（默认为 `.local-research/evaluation/core100_inversion_workspace/evaluation`，目录布局见 `paths.py`）。脚本在本目录下运行，例如 `python physprobe/inversion/evaluator.py ref`；服务器端脚本在 `server/`，部署脚本在 `deploy/`，上传和监控工具在 `tools/`。
 
 ## 1. 方法（统一规则）
 
@@ -39,7 +39,7 @@
 
 ## 2. 已知答案验证
 
-参考视频用的是同一套流程，库里不含真值（`results3/ref_*.json`，统计用 `ref_stats.py`）。
+参考视频用的是同一套流程，库里不含真值（`results_reference/ref_*.json`，统计用 `ref_stats.py`）。
 
 | 参数 | 组数 | 点估计 | 点估计误差中位数 | 90 分位 | 真值在带内 |
 |---|---|---|---|---|---|
@@ -94,10 +94,10 @@ python summarize_generated.py NAME_gated   # -> results_gen/NAME_gated_by_model.
 
 ## 5. 主机与环境（F8–F19）
 
-- **仿真**：nscc-xdliang3-h100-1（2× H100，28 核）、a800-7（2× A800，12 核）、a800（1× A800，6 核），都部署在 `/workspace/wz`。环境为 `batch2/genesis_env.sh`：LD_PRELOAD 路径重定向、GL 旁路、PYTHONNOUSERSITE、线程限制、MPS。另外用 nscc-wangzijun-4090 的 GPU 0 和 GPU 2（作者的机器，每卡不超过 6 条，不开 MPS）。
+- **仿真**：nscc-xdliang3-h100-1（2× H100，28 核）、a800-7（2× A800，12 核）、a800（1× A800，6 核），都部署在 `/workspace/wz`。环境为 `deploy/genesis_env.sh`：LD_PRELOAD 路径重定向、GL 旁路、PYTHONNOUSERSITE、线程限制、MPS。另外用 nscc-wangzijun-4090 的 GPU 0 和 GPU 2（作者的机器，每卡不超过 6 条，不开 MPS）。
 - **SAM**：nscc-hupanwen 的 GPU 3–7、h100-2（驱动 550，只能跑 SAM），以及上面几台 xdliang3 主机。
-- **部署包**：`deploy_cache_a800/deploy_host.sh`（`DEPLOY_HOST=...`），或者 Storage01 上的 `zhangshuran_eval_20261024/wz_stack.tar`（h100-1、h100-2、a800-7 共享）。
-- **h100 占卡池**（codex_v3/infra2）：借卡用 `gpu_acquire.sh physedit_eval N`，还卡用 `GPU_PACKAGE=physedit_eval gpu_release.sh K`。h100-2 的 GPU 0 已于 2026-10-24 归还。
+- **部署包**：`deploy/deploy_host.sh`（`DEPLOY_HOST=...`，部署缓存在 `.local-research/deploy_cache`），或者 Storage01 镜像目录里的 `wz_stack.tar`（h100-1、h100-2、a800-7 共享）。主机上的布局：`core100_inversion/deploy`（环境、运行脚本、任务配置）、`core100_inversion/queue`（队列状态），SAM 3.1 在 `physedit/sam_env`、`sam_code`、`sam_source`、`sam_weights`。
+- **h100 占卡池**（机器上的占卡池工具）：借卡用 `gpu_acquire.sh physedit_eval N`，还卡用 `GPU_PACKAGE=physedit_eval gpu_release.sh K`。h100-2 的 GPU 0 已于 2026-10-24 归还。
 
 ## 6. 生成视频结果
 
@@ -107,8 +107,8 @@ python summarize_generated.py NAME_gated   # -> results_gen/NAME_gated_by_model.
 - 后处理一次跑完:`tools/postprocess_generated.sh <镜像根目录> all_cc 24`。依次做真值验证门、汇总、σ 加倍的敏感性对比(有 `all_cc_sigma3.jsonl` 时)、运动幅度与起动检查、报告图表。
 - 人工判读:`qa_overlay.py`(分层抽样叠加图;绿 = SAM,红 = 提示值下的仿真,蓝 = 最佳拟合),判读记录在 `.local-research/evaluation/qa_view/`。
 - 生成视频指标(问题记录 E3):`response_metrics.py [NAME]` -> `results_gen/response_metrics.md`:可评测性(各类结果的比例,不能评测 = 无法解释 + 无观测,待与人工打分做相关性检验)、反演误差(给出数值的结果,|最优值 / 提示值 − 1|,g/μ/v)、参数响应(g、v;同一模型同一任务内提示值不同的视频对,按不确定带排先后,单侧界也算,Kendall τ,按任务组重采样给区间)。同时写逐视频状态表 `results_gen/per_video_status.csv`(key、匿名片段 id、视频路径、各参数的类别和数值),用来对齐人工打分。
-- 指标总表(用户 2026-10-26,文档 `docs/physprobe/METRICS.md`):`common_metrics.py SET TRACKS --out NAME [--video-dir DIR] [--clock ...]` 算通用指标(轨迹 ADE/FDE、Physics-IQ 运动一致、视频 PSNR/SSIM、运动像素占比),`benchmark_table.py COMMON RESPONSE_JSON CAMCOMP_STATS --out NAME` 把通用指标、相机漂移和本基准的参数指标合成按模型的总表(`results_gen/benchmark_<NAME>.md`);`COMMON` 可写成 `all_cc+v6all+v6de+v6f`,后面的集合按视频 key 替换前面的(重新生成的交付),相机统计同样用逗号分隔多个文件。生成视频按 key 放在 `gen_videos_v3/videos/`(镜像上)。
-- 仿真库加密(D36):`library_refine_plan.py`(规划,只看仿真)→ `server/refine_queue.py`(运行)→ `collect_library.py PLAN libs3`(收集)。第一轮已并入 `libs3/`;第二轮(4.5 px 以下)A/B 变差,不采用。试验块放在单独目录,用 `PHYSPROBE_EXTRA_LIBS` 做 A/B(`ref_ab.py` 比较两次参考结果,`refined_clips.py` 列出已全部加密的参考片段)。
+- 指标总表(用户 2026-10-26,文档 `docs/physprobe/METRICS.md`):`common_metrics.py SET TRACKS --out NAME [--video-dir DIR] [--clock ...]` 算通用指标(轨迹 ADE/FDE、Physics-IQ 运动一致、视频 PSNR/SSIM、运动像素占比),`benchmark_table.py COMMON RESPONSE_JSON CAMCOMP_STATS --out NAME` 把通用指标、相机漂移和本基准的参数指标合成按模型的总表(`results_gen/benchmark_<NAME>.md`);`COMMON` 可写成 `all_cc+revised`,后面的集合按视频 key 替换前面的(重新生成的交付),相机统计同样用逗号分隔多个文件。生成视频按 key 放在 `gen_videos/videos/`(镜像上)。
+- 仿真库加密(D36):`library_refine_plan.py`(规划,只看仿真)→ `server/refine_queue.py`(运行)→ `collect_library.py PLAN libraries`(收集)。第一轮已并入 `libraries/`;第二轮(4.5 px 以下)A/B 变差,不采用。试验块放在单独目录,用 `PHYSPROBE_EXTRA_LIBS` 做 A/B(`ref_ab.py` 比较两次参考结果,`refined_clips.py` 列出已全部加密的参考片段)。
 
 ## 7. 局限与待办
 

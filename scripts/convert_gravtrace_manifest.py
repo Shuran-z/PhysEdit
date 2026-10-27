@@ -1,10 +1,10 @@
-"""Convert a GravTrace v22 manifest (PISA / NewtonBench / self-rendered scenes) to GravTrace samples.
+"""Convert the earlier GravTrace manifest (PISA / NewtonBench / self-rendered scenes) to GravTrace samples.
 
 Every quantity written here is known before the video is generated: camera, object geometry and
 initial pose, gravity direction, the declared initial velocity or its range, and the time of the
 first observed frame. Gravity magnitude goes only into `truth`.
 
-usage: convert_v22.py V22.jsonl OUT.jsonl
+usage: convert_gravtrace_manifest.py MANIFEST.jsonl OUT.jsonl
 """
 from __future__ import annotations
 

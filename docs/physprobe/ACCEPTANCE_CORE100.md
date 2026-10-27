@@ -447,7 +447,7 @@ DynamiCrafter 只有 10 fps,画面变形严重,噪声偏大,它的结论要谨�
 
 31 个场景(T04、T06、T09、T11、T13、T16 的 C01–C05,以及 T18_C04)的提示词在 v6 中做了修正:加上了"画外施力 / 动力学开始时间"等说明,部分场景的摩擦声明也改了;g、v 的数值不变。生成方用 v6 提示词重新生成了这些视频(HF `phy2/phy2-benchmark-generations`,问题记录 E4)。截至 2026-10-26 20:20 PT,HF 上已交付的 v6 视频全部评测完:共 2,723 条,10 个模型各 261 条,MiniMax 113 条;Cosmos-Predict2 还没有交付。T06_C04、T09_C05 没有仿真库,不评测(和原提示词视频一样)。
 
-评测方法和仿真库不变。v6 结果按"同一种子、提示词变体、模型、任务"替换原结果(`merge_generated.py`,每行记 `prompt_version`);没有 v6 的仍用原视频。视频分七批到达(v6、v6b–v6g),跟踪后分四次评测并合并(`v6all`、`v6de`、`v6f`、`v6g`,`tools/evaluate_regenerated.sh`)。
+评测方法和仿真库不变。v6 结果按"同一种子、提示词变体、模型、任务"替换原结果(`merge_generated.py`,每行记 `prompts` = original / revised);没有 v6 的仍用原视频。视频分七批到达,分批跟踪后合并成一个任务集 `revised` 评测(`combine_jobsets.py`、`tools/evaluate_regenerated.sh`)。
 
 **μ 的提示值按 v6 提示词的声明**(用户 2026-10-26 决定,`apply_declared_mu.py`):取被测接触对两个物体在 v6 提示词里声明的材料摩擦,两个都声明取大者(Genesis 按 max 组合接触摩擦);都没声明的,这组 μ 没有提示值,结果类别照常计入可评测性,但不进误差、带内和响应统计。g、v 的提示值不变。各任务:T04 不声明(v6 只写支撑条 0.22,被测的是书与斜面的接触,仿真值 0.105);T06 0.58 → 0.52(只声明桌面);T13 0.52 → 0.24(只声明下落的书);T16 0.52 → 0.08(只声明支撑书);T09 0.52、T11 0.04、T18_C04 0.42 不变。过门的 v6 μ 结果 2,183 组,其中 478 组(T04)没有提示值;有提示值且给出数值的只有 76 组(T06 1、T09 75;T13、T16 的 μ 多数被真值门挡掉),所以 μ 误差几乎不受影响。
 
@@ -463,9 +463,9 @@ DynamiCrafter 只有 10 fps,画面变形严重,噪声偏大,它的结论要谨�
 | 按"无法解释"的模型排序 Spearman ρ(g / μ / v) | — | 0.96 / 0.99 / 0.99 |
 | 视频 PSNR / 空间 IoU(各模型范围) | 18.8–30.5 dB / 0.02–0.19 | 18.8–30.6 dB / 0.02–0.20 |
 
-**同一视频槽位的前后对比**(4,820 组,两边都通过真值验证门,`results_gen/regen_compare_v3_to_v6.md`):无法解释 g 45% → 44%、μ 55% → 54%、v 36% → 35%;无观测 g、μ 都是 13% → 15%。约三分之一的结果换了类别(g 34%、μ 29%、v 34%),这和原提示词下只换随机种子时的变化一样大(同一模型、任务、提示词变体,不同种子之间 33%:g 35%、μ 30%、v 41%)。也就是说,提示词修正对单条视频的影响和重新采样相当,没有系统性的改善。个别模型有可见变化(g):Hunyuan 的无法解释明显减少(72% → 64%);LTX(39% → 33%)、VideoGPA(26% → 18%)的无法解释减少,但无观测增多(LTX 5% → 19%,VideoGPA 35% → 46%),即画面或镜头变化更大;Wan-TI2V 的无法解释增多(15% → 25%);MiniMax 给出数值的比例上升(8% → 19%)。
+**同一视频槽位的前后对比**(4,820 组,两边都通过真值验证门,`results_gen/regen_compare_all_cc_revised.md`):无法解释 g 45% → 44%、μ 55% → 54%、v 36% → 35%;无观测 g、μ 都是 13% → 15%。约三分之一的结果换了类别(g 34%、μ 29%、v 34%),这和原提示词下只换随机种子时的变化一样大(同一模型、任务、提示词变体,不同种子之间 33%:g 35%、μ 30%、v 41%)。也就是说,提示词修正对单条视频的影响和重新采样相当,没有系统性的改善。个别模型有可见变化(g):Hunyuan 的无法解释明显减少(72% → 64%);LTX(39% → 33%)、VideoGPA(26% → 18%)的无法解释减少,但无观测增多(LTX 5% → 19%,VideoGPA 35% → 46%),即画面或镜头变化更大;Wan-TI2V 的无法解释增多(15% → 25%);MiniMax 给出数值的比例上升(8% → 19%)。
 
-按视频 key 合并后的总表(通用指标 + 独有指标)见 `results_gen/benchmark_v6.md`,通用指标的结论和原提示词一致。Cosmos-Predict2 的 v6 视频交付后,用同一流程增量处理(`make_gen_jobs.py --skip`、`tools/evaluate_regenerated.sh`)。全部到齐后,第 5 节的正式结果改用 v6 版本,并重算敏感性和运动幅度检查。结果文件:`results_gen/all_cc_v6all_v6de_v6f_v6g_gated.jsonl`、`response_metrics_all_cc_v6all_v6de_v6f_v6g_gated.md`、`regen_compare_v3_to_v6.md`、`benchmark_v6.md`。
+按视频 key 合并后的总表(通用指标 + 独有指标)见 `results_gen/benchmark_revised.md`,通用指标的结论和原提示词一致。Cosmos-Predict2 的 v6 视频交付后,用同一流程增量处理(`make_gen_jobs.py --skip`、`tools/evaluate_regenerated.sh`)。全部到齐后,第 5 节的正式结果改用 v6 版本,并重算敏感性和运动幅度检查。结果文件:`results_gen/all_cc_revised_gated.jsonl`、`response_metrics_all_cc_revised_gated.md`、`regen_compare_all_cc_revised.md`、`benchmark_revised.md`。
 
 ### 5.5 指标体系与总表
 
@@ -497,7 +497,7 @@ DynamiCrafter 只有 10 fps,画面变形严重,噪声偏大,它的结论要谨�
 ## 7. 复现
 
 - **代码**:分支 `physprobe-inversion` 下的 `physprobe/inversion/`。完整流程和命令见 [README](../../physprobe/inversion/README.md)。
-- **数据**:仿真库、SAM 轨迹和结果在 `PHYSPROBE_WORK` 下,不进 git;服务器镜像在 Storage01 的 `zhangshuran_eval_20261024/PhysProbe`。仿真库 `libs3/` 已包含 D36 第一轮的加密块(原 `libs3_refine/`,已并入;不要再用 `PHYSPROBE_EXTRA_LIBS` 指向它,否则会重复计数)。D40 时的正式结果另存在 `snap_d40/`。
+- **数据**:仿真库、SAM 轨迹和结果在 `PHYSPROBE_WORK` 下,不进 git;服务器镜像在 Storage01(`PHYSPROBE_ROOT`)。仿真库 `libraries/` 已包含 D36 第一轮的加密块(原 `libraries_refine/`,已并入;不要再用 `PHYSPROBE_EXTRA_LIBS` 指向它,否则会重复计数)。D40 时的正式结果另存在 `snap_d40/`。
 - **全量重评测**:`bash physprobe/inversion/tools/reevaluate_all.sh <镜像根目录> 24`。依次做以下步骤:
   - 参考视频;
   - 阈值校准;

@@ -4,7 +4,7 @@
 # shadowing the env's opencv 4.10 (hupanwen uses 4.10).
 S=/workspace/wz/sam/data2/zhangshuran/physedit
 export LD_LIBRARY_PATH=/workspace/wz/lib/gl PYTHONNOUSERSITE=1
-SAM_PY=$S/full_chain_smoke_20261012_v2/env/bin/python
-SAM_CODE=$S/full_chain_smoke_20261012_v2/code
-SAM_SRC=$S/sam31_official_v1/source
-SAM_CKPT=$S/sam31_official_v1/weights/sam3.1_multiplex.pt
+SAM_PY=$S/sam_env/bin/python
+SAM_CODE=$S/sam_code
+SAM_SRC=$S/sam_source
+SAM_CKPT=$S/sam_weights/sam3.1_multiplex.pt   # the official SAM 3.1 checkpoint

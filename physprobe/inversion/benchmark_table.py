@@ -6,7 +6,7 @@ metrics, the frozen condition frame (common_metrics.py --frozen) what a video sc
 videos the floor / ceiling of the parameter metrics.
 Usage: python benchmark_table.py COMMON_NAME RESPONSE_JSON CAMCOMP_STATS [--synthetic s15v,s30f121,s10f16] [--out NAME]
   (COMMON_NAME: results_gen/common_<COMMON_NAME>.jsonl, or NAME1+NAME2+... where later sets replace the same video keys,
-  e.g. all_cc+v6all+v6de+v6f for the v6 prompt-corrected deliveries; CAMCOMP_STATS likewise comma-separated, later files
+  e.g. all_cc+revised for the prompt-corrected re-generation; CAMCOMP_STATS likewise comma-separated, later files
   replace the same keys; RESPONSE_JSON: results_gen/response_metrics*.json)
   -> results_gen/benchmark_<NAME>.md / .json"""
 import argparse, collections, json, math

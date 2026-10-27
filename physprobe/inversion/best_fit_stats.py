@@ -1,5 +1,5 @@
 """How precise is the best-fit value (D35), and what does it say about the generated videos?
-A. Known truth (reference results3 and the synthetic generated-like sets): |best / truth - 1| per result kind and parameter
+A. Known truth (reference results_reference and the synthetic generated-like sets): |best / truth - 1| per result kind and parameter
    (median, 75th / 90th percentile, share within 5 / 10 / 25 %), and by the fit residual (best_rms_px_max).
 B. Generated videos (gated file): per model and parameter, over the measured results (point and interval: a finite band whose
    best value is meaningful; a one-sided bound's best value sits at a grid edge),
@@ -29,7 +29,7 @@ def fmt(s):
 
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
-sets = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results3' / 'ref_*.json')) if not f.endswith('_summary.json')]}
+sets = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results_reference' / 'ref_*.json')) if not f.endswith('_summary.json')]}
 for s in ('s15v', 's30f121', 's10f16'):
     sets[s] = [json.loads(l) for l in open(B / 'results_gen' / f'{s}.jsonl')]
 out, lines = {}, ['# Best-fit value (D35): precision and generated-video results', '',
