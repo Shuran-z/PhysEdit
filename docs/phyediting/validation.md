@@ -1,5 +1,7 @@
 # 项目性能
 
+> 注：本页描述的是旧版评测流程。生成视频的正式评测已改为 PhysProbe，见[验收报告](../physprobe/ACCEPTANCE_CORE100.md)和[评测指标](../physprobe/METRICS.md)。
+
 最新汇总见[结构化结果](latest_results.json)。本页为单视角开发集结果；ID、OOD-1和OOD-2的定义见[划分协议](../joint_split_v3/PROTOCOL.md)。
 
 | 参数 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |
