@@ -1,4 +1,10 @@
 from scripts.t07_original_boundary_worker import search_grid
+from scripts.register_t07_full_grid import matching_reference_rows
+
+
+def test_fixed_seed_boundary_does_not_bind_other_triplet_seeds():
+    answers=[dict(sample_id=s,source_group_id='shared') for s in ['minus','star','plus']]
+    assert matching_reference_rows(answers,dict(sample_id='plus',source_group_id='shared'))==[answers[2]]
 
 
 def test_grid_retains_no_flip_without_inventing_boundary():

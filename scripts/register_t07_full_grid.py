@@ -10,10 +10,22 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT, distances
 
 
+def matching_reference_rows(answers, job):
+    # Siblings may share geometry but have different simulator seeds. A fixed
+    # source search certifies only its own released reference, not the triplet.
+    return [a for a in answers if a['sample_id']==job['sample_id']]
+
+
 def collect():
     launches=json.loads((ROOT/'t07_B_full_grid_launch_20261027.json').read_text())
     jobs={j['sample_id']:j for j in json.loads((ROOT/'t07_B_full_grid_plan_20261027.json').read_text())}
     answers=json.loads((ROOT/'t07_B_E4_reference_answers_20261022.json').read_text())
+    extra=ROOT/'t07_B_original_plus_seed_launch_20261027.json'
+    if extra.exists():
+        launch=json.loads(extra.read_text());launches.append(launch)
+        original=next(a for a in answers if a['sample_id']==launch['sample_id'])
+        template=next(j for j in jobs.values() if j['source_group_id']==original['source_group_id'])
+        jobs[original['sample_id']]=dict(template,sample_id=original['sample_id'],state_sha256=original['reference_state_sha256'])
     code=r'''
 import json,hashlib
 from pathlib import Path
@@ -38,8 +50,7 @@ print(json.dumps(results))
         job=jobs[result['sample_id']]
         if result['source_state_sha256']!=job['state_sha256']:raise ValueError('source identity changed')
         lo,hi=job['normalization_domain']
-        for a in answers:
-            if a['source_group_id']!=job['source_group_id']:continue
+        for a in matching_reference_rows(answers,job):
             for window in result['intervals']:
                 rows.append(dict(a,original_boundary_interval=window['bracket'],**distances(a['theta'],bracket=window['bracket']),
                     normalization_span=hi-lo,normalization_domain=[lo,hi],

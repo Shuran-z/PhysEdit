@@ -21,7 +21,9 @@ for root in [Path(row['root']) for row in launch]:
  status=root/'status.json';rows=json.loads(status.read_text()) if status.exists() else []
  progress.append(dict(root=str(root),finished=len(rows),failed=sum(r['status']=='failed' for r in rows)))
  for r in rows:
-  if r['status']!='conditional_event_search_completed':continue
+  if r['status']!='conditional_event_search_completed':
+   if r['status']=='failed':results.append(dict(r,source_root=str(root),computation_host='p26'))
+   continue
   receipts=[]
   for path in (root/r['job_id']).glob('*/receipt.json'):
    v=json.loads(path.read_text());v['state_path']=verify_probe_files(v,path.parent,cache)
@@ -38,7 +40,8 @@ def collect():
     payload=json.loads(remote_text('p26',REMOTE.replace('VERIFY',inspect.getsource(verify_probe_files)),timeout=90,attempts=1))
     target=ROOT/'t18_p26_verified_results_20261027.json';tmp=target.with_suffix('.tmp')
     tmp.write_text(json.dumps(payload));tmp.replace(target)
-    print(json.dumps(dict(completed=len(payload['results']),progress=payload['progress'],deployment=payload['deployment'])),flush=True)
+    print(json.dumps(dict(completed=sum(r['status']=='conditional_event_search_completed' for r in payload['results']),
+        failed=sum(r['status']=='failed' for r in payload['results']),progress=payload['progress'],deployment=payload['deployment'])),flush=True)
     return payload
 
 

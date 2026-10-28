@@ -59,7 +59,10 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--plan',required=True);p.add_argument('--root',required=True)
     p.add_argument('--gpu',default='0');p.add_argument('--limit',type=int,default=0);p.add_argument('--tolerance',type=float,default=.0005)
     p.add_argument('--minimum-free-memory-mib',type=int,default=8192)
+    p.add_argument('--preserve-render-settings',action='store_true')
+    p.add_argument('--fair-gpu-queue',action='store_true')
     args=p.parse_args();root=Path(args.root);root.mkdir(parents=True,exist_ok=True)
+    if args.fair_gpu_queue and args.gpu=='auto':p.error('--fair-gpu-queue requires an explicit GPU')
     lock=(root/'worker.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     jobs=json.loads(Path(args.plan).read_text());jobs=jobs[:args.limit or None]
     builder_path=PROJECT/'scripts/build_independent_v2.py'
@@ -91,8 +94,11 @@ def main():
                 c['dynamic_objects']=[slab]+objects;c['experiment'].update(extra)
             else:raise ValueError('no authenticated intervention adapter for '+family)
             c['experiment']['controlled_value']=theta
-            c['render'].update(write_video=False,render_backend='raster',resolution=[160,96],save_first_rgb=None,save_last_rgb=None)
-            c['render']['save_video']=str(out/'unused.mp4');c['scene_overrides']['raytracing']=False
+            c['render'].update(write_video=False,save_first_rgb=None,save_last_rgb=None)
+            if not args.preserve_render_settings:
+                c['render'].update(render_backend='raster',resolution=[160,96])
+                c['scene_overrides']['raytracing']=False
+            c['render']['save_video']=str(out/'unused.mp4')
             c['annotations']['save_path']=str(out/'physics.json')
             path=out/'config.json';receipt=out/'receipt.json'
             if receipt.exists():
@@ -100,7 +106,7 @@ def main():
                 if r['renderer_sha256']==sha(RENDERER) and r['config']==c and sha(out/'physics.json')==r['state_sha256']:return r
                 raise ValueError('existing replay provenance mismatch')
             from t18_table_contact_boundary_worker import acquire_gpu
-            gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib)
+            gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib,args.fair_gpu_queue)
             save(root/'resource_status.json',dict(status='rendering',gpu=gpu,sample_id=job['sample_id'],theta=theta))
             save(path,c);env=dict(os.environ,CUDA_VISIBLE_DEVICES=gpu,TI_OFFLINE_CACHE='0')
             lib='/home/wangzijun_p25/miniconda3/envs/genesis/lib/python3.10/site-packages/nvidia/cu13/lib'
