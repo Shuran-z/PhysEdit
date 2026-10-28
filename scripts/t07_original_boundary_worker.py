@@ -6,6 +6,7 @@ environment. Endpoint reproduction is required before any local bisection.
 import argparse
 import copy
 import hashlib
+import gzip
 import importlib.util
 import json
 import math
@@ -21,6 +22,12 @@ PYTHON='/home/wangzijun_p25/miniconda3/envs/genesis/bin/python'
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def state_bytes(folder):
+    path=Path(folder)/'physics.json'
+    if path.exists():return path.read_bytes()
+    return gzip.decompress(path.with_suffix('.json.gz').read_bytes())
 
 
 def save(path,data):
@@ -103,7 +110,7 @@ def main():
             path=out/'config.json';receipt=out/'receipt.json'
             if receipt.exists():
                 r=json.loads(receipt.read_text())
-                if r['renderer_sha256']==sha(RENDERER) and r['config']==c and sha(out/'physics.json')==r['state_sha256']:return r
+                if r['renderer_sha256']==sha(RENDERER) and r['config']==c and hashlib.sha256(state_bytes(out)).hexdigest()==r['state_sha256']:return r
                 raise ValueError('existing replay provenance mismatch')
             from t18_table_contact_boundary_worker import acquire_gpu
             gpu,lease=acquire_gpu(root,args.gpu,args.minimum_free_memory_mib,args.fair_gpu_queue)

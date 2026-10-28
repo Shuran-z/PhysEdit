@@ -27,7 +27,7 @@ def collect():
         template=next(j for j in jobs.values() if j['source_group_id']==original['source_group_id'])
         jobs[original['sample_id']]=dict(template,sample_id=original['sample_id'],state_sha256=original['reference_state_sha256'])
     code=r'''
-import json,hashlib
+import json,hashlib,gzip
 from pathlib import Path
 results=[]
 for launch in LAUNCHES:
@@ -38,7 +38,10 @@ for launch in LAUNCHES:
    folder=root/r['sample_id']
    for f in folder.glob('*/receipt.json'):
     receipt=json.loads(f.read_text());dest=f.parent
-    if hashlib.sha256((dest/'physics.json').read_bytes()).hexdigest()!=receipt['state_sha256']:raise ValueError('state hash changed')
+    state=dest/'physics.json'
+    if not state.exists():state=dest/'physics.json.gz'
+    raw=state.read_bytes();raw=gzip.decompress(raw) if state.suffix=='.gz' else raw
+    if hashlib.sha256(raw).hexdigest()!=receipt['state_sha256']:raise ValueError('state hash changed')
     if hashlib.sha256((dest/'config.json').read_bytes()).hexdigest()!=receipt['config_sha256']:raise ValueError('config hash changed')
    r['verified_source_root']=str(root)
   results.append(r)

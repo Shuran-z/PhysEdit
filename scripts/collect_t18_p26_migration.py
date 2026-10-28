@@ -9,16 +9,29 @@ from scripts.boundary_ssh import remote_text
 from scripts.export_original_boundary_distances import ROOT
 from scripts.probe_verification_cache import verify_probe_files
 
+def merge_completed_rows(rows, completed):
+    by_id={r['job_id']:r for r in rows}
+    for r in completed:
+        if r['status']=='conditional_event_search_completed':by_id[r['job_id']]=r
+    return list(by_id.values())
+
+
 REMOTE=r'''
 import json,gzip,hashlib,os,time
 from pathlib import Path
 VERIFY
+MERGE_FUNCTION
 base=Path('/21231_data1/liyuhan_t18_migration_20261027')
 cachefile=base/'collector_cache.json';cache=json.loads(cachefile.read_text()) if cachefile.exists() else {}
+last_checkpoint=time.monotonic()
+def checkpoint():
+ temp=cachefile.with_name(cachefile.name+'.'+str(os.getpid())+'.tmp')
+ temp.write_text(json.dumps(cache));temp.replace(cachefile)
 results=[];progress=[]
 launch=json.loads((base/'launch.json').read_text())
 for root in [Path(row['root']) for row in launch]:
  status=root/'status.json';rows=json.loads(status.read_text()) if status.exists() else []
+ rows=merge_completed_rows(rows,[json.loads(path.read_text()) for path in root.glob('*/result.json')])
  progress.append(dict(root=str(root),finished=len(rows),failed=sum(r['status']=='failed' for r in rows)))
  for r in rows:
   if r['status']!='conditional_event_search_completed':
@@ -27,17 +40,20 @@ for root in [Path(row['root']) for row in launch]:
   receipts=[]
   for path in (root/r['job_id']).glob('*/receipt.json'):
    v=json.loads(path.read_text());v['state_path']=verify_probe_files(v,path.parent,cache)
+   if time.monotonic()-last_checkpoint>3:
+    checkpoint();last_checkpoint=time.monotonic()
    v.pop('contact_evidence',None);receipts.append(v)
   r.pop('probes',None)
   results.append(dict(r,verified_probe_receipts=receipts,source_root=str(root),computation_host='p26'))
-cachefile.write_text(json.dumps(cache))
+checkpoint()
 deployment=base/'deployment_status.json'
 print(json.dumps(dict(results=results,progress=progress,deployment=json.loads(deployment.read_text()) if deployment.exists() else None)))
 '''
 
 
 def collect():
-    payload=json.loads(remote_text('p26',REMOTE.replace('VERIFY',inspect.getsource(verify_probe_files)),timeout=90,attempts=1))
+    code=REMOTE.replace('VERIFY',inspect.getsource(verify_probe_files)).replace('MERGE_FUNCTION',inspect.getsource(merge_completed_rows))
+    payload=json.loads(remote_text('p26',code,timeout=300,attempts=1))
     target=ROOT/'t18_p26_verified_results_20261027.json';tmp=target.with_suffix('.tmp')
     tmp.write_text(json.dumps(payload));tmp.replace(target)
     print(json.dumps(dict(completed=sum(r['status']=='conditional_event_search_completed' for r in payload['results']),

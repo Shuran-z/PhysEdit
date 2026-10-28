@@ -1,5 +1,13 @@
 from scripts.t07_original_boundary_worker import search_grid
 from scripts.register_t07_full_grid import matching_reference_rows
+from scripts.t07_original_boundary_worker import state_bytes
+import gzip
+
+
+def test_lossless_archived_probe_preserves_exact_hash_input(tmp_path):
+    raw=b'{"frames": [1, 2, 3]}\n'
+    (tmp_path/'physics.json.gz').write_bytes(gzip.compress(raw))
+    assert state_bytes(tmp_path)==raw
 
 
 def test_fixed_seed_boundary_does_not_bind_other_triplet_seeds():
