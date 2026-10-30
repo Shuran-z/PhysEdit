@@ -14,6 +14,12 @@ import numpy as np
 import evaluator as ev
 
 STATIC_PX, SHOULD_PX = 3.0, 10.0
+# D67 (2026-10-30): the observation-to-simulation frame map was inverted, s = 4 + (k - kc) dt / DT; the evaluator uses
+# s = 4 + (k - kc) DT / dt (DT = physical seconds per video frame, dt = per simulation frame). With DT != dt the observed window was
+# (DT / dt)^2 times too long (16 fps: 3.5x). Default 'fixed' = the evaluator's map (official since 2026-10-30, review session);
+# PHYSPROBE_MOTION_WINDOW=inverted reproduces the earlier motion records (e.g. all_cc_revised_v6h_add128_gated_motion.jsonl).
+WINDOW = __import__('os').environ.get('PHYSPROBE_MOTION_WINDOW', 'fixed')
+assert WINDOW in ('fixed', 'inverted', 'official'), WINDOW   # 'official': old name of 'inverted'
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('tracks'); ap.add_argument('--items', default='all')
 ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--workers', type=int, default=24)
 ap.add_argument('--with-truth', action='store_true')
@@ -54,7 +60,7 @@ def run_clip(clip):
             if kc not in set(k.tolist()): continue
             i0 = int(np.where(k == kc)[0][0])
             if np.isnan(ob[i0, 0]): continue
-            s = 4 + (k - kc) * dt / DT; h = int(hz[n]['horizon'])
+            s = 4 + (k - kc) * (DT / dt if WINDOW == 'fixed' else dt / DT); h = int(hz[n]['horizon'])
             sel = (s >= 4) & (s <= h)
             o = medfilt3(ob)[sel]
             obs_px = float(np.nanmax(np.abs(o - ob[i0]))) if np.isfinite(o).any() else float('nan')
