@@ -40,6 +40,11 @@ MIN_COVER = float(os.environ.get('PHYSPROBE_MIN_COVER', '0.5'))   # D31: an obje
 VERTEX = os.environ.get('PHYSPROBE_VERTEX', 'local5')   # quadratic fit at the minimum: 5 nearest library values, or 'set' (D41, not adopted)
 SHIFT_MAX = float(os.environ.get('PHYSPROBE_SHIFT_MAX', '20'))   # free time shift (reference frames): the onset is not prompted
 SHIFTS = np.arange(-SHIFT_MAX, SHIFT_MAX + 0.01, 0.25)
+# D66: 'truncate' (default, the rule of the official results) drops the frames that a shift moves outside [4, truth horizon] and
+# averages over the rest, so a large shift compares only the start of the window; 'fixed' compares every value and shift on the
+# same observation frames (the truth window at zero shift), against the simulation wherever it exists (it runs 31 frames past the
+# window), and counts frames that fall before the simulation's start at noise level, like frames beyond a value's own window
+SHIFT_RULE = os.environ.get('PHYSPROBE_SHIFT_RULE', 'truncate')
 HZ = json.load(open(B / os.environ.get('PHYSPROBE_HZ', 'horizons.json')))   # predictability windows (D7)
 RD = {json.loads(l)['clip_id']: json.loads(l) for l in open(c2.READINESS)}
 LIBS = json.load(open(B / 'library_index.json'))['libraries']
@@ -287,8 +292,12 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
                     hi_t = min(int(hz[n]['horizon']), F - 1)                                   # the truth's window: same frames for every value
                     hi = min(int(hz[n]['start'] + (hz[n]['horizon'] - hz[n]['start']) * kf), F - 1)
                     S = s0[None, :] + SHIFTS[:, None]
-                    in_t = (S >= 4) & (S <= hi_t) & ~np.isnan(o[:, 0])[None, :]
-                    in_v = in_t & (S <= hi)
+                    if SHIFT_RULE == 'fixed':                                                # D66: same observation frames for every shift
+                        in_t = np.broadcast_to(((s0 >= 4) & (s0 <= hi_t) & ~np.isnan(o[:, 0]))[None, :], S.shape)
+                        in_v = in_t & (S >= 0) & (S <= F - 1) & (s0 <= hi)[None, :]
+                    else:
+                        in_t = (S >= 4) & (S <= hi_t) & ~np.isnan(o[:, 0])[None, :]
+                        in_v = in_t & (S <= hi)
                     Sc = np.clip(S, 0, F - 1); f0 = np.floor(Sc).astype(int); w = (Sc - f0)[..., None]; f1 = np.minimum(f0 + 1, F - 1)
                     pred = (1 - w) * sbv[f0] + w * sbv[f1]
                     good = in_v & ~np.isnan(pred[..., 0])
