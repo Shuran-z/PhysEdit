@@ -28,7 +28,7 @@ def _register(x):
     return r, fps, frames
 
 
-def build(items, name, remote, workers=1):
+def build(items, name, remote, workers=1, median_from=None):
     OUT = c2.B / 'sam_gen' / name; OUT.mkdir(parents=True, exist_ok=True)
     # registration (per item, model median as fallback)
     if workers > 1:
@@ -37,8 +37,10 @@ def build(items, name, remote, workers=1):
     else: regs = [_register(x) for x in items]
     for x, (r, fps, frames) in zip(items, regs): x['registration'] = r; x['fps'] = fps; x['frames'] = frames
     med = {}
+    pool_items = list(items)   # --median-from: the fallback median also over the items of earlier job sets (e.g. the final set), as in the main run
+    for f in filter(None, (median_from or '').split(',')): pool_items += json.load(open(f))['items']
     for m in {x['model'] for x in items}:
-        ok = [x['registration'] for x in items if x['model'] == m and x['registration'].get('ok')]
+        ok = [x['registration'] for x in pool_items if x['model'] == m and (x.get('registration') or {}).get('ok')]
         if ok: med[m] = dict(scale=(st.median(r['scale'][0] for r in ok), st.median(r['scale'][1] for r in ok)), offset=(st.median(r['offset'][0] for r in ok), st.median(r['offset'][1] for r in ok)))
     jobs = []
     cache = {}
@@ -85,6 +87,7 @@ if __name__ == '__main__':
     ap.add_argument('--models'); ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--annotations', default='1,2,3'); ap.add_argument('--limit', type=int)
     ap.add_argument('--gen-dir', help='generation delivery root (default: data/generated/original_prompts, the three-variant run)')
     ap.add_argument('--workers', type=int, default=1, help='parallel registration processes')
+    ap.add_argument('--median-from', help='comma-separated items.json files whose registrations join the model median of the fallback mapping (small incremental sets)')
     ap.add_argument('--skip', help='comma-separated job names (sam_gen/<name>/items.json) whose keys are already tracked (incremental deliveries)')
     a = ap.parse_args()
     if a.gen_dir: G = Path(c2.gt(a.gen_dir))
@@ -103,4 +106,4 @@ if __name__ == '__main__':
         done = {x['key'] for n in a.skip.split(',') for x in json.load(open(c2.B / 'sam_gen' / n / 'items.json'))['items']}
         items = [x for x in items if x['key'] not in done]
     if a.limit: items = items[:a.limit]
-    build(items, a.name, a.remote, a.workers)
+    build(items, a.name, a.remote, a.workers, a.median_from)
