@@ -49,6 +49,11 @@ python -m physedit --help
 python -m gravtrace --help
 python -m physedit.core100_release status
 python -m physedit.core100_bindings status
+```
+
+以下维护回归还依赖原始 v6 对照和距离注册表列出的本地证据；仅下载源码不具备这些文件。
+
+```bash
 python -m pytest tests/test_core100_distance_bindings.py tests/test_core100_reference_release.py annotation_site/tests/test_workflow.py -q
 ```
 
