@@ -1,0 +1,22 @@
+{
+  "event": "T19",
+  "slot": "anchor:T19__bg03_neutral_studio__g01_moon__value_0.14__global_16",
+  "source_output": "/data_cached/wangzijun_p25/isaac_out/repro_t16_t20_13200_20260919/T19__bg03_neutral_studio__g01_moon__value_0.14__global_16/attempt_20260919_220439_858f02",
+  "config_sha256": "83ca7a3153a62f406594b228988d94a8f1d8316baca328fcaed409e23c5a3d7c",
+  "metadata_sha256": {
+    "request.json": "91a58358eae388bd741b522c4d659fcfd4511a6a9feda483b35c15d656f11198",
+    "event_graph.json": "2bb9adeb4e0042649a988e1440251b95ca2695f47258d456d3fef560435b6fff",
+    "complete.json": "154d66c6f6d183efe6325e1c2d310051ed58f612a4b714c5d9c6e604564a6680",
+    "media_qa.json": "f03d755cda472b4bf5efdec28bd925b6f1e3b5782e44cf4b697629dc81560751",
+    "qa.json": "e54e194db1a9ab9ce8c514e8ce0ad5e85522031f42e5b369a32aefb7adefbda3",
+    "camera_visibility.json": "9756b7be5347b3f3ba2f808814c642fd300bcd58608788dbe9208ac6f544ad9e",
+    "run.log": "a0388879e0febde205e748fd2f01b2ba37ab0ef25c19fc10577a65b3bdb45cdb"
+  },
+  "missing_optional_metadata": [
+    "trajectory_summary.json",
+    "process_reuse.json"
+  ],
+  "original_complete_record_retained": true,
+  "original_input_renamed_to": "config.json",
+  "scientific_revalidation_performed": false
+}

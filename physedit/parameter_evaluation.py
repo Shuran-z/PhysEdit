@@ -54,6 +54,12 @@ def friction_inputs(config, items):
 
 def declaration(entry, item):
     """Check declared conditions, not a generated physical-truth assertion."""
+    if 'known_conditions' in item:
+        from .known_conditions import require_parameter_truth
+        requested=require_parameter_truth(item['known_conditions'],'contact_friction',
+                                          pair=item['known_conditions'].get('selected_contact_pair'))
+        if entry.get('requested_effective_friction') != requested:
+            raise ValueError('requested_friction_differs_from_verified_contact_pair')
     allowed = {'item_id', 'item_sha256', 'window', 'conditions', 'source_files',
                'requested_effective_friction', 'requested_initial_velocity_mps'}
     if set(entry) - allowed:
@@ -147,12 +153,13 @@ def parameter_generation_template(spec, template, output):
                 cap.release()
             if not ok or not cv2.imwrite(row['condition_image'], bgr):
                 raise ValueError('condition_frame_read_or_write_failure')
-            prompt = item.get('generation_prompt') or gen.EVENTS.get(item['event'])
+            from .prompt_contract import from_item
+            prompt = from_item(item)
             if not prompt or item['gravity'] not in gen.GRAVITY:
                 continue
             folder = Path(row['prompt_file']).parent
             folder.mkdir(exist_ok=True)
-            Path(row['prompt_file']).write_text(f"{prompt} The camera is fixed. {gen.GRAVITY[item['gravity']]}")
+            Path(row['prompt_file']).write_text(prompt, encoding='utf-8')
             Path(row['negative_prompt_file']).write_text(gen.NEGATIVE)
             row.update(input_failure=None, gravity_inapplicable_reason=reason,
                        generation_qualified_by='registered_single_plane_sliding_conditions')
@@ -284,6 +291,8 @@ def friction_case(row, item, track, entry):
 
 
 def velocity_case(row, item, track, saved, sliding=None, entry=None):
+    if item.get('known_conditions',{}).get('configuration_status')=='conflicting_historical_versions':
+        raise ValueError('configuration_provenance_conflict')
     if (sliding and sliding.get('prediction', {}).get('status') == 'ok'
             and (row.get('gravity_inapplicable_reason') or saved.get('status') != 'ok')):
         conditions, window = declaration(entry, item)
@@ -488,7 +497,7 @@ def attach_requested_parameters(spec, media_rows, items, output):
         if row.get('input_failure'):
             continue
         item = items[row['item_id']]
-        targets, text = {}, []
+        targets, extra = {}, []
         entry = entries.get(item['id'])
         if 'velocity' in enabled:
             target = item.get('motion', {}).get('v0')
@@ -506,8 +515,12 @@ def attach_requested_parameters(spec, media_rows, items, output):
                     targets['velocity_mps'] = vector.tolist()
                     targets['velocity_reference_source_frame'] = reference
                     offset = (reference-row['condition_frame_index'])/float(item['fps'])
-                    text.append(f"At {offset:g} seconds after the conditioning frame, the target object's requested "
-                                f"world-coordinate velocity is {vector.tolist()} m/s (speed {np.linalg.norm(vector):g} m/s).")
+                    # A measured post-contact velocity is scoring truth, not an
+                    # initial condition. Never reveal a future-window state.
+                    if abs(offset) < 1e-9:
+                        extra.append(['target.initial_velocity','',vector.tolist(),'m/s'])
+                    else:
+                        targets['velocity_conditioning_withheld_reason']='future_measurement_window_not_initial_condition'
         if 'friction' in enabled and entry is not None:
             try:
                 _, window = declaration(entry, item)
@@ -515,19 +528,24 @@ def attach_requested_parameters(spec, media_rows, items, output):
                 if type(target) in (int, float) and math.isfinite(target) and target >= 0:
                     targets['effective_kinetic_friction'] = target
                     targets['friction_reference_source_frame'] = window['start_frame']
-                    text.append(f"The requested effective kinetic friction coefficient between the target object "
-                                f"and its declared supporting surface is {target:g}.")
+                    extra.append(['target.effective_kinetic_friction','',target,''])
             except (OSError, ValueError, KeyError, TypeError):
                 pass  # The metric retains the detailed declaration failure.
-        if not text:
+        if not extra:
             continue
         output.mkdir(exist_ok=True)
         name = hashlib.sha256(row['sample_id'].encode()).hexdigest()[:24] + '.txt'
         path = output/name
-        with path.open('x') as f:
-            f.write(Path(row['prompt_file']).read_text()+' '+' '.join(text))
+        from .prompt_contract import validate_text, sha,declared_item_facts
+        from .compact_prompt import build
+        compact=build(declared_item_facts(item)+extra,required_keys={f[0] for f in extra})
+        prompt=validate_text(compact['prompt_en'])
+        with path.open('x',encoding='utf-8') as f:
+            f.write(prompt)
         row.update(prompt_file=str(path.resolve()), parameter_targets=targets,
-                   prompt_transformation='append_fixed_camera_and_requested_gravity_and_motion_parameters')
+                   prompt_sha256=sha(prompt),
+                   prompt_token_counts=compact['prompt_token_counts'],
+                   prompt_transformation='budget_declared_initial_parameters_only')
     return media_rows
 
 

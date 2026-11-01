@@ -1,0 +1,179 @@
+{
+  "schema": "t13-F5-source-contact-primitives-v1",
+  "release_controller": {
+    "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/run_t13_frozen_v5_release_controller.py",
+    "sha256": "91a02ae83570dceda4bff00fa79fbff6f8e85bdbe94ab7f68adf3f31be1d0f29",
+    "invokes": "scripts/run_t13_frozen_v4_queue.py"
+  },
+  "production_queue": {
+    "path": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+    "sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+    "source_lines": {
+      "pair_definitions": [
+        106,
+        107
+      ],
+      "first_contacts": [
+        108,
+        109
+      ],
+      "required_driver_contact": [
+        116,
+        117
+      ],
+      "ordering": [
+        118,
+        119
+      ]
+    }
+  },
+  "rows": [
+    {
+      "clip_id": "T13_C01",
+      "state_source": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d.json",
+      "state_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "frames": 168,
+      "native_contact_field_frames": 168,
+      "original_contacts": [
+        {
+          "pair": [
+            "t13_driver_book",
+            "t13_falling_book"
+          ],
+          "label": 1,
+          "first_frame": 85,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        },
+        {
+          "pair": [
+            "t13_falling_book",
+            "t13_drink_box"
+          ],
+          "label": 1,
+          "first_frame": 113,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        }
+      ],
+      "original_order_check": true,
+      "scope": "Source contact primitives and production QA ordering only; terminal fallen target and critical boundary remain unregistered."
+    },
+    {
+      "clip_id": "T13_C02",
+      "state_source": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d.json",
+      "state_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "frames": 168,
+      "native_contact_field_frames": 168,
+      "original_contacts": [
+        {
+          "pair": [
+            "t13_driver_book",
+            "t13_falling_book"
+          ],
+          "label": 1,
+          "first_frame": 84,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        },
+        {
+          "pair": [
+            "t13_falling_book",
+            "t13_drink_box"
+          ],
+          "label": 1,
+          "first_frame": 106,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        }
+      ],
+      "original_order_check": true,
+      "scope": "Source contact primitives and production QA ordering only; terminal fallen target and critical boundary remain unregistered."
+    },
+    {
+      "clip_id": "T13_C03",
+      "state_source": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d.json",
+      "state_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "frames": 168,
+      "native_contact_field_frames": 168,
+      "original_contacts": [
+        {
+          "pair": [
+            "t13_driver_book",
+            "t13_falling_book"
+          ],
+          "label": 1,
+          "first_frame": 82,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        },
+        {
+          "pair": [
+            "t13_falling_book",
+            "t13_drink_box"
+          ],
+          "label": 1,
+          "first_frame": 100,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        }
+      ],
+      "original_order_check": true,
+      "scope": "Source contact primitives and production QA ordering only; terminal fallen target and critical boundary remain unregistered."
+    },
+    {
+      "clip_id": "T13_C04",
+      "state_source": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu3/T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d.json",
+      "state_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "frames": 168,
+      "native_contact_field_frames": 168,
+      "original_contacts": [
+        {
+          "pair": [
+            "t13_driver_book",
+            "t13_falling_book"
+          ],
+          "label": 1,
+          "first_frame": 82,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        },
+        {
+          "pair": [
+            "t13_falling_book",
+            "t13_drink_box"
+          ],
+          "label": 1,
+          "first_frame": 100,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        }
+      ],
+      "original_order_check": true,
+      "scope": "Source contact primitives and production QA ordering only; terminal fallen target and critical boundary remain unregistered."
+    },
+    {
+      "clip_id": "T13_C05",
+      "state_source": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d.json",
+      "state_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "frames": 168,
+      "native_contact_field_frames": 168,
+      "original_contacts": [
+        {
+          "pair": [
+            "t13_driver_book",
+            "t13_falling_book"
+          ],
+          "label": 1,
+          "first_frame": 82,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        },
+        {
+          "pair": [
+            "t13_falling_book",
+            "t13_drink_box"
+          ],
+          "label": 1,
+          "first_frame": 100,
+          "original_rule": "existence of recorded native contact, no numeric threshold"
+        }
+      ],
+      "original_order_check": true,
+      "scope": "Source contact primitives and production QA ordering only; terminal fallen target and critical boundary remain unregistered."
+    }
+  ],
+  "terminal_fall_contract_recovered": false,
+  "no_auxiliary_motion_threshold_promoted": true
+}

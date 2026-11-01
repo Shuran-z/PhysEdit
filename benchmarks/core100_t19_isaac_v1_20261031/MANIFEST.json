@@ -1,0 +1,232 @@
+{
+  "schema": "core100-reference-release-v1",
+  "version": "core100-t19-isaac-v1-20261031",
+  "registered_cases": 100,
+  "replacements": [
+    {
+      "clip_id": "T19_C01",
+      "native_sample_id": "T19__bg01_home_ase__g01_moon__boundary_d2_minus_r1",
+      "video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C01/reference.mp4",
+      "condition_image": "references/T19_C01/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": true,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          -0.0010937500000000044,
+          0.0
+        ]
+      },
+      "target_label": 0,
+      "theta": -0.0940625,
+      "background": "bg01_home_ase",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C02",
+      "native_sample_id": "T19__bg01_home_ase__g01_moon__boundary_d2_plus_r1",
+      "video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C02/reference.mp4",
+      "condition_image": "references/T19_C02/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          0.0,
+          0.0010937500000000044
+        ]
+      },
+      "target_label": 1,
+      "theta": -0.09296874999999999,
+      "background": "bg01_home_ase",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C03",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__boundary_d2_minus_r1",
+      "video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C03/reference.mp4",
+      "condition_image": "references/T19_C03/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          -0.0010937500000000044,
+          0.0
+        ]
+      },
+      "target_label": 0,
+      "theta": -0.0940625,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C04",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__boundary_d2_plus_r1",
+      "video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C04/reference.mp4",
+      "condition_image": "references/T19_C04/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          0.0,
+          0.0010937500000000044
+        ]
+      },
+      "target_label": 1,
+      "theta": -0.09296874999999999,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C05",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__value_0.14__global_16",
+      "video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C05/reference.mp4",
+      "condition_image": "references/T19_C05/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "ambiguous",
+        "bin": null,
+        "normalized_absolute_interval": [
+          0.12500000000000006,
+          0.18750000000000006
+        ],
+        "signed_interval": [
+          0.03500000000000002,
+          0.05250000000000002
+        ]
+      },
+      "target_label": 0,
+      "theta": 0.14,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    }
+  ],
+  "unchanged_cases": 95,
+  "files": {
+    "answers_t19.jsonl": "b1709cb11a8c9b7242f916e1795c94653689b8c302cbdf9a20444ab81d4992e2",
+    "assignments.jsonl": "6b0fab9519f34eac2615c0bf46762162e722f414be81f4e05db838a5de66bebb",
+    "event_protocols.json": "ec43616245f46bc0e9b8d8fbe32957d443956d2900b5f67b95cda4f771a5f04f",
+    "known_conditions.json": "b674cf5c3a2c5bb9038b2e0833faead2bc72755e6a31afeb7ed5e9a89a06b2f3",
+    "previous_t19.json": "d6f415d9bd98511a6db534952e73fac6a6a097adc9540086dfdc8cd0b6295b29",
+    "references/T19_C01/condition.png": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+    "references/T19_C01/config.json": "0bafa3345deb48aa6f758c77e6181134553bff60e612cde650f24d8e14f08b34",
+    "references/T19_C01/contact_crop_review.jpg": "d0e84ca2b6a2f8783337e9cc60e23734b6f65802d9a9e290667505b5ac2b4830",
+    "references/T19_C01/delivery.json": "8d0359e2346cbd6f4fee5a73f8f502793893cdf1193a63e64356bc7308db9773",
+    "references/T19_C01/event_graph.json": "2bb9adeb4e0042649a988e1440251b95ca2695f47258d456d3fef560435b6fff",
+    "references/T19_C01/motion_review.jpg": "a85a9af3228fbcadc961932d824341da6246920c17c208d1397fd4aa40ab4791",
+    "references/T19_C01/qa.json": "452dbccb4c390cc5d265bc0f5649412bcb88f9a5fe67fa7815f59d8004e59f46",
+    "references/T19_C01/reference.mp4": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+    "references/T19_C01/request.json": "67141389c9c78b91ef9809bee4c539bb14594611b905b17e7e7f8d12c8fb5dc6",
+    "references/T19_C02/condition.png": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+    "references/T19_C02/config.json": "c37ca1012a92089dcd7315991117f9865aa9d97b7ef3facf5ad4b154db1abcbb",
+    "references/T19_C02/contact_crop_review.jpg": "9b4b8d330933f9a71fc0f9a1588c19b2bce24f6ad42b9e72e2c1be7935687d3d",
+    "references/T19_C02/delivery.json": "901b19c0374f2393762977f6f282fe0bf538f4861f897df06f9d74bb3bdf6545",
+    "references/T19_C02/event_graph.json": "ce6cad78acdf9fe77e20e7689cf64b1c7a8f357f8ac480163c54588f84e91639",
+    "references/T19_C02/motion_review.jpg": "32963687ce862a87365ef9e1160e8aded80005b27fb51ee6a24305481f4ebbb3",
+    "references/T19_C02/qa.json": "192b06ae8a61f67a7eb1d1a55a4fbaefb9d3c27920b189e04406fcdda0efc719",
+    "references/T19_C02/reference.mp4": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+    "references/T19_C02/request.json": "b62f3e7d2a3a6807fb7bc6637ee5de20d3c14d99c5a8268f2cf04d2d6cd1207d",
+    "references/T19_C03/condition.png": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+    "references/T19_C03/config.json": "a08de79602ac8dc86bad45dfa0ff9eaf70f5638004639fc1ef898fe2877158e9",
+    "references/T19_C03/contact_crop_review.jpg": "570d802170cdc5181c373b06aaa7eda0bec5846ad48086505867fcf321460e65",
+    "references/T19_C03/delivery.json": "4509ac88eb551a57cfb2424daeb9ca6548e0848682a35ddbe88df6ba1379f053",
+    "references/T19_C03/event_graph.json": "2bb9adeb4e0042649a988e1440251b95ca2695f47258d456d3fef560435b6fff",
+    "references/T19_C03/motion_review.jpg": "65b1cc80ea0671b4975d6f69cf4bc8e9d95230d46595ab860bf31d107730e4a1",
+    "references/T19_C03/qa.json": "452dbccb4c390cc5d265bc0f5649412bcb88f9a5fe67fa7815f59d8004e59f46",
+    "references/T19_C03/reference.mp4": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+    "references/T19_C03/request.json": "178743d7cda6c4414613c1d7ece37e9641066a77367d6911ea490f5d724b9538",
+    "references/T19_C04/condition.png": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+    "references/T19_C04/config.json": "12878fac1a4ba9e3a353b4985e00fbec937cdd996d513ec483107401f8339092",
+    "references/T19_C04/contact_crop_review.jpg": "c9a873df96ea8fc435ce3579ee6c5c4628acde5d4d5f14625d6d4612c833d344",
+    "references/T19_C04/delivery.json": "174e090723d690699c6b1afce778103368d06f61739cfc572fe6afb0d885669d",
+    "references/T19_C04/event_graph.json": "ce6cad78acdf9fe77e20e7689cf64b1c7a8f357f8ac480163c54588f84e91639",
+    "references/T19_C04/motion_review.jpg": "2274c1259054bd329dbef4f592361ad799ed8e31b481fa1f348994a0c0b7d27d",
+    "references/T19_C04/qa.json": "192b06ae8a61f67a7eb1d1a55a4fbaefb9d3c27920b189e04406fcdda0efc719",
+    "references/T19_C04/reference.mp4": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+    "references/T19_C04/request.json": "b867c82378469e9909663250b40e4c065617df382f3160d68d4d204006fce5c2",
+    "references/T19_C05/condition.png": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+    "references/T19_C05/config.json": "83ca7a3153a62f406594b228988d94a8f1d8316baca328fcaed409e23c5a3d7c",
+    "references/T19_C05/contact_crop_review.jpg": "51d0a4b788d67d874877d5e88bcc9e68ada4483e03fac6d6cc740c87d02ba0fb",
+    "references/T19_C05/delivery.json": "bfb0f69254416aae64bce597b0b625b07b050ab59677c0b27075550a41958953",
+    "references/T19_C05/event_graph.json": "2bb9adeb4e0042649a988e1440251b95ca2695f47258d456d3fef560435b6fff",
+    "references/T19_C05/motion_review.jpg": "3969084cac98aef03a645f5b9c6999192455ef688f9c7783d937767766b9658e",
+    "references/T19_C05/qa.json": "e54e194db1a9ab9ce8c514e8ce0ad5e85522031f42e5b369a32aefb7adefbda3",
+    "references/T19_C05/reference.mp4": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+    "references/T19_C05/request.json": "91a58358eae388bd741b522c4d659fcfd4511a6a9feda483b35c15d656f11198",
+    "source_evidence.json": "738ef2d4c9d44f6b2e9ec504ed197de052b1adeb2032d76374e896062a820fb8",
+    "t19_distances.csv": "968a2595c5c78fd955868daecd70f9f2b2bd87448582ff8935f441a718029e34"
+  },
+  "pairs": [
+    {
+      "pair_id": "t19_bg01_moon_d2",
+      "clips": [
+        "T19_C01",
+        "T19_C02"
+      ]
+    },
+    {
+      "pair_id": "t19_bg03_moon_d2",
+      "clips": [
+        "T19_C03",
+        "T19_C04"
+      ]
+    }
+  ],
+  "legacy_inputs_and_annotations_modified": false,
+  "source_train_split_modified": false,
+  "event_truth": "native Isaac source contact metadata; generated-video labels are separate",
+  "new_model_scores_present": false
+}

@@ -1,0 +1,11 @@
+{
+  "event": "T19",
+  "depth": 1,
+  "nodes": [
+    {
+      "event": "source_motion",
+      "support_contact_time_s": 0.0
+    }
+  ],
+  "classification": "CALIBRATION_ONLY"
+}

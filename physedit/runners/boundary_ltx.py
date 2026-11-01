@@ -81,7 +81,7 @@ def main():
                 pipe.enable_model_cpu_offload();pipe.vae.enable_tiling()
                 cv2.setNumThreads(1)
             prompt=Path(r['prompt_file']).read_text(encoding='utf-8')
-            max_tokens=256
+            max_tokens=128
             token_count=len(pipe.tokenizer(prompt,add_special_tokens=True)['input_ids'])
             receipt=dict(model_dir=args.model_dir,model_index_sha256=hashlib.sha256((Path(args.model_dir)/'model_index.json').read_bytes()).hexdigest(),
                          torch=torch.__version__,diffusers=diffusers.__version__,gpu=args.gpu,

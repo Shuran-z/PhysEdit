@@ -1,1 +1,9 @@
 * text=auto eol=lf
+
+# Released inputs and scorer evidence are verified by their original byte hashes.
+# Never normalize these resources on add or checkout.
+/benchmarks/** -text
+/catalog/** -text
+/annotation_site/resources/** -text
+/annotation_site/scorer_runtime/** -text
+/physedit/prompt_tokenizers/** -text

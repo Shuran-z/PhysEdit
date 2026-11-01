@@ -1,0 +1,13 @@
+﻿model,registered,v6_exact_inputs,human_submitted,NearAcc,PairAcc,eligible_near_outputs,eligible_pairs,status,reason
+CogVideoX-1.5,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+Cosmos-Predict2,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+Cosmos3-Nano,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+DynamiCrafter,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+HunyuanVideo-1.5,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+LTX-Video-2B,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+MiniMax-H3,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+PhysAlign,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+PhysRVG,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+VideoGPA,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+Wan-2.2-5B,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending
+Wan-2.2-A14B,300,0,0,N/A,N/A,0,0,not_admitted,frozen_v6_input_and_reference_window_admission_and_human_review_pending

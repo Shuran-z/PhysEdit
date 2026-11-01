@@ -1,0 +1,33 @@
+[
+  {
+    "name": "ltx",
+    "repo": "Lightricks/LTX-Video",
+    "revision": "8984fa25007f376c1a299016d0957a37a2f797bb",
+    "files": [
+      "tokenizer/special_tokens_map.json",
+      "tokenizer/spiece.model",
+      "tokenizer/tokenizer_config.json"
+    ]
+  },
+  {
+    "name": "cog",
+    "repo": "zai-org/CogVideoX1.5-5B-I2V",
+    "revision": "46c90528707aebbe69066390b4fe7e7d24c9c2a4",
+    "files": [
+      "tokenizer/special_tokens_map.json",
+      "tokenizer/spiece.model",
+      "tokenizer/tokenizer_config.json"
+    ]
+  },
+  {
+    "name": "wan",
+    "repo": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+    "revision": "b8fff7315c768468a5333511427288870b2e9635",
+    "files": [
+      "tokenizer/special_tokens_map.json",
+      "tokenizer/spiece.model",
+      "tokenizer/tokenizer.json",
+      "tokenizer/tokenizer_config.json"
+    ]
+  }
+]

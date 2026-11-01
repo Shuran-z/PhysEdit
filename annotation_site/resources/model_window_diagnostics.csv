@@ -1,0 +1,25 @@
+﻿pair_id,model,windows_s,reference_first_event_from_condition_s,reference_labels_in_existing_windows,opposite_labels_preserved,common_prompt_variants,status
+candidate_T16_C04__T16_C05__folder_downstream_contact,CogVideoX-1.5,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,Cosmos-Predict2,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,Cosmos3-Nano,"[7.833333333333333, 7.833333333333333]","[2.8, null]","[1, null]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,DynamiCrafter,"[1.5, 1.5]","[2.8, null]","[0, 0]",False,[1],window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,HunyuanVideo-1.5,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 2]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,LTX-Video-2B,"[6.4, 6.4]","[2.8, null]","[1, 0]",True,"[1, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,MiniMax-H3,"[5.125, 5.125]","[2.8, null]","[1, 0]",True,"[2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,PhysAlign,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 2]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,PhysRVG,"[3.2, 3.2]","[2.8, null]","[1, 0]",True,[3],window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,VideoGPA,"[3.3333333333333335, 3.3333333333333335]","[2.8, null]","[1, 0]",True,[1],window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,Wan-2.2-5B,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T16_C04__T16_C05__folder_downstream_contact,Wan-2.2-A14B,"[5.0, 5.0]","[2.8, null]","[1, 0]",True,"[1, 2]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,CogVideoX-1.5,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,Cosmos-Predict2,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,Cosmos3-Nano,"[7.833333333333333, 7.833333333333333]","[null, 5.766666666666667]","[null, 1]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,DynamiCrafter,"[1.5, 1.5]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,HunyuanVideo-1.5,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,LTX-Video-2B,"[6.4, 6.4]","[null, 5.766666666666667]","[0, 1]",True,"[2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,MiniMax-H3,"[5.125, 5.125]","[null, 5.766666666666667]","[0, 0]",False,[2],window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,PhysAlign,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,PhysRVG,"[3.2, 3.2]","[null, 5.766666666666667]","[0, 0]",False,"[1, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,VideoGPA,"[3.3333333333333335, 3.3333333333333335]","[null, 5.766666666666667]","[0, 0]",False,[3],window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,Wan-2.2-5B,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon
+candidate_T17_C04__T17_C05__can_tissue_box_contact,Wan-2.2-A14B,"[5.0, 5.0]","[null, 5.766666666666667]","[0, 0]",False,"[1, 2, 3]",window_diagnostic_only; boundary must be rebound to the same declared horizon

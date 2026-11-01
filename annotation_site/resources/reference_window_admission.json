@@ -1,0 +1,172 @@
+{
+  "schema": "core100-reference-window-admission-v1",
+  "date": "2026-10-25",
+  "policy": "No new event threshold. Near<=0.05 and pair tolerance0.02 from existing protocol; 6.4s is an explicit cohort horizon, not a physical threshold. Existing full-window annotations are never silently relabeled.",
+  "references": [
+    {
+      "clip_id": "T17_C04",
+      "target_event": "can_tissue_box_contact",
+      "reference_label": 0,
+      "family_id": "initial_speed",
+      "scene_id": "T17",
+      "fixed_context_sha256": "54baa40788f41661fd01a2c69f66e0e10df1203aef1ddd8d7a43e04c1b9f9aa5",
+      "theta": 0.9465517241379311,
+      "boundary_interval": [
+        1.024858566810345,
+        1.0253771551724138
+      ],
+      "normalization_span": 3.85,
+      "normalization_domain": [
+        0.15,
+        4.0
+      ],
+      "normalized_distance_interval": [
+        0.020339439655172424,
+        0.020474137931034465
+      ],
+      "bin": "near",
+      "horizon_s": 6.4,
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "reference_end_frame": 196,
+      "reference_seed": 577487352,
+      "reference_state_sha256": "f2d7e0a7fa338ee00dfa4ffc28635ab28482a972037d0b43ab810eedc0f90483",
+      "source_config_sha256": "aa380fad54adfe7aff7c92831bdb50d24b3be17325017805b3d5493cb7ce1473",
+      "probe_result_sha256": "328e50515390a666d9384ff0ac241744e4511044b163e3842ff6653b10f4824a",
+      "probe_count": 10,
+      "backend_sources": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/build_project.py": "ebc5c53c30b331e15bc27619959b228afde7636f2017dd9a9204fcacb2af35fc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t16_t20_physical_v5_20260816.py": "7a1f1b7fe1731dc45393231ab179275bfd7aafff66d0f328cdf287a025ed759d",
+        "/data_cached/wangzijun_p25/liyuhan/core100_near_t17_window64_20261024/conditional_window_search.py": "5de908a580abd5b61b82d7b91fe6fdb97ea9163b4bdbf5e72acd4f5a93ffc1fc",
+        "/data_cached/wangzijun_p25/liyuhan/core100_near_t17_window64_20261024/published_contact_vectors.py": "c24e6456f56a9c2276d170626da450651ebf881ec39941504b2272503ceb6e0c"
+      },
+      "visual_observability": "passed_agent_native_keyframe_review",
+      "condition_binding": "pixel_exact_ffmpeg_native_frame4",
+      "reference_admission": "admitted_for_target_contact_at_6p4s",
+      "admission_scope": "fixed recovered simulator contract and two independently checked original seeds; local boundary, not global uniqueness or all-seed robustness"
+    },
+    {
+      "clip_id": "T17_C05",
+      "target_event": "can_tissue_box_contact",
+      "reference_label": 1,
+      "family_id": "initial_speed",
+      "scene_id": "T17",
+      "fixed_context_sha256": "54baa40788f41661fd01a2c69f66e0e10df1203aef1ddd8d7a43e04c1b9f9aa5",
+      "theta": 1.0793103448275863,
+      "boundary_interval": [
+        1.024858566810345,
+        1.0253771551724138
+      ],
+      "normalization_span": 3.85,
+      "normalization_domain": [
+        0.15,
+        4.0
+      ],
+      "normalized_distance_interval": [
+        0.014008620689655185,
+        0.014143318965517227
+      ],
+      "bin": "near",
+      "horizon_s": 6.4,
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "reference_end_frame": 196,
+      "reference_seed": 3499301227,
+      "reference_state_sha256": "2a2d8e676477014535744495440da567d486cd75968db9c6bfa014b23674aba8",
+      "source_config_sha256": "5a512cca740bb703c4ede0efd2bb9315da80793919c1a80fc236bb04efb95e95",
+      "probe_result_sha256": "35cff2ca2a900e5f5f4972ab8df3df4d377137f1d673e8fe16c01886f6fbe158",
+      "probe_count": 10,
+      "backend_sources": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/build_project.py": "ebc5c53c30b331e15bc27619959b228afde7636f2017dd9a9204fcacb2af35fc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t16_t20_physical_v5_20260816.py": "7a1f1b7fe1731dc45393231ab179275bfd7aafff66d0f328cdf287a025ed759d",
+        "/data_cached/wangzijun_p25/liyuhan/core100_near_t17_window64_20261024/conditional_window_search.py": "5de908a580abd5b61b82d7b91fe6fdb97ea9163b4bdbf5e72acd4f5a93ffc1fc",
+        "/data_cached/wangzijun_p25/liyuhan/core100_near_t17_window64_20261024/published_contact_vectors.py": "c24e6456f56a9c2276d170626da450651ebf881ec39941504b2272503ceb6e0c"
+      },
+      "visual_observability": "passed_agent_native_keyframe_review",
+      "condition_binding": "pixel_exact_ffmpeg_native_frame4",
+      "reference_admission": "admitted_for_target_contact_at_6p4s",
+      "admission_scope": "fixed recovered simulator contract and two independently checked original seeds; local boundary, not global uniqueness or all-seed robustness"
+    }
+  ],
+  "pairs": [
+    {
+      "pair_id": "T17_initial_speed_contact_h6p4_v1",
+      "clips": [
+        "T17_C04",
+        "T17_C05"
+      ],
+      "mode": "independent",
+      "reference_labels": [
+        0,
+        1
+      ],
+      "boundary_interval": [
+        1.024858566810345,
+        1.0253771551724138
+      ],
+      "normalization_span": 3.85,
+      "worst_case_normalized_distance_asymmetry": 0.006465517241379281,
+      "pair_tolerance": 0.02,
+      "distance_symmetry_guaranteed": true,
+      "status": "admitted_for_fixed_simulator_contact_cohort_h6p4",
+      "seed_scope": "Both original seeds reproduced their source labels and independently yielded the same bracket."
+    }
+  ],
+  "visual_reviews": [
+    {
+      "clip_id": "T06_C05",
+      "status": "partial",
+      "notes": "Cascade is visible; complete adjacent-pair criterion still lacks original published contact telemetry; replay labels do not replace original truth.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    },
+    {
+      "clip_id": "T09_C04",
+      "status": "passed",
+      "notes": "Upper non-pulled books reaching table are visible at final native frame. Original cam01 sidecar records cam03 video; trajectory/camera binding remains separate.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    },
+    {
+      "clip_id": "T16_C04",
+      "status": "passed",
+      "notes": "Pinned canonical folder/downstream contact is visible. Canonical dt/substeps differ from original scan: old boundary cannot be silently reused.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    },
+    {
+      "clip_id": "T16_C05",
+      "status": "passed",
+      "notes": "Original folder and box remain visibly separated throughout sampled reference; original state has no pair contacts.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    },
+    {
+      "clip_id": "T17_C04",
+      "status": "passed",
+      "notes": "Can and tissue box remain distinct; native late frames and enlarged native crops show the gap, consistent with no native contact.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    },
+    {
+      "clip_id": "T17_C05",
+      "status": "passed",
+      "notes": "At native frames around177 surfaces meet and remain in contact, with native telemetry confirming the same original actors.",
+      "reviewer_type": "AI_agent_visual_inspection_of_hash_bound_reference_frames",
+      "review_is_not_generated_video_human_annotation": true
+    }
+  ],
+  "evidence_sha256": {
+    "t17_fixed_seed_evidence.json.gz": "ba056df97ab9a0eef3282352acb8466078a3fc0c247cd0ec5eeb9d6b26eff2af",
+    "remote_evidence_package.json.gz": "2df7f97f6b83bccf7063ef5d03daaefd55b4b8dbdbb5197f8bbafee4ff14fd90",
+    "remote_evidence_index.json": "180bf709dc7bf29a44ad71d4873a55933999964632032d83d5d9abce5fe473e2",
+    "condition_image_proof.json": "30c8c3cd063fff4888c64fe0d69a0df8eda12095b4316d1c87db263a1c93cc7a",
+    "condition_to_reference_pixel_binding.json": "ee17b69787ebf7d4a27e2914fb461aa565742198fc8f6d893bd00c15ee7d85d5",
+    "ffmpeg_condition_binding.json": "fa1e07bf35c7113176ef91c51dc97dbcf7eb2f913e4a4618438dcd020e45eaa6",
+    "scan_window_events.json": "bf76de49df2e441c60b849d7279ca9e59ded941ebfbbe7018b039f190297eb31",
+    "t12_t13_source_search.json": "f7119f60611b530a7652cffffb4879a8840618b7d9209671ff85fab4afba527d",
+    "t12_p26_source_search.json": "da17cd2a95a6ca639a6497d0a2b355afe5351c363849af1b6c6b3804fccfdbe5"
+  }
+}

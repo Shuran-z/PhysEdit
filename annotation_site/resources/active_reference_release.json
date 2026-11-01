@@ -1,0 +1,9 @@
+{
+  "version": "core100-t19-isaac-v1-20261031",
+  "release_root": "../../benchmarks/core100_t19_isaac_v1_20261031",
+  "manifest": "MANIFEST.json",
+  "manifest_sha256": "f9873e65845cf30cfeda72426eb72556beb4f71da0f2ca16ca17af3548ccd6bf",
+  "known_conditions": "../benchmarks/core100_t19_isaac_v1_20261031/known_conditions.json",
+  "activation": "author_requested_five_T19_reference_replacement",
+  "legacy_prompt_revision": "f23ee3577952ec1e5357c8a729bfc4daa5c7272d"
+}

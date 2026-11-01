@@ -311,6 +311,13 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
         shift_key = 'flow_shift' if args.pipeline.startswith('wan_') else 'shift'
         pipe.scheduler = scheduler.from_config(pipe.scheduler.config, **{shift_key: flow_shift})
     accepted = set(inspect.signature(pipe.__call__).parameters)
+    prompt_budget=128 if args.pipeline.startswith('ltx_') else (226 if args.pipeline=='cogvideox_i2v' else (512 if args.pipeline.startswith('wan_') else None))
+    prompt_tokens=None
+    if prompt_budget is not None:
+        prompt_tokens=len(pipe.tokenizer(prompt,add_special_tokens=True,truncation=False)['input_ids'])
+        if prompt_tokens>prompt_budget:
+            raise ValueError(f'prompt_exceeds_registered_budget: {prompt_tokens}>{prompt_budget}; use the compact English prompt catalog')
+        if 'max_sequence_length' in accepted:call_kwargs['max_sequence_length']=prompt_budget
     guidance_binding = "call_argument"
     guider_config = None
     if args.pipeline == "hunyuan15_i2v" and "guidance_scale" not in accepted:
@@ -346,6 +353,9 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
             "wan_invert_output": args.wan_invert_output,
             "accepted_call_args": sorted(filtered),
             "generation_fps": row["output_fps"],
+            "prompt_tokens": prompt_tokens,
+            "prompt_budget": prompt_budget,
+            "prompt_truncated": False,
             "conditioning_mode": row.get("mode", "i2v"),
             "conditioning_video_sha256": row.get("conditioning_video_sha256"),
             "denoise_strength": row.get("denoise_strength"),

@@ -1,0 +1,196 @@
+function renderExecutionReadiness(e){const s=e.summary;return `<section class="measure-section"><h3>20场景核验与实际观察窗</h3><p>覆盖${s.case_count}例、${s.scene_count}类；已核验${s.verified_numeric_files}份数值文件、${s.verified_probe_state_hashes??0}份端点/网格状态哈希，T12/T13回读${s.T12_T13_verified_probe_states}条探针轨迹。15例参考按登记物理窗4.1秒核对。区间候选不等于正式准入，有限扫描无翻转不等于没有边界。</p>${dataTable(['场景','已解决/登记视频','历史数值案例','区间候选案例','有限扫描未翻转案例','已准入参考'],e.scenes.map(r=>[r.scene,r.human_final+'/'+r.registered_outputs,r.historical_numeric_cases,r.interval_candidate_cases,r.finite_no_flip_cases,r.admitted_reference_cases]))}<p><a href="api/critical-case-gaps.csv">100例逐条证据与缺口CSV</a> · <a href="api/critical-window-gaps.csv">540条实际窗口核对CSV</a></p><p class="subtle">T12/T13的接触参考与原终态目标分别报告；T13原参考兼容性未过关的区间保留为候选。短视频保留自身窗口，长窗正事件或质量失败不直接迁移到短窗；T10原数值阈值须有标定证据。</p></section>`;}
+'use strict';
+
+const $=id=>document.getElementById(id);
+
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const statusName={unstarted:'未开始',draft:'初审草稿',review_pending:'历史复审待办',disputed:'争议待处理',resolved:'已完成复核'};
+
+const labelName={yes:'发生',no:'未发生',uncertain:'不可判',not_observed:'未观察到',not_applicable:'预登记不适用'};
+
+const qualityName={pass:'可测',failure:'不可测',uncertain:'待定（历史记录）'};
+
+const S={user:null,batch:null,dashboard:null,tasks:[],task:null,dirty:false,editCounter:0,saving:false,timer:null,view:'overview',taskRequest:0};
+
+const invite=new URL(location.href).searchParams.get('invite');
+
+if(invite){history.replaceState(null,'',location.pathname);$('username-wrap').hidden=true;$('username').required=false;$('login-title').textContent='激活个人账号';$('login-note').textContent='这是一次性邀请链接。请设置自己的密码，激活后使用个人账号登录。';$('login-submit').textContent='设置密码并进入';$('password').autocomplete='new-password';}
+
+async function api(url,method='GET',data){const r=await fetch(url,{method,credentials:'same-origin',headers:{...(data?{'Content-Type':'application/json'}:{}),...(method!=='GET'&&S.user?{'X-CSRF-Token':S.user.csrf}:{})},body:data?JSON.stringify(data):undefined});let j;try{j=await r.json();}catch{throw Error('服务暂时不可用，请稍后重试');}if(!r.ok)throw Error(j.error||`请求失败 ${r.status}`);return j;}
+
+function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').hidden=true,3500);}
+
+function percent(v){return v===null||v===undefined?'—':(100*v).toFixed(1)+'%';}
+
+function setView(view){S.view=view;$('workspace-empty').hidden=!!S.task;$('workspace-content').hidden=!S.task;$('workspace-empty-note').textContent=`${S.user?.name||'当前账号'}在当前批次没有任务。请选择正式3600条批次；任务数量以当前分配为准。`;for(const name of ['overview','workspace','help','protocols'])$(name).hidden=name!==view;for(const [id,v] of [['nav-overview','overview'],['nav-tasks','workspace'],['nav-help','help'],['nav-protocols','protocols']])$(id).classList.toggle('active',view===v);$('breadcrumb').textContent=view==='overview'?'工作概览':view==='workspace'?'视频评测':view==='protocols'?'事件口径':'填写说明';$('page-title').textContent=view==='overview'?'每一条判断，都可追溯':view==='workspace'?'观察画面，记录证据':view==='protocols'?'20类事件，逐条登记':'统一口径，独立判断';}
+
+async function navigate(view){if(view!=='workspace')S.taskRequest++;if(S.dirty&&!await save(false))return;if(view==='workspace'&&!S.task){if(S.tasks.length)return openTask(S.tasks[0].id);setView(view);return;}setView(view);if(view==='protocols')await showProtocols();}
+
+async function enter(user){S.user=user;$('login').hidden=true;$('app').hidden=false;$('user-name').textContent=user.name;$('user-role').textContent=user.role==='admin'?'项目管理与争议仲裁':user.role==='qa'?'流程验收账号':'VLM辅助人工复核';$('avatar').textContent=user.role==='admin'?'管':user.name.slice(-1);$('export').hidden=user.role!=='admin';$('admin-panel').hidden=user.role!=='admin';$('evaluation-panel').hidden=user.role!=='admin';await refreshDashboard();}
+
+async function refreshDashboard(){S.dashboard=await api('api/dashboard');const bs=S.dashboard.batches;let b=bs.find(x=>x.id===S.batch)||bs.find(x=>x.mode==='formal')||bs.find(x=>x.mode==='pilot')||bs[0];S.batch=b?.id||'pilot6';$('batch-select').innerHTML=bs.map(x=>`<option value="${esc(x.id)}" ${x.id===S.batch?'selected':''}>${esc(x.name)}</option>`).join('');$('batch-badge').textContent=b?b.mode==='qa'?'QA验收 · 不计分':b.mode==='pilot'?'6条试跑 · 诊断批次':'正式抽样批次':'待导入任务';renderOverview(b);await refreshTasks();clearTimeout(S.scoreTimer);if(b?.metrics?.scoring?.status==='running')S.scoreTimer=setTimeout(()=>refreshDashboard().catch(e=>toast(e.message)),2000);}
+
+function renderOverview(b){const m=b?.metrics,c=b?.counts||{},registered=b?.available_to_you??m?.registered??0,resolved=m?.resolved??c.resolved??0;const stats=[['本批可见任务',registered,`本轮暂缓 ${b?.held_to_you||0} 条 · 人工可直接开始，不等待VLM`],['已完成复核',resolved,`临界事件合同待登记 ${c.event_contract_pending||0} 条；质量与逐事件分别复核`],['已抽中待二审',c.sampled_pending||0,'由管理员处理，不增加个人配额'],['争议待处理',c.disputed||0,'管理员抽样二审（默认20%）']];$('stat-cards').innerHTML=stats.map(x=>`<div class="stat"><div class="label">${x[0]}</div><div class="number">${x[1]}</div><div class="foot">${x[2]}</div></div>`).join('');$('assignments').innerHTML=S.dashboard.assignments.map(a=>`<div class="assignment-row"><div><strong>${esc(a.name)}</strong><div class="subtle">${esc(a.id)}</div></div><div><span>本轮 ${a.planned_total} 条 · 暂缓 ${a.held||0} 条 · 一次人工复核</span><div class="models">${esc(a.models.join(' / '))}</div></div><div class="count">${a.planned_total}</div></div>`).join('');
+
+ const pipe=m?.pipeline;const counts=pipe?`<div class="measure-grid"><span>误放行：坏片被机器通过</span><strong>${pipe.false_pass}</strong><span>误拒绝：可测视频被拒绝</span><strong>${pipe.false_reject}</strong><span>机器转人工 / 已有人类结论</span><strong>${pipe.abstain_bad+pipe.abstain_good}</strong><span>自动判定覆盖率</span><strong>${percent(pipe.automatic_decision_coverage)}</strong><span>自动判定部分准确率</span><strong>${percent(pipe.conditional_accuracy)}</strong></div>`:'<p class="subtle">完成一次人工复核或争议抽样二审后，由管理员查看误放行、误拒绝、自动覆盖率与转人工数量。无人工结论时不显示准确率。</p>';
+
+ $('measurement').innerHTML=`<div class="measure-section"><h3>清理管线审计</h3>${counts}<div class="measure-note">以人工复核的“质量通过 / 确认失败”作对照；待定保留，机器转人工不混成误判。</div></div><div class="measure-section"><h3>临界事件评测</h3><div class="measure-grid"><span>分支准确率</span><strong>${scoreValue(m?.formal_scores?.BalancedTargetAccuracy)}</strong><span>NearAcc / PairAcc</span><strong>${scoreValue(m?.formal_scores?.NearAcc)} / ${scoreValue(m?.formal_scores?.IndependentPairAcc)}</strong><span>EventExact</span><strong>${scoreValue(m?.formal_scores?.EventExact)}</strong></div><div class="metric-warning">${esc(m?.formal_note||'观察标签由统一评分器计算。边界、配对、参考准入不齐备时，正式指标保持不可计算。')}</div></div><div class="measure-note">${esc(b?.metadata?.note||'视频按冻结清单导入；正式视频直接从HF固定版本播放，VLM完成后进行人工复核。')}</div>`;if(S.user?.role==='admin')$('measurement').innerHTML+=renderBoxTranslationStats(m?.box_translation)+renderProcessStats(m?.process_observations);if(S.user?.role==='admin')renderEvaluation(b).catch(e=>toast(e.message));
+
+}
+
+async function refreshTasks(){S.tasks=(await api(`api/tasks?batch=${encodeURIComponent(S.batch)}`)).tasks.sort((a,b)=>Number(!!a.annotation_hold?.active)-Number(!!b.annotation_hold?.active)||Number(a.state==='resolved')-Number(b.state==='resolved')||(b.review_priority||0)-(a.review_priority||0));renderQueue();}
+
+function renderQueue(){const term=$('task-search').value.toLowerCase();const tasks=S.tasks.filter(t=>(t.clip_id+' '+t.id+' '+(t.second_review_selected?'抽中 二审':'')).toLowerCase().includes(term));$('queue-count').textContent=S.tasks.length;$('task-queue').innerHTML=tasks.length?tasks.map(t=>`<button class="task-item ${S.task?.id===t.id?'selected':''}" data-task="${esc(t.id)}"><strong>${esc(t.clip_id)}${t.review_priority&&t.state!=='resolved'?' · 优先复核':''} <span class="status-pill ${t.state}">${esc(t.annotation_hold?.active?'暂缓：等待v6重生成':t.state==='disputed'&&t.second_review_selected?'抽中二审':statusName[t.state])}</span></strong><div class="task-row"><span>${t.role==='primary'?'人工复核':t.role==='review'?'历史复审':'管理'} · P${t.prompt_variant} / seed ${t.seed}</span><span>${esc(t.id)}</span></div></button>`).join(''):`<div class="empty">${S.tasks.length?'没有匹配搜索条件的任务，请清空搜索。':'本批暂无分配给你的任务。请切换到正式3600条批次，或在分配更新后刷新。'}</div>`;for(const b of $('task-queue').querySelectorAll('[data-task]'))b.onclick=()=>openTask(b.dataset.task);}
+
+const blank=()=>({quality:{status:'',failure:'none'},events:{}});
+
+async function openTask(id){
+ const request=++S.taskRequest;
+ if(S.dirty&&!await save(false))return;
+ try{
+  const task=await api('api/tasks/'+encodeURIComponent(id));
+  if(request!==S.taskRequest)return;
+  if(S.dirty&&!await save(false))return;
+  if(request!==S.taskRequest)return;
+  S.task=task;S.dirty=false;clearTimeout(S.timer);renderTask();setView('workspace');renderQueue();
+ }catch(e){if(request===S.taskRequest)toast(e.message);}
+}
+
+function option(values,selected,placeholder='请选择'){return `<option value="">${placeholder}</option>`+Object.entries(values).map(([v,label])=>`<option value="${v}" ${v===selected?'selected':''}>${esc(label)}</option>`).join('');}
+
+
+
+function loadVideo(retry){
+ clearTimeout(S.mediaTimer);
+ if(!S.task)return;
+ const v=$('video'),id=S.task.id,position=retry&&Number.isFinite(v.currentTime)?v.currentTime:0;
+ if(!retry)S.mediaRetries=0;
+ v.onloadedmetadata=()=>{if(S.task?.id===id&&position>0)v.currentTime=Math.min(position,v.duration||position);};
+ v.src='media/'+encodeURIComponent(id)+'?reload='+Date.now();
+}
+
+function renderTask(){const t=S.task, own=t.own?.payload||(t.stage==='adjudication'?blank():t.comparison?.adjudication?.payload||t.comparison?.primary?.payload)||blank(),q=own.quality||blank().quality;$('task-meta').innerHTML=`<h2>${esc(t.clip_id)}</h2><span class="status-pill ${t.state}">${esc(statusName[t.state])}</span><span>${esc(t.model)} · Prompt ${t.prompt_variant} · seed ${t.seed}</span><span>任务 ${esc(t.id)}</span>`;loadVideo(false);$('speed').value='1';$('current-time').textContent='0.000';$('target-description').textContent=t.protocol.target;$('task-protocol-notes').textContent=t.protocol.critical_contract_status==='original_critical_target_pending'?'临界协议待登记；当前标签作为观察记录。':'原始事件定义已核对；正式成绩待参考准入。';$('clock-note').textContent=`观察窗 0–${t.window_s.toFixed(3)}s · 原生 ${t.fps} fps · 实际时长 ${t.duration_s.toFixed(3)}s · ${t.protocol.version}${t.protocol.status==='diagnostic'?'（诊断协议，非正式临界成绩）':''}`;
+
+ const stage=t.stage==='primary'?(t.human_annotation_without_vlm?'人工标注 · VLM可选参考':'VLM辅助人工复核'):t.stage==='review'?'历史独立复审':t.stage==='adjudication'?'管理员抽样二审':'只读查看';$('stage-banner').textContent=stage+' · '+(t.can_work?'判断质量，再选择事件标签。':t.own?.submitted?'本次已提交，记录已锁定。':t.stage==='review'?'等待初审提交后开始。':'查看证据和已提交记录。');$('submit-annotation').textContent=t.stage==='review'?'提交独立复审':t.stage==='adjudication'?'提交抽样二审':'提交人工复核';if(t.human_annotation_without_vlm)$('stage-banner').textContent+=' 无需等待VLM；按画面填写，后续机器结果不会覆盖人工记录。';if(t.annotation_hold?.active)$('stage-banner').textContent='本任务暂缓标注：等待v6 prompt重生成，历史记录保留。';if(t.protocol.critical_contract_status==='pending_scene_specific_registration')$('stage-banner').textContent+=' 本场景临界事件合同尚未登记；当前仅进行清理管线质量复核，不报临界事件成绩。';if(t.state==='disputed'&&t.review_policy==='vlm_human_dispute_only_v2')$('stage-banner').textContent+=' 争议：'+(t.dispute_reasons||[]).join('；')+'。'+(t.second_review_sample?.selected?'已抽中管理员二审':t.second_review_sample?'本轮未抽中，保留待定':'待管理员冻结随机抽样');
+
+ $('quality-form').innerHTML=`<label>可测性结论<select id="q-status">${option({...{pass:'可测',failure:'不可测'},...(q.status==='uncertain'?{uncertain:'待定（历史记录，可改选）'}:{})},q.status)}</select></label><p class="field-help">只需选择可测或不可测，无需填写问题类型、时间或原因。原对象能持续辨认、关键状态能判断即可选可测；错误物理本身不代表不可测。</p>`;
+
+ $('events-form').innerHTML=(t.protocol.critical_contract_status==='pending_scene_specific_registration'?'<p class="metric-warning">临界事件定义与参考登记尚未齐备。当前仅复核视频质量；不填写臆造的事件标签，不计临界成绩。</p>':'')+(Object.keys(t.protocol.events).length?`<div class="field-help"><strong>原协议关键判据（${Object.keys(t.protocol.events).length}项）</strong><p>这是原协议的评分目标；下方另列已登记的事件链观察。涉及厘米、角度等数值条件，缺少可靠标定时选“不可判”。</p></div>`:'')+Object.entries(t.protocol.events).map(([key,d],i)=>eventCard(key,d,i,own.events?.[key]||{},t,own)).join('')+renderAuxiliary(t,own)+renderBoxTranslation(t)+renderProcessObservations(t);
+
+ $('second-review-wrap').hidden=t.review_policy!=='vlm_human_dispute_only_v2'||t.stage!=='primary';$('request-second-review').checked=!!own.request_second_review;$('adjudication-wrap').hidden=t.stage!=='adjudication';$('save-status').textContent=t.own?'已保存 '+new Date(t.own.updated*1000).toLocaleTimeString():'草稿尚未保存';$('form-error').textContent='';
+
+ for(const el of $('annotation-form').querySelectorAll('input,select,textarea,button'))el.disabled=!t.can_work;
+
+ $('annotation-form').oninput=e=>{if(!e.target.closest('[data-independent-box],[data-process-observations]'))changed();};$('annotation-form').onchange=e=>{if(!e.target.closest('[data-independent-box],[data-process-observations]'))changed();};
+ bindProcessObservations(t);
+ const box=t.box_translation_observation;if(box){for(const el of $('events-form').querySelectorAll('[data-independent-box] select,[data-independent-box] button'))el.disabled=!box.can_edit;$('box-translation-select').onchange=e=>{e.stopPropagation();saveBoxTranslation();};$('box-translation-save').onclick=saveBoxTranslation;}
+
+ $('comparison-panel').hidden=!t.comparison&&!t.machine;
+
+ if(!$('comparison-panel').hidden){let html='';for(const [stage,a] of Object.entries(t.comparison||{})){const x=a.payload;html+=`<div class="comparison-block"><strong>${stage==='primary'?'初审':stage==='review'?'复审':'仲裁'} · ${esc(a.user_id)}</strong><p>${esc(qualityName[x.quality.status])}：${esc(x.quality.reason)}</p>${Object.entries(x.events||{}).map(([k,e])=>`<div>${esc(eventDisplayName(k,t.protocol.events[k]))}：${esc(labelName[e.label])}</div>`).join('')}${t.stage==='adjudication'?`<button type="button" class="secondary" data-adopt="${stage}">载入此份作为仲裁草稿</button>`:''}</div>`;}
+
+ if(t.machine?.quality_prediction){const m=t.machine.quality_prediction;html+=`<div class="comparison-block"><strong>VLM原质量记录（只读）</strong><p>原路由：${esc(t.machine.quality_route)}${m.quality?.confidence===undefined?'（证据规则路由）':' · 自报置信度：'+esc(m.quality.confidence)}</p><details><summary>查看VLM原判</summary>${esc(m.quality?.reason||m.error)}</details><div class="subtle">原判保留。</div></div>`;}if(t.machine?.event_prediction&&!t.machine.event_prediction.events){html+=`<div class="comparison-block"><strong>VLM事件阶段：${esc(t.machine.event_prediction.status)}</strong><p>${esc(t.machine.event_prediction.error||t.machine.event_prediction.reason||'尚未取得事件输出')}。逐事件表保留，人工按实际视频判读，缺证据保留未知。</p></div>`;}if(t.machine?.event_prediction?.events){html+=`<div class="comparison-block"><strong>VLM原事件记录（只读，不代表通过判据审核）</strong>${Object.entries(t.machine.event_prediction.events).filter(([k])=>k in t.protocol.events).map(([k,e])=>`<p>${esc(eventDisplayName(k,t.protocol.events[k]))}：${esc(labelName[e.label]||e.label)}<br><details><summary>查看VLM原始说明（只读）</summary>${esc(e.reason||'无文字说明')}</details></p>`).join('')}</div>`;}$('comparison-content').innerHTML=html;for(const b of $('comparison-content').querySelectorAll('[data-adopt]'))b.onclick=()=>{S.task.own={payload:t.comparison[b.dataset.adopt].payload,submitted:0,updated:Date.now()/1000};renderTask();changed();};}
+
+ previewDerived();setTab('quality');
+
+}
+
+function frameTime(){const v=$('video');return Math.min(S.task.window_s,S.task.duration_s,Math.max(0,Math.round(v.currentTime*S.task.fps)/S.task.fps));}
+
+
+
+function capture(){const t=S.task,status=$('q-status').value,prior=t.own?.payload?.quality||{},p={annotation_schema:'measurability-binary-v5',video_sha256:t.video_sha256,protocol_version:t.protocol.version,protocol_sha256:t.protocol_sha256,quality:{...(prior.status===status?prior:{}),status,failure:status==='failure'?(prior.status==='failure'&&prior.failure&&prior.failure!=='none'?prior.failure:'not_specified'):'none'},events:{},auxiliary_events:{}};if(p.quality.status==='pass'){for(const key of Object.keys(t.protocol.events))p.events[key]={label:$('events-form').querySelector(`[data-label="${key}"]`).value};for(const el of $('events-form').querySelectorAll('[data-aux]'))if(el.value)p.auxiliary_events[el.dataset.aux]={label:el.value};}if(t.stage==='primary')p.request_second_review=$('request-second-review').checked;return p;}
+
+
+
+function changed(){if(!S.task?.can_work)return;previewDerived();S.dirty=true;S.editCounter++;$('save-status').textContent='有修改 · 即将自动保存';clearTimeout(S.timer);S.timer=setTimeout(()=>save(false),1800);}
+
+async function save(submit){if(!S.task?.can_work||(!S.dirty&&!submit))return true;if(S.saving){if(submit)toast('正在保存草稿，请稍后提交');return false;}clearTimeout(S.timer);S.saving=true;const id=S.task.id,counter=S.editCounter;try{const payload=capture();if(submit)for(const el of $('annotation-form').querySelectorAll('input,select,textarea,button'))el.disabled=true;$('form-error').textContent='';const t=await api('api/tasks/'+encodeURIComponent(id)+'/annotation','POST',{stage:S.task.stage,version:S.task.version,submit,annotation:payload});if(S.task.id===id){S.task=t;S.dirty=S.editCounter!==counter;$('save-status').textContent=submit?'已提交并锁定':'已自动保存 '+new Date().toLocaleTimeString();if(submit){renderTask();toast(t.state==='resolved'?'人工复核已完成':'争议已保留，等待抽样二审');await refreshDashboard();}}return !S.dirty;}catch(e){$('form-error').textContent=e.message;$('save-status').textContent='未保存，请检查提示';return false;}finally{S.saving=false;if(submit&&S.task?.can_work)for(const el of $('annotation-form').querySelectorAll('input,select,textarea,button'))el.disabled=false;if(S.dirty)S.timer=setTimeout(()=>save(false),1800);}}
+
+function setTab(name){$('quality-form').hidden=name!=='quality';$('events-form').hidden=name!=='events';for(const b of document.querySelectorAll('.form-tab'))b.classList.toggle('active',b.dataset.tab===name);}
+
+$('auth-form').onsubmit=async e=>{e.preventDefault();$('login-submit').disabled=true;$('login-error').textContent='';try{const result=await api(invite?'api/auth/activate':'api/auth/login','POST',invite?{token:invite,password:$('password').value}:{user_id:$('username').value.trim(),password:$('password').value});$('password').value='';await enter(result.user);}catch(e){$('login-error').textContent=e.message;}finally{$('login-submit').disabled=false;}};
+
+$('nav-overview').onclick=()=>navigate('overview');$('nav-tasks').onclick=()=>navigate('workspace');$('nav-help').onclick=()=>navigate('help');$('nav-protocols').onclick=()=>navigate('protocols');$('task-search').oninput=renderQueue;$('refresh').onclick=async()=>{if(S.dirty&&!await save(false))return;await refreshDashboard();if(S.task)await openTask(S.task.id);toast('已刷新');};$('batch-select').onchange=async e=>{if(S.dirty&&!await save(false))return;S.taskRequest++;S.batch=e.target.value;S.task=null;setView('overview');await refreshDashboard();};$('logout').onclick=async()=>{if(S.dirty&&!await save(false))return;await api('api/auth/logout','POST',{});location.reload();};
+
+function prefixLimit(){const v=$('video'),t=S.task;if(t&&Number.isFinite(t.window_s)&&v.currentTime>Math.min(t.window_s,t.duration_s)){v.pause();v.currentTime=Math.min(t.window_s,t.duration_s);}}$('video').onseeking=prefixLimit;$('video').ontimeupdate=()=>{prefixLimit();$('current-time').textContent=frameTime().toFixed(3);};$('video').onerror=()=>{if(!S.task)return;const id=S.task.id;if(S.mediaRetries<2){S.mediaRetries++;toast('视频连接中断，正在重试播放…');clearTimeout(S.mediaTimer);S.mediaTimer=setTimeout(()=>{if(S.task?.id===id)loadVideo(true);},3000);}else toast('视频暂时无法连接，请点“重试视频”；不要标为质量失败');};$('retry-video').onclick=()=>loadVideo(false);$('speed').onchange=e=>$('video').playbackRate=Number(e.target.value);const step=n=>{if(!S.task)return;const v=$('video');v.pause();v.currentTime=Math.min(S.task.duration_s,Math.max(0,v.currentTime+n/S.task.fps));};$('back-frame').onclick=()=>step(-1);$('forward-frame').onclick=()=>step(1);for(const b of document.querySelectorAll('.form-tab'))b.onclick=()=>setTab(b.dataset.tab);$('save-draft').onclick=()=>save(false);$('annotation-form').onsubmit=e=>{e.preventDefault();save(true);};
+
+document.addEventListener('keydown',e=>{if(!S.task||S.view!=='workspace'||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;if(e.code==='Space'){e.preventDefault();const v=$('video');v.paused?v.play():v.pause();}if(e.code==='ArrowLeft'){e.preventDefault();step(-1);}if(e.code==='ArrowRight'){e.preventDefault();step(1);}});window.addEventListener('beforeunload',e=>{if(S.dirty){e.preventDefault();e.returnValue='';}});
+
+$('export').onclick=()=>{location.href='api/export?batch='+encodeURIComponent(S.batch);};$('import-button').onclick=async()=>{const file=$('import-file').files[0];if(!file){$('import-result').textContent='请先选择JSON文件';return;}try{const data=JSON.parse(await file.text());const result=await api('api/admin/import','POST',data);$('import-result').textContent=`已导入${result.count}条，媒体哈希校验通过`;await refreshDashboard();}catch(e){$('import-result').textContent=e.message;}};
+
+(async()=>{try{const r=await api('api/me');await enter(r.user);}catch{$('app').hidden=true;$('login').hidden=false;}})();
+
+
+
+$('sample-disputes').onclick=async()=>{try{const r=await api('api/admin/sample-disputes','POST',{batch_id:S.batch,rate:Number($('dispute-sample-rate').value)/100,seed:20261022});$('dispute-sample-result').textContent=`本轮争议池${r.pool}条，抽中${r.selected}条，由管理员二审；未抽中保留待定。`;await refreshDashboard();}catch(e){$('dispute-sample-result').textContent=e.message;}};
+
+
+
+function scoreValue(v){return v===null||v===undefined?'N/A':percent(v);}
+
+function dataTable(headers,rows){return `<div class="table-scroll"><table class="audit-table"><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(v=>`<td>${esc(v??'—')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+
+function renderContactAmendment(a){
+ if(!a?.summary?.target_definition_cases)return '';
+ const s=a.summary;
+ return `<section class="measure-section"><h3>新版本接触协议 · 2026-10-27</h3><p>目标定义 ${s.target_definition_cases}/100；新增T12/T13接触参考真值 ${s.new_contact_reference_cases}/10；新增临界边界 ${s.new_boundary_admissions}、跨界配对 ${s.new_pairs}。</p><p>T12评原订书机接触纸巾盒；T13评两段接触及先后。旧终态协议与人工记录保留。新增参考真值不等于新增NearAcc准入。原始终态合同与接触协议分别登记，数值证据和正式准入分别报告。</p><p>本子任务登记${s.registered_outputs}个输出；匹配实际生成文本与视频绑定${s.input_matches_current_policy??s.input_matches_frozen_v6}个。仅事件语义、媒体、5秒窗和最终人工记录均对应时继承二分类标签；缺接触顺序不填EventExact正确。</p>${dataTable(['模型','登记输出','可比事件项','其中正确','条件事件一致率（诊断）','EventExact已确定项'],a.per_model.map(r=>[r.model,r.registered,r.known_component_events,r.component_correct,scoreValue(r.conditional_component_accuracy),r.conclusive_contact_EventExact]))}<p class="subtle">诊断结果，不是完整100条正式成绩；人工未决、输入和时域缺口单列，不填零。详情见实时临界计算JSON中的contact_amendment。</p></section>`;
+}
+
+async function renderEvaluation(batch){
+
+ const vm=batch?.metrics?.vlm_events,sc=batch?.metrics?.scoring,main=vm?.final?.micro,pre=vm?.preliminary?.micro;
+
+ $('vlm-event-report').innerHTML='<h3>VLM事件统计</h3>'+(main?`<div class="measure-note">登记事件 ${main.registered}；人工已可判 ${main.human_binary}；机器有二分类标签 ${main.machine_binary}；判据合格 ${main.machine_valid_evidence}。<br>主观察标签一致率 ${scoreValue(main.raw.accuracy)}（n=${main.raw.n}）；判据合格后 ${scoreValue(main.validated.accuracy)}（n=${main.validated.n}）。</div><div class="metric-warning">${esc(vm.note)} ${esc(vm.selection_note)}</div>${dataTable(['事件','人工可判 / 登记','标签一致率 / n','Precision','Recall','F1','判据合格 / 登记','判据合格后一致率 / n'],Object.entries(vm.final.per_event).map(([id,c])=>[id,`${c.human_binary} / ${c.registered}`,`${scoreValue(c.raw.accuracy)} / ${c.raw.n}`,scoreValue(c.raw.precision),scoreValue(c.raw.recall),scoreValue(c.raw.f1),`${c.machine_valid_evidence} / ${c.registered}`,`${scoreValue(c.validated.accuracy)} / ${c.validated.n}`]))}<p class="subtle">含争议的人工初步复核：标签一致率 ${scoreValue(pre.raw.accuracy)}，n=${pre.raw.n}，人工可判覆盖率 ${scoreValue(pre.human_coverage)}；该值不是已仲裁的最终准确率。事件宏平均 ${scoreValue(vm.final.macro_event_accuracy)}。历史自动组合事件单列：标签一致率 ${scoreValue(vm.derived_final?.micro?.raw?.accuracy)}，n=${vm.derived_final?.micro?.raw?.n||0}。</p>`:'<p class="subtle">等待事件记录。</p>');
+
+ $('boundary-score-report').innerHTML=`<p class="subtle">状态：${esc(sc?.status||'not_configured')}。${esc(sc?.note||'未配置冻结评分包。')}</p>`+(sc?.per_model?.length?dataTable(['模型','冻结登记 / 本批模型任务','待审','分支平衡准确率','NearAcc','PairAcc','EventExact'],sc.per_model.map(r=>[r.model,`${r.registered} / ${r.model_batch_tasks}`,r.pending,scoreValue(r.formal_scores.BalancedTargetAccuracy),scoreValue(r.formal_scores.NearAcc),scoreValue(r.formal_scores.IndependentPairAcc),scoreValue(r.formal_scores.EventExact)])):'')+`<a href="api/scoring?batch=${encodeURIComponent(S.batch)}" download="boundary-scoring.json">下载评分回执</a>`;
+
+ if(!S.readiness)S.readiness=await api('api/readiness');
+
+ const audit=S.readiness,a=audit.summary; const admission=await api('api/core100-admission'); const ad=admission.summary; const cr=await api('api/critical-results'); const cs=cr.summary;
+
+ $('readiness-report').innerHTML=`<p>本次资格快照：同事件数值距离覆盖 ${ad.cases_with_same_event_numerical_distance} 条；Near数值候选 ${ad.candidate_near_cases.length} 条、配对候选 ${ad.candidate_pairs} 组。正式成绩按下方已准入子集、人审和时域覆盖分别报告。</p><p>实时计算：${cs.numerical_cases}个样本、${cs.numerical_records}条数值距离；人工提交${cs.human_submitted}条，已解决${cs.human_final}条，争议${cs.disputed}条。Near候选已解决${cs.near_human_final}条。参考已准入${cs.admitted_reference_cases??0}条、跨界配对${cs.admitted_reference_pairs??0}组（分模型核对观察窗）。输入按已登记实际生成文本及逐视频seed核对，当前匹配${cs.final_input_matches}/3600，待绑定正确输入输出${cs.input_replacements_pending}条。N/A表示缺评分条件，不是零分。</p><p>原评分定义已核实 ${a.source_backed_score_definitions??0} 条，原临界目标待登记 ${a.source_protocol_pending??0} 条；辅助项和撤下项不进入正式评分。</p><p><a href="api/critical-results">实时临界点计算JSON</a> · <a href="api/critical-results.csv">实时3600条计算状态CSV</a> · <a href="api/critical-distances.csv">数值距离CSV</a> · <a href="api/critical-pairs.csv">配对计算CSV</a> · <a href="api/reference-window-admission">参考与观察窗登记</a> · <a href="api/scoped-critical.csv">已准入子集逐视频状态</a> · <a href="api/reference-clocks100.csv">100条时钟核对</a> · <a href="api/near6-windows.csv">Near候选共同窗核对</a> · <a href="api/t13-source-contacts">T13原接触判据</a> · <a href="api/original-contract-audit.csv">下载100条原配置核对与缺项</a> · <a href="api/excluded-thresholds.csv">下载撤下阈值清单</a> · <a href="api/remaining50-recovery.csv">下载补查50条的原事件结果与缺项</a> · <a href="api/core100-admission.csv">下载参考/边界/配对与评分资格</a> · <a href="api/core100-admission.md">下载本轮核查说明</a> · <a href="api/v6-input-bindings.csv">下载3600条v6输入核对</a></p><p>共${a.total}条；精确匹配参考登记证据${a.exact_reference_matches}条；当前NearAcc可用${a.nearacc_eligible}条，PairAcc可用${a.pairacc_eligible}条。匹配到证据不等于已准入。</p><p class="subtle">清单SHA256：${esc(audit.manifest_sha256)}。仅按精确样本ID核对已列明的本地登记，未将同场景其他版本套用到本集；缺评分登记不等于原始状态不存在。</p>${audit.unparsed_sources.length?`<p class="error">${audit.unparsed_sources.length}个来源未按预期列表结构读取，详见下载JSON的unparsed_sources。</p>`:''}<details><summary>展开100条逐项缺项</summary>${dataTable(['样本','目标事件','边界 / 距离桶','NearAcc','PairAcc','参考 / 边界 / Near缺项','Pair缺项'],audit.rows.map(r=>[r.clip_id,r.best_evidence?.target_event,`${r.best_evidence?.boundary_status||'无登记'} / ${r.best_evidence?.distance?.bin||'未定'}`,r.nearacc_eligible?'可用':'N/A',r.pairacc_eligible?'可用':r.candidate_peer_ids.length?'N/A，候选 '+r.candidate_peer_ids.join(','):'N/A',(r.reference_blockers||[]).join('；')+' / '+(r.boundary_blockers||[]).join('；')+' / '+r.near_blockers.map(x=>audit.reason_guide?.[x]||x).join('；'),r.pair_blockers.map(x=>audit.reason_guide?.[x]||x).join('；')]))}</details><h3>已准入临界子集：T17接触事件，6.4秒</h3><p>两条Near参考、一个跨界对；仅此子集，不代表完整100条。初审成绩包含争议，不能当最终成绩；上下界保留全部登记输出，未审项不填零。视频未覆盖6.4秒的模型单列覆盖不足。</p>${dataTable(['模型','窗口覆盖','已定 / 登记','正式NearAcc','NearAcc界限','正式PairAcc','PairAcc界限','初审NearAcc（未定稿）','初审PairAcc（未定稿）'],cr.admitted_cohort.per_model.map(r=>[r.model,r.native_full_horizon?'覆盖':'不足',`${r.final_known}/${r.registered}`,percent(r.NearAcc),r.NearAcc_bounds?r.NearAcc_bounds.map(percent).join('～'):'—',percent(r.PairAcc),r.PairAcc_bounds?r.PairAcc_bounds.map(percent).join('～'):'—',percent(r.primary_only_scores.NearAcc),percent(r.primary_only_scores.PairAcc)]))}`;
+ if(cr.contact_amendment)$('readiness-report').insertAdjacentHTML('afterbegin',renderContactAmendment(cr.contact_amendment));
+ if(cr.execution_readiness?.scenes)$('readiness-report').insertAdjacentHTML('afterbegin',renderExecutionReadiness(cr.execution_readiness));
+
+}
+
+$('bind-scoring').onclick=async()=>{const f=$('scoring-file').files[0];if(!f){$('scoring-message').textContent='请先选择冻结评分包JSON';return;}try{const r=await api('api/admin/scoring-config','POST',{batch_id:S.batch,config:JSON.parse(await f.text())});$('scoring-message').textContent='已绑定，配置哈希 '+r.config_sha256;await refreshDashboard();}catch(e){$('scoring-message').textContent=e.message;}};
+
+$('compute-scoring').onclick=async()=>{$('compute-scoring').disabled=true;try{const r=await api('api/admin/score','POST',{batch_id:S.batch});$('scoring-message').textContent=r.note;await refreshDashboard();}catch(e){$('scoring-message').textContent=e.message;}finally{$('compute-scoring').disabled=false;}};
+
+
+
+function simpleDefinition(d){return (d.definition_zh||d.definition||'').replace(/发生填首次可确认时间；未发生须看完整观察窗，至少两个证据时间；/g,'未发生须看完整观察窗；').replace(/须填写实际触桌的上层书实体ID/g,'请选择实际触桌的上层书实体ID').replace(/需两个不同时间点的平移证据/g,'需对比不同画面确认平移');}
+
+function eventCard(key,d,i,e,t,own){const labels={yes:'发生',no:'未发生',uncertain:'不可判'};if(e.label==='not_observed')labels.not_observed='未观察到（历史）';return `<section class="event-card"><h3>${i+1}. ${esc(eventDisplayName(key,d))}</h3><select aria-label="${esc(eventDisplayName(key,d))}" data-label="${esc(key)}">${option(labels,e.label)}</select></section>`;}
+
+
+
+function deriveEvents(events,definitions,judgements={}){const out={...events};for(let pass=0;pass<Object.keys(definitions).length;pass++)for(const [key,d] of Object.entries(definitions)){if(!d.derived_from)continue;const rule=d.derived_from,children=rule.all.map(k=>out[k]||{});let label=children.some(e=>e.label==='no')?'no':children.every(e=>e.label==='yes')?'yes':'uncertain';if(label==='yes'&&rule.order?.length)label=judgements[key]==='yes'?'yes':judgements[key]==='no'?'no':'uncertain';out[key]={label,derivation:{method:'registered_event_conjunction',inputs:rule.all,order:rule.order||[]}};}return out;}
+
+
+
+function previewDerived(){try{const p=capture();for(const [key,d] of Object.entries(S.task.protocol.events))if(d.derived_from&&$('derived-'+key))$('derived-'+key).textContent=labelName[p.events[key]?.label]||'质量未通过，事件暂不提交';}catch{}}
+
+async function showProtocols(){const c=S.catalog||(S.catalog=await api('api/event-protocols'));$('protocol-select').innerHTML=Object.keys(c.clips).map(k=>`<option>${esc(k)}</option>`).join('');$('protocol-policy').textContent='事件取自生成时原配置和已登记协议。主观察、辅助项、撤下项分别列出；缺登记不报正式成绩。';const draw=()=>{const p=c.clips[$('protocol-select').value],g=c.registration_gaps?.[$('protocol-select').value];$('protocol-detail').innerHTML=`<h3>${esc($('protocol-select').value)} · ${esc(p.version)}</h3><p>${esc(p.target)}</p><p class="metric-warning">${esc((p.notes||[]).join('；'))} ${esc(registrationText(g))}</p>`+`<p>原协议评分事件：${esc((p.formal_score_event_ids||[]).join('、')||'待登记')}。</p><p>${esc((p.scoring_blockers||[]).join('；'))}</p>`+dataTable(['主观察事件','名称','原定义','原判据'],Object.entries(p.events).map(([k,d])=>[k,d.name,simpleDefinition(d),d.metric_rule?JSON.stringify(d.metric_rule):d.derived_from?'自动组合：'+d.derived_from.all.join(' ∧ '):'逐项观察']))+dataTable(['辅助项（不计正式评分）','名称'],Object.entries(p.auxiliary_events||{}).map(([k,d])=>[k,d.name]))+dataTable(['撤下项','原因'],Object.entries(p.excluded_events||{}).map(([k,d])=>[k,d.reason]));};$('protocol-select').onchange=draw;draw();}
+
+
+
+function registrationText(g){if(!g)return '参考、边界、配对及时间窗准入单独登记，当前观察标签不自动成为正式临界成绩。';return '【参考】'+(g.reference_blockers||[]).join('；')+'【边界】'+(g.boundary_blockers||[]).join('；')+'【配对】'+(g.pair_registration_blockers||[]).join('；')+'【时域】'+g.window_alignment+'【标定】'+g.measurement_calibration;}
+
+
+
+function renderAuxiliary(t,own){const defs=t.protocol.auxiliary_events||{},n=Object.keys(defs).length;if(!n)return '';return `<details class="auxiliary-panel" open><summary>事件链逐项观察（${n}项 · 辅助记录）</summary><p class="subtle">以下项目已登记，按实际视频逐项记录；保留选填，不改变原协议关键判据的评分范围。数值条件无标定依据时选“不可判”。</p>${Object.entries(defs).map(([key,d],i)=>`<section class="event-card"><label>${i+1}. ${esc(eventDisplayName(key,d))}<select data-aux="${esc(key)}">${option({yes:'发生',no:'未发生',uncertain:'不可判'},own.auxiliary_events?.[key]?.label,'暂不填写')}</select></label><details><summary>查看原定义</summary><p>${esc(simpleDefinition(d))}</p></details></section>`).join('')}</details>`;}
+
+
+function eventDisplayName(key,d){return key==='hit_tissue_box_original'?'罐子接触纸巾盒，或纸巾盒末态位移超过2厘米（原判据）':d?.name||key;}
+function renderBoxTranslation(t){const b=t.box_translation_observation;if(!b)return '';return `<section class="event-card" data-independent-box><h3>新增独立观察：${esc(b.definition.name)}</h3><p class="field-help">${esc(b.definition.definition)}</p><select id="box-translation-select">${option({yes:'发生平移',no:'未发生平移',uncertain:'不可判'},b.record?.label,'请选择（旧记录不自动回填）')}</select><p class="subtle">独立补充记录，不改变原评分。原标注已提交也能补填；先保存可测性为“可测”。选择后自动保存，也可点击按钮重试。</p><button type="button" id="box-translation-save" class="secondary">保存独立观察</button><span id="box-translation-status" class="subtle">${b.record?'已保存独立观察':'尚未填写'}</span></section>`;}
+async function saveBoxTranslation(){const t=S.task,b=t?.box_translation_observation;if(!b?.can_edit)return false;const label=$('box-translation-select').value,msg=$('box-translation-status');if(!label){msg.textContent='请选择发生、未发生或不可判';return false;}if(S.boxSaving||S.processSaving||S.saving){msg.textContent='正在保存，请稍后点击保存独立观察';return false;}if(S.dirty&&!await save(false)){msg.textContent='请先保存可测性草稿';return false;}S.boxSaving=true;msg.textContent='正在保存独立观察…';try{const fresh=S.task.box_translation_observation;const r=await api('api/tasks/'+encodeURIComponent(t.id)+'/box-translation','POST',{label,version:fresh.record?.version||0,video_sha256:t.video_sha256,definition_sha256:fresh.definition_sha256});if(S.task.id===t.id){S.task=r;msg.textContent='独立观察已保存';}return true;}catch(e){msg.textContent='未保存：'+e.message;return false;}finally{S.boxSaving=false;}}
+function renderBoxTranslationStats(b){if(!b)return '';const c=b.final.total;return `<div class="measure-section"><h3>纸巾盒独立平移 × 罐子接触（补充统计）</h3><p>登记 ${c.registered}；双标签可判 ${c.paired_binary}；新平移项未填 ${c.motion_missing}；配对不可判 ${c.pair_unknown}；不可测 ${c.quality_blocked}；待人工/争议 ${c.human_pending}。</p>${dataTable(['接触 / 平移','平移发生','平移未发生'],[['接触发生',c.contact_yes_motion_yes,c.contact_yes_motion_no],['接触未发生',c.contact_no_motion_yes,c.contact_no_motion_no]])}<p>确认未接触且平移可判样本中，平移比例：${scoreValue(c.motion_rate_when_no_contact)}（分母 ${c.no_contact_binary_denominator}）；整体配对覆盖率 ${scoreValue(c.paired_coverage)}。</p>${dataTable(['模型','双标签可判','未接触且平移','未接触分母','未接触平移率'],Object.entries(b.final.per_model).map(([m,r])=>[m,r.paired_binary,r.contact_no_motion_yes,r.no_contact_binary_denominator,scoreValue(r.motion_rate_when_no_contact)]))}<p class="subtle">${esc(b.note)}</p></div>`;}
+
+function renderProcessObservations(t){const p=t.process_observations;if(!p?.items?.length)return '';return `<section data-process-observations><h3>独立物理过程观察（补充，不计入原评分）</h3><p class="field-help">旧标注无需重做，已提交视频也可补填。未填写不是“未发生”。物理异常与可测性分开；每项选择后独立保存，失败可点击重试。</p>${p.items.map(x=>`<div class="event-card"><h4>${esc(x.definition.name)}</h4><p class="field-help">${esc(x.definition.definition)}</p><select data-process-id="${esc(x.definition.id)}">${option({yes:'发生',no:'未发生',uncertain:'不可判'},x.record?.label,'未补标（请选择）')}</select><button type="button" class="secondary" data-process-save="${esc(x.definition.id)}">保存此项</button><span class="subtle" data-process-status="${esc(x.definition.id)}">${x.record?'已保存':'未补标'}</span></div>`).join('')}</section>`;}
+function bindProcessObservations(t){const p=t.process_observations;if(!p)return;for(const el of $('events-form').querySelectorAll('[data-process-observations] select,[data-process-observations] button')){el.disabled=!p.can_edit;if(el.dataset.processId)el.onchange=e=>{e.stopPropagation();saveProcessObservation(el.dataset.processId);};else el.onclick=()=>saveProcessObservation(el.dataset.processSave);}}
+async function saveProcessObservation(id){const t=S.task,p=t?.process_observations;if(!p?.can_edit)return;const select=$('events-form').querySelector(`[data-process-id="${id}"]`),msg=$('events-form').querySelector(`[data-process-status="${id}"]`),label=select.value;if(!label){msg.textContent='请选择';return;}if(S.processSaving||S.boxSaving||S.saving){msg.textContent='尚未保存，请稍后点击保存此项';return;}S.processSaving=true;msg.textContent='正在保存…';try{if(S.dirty&&!await save(false))throw new Error('请先保存可测性草稿');if(S.task.id!==t.id)return;const x=S.task.process_observations.items.find(v=>v.definition.id===id);const r=await api('api/tasks/'+encodeURIComponent(t.id)+'/process-observation','POST',{observation_id:id,label,version:x.record?.version||0,video_sha256:t.video_sha256,definition_sha256:x.definition_sha256});if(S.task.id===t.id){S.task.process_observations=r.process_observations;msg.textContent='已保存独立观察';}}catch(e){msg.textContent='未保存：'+e.message;}finally{S.processSaving=false;}}
+function renderProcessStats(p){if(!p)return '';return `<div class="measure-section"><h3>独立物理过程 × 原目标标签（补充统计）</h3><p>发生率分母为该项二元可判数；未补标和不可判分开列出。已准入参考的正确性对照与接触交叉表可从导出包或管理API查看，未准入不生成正确率。</p>${dataTable(['模型','场景','观察项','发生','未发生','不可判','未补标','可判/本轮','发生率'],p.final.map(x=>[x.model,x.scene,x.name,x.counts.yes,x.counts.no,x.counts.uncertain,x.counts.missing,x.counts.binary+'/'+x.counts.active,scoreValue(x.yes_rate_among_binary)]))}<details><summary>原目标标签与独立观察交叉计数</summary>${dataTable(['模型','场景','观察项','原事件:原标签:新标签','数量'],p.final.flatMap(x=>Object.entries(x.target_cross).map(([k,v])=>[x.model,x.scene,x.name,k,v])))}</details><p class="subtle">${esc(p.note)}</p></div>`;}

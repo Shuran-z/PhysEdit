@@ -1,0 +1,3137 @@
+{
+  "conditions": [
+    {
+      "clip_id": "T19_C01",
+      "sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+      "source_video_sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 1.62
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          2.4,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          "",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          "",
+          2.4,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "68e23958ee983083228c19b2c64b9d6ba10fa8e7a286dfb510d1340963634d71",
+      "prompt_token_counts": {
+        "ltx": 106,
+        "cogvideox": 106,
+        "wan": 150
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "background.material friction",
+        "release_time",
+        "t19_can1.initial_speed",
+        "impact_eccentricity_m",
+        "t19_can1.mass",
+        "t19_can2.mass",
+        "t19_can1.material friction",
+        "t19_can2.material friction",
+        "t19_can1.restitution",
+        "t19_can2.restitution"
+      ],
+      "omitted_parameter_keys": [],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Continue this scene with a fixed camera. Gravity 1.62 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Fixed camera; continue the physical motion. Gravity 1.62 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 106,
+          "cogvideox": 106,
+          "wan": 150
+        },
+        {
+          "ltx": 108,
+          "cogvideox": 108,
+          "wan": 151
+        },
+        {
+          "ltx": 107,
+          "cogvideox": 107,
+          "wan": 152
+        }
+      ],
+      "prompt_variant_sha256": [
+        "68e23958ee983083228c19b2c64b9d6ba10fa8e7a286dfb510d1340963634d71",
+        "21f1bd5800891b29784ab11e8bf96a5d080fa8713a8f3ebe71d139de3f7147e4",
+        "f57f43d963d1332551c1a1ac33d3d4b5721237bdbba343e0147e0c8785a46e10"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g01_moon__restitution__p010__trajectory.json.gz",
+        "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g01_moon__restitution__p010/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+        "local_video_sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T19_C01",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 4.447003053083405e-07,
+        "frames": 210,
+        "objects": {
+          "t19_can1": {
+            "max_position_difference_m": 7.450581485102195e-09,
+            "mean_position_difference_m": 1.0503507904440579e-10,
+            "max_velocity_difference_mps": 7.44736634674385e-08
+          },
+          "t19_can2": {
+            "max_position_difference_m": 4.447003053083405e-07,
+            "mean_position_difference_m": 1.195323345933447e-07,
+            "max_velocity_difference_mps": 1.2570054326215657e-06
+          }
+        },
+        "source_state_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+        "reproduced_state_sha256": "3bd4506508d93a9d51ac9cdcf228ea099c523d5a324b64c389973addf6dd604e",
+        "production_config_sha256": "2d22929f10694b883b132b6d4091bc1e1da03c1e9a04f6c9d40c34ee7224326b",
+        "reproduction_config_sha256": "8f09dc6120bdbcf3120cef445c00a51e3e85ed8e4b9d3d560e6f96187932653b",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T19_C01_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T19_C03_full_materials.json",
+        "probe_sha256": "83820a7b8c6345d6da2ac3a18445beb58360d9e54395082b2a808b997ef21846",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t19_can1|t19_can2",
+          "objects": [
+            "t19_can1",
+            "t19_can2"
+          ],
+          "material_a": 0.055,
+          "material_b": 0.055,
+          "effective_friction": 0.055,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can2",
+          "objects": [
+            "static_geom_0",
+            "t19_can2"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can1",
+          "objects": [
+            "static_geom_0",
+            "t19_can1"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ],
+      "selected_contact_pair": {
+        "pair_id": "static_geom_0|t19_can1",
+        "objects": [
+          "static_geom_0",
+          "t19_can1"
+        ],
+        "material_a": 1.0,
+        "material_b": 0.055,
+        "effective_friction": 1.0,
+        "combine_rule": "genesis_max_floor_0.01",
+        "status": "verified",
+        "verification_method": "reproduced_historical_states_with_measured_background_materials",
+        "historical_binary_preserved": false
+      },
+      "runtime_control_caveat": "Current reproduction wrapper contains a T19 pairwise restitution velocity correction. A match is not certification of native-solver restitution or unrestricted friction identifiability."
+    },
+    {
+      "clip_id": "T19_C02",
+      "sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+      "source_video_sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 3.71
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          2.4,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          "",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          "",
+          2.4,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "86df6245f2813c4cb7e783e7073deef23c8c92e835de8e44fc87b752dc8a4bb8",
+      "prompt_token_counts": {
+        "ltx": 106,
+        "cogvideox": 106,
+        "wan": 150
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "background.material friction",
+        "release_time",
+        "t19_can1.initial_speed",
+        "impact_eccentricity_m",
+        "t19_can1.mass",
+        "t19_can2.mass",
+        "t19_can1.material friction",
+        "t19_can2.material friction",
+        "t19_can1.restitution",
+        "t19_can2.restitution"
+      ],
+      "omitted_parameter_keys": [],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Continue this scene with a fixed camera. Gravity 3.71 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Fixed camera; continue the physical motion. Gravity 3.71 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 106,
+          "cogvideox": 106,
+          "wan": 150
+        },
+        {
+          "ltx": 108,
+          "cogvideox": 108,
+          "wan": 151
+        },
+        {
+          "ltx": 107,
+          "cogvideox": 107,
+          "wan": 152
+        }
+      ],
+      "prompt_variant_sha256": [
+        "86df6245f2813c4cb7e783e7073deef23c8c92e835de8e44fc87b752dc8a4bb8",
+        "8920733896370088b9d3a459da4ac599c47c75d6cf22db115cf8c4aaf23af329",
+        "06dd294f9f2ab4bef11ba2ad7146a71967013f070e061c3ad180aba82999b993"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g02_mars__restitution__p010__trajectory.json.gz",
+        "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g02_mars__restitution__p010/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+        "local_video_sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T19_C02",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 9.190835044137202e-07,
+        "frames": 210,
+        "objects": {
+          "t19_can1": {
+            "max_position_difference_m": 7.275957614183426e-12,
+            "mean_position_difference_m": 3.183231456205249e-12,
+            "max_velocity_difference_mps": 3.9552459616119805e-10
+          },
+          "t19_can2": {
+            "max_position_difference_m": 9.190835044137202e-07,
+            "mean_position_difference_m": 3.5391029066065893e-07,
+            "max_velocity_difference_mps": 3.5934814127784066e-07
+          }
+        },
+        "source_state_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+        "reproduced_state_sha256": "c95b92a1f13ef6f9667c24db37980a7c314119e2fe5b354af10dcf80d01c4af4",
+        "production_config_sha256": "6992f06652e1d299b61ccb1accd9057ca1679e8754dbe6ed55a1216b73e22f03",
+        "reproduction_config_sha256": "bb6916cb3a4cb9ba586314ef41e90dd83b7fe2e6d96d7dec522f8f75959bfc83",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T19_C02_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T19_C03_full_materials.json",
+        "probe_sha256": "83820a7b8c6345d6da2ac3a18445beb58360d9e54395082b2a808b997ef21846",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t19_can1|t19_can2",
+          "objects": [
+            "t19_can1",
+            "t19_can2"
+          ],
+          "material_a": 0.055,
+          "material_b": 0.055,
+          "effective_friction": 0.055,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can1",
+          "objects": [
+            "static_geom_0",
+            "t19_can1"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can2",
+          "objects": [
+            "static_geom_0",
+            "t19_can2"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ],
+      "selected_contact_pair": {
+        "pair_id": "static_geom_0|t19_can1",
+        "objects": [
+          "static_geom_0",
+          "t19_can1"
+        ],
+        "material_a": 1.0,
+        "material_b": 0.055,
+        "effective_friction": 1.0,
+        "combine_rule": "genesis_max_floor_0.01",
+        "status": "verified",
+        "verification_method": "reproduced_historical_states_with_measured_background_materials",
+        "historical_binary_preserved": false
+      },
+      "runtime_control_caveat": "Current reproduction wrapper contains a T19 pairwise restitution velocity correction. A match is not certification of native-solver restitution or unrestricted friction identifiability."
+    },
+    {
+      "clip_id": "T19_C03",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+      "source_video_sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 9.81
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          2.4,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can2.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          "",
+          0.38947368421052636,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          "",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          "",
+          2.4,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "dbe86d6b6bef4a4fe385d3e09ddf6035621f748c9b0bf7fc8da1d7872506e95a",
+      "prompt_token_counts": {
+        "ltx": 106,
+        "cogvideox": 106,
+        "wan": 150
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "background.material friction",
+        "release_time",
+        "t19_can1.initial_speed",
+        "impact_eccentricity_m",
+        "t19_can1.mass",
+        "t19_can2.mass",
+        "t19_can1.material friction",
+        "t19_can2.material friction",
+        "t19_can1.restitution",
+        "t19_can2.restitution"
+      ],
+      "omitted_parameter_keys": [],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 106,
+          "cogvideox": 106,
+          "wan": 150
+        },
+        {
+          "ltx": 108,
+          "cogvideox": 108,
+          "wan": 151
+        },
+        {
+          "ltx": 107,
+          "cogvideox": 107,
+          "wan": 152
+        }
+      ],
+      "prompt_variant_sha256": [
+        "dbe86d6b6bef4a4fe385d3e09ddf6035621f748c9b0bf7fc8da1d7872506e95a",
+        "7b61c26c8219df72f1c5d4525fbe28cd4de1c53bb3b78324d23e076060c428c2",
+        "cb12c1042499513397b9db95da3356f65a8755d6778c18ce1bee9e3a565c89ee"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__restitution__p010__trajectory.json.gz",
+        "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__restitution__p010/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+        "local_video_sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T19_C03",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 2.1827872842550278e-11,
+        "frames": 210,
+        "objects": {
+          "t19_can1": {
+            "max_position_difference_m": 2.1827872842550278e-11,
+            "mean_position_difference_m": 1.179744556014027e-11,
+            "max_velocity_difference_mps": 9.37990711221467e-10
+          },
+          "t19_can2": {
+            "max_position_difference_m": 8.412825991399586e-12,
+            "mean_position_difference_m": 4.052123715934743e-12,
+            "max_velocity_difference_mps": 9.331557470644826e-10
+          }
+        },
+        "source_state_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+        "reproduced_state_sha256": "6419d870abad83f6cc29e0aac5ce58b4b9d29be9ca4999e3d10110599edd08e7",
+        "production_config_sha256": "f961d6463ebd250ae1285ecd08a3cff73aee0535c0405481b9f2ab74af4f484c",
+        "reproduction_config_sha256": "fcb30d7336526d43fcc9964209dcb97b37fe628c3424b222dfa520bd20a0cd45",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T19_C03_reproduction"
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T19_C03_full_materials.json",
+        "probe_sha256": "83820a7b8c6345d6da2ac3a18445beb58360d9e54395082b2a808b997ef21846",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t19_can1|t19_can2",
+          "objects": [
+            "t19_can1",
+            "t19_can2"
+          ],
+          "material_a": 0.055,
+          "material_b": 0.055,
+          "effective_friction": 0.055,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can1",
+          "objects": [
+            "static_geom_0",
+            "t19_can1"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can2",
+          "objects": [
+            "static_geom_0",
+            "t19_can2"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ],
+      "selected_contact_pair": {
+        "pair_id": "static_geom_0|t19_can1",
+        "objects": [
+          "static_geom_0",
+          "t19_can1"
+        ],
+        "material_a": 1.0,
+        "material_b": 0.055,
+        "effective_friction": 1.0,
+        "combine_rule": "genesis_max_floor_0.01",
+        "status": "verified",
+        "verification_method": "reproduced_historical_states_with_measured_background_materials",
+        "historical_binary_preserved": false
+      },
+      "runtime_control_caveat": "Current reproduction wrapper contains a T19 pairwise restitution velocity correction. A match is not certification of native-solver restitution or unrestricted friction identifiability."
+    },
+    {
+      "clip_id": "T19_C04",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+      "source_video_sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 9.81
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          0.12,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          0.06947368421052631,
+          "kg"
+        ],
+        [
+          "t19_can2.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          0.12,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          2.4,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          "",
+          0.12,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          "",
+          0.06947368421052631,
+          "kg"
+        ],
+        [
+          "t19_can2.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          "",
+          0.12,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          "",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          "",
+          2.4,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "4068cf3c2053ab9b7b72237c0f727c27dcc7ef7ac963a8cb5d177892fdfac0b0",
+      "prompt_token_counts": {
+        "ltx": 97,
+        "cogvideox": 97,
+        "wan": 135
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "background.material friction",
+        "release_time",
+        "t19_can1.initial_speed",
+        "impact_eccentricity_m",
+        "t19_can1.mass",
+        "t19_can2.mass",
+        "t19_can1.material friction",
+        "t19_can2.material friction",
+        "t19_can1.restitution",
+        "t19_can2.restitution"
+      ],
+      "omitted_parameter_keys": [],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 97,
+          "cogvideox": 97,
+          "wan": 135
+        },
+        {
+          "ltx": 99,
+          "cogvideox": 99,
+          "wan": 136
+        },
+        {
+          "ltx": 98,
+          "cogvideox": 98,
+          "wan": 137
+        }
+      ],
+      "prompt_variant_sha256": [
+        "4068cf3c2053ab9b7b72237c0f727c27dcc7ef7ac963a8cb5d177892fdfac0b0",
+        "99419614085a436e242e1394fc213075c3e4dd51447ed15f16f76d6b82dfae2e",
+        "054a714dab8fecb6a091559e91b7f8bfd0098b027ab20c2030715977b70cdec4"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__trajectory.json.gz",
+        "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+        "local_video_sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T19_C04",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 1.2387317838147283e-09,
+        "frames": 210,
+        "objects": {
+          "t19_can1": {
+            "max_position_difference_m": 1.7280399333685637e-11,
+            "mean_position_difference_m": 1.1587395593302236e-11,
+            "max_velocity_difference_mps": 1.8628725090303062e-08
+          },
+          "t19_can2": {
+            "max_position_difference_m": 1.2387317838147283e-09,
+            "mean_position_difference_m": 8.925781003199518e-10,
+            "max_velocity_difference_mps": 6.528773467615616e-08
+          }
+        },
+        "source_state_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+        "reproduced_state_sha256": "05483308699b570664999c32be6e482f28d7ae64e62ef8f427caa12ed580d078",
+        "production_config_sha256": "f7c94cc3180b729cf877373c7bde9658adc6c1f3220da49b048bfbd9f01f2b0f",
+        "reproduction_config_sha256": "0a8bf3b332b404e2804985687193f866ab8a2dbf1a8de04fe99fae9acb6bc6d2",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T19_C04_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T19_C03_full_materials.json",
+        "probe_sha256": "83820a7b8c6345d6da2ac3a18445beb58360d9e54395082b2a808b997ef21846",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t19_can1|t19_can2",
+          "objects": [
+            "t19_can1",
+            "t19_can2"
+          ],
+          "material_a": 0.055,
+          "material_b": 0.055,
+          "effective_friction": 0.055,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can1",
+          "objects": [
+            "static_geom_0",
+            "t19_can1"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can2",
+          "objects": [
+            "static_geom_0",
+            "t19_can2"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ],
+      "selected_contact_pair": {
+        "pair_id": "static_geom_0|t19_can1",
+        "objects": [
+          "static_geom_0",
+          "t19_can1"
+        ],
+        "material_a": 1.0,
+        "material_b": 0.055,
+        "effective_friction": 1.0,
+        "combine_rule": "genesis_max_floor_0.01",
+        "status": "verified",
+        "verification_method": "reproduced_historical_states_with_measured_background_materials",
+        "historical_binary_preserved": false
+      },
+      "runtime_control_caveat": "Current reproduction wrapper contains a T19 pairwise restitution velocity correction. A match is not certification of native-solver restitution or unrestricted friction identifiability."
+    },
+    {
+      "clip_id": "T19_C05",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+      "source_video_sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 9.81
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          0.12,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          0.3580263157894737,
+          "kg"
+        ],
+        [
+          "t19_can2.friction",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          0.12,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          2.4,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t19_can1.mass",
+          "",
+          0.15,
+          "kg"
+        ],
+        [
+          "t19_can1.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can1.restitution",
+          "",
+          0.12,
+          ""
+        ],
+        [
+          "t19_can2.mass",
+          "",
+          0.3580263157894737,
+          "kg"
+        ],
+        [
+          "t19_can2.material friction",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t19_can2.restitution",
+          "",
+          0.12,
+          ""
+        ],
+        [
+          "impact_eccentricity_m",
+          "",
+          0.0,
+          "m"
+        ],
+        [
+          "t19_can1.initial_speed",
+          "",
+          2.4,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "cb34e2aece6c0a9702b0b0d59a9432dfe00f19fe83ab28b1198829297a25cde6",
+      "prompt_token_counts": {
+        "ltx": 97,
+        "cogvideox": 97,
+        "wan": 134
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "background.material friction",
+        "release_time",
+        "t19_can1.initial_speed",
+        "impact_eccentricity_m",
+        "t19_can1.mass",
+        "t19_can2.mass",
+        "t19_can1.material friction",
+        "t19_can2.material friction",
+        "t19_can1.restitution",
+        "t19_can2.restitution"
+      ],
+      "omitted_parameter_keys": [],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Background material friction 1. Release time 0.8 s. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 97,
+          "cogvideox": 97,
+          "wan": 134
+        },
+        {
+          "ltx": 99,
+          "cogvideox": 99,
+          "wan": 135
+        },
+        {
+          "ltx": 98,
+          "cogvideox": 98,
+          "wan": 136
+        }
+      ],
+      "prompt_variant_sha256": [
+        "cb34e2aece6c0a9702b0b0d59a9432dfe00f19fe83ab28b1198829297a25cde6",
+        "e62af011854d6c8b11d9a3b0e73ad53c5e9e64bb75b77c3742e3d68066bde9ba",
+        "e11ee9d5d3ac1ec7680f6293c95650504fe27b051327a2b49a3bfeb54ea593c9"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__trajectory.json.gz",
+        "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+        "local_video_sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T19_C05",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 8.003553375601768e-11,
+        "frames": 210,
+        "objects": {
+          "t19_can1": {
+            "max_position_difference_m": 0.0,
+            "mean_position_difference_m": 0.0,
+            "max_velocity_difference_mps": 1.6684910720461957e-10
+          },
+          "t19_can2": {
+            "max_position_difference_m": 8.003553375601768e-11,
+            "mean_position_difference_m": 1.4976346089194217e-11,
+            "max_velocity_difference_mps": 3.291758754616309e-09
+          }
+        },
+        "source_state_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+        "reproduced_state_sha256": "615b9b2a8423ad85137a5ce5924a242f7b2421bfdc6cc1b9d8f368e031408c81",
+        "production_config_sha256": "08519596d690785af6bb94905534e2a09fa377664a7d15dda8469032a230b735",
+        "reproduction_config_sha256": "3cba4a7c9e76a1a094c0f20b2b18a233841eec27fdbbf3c28507a7193f1c4de8",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T19_C05_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T19_C03_full_materials.json",
+        "probe_sha256": "83820a7b8c6345d6da2ac3a18445beb58360d9e54395082b2a808b997ef21846",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t19_can1|t19_can2",
+          "objects": [
+            "t19_can1",
+            "t19_can2"
+          ],
+          "material_a": 0.055,
+          "material_b": 0.055,
+          "effective_friction": 0.055,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can1",
+          "objects": [
+            "static_geom_0",
+            "t19_can1"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t19_can2",
+          "objects": [
+            "static_geom_0",
+            "t19_can2"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.055,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ],
+      "selected_contact_pair": {
+        "pair_id": "static_geom_0|t19_can1",
+        "objects": [
+          "static_geom_0",
+          "t19_can1"
+        ],
+        "material_a": 1.0,
+        "material_b": 0.055,
+        "effective_friction": 1.0,
+        "combine_rule": "genesis_max_floor_0.01",
+        "status": "verified",
+        "verification_method": "reproduced_historical_states_with_measured_background_materials",
+        "historical_binary_preserved": false
+      },
+      "runtime_control_caveat": "Current reproduction wrapper contains a T19 pairwise restitution velocity correction. A match is not certification of native-solver restitution or unrestricted friction identifiability."
+    }
+  ],
+  "assignments": [
+    {
+      "clip_id": "T19_C01",
+      "anonymous_id": "clip_c8beccf467a6196d",
+      "event": "T19",
+      "scene": "不同拓扑下的碰撞动量传播",
+      "rank": 1,
+      "membership": "fixed_core100_v1",
+      "membership_status": "user_fixed_2026-10-14",
+      "sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+      "camera": "cam01",
+      "background": "bg03_neutral_studio",
+      "parameters": {
+        "gravity_mps2": 1.62,
+        "sampling_case": "restitution__p010",
+        "parameter_status": "source_case_identifier; full controls not yet independently certified"
+      },
+      "parameter_summary": "g=1.62；restitution__p010",
+      "observed_result": "未取得完整结果真值",
+      "result_evidence": "仅配置／待审计",
+      "selection_reason": "覆盖月球低重力输入；不自动视为g-only严格配对",
+      "limitations": "核心质量比对采用两罐布局；未取得离散结果翻转真值；其他扫描拓扑需核验。",
+      "source_class": "Genesis_source_candidate",
+      "original_source_kind": "huggingface",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+      "video_url": "https://huggingface.co/datasets/phyeditingvideo/Phyediting/blob/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+      "published_video_path": null,
+      "sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc",
+      "complete_decode_verified": true,
+      "scientific_admission": "pending_per_task_and_source_audit",
+      "leakage_group_id": "baaafa16e53af0cb20005215",
+      "training_group_exclusion_applied": false,
+      "split": "test_ood_2",
+      "known_conditions": {
+        "clip_id": "T19_C01",
+        "sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+        "source_video_sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+        "configuration_status": "video_hash_bound_header",
+        "verified_parameter_truth": {},
+        "clock": {
+          "status": "verified",
+          "physical_dt_s": 0.03333333333333333,
+          "media_fps": 30,
+          "release_frame": 24,
+          "frame_count": 210,
+          "source": "video-hash-matched trajectory header",
+          "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a"
+        },
+        "contact_friction": {
+          "background_material_friction": null,
+          "status": "historical_runtime_unverified",
+          "current_code_default_candidate": 1.0,
+          "combine_rule_candidate": "genesis_max_floor_0.01"
+        },
+        "parameter_facts": [
+          [
+            "gravity",
+            1.62,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_generation_facts": [
+          [
+            "gravity",
+            "",
+            1.62,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            "",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            "",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_provenance": "video_hash_bound_initial_header",
+        "prompt_status": "initial_conditions_only",
+        "reference": {
+          "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+          "source_repo": "phyeditingvideo/Phyediting",
+          "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+          "sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+        },
+        "prompt_en": "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "prompt_language": "en",
+        "prompt_policy": "core100-physical-clock-materials-v2-20261021",
+        "prompt_sha256": "17e627ddb04a0477118525827a83d47d46c5a260f2f9ce6f64c6e7245798974a",
+        "prompt_token_counts": {
+          "ltx": 95,
+          "cogvideox": 95,
+          "wan": 135
+        },
+        "token_budget": 120,
+        "selected_parameter_keys": [
+          "gravity",
+          "t19_can1.initial_speed",
+          "impact_eccentricity_m",
+          "t19_can1.mass",
+          "t19_can2.mass",
+          "t19_can1.material friction",
+          "t19_can2.material friction",
+          "t19_can1.restitution",
+          "t19_can2.restitution"
+        ],
+        "omitted_parameter_keys": [],
+        "full_parameters_location": "parameter_facts; metadata only, not a model input",
+        "default_variant": 1,
+        "prompt_variants_en": [
+          "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Continue this scene with a fixed camera. Gravity 1.62 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Fixed camera; continue the physical motion. Gravity 1.62 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+        ],
+        "prompt_variant_token_counts": [
+          {
+            "ltx": 95,
+            "cogvideox": 95,
+            "wan": 135
+          },
+          {
+            "ltx": 97,
+            "cogvideox": 97,
+            "wan": 136
+          },
+          {
+            "ltx": 96,
+            "cogvideox": 96,
+            "wan": 137
+          }
+        ],
+        "prompt_variant_sha256": [
+          "17e627ddb04a0477118525827a83d47d46c5a260f2f9ce6f64c6e7245798974a",
+          "ed2f4ee0b15b6e7486169b66538e4ad338980df89072302fc4e972b056999682",
+          "778d49def616d73eb5819390932778e5913702c6e49141fbb71200b218c431df"
+        ],
+        "header_provenance": {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g01_moon__restitution__p010__trajectory.json.gz",
+          "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+          "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g01_moon__restitution__p010/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+          "local_video_sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+        }
+      },
+      "conditions_version": "core100-conditions-correction-v2-20261021"
+    },
+    {
+      "clip_id": "T19_C02",
+      "anonymous_id": "clip_ae869026a5377922",
+      "event": "T19",
+      "scene": "不同拓扑下的碰撞动量传播",
+      "rank": 2,
+      "membership": "fixed_core100_v1",
+      "membership_status": "user_fixed_2026-10-14",
+      "sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+      "camera": "cam01",
+      "background": "bg03_neutral_studio",
+      "parameters": {
+        "gravity_mps2": 3.71,
+        "sampling_case": "restitution__p010",
+        "parameter_status": "source_case_identifier; full controls not yet independently certified"
+      },
+      "parameter_summary": "g=3.71；restitution__p010",
+      "observed_result": "未取得完整结果真值",
+      "result_evidence": "仅配置／待审计",
+      "selection_reason": "覆盖火星重力输入；其他控制量需核对",
+      "limitations": "核心质量比对采用两罐布局；未取得离散结果翻转真值；其他扫描拓扑需核验。",
+      "source_class": "Genesis_source_candidate",
+      "original_source_kind": "huggingface",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+      "video_url": "https://huggingface.co/datasets/phyeditingvideo/Phyediting/blob/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+      "published_video_path": null,
+      "sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6",
+      "complete_decode_verified": true,
+      "scientific_admission": "pending_per_task_and_source_audit",
+      "leakage_group_id": "d92c3e5a7668fc01a591e3b6",
+      "training_group_exclusion_applied": false,
+      "split": "test_ood_2",
+      "known_conditions": {
+        "clip_id": "T19_C02",
+        "sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+        "source_video_sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+        "configuration_status": "video_hash_bound_header",
+        "verified_parameter_truth": {},
+        "clock": {
+          "status": "verified",
+          "physical_dt_s": 0.03333333333333333,
+          "media_fps": 30,
+          "release_frame": 24,
+          "frame_count": 210,
+          "source": "video-hash-matched trajectory header",
+          "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009"
+        },
+        "contact_friction": {
+          "background_material_friction": null,
+          "status": "historical_runtime_unverified",
+          "current_code_default_candidate": 1.0,
+          "combine_rule_candidate": "genesis_max_floor_0.01"
+        },
+        "parameter_facts": [
+          [
+            "gravity",
+            3.71,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_generation_facts": [
+          [
+            "gravity",
+            "",
+            3.71,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            "",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            "",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_provenance": "video_hash_bound_initial_header",
+        "prompt_status": "initial_conditions_only",
+        "reference": {
+          "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+          "source_repo": "phyeditingvideo/Phyediting",
+          "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+          "sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+        },
+        "prompt_en": "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "prompt_language": "en",
+        "prompt_policy": "core100-physical-clock-materials-v2-20261021",
+        "prompt_sha256": "a7b8eca96be71c6093ae6c2822d099cd79944b234240a6629be47d9fc3d9da6f",
+        "prompt_token_counts": {
+          "ltx": 95,
+          "cogvideox": 95,
+          "wan": 135
+        },
+        "token_budget": 120,
+        "selected_parameter_keys": [
+          "gravity",
+          "t19_can1.initial_speed",
+          "impact_eccentricity_m",
+          "t19_can1.mass",
+          "t19_can2.mass",
+          "t19_can1.material friction",
+          "t19_can2.material friction",
+          "t19_can1.restitution",
+          "t19_can2.restitution"
+        ],
+        "omitted_parameter_keys": [],
+        "full_parameters_location": "parameter_facts; metadata only, not a model input",
+        "default_variant": 1,
+        "prompt_variants_en": [
+          "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Continue this scene with a fixed camera. Gravity 3.71 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Fixed camera; continue the physical motion. Gravity 3.71 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+        ],
+        "prompt_variant_token_counts": [
+          {
+            "ltx": 95,
+            "cogvideox": 95,
+            "wan": 135
+          },
+          {
+            "ltx": 97,
+            "cogvideox": 97,
+            "wan": 136
+          },
+          {
+            "ltx": 96,
+            "cogvideox": 96,
+            "wan": 137
+          }
+        ],
+        "prompt_variant_sha256": [
+          "a7b8eca96be71c6093ae6c2822d099cd79944b234240a6629be47d9fc3d9da6f",
+          "530f1c66dc65940a2c5b8b08087323fb00c3a076a7ad9b221d0ffb8b6627adb5",
+          "b6e9d7bd26862517a503763af936b185aec2c65c1f8fa08ce7e423df48bab9cb"
+        ],
+        "header_provenance": {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g02_mars__restitution__p010__trajectory.json.gz",
+          "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+          "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g02_mars__restitution__p010/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+          "local_video_sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+        }
+      },
+      "conditions_version": "core100-conditions-correction-v2-20261021"
+    },
+    {
+      "clip_id": "T19_C03",
+      "anonymous_id": "clip_1391388d97110f71",
+      "event": "T19",
+      "scene": "不同拓扑下的碰撞动量传播",
+      "rank": 3,
+      "membership": "fixed_core100_v1",
+      "membership_status": "user_fixed_2026-10-14",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+      "camera": "cam01",
+      "background": "bg03_neutral_studio",
+      "parameters": {
+        "gravity_mps2": 9.81,
+        "sampling_case": "restitution__p010",
+        "parameter_status": "source_case_identifier; full controls not yet independently certified",
+        "source_parameters": {
+          "parameter_name": "restitution",
+          "parameter_index": 10,
+          "parameter_value": 0.38947368421052636,
+          "parameter_unit": "coefficient",
+          "normalized_parameter_value": 0.47368421052631576
+        }
+      },
+      "parameter_summary": "g=9.81；restitution__p010；restitution=0.38947368421052636 coefficient",
+      "observed_result": "未取得完整结果真值",
+      "result_evidence": "仅配置／待审计",
+      "selection_reason": "覆盖地球重力输入与本场景代表性运动",
+      "limitations": "核心质量比对采用两罐布局；未取得离散结果翻转真值；其他扫描拓扑需核验。",
+      "source_class": "Genesis_source_candidate",
+      "original_source_kind": "huggingface",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+      "video_url": "https://huggingface.co/datasets/phyeditingvideo/Phyediting/blob/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+      "published_video_path": null,
+      "sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f",
+      "complete_decode_verified": true,
+      "scientific_admission": "pending_per_task_and_source_audit",
+      "leakage_group_id": "c1b0bcadb9a0342ad8bf336f",
+      "training_group_exclusion_applied": false,
+      "split": "test_ood_2",
+      "known_conditions": {
+        "clip_id": "T19_C03",
+        "sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+        "source_video_sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+        "configuration_status": "video_hash_bound_header",
+        "verified_parameter_truth": {},
+        "clock": {
+          "status": "verified",
+          "physical_dt_s": 0.03333333333333333,
+          "media_fps": 30,
+          "release_frame": 24,
+          "frame_count": 210,
+          "source": "video-hash-matched trajectory header",
+          "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b"
+        },
+        "contact_friction": {
+          "background_material_friction": null,
+          "status": "historical_runtime_unverified",
+          "current_code_default_candidate": 1.0,
+          "combine_rule_candidate": "genesis_max_floor_0.01"
+        },
+        "parameter_facts": [
+          [
+            "gravity",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_generation_facts": [
+          [
+            "gravity",
+            "",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can2.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            "",
+            0.38947368421052636,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            "",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            "",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_provenance": "video_hash_bound_initial_header",
+        "prompt_status": "initial_conditions_only",
+        "reference": {
+          "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+          "source_repo": "phyeditingvideo/Phyediting",
+          "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+          "sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+        },
+        "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+        "prompt_language": "en",
+        "prompt_policy": "core100-physical-clock-materials-v2-20261021",
+        "prompt_sha256": "ed18b8aff7a5aad3c51554d90d2c4e50e24a7fc2b41c6e8a99edab0478b789d4",
+        "prompt_token_counts": {
+          "ltx": 95,
+          "cogvideox": 95,
+          "wan": 135
+        },
+        "token_budget": 120,
+        "selected_parameter_keys": [
+          "gravity",
+          "t19_can1.initial_speed",
+          "impact_eccentricity_m",
+          "t19_can1.mass",
+          "t19_can2.mass",
+          "t19_can1.material friction",
+          "t19_can2.material friction",
+          "t19_can1.restitution",
+          "t19_can2.restitution"
+        ],
+        "omitted_parameter_keys": [],
+        "full_parameters_location": "parameter_facts; metadata only, not a model input",
+        "default_variant": 1,
+        "prompt_variants_en": [
+          "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636.",
+          "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.15 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.38947368421052636. Can2 restitution 0.38947368421052636."
+        ],
+        "prompt_variant_token_counts": [
+          {
+            "ltx": 95,
+            "cogvideox": 95,
+            "wan": 135
+          },
+          {
+            "ltx": 97,
+            "cogvideox": 97,
+            "wan": 136
+          },
+          {
+            "ltx": 96,
+            "cogvideox": 96,
+            "wan": 137
+          }
+        ],
+        "prompt_variant_sha256": [
+          "ed18b8aff7a5aad3c51554d90d2c4e50e24a7fc2b41c6e8a99edab0478b789d4",
+          "2f0dda37a90d4da271f4ffcacf6b49345f131d667704b1639a95d564fb11b8fb",
+          "ea37f01e50f7474cae7931a863cd6d2611912695d6cd76847908ffa4bfc44911"
+        ],
+        "header_provenance": {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__restitution__p010__trajectory.json.gz",
+          "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+          "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__restitution__p010/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+          "local_video_sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+        }
+      },
+      "conditions_version": "core100-conditions-correction-v2-20261021"
+    },
+    {
+      "clip_id": "T19_C04",
+      "anonymous_id": "clip_636f12ea5f871aad",
+      "event": "T19",
+      "scene": "不同拓扑下的碰撞动量传播",
+      "rank": 4,
+      "membership": "fixed_core100_v1",
+      "membership_status": "user_fixed_2026-10-14",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+      "camera": "cam01",
+      "background": "bg03_neutral_studio",
+      "parameters": {
+        "gravity_mps2": 9.81,
+        "sampling_case": "mass_ratio__p002",
+        "parameter_status": "source_case_identifier; full controls not yet independently certified",
+        "source_parameters": {
+          "parameter_name": "mass_ratio",
+          "parameter_index": 2,
+          "parameter_value": 0.4631578947368421,
+          "parameter_unit": "ratio",
+          "normalized_parameter_value": 0.05263157894736842
+        }
+      },
+      "parameter_summary": "g=9.81；mass_ratio__p002；mass_ratio=0.4631578947368421 ratio",
+      "observed_result": "未取得完整结果真值",
+      "result_evidence": "仅配置／待审计",
+      "selection_reason": "碰撞连续响应覆盖；不计离散临界准确率",
+      "limitations": "核心质量比对采用两罐布局；未取得离散结果翻转真值；其他扫描拓扑需核验。",
+      "source_class": "Genesis_source_candidate",
+      "original_source_kind": "huggingface",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+      "video_url": "https://huggingface.co/datasets/phyeditingvideo/Phyediting/blob/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+      "published_video_path": null,
+      "sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd",
+      "complete_decode_verified": true,
+      "scientific_admission": "pending_per_task_and_source_audit",
+      "leakage_group_id": "37111177d93c4732c7dcac8d",
+      "training_group_exclusion_applied": false,
+      "split": "test_ood_2",
+      "known_conditions": {
+        "clip_id": "T19_C04",
+        "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+        "source_video_sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+        "configuration_status": "video_hash_bound_header",
+        "verified_parameter_truth": {},
+        "clock": {
+          "status": "verified",
+          "physical_dt_s": 0.03333333333333333,
+          "media_fps": 30,
+          "release_frame": 24,
+          "frame_count": 210,
+          "source": "video-hash-matched trajectory header",
+          "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8"
+        },
+        "contact_friction": {
+          "background_material_friction": null,
+          "status": "historical_runtime_unverified",
+          "current_code_default_candidate": 1.0,
+          "combine_rule_candidate": "genesis_max_floor_0.01"
+        },
+        "parameter_facts": [
+          [
+            "gravity",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            0.12,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            0.06947368421052631,
+            "kg"
+          ],
+          [
+            "t19_can2.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            0.12,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_generation_facts": [
+          [
+            "gravity",
+            "",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            "",
+            0.12,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            "",
+            0.06947368421052631,
+            "kg"
+          ],
+          [
+            "t19_can2.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            "",
+            0.12,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            "",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            "",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_provenance": "video_hash_bound_initial_header",
+        "prompt_status": "initial_conditions_only",
+        "reference": {
+          "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+          "source_repo": "phyeditingvideo/Phyediting",
+          "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+          "sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+        },
+        "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "prompt_language": "en",
+        "prompt_policy": "core100-physical-clock-materials-v2-20261021",
+        "prompt_sha256": "431b065c277048d3db4f85703210a8745ecffb048f5484bc440c5d16ef4624b4",
+        "prompt_token_counts": {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 120
+        },
+        "token_budget": 120,
+        "selected_parameter_keys": [
+          "gravity",
+          "t19_can1.initial_speed",
+          "impact_eccentricity_m",
+          "t19_can1.mass",
+          "t19_can2.mass",
+          "t19_can1.material friction",
+          "t19_can2.material friction",
+          "t19_can1.restitution",
+          "t19_can2.restitution"
+        ],
+        "omitted_parameter_keys": [],
+        "full_parameters_location": "parameter_facts; metadata only, not a model input",
+        "default_variant": 1,
+        "prompt_variants_en": [
+          "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+          "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+          "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.06947368421052631 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12."
+        ],
+        "prompt_variant_token_counts": [
+          {
+            "ltx": 86,
+            "cogvideox": 86,
+            "wan": 120
+          },
+          {
+            "ltx": 88,
+            "cogvideox": 88,
+            "wan": 121
+          },
+          {
+            "ltx": 87,
+            "cogvideox": 87,
+            "wan": 122
+          }
+        ],
+        "prompt_variant_sha256": [
+          "431b065c277048d3db4f85703210a8745ecffb048f5484bc440c5d16ef4624b4",
+          "c31de0f79728b6150731569f67a32133a859fb4cd8ca17a7e274e4e341148f98",
+          "0c7a4e0ef0280ba1f9cdb0cdc25478929794a618a784eb7370db8f0420437098"
+        ],
+        "header_provenance": {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__trajectory.json.gz",
+          "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+          "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+          "local_video_sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+        }
+      },
+      "conditions_version": "core100-conditions-correction-v2-20261021"
+    },
+    {
+      "clip_id": "T19_C05",
+      "anonymous_id": "clip_3e619c918f0ac3ec",
+      "event": "T19",
+      "scene": "不同拓扑下的碰撞动量传播",
+      "rank": 5,
+      "membership": "fixed_core100_v1",
+      "membership_status": "user_fixed_2026-10-14",
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+      "camera": "cam01",
+      "background": "bg03_neutral_studio",
+      "parameters": {
+        "gravity_mps2": 9.81,
+        "sampling_case": "mass_ratio__p019",
+        "parameter_status": "source_case_identifier; full controls not yet independently certified",
+        "source_parameters": {
+          "parameter_name": "mass_ratio",
+          "parameter_index": 19,
+          "parameter_value": 2.386842105263158,
+          "parameter_unit": "ratio",
+          "normalized_parameter_value": 0.9473684210526315
+        }
+      },
+      "parameter_summary": "g=9.81；mass_ratio__p019；mass_ratio=2.386842105263158 ratio",
+      "observed_result": "未取得完整结果真值",
+      "result_evidence": "仅配置／待审计",
+      "selection_reason": "碰撞连续响应覆盖；不计离散临界准确率",
+      "limitations": "核心质量比对采用两罐布局；未取得离散结果翻转真值；其他扫描拓扑需核验。",
+      "source_class": "Genesis_source_candidate",
+      "original_source_kind": "huggingface",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+      "video_url": "https://huggingface.co/datasets/phyeditingvideo/Phyediting/blob/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+      "published_video_path": null,
+      "sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d",
+      "complete_decode_verified": true,
+      "scientific_admission": "pending_per_task_and_source_audit",
+      "leakage_group_id": "34c5b21956d87e6012fc6a92",
+      "training_group_exclusion_applied": false,
+      "split": "test_ood_2",
+      "known_conditions": {
+        "clip_id": "T19_C05",
+        "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+        "source_video_sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+        "configuration_status": "video_hash_bound_header",
+        "verified_parameter_truth": {},
+        "clock": {
+          "status": "verified",
+          "physical_dt_s": 0.03333333333333333,
+          "media_fps": 30,
+          "release_frame": 24,
+          "frame_count": 210,
+          "source": "video-hash-matched trajectory header",
+          "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596"
+        },
+        "contact_friction": {
+          "background_material_friction": null,
+          "status": "historical_runtime_unverified",
+          "current_code_default_candidate": 1.0,
+          "combine_rule_candidate": "genesis_max_floor_0.01"
+        },
+        "parameter_facts": [
+          [
+            "gravity",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            0.12,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            0.3580263157894737,
+            "kg"
+          ],
+          [
+            "t19_can2.friction",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            0.12,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_generation_facts": [
+          [
+            "gravity",
+            "",
+            9.81,
+            "m/s²"
+          ],
+          [
+            "t19_can1.mass",
+            "",
+            0.15,
+            "kg"
+          ],
+          [
+            "t19_can1.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can1.restitution",
+            "",
+            0.12,
+            ""
+          ],
+          [
+            "t19_can2.mass",
+            "",
+            0.3580263157894737,
+            "kg"
+          ],
+          [
+            "t19_can2.material friction",
+            "",
+            0.055,
+            ""
+          ],
+          [
+            "t19_can2.restitution",
+            "",
+            0.12,
+            ""
+          ],
+          [
+            "impact_eccentricity_m",
+            "",
+            0.0,
+            "m"
+          ],
+          [
+            "t19_can1.initial_speed",
+            "",
+            2.4,
+            "m/s"
+          ]
+        ],
+        "prompt_provenance": "video_hash_bound_initial_header",
+        "prompt_status": "initial_conditions_only",
+        "reference": {
+          "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+          "source_repo": "phyeditingvideo/Phyediting",
+          "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+          "sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+        },
+        "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+        "prompt_language": "en",
+        "prompt_policy": "core100-physical-clock-materials-v2-20261021",
+        "prompt_sha256": "44402df1178bec42fc75eb3d726a6b377888a48d015b84a55193807f2b5e455b",
+        "prompt_token_counts": {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 119
+        },
+        "token_budget": 120,
+        "selected_parameter_keys": [
+          "gravity",
+          "t19_can1.initial_speed",
+          "impact_eccentricity_m",
+          "t19_can1.mass",
+          "t19_can2.mass",
+          "t19_can1.material friction",
+          "t19_can2.material friction",
+          "t19_can1.restitution",
+          "t19_can2.restitution"
+        ],
+        "omitted_parameter_keys": [],
+        "full_parameters_location": "parameter_facts; metadata only, not a model input",
+        "default_variant": 1,
+        "prompt_variants_en": [
+          "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+          "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12.",
+          "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Can1 initial speed 2.4 m/s. Impact eccentricity 0 m. Can1 mass 0.15 kg. Can2 mass 0.3580263157894737 kg. Can1 material friction 0.055. Can2 material friction 0.055. Can1 restitution 0.12. Can2 restitution 0.12."
+        ],
+        "prompt_variant_token_counts": [
+          {
+            "ltx": 86,
+            "cogvideox": 86,
+            "wan": 119
+          },
+          {
+            "ltx": 88,
+            "cogvideox": 88,
+            "wan": 120
+          },
+          {
+            "ltx": 87,
+            "cogvideox": 87,
+            "wan": 121
+          }
+        ],
+        "prompt_variant_sha256": [
+          "44402df1178bec42fc75eb3d726a6b377888a48d015b84a55193807f2b5e455b",
+          "d02a4c5af369424519a86a356f17716a92463301b456ca163ab89d91cb1c6d09",
+          "f5bf184d1ca8e353e3412d4fd775c311793de28f96988813ca77a041c7b13aea"
+        ],
+        "header_provenance": {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__trajectory.json.gz",
+          "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+          "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+          "local_video_sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+        }
+      },
+      "conditions_version": "core100-conditions-correction-v2-20261021"
+    }
+  ],
+  "admission": [
+    {
+      "clip_id": "T19_C01",
+      "source_sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+      },
+      "source_header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g01_moon__restitution__p010__trajectory.json.gz",
+        "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g01_moon__restitution__p010/videos/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.mp4",
+        "local_video_sha256": "db0ae3faeeae01f0cdcc4e940a322eff14a8f4b5d5f4082e58502d6c30b4a0dc"
+      },
+      "reference_configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "reference_clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a"
+      },
+      "original_contract_ready": true,
+      "registered_outputs": 36,
+      "v6_exact_outputs": 0,
+      "human_submitted_outputs": 0,
+      "numerical_distance_records": [],
+      "rejected_evidence": [],
+      "nearacc_eligible": false,
+      "pairacc_eligible": false,
+      "blockers": [
+        "no_same_event_normalized_boundary",
+        "no_certified_near_bin_for_current_target",
+        "reference_RGB_observability_not_admitted",
+        "reference_to_generated_window_not_frozen",
+        "site_outputs_not_exact_frozen_v6_inputs",
+        "human_review_pending",
+        "reference_render_retired_by_author"
+      ],
+      "source_recovery": {
+        "clip_id": "T19_C01",
+        "source_sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+        "source_config_sha256": "2d22929f10694b883b132b6d4091bc1e1da03c1e9a04f6c9d40c34ee7224326b",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g01_moon__restitution__p010/metadata/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.json.gz",
+        "source_state_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+        "frame_count": 210,
+        "original_experiment_exact_match": true,
+        "original_physical_experiment_match": true,
+        "source_spec_differences": {},
+        "state_binding_notes": [],
+        "published_reference_binding": null,
+        "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "contract_recovered": true,
+        "reference_labels": {
+          "can2_transfer_original": 1,
+          "target_edge_original": 1
+        },
+        "original_outcome": "dual_can_edge_event",
+        "metrics": {
+          "outcome_label": "dual_can_edge_event",
+          "chain_depth_reached": 5,
+          "target_objects_moved": 1,
+          "final_3d_displacements_m": {
+            "t19_can1": 0.1777920861467514,
+            "t19_can2": 0.8034423744562652
+          },
+          "original_production_qa_sha256": "8914aa801e5c7886f7e211f7beff27a12cd9960bde5cde2200df369891545755",
+          "original_production_qa_match": true
+        },
+        "missing": [],
+        "reference_admission": "pending_media_window_visual_observability",
+        "NearAcc_eligible": false,
+        "PairAcc_eligible": false
+      }
+    },
+    {
+      "clip_id": "T19_C02",
+      "source_sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+      },
+      "source_header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g02_mars__restitution__p010__trajectory.json.gz",
+        "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g02_mars__restitution__p010/videos/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.mp4",
+        "local_video_sha256": "c32662a33b15ef23096f22ce96e11a0030bc1785bb9c5a263ce9fdadd79c05f6"
+      },
+      "reference_configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "reference_clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009"
+      },
+      "original_contract_ready": true,
+      "registered_outputs": 36,
+      "v6_exact_outputs": 0,
+      "human_submitted_outputs": 0,
+      "numerical_distance_records": [],
+      "rejected_evidence": [],
+      "nearacc_eligible": false,
+      "pairacc_eligible": false,
+      "blockers": [
+        "no_same_event_normalized_boundary",
+        "no_certified_near_bin_for_current_target",
+        "reference_RGB_observability_not_admitted",
+        "reference_to_generated_window_not_frozen",
+        "site_outputs_not_exact_frozen_v6_inputs",
+        "human_review_pending",
+        "reference_render_retired_by_author"
+      ],
+      "source_recovery": {
+        "clip_id": "T19_C02",
+        "source_sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+        "source_config_sha256": "6992f06652e1d299b61ccb1accd9057ca1679e8754dbe6ed55a1216b73e22f03",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g02_mars__restitution__p010/metadata/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.json.gz",
+        "source_state_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+        "frame_count": 210,
+        "original_experiment_exact_match": true,
+        "original_physical_experiment_match": true,
+        "source_spec_differences": {},
+        "state_binding_notes": [],
+        "published_reference_binding": null,
+        "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "contract_recovered": true,
+        "reference_labels": {
+          "can2_transfer_original": 1,
+          "target_edge_original": 1
+        },
+        "original_outcome": "dual_can_edge_event",
+        "metrics": {
+          "outcome_label": "dual_can_edge_event",
+          "chain_depth_reached": 5,
+          "target_objects_moved": 1,
+          "final_3d_displacements_m": {
+            "t19_can1": 0.08577734090531705,
+            "t19_can2": 0.3599862309642623
+          },
+          "original_production_qa_sha256": "4f5e7f21b7dfa613a7ec3f0bff2b37f4fdccc503f273617aa18a74994456e004",
+          "original_production_qa_match": true
+        },
+        "missing": [],
+        "reference_admission": "pending_media_window_visual_observability",
+        "NearAcc_eligible": false,
+        "PairAcc_eligible": false
+      }
+    },
+    {
+      "clip_id": "T19_C03",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+      },
+      "source_header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__restitution__p010__trajectory.json.gz",
+        "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__restitution__p010/videos/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.mp4",
+        "local_video_sha256": "be0386c3c0b48824f09f3e494d1dcfd3a8422143e748c5e9ed799b3f7732456f"
+      },
+      "reference_configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "reference_clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b"
+      },
+      "original_contract_ready": true,
+      "registered_outputs": 36,
+      "v6_exact_outputs": 0,
+      "human_submitted_outputs": 0,
+      "numerical_distance_records": [],
+      "rejected_evidence": [],
+      "nearacc_eligible": false,
+      "pairacc_eligible": false,
+      "blockers": [
+        "no_same_event_normalized_boundary",
+        "no_certified_near_bin_for_current_target",
+        "reference_RGB_observability_not_admitted",
+        "reference_to_generated_window_not_frozen",
+        "site_outputs_not_exact_frozen_v6_inputs",
+        "human_review_pending",
+        "reference_render_retired_by_author"
+      ],
+      "source_recovery": {
+        "clip_id": "T19_C03",
+        "source_sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+        "source_config_sha256": "f961d6463ebd250ae1285ecd08a3cff73aee0535c0405481b9f2ab74af4f484c",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__restitution__p010/metadata/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.json.gz",
+        "source_state_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+        "frame_count": 210,
+        "original_experiment_exact_match": true,
+        "original_physical_experiment_match": true,
+        "source_spec_differences": {},
+        "state_binding_notes": [],
+        "published_reference_binding": null,
+        "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "contract_recovered": true,
+        "reference_labels": {
+          "can2_transfer_original": 1,
+          "target_edge_original": 1
+        },
+        "original_outcome": "dual_can_edge_event",
+        "metrics": {
+          "outcome_label": "dual_can_edge_event",
+          "chain_depth_reached": 5,
+          "target_objects_moved": 1,
+          "final_3d_displacements_m": {
+            "t19_can1": 0.04292999667261821,
+            "t19_can2": 0.13408923842082496
+          },
+          "original_production_qa_sha256": "86dfa573b25949c319948bea3b45884a987d91b3801acc40573bab1ae0fb1007",
+          "original_production_qa_match": true
+        },
+        "missing": [],
+        "reference_admission": "pending_media_window_visual_observability",
+        "NearAcc_eligible": false,
+        "PairAcc_eligible": false
+      }
+    },
+    {
+      "clip_id": "T19_C04",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+      },
+      "source_header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__trajectory.json.gz",
+        "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.mp4",
+        "local_video_sha256": "d545f515b876df6d1f22b7902508f417ddf6c08cdfe6dcbd3067e5ccdec362fd"
+      },
+      "reference_configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "reference_clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8"
+      },
+      "original_contract_ready": true,
+      "registered_outputs": 36,
+      "v6_exact_outputs": 0,
+      "human_submitted_outputs": 0,
+      "numerical_distance_records": [],
+      "rejected_evidence": [],
+      "nearacc_eligible": false,
+      "pairacc_eligible": false,
+      "blockers": [
+        "no_same_event_normalized_boundary",
+        "no_certified_near_bin_for_current_target",
+        "reference_RGB_observability_not_admitted",
+        "reference_to_generated_window_not_frozen",
+        "site_outputs_not_exact_frozen_v6_inputs",
+        "human_review_pending",
+        "reference_render_retired_by_author"
+      ],
+      "source_recovery": {
+        "clip_id": "T19_C04",
+        "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+        "source_config_sha256": "f7c94cc3180b729cf877373c7bde9658adc6c1f3220da49b048bfbd9f01f2b0f",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.json.gz",
+        "source_state_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+        "frame_count": 210,
+        "original_experiment_exact_match": true,
+        "original_physical_experiment_match": true,
+        "source_spec_differences": {},
+        "state_binding_notes": [],
+        "published_reference_binding": null,
+        "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "contract_recovered": true,
+        "reference_labels": {
+          "can2_transfer_original": 1,
+          "target_edge_original": 1
+        },
+        "original_outcome": "dual_can_edge_event",
+        "metrics": {
+          "outcome_label": "dual_can_edge_event",
+          "chain_depth_reached": 5,
+          "target_objects_moved": 1,
+          "final_3d_displacements_m": {
+            "t19_can1": 0.13003782826465604,
+            "t19_can2": 0.16434586069762017
+          },
+          "original_production_qa_sha256": "6000128cbbe25e3655444d7f5d390acb421acafa34f1970fda8625befcbbaec9",
+          "original_production_qa_match": true
+        },
+        "missing": [],
+        "reference_admission": "pending_media_window_visual_observability",
+        "NearAcc_eligible": false,
+        "PairAcc_eligible": false
+      }
+    },
+    {
+      "clip_id": "T19_C05",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+      "reference": {
+        "source_video_path": "data/T16_T20/T19/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+      },
+      "source_header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T19/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__trajectory.json.gz",
+        "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019/videos/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.mp4",
+        "local_video_sha256": "de5ba0d1e976066dbf13c8e7b3682df193824ad5be6f5cafc3470a72bc3dee3d"
+      },
+      "reference_configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "reference_clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596"
+      },
+      "original_contract_ready": true,
+      "registered_outputs": 36,
+      "v6_exact_outputs": 0,
+      "human_submitted_outputs": 0,
+      "numerical_distance_records": [],
+      "rejected_evidence": [],
+      "nearacc_eligible": false,
+      "pairacc_eligible": false,
+      "blockers": [
+        "no_same_event_normalized_boundary",
+        "no_certified_near_bin_for_current_target",
+        "reference_RGB_observability_not_admitted",
+        "reference_to_generated_window_not_frozen",
+        "site_outputs_not_exact_frozen_v6_inputs",
+        "human_review_pending",
+        "reference_render_retired_by_author"
+      ],
+      "source_recovery": {
+        "clip_id": "T19_C05",
+        "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+        "source_config_sha256": "08519596d690785af6bb94905534e2a09fa377664a7d15dda8469032a230b735",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.json.gz",
+        "source_state_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+        "frame_count": 210,
+        "original_experiment_exact_match": true,
+        "original_physical_experiment_match": true,
+        "source_spec_differences": {},
+        "state_binding_notes": [],
+        "published_reference_binding": null,
+        "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "contract_recovered": true,
+        "reference_labels": {
+          "can2_transfer_original": 1,
+          "target_edge_original": 0
+        },
+        "original_outcome": "momentum_transfers_to_can2",
+        "metrics": {
+          "outcome_label": "momentum_transfers_to_can2",
+          "chain_depth_reached": 4,
+          "target_objects_moved": 1,
+          "final_3d_displacements_m": {
+            "t19_can1": 0.030624426699456538,
+            "t19_can2": 0.03240357709196896
+          },
+          "original_production_qa_sha256": "268fb4bbf08c753f358d6ee475affe40502c377ebeab2794813999fe9131cc14",
+          "original_production_qa_match": true
+        },
+        "missing": [],
+        "reference_admission": "pending_media_window_visual_observability",
+        "NearAcc_eligible": false,
+        "PairAcc_eligible": false
+      }
+    }
+  ],
+  "policy": {
+    "T19_C01": {
+      "input_version": "frozen_v6_seed0",
+      "prompt_variant_sha256": [
+        "68e23958ee983083228c19b2c64b9d6ba10fa8e7a286dfb510d1340963634d71",
+        "21f1bd5800891b29784ab11e8bf96a5d080fa8713a8f3ebe71d139de3f7147e4",
+        "f57f43d963d1332551c1a1ac33d3d4b5721237bdbba343e0147e0c8785a46e10"
+      ]
+    },
+    "T19_C02": {
+      "input_version": "frozen_v6_seed0",
+      "prompt_variant_sha256": [
+        "86df6245f2813c4cb7e783e7073deef23c8c92e835de8e44fc87b752dc8a4bb8",
+        "8920733896370088b9d3a459da4ac599c47c75d6cf22db115cf8c4aaf23af329",
+        "06dd294f9f2ab4bef11ba2ad7146a71967013f070e061c3ad180aba82999b993"
+      ]
+    },
+    "T19_C03": {
+      "input_version": "frozen_v6_seed0",
+      "prompt_variant_sha256": [
+        "dbe86d6b6bef4a4fe385d3e09ddf6035621f748c9b0bf7fc8da1d7872506e95a",
+        "7b61c26c8219df72f1c5d4525fbe28cd4de1c53bb3b78324d23e076060c428c2",
+        "cb12c1042499513397b9db95da3356f65a8755d6778c18ce1bee9e3a565c89ee"
+      ]
+    },
+    "T19_C04": {
+      "input_version": "frozen_v6_seed0",
+      "prompt_variant_sha256": [
+        "4068cf3c2053ab9b7b72237c0f727c27dcc7ef7ac963a8cb5d177892fdfac0b0",
+        "99419614085a436e242e1394fc213075c3e4dd51447ed15f16f76d6b82dfae2e",
+        "054a714dab8fecb6a091559e91b7f8bfd0098b027ab20c2030715977b70cdec4"
+      ]
+    },
+    "T19_C05": {
+      "input_version": "frozen_v6_seed0",
+      "prompt_variant_sha256": [
+        "cb34e2aece6c0a9702b0b0d59a9432dfe00f19fe83ab28b1198829297a25cde6",
+        "e62af011854d6c8b11d9a3b0e73ad53c5e9e64bb75b77c3742e3d68066bde9ba",
+        "e11ee9d5d3ac1ec7680f6293c95650504fe27b051327a2b49a3bfeb54ea593c9"
+      ]
+    }
+  },
+  "original_condition_file_sha256": "5560ab9e06a337189008a7722cabebe4286e96ef22c11c83d7a4db97e5e36eb7",
+  "original_input_policy_sha256": "4fd52dd7e62c811b87bdfcd8a889fa104f42a8a24908a757ee230e6ae250e493"
+}

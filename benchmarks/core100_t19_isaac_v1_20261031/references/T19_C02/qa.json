@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "checks": {
+    "210_finite_frames": true,
+    "penetration_below_2mm": true,
+    "no_causal_shortcuts": true,
+    "no_explosive_linear_speed": true
+  },
+  "depth": 2,
+  "chain": [
+    "t19_striker",
+    "t19_target"
+  ],
+  "nodes": [
+    {
+      "event": "source_motion",
+      "support_contact_time_s": 0.0
+    },
+    {
+      "event": "t19_striker->t19_target",
+      "contact_time_s": 0.338020833333337
+    }
+  ],
+  "max_penetration_m": 9.845057320490014e-06,
+  "max_motion_m": {
+    "t19_striker": 0.42786725034101114,
+    "t19_target": 0.0010119741034800428
+  },
+  "first_contacts_s": {
+    "t19_target|tabletop_collision_slab": 0.029166666666666705,
+    "t19_striker|tabletop_collision_slab": 0.03854166666666668,
+    "t19_striker|t19_target": 0.338020833333337
+  },
+  "shortcuts": [],
+  "peak_speed_mps": 0.9169226464877198,
+  "tail_speed_mps": 0.00010385886189740907,
+  "warmup_drift_m": {
+    "t19_striker": 0.0,
+    "t19_target": 0.0
+  },
+  "classification": "CALIBRATION_ONLY",
+  "formal_video_count": 0,
+  "group_boundary_coverage": "NOT_EVALUATED"
+}

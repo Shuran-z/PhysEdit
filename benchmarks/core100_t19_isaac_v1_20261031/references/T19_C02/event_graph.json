@@ -1,0 +1,15 @@
+{
+  "event": "T19",
+  "depth": 2,
+  "nodes": [
+    {
+      "event": "source_motion",
+      "support_contact_time_s": 0.0
+    },
+    {
+      "event": "t19_striker->t19_target",
+      "contact_time_s": 0.338020833333337
+    }
+  ],
+  "classification": "CALIBRATION_ONLY"
+}

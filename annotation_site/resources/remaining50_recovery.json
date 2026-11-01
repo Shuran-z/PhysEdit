@@ -1,0 +1,2747 @@
+{
+  "schema": "remaining50-original-source-recovery-v1",
+  "summary": {
+    "audited_remaining_cases": 50,
+    "same_id_source_states_found": 50,
+    "original_outcome_contracts_recovered": 40,
+    "critical_contracts_still_missing": 10,
+    "source_spec_mismatch_cases": [
+      "T08_C01",
+      "T08_C02",
+      "T08_C03",
+      "T08_C04",
+      "T08_C05"
+    ],
+    "published_video_state_bindings_verified": 5,
+    "original_qa_recomputed_and_matched": 20,
+    "NearAcc_eligible": 0,
+    "PairAcc_eligible": 0
+  },
+  "rows": [
+    {
+      "clip_id": "T03_C01",
+      "source_sample_id": "T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014",
+      "source_config_sha256": "f8ad4770eb26db98cb59443ade54882dcfb6292ec0eea1daa399fe9cacb4d742",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014/metadata/T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014__cam01.json.gz",
+      "source_state_sha256": "a2796e1fbb9c05150d0e65bd30089dd1e06e58c0a1ab7eb5a03a8ff65eba55ba",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+      "extraction_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+      "contract_recovered": true,
+      "reference_labels": {
+        "book_contacts_upper_can": 1,
+        "can_lands_on_lower_shelf": 1,
+        "phone_second_fall_original": 0
+      },
+      "original_outcome": "C1_lower_phone_critical_partial_fall",
+      "metrics": {
+        "schema_version": "t03v5_sample_causal_audit_v1",
+        "sample_id": "Temp",
+        "status": "PASS",
+        "quality_gate_pass": true,
+        "causal_parameter_group": "C",
+        "changed_variable": "lower_phone_com_edge_distance_m",
+        "observed_outcome": "C1_lower_phone_critical_partial_fall",
+        "duration_s": 7.0,
+        "action_span_s": 6.2,
+        "first_contact_frame": {
+          "book_can": 88,
+          "can_lower_shelf": 110,
+          "can_phone": 111,
+          "phone_floor": null
+        },
+        "first_contact_time_s": {
+          "book_can": 2.933333333333333,
+          "can_lower_shelf": 3.6666666666666665,
+          "can_phone": 3.7,
+          "phone_floor": null
+        },
+        "measured_contact_impulses": {
+          "book_can_Ns": 0.10520079788093879,
+          "can_lower_shelf_Ns": 0.35538370317323603,
+          "can_phone_Ns": 0.5207689892755614,
+          "phone_floor_Ns": 0
+        },
+        "precontact_motion_m": {
+          "upper_can": 3.9130449295043945e-05,
+          "lower_phone": 3.746151924133301e-05
+        },
+        "displacement_m": {
+          "book": 1.7002350545177118,
+          "upper_can": 1.0796041964044607,
+          "lower_phone": 0.1968739165737237
+        },
+        "vertical_drop_m": {
+          "upper_can": 0.767938993871212,
+          "lower_phone": 0.09500265121459961
+        },
+        "final_settled": false,
+        "max_speed_mps": 1.114211468477137,
+        "max_angular_speed_radps": 3.0270391052349748,
+        "max_frame_jump_m": 0.036291027638608274,
+        "max_effective_penetration_m": 0.0,
+        "max_penetration_pair": [
+          "t03v5_upper_tabletop_collision_slab",
+          "t03v5_upper_edge_can"
+        ],
+        "forbidden_human_object_names": [],
+        "required_physics_parameters": {
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -1.62
+          ],
+          "gravity_magnitude_mps2": 1.62,
+          "book_mass_kg": 0.38,
+          "upper_can_mass_kg": 0.37,
+          "lower_phone_mass_kg": 0.19,
+          "declared_one_shot_impulse_vector_Ns": [
+            0.20900000000000002,
+            0.0,
+            0.0
+          ],
+          "declared_one_shot_impulse_magnitude_Ns": 0.20900000000000002,
+          "book_initial_speed_mps": 0.55,
+          "upper_can_com_edge_distance_m": 0.008,
+          "lower_phone_com_edge_distance_m": 0.1
+        },
+        "errors": [],
+        "warnings": [
+          "not_settled_in_final_window"
+        ]
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T03_C02",
+      "source_sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+      "source_config_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+      "source_state_path": "/data_cached/wangzijun_p25/hf_staging_t03_r032_delta_20260920/repo_root/data/T03/formal_480p_fullsim_r032_r034_delta_pass561_20260920/metadata/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.json.gz",
+      "source_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+      "extraction_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+      "contract_recovered": true,
+      "reference_labels": {
+        "book_contacts_upper_can": 1,
+        "can_lands_on_lower_shelf": 1,
+        "phone_second_fall_original": 1
+      },
+      "original_outcome": "C2_full_chain_phone_second_fall",
+      "metrics": {
+        "schema_version": "t03v5_sample_causal_audit_v1",
+        "sample_id": "Temp",
+        "status": "PASS",
+        "quality_gate_pass": true,
+        "causal_parameter_group": "C",
+        "changed_variable": "lower_phone_com_edge_distance_m",
+        "observed_outcome": "C2_full_chain_phone_second_fall",
+        "duration_s": 7.0,
+        "action_span_s": 4.466666666666667,
+        "first_contact_frame": {
+          "book_can": 82,
+          "can_lower_shelf": 97,
+          "can_phone": 100,
+          "phone_floor": 123
+        },
+        "first_contact_time_s": {
+          "book_can": 2.7333333333333334,
+          "can_lower_shelf": 3.2333333333333334,
+          "can_phone": 3.3333333333333335,
+          "phone_floor": 4.1
+        },
+        "measured_contact_impulses": {
+          "book_can_Ns": 0.45328626865022126,
+          "can_lower_shelf_Ns": 1.3469583054751317,
+          "can_phone_Ns": 4.797461521217109,
+          "phone_floor_Ns": 8.753729711497522
+        },
+        "precontact_motion_m": {
+          "upper_can": 1.582130789756775e-05,
+          "lower_phone": 1.4096498489379883e-05
+        },
+        "displacement_m": {
+          "book": 2.2587818789675844,
+          "upper_can": 0.9721770982579908,
+          "lower_phone": 0.5474393949984863
+        },
+        "vertical_drop_m": {
+          "upper_can": 0.7267149351537228,
+          "lower_phone": 0.4222259521484375
+        },
+        "final_settled": true,
+        "max_speed_mps": 1.6328464420379603,
+        "max_angular_speed_radps": 11.376007412643489,
+        "max_frame_jump_m": 0.05331588620462677,
+        "max_effective_penetration_m": 0.0007742115305736661,
+        "max_penetration_pair": [
+          "t03v5_impulsed_book",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "forbidden_human_object_names": [],
+        "required_physics_parameters": {
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -3.71
+          ],
+          "gravity_magnitude_mps2": 3.71,
+          "book_mass_kg": 0.38,
+          "upper_can_mass_kg": 0.37,
+          "lower_phone_mass_kg": 0.19,
+          "declared_one_shot_impulse_vector_Ns": [
+            0.2584,
+            0.0,
+            0.0
+          ],
+          "declared_one_shot_impulse_magnitude_Ns": 0.2584,
+          "book_initial_speed_mps": 0.68,
+          "upper_can_com_edge_distance_m": 0.008,
+          "lower_phone_com_edge_distance_m": 0.1
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T03_C03",
+      "source_sample_id": "T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014",
+      "source_config_sha256": "db4b16377a705de957c8a672b2fb4d1e8b966ec4cebc678a05cee8b7acf23174",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014/metadata/T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014__cam01.json.gz",
+      "source_state_sha256": "a9d1857c877fb78f689ec8169a2a8aa61e5095201bb09d002274e76a3467748a",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [
+        "原配置有camera_revision修复标记，原状态未带该标记；物理字段一致，但仍缺修复后参考RGB绑定"
+      ],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+      "extraction_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+      "contract_recovered": true,
+      "reference_labels": {
+        "book_contacts_upper_can": 1,
+        "can_lands_on_lower_shelf": 1,
+        "phone_second_fall_original": 1
+      },
+      "original_outcome": "C2_full_chain_phone_second_fall",
+      "metrics": {
+        "schema_version": "t03v5_sample_causal_audit_v1",
+        "sample_id": "Temp",
+        "status": "PASS",
+        "quality_gate_pass": true,
+        "causal_parameter_group": "C",
+        "changed_variable": "lower_phone_com_edge_distance_m",
+        "observed_outcome": "C2_full_chain_phone_second_fall",
+        "duration_s": 7.0,
+        "action_span_s": 3.933333333333333,
+        "first_contact_frame": {
+          "book_can": 89,
+          "can_lower_shelf": 103,
+          "can_phone": 106,
+          "phone_floor": 128
+        },
+        "first_contact_time_s": {
+          "book_can": 2.966666666666667,
+          "can_lower_shelf": 3.433333333333333,
+          "can_phone": 3.533333333333333,
+          "phone_floor": 4.266666666666667
+        },
+        "measured_contact_impulses": {
+          "book_can_Ns": 0.1207848374370476,
+          "can_lower_shelf_Ns": 1.1448866489556877,
+          "can_phone_Ns": 7.699957607219212,
+          "phone_floor_Ns": 11.572252451140253
+        },
+        "precontact_motion_m": {
+          "upper_can": 8.318573236465454e-06,
+          "lower_phone": 6.973743438720703e-06
+        },
+        "displacement_m": {
+          "book": 1.1699338555346805,
+          "upper_can": 0.9586617245967319,
+          "lower_phone": 0.4548461568415944
+        },
+        "vertical_drop_m": {
+          "upper_can": 0.7585151344537735,
+          "lower_phone": 0.4218001365661621
+        },
+        "final_settled": true,
+        "max_speed_mps": 2.3062621484181083,
+        "max_angular_speed_radps": 13.554616256064149,
+        "max_frame_jump_m": 0.07456689028019016,
+        "max_effective_penetration_m": 0.0015548803862184286,
+        "max_penetration_pair": [
+          "t03v5_terminal_floor",
+          "t03v5_upper_edge_can"
+        ],
+        "forbidden_human_object_names": [],
+        "required_physics_parameters": {
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "gravity_magnitude_mps2": 9.81,
+          "book_mass_kg": 0.38,
+          "upper_can_mass_kg": 0.37,
+          "lower_phone_mass_kg": 0.19,
+          "declared_one_shot_impulse_vector_Ns": [
+            0.24700000000000003,
+            0.0,
+            0.0
+          ],
+          "declared_one_shot_impulse_magnitude_Ns": 0.24700000000000003,
+          "book_initial_speed_mps": 0.65,
+          "upper_can_com_edge_distance_m": 0.008,
+          "lower_phone_com_edge_distance_m": 0.1
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T03_C04",
+      "source_sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_minus_rep01__A0470000__B0008000__C0006000__r014",
+      "source_config_sha256": "86949b07a0cda83594bb37f662be455f6e293d4c3af5ebdf2d1640b2851c0430",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g03_earth__cfA_theta_minus_rep01__A0470000__B0008000__C0006000__r014/metadata/T03V5F480__bg01_home_ase__g03_earth__cfA_theta_minus_rep01__A0470000__B0008000__C0006000__r014__cam01.json.gz",
+      "source_state_sha256": "7bc04bc63df4f708ec5f5ae71b84f59fb878c7398d23b888fc810f12f42bab47",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [
+        "原配置有camera_revision修复标记，原状态未带该标记；物理字段一致，但仍缺修复后参考RGB绑定"
+      ],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+      "extraction_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+      "contract_recovered": true,
+      "reference_labels": {
+        "book_contacts_upper_can": 0,
+        "can_lands_on_lower_shelf": 0,
+        "phone_second_fall_original": 0
+      },
+      "original_outcome": "A0_book_stops_before_upper_can",
+      "metrics": {
+        "schema_version": "t03v5_sample_causal_audit_v1",
+        "sample_id": "Temp",
+        "status": "PASS",
+        "quality_gate_pass": true,
+        "causal_parameter_group": "A",
+        "changed_variable": "book_initial_speed_mps",
+        "observed_outcome": "A0_book_stops_before_upper_can",
+        "duration_s": 7.0,
+        "action_span_s": 3.8333333333333335,
+        "first_contact_frame": {
+          "book_can": null,
+          "can_lower_shelf": null,
+          "can_phone": null,
+          "phone_floor": null
+        },
+        "first_contact_time_s": {
+          "book_can": null,
+          "can_lower_shelf": null,
+          "can_phone": null,
+          "phone_floor": null
+        },
+        "measured_contact_impulses": {
+          "book_can_Ns": 0,
+          "can_lower_shelf_Ns": 0,
+          "can_phone_Ns": 0,
+          "phone_floor_Ns": 0
+        },
+        "precontact_motion_m": {
+          "upper_can": 8.318573236465454e-06,
+          "lower_phone": 6.973743438720703e-06
+        },
+        "displacement_m": {
+          "book": 0.9099224507869582,
+          "upper_can": 0.0005088187754154205,
+          "lower_phone": 0.0005235075950622559
+        },
+        "vertical_drop_m": {
+          "upper_can": 0.0,
+          "lower_phone": 0.0
+        },
+        "final_settled": true,
+        "max_speed_mps": 0.46598291627689914,
+        "max_angular_speed_radps": 0.001339362814003852,
+        "max_frame_jump_m": 0.015601830914517143,
+        "max_effective_penetration_m": 0.0,
+        "max_penetration_pair": [
+          "t03v5_upper_tabletop_collision_slab",
+          "t03v5_upper_edge_can"
+        ],
+        "forbidden_human_object_names": [],
+        "required_physics_parameters": {
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "gravity_magnitude_mps2": 9.81,
+          "book_mass_kg": 0.38,
+          "upper_can_mass_kg": 0.37,
+          "lower_phone_mass_kg": 0.19,
+          "declared_one_shot_impulse_vector_Ns": [
+            0.1786,
+            0.0,
+            0.0
+          ],
+          "declared_one_shot_impulse_magnitude_Ns": 0.1786,
+          "book_initial_speed_mps": 0.47000000000000003,
+          "upper_can_com_edge_distance_m": 0.008,
+          "lower_phone_com_edge_distance_m": 0.006
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T03_C05",
+      "source_sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_plus_rep01__A0730000__B0008000__C0006000__r014",
+      "source_config_sha256": "4ab93d5f19345ea11d8a4cce2f23fc996d354940cd325f985b74198c5b34cc2d",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g03_earth__cfA_theta_plus_rep01__A0730000__B0008000__C0006000__r014/metadata/T03V5F480__bg01_home_ase__g03_earth__cfA_theta_plus_rep01__A0730000__B0008000__C0006000__r014__cam01.json.gz",
+      "source_state_sha256": "9ecef92f157dfc4c1d76987a808abbb865f02ef17a9ffd5835d058e3f79fbcf7",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [
+        "原配置有camera_revision修复标记，原状态未带该标记；物理字段一致，但仍缺修复后参考RGB绑定"
+      ],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+      "extraction_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+      "contract_recovered": true,
+      "reference_labels": {
+        "book_contacts_upper_can": 1,
+        "can_lands_on_lower_shelf": 1,
+        "phone_second_fall_original": 1
+      },
+      "original_outcome": "C2_full_chain_phone_second_fall",
+      "metrics": {
+        "schema_version": "t03v5_sample_causal_audit_v1",
+        "sample_id": "Temp",
+        "status": "PASS",
+        "quality_gate_pass": true,
+        "causal_parameter_group": "A",
+        "changed_variable": "book_initial_speed_mps",
+        "observed_outcome": "C2_full_chain_phone_second_fall",
+        "duration_s": 7.0,
+        "action_span_s": 3.5,
+        "first_contact_frame": {
+          "book_can": 78,
+          "can_lower_shelf": 91,
+          "can_phone": 96,
+          "phone_floor": 107
+        },
+        "first_contact_time_s": {
+          "book_can": 2.6,
+          "can_lower_shelf": 3.033333333333333,
+          "can_phone": 3.2,
+          "phone_floor": 3.566666666666667
+        },
+        "measured_contact_impulses": {
+          "book_can_Ns": 0.14808163468265995,
+          "can_lower_shelf_Ns": 2.150919623233478,
+          "can_phone_Ns": 11.01102003982647,
+          "phone_floor_Ns": 17.665920751189564
+        },
+        "precontact_motion_m": {
+          "upper_can": 8.318573236465454e-06,
+          "lower_phone": 6.973743438720703e-06
+        },
+        "displacement_m": {
+          "book": 1.2157173494513738,
+          "upper_can": 1.0444395023186588,
+          "lower_phone": 0.4653841413980993
+        },
+        "vertical_drop_m": {
+          "upper_can": 0.7569541484117508,
+          "lower_phone": 0.40207910537719727
+        },
+        "final_settled": true,
+        "max_speed_mps": 2.7781937200136455,
+        "max_angular_speed_radps": 23.309090989397543,
+        "max_frame_jump_m": 0.08737073675889827,
+        "max_effective_penetration_m": 0.0018196328096091747,
+        "max_penetration_pair": [
+          "t03v5_lower_edge_phone",
+          "t03v5_upper_edge_can"
+        ],
+        "forbidden_human_object_names": [],
+        "required_physics_parameters": {
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "gravity_magnitude_mps2": 9.81,
+          "book_mass_kg": 0.38,
+          "upper_can_mass_kg": 0.37,
+          "lower_phone_mass_kg": 0.19,
+          "declared_one_shot_impulse_vector_Ns": [
+            0.2774,
+            0.0,
+            0.0
+          ],
+          "declared_one_shot_impulse_magnitude_Ns": 0.2774,
+          "book_initial_speed_mps": 0.73,
+          "upper_can_com_edge_distance_m": 0.008,
+          "lower_phone_com_edge_distance_m": 0.006
+        },
+        "errors": [],
+        "warnings": []
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T04_C01",
+      "source_sample_id": "T04F880V1__bg01_home_ase__g01_moon__global_03__rep01",
+      "source_config_sha256": "b9d51585a131e30984a7fbcf97c74328c33e9399bec1540c6015f785d4b98b51",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T04\\T04F880V1__bg01_home_ase__g01_moon__global_03__rep01.json.gz",
+      "source_state_sha256": "b9d51585a131e30984a7fbcf97c74328c33e9399bec1540c6015f785d4b98b51",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+      "extraction_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+      "contract_recovered": true,
+      "reference_labels": {
+        "original_full_chain": 0
+      },
+      "original_outcome": "partial_chain",
+      "metrics": {
+        "sample_id": "Temp",
+        "metadata_path": "C:\\Users\\24511\\AppData\\Local\\Temp\\tmprcha_my9\\original.json",
+        "background_id": "bg01_home_ase",
+        "gravity_vector_mps2": [
+          0.0,
+          0.0,
+          -1.62
+        ],
+        "commanded_extraction_distance_m": 0.175,
+        "realized_support_bar_displacement_m": 0.17765170335769653,
+        "extraction_error_m": 0.0026517033576965443,
+        "commanded_extraction_speed_mps": 0.15,
+        "clearance_threshold_m": 0.159,
+        "supercritical": true,
+        "bottom_book_downramp_displacement_m": 0.5466691553592682,
+        "middle_book_downramp_displacement_m": 0.5616282820701599,
+        "top_book_downramp_displacement_m": 0.5658231377601624,
+        "moved_book_count": 3,
+        "book_vertical_drop_m": {
+          "t04v3_stack_book_bottom": 0.06915748864412308,
+          "t04v3_stack_book_middle": 0.07169345021247864,
+          "t04v3_stack_book_top": 0.07265592366456985
+        },
+        "book_rotation_deg": {
+          "t04v3_stack_book_bottom": 1.4089435338089968,
+          "t04v3_stack_book_middle": 1.4422164260991166,
+          "t04v3_stack_book_top": 1.077573874094175
+        },
+        "mug_rotation_deg": 0.0,
+        "mug_displacement_m": 0.00044106319549536697,
+        "stage_frames": {
+          "bottom_ramp": null,
+          "bottom_middle": 25,
+          "middle_top": 25,
+          "support_endstop": 32,
+          "bottom_can_1": 184,
+          "middle_can_1": null,
+          "top_can_1": null,
+          "can_1_can_2": 195,
+          "can_2_mug": null
+        },
+        "outcome_label": "partial_chain",
+        "duration_s": 7.0,
+        "action_span_s": 6.2,
+        "max_initial_penetration_m": 0.00012826206511817873,
+        "raw_max_penetration_m": 0.0010832175612449646,
+        "max_penetration_m": 0.0010832175612449646,
+        "isolated_solver_penetration_outlier_count": 0,
+        "max_speed_mps": 1.1381857476969972,
+        "max_angular_speed_radps": 0.7116853339765894,
+        "max_frame_jump_m": 0.03571680290205586,
+        "final_settled": false,
+        "background_freeze_valid": false,
+        "parameters_complete": true,
+        "physical_pull_force_valid": true,
+        "trajectory_replay_provenance_valid": false,
+        "errors": [
+          "unapproved_background_or_missing_freeze_stamp",
+          "not_settled_during_final_0p8s"
+        ],
+        "warnings": [],
+        "valid_t04v3_sample": false
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T04_C02",
+      "source_sample_id": "T04F880V1__bg01_home_ase__g02_mars__global_03__rep01",
+      "source_config_sha256": "68f1d003cba7e92ab6b3d247f0c14f2ca4364f99d05cfb19632c6d26a06fee48",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T04\\T04F880V1__bg01_home_ase__g02_mars__global_03__rep01.json.gz",
+      "source_state_sha256": "68f1d003cba7e92ab6b3d247f0c14f2ca4364f99d05cfb19632c6d26a06fee48",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+      "extraction_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+      "contract_recovered": true,
+      "reference_labels": {
+        "original_full_chain": 0
+      },
+      "original_outcome": "partial_chain",
+      "metrics": {
+        "sample_id": "Temp",
+        "metadata_path": "C:\\Users\\24511\\AppData\\Local\\Temp\\tmp7xckq6cy\\original.json",
+        "background_id": "bg01_home_ase",
+        "gravity_vector_mps2": [
+          0.0,
+          0.0,
+          -3.71
+        ],
+        "commanded_extraction_distance_m": 0.175,
+        "realized_support_bar_displacement_m": 0.17868292331695557,
+        "extraction_error_m": 0.0036829233169555775,
+        "commanded_extraction_speed_mps": 0.15,
+        "clearance_threshold_m": 0.159,
+        "supercritical": true,
+        "bottom_book_downramp_displacement_m": 0.5972929894924164,
+        "middle_book_downramp_displacement_m": 0.6760762333869934,
+        "top_book_downramp_displacement_m": 0.6833365559577942,
+        "moved_book_count": 3,
+        "book_vertical_drop_m": {
+          "t04v3_stack_book_bottom": 0.0771775133907795,
+          "t04v3_stack_book_middle": 0.08783816546201706,
+          "t04v3_stack_book_top": 0.08950471878051758
+        },
+        "book_rotation_deg": {
+          "t04v3_stack_book_bottom": 6.6348153280299496,
+          "t04v3_stack_book_middle": 6.0621505613257884,
+          "t04v3_stack_book_top": 2.986890543641043
+        },
+        "mug_rotation_deg": 0.6258868293517076,
+        "mug_displacement_m": 0.02306192800063135,
+        "stage_frames": {
+          "bottom_ramp": null,
+          "bottom_middle": 24,
+          "middle_top": 25,
+          "support_endstop": 32,
+          "bottom_can_1": 126,
+          "middle_can_1": 153,
+          "top_can_1": null,
+          "can_1_can_2": 133,
+          "can_2_mug": 142
+        },
+        "outcome_label": "partial_chain",
+        "duration_s": 7.0,
+        "action_span_s": 5.033333333333333,
+        "max_initial_penetration_m": 0.0001941810769494623,
+        "raw_max_penetration_m": 0.00739721953868866,
+        "max_penetration_m": 0.00739721953868866,
+        "isolated_solver_penetration_outlier_count": 0,
+        "max_speed_mps": 0.9978724023779446,
+        "max_angular_speed_radps": 2.9016364886568864,
+        "max_frame_jump_m": 0.03149251684905838,
+        "final_settled": true,
+        "background_freeze_valid": false,
+        "parameters_complete": true,
+        "physical_pull_force_valid": true,
+        "trajectory_replay_provenance_valid": false,
+        "errors": [
+          "unapproved_background_or_missing_freeze_stamp"
+        ],
+        "warnings": [],
+        "valid_t04v3_sample": false
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T04_C03",
+      "source_sample_id": "T04F880V1__bg01_home_ase__g03_earth__global_03__rep01",
+      "source_config_sha256": "248a6f6fd9bf95bb0f53951761dcabc87dff1d105d99f43952f779f0b84bb7c7",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T04\\T04F880V1__bg01_home_ase__g03_earth__global_03__rep01.json.gz",
+      "source_state_sha256": "248a6f6fd9bf95bb0f53951761dcabc87dff1d105d99f43952f779f0b84bb7c7",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+      "extraction_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+      "contract_recovered": true,
+      "reference_labels": {
+        "original_full_chain": 1
+      },
+      "original_outcome": "full_chain",
+      "metrics": {
+        "sample_id": "Temp",
+        "metadata_path": "C:\\Users\\24511\\AppData\\Local\\Temp\\tmpqbfm056s\\original.json",
+        "background_id": "bg01_home_ase",
+        "gravity_vector_mps2": [
+          0.0,
+          0.0,
+          -9.81
+        ],
+        "commanded_extraction_distance_m": 0.175,
+        "realized_support_bar_displacement_m": 0.1775740683078766,
+        "extraction_error_m": 0.002574068307876598,
+        "commanded_extraction_speed_mps": 0.15,
+        "clearance_threshold_m": 0.159,
+        "supercritical": true,
+        "bottom_book_downramp_displacement_m": 0.5629911124706268,
+        "middle_book_downramp_displacement_m": 0.6331181526184082,
+        "top_book_downramp_displacement_m": 0.6761278212070465,
+        "moved_book_count": 3,
+        "book_vertical_drop_m": {
+          "t04v3_stack_book_bottom": 0.07402526214718819,
+          "t04v3_stack_book_middle": 0.08478226512670517,
+          "t04v3_stack_book_top": 0.09127648919820786
+        },
+        "book_rotation_deg": {
+          "t04v3_stack_book_bottom": 4.099805838345411,
+          "t04v3_stack_book_middle": 3.803552740162249,
+          "t04v3_stack_book_top": 2.9939001941244974
+        },
+        "mug_rotation_deg": 1.1384011568263224,
+        "mug_displacement_m": 0.043514200189836046,
+        "stage_frames": {
+          "bottom_ramp": null,
+          "bottom_middle": 24,
+          "middle_top": 24,
+          "support_endstop": 45,
+          "bottom_can_1": 100,
+          "middle_can_1": 110,
+          "top_can_1": 115,
+          "can_1_can_2": 104,
+          "can_2_mug": 111
+        },
+        "outcome_label": "full_chain",
+        "duration_s": 7.0,
+        "action_span_s": 5.4,
+        "max_initial_penetration_m": 0.00031882929033599794,
+        "raw_max_penetration_m": 0.002278693951666355,
+        "max_penetration_m": 0.002278693951666355,
+        "isolated_solver_penetration_outlier_count": 0,
+        "max_speed_mps": 0.47410805733484845,
+        "max_angular_speed_radps": 2.1819101679283937,
+        "max_frame_jump_m": 0.015868768790039355,
+        "final_settled": true,
+        "background_freeze_valid": false,
+        "parameters_complete": true,
+        "physical_pull_force_valid": true,
+        "trajectory_replay_provenance_valid": false,
+        "errors": [
+          "unapproved_background_or_missing_freeze_stamp"
+        ],
+        "warnings": [],
+        "valid_t04v3_sample": false
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T04_C04",
+      "source_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_support_release_minus__rep01",
+      "source_config_sha256": "92905463346af868c6418cc938154cb1ef0d61a538db48eb86652b6a23302125",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T04\\T04F880V1__bg01_home_ase__g03_earth__cf_support_release_minus__rep01.json.gz",
+      "source_state_sha256": "92905463346af868c6418cc938154cb1ef0d61a538db48eb86652b6a23302125",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+      "extraction_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+      "contract_recovered": true,
+      "reference_labels": {
+        "original_full_chain": 0
+      },
+      "original_outcome": "partial_chain",
+      "metrics": {
+        "sample_id": "Temp",
+        "metadata_path": "C:\\Users\\24511\\AppData\\Local\\Temp\\tmp8hk5ioto\\original.json",
+        "background_id": "bg01_home_ase",
+        "gravity_vector_mps2": [
+          0.0,
+          0.0,
+          -9.81
+        ],
+        "commanded_extraction_distance_m": 0.175,
+        "realized_support_bar_displacement_m": 0.177053302526474,
+        "extraction_error_m": 0.00205330252647401,
+        "commanded_extraction_speed_mps": 0.1,
+        "clearance_threshold_m": 0.159,
+        "supercritical": true,
+        "bottom_book_downramp_displacement_m": 0.5598531365394592,
+        "middle_book_downramp_displacement_m": 0.6827383637428284,
+        "top_book_downramp_displacement_m": 0.7266735434532166,
+        "moved_book_count": 3,
+        "book_vertical_drop_m": {
+          "t04v3_stack_book_bottom": 0.07368361949920654,
+          "t04v3_stack_book_middle": 0.09281731024384499,
+          "t04v3_stack_book_top": 0.09971644729375839
+        },
+        "book_rotation_deg": {
+          "t04v3_stack_book_bottom": 5.076534286822613,
+          "t04v3_stack_book_middle": 4.991087306143616,
+          "t04v3_stack_book_top": 3.066706507876686
+        },
+        "mug_rotation_deg": 1.0241871294975653,
+        "mug_displacement_m": 0.03319434350621976,
+        "stage_frames": {
+          "bottom_ramp": null,
+          "bottom_middle": 24,
+          "middle_top": 24,
+          "support_endstop": 47,
+          "bottom_can_1": 102,
+          "middle_can_1": 112,
+          "top_can_1": 117,
+          "can_1_can_2": 106,
+          "can_2_mug": 112
+        },
+        "outcome_label": "partial_chain",
+        "duration_s": 7.0,
+        "action_span_s": 3.7,
+        "max_initial_penetration_m": 0.00031882929033599794,
+        "raw_max_penetration_m": 0.001455568359233439,
+        "max_penetration_m": 0.001455568359233439,
+        "isolated_solver_penetration_outlier_count": 0,
+        "max_speed_mps": 0.5398226710484557,
+        "max_angular_speed_radps": 3.3713939910861814,
+        "max_frame_jump_m": 0.01719268712125847,
+        "final_settled": true,
+        "background_freeze_valid": false,
+        "parameters_complete": true,
+        "physical_pull_force_valid": true,
+        "trajectory_replay_provenance_valid": false,
+        "errors": [
+          "unapproved_background_or_missing_freeze_stamp"
+        ],
+        "warnings": [],
+        "valid_t04v3_sample": false
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T04_C05",
+      "source_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_support_release_plus__rep01",
+      "source_config_sha256": "a32bb274a4c63ee936786a7a8660de645ae4e41428dc4090dbbb94faa633a497",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T04\\T04F880V1__bg01_home_ase__g03_earth__cf_support_release_plus__rep01.json.gz",
+      "source_state_sha256": "a32bb274a4c63ee936786a7a8660de645ae4e41428dc4090dbbb94faa633a497",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+      "extraction_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+      "contract_recovered": true,
+      "reference_labels": {
+        "original_full_chain": 1
+      },
+      "original_outcome": "full_chain",
+      "metrics": {
+        "sample_id": "Temp",
+        "metadata_path": "C:\\Users\\24511\\AppData\\Local\\Temp\\tmpjd7j3hun\\original.json",
+        "background_id": "bg01_home_ase",
+        "gravity_vector_mps2": [
+          0.0,
+          0.0,
+          -9.81
+        ],
+        "commanded_extraction_distance_m": 0.175,
+        "realized_support_bar_displacement_m": 0.17755788564682007,
+        "extraction_error_m": 0.0025578856468200795,
+        "commanded_extraction_speed_mps": 0.2,
+        "clearance_threshold_m": 0.159,
+        "supercritical": true,
+        "bottom_book_downramp_displacement_m": 0.6034092605113983,
+        "middle_book_downramp_displacement_m": 0.7205681502819061,
+        "top_book_downramp_displacement_m": 0.7621647715568542,
+        "moved_book_count": 3,
+        "book_vertical_drop_m": {
+          "t04v3_stack_book_bottom": 0.07822335697710514,
+          "t04v3_stack_book_middle": 0.09311391785740852,
+          "t04v3_stack_book_top": 0.09911872446537018
+        },
+        "book_rotation_deg": {
+          "t04v3_stack_book_bottom": 5.467857996682461,
+          "t04v3_stack_book_middle": 6.000755080417217,
+          "t04v3_stack_book_top": 2.9776119932950342
+        },
+        "mug_rotation_deg": 1.5499610142525428,
+        "mug_displacement_m": 0.04930299706735729,
+        "stage_frames": {
+          "bottom_ramp": null,
+          "bottom_middle": 24,
+          "middle_top": 24,
+          "support_endstop": 39,
+          "bottom_can_1": 95,
+          "middle_can_1": 108,
+          "top_can_1": 121,
+          "can_1_can_2": 99,
+          "can_2_mug": 105
+        },
+        "outcome_label": "full_chain",
+        "duration_s": 7.0,
+        "action_span_s": 3.533333333333333,
+        "max_initial_penetration_m": 0.00031882929033599794,
+        "raw_max_penetration_m": 0.006048043258488178,
+        "max_penetration_m": 0.006048043258488178,
+        "isolated_solver_penetration_outlier_count": 0,
+        "max_speed_mps": 0.7975003850879259,
+        "max_angular_speed_radps": 3.406126722044136,
+        "max_frame_jump_m": 0.02195878222006258,
+        "final_settled": true,
+        "background_freeze_valid": false,
+        "parameters_complete": true,
+        "physical_pull_force_valid": true,
+        "trajectory_replay_provenance_valid": false,
+        "errors": [
+          "unapproved_background_or_missing_freeze_stamp",
+          "supercritical_action_span_lt_3p6s"
+        ],
+        "warnings": [],
+        "valid_t04v3_sample": false
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T08_C01",
+      "source_sample_id": "T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113",
+      "source_config_sha256": "46d08809f4148e879e95586e2a9b234acb6e3a78ff10e3e431c78c7381c2d91c",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T08\\T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113.json.gz",
+      "source_state_sha256": "7bafed31b45d70e85bb0efdc4c4a11d4bb55847343fcb76d7606860e8973b5f9",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": false,
+      "source_spec_differences": {
+        "t08_floor_collision_slab": [
+          "size",
+          "contact_offset"
+        ],
+        "t08_target_mug": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "convexify",
+          "collision_proxy",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_lower_impactor_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_upper_payload_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ]
+      },
+      "state_binding_notes": [
+        "已核对v6冻结参考：视频与同目录cam01状态LFS哈希全部匹配；先前配置为求解器v5之前的候选，不能代表实际发布渲染规格。旧规格差异保留审计，实际状态版本对应已闭合；RGB可观察性和共同窗仍单独准入"
+      ],
+      "published_reference_binding": {
+        "source_video_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113/videos/T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "7ea5d07b092f6dac23c247de552e63bc750dd3c646aff84ef600a5fce6255924",
+        "metadata_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113/metadata/T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113__cam01.json.gz",
+        "metadata_sha256": "7bafed31b45d70e85bb0efdc4c4a11d4bb55847343fcb76d7606860e8973b5f9",
+        "binding_kind": "same_pinned_release_sample_and_camera_LFS_hashes",
+        "evidence_sha256": "365465e85ad1c27c8d5d20122e3a94663d303cf17ca841ed7245f35ef6332a77"
+      },
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+      "extraction_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "original_outcome": "t08_target_mug_below_table_8cm",
+      "metrics": {
+        "t08_lower_impactor_book_min_center_world_z_m": 0.025999827310442924,
+        "t08_upper_payload_book_min_center_world_z_m": 0.015957212075591087,
+        "t08_target_mug_min_center_world_z_m": -0.7764995694160461
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T08_C02",
+      "source_sample_id": "T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113",
+      "source_config_sha256": "78bdaa605a2e7c6a1f6090d83b68fc18f26a187c285d60adeb14e7f862c496e0",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T08\\T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113.json.gz",
+      "source_state_sha256": "8d0ecd4b1b77f7373978fbafb17f1939428048234065f691f26b8de51db0b10a",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": false,
+      "source_spec_differences": {
+        "t08_floor_collision_slab": [
+          "size",
+          "contact_offset"
+        ],
+        "t08_target_mug": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "convexify",
+          "collision_proxy",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_lower_impactor_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_upper_payload_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ]
+      },
+      "state_binding_notes": [
+        "已核对v6冻结参考：视频与同目录cam01状态LFS哈希全部匹配；先前配置为求解器v5之前的候选，不能代表实际发布渲染规格。旧规格差异保留审计，实际状态版本对应已闭合；RGB可观察性和共同窗仍单独准入"
+      ],
+      "published_reference_binding": {
+        "source_video_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/videos/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d0183c7abbdc2695a967dd7235603257d04f465b92ee744d11d4c86ec50bff2e",
+        "metadata_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/metadata/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01.json.gz",
+        "metadata_sha256": "8d0ecd4b1b77f7373978fbafb17f1939428048234065f691f26b8de51db0b10a",
+        "binding_kind": "same_pinned_release_sample_and_camera_LFS_hashes",
+        "evidence_sha256": "365465e85ad1c27c8d5d20122e3a94663d303cf17ca841ed7245f35ef6332a77"
+      },
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+      "extraction_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t08_lower_impactor_book_below_table_8cm": 1,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "original_outcome": "t08_lower_impactor_book_below_table_8cm;t08_target_mug_below_table_8cm",
+      "metrics": {
+        "t08_lower_impactor_book_min_center_world_z_m": -0.7980509400367737,
+        "t08_upper_payload_book_min_center_world_z_m": 0.01596495509147644,
+        "t08_target_mug_min_center_world_z_m": -0.776233971118927
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T08_C03",
+      "source_sample_id": "T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113",
+      "source_config_sha256": "b95bf8990d36c50cca37fad627ce3a5c6801bba046e0baa37479b76341d28547",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T08\\T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113.json.gz",
+      "source_state_sha256": "5e6928381501e992dd25625e46aee41edfbd57b35092f0e213c41bf2a25e86b5",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": false,
+      "source_spec_differences": {
+        "t08_floor_collision_slab": [
+          "size",
+          "contact_offset"
+        ],
+        "t08_target_mug": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "convexify",
+          "collision_proxy",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_lower_impactor_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_upper_payload_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ]
+      },
+      "state_binding_notes": [
+        "已核对v6冻结参考：视频与同目录cam01状态LFS哈希全部匹配；先前配置为求解器v5之前的候选，不能代表实际发布渲染规格。旧规格差异保留审计，实际状态版本对应已闭合；RGB可观察性和共同窗仍单独准入"
+      ],
+      "published_reference_binding": {
+        "source_video_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113/videos/T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "f73c849a313ce4c5f40b45c4cddca252bab945b10ab60becd48413ce3ea45c20",
+        "metadata_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113/metadata/T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113__cam01.json.gz",
+        "metadata_sha256": "5e6928381501e992dd25625e46aee41edfbd57b35092f0e213c41bf2a25e86b5",
+        "binding_kind": "same_pinned_release_sample_and_camera_LFS_hashes",
+        "evidence_sha256": "365465e85ad1c27c8d5d20122e3a94663d303cf17ca841ed7245f35ef6332a77"
+      },
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+      "extraction_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "original_outcome": "t08_target_mug_below_table_8cm",
+      "metrics": {
+        "t08_lower_impactor_book_min_center_world_z_m": 0.025999819859862328,
+        "t08_upper_payload_book_min_center_world_z_m": 0.015984850004315376,
+        "t08_target_mug_min_center_world_z_m": -0.7764992713928223
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T08_C04",
+      "source_sample_id": "T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800",
+      "source_config_sha256": "95478752ec452029aaba95f238910fd18af6c30e01fe6403574668a18dcc4a63",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T08\\T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800.json.gz",
+      "source_state_sha256": "6716654f686b4c46f6560b63daf17a426727b756e6d7f143fac5c7e201ab69c9",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": false,
+      "source_spec_differences": {
+        "t08_floor_collision_slab": [
+          "size",
+          "contact_offset"
+        ],
+        "t08_target_mug": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "convexify",
+          "collision_proxy",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_lower_impactor_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_upper_payload_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ]
+      },
+      "state_binding_notes": [
+        "已核对v6冻结参考：视频与同目录cam01状态LFS哈希全部匹配；先前配置为求解器v5之前的候选，不能代表实际发布渲染规格。旧规格差异保留审计，实际状态版本对应已闭合；RGB可观察性和共同窗仍单独准入"
+      ],
+      "published_reference_binding": {
+        "source_video_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800/videos/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "3ca5cb8707a2f75c03b18ea50e5f99a72c4b4d382f560f0202c42bd9d84aa535",
+        "metadata_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800/metadata/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800__cam01.json.gz",
+        "metadata_sha256": "6716654f686b4c46f6560b63daf17a426727b756e6d7f143fac5c7e201ab69c9",
+        "binding_kind": "same_pinned_release_sample_and_camera_LFS_hashes",
+        "evidence_sha256": "365465e85ad1c27c8d5d20122e3a94663d303cf17ca841ed7245f35ef6332a77"
+      },
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+      "extraction_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 1,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "original_outcome": "t08_upper_payload_book_below_table_8cm",
+      "metrics": {
+        "t08_lower_impactor_book_min_center_world_z_m": 0.02599158324301243,
+        "t08_upper_payload_book_min_center_world_z_m": -0.8080003261566162,
+        "t08_target_mug_min_center_world_z_m": 0.04749910160899162
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T08_C05",
+      "source_sample_id": "T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800",
+      "source_config_sha256": "ecd8cd65711c0f972d5950ccead1f40d838b2b965ba781334e1ba8593c81d00d",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T08\\T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800.json.gz",
+      "source_state_sha256": "5affa2e1722c1643bcd60f117740dab0a9a356ab3d768ce0299f6e273dc76dfc",
+      "frame_count": 210,
+      "original_experiment_exact_match": false,
+      "original_physical_experiment_match": false,
+      "source_spec_differences": {
+        "t08_floor_collision_slab": [
+          "size",
+          "contact_offset"
+        ],
+        "t08_target_mug": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "convexify",
+          "collision_proxy",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_lower_impactor_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ],
+        "t08_upper_payload_book": [
+          "shape",
+          "collision_mesh_path",
+          "mesh_path",
+          "preserve_mesh_material",
+          "ccd_enabled",
+          "contact_offset"
+        ]
+      },
+      "state_binding_notes": [
+        "已核对v6冻结参考：视频与同目录cam01状态LFS哈希全部匹配；先前配置为求解器v5之前的候选，不能代表实际发布渲染规格。旧规格差异保留审计，实际状态版本对应已闭合；RGB可观察性和共同窗仍单独准入"
+      ],
+      "published_reference_binding": {
+        "source_video_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800/videos/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d1a798dbe46182d694ab9ccca8e67cb37fdce0dac9e1e3f5373d02e474f3bcbe",
+        "metadata_path": "data/T08/formal_v4_480p_v6_20260905/samples/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800/metadata/T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800__cam01.json.gz",
+        "metadata_sha256": "5affa2e1722c1643bcd60f117740dab0a9a356ab3d768ce0299f6e273dc76dfc",
+        "binding_kind": "same_pinned_release_sample_and_camera_LFS_hashes",
+        "evidence_sha256": "365465e85ad1c27c8d5d20122e3a94663d303cf17ca841ed7245f35ef6332a77"
+      },
+      "extraction_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+      "extraction_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "original_outcome": "t08_target_mug_below_table_8cm",
+      "metrics": {
+        "t08_lower_impactor_book_min_center_world_z_m": 0.025999194011092186,
+        "t08_upper_payload_book_min_center_world_z_m": 0.015983911231160164,
+        "t08_target_mug_min_center_world_z_m": -0.7772250175476074
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T11_C01",
+      "source_sample_id": "T11R011__bg01_home_ase__g01_moon__G_global_06",
+      "source_config_sha256": "b173bfae2435ef78233980bdfe35947979f2ccf3f7681ede9e7a67426b9bfaf2",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T11\\T11R011__bg01_home_ase__g01_moon__G_global_06.json.gz",
+      "source_state_sha256": "37f3342a08593ee165a7424cdda237461a1216460289e240d3c2b533bba5679f",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+      "extraction_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "original_outcome": "fallen_count_3",
+      "metrics": {
+        "ordered_chain": true,
+        "first_contact_frame_steps": [
+          [
+            75,
+            20
+          ],
+          [
+            80,
+            39
+          ]
+        ],
+        "final_center_z_m": {
+          "t11_driver_eraser": -0.7990002632141113,
+          "t11_relay_pencil_case": -0.8060004115104675,
+          "t11_eyeglasses_case": -0.8040110468864441
+        },
+        "R011_release_binding": {
+          "acceptance_sha256": "1922f90967556a0575f7f51527e9735d0b2018d7a2ed36316aa66d18cf72377b",
+          "release_sha256": "c4f274aabb5ed0570377c2fc025020cb2fe598eb446e84ef4e1f2ab02d731a06",
+          "matrix_binding_sha256": "8be8d1599d819571c5cb73fd0652cd20781875fe1420cf054842b8252bdbe5c0",
+          "source_hash_is_current_recovered_code_not_historical_execution_attestation": true
+        }
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T11_C02",
+      "source_sample_id": "T11R011__bg01_home_ase__g02_mars__G_global_06",
+      "source_config_sha256": "6569236012721d2b4de7e3dab2cfb6522ba9e199c1ce4f8164c7a9bbb88b2644",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T11\\T11R011__bg01_home_ase__g02_mars__G_global_06.json.gz",
+      "source_state_sha256": "65f943d6c341eac7f5485fd896a8ad6359639da1e48a675fb9e917de80c129fe",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+      "extraction_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "original_outcome": "fallen_count_3",
+      "metrics": {
+        "ordered_chain": true,
+        "first_contact_frame_steps": [
+          [
+            75,
+            41
+          ],
+          [
+            80,
+            66
+          ]
+        ],
+        "final_center_z_m": {
+          "t11_driver_eraser": -0.8065018057823181,
+          "t11_relay_pencil_case": -0.8060023188591003,
+          "t11_eyeglasses_case": -0.8040112853050232
+        },
+        "R011_release_binding": {
+          "acceptance_sha256": "1922f90967556a0575f7f51527e9735d0b2018d7a2ed36316aa66d18cf72377b",
+          "release_sha256": "c4f274aabb5ed0570377c2fc025020cb2fe598eb446e84ef4e1f2ab02d731a06",
+          "matrix_binding_sha256": "8be8d1599d819571c5cb73fd0652cd20781875fe1420cf054842b8252bdbe5c0",
+          "source_hash_is_current_recovered_code_not_historical_execution_attestation": true
+        }
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T11_C03",
+      "source_sample_id": "T11R011__bg01_home_ase__g03_earth__G_global_06",
+      "source_config_sha256": "ba970e791b625a291072fec95c684a0250e4597a25b93da199bb5b77c83beb2d",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T11\\T11R011__bg01_home_ase__g03_earth__G_global_06.json.gz",
+      "source_state_sha256": "1a4aec0200a4f573f6ea89a5dd2e7a2e05b3e11d1d278f29ec634130f0d407c2",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+      "extraction_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "original_outcome": "fallen_count_3",
+      "metrics": {
+        "ordered_chain": true,
+        "first_contact_frame_steps": [
+          [
+            76,
+            42
+          ],
+          [
+            82,
+            19
+          ]
+        ],
+        "final_center_z_m": {
+          "t11_driver_eraser": -0.8065148591995239,
+          "t11_relay_pencil_case": -0.8060145974159241,
+          "t11_eyeglasses_case": -0.8040168881416321
+        },
+        "R011_release_binding": {
+          "acceptance_sha256": "1922f90967556a0575f7f51527e9735d0b2018d7a2ed36316aa66d18cf72377b",
+          "release_sha256": "c4f274aabb5ed0570377c2fc025020cb2fe598eb446e84ef4e1f2ab02d731a06",
+          "matrix_binding_sha256": "8be8d1599d819571c5cb73fd0652cd20781875fe1420cf054842b8252bdbe5c0",
+          "source_hash_is_current_recovered_code_not_historical_execution_attestation": true
+        }
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T11_C04",
+      "source_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_06",
+      "source_config_sha256": "5ad71a2e14ffcf0fc0603d48751788c67c50d854a8f93fd377d91366286b9347",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T11\\T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_06.json.gz",
+      "source_state_sha256": "665e91850221e26667953479e123a71e61bac1d83d77991e4417318b15f61ac0",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+      "extraction_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "original_outcome": "fallen_count_3",
+      "metrics": {
+        "ordered_chain": true,
+        "first_contact_frame_steps": [
+          [
+            77,
+            2
+          ],
+          [
+            83,
+            39
+          ]
+        ],
+        "final_center_z_m": {
+          "t11_driver_eraser": -0.78408282995224,
+          "t11_relay_pencil_case": -0.8060157299041748,
+          "t11_eyeglasses_case": -0.8040078282356262
+        },
+        "R011_release_binding": {
+          "acceptance_sha256": "1922f90967556a0575f7f51527e9735d0b2018d7a2ed36316aa66d18cf72377b",
+          "release_sha256": "c4f274aabb5ed0570377c2fc025020cb2fe598eb446e84ef4e1f2ab02d731a06",
+          "matrix_binding_sha256": "8be8d1599d819571c5cb73fd0652cd20781875fe1420cf054842b8252bdbe5c0",
+          "source_hash_is_current_recovered_code_not_historical_execution_attestation": true
+        }
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T11_C05",
+      "source_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_07",
+      "source_config_sha256": "d7525fe4a5af4471041051947b31ba76df9e207a913defdd92d14a1315048835",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T11\\T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_07.json.gz",
+      "source_state_sha256": "78cee22997fe1ccecf91f28fff61ff365c84338ef9bb252086ad367bd42e3c75",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+      "extraction_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+      "contract_recovered": true,
+      "reference_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "original_outcome": "fallen_count_3",
+      "metrics": {
+        "ordered_chain": true,
+        "first_contact_frame_steps": [
+          [
+            76,
+            34
+          ],
+          [
+            82,
+            63
+          ]
+        ],
+        "final_center_z_m": {
+          "t11_driver_eraser": -0.8065155744552612,
+          "t11_relay_pencil_case": -0.8060202598571777,
+          "t11_eyeglasses_case": -0.7796292304992676
+        },
+        "R011_release_binding": {
+          "acceptance_sha256": "1922f90967556a0575f7f51527e9735d0b2018d7a2ed36316aa66d18cf72377b",
+          "release_sha256": "c4f274aabb5ed0570377c2fc025020cb2fe598eb446e84ef4e1f2ab02d731a06",
+          "matrix_binding_sha256": "8be8d1599d819571c5cb73fd0652cd20781875fe1420cf054842b8252bdbe5c0",
+          "source_hash_is_current_recovered_code_not_historical_execution_attestation": true
+        }
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C01",
+      "source_sample_id": "T12F880R002__bg01_home_ase__p128",
+      "source_config_sha256": "26586275578154f150c9b64d4f560d1fbe50bd56165175fa3f4dd944a897963c",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T12\\T12F880R002__bg01_home_ase__p128.json.gz",
+      "source_state_sha256": "a9c898ae68f2c25b78eb80b4d02b6568ebfe5dce91911063861a8c9cc906d81c",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\63c7df20a8_build_t12_formal_r001.py",
+      "extraction_source_sha256": "63c7df20a87cb55c62a9e07fc89a9712aa804f5765a77f0e4499e51a56aa974e",
+      "contract_recovered": false,
+      "reference_labels": {},
+      "original_outcome": null,
+      "metrics": {
+        "tissue_box_final_3d_displacement_m": 0.08355948328971943,
+        "tissue_box_max_3d_displacement_m": 0.08355964720261168,
+        "native_contacts_present": false
+      },
+      "missing": [
+        "R002原配置只列no_contact/subcritical_transfer/sustained_transfer，未给运动阈值；原生产worker只做视频校验，未实现分支提取；该批5条状态均无原生接触遥测，不能把缺接触记录算未接触"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C02",
+      "source_sample_id": "T12F880R002__bg01_home_ase__p053",
+      "source_config_sha256": "27f28fda3dd32dd80f947028a094b436bd11e3fbe5e019fa9a5487cc8879c855",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T12\\T12F880R002__bg01_home_ase__p053.json.gz",
+      "source_state_sha256": "323b3fb21a41363e9aec9b2b65c9a8206fe3cf756976e308e7cf8bd28e335466",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\63c7df20a8_build_t12_formal_r001.py",
+      "extraction_source_sha256": "63c7df20a87cb55c62a9e07fc89a9712aa804f5765a77f0e4499e51a56aa974e",
+      "contract_recovered": false,
+      "reference_labels": {},
+      "original_outcome": null,
+      "metrics": {
+        "tissue_box_final_3d_displacement_m": 0.14697784185608065,
+        "tissue_box_max_3d_displacement_m": 0.146977841856138,
+        "native_contacts_present": false
+      },
+      "missing": [
+        "R002原配置只列no_contact/subcritical_transfer/sustained_transfer，未给运动阈值；原生产worker只做视频校验，未实现分支提取；该批5条状态均无原生接触遥测，不能把缺接触记录算未接触"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C03",
+      "source_sample_id": "T12F880R002__bg01_home_ase__p166",
+      "source_config_sha256": "27e545b744e5bfebb6e40312e87efd01f85f1ad099680dfbf64b86ed4a770174",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T12\\T12F880R002__bg01_home_ase__p166.json.gz",
+      "source_state_sha256": "7ec5569f877d6237f900ffb3c40129f7fd58554d9ab8cad324d9fc2be87ca18e",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\63c7df20a8_build_t12_formal_r001.py",
+      "extraction_source_sha256": "63c7df20a87cb55c62a9e07fc89a9712aa804f5765a77f0e4499e51a56aa974e",
+      "contract_recovered": false,
+      "reference_labels": {},
+      "original_outcome": null,
+      "metrics": {
+        "tissue_box_final_3d_displacement_m": 0.022940351676560843,
+        "tissue_box_max_3d_displacement_m": 0.022947091834565943,
+        "native_contacts_present": false
+      },
+      "missing": [
+        "R002原配置只列no_contact/subcritical_transfer/sustained_transfer，未给运动阈值；原生产worker只做视频校验，未实现分支提取；该批5条状态均无原生接触遥测，不能把缺接触记录算未接触"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C04",
+      "source_sample_id": "T12F880R002__bg01_home_ase__p090",
+      "source_config_sha256": "03bfa0dceb079d8d8dfe3fad5b965845fb4c52ff99fb4f3c6bff48e56248e6f9",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T12\\T12F880R002__bg01_home_ase__p090.json.gz",
+      "source_state_sha256": "0e6d853a30317c980409072ff00b7360c722214bc19d748bc8f922cf2ee4e16f",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\63c7df20a8_build_t12_formal_r001.py",
+      "extraction_source_sha256": "63c7df20a87cb55c62a9e07fc89a9712aa804f5765a77f0e4499e51a56aa974e",
+      "contract_recovered": false,
+      "reference_labels": {},
+      "original_outcome": null,
+      "metrics": {
+        "tissue_box_final_3d_displacement_m": 5.7049041597527494e-12,
+        "tissue_box_max_3d_displacement_m": 5.918396577941215e-12,
+        "native_contacts_present": false
+      },
+      "missing": [
+        "R002原配置只列no_contact/subcritical_transfer/sustained_transfer，未给运动阈值；原生产worker只做视频校验，未实现分支提取；该批5条状态均无原生接触遥测，不能把缺接触记录算未接触"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C05",
+      "source_sample_id": "T12F880R002__bg01_home_ase__p006",
+      "source_config_sha256": "e07bd879e31b33d76704fc6959902edc21db09be5b8956c19c56ab0ba5e2c2f1",
+      "source_state_path": "review\\scene_family_completion_20261018\\completion_states\\T12\\T12F880R002__bg01_home_ase__p006.json.gz",
+      "source_state_sha256": "ee84c3a4b2e20844fd96fd0800132f112d54626dfd9406b2b3baf209f5e6d73b",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\63c7df20a8_build_t12_formal_r001.py",
+      "extraction_source_sha256": "63c7df20a87cb55c62a9e07fc89a9712aa804f5765a77f0e4499e51a56aa974e",
+      "contract_recovered": false,
+      "reference_labels": {},
+      "original_outcome": null,
+      "metrics": {
+        "tissue_box_final_3d_displacement_m": 0.041365697979930595,
+        "tissue_box_max_3d_displacement_m": 0.04136569802811957,
+        "native_contacts_present": false
+      },
+      "missing": [
+        "R002原配置只列no_contact/subcritical_transfer/sustained_transfer，未给运动阈值；原生产worker只做视频校验，未实现分支提取；该批5条状态均无原生接触遥测，不能把缺接触记录算未接触"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C01",
+      "source_sample_id": "T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d",
+      "source_config_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d.json",
+      "source_state_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "frame_count": 168,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+      "extraction_source_sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+      "contract_recovered": false,
+      "reference_labels": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "original_outcome": null,
+      "metrics": {
+        "drink_max_displacement_from_frame18_m": 0.1337804141608621,
+        "drink_drop_from_frame18_m": 0.0399589017033577,
+        "native_contacts_present": true
+      },
+      "missing": [
+        "F5原队列明确两个接触和先后约束，但未找到complete_chain_fallen的正式二分类提取合同；原release audit的1cm仅为运动起始检测，不是跌落阈值；不采用新增5cm"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C02",
+      "source_sample_id": "T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d",
+      "source_config_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d.json",
+      "source_state_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "frame_count": 168,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+      "extraction_source_sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+      "contract_recovered": false,
+      "reference_labels": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "original_outcome": null,
+      "metrics": {
+        "drink_max_displacement_from_frame18_m": 0.045628093431924616,
+        "drink_drop_from_frame18_m": 6.625056266784668e-05,
+        "native_contacts_present": true
+      },
+      "missing": [
+        "F5原队列明确两个接触和先后约束，但未找到complete_chain_fallen的正式二分类提取合同；原release audit的1cm仅为运动起始检测，不是跌落阈值；不采用新增5cm"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C03",
+      "source_sample_id": "T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d",
+      "source_config_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d.json",
+      "source_state_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "frame_count": 168,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+      "extraction_source_sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+      "contract_recovered": false,
+      "reference_labels": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "original_outcome": null,
+      "metrics": {
+        "drink_max_displacement_from_frame18_m": 0.14276851661027654,
+        "drink_drop_from_frame18_m": 0.0399959459900856,
+        "native_contacts_present": true
+      },
+      "missing": [
+        "F5原队列明确两个接触和先后约束，但未找到complete_chain_fallen的正式二分类提取合同；原release audit的1cm仅为运动起始检测，不是跌落阈值；不采用新增5cm"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C04",
+      "source_sample_id": "T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d",
+      "source_config_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu3/T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d.json",
+      "source_state_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "frame_count": 168,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+      "extraction_source_sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+      "contract_recovered": false,
+      "reference_labels": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "original_outcome": null,
+      "metrics": {
+        "drink_max_displacement_from_frame18_m": 0.1403709468236873,
+        "drink_drop_from_frame18_m": 0.04002644866704941,
+        "native_contacts_present": true
+      },
+      "missing": [
+        "F5原队列明确两个接触和先后约束，但未找到complete_chain_fallen的正式二分类提取合同；原release audit的1cm仅为运动起始检测，不是跌落阈值；不采用新增5cm"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C05",
+      "source_sample_id": "T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d",
+      "source_config_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t13/frozen_v5_formal_20260919/formal_gpu1/T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d/annotations/T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d.json",
+      "source_state_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "frame_count": 168,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\cf2f017578_run_t13_frozen_v4_queue.py",
+      "extraction_source_sha256": "cf2f0175784cfd9e6ff368df5a28591de46b5258c3114f09a4936981e5c344c7",
+      "contract_recovered": false,
+      "reference_labels": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "original_outcome": null,
+      "metrics": {
+        "drink_max_displacement_from_frame18_m": 0.04472216230813002,
+        "drink_drop_from_frame18_m": 5.1140785217285156e-05,
+        "native_contacts_present": true
+      },
+      "missing": [
+        "F5原队列明确两个接触和先后约束，但未找到complete_chain_fallen的正式二分类提取合同；原release audit的1cm仅为运动起始检测，不是跌落阈值；不采用新增5cm"
+      ],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T16_C01",
+      "source_sample_id": "T16__bg01_home_ase__g01_moon__support_angle__p010",
+      "source_config_sha256": "8d2dcc36eabfbe7eb3d8f34b8f79b9c9faf09c600bdc8a20d20eba44f70c4761",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T16__bg01_home_ase__g01_moon__support_angle__p010/metadata/T16__bg01_home_ase__g01_moon__support_angle__p010__cam01.json.gz",
+      "source_state_sha256": "8e8f03ca747677e3588f679b53c9a65fb33bfa3d37c0b637abcbbaa741b983d3",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "folder_downstream_contact": 1,
+        "downstream_response_original": 0,
+        "folder_motion_original": 1
+      },
+      "original_outcome": "tips_without_downstream",
+      "metrics": {
+        "outcome_label": "tips_without_downstream",
+        "chain_depth_reached": 3,
+        "final_3d_displacements_m": {
+          "t16_folder": 0.2318245847606555,
+          "t16_support_book": 0.46000003814697266,
+          "t16_downstream_box": 0.0065524499204977675
+        },
+        "original_production_qa_sha256": "02fd8ace2befee4bf42b4cab1234016ea3ab4b1e1fad3cc8eb63c1d4e0bbb0a4",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T16_C02",
+      "source_sample_id": "T16__bg01_home_ase__g02_mars__support_angle__p010",
+      "source_config_sha256": "6202eb6d5f59b360e53db82d47c89df5ffda66c7cf523ac564a2c5c68f7e1720",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T16__bg01_home_ase__g02_mars__support_angle__p010/metadata/T16__bg01_home_ase__g02_mars__support_angle__p010__cam01.json.gz",
+      "source_state_sha256": "5213e175227b6eb60907df467e070cee832429883f61fa8d9579972eca915a3f",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "folder_downstream_contact": 1,
+        "downstream_response_original": 0,
+        "folder_motion_original": 1
+      },
+      "original_outcome": "tips_without_downstream",
+      "metrics": {
+        "outcome_label": "tips_without_downstream",
+        "chain_depth_reached": 3,
+        "final_3d_displacements_m": {
+          "t16_folder": 0.23879316250050536,
+          "t16_support_book": 0.46000003814697266,
+          "t16_downstream_box": 0.011339144979008788
+        },
+        "original_production_qa_sha256": "8cc52fa8502b7083e1b44378f29cf11f4242548c08456d279feb640b88d77933",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T16_C03",
+      "source_sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p010",
+      "source_config_sha256": "152ef4505c6ed8c6462f8abdc4f7696de1ceaae2ae172e431edfa238c35a931e",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T16__bg01_home_ase__g03_earth__support_angle__p010/metadata/T16__bg01_home_ase__g03_earth__support_angle__p010__cam01.json.gz",
+      "source_state_sha256": "a65d1fc6d24171bde33890d9475aa9a7bf3c524d722f8d9568505ff3c70aa952",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "folder_downstream_contact": 1,
+        "downstream_response_original": 1,
+        "folder_motion_original": 1
+      },
+      "original_outcome": "tips_and_triggers_downstream",
+      "metrics": {
+        "outcome_label": "tips_and_triggers_downstream",
+        "chain_depth_reached": 5,
+        "final_3d_displacements_m": {
+          "t16_folder": 0.24545782234747265,
+          "t16_support_book": 0.46000003814697266,
+          "t16_downstream_box": 0.022741707875399184
+        },
+        "original_production_qa_sha256": "c88a83da5464be03f5cb79196c136a1457eef2bd5501990fc7c5b77e3c73af8d",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T16_C04",
+      "source_sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p023",
+      "source_config_sha256": "1fe9e39d84c03f23e53ba7f7ff085b4680da1f59934c56f71f964192bbbc5089",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T16__bg01_home_ase__g03_earth__support_angle__p023/metadata/T16__bg01_home_ase__g03_earth__support_angle__p023__cam01.json.gz",
+      "source_state_sha256": "045d37c989f34d07a9f52657add39d30ab8155145497a0029dda29ecbdcbcfb8",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "folder_downstream_contact": 1,
+        "downstream_response_original": 1,
+        "folder_motion_original": 1
+      },
+      "original_outcome": "tips_and_triggers_downstream",
+      "metrics": {
+        "outcome_label": "tips_and_triggers_downstream",
+        "chain_depth_reached": 5,
+        "final_3d_displacements_m": {
+          "t16_folder": 0.43085507153771274,
+          "t16_support_book": 0.46000003814697266,
+          "t16_downstream_box": 0.18189718323993892
+        },
+        "original_production_qa_sha256": "aa4504d13a3add73384d7bd076152364cf7d2afd00eb129bd6b0db2f7382967b",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T16_C05",
+      "source_sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p024",
+      "source_config_sha256": "dd8c0ba644021a414fd706c6cac1b9d3c79605a3233ffcb259454882b119cbaa",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T16__bg01_home_ase__g03_earth__support_angle__p024/metadata/T16__bg01_home_ase__g03_earth__support_angle__p024__cam01.json.gz",
+      "source_state_sha256": "eb65bd4e6a84a78d4b9449c964d43704f67a40617330d050de8f05e715752be6",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "folder_downstream_contact": 0,
+        "downstream_response_original": 0,
+        "folder_motion_original": 0
+      },
+      "original_outcome": "stable_after_support_loss",
+      "metrics": {
+        "outcome_label": "stable_after_support_loss",
+        "chain_depth_reached": 2,
+        "final_3d_displacements_m": {
+          "t16_folder": 0.03954961718744329,
+          "t16_support_book": 0.46000003814697266,
+          "t16_downstream_box": 0.0007780194647840209
+        },
+        "original_production_qa_sha256": "c1e2b2dae04d5fe77340f975760d8e65f5bb5ca5605469936f0dbcda5e598502",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T17_C01",
+      "source_sample_id": "T17__bg01_home_ase__g01_moon__initial_speed__p012",
+      "source_config_sha256": "b38ef0f3d95eab5aa1b53f06ef60c07cab1ee9015768eac519751dc59a62f2c7",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T17__bg01_home_ase__g01_moon__initial_speed__p012/metadata/T17__bg01_home_ase__g01_moon__initial_speed__p012__cam01.json.gz",
+      "source_state_sha256": "259e3b33fdfd09bd85f1c9b4ef7284262e380983cc0c0fac155cdf14b1fe8efd",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can_tissue_box_contact": 0,
+        "hit_tissue_box_original": 0,
+        "can_below_table_original": 0
+      },
+      "original_outcome": "bypasses_and_stays",
+      "metrics": {
+        "outcome_label": "bypasses_and_stays",
+        "chain_depth_reached": 4,
+        "final_3d_displacements_m": {
+          "t17_ramp": 0.0,
+          "t17_ramp_support": 0.0,
+          "t17_can": 1.0861105594440725,
+          "t17_tissue_box": 0.0007548928260803223
+        },
+        "original_production_qa_sha256": "748d41cd110311b711b5ab76248f14a43851c576e0e7eedc030aa22ff10bbd6e",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T17_C02",
+      "source_sample_id": "T17__bg01_home_ase__g02_mars__initial_speed__p012",
+      "source_config_sha256": "d194b8b33acebde05b7019991ded017abc0ed0c4b7f438ab20d3729c53952c81",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T17__bg01_home_ase__g02_mars__initial_speed__p012/metadata/T17__bg01_home_ase__g02_mars__initial_speed__p012__cam01.json.gz",
+      "source_state_sha256": "185a991baffcfdd5408d939d5ac1280d30e316fda4819f39d0487712ed7554f0",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can_tissue_box_contact": 1,
+        "hit_tissue_box_original": 1,
+        "can_below_table_original": 0
+      },
+      "original_outcome": "hits_tissue_box",
+      "metrics": {
+        "outcome_label": "hits_tissue_box",
+        "chain_depth_reached": 4,
+        "final_3d_displacements_m": {
+          "t17_ramp": 0.0,
+          "t17_ramp_support": 0.0,
+          "t17_can": 0.7646362017996927,
+          "t17_tissue_box": 0.0007622681585073282
+        },
+        "original_production_qa_sha256": "3051c48c44e304c5d7c4154673569e0a5024358f8feddb2a9b19ec11086a69c9",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T17_C03",
+      "source_sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p012",
+      "source_config_sha256": "bed0ba5f16fabd421d9e7e995f23923935553269c437106b4aa1fc1d1571ee69",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T17__bg01_home_ase__g03_earth__initial_speed__p012/metadata/T17__bg01_home_ase__g03_earth__initial_speed__p012__cam01.json.gz",
+      "source_state_sha256": "36d9506ab2899d6f9d673e21b5e7befd960bca7dd1a43578b1d333109233c893",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can_tissue_box_contact": 1,
+        "hit_tissue_box_original": 1,
+        "can_below_table_original": 0
+      },
+      "original_outcome": "hits_tissue_box",
+      "metrics": {
+        "outcome_label": "hits_tissue_box",
+        "chain_depth_reached": 4,
+        "final_3d_displacements_m": {
+          "t17_ramp": 0.0,
+          "t17_ramp_support": 0.0,
+          "t17_can": 0.2145619958233085,
+          "t17_tissue_box": 0.0058799393903364045
+        },
+        "original_production_qa_sha256": "a9900445764082f43760a66da7bcf925bdae69b5c71ce0957111485289e59785",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T17_C04",
+      "source_sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p007",
+      "source_config_sha256": "aa380fad54adfe7aff7c92831bdb50d24b3be17325017805b3d5493cb7ce1473",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T17__bg01_home_ase__g03_earth__initial_speed__p007/metadata/T17__bg01_home_ase__g03_earth__initial_speed__p007__cam01.json.gz",
+      "source_state_sha256": "f2d7e0a7fa338ee00dfa4ffc28635ab28482a972037d0b43ab810eedc0f90483",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can_tissue_box_contact": 0,
+        "hit_tissue_box_original": 0,
+        "can_below_table_original": 0
+      },
+      "original_outcome": "bypasses_and_stays",
+      "metrics": {
+        "outcome_label": "bypasses_and_stays",
+        "chain_depth_reached": 4,
+        "final_3d_displacements_m": {
+          "t17_ramp": 0.0,
+          "t17_ramp_support": 0.0,
+          "t17_can": 0.2012553454667504,
+          "t17_tissue_box": 0.0007779598236083984
+        },
+        "original_production_qa_sha256": "49702e56268c0f3bf8e940224d1b3a5d705339e2f9d9dbadddc9d904dcc72aac",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T17_C05",
+      "source_sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p008",
+      "source_config_sha256": "5a512cca740bb703c4ede0efd2bb9315da80793919c1a80fc236bb04efb95e95",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T17__bg01_home_ase__g03_earth__initial_speed__p008/metadata/T17__bg01_home_ase__g03_earth__initial_speed__p008__cam01.json.gz",
+      "source_state_sha256": "2a2d8e676477014535744495440da567d486cd75968db9c6bfa014b23674aba8",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can_tissue_box_contact": 1,
+        "hit_tissue_box_original": 1,
+        "can_below_table_original": 0
+      },
+      "original_outcome": "hits_tissue_box",
+      "metrics": {
+        "outcome_label": "hits_tissue_box",
+        "chain_depth_reached": 4,
+        "final_3d_displacements_m": {
+          "t17_ramp": 0.0,
+          "t17_ramp_support": 0.0,
+          "t17_can": 0.2094726399899895,
+          "t17_tissue_box": 0.0009301075772884957
+        },
+        "original_production_qa_sha256": "78f39d665c7e6280d879d746fd363361e0ddfb3b2c6d6edec12aea769a1efc6e",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T19_C01",
+      "source_sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+      "source_config_sha256": "2d22929f10694b883b132b6d4091bc1e1da03c1e9a04f6c9d40c34ee7224326b",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g01_moon__restitution__p010/metadata/T19__bg03_neutral_studio__g01_moon__restitution__p010__cam01.json.gz",
+      "source_state_sha256": "c899e3b965491e7506324544aed974084156faffef9cc5838e6c72e20fd8267a",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can2_transfer_original": 1,
+        "target_edge_original": 1
+      },
+      "original_outcome": "dual_can_edge_event",
+      "metrics": {
+        "outcome_label": "dual_can_edge_event",
+        "chain_depth_reached": 5,
+        "target_objects_moved": 1,
+        "final_3d_displacements_m": {
+          "t19_can1": 0.1777920861467514,
+          "t19_can2": 0.8034423744562652
+        },
+        "original_production_qa_sha256": "8914aa801e5c7886f7e211f7beff27a12cd9960bde5cde2200df369891545755",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T19_C02",
+      "source_sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+      "source_config_sha256": "6992f06652e1d299b61ccb1accd9057ca1679e8754dbe6ed55a1216b73e22f03",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g02_mars__restitution__p010/metadata/T19__bg03_neutral_studio__g02_mars__restitution__p010__cam01.json.gz",
+      "source_state_sha256": "3b7d4f4d53c6f1f7877a60f446a2af2ddb15b5b69d04b6f185648e7af6277009",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can2_transfer_original": 1,
+        "target_edge_original": 1
+      },
+      "original_outcome": "dual_can_edge_event",
+      "metrics": {
+        "outcome_label": "dual_can_edge_event",
+        "chain_depth_reached": 5,
+        "target_objects_moved": 1,
+        "final_3d_displacements_m": {
+          "t19_can1": 0.08577734090531705,
+          "t19_can2": 0.3599862309642623
+        },
+        "original_production_qa_sha256": "4f5e7f21b7dfa613a7ec3f0bff2b37f4fdccc503f273617aa18a74994456e004",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T19_C03",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+      "source_config_sha256": "f961d6463ebd250ae1285ecd08a3cff73aee0535c0405481b9f2ab74af4f484c",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__restitution__p010/metadata/T19__bg03_neutral_studio__g03_earth__restitution__p010__cam01.json.gz",
+      "source_state_sha256": "463e9301682a374b13d6375a65ddccfa00d937d7fe60d9df372304fc8c20348b",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can2_transfer_original": 1,
+        "target_edge_original": 1
+      },
+      "original_outcome": "dual_can_edge_event",
+      "metrics": {
+        "outcome_label": "dual_can_edge_event",
+        "chain_depth_reached": 5,
+        "target_objects_moved": 1,
+        "final_3d_displacements_m": {
+          "t19_can1": 0.04292999667261821,
+          "t19_can2": 0.13408923842082496
+        },
+        "original_production_qa_sha256": "86dfa573b25949c319948bea3b45884a987d91b3801acc40573bab1ae0fb1007",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T19_C04",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+      "source_config_sha256": "f7c94cc3180b729cf877373c7bde9658adc6c1f3220da49b048bfbd9f01f2b0f",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p002__cam01.json.gz",
+      "source_state_sha256": "8d987640aa2c393608de236f661280ef188e10703a4b97b33f190ce373efe8e8",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can2_transfer_original": 1,
+        "target_edge_original": 1
+      },
+      "original_outcome": "dual_can_edge_event",
+      "metrics": {
+        "outcome_label": "dual_can_edge_event",
+        "chain_depth_reached": 5,
+        "target_objects_moved": 1,
+        "final_3d_displacements_m": {
+          "t19_can1": 0.13003782826465604,
+          "t19_can2": 0.16434586069762017
+        },
+        "original_production_qa_sha256": "6000128cbbe25e3655444d7f5d390acb421acafa34f1970fda8625befcbbaec9",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T19_C05",
+      "source_sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+      "source_config_sha256": "08519596d690785af6bb94905534e2a09fa377664a7d15dda8469032a230b735",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019/metadata/T19__bg03_neutral_studio__g03_earth__mass_ratio__p019__cam01.json.gz",
+      "source_state_sha256": "7bb47356250662e6381cd4933fa96dd641c0d211aa5c9d6f1b9ad8399859e596",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "can2_transfer_original": 1,
+        "target_edge_original": 0
+      },
+      "original_outcome": "momentum_transfers_to_can2",
+      "metrics": {
+        "outcome_label": "momentum_transfers_to_can2",
+        "chain_depth_reached": 4,
+        "target_objects_moved": 1,
+        "final_3d_displacements_m": {
+          "t19_can1": 0.030624426699456538,
+          "t19_can2": 0.03240357709196896
+        },
+        "original_production_qa_sha256": "268fb4bbf08c753f358d6ee475affe40502c377ebeab2794813999fe9131cc14",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T20_C01",
+      "source_sample_id": "T20__bg01_home_ase__g01_moon__box_cup_gap__p010",
+      "source_config_sha256": "547226daaf6f32b279b697df753313e04f46f27932076a97db4506f11e4fbeb5",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g01_moon__box_cup_gap__p010/metadata/T20__bg01_home_ase__g01_moon__box_cup_gap__p010__cam01.json.gz",
+      "source_state_sha256": "1c2bcf9b26f9d21ee8dca82ff88c57d81bc2d71f98952683dbd4c46233d00c80",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "complete_propagation_original": 1
+      },
+      "original_outcome": "complete_propagation",
+      "metrics": {
+        "outcome_label": "complete_propagation",
+        "chain_depth_total": 7,
+        "chain_depth_reached": 7,
+        "first_break_node": null,
+        "contact_order": [
+          {
+            "pair": "book_can",
+            "first_contact_key": [
+              24,
+              1
+            ]
+          },
+          {
+            "pair": "can_box",
+            "first_contact_key": [
+              24,
+              4
+            ]
+          },
+          {
+            "pair": "box_cup",
+            "first_contact_key": [
+              25,
+              9
+            ]
+          }
+        ],
+        "final_3d_displacements_m": {
+          "t20_book": 0.19785409099835793,
+          "t20_can": 0.19446616817673082,
+          "t20_box": 0.2586113455519158,
+          "t20_cup": 1.0318325343591985
+        },
+        "original_production_qa_sha256": "fec498b7047e2a9896655fe0dcea5a9dd7090e021aef723ea1a0048689778806",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T20_C02",
+      "source_sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p009",
+      "source_config_sha256": "eabbee565e4407ec536995ad348e0f4e06f4f80e9e9683cfd7255a87ff00595c",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p009/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p009__cam01.json.gz",
+      "source_state_sha256": "2060469260957cc33229eb8aea9372fb22031df12734c72b86e14ef3ef2c065d",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "complete_propagation_original": 1
+      },
+      "original_outcome": "complete_propagation",
+      "metrics": {
+        "outcome_label": "complete_propagation",
+        "chain_depth_total": 7,
+        "chain_depth_reached": 7,
+        "first_break_node": null,
+        "contact_order": [
+          {
+            "pair": "book_can",
+            "first_contact_key": [
+              24,
+              1
+            ]
+          },
+          {
+            "pair": "can_box",
+            "first_contact_key": [
+              24,
+              3
+            ]
+          },
+          {
+            "pair": "box_cup",
+            "first_contact_key": [
+              24,
+              10
+            ]
+          }
+        ],
+        "final_3d_displacements_m": {
+          "t20_book": 0.16294942437163984,
+          "t20_can": 0.19917839704139134,
+          "t20_box": 0.24498818668218236,
+          "t20_cup": 1.0780186407743586
+        },
+        "original_production_qa_sha256": "585a3e8e990450fe8d1a07c0f00a81022e1ae200ba033be6093cb81d69d9243a",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T20_C03",
+      "source_sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+      "source_config_sha256": "8c74fca845c742c877692957d691d28dc09c679c8508fac183ae2e9760f88785",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p009/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p009__cam01.json.gz",
+      "source_state_sha256": "a4409be924866bfccbb4bc1bcd5a22b987c1afe243d22f98c5af9c8f71d1b6f9",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "complete_propagation_original": 1
+      },
+      "original_outcome": "complete_propagation",
+      "metrics": {
+        "outcome_label": "complete_propagation",
+        "chain_depth_total": 7,
+        "chain_depth_reached": 7,
+        "first_break_node": null,
+        "contact_order": [
+          {
+            "pair": "book_can",
+            "first_contact_key": [
+              24,
+              1
+            ]
+          },
+          {
+            "pair": "can_box",
+            "first_contact_key": [
+              24,
+              3
+            ]
+          },
+          {
+            "pair": "box_cup",
+            "first_contact_key": [
+              24,
+              10
+            ]
+          }
+        ],
+        "final_3d_displacements_m": {
+          "t20_book": 0.06860004403104834,
+          "t20_can": 0.10289445720237825,
+          "t20_box": 0.10864868037684156,
+          "t20_cup": 0.09244077742047432
+        },
+        "original_production_qa_sha256": "78d8adb7c355a63057a0db17b85d637e645270a5124064c997c946d3e6d1dd7b",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T20_C04",
+      "source_sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+      "source_config_sha256": "48522ad32c586f9385d26924e86cd0fc7a5cd22f99021ab3c4f235a50f47e46e",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p010/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p010__cam01.json.gz",
+      "source_state_sha256": "2d5e950efbe2a85b7f872f2cd9e19dec1b30935fd64ba47d4e8cbb384f849e5d",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "complete_propagation_original": 1
+      },
+      "original_outcome": "complete_propagation",
+      "metrics": {
+        "outcome_label": "complete_propagation",
+        "chain_depth_total": 7,
+        "chain_depth_reached": 7,
+        "first_break_node": null,
+        "contact_order": [
+          {
+            "pair": "book_can",
+            "first_contact_key": [
+              24,
+              1
+            ]
+          },
+          {
+            "pair": "can_box",
+            "first_contact_key": [
+              24,
+              2
+            ]
+          },
+          {
+            "pair": "box_cup",
+            "first_contact_key": [
+              24,
+              10
+            ]
+          }
+        ],
+        "final_3d_displacements_m": {
+          "t20_book": 0.08092895120163636,
+          "t20_can": 0.12435306360600096,
+          "t20_box": 0.12327206248838736,
+          "t20_cup": 0.10772828238184587
+        },
+        "original_production_qa_sha256": "0aa486e73b77edaa52a1b50c6d760042ca8ea0334f56db88c175c8e3cc6b33ba",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T20_C05",
+      "source_sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p011",
+      "source_config_sha256": "7362e727f92ebef39fcba623a6e201aec390ead1df22301903631616a4fd5867",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p011/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p011__cam01.json.gz",
+      "source_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+      "frame_count": 210,
+      "original_experiment_exact_match": true,
+      "original_physical_experiment_match": true,
+      "source_spec_differences": {},
+      "state_binding_notes": [],
+      "published_reference_binding": null,
+      "extraction_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+      "extraction_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+      "contract_recovered": true,
+      "reference_labels": {
+        "complete_propagation_original": 1
+      },
+      "original_outcome": "complete_propagation",
+      "metrics": {
+        "outcome_label": "complete_propagation",
+        "chain_depth_total": 7,
+        "chain_depth_reached": 7,
+        "first_break_node": null,
+        "contact_order": [
+          {
+            "pair": "book_can",
+            "first_contact_key": [
+              24,
+              0
+            ]
+          },
+          {
+            "pair": "can_box",
+            "first_contact_key": [
+              24,
+              2
+            ]
+          },
+          {
+            "pair": "box_cup",
+            "first_contact_key": [
+              24,
+              9
+            ]
+          }
+        ],
+        "final_3d_displacements_m": {
+          "t20_book": 0.09154602370949246,
+          "t20_can": 0.14496818946929577,
+          "t20_box": 0.1438257776540427,
+          "t20_cup": 0.849496965064328
+        },
+        "original_production_qa_sha256": "b205b2b2dc21520ce964ede2b60462026abe46f802a39e6b40c70231e9e7add1",
+        "original_production_qa_match": true
+      },
+      "missing": [],
+      "reference_admission": "pending_media_window_visual_observability",
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    }
+  ]
+}

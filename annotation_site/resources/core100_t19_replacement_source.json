@@ -1,0 +1,196 @@
+{
+  "schema": "core100-t19-active-reference-v2",
+  "status": "active_not_candidate",
+  "version": "core100-t19-isaac-v1-20261031",
+  "pointer": "active_reference_release.json",
+  "published": {
+    "repo": "phy2/phydataset",
+    "revision": "e129e2faedb84501eeecf81612f0a879ba7aa257",
+    "version": "core100-t19-isaac-v1-20261031",
+    "files_verified": 57,
+    "replaced_reference_cases": 5,
+    "unchanged_reference_cases": 95,
+    "near_reference_cases": 4,
+    "pairs": 2,
+    "old_model_outputs_or_annotations_changed": false,
+    "new_generation_required": true,
+    "manifest_sha256": "f9873e65845cf30cfeda72426eb72556beb4f71da0f2ca16ca17af3548ccd6bf",
+    "active_pointer_sha256": "c3193f56f0526ebe5f83077efd9bce150e675dcf29139279bcaae321cc0e83c4",
+    "parent_pointer_revision": "e129e2faedb84501eeecf81612f0a879ba7aa257"
+  },
+  "references": [
+    {
+      "clip_id": "T19_C01",
+      "native_sample_id": "T19__bg01_home_ase__g01_moon__boundary_d2_minus_r1",
+      "video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C01/reference.mp4",
+      "condition_image": "references/T19_C01/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": true,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          -0.0010937500000000044,
+          0.0
+        ]
+      },
+      "target_label": 0,
+      "theta": -0.0940625,
+      "background": "bg01_home_ase",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C02",
+      "native_sample_id": "T19__bg01_home_ase__g01_moon__boundary_d2_plus_r1",
+      "video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C02/reference.mp4",
+      "condition_image": "references/T19_C02/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          0.0,
+          0.0010937500000000044
+        ]
+      },
+      "target_label": 1,
+      "theta": -0.09296874999999999,
+      "background": "bg01_home_ase",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C03",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__boundary_d2_minus_r1",
+      "video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C03/reference.mp4",
+      "condition_image": "references/T19_C03/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          -0.0010937500000000044,
+          0.0
+        ]
+      },
+      "target_label": 0,
+      "theta": -0.0940625,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C04",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__boundary_d2_plus_r1",
+      "video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C04/reference.mp4",
+      "condition_image": "references/T19_C04/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "resolved",
+        "bin": "near",
+        "normalized_absolute_interval": [
+          0.0,
+          0.003906250000000016
+        ],
+        "signed_interval": [
+          0.0,
+          0.0010937500000000044
+        ]
+      },
+      "target_label": 1,
+      "theta": -0.09296874999999999,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    },
+    {
+      "clip_id": "T19_C05",
+      "native_sample_id": "T19__bg03_neutral_studio__g01_moon__value_0.14__global_16",
+      "video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+      "condition_frame_index": 0,
+      "reference_video": "references/T19_C05/reference.mp4",
+      "condition_image": "references/T19_C05/condition.png",
+      "width": 854,
+      "height": 480,
+      "engine": "isaac",
+      "uses_updated_media": false,
+      "distance": {
+        "status": "ambiguous",
+        "bin": null,
+        "normalized_absolute_interval": [
+          0.12500000000000006,
+          0.18750000000000006
+        ],
+        "signed_interval": [
+          0.03500000000000002,
+          0.05250000000000002
+        ]
+      },
+      "target_label": 0,
+      "theta": 0.14,
+      "background": "bg03_neutral_studio",
+      "new_generation_required": true,
+      "legacy_generated_outputs_reusable": false
+    }
+  ],
+  "reference_cases_replaced": 5,
+  "other_reference_cases_unchanged": 95,
+  "near_reference_cases": 4,
+  "registered_pairs": [
+    {
+      "pair_id": "t19_bg01_moon_d2",
+      "clips": [
+        "T19_C01",
+        "T19_C02"
+      ]
+    },
+    {
+      "pair_id": "t19_bg03_moon_d2",
+      "clips": [
+        "T19_C03",
+        "T19_C04"
+      ]
+    }
+  ],
+  "old_references_and_annotations_preserved": true,
+  "old_model_outputs_reused_as_new": false,
+  "new_generation_required": true,
+  "model_scoring_status": "awaiting_new_generated_outputs_and_labels"
+}

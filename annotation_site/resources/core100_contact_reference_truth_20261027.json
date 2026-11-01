@@ -1,0 +1,504 @@
+{
+  "schema": "core100-contact-reference-truth-v1-20261027",
+  "protocol": "core100-contact-targets-v1-20261027",
+  "definition_sha256": "656fe2edf514679c883d9e32392776ee55ac4cad825ef12c4fcbbca8c28e914b",
+  "source_known_conditions_sha256": "5560ab9e06a337189008a7722cabebe4286e96ef22c11c83d7a4db97e5e36eb7",
+  "summary": {
+    "target_definitions": 100,
+    "new_contact_reference_truth_cases": 10,
+    "new_boundary_admissions": 0,
+    "new_cross_boundary_pairs": 0
+  },
+  "scope": "New ten-case contact event truth at 5s only. Not ten new NearAcc references; no old terminal labels overwritten. Conditions stay frozen v6. Pixel decoder comparisons retained; no invented similarity threshold or claim of universal RGB byte identity.",
+  "references": [
+    {
+      "clip_id": "T12_C01",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "stapler_contacts_tissue_box": 1
+      },
+      "required_order": [],
+      "reference_order_valid": true,
+      "video_sha256": "3acd50b9b614d2ff905b2182e8f7177fbcd69308bcf7896239ba677adc70a6c0",
+      "reference": {
+        "source_video_path": "data/T12/formal_r002_480p_20260913/videos/T12F880R002__bg01_home_ase__p128__cam03_critical_close.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "3acd50b9b614d2ff905b2182e8f7177fbcd69308bcf7896239ba677adc70a6c0"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "source_event_truth": "author-approved new native-contact readback with original-trajectory witness and reference RGB review",
+      "reference_state_sha256": "a9c898ae68f2c25b78eb80b4d02b6568ebfe5dce91911063861a8c9cc906d81c",
+      "replay_state_sha256": "b9a61008c160efb44f993174f3c2cd5a30e62879a3da5d7c09bb4df780b28577",
+      "first_native_contacts": {
+        "stapler_contacts_tissue_box": [
+          32,
+          8
+        ]
+      },
+      "proof": {
+        "clip_id": "T12_C01",
+        "first_contact_native": [
+          32,
+          8
+        ],
+        "contact_label": 1,
+        "comparison_end_native_frame": 32,
+        "maximum_proof_prefix_position_error_m": 2.133909269873033e-05,
+        "full_trajectory_maximum_error_m": 0.0021100491957790567,
+        "first_frame_over_1mm": 38,
+        "reference_state_sha256": "a9c898ae68f2c25b78eb80b4d02b6568ebfe5dce91911063861a8c9cc906d81c",
+        "replay_state_sha256": "b9a61008c160efb44f993174f3c2cd5a30e62879a3da5d7c09bb4df780b28577",
+        "proof_kind": "positive_contact_witness_prefix",
+        "native_contact_evidence_matched": true,
+        "RGB_observability_review_pending": true,
+        "horizon_s": 5.0
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/t12_contact_zoom.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t12_rgb_review_frames.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C02",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "stapler_contacts_tissue_box": 1
+      },
+      "required_order": [],
+      "reference_order_valid": true,
+      "video_sha256": "58ba7ad20a9b94f26215d6aaedcc38ae95f0696025006e00b23a5841766a2f61",
+      "reference": {
+        "source_video_path": "data/T12/formal_r002_480p_20260913/videos/T12F880R002__bg01_home_ase__p053__cam03_critical_close.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "58ba7ad20a9b94f26215d6aaedcc38ae95f0696025006e00b23a5841766a2f61"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "source_event_truth": "author-approved new native-contact readback with original-trajectory witness and reference RGB review",
+      "reference_state_sha256": "323b3fb21a41363e9aec9b2b65c9a8206fe3cf756976e308e7cf8bd28e335466",
+      "replay_state_sha256": "86da7bf2f9a185bfa772dc4ce3c93c3243c6b25a8b12e929005cd8dbad7319df",
+      "first_native_contacts": {
+        "stapler_contacts_tissue_box": [
+          29,
+          3
+        ]
+      },
+      "proof": {
+        "clip_id": "T12_C02",
+        "first_contact_native": [
+          29,
+          3
+        ],
+        "contact_label": 1,
+        "comparison_end_native_frame": 29,
+        "maximum_proof_prefix_position_error_m": 0.0004965956850184873,
+        "full_trajectory_maximum_error_m": 0.0004965956850184873,
+        "first_frame_over_1mm": null,
+        "reference_state_sha256": "323b3fb21a41363e9aec9b2b65c9a8206fe3cf756976e308e7cf8bd28e335466",
+        "replay_state_sha256": "86da7bf2f9a185bfa772dc4ce3c93c3243c6b25a8b12e929005cd8dbad7319df",
+        "proof_kind": "positive_contact_witness_prefix",
+        "native_contact_evidence_matched": true,
+        "RGB_observability_review_pending": true,
+        "horizon_s": 5.0
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/t12_contact_zoom.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t12_rgb_review_frames.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C03",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "stapler_contacts_tissue_box": 1
+      },
+      "required_order": [],
+      "reference_order_valid": true,
+      "video_sha256": "d8967313deaec7b3cba3d3f662153e69c85f71fdee03effa22c447a87494a3a5",
+      "reference": {
+        "source_video_path": "data/T12/formal_r002_480p_20260913/videos/T12F880R002__bg01_home_ase__p166__cam03_critical_close.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d8967313deaec7b3cba3d3f662153e69c85f71fdee03effa22c447a87494a3a5"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "source_event_truth": "author-approved new native-contact readback with original-trajectory witness and reference RGB review",
+      "reference_state_sha256": "7ec5569f877d6237f900ffb3c40129f7fd58554d9ab8cad324d9fc2be87ca18e",
+      "replay_state_sha256": "d3664098525b8ef89fd7290cd420155520f68c7f6f6f11a5f1a7a746f2e289d9",
+      "first_native_contacts": {
+        "stapler_contacts_tissue_box": [
+          29,
+          6
+        ]
+      },
+      "proof": {
+        "clip_id": "T12_C03",
+        "first_contact_native": [
+          29,
+          6
+        ],
+        "contact_label": 1,
+        "comparison_end_native_frame": 29,
+        "maximum_proof_prefix_position_error_m": 0.0005029006957119125,
+        "full_trajectory_maximum_error_m": 0.005345716126634971,
+        "first_frame_over_1mm": 30,
+        "reference_state_sha256": "7ec5569f877d6237f900ffb3c40129f7fd58554d9ab8cad324d9fc2be87ca18e",
+        "replay_state_sha256": "d3664098525b8ef89fd7290cd420155520f68c7f6f6f11a5f1a7a746f2e289d9",
+        "proof_kind": "positive_contact_witness_prefix",
+        "native_contact_evidence_matched": true,
+        "RGB_observability_review_pending": true,
+        "horizon_s": 5.0
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/t12_contact_zoom.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t12_rgb_review_frames.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C04",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "stapler_contacts_tissue_box": 0
+      },
+      "required_order": [],
+      "reference_order_valid": true,
+      "video_sha256": "d6e70f57e1e9973a93d04a6cf51c000bfb33c53f9cc54c3b06078232b004f508",
+      "reference": {
+        "source_video_path": "data/T12/formal_r002_480p_20260913/videos/T12F880R002__bg01_home_ase__p090__cam03_critical_close.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d6e70f57e1e9973a93d04a6cf51c000bfb33c53f9cc54c3b06078232b004f508"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "source_event_truth": "author-approved new native-contact readback with original-trajectory witness and reference RGB review",
+      "reference_state_sha256": "0e6d853a30317c980409072ff00b7360c722214bc19d748bc8f922cf2ee4e16f",
+      "replay_state_sha256": "5c8dfd3178ccc09a28da45b5ebf155be3603429e64838344b173a094de6ec5c7",
+      "first_native_contacts": {
+        "stapler_contacts_tissue_box": null
+      },
+      "proof": {
+        "clip_id": "T12_C04",
+        "first_contact_native": null,
+        "contact_label": 0,
+        "comparison_end_native_frame": 154,
+        "maximum_proof_prefix_position_error_m": 0.00011452121671005296,
+        "full_trajectory_maximum_error_m": 0.0001669691440616345,
+        "first_frame_over_1mm": null,
+        "reference_state_sha256": "0e6d853a30317c980409072ff00b7360c722214bc19d748bc8f922cf2ee4e16f",
+        "replay_state_sha256": "5c8dfd3178ccc09a28da45b5ebf155be3603429e64838344b173a094de6ec5c7",
+        "proof_kind": "full_registered_window_negative",
+        "native_contact_evidence_matched": true,
+        "RGB_observability_review_pending": true,
+        "horizon_s": 5.0
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/t12_contact_zoom.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t12_rgb_review_frames.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T12_C05",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "stapler_contacts_tissue_box": 1
+      },
+      "required_order": [],
+      "reference_order_valid": true,
+      "video_sha256": "ba7d2eb7ace63aaa754a8d071315bae8338fcaf16d21222ba2075d68c7035b64",
+      "reference": {
+        "source_video_path": "data/T12/formal_r002_480p_20260913/videos/T12F880R002__bg01_home_ase__p006__cam03_critical_close.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "ba7d2eb7ace63aaa754a8d071315bae8338fcaf16d21222ba2075d68c7035b64"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 30,
+      "source_event_truth": "author-approved new native-contact readback with original-trajectory witness and reference RGB review",
+      "reference_state_sha256": "ee84c3a4b2e20844fd96fd0800132f112d54626dfd9406b2b3baf209f5e6d73b",
+      "replay_state_sha256": "44df588e2ad68a785695ee32d71f845d50026adf49201aaf8675c0f66c4afc68",
+      "first_native_contacts": {
+        "stapler_contacts_tissue_box": [
+          28,
+          9
+        ]
+      },
+      "proof": {
+        "clip_id": "T12_C05",
+        "first_contact_native": [
+          28,
+          9
+        ],
+        "contact_label": 1,
+        "comparison_end_native_frame": 28,
+        "maximum_proof_prefix_position_error_m": 0.0,
+        "full_trajectory_maximum_error_m": 0.0003426127251957733,
+        "first_frame_over_1mm": null,
+        "reference_state_sha256": "ee84c3a4b2e20844fd96fd0800132f112d54626dfd9406b2b3baf209f5e6d73b",
+        "replay_state_sha256": "44df588e2ad68a785695ee32d71f845d50026adf49201aaf8675c0f66c4afc68",
+        "proof_kind": "positive_contact_witness_prefix",
+        "native_contact_evidence_matched": true,
+        "RGB_observability_review_pending": true,
+        "horizon_s": 5.0
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/t12_contact_zoom.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t12_rgb_review_frames.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C01",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "required_order": [
+        [
+          "driver_to_falling_book_contact",
+          "falling_book_to_drink_contact"
+        ]
+      ],
+      "reference_order_valid": true,
+      "video_sha256": "4bf238d0c80751cfba7bab17bc5eb00cd0613128dd216126a7c3e9ab8e4494aa",
+      "reference": {
+        "source_video_path": "T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d/cam03_frozen_right.mp4",
+        "source_repo": null,
+        "source_revision": null,
+        "sha256": "4bf238d0c80751cfba7bab17bc5eb00cd0613128dd216126a7c3e9ab8e4494aa"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 24,
+      "source_event_truth": "original complete native-contact telemetry reextracted under author-approved new ordered-contact target",
+      "reference_state_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "first_native_contacts": {
+        "driver_to_falling_book_contact": [
+          85,
+          0
+        ],
+        "falling_book_to_drink_contact": [
+          113,
+          2
+        ]
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/T13_C01/contact_sheet.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t13_frame_receipts.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C02",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "required_order": [
+        [
+          "driver_to_falling_book_contact",
+          "falling_book_to_drink_contact"
+        ]
+      ],
+      "reference_order_valid": true,
+      "video_sha256": "9f7a0f5d433b9f6b174cf130bda6896f3d35bb44078114b774702e4576010ef9",
+      "reference": {
+        "source_video_path": "T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d/cam03_frozen_right.mp4",
+        "source_repo": null,
+        "source_revision": null,
+        "sha256": "9f7a0f5d433b9f6b174cf130bda6896f3d35bb44078114b774702e4576010ef9"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 24,
+      "source_event_truth": "original complete native-contact telemetry reextracted under author-approved new ordered-contact target",
+      "reference_state_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "first_native_contacts": {
+        "driver_to_falling_book_contact": [
+          84,
+          7
+        ],
+        "falling_book_to_drink_contact": [
+          106,
+          3
+        ]
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/T13_C02/contact_sheet.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t13_frame_receipts.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C03",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "required_order": [
+        [
+          "driver_to_falling_book_contact",
+          "falling_book_to_drink_contact"
+        ]
+      ],
+      "reference_order_valid": true,
+      "video_sha256": "405d4478167349a20567e74a59a6f56a528e34d8abd5ab9c957114bfb3242da9",
+      "reference": {
+        "source_video_path": "T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d/cam03_frozen_right.mp4",
+        "source_repo": null,
+        "source_revision": null,
+        "sha256": "405d4478167349a20567e74a59a6f56a528e34d8abd5ab9c957114bfb3242da9"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 24,
+      "source_event_truth": "original complete native-contact telemetry reextracted under author-approved new ordered-contact target",
+      "reference_state_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "first_native_contacts": {
+        "driver_to_falling_book_contact": [
+          82,
+          9
+        ],
+        "falling_book_to_drink_contact": [
+          100,
+          6
+        ]
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/T13_C03/contact_sheet.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t13_frame_receipts.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C04",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "required_order": [
+        [
+          "driver_to_falling_book_contact",
+          "falling_book_to_drink_contact"
+        ]
+      ],
+      "reference_order_valid": true,
+      "video_sha256": "ece4831439bd27c0b4f254df449461fe3c54834711269aa98da83c4e8a4e1d2a",
+      "reference": {
+        "source_video_path": "T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d/cam03_frozen_right.mp4",
+        "source_repo": null,
+        "source_revision": null,
+        "sha256": "ece4831439bd27c0b4f254df449461fe3c54834711269aa98da83c4e8a4e1d2a"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 24,
+      "source_event_truth": "original complete native-contact telemetry reextracted under author-approved new ordered-contact target",
+      "reference_state_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "first_native_contacts": {
+        "driver_to_falling_book_contact": [
+          82,
+          9
+        ],
+        "falling_book_to_drink_contact": [
+          100,
+          6
+        ]
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/T13_C04/contact_sheet.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t13_frame_receipts.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    },
+    {
+      "clip_id": "T13_C05",
+      "horizon_s": 5.0,
+      "reference_label_events": {
+        "driver_to_falling_book_contact": 1,
+        "falling_book_to_drink_contact": 1
+      },
+      "required_order": [
+        [
+          "driver_to_falling_book_contact",
+          "falling_book_to_drink_contact"
+        ]
+      ],
+      "reference_order_valid": true,
+      "video_sha256": "4317f311b0984890153a045354d4a470eef1385c29fb461a5c79f3aa35086acd",
+      "reference": {
+        "source_video_path": "T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d/cam03_frozen_right.mp4",
+        "source_repo": null,
+        "source_revision": null,
+        "sha256": "4317f311b0984890153a045354d4a470eef1385c29fb461a5c79f3aa35086acd"
+      },
+      "condition_frame_index": 4,
+      "reference_fps": 24,
+      "source_event_truth": "original complete native-contact telemetry reextracted under author-approved new ordered-contact target",
+      "reference_state_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "first_native_contacts": {
+        "driver_to_falling_book_contact": [
+          82,
+          9
+        ],
+        "falling_book_to_drink_contact": [
+          100,
+          6
+        ]
+      },
+      "visual_review": {
+        "status": "passed_agent_reference_frame_review",
+        "reviewer_type": "AI_agent_not_independent_human",
+        "artifact": "review/critical_completion_20261027/T13_C05/contact_sheet.jpg",
+        "frame_receipt": "review/critical_completion_20261027/t13_frame_receipts.json"
+      },
+      "boundary_admitted": false,
+      "NearAcc_eligible": false,
+      "PairAcc_eligible": false
+    }
+  ]
+}

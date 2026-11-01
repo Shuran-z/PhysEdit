@@ -1,0 +1,22 @@
+{
+  "event": "T19",
+  "slot": "boundary:T19__bg03_neutral_studio__g01_moon__d2__minus__r1",
+  "source_output": "/data_cached/wangzijun_p25/isaac_out/repro_t16_t20_13200_20260919/T19__bg03_neutral_studio__g01_moon__boundary_d2_minus_r1/attempt_20260922_012241_49bae1",
+  "config_sha256": "a08de79602ac8dc86bad45dfa0ff9eaf70f5638004639fc1ef898fe2877158e9",
+  "metadata_sha256": {
+    "request.json": "178743d7cda6c4414613c1d7ece37e9641066a77367d6911ea490f5d724b9538",
+    "event_graph.json": "2bb9adeb4e0042649a988e1440251b95ca2695f47258d456d3fef560435b6fff",
+    "complete.json": "a05fb87dc7609958f4b31005d6b9e0ad8dfc24f893bc65bf67e402e6924035d2",
+    "media_qa.json": "6e7867b098b15875ad776309898a49da9483cf3bb654b0434ea160e232d60c2d",
+    "qa.json": "452dbccb4c390cc5d265bc0f5649412bcb88f9a5fe67fa7815f59d8004e59f46",
+    "camera_visibility.json": "9756b7be5347b3f3ba2f808814c642fd300bcd58608788dbe9208ac6f544ad9e",
+    "run.log": "95d4f43fbedf4c19a70f6e621bfc99301765937b59bbcb07d44b4ccbb8c3aa7c"
+  },
+  "missing_optional_metadata": [
+    "trajectory_summary.json",
+    "process_reuse.json"
+  ],
+  "original_complete_record_retained": true,
+  "original_input_renamed_to": "config.json",
+  "scientific_revalidation_performed": false
+}

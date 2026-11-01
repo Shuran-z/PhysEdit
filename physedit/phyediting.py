@@ -220,10 +220,11 @@ def _pipeline(spec, root, plan):
         rows = read_rows(rows_path)
         registered_items = {i['id']: i for i in read_rows(items_path)}
         for row in rows:
-            provided = bool(registered_items[row['item_id']].get('generation_prompt'))
-            row.update(prompt_source_class='registered_item_text' if provided else 'builtin_event_template',
-                       prompt_granularity='event_template', prompt_is_exact_official=False,
-                       prompt_transformation='append_fixed_camera_and_requested_gravity')
+            from .prompt_contract import VERSION as PROMPT_POLICY
+            row.update(prompt_source_class='structured_initial_conditions_en_v1',
+                       prompt_granularity='initial_conditions', prompt_is_exact_official=False,
+                       prompt_policy=PROMPT_POLICY, prompt_language='en',
+                       prompt_transformation='render_declared_physical_inputs_without_outcomes')
         from .parameter_evaluation import attach_requested_parameters
         rows = attach_requested_parameters(spec, rows, registered_items, input_dir/'motion_prompts')
         rows_path.write_text(''.join(json.dumps(r)+'\n' for r in rows))

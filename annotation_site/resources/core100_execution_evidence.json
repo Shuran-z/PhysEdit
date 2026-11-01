@@ -1,0 +1,2833 @@
+{
+  "checked_at_utc": "2026-10-31T03:26:42.857286+00:00",
+  "verified_numeric_files": 77,
+  "T12_T13_verified_probe_states": 134,
+  "cases": [
+    {
+      "clip_id": "T01_C01",
+      "scene": "T01",
+      "events": [
+        "full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T01_C02",
+      "scene": "T01",
+      "events": [
+        "full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T01_C03",
+      "scene": "T01",
+      "events": [
+        "full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T01_C04",
+      "scene": "T01",
+      "events": [
+        "full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T01_C05",
+      "scene": "T01",
+      "events": [
+        "full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Verify reference video/config binding and physics quality; no additional bisection required for this observed interval"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T02_C01",
+      "scene": "T02",
+      "events": [
+        "C2_signal_displaced_0p05m"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T02_C02",
+      "scene": "T02",
+      "events": [
+        "C2_signal_displaced_0p05m"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T02_C03",
+      "scene": "T02",
+      "events": [
+        "C2_signal_displaced_0p05m"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T02_C04",
+      "scene": "T02",
+      "events": [
+        "C2_signal_displaced_0p05m"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T02_C05",
+      "scene": "T02",
+      "events": [
+        "C2_signal_displaced_0p05m"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T03_C01",
+      "scene": "T03",
+      "events": [
+        "book_contacts_upper_can",
+        "can_lands_on_lower_shelf",
+        "phone_second_fall_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T03_C02",
+      "scene": "T03",
+      "events": [
+        "book_contacts_upper_can",
+        "can_lands_on_lower_shelf",
+        "phone_second_fall_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T03_C03",
+      "scene": "T03",
+      "events": [
+        "book_contacts_upper_can",
+        "can_lands_on_lower_shelf",
+        "phone_second_fall_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T03_C04",
+      "scene": "T03",
+      "events": [
+        "book_contacts_upper_can",
+        "can_lands_on_lower_shelf",
+        "phone_second_fall_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T03_C05",
+      "scene": "T03",
+      "events": [
+        "book_contacts_upper_can",
+        "can_lands_on_lower_shelf",
+        "phone_second_fall_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T04_C01",
+      "scene": "T04",
+      "events": [
+        "original_full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T04_C02",
+      "scene": "T04",
+      "events": [
+        "original_full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T04_C03",
+      "scene": "T04",
+      "events": [
+        "original_full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T04_C04",
+      "scene": "T04",
+      "events": [
+        "original_full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 5,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T04_C05",
+      "scene": "T04",
+      "events": [
+        "original_full_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 5,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T05_C01",
+      "scene": "T05",
+      "events": [
+        "gate_passage"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T05_C02",
+      "scene": "T05",
+      "events": [
+        "gate_passage"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T05_C03",
+      "scene": "T05",
+      "events": [
+        "gate_passage"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 10,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T05_C04",
+      "scene": "T05",
+      "events": [
+        "gate_passage"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 10,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T05_C05",
+      "scene": "T05",
+      "events": [
+        "gate_passage"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 2,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T06_C01",
+      "scene": "T06",
+      "events": [
+        "complete_required_contact_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T06_C02",
+      "scene": "T06",
+      "events": [
+        "complete_required_contact_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T06_C03",
+      "scene": "T06",
+      "events": [
+        "complete_required_contact_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T06_C04",
+      "scene": "T06",
+      "events": [
+        "complete_required_contact_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "registered_source_end_window4.1s_not5s",
+        "historical_Genesis_boundary_cannot_be_transferred_to_Isaac_reference"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T06_C05",
+      "scene": "T06",
+      "events": [
+        "complete_required_contact_chain"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T07_C01",
+      "scene": "T07",
+      "events": [
+        "motion_ge_1cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T07_C02",
+      "scene": "T07",
+      "events": [
+        "motion_ge_1cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T07_C03",
+      "scene": "T07",
+      "events": [
+        "motion_ge_1cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T07_C04",
+      "scene": "T07",
+      "events": [
+        "motion_ge_1cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T07_C05",
+      "scene": "T07",
+      "events": [
+        "motion_ge_1cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T08_C01",
+      "scene": "T08",
+      "events": [
+        "t08_lower_impactor_book_below_table_8cm",
+        "t08_upper_payload_book_below_table_8cm",
+        "t08_target_mug_below_table_8cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T08_C02",
+      "scene": "T08",
+      "events": [
+        "t08_lower_impactor_book_below_table_8cm",
+        "t08_upper_payload_book_below_table_8cm",
+        "t08_target_mug_below_table_8cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T08_C03",
+      "scene": "T08",
+      "events": [
+        "t08_lower_impactor_book_below_table_8cm",
+        "t08_upper_payload_book_below_table_8cm",
+        "t08_target_mug_below_table_8cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T08_C04",
+      "scene": "T08",
+      "events": [
+        "t08_lower_impactor_book_below_table_8cm",
+        "t08_upper_payload_book_below_table_8cm",
+        "t08_target_mug_below_table_8cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T08_C05",
+      "scene": "T08",
+      "events": [
+        "t08_lower_impactor_book_below_table_8cm",
+        "t08_upper_payload_book_below_table_8cm",
+        "t08_target_mug_below_table_8cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T09_C01",
+      "scene": "T09",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T09_C02",
+      "scene": "T09",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T09_C03",
+      "scene": "T09",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T09_C04",
+      "scene": "T09",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "original_native_state",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T09_C05",
+      "scene": "T09",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "original_native_state",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T10_C01",
+      "scene": "T10",
+      "events": [
+        "support_pen_displacement_reaches_source_threshold"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 7,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T10_C02",
+      "scene": "T10",
+      "events": [
+        "support_pen_displacement_reaches_source_threshold"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 7,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T10_C03",
+      "scene": "T10",
+      "events": [
+        "support_pen_displacement_reaches_source_threshold"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T10_C04",
+      "scene": "T10",
+      "events": [
+        "support_pen_displacement_reaches_source_threshold"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T10_C05",
+      "scene": "T10",
+      "events": [
+        "support_pen_displacement_reaches_source_threshold"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": false,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "registered_source_end_window4.1s_not5s"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0,
+      "physical_window_source_origin": "supplemental_replay_not_original_annotation",
+      "physical_window_native_check": "hash_clock_and_original_event_recomputed"
+    },
+    {
+      "clip_id": "T11_C01",
+      "scene": "T11",
+      "events": [
+        "t11_driver_eraser_final_center_below_minus_10cm",
+        "t11_relay_pencil_case_final_center_below_minus_10cm",
+        "t11_eyeglasses_case_final_center_below_minus_10cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T11_C02",
+      "scene": "T11",
+      "events": [
+        "t11_driver_eraser_final_center_below_minus_10cm",
+        "t11_relay_pencil_case_final_center_below_minus_10cm",
+        "t11_eyeglasses_case_final_center_below_minus_10cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T11_C03",
+      "scene": "T11",
+      "events": [
+        "t11_driver_eraser_final_center_below_minus_10cm",
+        "t11_relay_pencil_case_final_center_below_minus_10cm",
+        "t11_eyeglasses_case_final_center_below_minus_10cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T11_C04",
+      "scene": "T11",
+      "events": [
+        "t11_driver_eraser_final_center_below_minus_10cm",
+        "t11_relay_pencil_case_final_center_below_minus_10cm",
+        "t11_eyeglasses_case_final_center_below_minus_10cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 4,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T11_C05",
+      "scene": "T11",
+      "events": [
+        "t11_driver_eraser_final_center_below_minus_10cm",
+        "t11_relay_pencil_case_final_center_below_minus_10cm",
+        "t11_eyeglasses_case_final_center_below_minus_10cm"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 4,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T12_C01",
+      "scene": "T12",
+      "events": [
+        "stapler_contacts_tissue_box"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "current_contact_distance_bins_mid_or_far_not_Near",
+        "cross_case_fixed_contexts_differ_no_pair_admission"
+      ],
+      "source_recovery_next_steps": [
+        "Audit existing same-window probe states and reference binding before launching duplicate simulations"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T12_C02",
+      "scene": "T12",
+      "events": [
+        "stapler_contacts_tissue_box"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "current_contact_distance_bins_mid_or_far_not_Near",
+        "cross_case_fixed_contexts_differ_no_pair_admission"
+      ],
+      "source_recovery_next_steps": [
+        "Audit existing same-window probe states and reference binding before launching duplicate simulations"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T12_C03",
+      "scene": "T12",
+      "events": [
+        "stapler_contacts_tissue_box"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "current_contact_distance_bins_mid_or_far_not_Near",
+        "cross_case_fixed_contexts_differ_no_pair_admission"
+      ],
+      "source_recovery_next_steps": [
+        "Audit existing same-window probe states and reference binding before launching duplicate simulations"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T12_C04",
+      "scene": "T12",
+      "events": [
+        "stapler_contacts_tissue_box"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "current_contact_distance_bins_mid_or_far_not_Near",
+        "cross_case_fixed_contexts_differ_no_pair_admission"
+      ],
+      "source_recovery_next_steps": [
+        "Audit existing same-window probe states and reference binding before launching duplicate simulations"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T12_C05",
+      "scene": "T12",
+      "events": [
+        "stapler_contacts_tissue_box"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "current_contact_distance_bins_mid_or_far_not_Near",
+        "cross_case_fixed_contexts_differ_no_pair_admission"
+      ],
+      "source_recovery_next_steps": [
+        "Audit existing same-window probe states and reference binding before launching duplicate simulations"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T13_C01",
+      "scene": "T13",
+      "events": [
+        "driver_to_falling_book_contact",
+        "falling_book_to_drink_contact"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "contact_Near_candidates_positive_only_no_balanced_NearAcc",
+        "contact_protocol_not_original_terminal_fall",
+        "repair_solver_results_not_automatic_original_reference_replacement"
+      ],
+      "source_recovery_next_steps": [
+        "Original support overlap independently reproduced. Global timeconst repair lowers contact depths but fails frozen-source trajectory/event compatibility. Do not admit or replace original boundaries; test support-only correction separately. Existing media and labels remain unchanged."
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T13_C02",
+      "scene": "T13",
+      "events": [
+        "driver_to_falling_book_contact",
+        "falling_book_to_drink_contact"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "contact_Near_candidates_positive_only_no_balanced_NearAcc",
+        "contact_protocol_not_original_terminal_fall",
+        "repair_solver_results_not_automatic_original_reference_replacement"
+      ],
+      "source_recovery_next_steps": [
+        "Original support overlap independently reproduced. Global timeconst repair lowers contact depths but fails frozen-source trajectory/event compatibility. Do not admit or replace original boundaries; test support-only correction separately. Existing media and labels remain unchanged."
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T13_C03",
+      "scene": "T13",
+      "events": [
+        "driver_to_falling_book_contact",
+        "falling_book_to_drink_contact"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "contact_Near_candidates_positive_only_no_balanced_NearAcc",
+        "contact_protocol_not_original_terminal_fall",
+        "repair_solver_results_not_automatic_original_reference_replacement"
+      ],
+      "source_recovery_next_steps": [
+        "Original support overlap independently reproduced. Global timeconst repair lowers contact depths but fails frozen-source trajectory/event compatibility. Do not admit or replace original boundaries; test support-only correction separately. Existing media and labels remain unchanged."
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T13_C04",
+      "scene": "T13",
+      "events": [
+        "driver_to_falling_book_contact",
+        "falling_book_to_drink_contact"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "contact_Near_candidates_positive_only_no_balanced_NearAcc",
+        "contact_protocol_not_original_terminal_fall",
+        "repair_solver_results_not_automatic_original_reference_replacement"
+      ],
+      "source_recovery_next_steps": [
+        "Original support overlap independently reproduced. Global timeconst repair lowers contact depths but fails frozen-source trajectory/event compatibility. Do not admit or replace original boundaries; test support-only correction separately. Existing media and labels remain unchanged."
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T13_C05",
+      "scene": "T13",
+      "events": [
+        "driver_to_falling_book_contact",
+        "falling_book_to_drink_contact"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": true,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "contact_Near_candidates_positive_only_no_balanced_NearAcc",
+        "contact_protocol_not_original_terminal_fall",
+        "repair_solver_results_not_automatic_original_reference_replacement"
+      ],
+      "source_recovery_next_steps": [
+        "Original support overlap independently reproduced. Global timeconst repair lowers contact depths but fails frozen-source trajectory/event compatibility. Do not admit or replace original boundaries; test support-only correction separately. Existing media and labels remain unchanged."
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T14_C01",
+      "scene": "T14",
+      "events": [
+        "passed_channel",
+        "terminal_contact_after_full_exit"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": false,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "reference_clock_incomplete",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T14_C02",
+      "scene": "T14",
+      "events": [
+        "passed_channel",
+        "terminal_contact_after_full_exit"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": false,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "reference_clock_incomplete",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T14_C03",
+      "scene": "T14",
+      "events": [
+        "passed_channel",
+        "terminal_contact_after_full_exit"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 8,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T14_C04",
+      "scene": "T14",
+      "events": [
+        "passed_channel",
+        "terminal_contact_after_full_exit"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T14_C05",
+      "scene": "T14",
+      "events": [
+        "passed_channel",
+        "terminal_contact_after_full_exit"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T15_C01",
+      "scene": "T15",
+      "events": [
+        "laptop_reaches_original_fall_criterion"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_historical_probe_configs_have_no_hash_receipt"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 2
+    },
+    {
+      "clip_id": "T15_C02",
+      "scene": "T15",
+      "events": [
+        "laptop_reaches_original_fall_criterion"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "some_event_labels_missing_or_unobservable",
+        "some_historical_probe_configs_have_no_hash_receipt"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 2
+    },
+    {
+      "clip_id": "T15_C03",
+      "scene": "T15",
+      "events": [
+        "laptop_reaches_original_fall_criterion"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "some_historical_probe_configs_have_no_hash_receipt"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 2
+    },
+    {
+      "clip_id": "T15_C04",
+      "scene": "T15",
+      "events": [
+        "laptop_contacts_phone"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable",
+        "some_historical_probe_configs_have_no_hash_receipt"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 6
+    },
+    {
+      "clip_id": "T15_C05",
+      "scene": "T15",
+      "events": [
+        "laptop_contacts_phone"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_historical_probe_configs_have_no_hash_receipt"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 6
+    },
+    {
+      "clip_id": "T16_C01",
+      "scene": "T16",
+      "events": [
+        "folder_downstream_contact",
+        "downstream_response_original",
+        "folder_motion_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 4,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T16_C02",
+      "scene": "T16",
+      "events": [
+        "folder_downstream_contact",
+        "downstream_response_original",
+        "folder_motion_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T16_C03",
+      "scene": "T16",
+      "events": [
+        "folder_downstream_contact",
+        "downstream_response_original",
+        "folder_motion_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 12,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T16_C04",
+      "scene": "T16",
+      "events": [
+        "folder_downstream_contact",
+        "downstream_response_original",
+        "folder_motion_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T16_C05",
+      "scene": "T16",
+      "events": [
+        "folder_downstream_contact",
+        "downstream_response_original",
+        "folder_motion_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 16,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T17_C01",
+      "scene": "T17",
+      "events": [
+        "can_tissue_box_contact",
+        "hit_tissue_box_original",
+        "can_below_table_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 2,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T17_C02",
+      "scene": "T17",
+      "events": [
+        "can_tissue_box_contact",
+        "hit_tissue_box_original",
+        "can_below_table_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 2,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T17_C03",
+      "scene": "T17",
+      "events": [
+        "can_tissue_box_contact",
+        "hit_tissue_box_original",
+        "can_below_table_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 2,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T17_C04",
+      "scene": "T17",
+      "events": [
+        "can_tissue_box_contact",
+        "hit_tissue_box_original",
+        "can_below_table_original"
+      ],
+      "reference_admitted": true,
+      "reference_horizon_s": 6.4,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 2,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "some_outputs_shorter_than_registered_reference_window;recheck_shorter_window",
+        "5s_relabel_done_both_negative;positive_generated_case_missing",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Retain admitted reference; verify generated media and annotation window without altering labels"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T17_C05",
+      "scene": "T17",
+      "events": [
+        "can_tissue_box_contact",
+        "hit_tissue_box_original",
+        "can_below_table_original"
+      ],
+      "reference_admitted": true,
+      "reference_horizon_s": 6.4,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 2,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "some_outputs_shorter_than_registered_reference_window;recheck_shorter_window",
+        "5s_relabel_done_both_negative;positive_generated_case_missing",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Retain admitted reference; verify generated media and annotation window without altering labels"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T18_C01",
+      "scene": "T18",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T18_C02",
+      "scene": "T18",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 4,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T18_C03",
+      "scene": "T18",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T18_C04",
+      "scene": "T18",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 4,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T18_C05",
+      "scene": "T18",
+      "events": [
+        "upper_nonpulled_book_on_table_at_end"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 1,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T19_C01",
+      "scene": "T19",
+      "events": [
+        "can2_transfer_original",
+        "target_edge_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Await author-approved replacement reference; old reference remains retired"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T19_C02",
+      "scene": "T19",
+      "events": [
+        "can2_transfer_original",
+        "target_edge_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Await author-approved replacement reference; old reference remains retired"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T19_C03",
+      "scene": "T19",
+      "events": [
+        "can2_transfer_original",
+        "target_edge_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Await author-approved replacement reference; old reference remains retired"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T19_C04",
+      "scene": "T19",
+      "events": [
+        "can2_transfer_original",
+        "target_edge_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Await author-approved replacement reference; old reference remains retired"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T19_C05",
+      "scene": "T19",
+      "events": [
+        "can2_transfer_original",
+        "target_edge_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Await author-approved replacement reference; old reference remains retired"
+      ],
+      "verified_probe_state_hashes": 0,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T20_C01",
+      "scene": "T20",
+      "events": [
+        "complete_propagation_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 0,
+      "live_no_flip_receipts": 1,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "no_registered_boundary_for_this_case",
+        "finite_grid_no_flip_is_not_proof_of_global_no_boundary",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 6,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T20_C02",
+      "scene": "T20",
+      "events": [
+        "complete_propagation_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T20_C03",
+      "scene": "T20",
+      "events": [
+        "complete_propagation_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T20_C04",
+      "scene": "T20",
+      "events": [
+        "complete_propagation_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    },
+    {
+      "clip_id": "T20_C05",
+      "scene": "T20",
+      "events": [
+        "complete_propagation_original"
+      ],
+      "reference_admitted": false,
+      "reference_horizon_s": null,
+      "same_window_reference_truth_record": false,
+      "clock_complete": true,
+      "historical_numeric_records": 0,
+      "live_interval_receipts": 1,
+      "live_no_flip_receipts": 0,
+      "source_config_hash_matches": true,
+      "blockers": [
+        "reference_not_formally_admitted",
+        "interval_receipts_exist;source_physics_window_and_visual_admission_still_required",
+        "window_specific_reference_truth_not_registered",
+        "human_records_pending",
+        "some_event_labels_missing_or_unobservable"
+      ],
+      "source_recovery_next_steps": [
+        "Recover exact source/context and inspect original boundary ledgers; prepare same-event same-window search only for confirmed gaps"
+      ],
+      "verified_probe_state_hashes": 2,
+      "probe_config_receipt_missing": 0
+    }
+  ],
+  "native_verification_sha256": {
+    "t12_t13_native_verification.json": "2b36877073e864c5bc51cdbdc4862348bcdcaf4e6471a0261613214e69a05d89",
+    "physical15_native_verification.json": "0f9893d12cdde6d324b0e214875b8164f98c0731f78a184c0439a6e290f1b2c5"
+  },
+  "verified_probe_state_hashes": 342,
+  "verified_probe_config_hashes": 324,
+  "probe_config_receipt_missing": 18,
+  "T17_five_second_boundary": {
+    "horizon_s": 5.0,
+    "brackets": [
+      {
+        "interval": [
+          1.1368736530172416,
+          1.1373922413793105
+        ],
+        "labels": [
+          0,
+          1
+        ]
+      }
+    ],
+    "source_case_distances": [
+      {
+        "clip_id": "T17_C04",
+        "theta": 0.9465517241379311,
+        "reference_label_5s": 0,
+        "normalized_distance_interval": [
+          0.04943426724137936,
+          0.0495689655172414
+        ],
+        "near_status": "near",
+        "rule_origin": "existing Near<=0.05; normalization domain [0.15,4.0]; no new threshold"
+      },
+      {
+        "clip_id": "T17_C05",
+        "theta": 1.0793103448275863,
+        "reference_label_5s": 0,
+        "normalized_distance_interval": [
+          0.014951508620689708,
+          0.01508620689655175
+        ],
+        "near_status": "near",
+        "rule_origin": "existing Near<=0.05; normalization domain [0.15,4.0]; no new threshold"
+      }
+    ],
+    "search_completed": true,
+    "NearAcc": null,
+    "PairAcc": null,
+    "blockers": [
+      "Core100 T17_C04/C05 are both negative at5s; balanced NearAcc lacks positive case and PairAcc lacks a cross-boundary output pair.",
+      "New numerical positive probes have no matching generated model videos or reference RGB admission.",
+      "16 supplemental human review tasks are queued, not completed human labels."
+    ],
+    "evidence_sha256": "abb20e8fb1994f384c26423faffb0d8d7417c2893bf90adbcb380acae5342e38"
+  }
+}

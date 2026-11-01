@@ -89,8 +89,26 @@ def load(source_dir):
     return assigned, reserve, summary
 
 
-def materialize(source_dir, output_dir):
+def materialize(source_dir, output_dir, conditions=None, reference_release=None):
     core, reserve, summary = load(source_dir)
+    if reference_release:
+        if conditions:
+            raise ValueError('reference_release_already_selects_its_conditions')
+        from .core100_release import load as load_reference_release
+        release_root, manifest, _, active_rows = load_reference_release(
+            None if reference_release=='active' else reference_release)
+        active_by_id={r['clip_id']:r for r in active_rows}
+        replacements={r['clip_id'] for r in manifest['replacements']}
+        core=[active_by_id[r['clip_id']] if r['clip_id'] in replacements else r for r in core]
+        conditions=release_root/'known_conditions.json'
+        summary.update(reference_release_version=manifest['version'],reference_replacements=len(replacements),
+                       reference_release_manifest_sha256=digest(release_root/'MANIFEST.json'),
+                       original_split_bytes_preserved=True,reserve_substitution=False)
+    if conditions:
+        from .known_conditions import attach
+        core=attach(core,conditions)
+        summary['known_conditions_manifest_sha256']=digest(conditions)
+        summary['known_conditions_version']=core[0]['conditions_version']
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=False)
     for split in ('test_id', 'test_ood_1', 'test_ood_2'):
@@ -107,8 +125,12 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-dir',required=True)
     parser.add_argument('--out')
+    parser.add_argument('--conditions',help='Versioned, video-SHA-bound known-condition correction manifest')
+    parser.add_argument('--reference-release',help='Use active or a versioned Core100 reference-release pointer')
     args = parser.parse_args(argv)
-    result = materialize(args.source_dir,args.out) if args.out else load(args.source_dir)[2]
+    if (args.conditions or args.reference_release) and not args.out:
+        parser.error('--conditions/--reference-release requires --out')
+    result = materialize(args.source_dir,args.out,args.conditions,args.reference_release) if args.out else load(args.source_dir)[2]
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

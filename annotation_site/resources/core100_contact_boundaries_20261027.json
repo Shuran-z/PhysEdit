@@ -1,0 +1,670 @@
+{
+  "schema": "validated-contact-distance-ledger-v1",
+  "records": [
+    {
+      "clip_id": "T12_C01",
+      "status": "local_contact_bracket_completed",
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "parameter": "stapler_initial_speed_mps",
+      "bracket": [
+        0.697265625,
+        0.6982421875
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 1.0,
+      "source_config_sha256": "26586275578154f150c9b64d4f560d1fbe50bd56165175fa3f4dd944a897963c",
+      "fixed_context_sha256": "d4638ac470a20dab11848f8e5b19be10e4696259aa74b27f856a15838256e30c",
+      "normalization_domain": [
+        0.85,
+        2.35
+      ],
+      "normalization_span": 1.5,
+      "search_may_extend_below_published_domain": true,
+      "scope": "Exact source-seed conditional speed slice; one observed local interval, no global uniqueness assertion; no cross-case PairAcc admission",
+      "probes": [
+        {
+          "theta": 0.0,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0/physics.json.gz",
+          "state_sha256": "e81ab04ec440686146187fb69b6098aacdecc70fca4b764b7708b813bb820e5e",
+          "config_sha256": "e0275b58bc4963ac1bdac4973dbf5bc41e993cd9cad718bee96d398428e10111",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.5,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.5/physics.json.gz",
+          "state_sha256": "103b83f6f3428ede72aa363bf4d9e92aa0c494110190244d732c5b84c61b8519",
+          "config_sha256": "60e484408dee6ea93999dfcdaa976d7fe472862a8f12d08bd671359927669490",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.75,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.75/physics.json.gz",
+          "state_sha256": "749332d7f48ba79e21b681d7f5d68503273dabea96d822fe0cd0583a705f3d59",
+          "config_sha256": "1a79c9320ef5591b887ff2b8a34fbeafef2e399712cfdb92484fd424019f9bad",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.625,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.625/physics.json.gz",
+          "state_sha256": "7de21d0f7ccbd1790fb6e6954f01684e5c1eedc98e67c36ee54ec4609c4e3338",
+          "config_sha256": "1f519cc5dfbe4fe0a856787d74319ddeaefd1852883a591051688badcca54457",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.6875,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.6875/physics.json.gz",
+          "state_sha256": "68eb0a393e9ed953e7369f4a751f48ac26cfd5b7356d9d483e6c54d0cf83f964",
+          "config_sha256": "eb3bbb9a3c596f1fd1d4b75fa106ecb93ed3adaf038c7de74c2b91ae747f2bde",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.71875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.71875/physics.json.gz",
+          "state_sha256": "04fc985f11c71e941cb160013c7f7eac0bde1596b8c6a8afded62aec2aaca7ce",
+          "config_sha256": "7f3c13d8d33295eeccb7d46bdc8fc664182b599c892da098fe0a096eba445905",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.703125,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.703125/physics.json.gz",
+          "state_sha256": "4ee1c921694d178243d222d7471270b45a29643a065177c923d5ea32a37aea40",
+          "config_sha256": "cff30b35dbbfedcba2124d4ed47376ef2cd54e18f8adaf02b0141a294836477d",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.6953125,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.6953125/physics.json.gz",
+          "state_sha256": "ea7b5f4552c54b42eec77154ff0663c266e5101d1cff084ed294507da986ec0d",
+          "config_sha256": "b964181db68efeae3881df8ebe23b04a68efb568f5de78c8ef990c43203483f0",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.69921875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.69921875/physics.json.gz",
+          "state_sha256": "18b57347cf92ddfe4ec18ddeb930b1f4c5babfd8ac6e5b31a546c6bbac8dd448",
+          "config_sha256": "4477a0157494d2f83e8f42d4c8481caf10148838bef9204ce3b6dda26d37b3ff",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.697265625,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.697265625/physics.json.gz",
+          "state_sha256": "fb2c19abf550064abac257ce2953972de0027d3f9de8a8f828172adf540ad9e7",
+          "config_sha256": "90d2beec7917a3cebc8d692a8fcdfe0f08dfde5ca40f031b637f5b9bb47a5a78",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.6982421875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C01/0.6982421875/physics.json.gz",
+          "state_sha256": "dd3381601de980101dc07a4f6891e5d7ed5877286e1f668888d6a024aa51dc89",
+          "config_sha256": "363ecda7ac7de0465c4a9a8108d73a1d15f1bc7eeebad46ba48da63781a1bab5",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        }
+      ],
+      "normalized_distance_interval": [
+        0.201171875,
+        0.20182291666666666
+      ],
+      "distance_bin": "far",
+      "boundary_within_published_domain": false,
+      "distance_scope": "diagnostic_distance_to_out_of_domain_boundary",
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "result_sha256": "7e8074338a564e3adde2238d1c85597f1ecdf864cd3c21a7a5c2bfa503408862"
+    },
+    {
+      "clip_id": "T12_C03",
+      "status": "local_contact_bracket_completed",
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "parameter": "stapler_initial_speed_mps",
+      "bracket": [
+        1.7172363281249998,
+        1.7181640624999999
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 1.9,
+      "source_config_sha256": "27e545b744e5bfebb6e40312e87efd01f85f1ad099680dfbf64b86ed4a770174",
+      "fixed_context_sha256": "65fb3a7c15f8a973ad1389f09b1eb1276ec0f4ff299942d8ff68c3bccb7a9ef0",
+      "normalization_domain": [
+        0.85,
+        2.35
+      ],
+      "normalization_span": 1.5,
+      "search_may_extend_below_published_domain": true,
+      "scope": "Exact source-seed conditional speed slice; one observed local interval, no global uniqueness assertion; no cross-case PairAcc admission",
+      "probes": [
+        {
+          "theta": 0.0,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/0/physics.json.gz",
+          "state_sha256": "8cf1028c62778dffa7abca84d58e0780a36660c3574fd312da397c648de6c3e4",
+          "config_sha256": "c967a0949218c66b89e41928f3decc594530a347264761844819234e801bd5e5",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.95,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/0.95/physics.json.gz",
+          "state_sha256": "39be97fed193ade5aa6196cf080ab0670dac3b84c46328086283d5beb341c29e",
+          "config_sha256": "6e1f1290f3ef30f654c072ed336639ec1c5444747cb904d9da7cc3d8c7993370",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.4249999999999998,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.425/physics.json.gz",
+          "state_sha256": "a6c697285367059568ed5bba6668fc6489df62b958db8d2cd531edfc46683705",
+          "config_sha256": "5cc2a5f06cb3a4675b521714431ea4d554c0f2e168e0b6057cb4ec0d2a59b223",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.6624999999999999,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.6625/physics.json.gz",
+          "state_sha256": "15d5aa84b4639def2171aa4fd55a391e94de4b9f83045f0c8c289ca67e8118b4",
+          "config_sha256": "1e82215a20ca73d13cfab9a8f1070c29c3c5e54a57a8cb5651ce2119b6e6aabe",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.78125,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.78125/physics.json.gz",
+          "state_sha256": "861911bbc19a9eaea4ee683093c26d08c0bae8734f54d17e9b915c60ac2dbad5",
+          "config_sha256": "ad81d83ca5fa3529889a0afb56964364d4c937f8add44d46e79196f12345d5c7",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7218749999999998,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.721875/physics.json.gz",
+          "state_sha256": "6b8a6bf3f854be04d1a1588d07ddf5517b9689cdfed033505b8b36890c314e62",
+          "config_sha256": "7ed6817851b4a8eb36cec23fe9666b60f7daa0bd55c07ad315e7949a6e462540",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.6921874999999997,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.6921875/physics.json.gz",
+          "state_sha256": "27f4c0559f592106bc5cf96bf5b17c0fa9029a46ecca72033805512ad026b805",
+          "config_sha256": "40708801a38773efb583fdd2c4fdd1e71153262c28e8426709743a9b7c3d99d8",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7070312499999998,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.70703125/physics.json.gz",
+          "state_sha256": "c44a1b2a057d2ee0642541d1b5e5ebbdc4e8bf4200f464da19c60eff3fd7c276",
+          "config_sha256": "2f1cb399995e4a056a9f5d7ca55713647abeada4c3e10f020163a027b7151b77",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.714453125,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.714453125/physics.json.gz",
+          "state_sha256": "6bd5febe362ce3090ceab2b12ec3bb6977a769091dc5ea5d0bba0bbe173a652c",
+          "config_sha256": "aee00ec8d5590a0a1a668a876745651663dd4fd63f2b585e05f550b4773a2535",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7181640624999999,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.7181640625/physics.json.gz",
+          "state_sha256": "3b3a87c1acf0bc99601c29c975e9d330528cfbb3beec61a2097f551cde28facd",
+          "config_sha256": "8693f4ceb209390de8935b42b994affeaba3e6cd316d3ad77a963f280098c508",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.71630859375,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.71630859375/physics.json.gz",
+          "state_sha256": "276b6f542efdbba451e06bcbf369891790efedd757594b6f40c6a8cdb7920fcb",
+          "config_sha256": "5e6d7ddfb1b5fea533c828ed198be2f2965a1858b2498754a8d8343d4c25eb65",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7172363281249998,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C03/1.71723632812/physics.json.gz",
+          "state_sha256": "b21c41e37dc8aa3f34cb646d117ecfd79e7a3e960a42c596aebe8ad304b69e09",
+          "config_sha256": "d6ada87af978c0cb32a3670a96250abff93d81ca41297720e6483411ab6e81ba",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        }
+      ],
+      "normalized_distance_interval": [
+        0.12122395833333337,
+        0.12184244791666672
+      ],
+      "distance_bin": "mid",
+      "boundary_within_published_domain": true,
+      "distance_scope": "published_domain",
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "result_sha256": "adaf6a44c7a6c72576f6db58e1389bc9d284e02c0ad870fb454b403f99b8a7d5"
+    },
+    {
+      "clip_id": "T12_C05",
+      "status": "local_contact_bracket_completed",
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "parameter": "stapler_initial_speed_mps",
+      "bracket": [
+        1.7181762695312497,
+        1.7186767578124997
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 2.05,
+      "source_config_sha256": "e07bd879e31b33d76704fc6959902edc21db09be5b8956c19c56ab0ba5e2c2f1",
+      "fixed_context_sha256": "eb3d386fd9083209ad6601a7db1f3f49054249af57536e15831dcc3a5819435f",
+      "normalization_domain": [
+        0.85,
+        2.35
+      ],
+      "normalization_span": 1.5,
+      "search_may_extend_below_published_domain": true,
+      "scope": "Exact source-seed conditional speed slice; one observed local interval, no global uniqueness assertion; no cross-case PairAcc admission",
+      "probes": [
+        {
+          "theta": 0.0,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/0/physics.json.gz",
+          "state_sha256": "1fa5cab02b6ab504c9fecfd4fa7c643a16da5c4bbec128ccf640027724c915d0",
+          "config_sha256": "97f836abaea9c1018c94d1841c1b18891300ca37f3ab0b06e83b9975bf1185f0",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.025,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.025/physics.json.gz",
+          "state_sha256": "653c737904aaf31dcc4fe423f5edd247f6849f6344f6f3ec7113e2166c455165",
+          "config_sha256": "b1b3a61ead8fed5165292baf851000c218ee19fbec7aeaf116cff7f3f021eb90",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.5374999999999999,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.5375/physics.json.gz",
+          "state_sha256": "26b96343cbb2e4a487175cf7599f033b63b0dab77cc44dc278a11ea0cbda3fd4",
+          "config_sha256": "110dc9a94b5858a170163bf1ee5509e6e00fc2c3b3fe882485eb4f80134afbc3",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7937499999999997,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.79375/physics.json.gz",
+          "state_sha256": "87763cdeec0621f35f5851720598cd39616af7644173e3bfa954d19421017c10",
+          "config_sha256": "1a5da13f0e99213635f3873030d6762020c93f24c5aabe623db775b5fa3b88f1",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.665625,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.665625/physics.json.gz",
+          "state_sha256": "42575be0e42bbd6e8377644044373f78a826ab0d91e0a94107e9e616067f926c",
+          "config_sha256": "e03cf9839cf4e0aaf68d164fc741e7447a4d5094e47714f258a4afd18ff4523c",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7296874999999998,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.7296875/physics.json.gz",
+          "state_sha256": "f79438915f5907d918413c9bd1d1787a32f5f3f738ebe6dec32306323979b154",
+          "config_sha256": "0ad362fbece89e195e83af96ac12f29b741049cbd0aced197cd4bbbc1d1c1f9c",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.6976562499999999,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.69765625/physics.json.gz",
+          "state_sha256": "8054917b49b61239a2a633c7b18fae54347f5401e7e933b28b329ad9b1c227ff",
+          "config_sha256": "708c6359dc32a07da25067b9a4c11daed35935769e8099037b05abc55f4a097e",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7136718749999997,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.713671875/physics.json.gz",
+          "state_sha256": "aec40870b1643cb826cda48b9de0ff4c0a2055b101547bf5066a1490a6370bf7",
+          "config_sha256": "829af8aa071121166e80ba1cb58c476d7c5320d35f758c0325a95910c22f4a46",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7216796874999998,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.7216796875/physics.json.gz",
+          "state_sha256": "e4b504a4cbbbf36d3c081e36be67c01e72014c7d9f47a95f118b590977ae494f",
+          "config_sha256": "20df63c37b7f30815e1457eccda95b684ed7a806aa63fda6741fc7bcafb98fc4",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7176757812499996,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.71767578125/physics.json.gz",
+          "state_sha256": "ce41617653727d53717435a0378accf981c428aa9e4eb19af37203cc0e65f9a3",
+          "config_sha256": "c873a2378836751dc8e7965e0d6cd6392694aed6faad3a392900d0a980743a9a",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7196777343749998,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.71967773437/physics.json.gz",
+          "state_sha256": "a37cc6783842de83371ae6bc298c0aff0180c0f03f3d8738a825a19500be479c",
+          "config_sha256": "58535d762a902479ac9dd599f758bd99a01bffe4ba9bc458993768bdcc7d0c9f",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7186767578124997,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.71867675781/physics.json.gz",
+          "state_sha256": "963dd3120415772f587a4710146a9ac6ad7a54d8df43c031f20a9867c129fc95",
+          "config_sha256": "d1bba7d082379133cd235f6b290fefd379fdf2691ac4790a75f01104fd37d271",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7181762695312497,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker0/T12_C05/1.71817626953/physics.json.gz",
+          "state_sha256": "fb261c5503179d9ae19415a2c22c7e07297a27642539c9f694a42e4c83f8acfe",
+          "config_sha256": "32af559e32813037efd036fb22e31e4af534ba08a39929d0cb6ef0c9c833fc4e",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        }
+      ],
+      "normalized_distance_interval": [
+        0.2208821614583334,
+        0.2212158203125001
+      ],
+      "distance_bin": "far",
+      "boundary_within_published_domain": true,
+      "distance_scope": "published_domain",
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "result_sha256": "a1b044af4ff066362a85827dd8fa653eba121ee2e14c2c67336857c27914ab3c"
+    },
+    {
+      "clip_id": "T12_C02",
+      "status": "local_contact_bracket_completed",
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "parameter": "stapler_initial_speed_mps",
+      "bracket": [
+        1.05625,
+        1.0570312499999999
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 1.6,
+      "source_config_sha256": "27f28fda3dd32dd80f947028a094b436bd11e3fbe5e019fa9a5487cc8879c855",
+      "fixed_context_sha256": "8c206c64b2e0238517e8a375703f9c32f2558a07b345292d7caea37516aed754",
+      "normalization_domain": [
+        0.85,
+        2.35
+      ],
+      "normalization_span": 1.5,
+      "search_may_extend_below_published_domain": true,
+      "scope": "Exact source-seed conditional speed slice; one observed local interval, no global uniqueness assertion; no cross-case PairAcc admission",
+      "probes": [
+        {
+          "theta": 0.0,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/0/physics.json.gz",
+          "state_sha256": "95da06a9c9e05563730fcb7318f22fee3710a6f6859b29ce2a520da69d060db5",
+          "config_sha256": "3469a1840c88f0891c71ac74d73da8e653168dcfac10753f4ae8f1719b93a20b",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 0.8,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/0.8/physics.json.gz",
+          "state_sha256": "12b316abbf75213f536c7a014b00ea41d6820bbfae379117261616cd5e349357",
+          "config_sha256": "3e663f72a5063888ee7c03a024a4a32b1dd54d9be127e58635ba4a167c493b6d",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.2000000000000002,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.2/physics.json.gz",
+          "state_sha256": "20313999a1b296438381db88593c878f315e609c29dd5e93d4f442cca12bf469",
+          "config_sha256": "2a7bdf1742d86fd3eced659b3fc57e639be372cfd49c3b70f6f0e7525547368a",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.0,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1/physics.json.gz",
+          "state_sha256": "d14bcdfc0fdad297b2f9c430814cc4a17b4a16f882fc7c4b6a718e284246ac5f",
+          "config_sha256": "3f740e699e193ca9bcf2ad1e78149d28a5aa0538d31354b1208799869e82d07f",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.1,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.1/physics.json.gz",
+          "state_sha256": "b92ae55748f544875d4a8942fa80c4a20fd9b4430dd87ce544713bdf87e3b1b0",
+          "config_sha256": "df4c437af1988c25012eee839193891d9a7bd6457acca8ac7ad7249b666f7d67",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.05,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.05/physics.json.gz",
+          "state_sha256": "dfe287457efb3210edcc782919556d1c950c2c7d5a33bc3fb87321568d7bedd6",
+          "config_sha256": "0712ed2d8ef2d6468eb0bd8eb773b525dbf5017a3f64b530006fd5144a0be84a",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.0750000000000002,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.075/physics.json.gz",
+          "state_sha256": "b5b6bff42e1d4865bc363670c74daefbfb9c1590a2479124748492d9aaea29b3",
+          "config_sha256": "66030db07bc3202fa207921eeaf1e0f9310e92782138a0def461c7f05ab98a91",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.0625,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.0625/physics.json.gz",
+          "state_sha256": "2438458604014aef9653d0d422bb220c14b919378c7614ad22496a363d94a14f",
+          "config_sha256": "498d09509ec988d6153448d596a87a61d9165cf1124899884e2e2860726d2fa1",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.05625,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.05625/physics.json.gz",
+          "state_sha256": "dfbd365b08b0b64e6f8c9d7c5c84c678e597e35c789e4e087474cb244757e080",
+          "config_sha256": "c506e9a6b99ad2a12444ef6ea4cc833e3fec7000f23453837e49f7fd61f04345",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.059375,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.059375/physics.json.gz",
+          "state_sha256": "89a6e90ff3989f1865d20799e75254012d4999d876c044c8f843678ac788aa2f",
+          "config_sha256": "dbbad9c5654605f28e4cd3de6e092e8d66e6e1692a8013ea5e9bb28247da354c",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.0578124999999998,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.0578125/physics.json.gz",
+          "state_sha256": "d84d4aa97e94d772ad3f4ac46ec7482a70af27df10ed4f239c78a950f0e6842d",
+          "config_sha256": "5ee4b7893ab48967eac070b1115009a9bc1b201521963303a94a7ae088522477",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.0570312499999999,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C02/1.05703125/physics.json.gz",
+          "state_sha256": "3e8f0072b19dee0aac5c0a68294a7cbc5e350ce5b713f6cf93db50facdc5df00",
+          "config_sha256": "d46ec6fbbd31742ed7e5e6aebb1386cde4fd0ce73f153e51f1b85d3a30f261aa",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        }
+      ],
+      "normalized_distance_interval": [
+        0.3619791666666668,
+        0.3625000000000001
+      ],
+      "distance_bin": "far",
+      "boundary_within_published_domain": true,
+      "distance_scope": "published_domain",
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "result_sha256": "b987c7c7e2ab2b3ce8a71796b94adf9bf4ca8fd77cba09bce6f33476e572cdd0"
+    },
+    {
+      "clip_id": "T12_C04",
+      "status": "local_contact_bracket_completed",
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "parameter": "stapler_initial_speed_mps",
+      "bracket": [
+        1.717919921875,
+        1.71865234375
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 1.6,
+      "source_config_sha256": "03bfa0dceb079d8d8dfe3fad5b965845fb4c52ff99fb4f3c6bff48e56248e6f9",
+      "fixed_context_sha256": "5c93d10041b7f3775dfe3e666e02298586cccf186080a9b7ea871e6f4b269746",
+      "normalization_domain": [
+        0.85,
+        2.35
+      ],
+      "normalization_span": 1.5,
+      "search_may_extend_below_published_domain": true,
+      "scope": "Exact source-seed conditional speed slice; one observed local interval, no global uniqueness assertion; no cross-case PairAcc admission",
+      "probes": [
+        {
+          "theta": 2.35,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/2.35/physics.json.gz",
+          "state_sha256": "0695b5bc02ed7a287d68a50a13738c654044372be66ee1e6c288448d228aca10",
+          "config_sha256": "0ff89cc7c5a602679dc5e3de621057eeef9ee79ac4df1c6bfd4294c919fbff80",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.975,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.975/physics.json.gz",
+          "state_sha256": "d3f502e9120bb8c1977c0ff1cc8ca33113696f2ae94a66035dba15ba015aacd4",
+          "config_sha256": "0f135fd0ba4ee31975e3db193fc301828126d9e9ce5f5e90ab45c4eb66457002",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.7875/physics.json.gz",
+          "state_sha256": "78c54035e8d8fb8d492fafbd84b858c3ad962eb1bc2ff41d3852ba255ebb84ff",
+          "config_sha256": "1e15a86fc151c292c1a6e77adc481985d95639a72436b66ff59aa56db83020da",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.69375,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.69375/physics.json.gz",
+          "state_sha256": "28e914983c90195e0abefc6f9be9e8c90a9d8b6cb3a281aad287e607a39b3011",
+          "config_sha256": "d9c707e594e41c9d6771b54206fe58c09ce7f50fcce50db0f272712323dc867b",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.740625,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.740625/physics.json.gz",
+          "state_sha256": "39ff7104baee93082cb9d1749cba5c038fa12bd188c31f9a9c03bfb4f4298698",
+          "config_sha256": "46c126e3cd1d7ebc8e6a52fc8d41144be5ed4e0f6e0ea04148943dd960339c14",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7171875,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.7171875/physics.json.gz",
+          "state_sha256": "e4d8c6707d05e75e46d55994d74e35bc32fb09aadf4bd30c9816c519999c3e00",
+          "config_sha256": "076e3b2c63cdcf6910f78477130a4ab5943fb7e58e1f7a3fcdcc6043bb564d34",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.72890625,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.72890625/physics.json.gz",
+          "state_sha256": "f19d76c6adbc9b8044d980cfed0b38be4df54b1038756b819ddd62b30767fa96",
+          "config_sha256": "3810a726002c8bb1a6243e59dfe45693bb75fc8aade57662f430aca12da687dc",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.723046875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.723046875/physics.json.gz",
+          "state_sha256": "58daddc12eb7615ff538233ac3211b8e6195defef142b41ecfc721a2b9167a62",
+          "config_sha256": "bae814a70843530aa906d592b0ec48f1d0b42150d5de7b1df1987b8dbf2b5d31",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.7201171875,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.7201171875/physics.json.gz",
+          "state_sha256": "4d6dd4ee44fbbc85e2f80063b9c4ce4af49e6c17dcb526e9594e8412337c751b",
+          "config_sha256": "fb631ac0b8e36ca360ef3b77d7c29054afd544e755c06ac4a191f2c922f9b304",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.71865234375,
+          "label": 1,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.71865234375/physics.json.gz",
+          "state_sha256": "614ca8aa62d4234c2e04cf4ff34652722bc51053312aa3f783a3622ddae77ab7",
+          "config_sha256": "3ca05c19b1208d50964b3b28bb86ebfdef43bc7fc74334c0dd2740f2033464d2",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        },
+        {
+          "theta": 1.717919921875,
+          "label": 0,
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_contact_boundaries_20261027/worker1/T12_C04/1.71791992188/physics.json.gz",
+          "state_sha256": "4044985060d3a4e26edb1bfc9174c5bcd85127d90f53b907463547bccf1002a3",
+          "config_sha256": "aa46278276612395ee2c8522111f71cc8a7bb315d672de2d931e5d3d7845f67a",
+          "renderer_sha256": "eabda955d2e7396ba85e2a30e7ae08a28d329021d352f02f887a8bdb86e24a2d"
+        }
+      ],
+      "normalized_distance_interval": [
+        0.07861328125,
+        0.0791015625
+      ],
+      "distance_bin": "mid",
+      "boundary_within_published_domain": true,
+      "distance_scope": "published_domain",
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "result_sha256": "1ac2203cf1e1ab051957a710f2634e923de3861223d61a266633eb18347b609d"
+    }
+  ],
+  "completed": 5,
+  "expected": 5,
+  "note": "Numerical completion is separate from RGB reference and generated-video adjudication."
+}

@@ -9,9 +9,11 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for arg in ('manifest','output','model'):p.add_argument('--'+arg,required=True)
     p.add_argument('--stage',choices=['quality','events'],required=True)
+    p.add_argument('--quality-policy',choices=['legacy','scene-integrity-v2'],default='legacy')
     p.add_argument('--device-map',default='auto');p.add_argument('--max-memory-json')
     p.add_argument('--frames',type=int,default=13);p.add_argument('--max-new-tokens',type=int,default=1600)
     a=p.parse_args();out=Path(a.output)
+    if a.stage!='quality' and a.quality_policy!='legacy':p.error('quality policy applies only to the quality stage')
     if out.exists():raise FileExistsError(out)
     if a.frames<2:raise ValueError('at least two frames')
     import cv2,numpy as np,torch
@@ -25,8 +27,15 @@ def main():
     model=AutoModelForMultimodalLM.from_pretrained(a.model,local_files_only=True,torch_dtype=torch.bfloat16,device_map=a.device_map,**kwargs).eval()
     processor=AutoProcessor.from_pretrained(a.model,local_files_only=True)
     prompt=QUALITY if a.stage=='quality' else EVENTS
+    scene_policy=a.stage=='quality' and a.quality_policy=='scene-integrity-v2'
+    if scene_policy:
+        from .scene_quality import PROMPT,normalize_quality
+        prompt=PROMPT
     receipt={'stage':a.stage,'model':a.model,'source_sha256':digest(__file__),'manifest_sha256':digest(a.manifest),
-             'prompt':prompt,'frames':a.frames,'max_new_tokens':a.max_new_tokens,'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'torch':torch.__version__}
+             'prompt':prompt,'quality_policy':a.quality_policy,'frames':a.frames,'max_new_tokens':a.max_new_tokens,'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'torch':torch.__version__}
+    if scene_policy:
+        from . import scene_quality
+        receipt['scene_policy_source_sha256']=digest(scene_quality.__file__)
     out.with_suffix('.receipt.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
     with out.open('x',encoding='utf-8') as stream:
         for line in Path(a.manifest).read_text(encoding='utf-8').splitlines():
@@ -45,13 +54,14 @@ def main():
                     ids,_=select_frames(tr['frames'],end);boxes={x['frame']:x['bbox_xyxy'] for x in tr['frames']}
                 content=[{'type':'text','text':prompt+'\nTarget: '+j['target']}];images=[];times=[];hashes=[]
                 if a.stage=='events':content.append({'type':'text','text':'Registered definitions: '+json.dumps(j['events'])})
-                for idx in ids:
+                for sample_index,idx in enumerate(ids):
                     cap.set(1,idx);ok,f=cap.read()
                     if not ok:raise ValueError('decode failure')
                     original=f.copy()
                     times.append(idx/fps);f=cv2.cvtColor(cv2.resize(f,(768,432)),cv2.COLOR_BGR2RGB)
                     images.append(Image.fromarray(f));hashes.append(hashlib.sha256(f.tobytes()).hexdigest())
-                    content.extend([{'type':'text','text':f'Time {idx/fps:.6f} seconds'},{'type':'image','image':images[-1]}])
+                    label=f'Sample {sample_index}; native frame {idx}; time {idx/fps:.6f} seconds' if scene_policy else f'Time {idx/fps:.6f} seconds'
+                    content.extend([{'type':'text','text':label},{'type':'image','image':images[-1]}])
                     if j.get('roi'):
                         x1,y1,x2,y2=j['roi']
                         if x2>original.shape[1] or y2>original.shape[0]:raise ValueError('ROI outside frame')
@@ -60,15 +70,25 @@ def main():
                             bx1,by1,bx2,by2=box;cv2.rectangle(crop,(bx1-x1,by1-y1),(bx2-x1,by2-y1),(0,0,255),1)
                         crop=cv2.cvtColor(cv2.resize(crop,(512,512)),cv2.COLOR_BGR2RGB)
                         images.append(Image.fromarray(crop));hashes.append(hashlib.sha256(crop.tobytes()).hexdigest())
-                        content.extend([{'type':'text','text':f'SAME time {idx/fps:.6f} seconds, enlarged crop; red box is only a tracker hint'},{'type':'image','image':images[-1]}])
+                        crop_label=f'SAME sample {sample_index}; SAME time {idx/fps:.6f} seconds, enlarged crop; red box is only a tracker hint' if scene_policy else f'SAME time {idx/fps:.6f} seconds, enlarged crop; red box is only a tracker hint'
+                        content.extend([{'type':'text','text':crop_label},{'type':'image','image':images[-1]}])
                 cap.release()
+                # Preserve supplied-image provenance even when generation or
+                # output validation fails; raw output is never a replacement
+                # for the frame/evidence contract.
+                r.update(frame_indices=ids,times_s=times,image_sha256=hashes)
                 text=processor.apply_chat_template([{'role':'user','content':content}],tokenize=False,add_generation_prompt=True,enable_thinking=False)
                 batch=processor(text=[text],images=images,return_tensors='pt').to(model.device)
                 with torch.inference_mode():generated=model.generate(**batch,max_new_tokens=a.max_new_tokens,do_sample=False)
                 raw=processor.batch_decode(generated[:,batch['input_ids'].shape[1]:],skip_special_tokens=True)[0];r['raw']=raw
                 d,repair=parse_with_closing_brace_repair(raw)
+                if a.stage=='events':
+                    from .event_output import normalize_registered_event_payload
+                    d,event_repair=normalize_registered_event_payload(d,j['events'])
+                    r['event_schema_repair']=event_repair
                 expected='quality' if a.stage=='quality' else 'events'
                 if not isinstance(d,dict) or not isinstance(d.get(expected),dict):raise ValueError('missing task output')
+                if scene_policy:d['quality']=normalize_quality(d['quality'],times)
                 # Validate cited timestamps against actual supplied frames, not just horizon.
                 records=[d['quality']] if a.stage=='quality' else list(d['events'].values())
                 for record in records:

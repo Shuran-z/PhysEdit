@@ -1,0 +1,92 @@
+{
+  "schema": "core100-additional-source-reference-admission-v1",
+  "references": [
+    {
+      "clip_id": "T16_C05",
+      "reference_admission": {
+        "status": "not_admitted",
+        "scope": "Source event/trajectory binding verified, but initial collision geometry needs repair before scientific reference admission."
+      },
+      "target_event": "folder_downstream_contact",
+      "reference_label": 0,
+      "source_event_labels": {
+        "folder_downstream_contact": 0,
+        "downstream_response_original": 0,
+        "folder_motion_original": 0
+      },
+      "source_event_measurements": {
+        "folder_final_displacement_m": 0.03954961718744329,
+        "downstream_box_final_displacement_m": 0.0007780194647840209
+      },
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "reference_end_frame": 154,
+      "reference_fps": 30.0,
+      "reference": {
+        "source_video_path": "data/T16_T20/T16/videos/T16__bg01_home_ase__g03_earth__support_angle__p024__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "f64d192a47b42625c1f7ec16e3deb9fbed760e573b90b30774980abcca56388b"
+      },
+      "source_config_sha256": "dd8c0ba644021a414fd706c6cac1b9d3c79605a3233ffcb259454882b119cbaa",
+      "source_original_state_sha256": "eb65bd4e6a84a78d4b9449c964d43704f67a40617330d050de8f05e715752be6",
+      "source_state_digest_encoding": "gzip_blob_sha256",
+      "source_original_uncompressed_state_sha256": "b4eb87cd4d33501bb909c30474c6b3b5903707a39147215a9944eb11d4097b47",
+      "simulation_seed": 3232639206,
+      "source_trajectory_max_position_difference_m": 3.6759977747733246e-05,
+      "position_tolerance_m": 0.001,
+      "all_probe_hashes_verified": true,
+      "boundary_interval": [
+        84.05349205280172,
+        84.05391298491378
+      ],
+      "theta": 84.82758620689656,
+      "normalization_domain": [
+        65.0,
+        90.0
+      ],
+      "normalization_span": 25.0,
+      "normalized_distance_interval": [
+        0.030946928879311032,
+        0.030963766163793593
+      ],
+      "bin": "near",
+      "Near_reference_point_ready": false,
+      "balanced_NearAcc_cohort_ready": false,
+      "PairAcc_eligible": false,
+      "pair_rejection": "Canonical C04 changes support geometry and solver context. Original C05 is retained. No paired scores transferred.",
+      "condition_frame_pixel_exact": true,
+      "condition_decoder": "ffmpeg version 5.1 Copyright (c) 2000-2022 the FFmpeg developers",
+      "visual_review": {
+        "reviewer": "assistant",
+        "independent_human_review": false,
+        "method": "hash-bound source PNG contact sheet plus complete native-contact and full-window trajectory verification",
+        "native_frames": [
+          4,
+          30,
+          60,
+          85,
+          110,
+          130,
+          145,
+          154
+        ],
+        "finding": "Original blue folder, withdrawing support book and downstream box remain identifiable. Visible separation persists; native-contact telemetry confirms no folder/box contact through the full registered window.",
+        "sheet_sha256": "cab673c48544372c7a74448155bd356b8c4fc6b0b93eb8d731c99b7d26f99cf1"
+      },
+      "evidence_sha256": {
+        "t16_C05_verified_boundary.json": "1bd056f51c4dacfaca5a85b0307d6425a3cf1e330c64635080f07d0754b53076",
+        "t16_C05_source_events5s.json": "5658a45815144b8c501cf87f5748a18486ad6eade81ea1775628e595199bb15e",
+        "t16_C05_decoder_comparison.json": "8d73f44692fbb4b8248752ade62bbe5b06988622ee5546e5a4fa4431352308f6"
+      },
+      "geometry_audit": {
+        "folder_support_book_initial_sat_penetration_m": 0.006918359669026319,
+        "configured_contact_offset_m": 0.0012,
+        "canonical_C04_initial_separation_m": 0.000299165420506578,
+        "status": "same_initial_proxy_overlap_defect_as_original_C04_parent; shared-clearance_v4_repair_required"
+      },
+      "raw_source_truth_and_replay_verified": true
+    }
+  ],
+  "scope": "Does not extend or change the existing balanced T17 scoring cohort. Generation-side input, native-media verification, numerical calibration and final annotation gates remain mandatory."
+}

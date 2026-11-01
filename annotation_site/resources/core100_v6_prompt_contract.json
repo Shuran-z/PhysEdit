@@ -1,0 +1,808 @@
+{
+  "schema": "author-frozen-core100-v6-inputs-v1",
+  "repository": "phy2/phydataset",
+  "revision": "f23ee3577952ec1e5357c8a729bfc4daa5c7272d",
+  "known_conditions_sha256": "5560ab9e06a337189008a7722cabebe4286e96ef22c11c83d7a4db97e5e36eb7",
+  "tasks": {
+    "T01_C01": {
+      "sample_id": "T01F52V2__bg01_home_ase__g01_moon__global_C_01__rmu150__g12006__g2m006__cmu200",
+      "prompt_variant_sha256": [
+        "7d8708f17c35f4782cfcbed99ed6e135b88a0cd3cbfd7dec670511d4492d5119",
+        "e077213aafc7646690bc65e3528a7869078ed1e517318a375409cd270ace8a7e",
+        "b77bf8468f70cc0babaf04090f92def032dc622779f8488d402a9d9c4e6d57bd"
+      ]
+    },
+    "T01_C02": {
+      "sample_id": "T01F52V2__bg01_home_ase__g02_mars__global_C_01__rmu150__g12006__g2m006__cmu200",
+      "prompt_variant_sha256": [
+        "05cd43428df5897a3ea20a33616b1552387722a8ebf0bd76db7eb9e68feb95c3",
+        "cff7b9d1846a5bd188f069852af04c5018b79874d9a6497a0252f0fee61f5072",
+        "0d7d92d61312641e5071415e1ae24c2747c7183aecc29946189265930ed8b4c4"
+      ]
+    },
+    "T01_C03": {
+      "sample_id": "T01F52V2__bg01_home_ase__g03_earth__global_C_01__rmu150__g12006__g2m006__cmu200",
+      "prompt_variant_sha256": [
+        "a387da286c004b16a146b63b963a15f4be2cb85bd234845b5bdb8133d13cde4c",
+        "1f452420f0d2042d92c6d98d109ddb2668f5279a131ad54be8505439ac8a6744",
+        "8fbe8030cacdf16af205dbffc560951aedf3e9b373e74b797335e2062e52e2ea"
+      ]
+    },
+    "T01_C04": {
+      "sample_id": "T01F52V2__bg01_home_ase__g03_earth__cfC_theta_minus_rep01__rmu150__g12006__g2m006__cmu290",
+      "prompt_variant_sha256": [
+        "d76ce2f197561c59d1f32b0b63712dd35fa289d5b22b784bc458edb98cdaefd3",
+        "2b73af76ad1fb19163ad398d1d35ff9dde7d0de2b0c1ce62e018d25f876ff1b7",
+        "0070d4f7a1248887fb4793cdc8c381d6d5e9dcd77baf2496210004fc145cedad"
+      ]
+    },
+    "T01_C05": {
+      "sample_id": "T01F52V2__bg01_home_ase__g03_earth__cfC_theta_plus_rep01__rmu150__g12006__g2m006__cmu430",
+      "prompt_variant_sha256": [
+        "e432b05820bf0f2bb60a82c509c66166aa972a85d2468fa42c791d88a3c6af91",
+        "f9b050f9666fdbdfd6ada37aab8d4ed659c461f4575b59d8be67b706745b0240",
+        "7ed984b99517ddac4c08da498fdbae14357de321a0065f7b44cb0f7eb7f0c284"
+      ]
+    },
+    "T02_C01": {
+      "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010",
+      "prompt_variant_sha256": [
+        "91514fd888cc4bf3691aaf31f1520e1909c878b4154e3fad322a57870e0bd667",
+        "0d9e8420dc05295e59ed88b413cfd19c288a1f6a8c5b3914a2e887b9c1f3f6f4",
+        "286e2489406693ca6589c546c89bc336c28a40119c52547aaf9f9201c95d16f9"
+      ]
+    },
+    "T02_C02": {
+      "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010",
+      "prompt_variant_sha256": [
+        "cbf2d59252cd48ebfc4c1d9a9ea87f409abb69cc6eca623e3e3154cda0954318",
+        "015167c7af2045677a1026e0e6d72030e6b0aa7ade2aa6de1faa23fd69d41c42",
+        "3c97f38e5def83197854adba27a5e1a7e94d5e713f4bf4a446e4ccaf6ab349c4"
+      ]
+    },
+    "T02_C03": {
+      "sample_id": "T02V2F52K__bg01_home_ase__g03_earth__global_C_04__vs0476129__x0000000__vp0321766__r010",
+      "prompt_variant_sha256": [
+        "7882666ccc0b7e2fdb028e88fd789d1f35470699a725d120294b358b0abbd554",
+        "0cc691826d07b60e452e6c79a39791ff3a9792e6346c60392aa5ac7d7737222d",
+        "8ac1258c9f91cbc8f595ffd514b921c9ac0e729fcc9dcbdb9a7727dee4ab413c"
+      ]
+    },
+    "T02_C04": {
+      "sample_id": "T02V2F52K__bg01_home_ase__g03_earth__cfC_theta_minus_rep01__vs0476129__x0000000__vp0040001__r010",
+      "prompt_variant_sha256": [
+        "ca94f8e5014fcecbc53373f48e1ac6bdb68c99320ddda71127f3b59833655dd9",
+        "f406af9504baff51b00cd25d5e53a4d3ad90d830b28f11ab07699386702cd402",
+        "61d84074d166cee320ed1cc7919a856fa9dbea9fee65d97292fd218814753662"
+      ]
+    },
+    "T02_C05": {
+      "sample_id": "T02V2F52K__bg01_home_ase__g03_earth__cfC_theta_plus_rep01__vs0476129__x0000000__vp0290458__r010",
+      "prompt_variant_sha256": [
+        "7f3d755859b9ce40d49a8f0a3602a6772a25a6be8d1068b98a4b625146603aaa",
+        "8bcf79373c05d2d7edab4e58dbb7ca98c09ef41274019894b928ac2649a3449f",
+        "badd758f5ef5aa9767f238075e926e86805c247e122f07001b40f381371e03b1"
+      ]
+    },
+    "T03_C01": {
+      "sample_id": "T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014",
+      "prompt_variant_sha256": [
+        "38e27094050e3c521f5362404a2ca31fa8cff658e94b2e59afdd7bf4b5e78bb0",
+        "51255e5a13ef470cad767b9db2154fdb9a0c191f0327fcb26717f46323a00376",
+        "40b01ea3466d2d857457ad5c874d4a88b9dbdcbe069b7ccb9d092293d2b20238"
+      ]
+    },
+    "T03_C02": {
+      "sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+      "prompt_variant_sha256": [
+        "6f9111d5e4dc9bfff98529293100cd15613a8bc4ba39279b4bbc2420fb6e30e9",
+        "ed77667f0aa695b02030a359b1e892bcfd2016cfbf7ebfd9e95a3ab09d42dccb",
+        "4fb462e74ba950c9ac529af44aa3942700315bfc2d8c69d7650926904cdb7532"
+      ]
+    },
+    "T03_C03": {
+      "sample_id": "T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014",
+      "prompt_variant_sha256": [
+        "dd396beeecce4922cafe1d24bc7080100f73e9756428dd9396fd1aca276b700e",
+        "8c0717139cd2535a3dc06536343dc8e4bd4c351ea747eaefbfd047736b3c634d",
+        "1fd1768fee74e49cbb3373e4ce8093cc338be13316f50bee0bca4d2cc40d7db2"
+      ]
+    },
+    "T03_C04": {
+      "sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_minus_rep01__A0470000__B0008000__C0006000__r014",
+      "prompt_variant_sha256": [
+        "6412df36aba276d1e82f977637c87b7915faf478f65816f63ee8195ea842e1c7",
+        "59e3ea55bd15c8c401563feabeea001a324c1b0dcc8c46529520e32a6dbc3646",
+        "0aeea9379625215aff7ea2503d3ccb1af52ad6946fea4bf7ab67d6c1794b1a04"
+      ]
+    },
+    "T03_C05": {
+      "sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_plus_rep01__A0730000__B0008000__C0006000__r014",
+      "prompt_variant_sha256": [
+        "0072062e62213239ad3bcaaee8ee09ab5f938d30c87b78935bda9bc5e56cd3ed",
+        "b612dc399ea5f23c25156989a6d4894c890e355422a8fa9e6e55ab2828fc7cf6",
+        "fd7067b91d3628427c3e1e7250517e7ecda3b67126b4f1c1182d5d114deed531"
+      ]
+    },
+    "T04_C01": {
+      "sample_id": "T04F880V1__bg01_home_ase__g01_moon__global_03__rep01",
+      "prompt_variant_sha256": [
+        "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+        "547449860f9e1de8403a96f11ba723c908a1a6f46a19fb1d78f8cb1e9d8248ce",
+        "e2f8ff1a38a7c75354669559b7bc4fd55e041b1016a3a3ca636c90347b83c0da"
+      ]
+    },
+    "T04_C02": {
+      "sample_id": "T04F880V1__bg01_home_ase__g02_mars__global_03__rep01",
+      "prompt_variant_sha256": [
+        "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+        "352f5c8db4da9949465a3992b1a1dd2190ac322cb133b4e101a485d876a22f31",
+        "8db2294f7c22eeb33b702d58e0951871e0a7fdcfae9c66b1602d403d251e007c"
+      ]
+    },
+    "T04_C03": {
+      "sample_id": "T04F880V1__bg01_home_ase__g03_earth__global_03__rep01",
+      "prompt_variant_sha256": [
+        "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+        "8f22a3e4d80049cdc7efddacba3d4ec3d3e1bf3d5028064bcb11043ae3b0d2f5",
+        "9ab36bb07ffed67e92e5429355f8e60c1f9126fed2ae08687da9eca095f4bf53"
+      ]
+    },
+    "T04_C04": {
+      "sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_support_release_minus__rep01",
+      "prompt_variant_sha256": [
+        "5fbafa79ced114f2ec9dcfc806cd640cd24a18ab9cdb7ab9fcd14db1dec145fc",
+        "610ff896e7fc74e22514baf62c93b24d22c06f92e9bb33410a7e4362a8a18388",
+        "4544872f8e3c987513a78a031ee2043de703606b292ab6b36d48e6ba2b360e06"
+      ]
+    },
+    "T04_C05": {
+      "sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_support_release_plus__rep01",
+      "prompt_variant_sha256": [
+        "13acb75fb9e3559fd94324ee45f9a7b77b2e01de5c308c58ed34a08a90217016",
+        "51472e067a822eca27102f4bac1886c479f0028b19830102db72de157d722d13",
+        "0af32229a5ea152eccf700f109757dabd364d67311440d6f4638d217f9ee3225"
+      ]
+    },
+    "T05_C01": {
+      "sample_id": "T05F880V1__bg01_home_ase__g01_moon__global_16__rep01",
+      "prompt_variant_sha256": [
+        "7b39b6185230433227518fdf37973ad5abc799bd73bbffa10a7274770fb961b8",
+        "68bf0e25a524b6b3d83fb4ebfcc47f42d482919ccafd2d742d2e3952bd836e0e",
+        "d3b857003af39743bd0aba3e7201d48b1b0d67e374a9a5b0c9695aef2e9e6be0"
+      ]
+    },
+    "T05_C02": {
+      "sample_id": "T05F880V1__bg01_home_ase__g02_mars__global_16__rep01",
+      "prompt_variant_sha256": [
+        "021c5fb72b2d52a0539e1eee49cbe23f450e2edf8135080a37210c501c397208",
+        "c9211d641389c67b10818bee0db1910b1dcd2e061545af70b8c99dae7b90e0b3",
+        "8d07ba4174b620580dcba9196df0c134f535e2e35bed087a8187dfebfc132dbd"
+      ]
+    },
+    "T05_C03": {
+      "sample_id": "T05F880V1__bg01_home_ase__g03_earth__global_16__rep01",
+      "prompt_variant_sha256": [
+        "c640bc4d5c526fb2c3d40808b49940f279a6ba951b15e214f942865c57b630a8",
+        "65fce66605dc9b904251e69b60dbedac68a634c04cdb5ab9704e5ebb94700ecb",
+        "72bbf2eaae46ac550fb9e0e1a7e6eac0f4346e31851bfc4d4924acd8fbd98eb3"
+      ]
+    },
+    "T05_C04": {
+      "sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_minus__rep01",
+      "prompt_variant_sha256": [
+        "2d93ada6ed4f796732746167db233001d309a6851b85d85ed498653818203f59",
+        "046889781c0dca677a890cfb3d20fa581ae8c4a636ddb9ba1ab2d61194abf81c",
+        "7f9fa582647eea525260c39dfe9d6f617940a4f5990bef4f4892aa414e405466"
+      ]
+    },
+    "T05_C05": {
+      "sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep01",
+      "prompt_variant_sha256": [
+        "1ddfe48ba76b72b2074bf7c84081b7014ab1f819cb3581148d6e47caa7012bad",
+        "cd6fa70dd6e38c79563b248b401343f4408fd3a8f9de9a55b7f42a65677dd6ac",
+        "a9f67ff37c3579aad2d4ed6ec46d840f30d5847d8a0727b41ba97bd43212a367"
+      ]
+    },
+    "T06_C01": {
+      "sample_id": "PROD_T06_bg01_home_ase_g01_moon_gap_p08",
+      "prompt_variant_sha256": [
+        "9b3da7a928e3e2db1719cd063ea8659577b5904bcdc7b0f4550b76678ad9ad07",
+        "a63a17d20c27582c3c367d452677f889b237f833ce3a5273d4d1a5aa56855d5f",
+        "f4b60a3ea06f3021156ecec01279f7f819d926501f89a97ec0618e95aad04469"
+      ]
+    },
+    "T06_C02": {
+      "sample_id": "PROD_T06_bg01_home_ase_g02_mars_gap_p08",
+      "prompt_variant_sha256": [
+        "85be7a3513c728a4011bfdec70cf8ec77ca4095f99427a0490603971d57b63d0",
+        "f73fb311176e5cc0bb42a236428151ecee6231178a9d78a32f5a3f79c25f39c2",
+        "ae3bf56f8efe81ce996dbb41aecb1b03227fdcb93b4ebe6362293b14e6a657e4"
+      ]
+    },
+    "T06_C03": {
+      "sample_id": "PROD_T06_bg01_home_ase_g03_earth_gap_p08",
+      "prompt_variant_sha256": [
+        "c345b9d0dbe67e119799a1a0135d3ee5ca97bc83e75b39984c0579e665b0777f",
+        "3989061cbbdd3ad7c8286867cde212891d3963e71ce94c1c25bdd29f0d2e6ab4",
+        "2be69645768064a54eeacb42eb77abdb81aafc3300697cac699da9f85aafa677"
+      ]
+    },
+    "T06_C04": {
+      "sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p02",
+      "prompt_variant_sha256": [
+        "21605b87712736868ffc26aa1998a42da28150120cada90929af251965c5de20",
+        "3b6595b1b182b6362cf74f60e7fdf019ebe021888b38c77a605fc28b890939ca",
+        "f4169b49bbe0439187c67dc2628eddc213d04f9966fe2c87e41b3d61e66b09a3"
+      ]
+    },
+    "T06_C05": {
+      "sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p03",
+      "prompt_variant_sha256": [
+        "785ed9de193ac54a8b11949a49ecc564561938b7990f71692a8c7823ff2445c6",
+        "16e631397ef331e0f7806d1ef423f745b93cfc9cde150a1849d467662bab78a5",
+        "0cf19f28eb8bc1fdb3fc4c28adcfb47a5595e74b4c5a9fb6423e01fb4acb7961"
+      ]
+    },
+    "T07_C01": {
+      "sample_id": "T07F2B__bg01_home_ase__g01_moon__global_08__boundary",
+      "prompt_variant_sha256": [
+        "8b4e0f9e6aa9c63f9174bdede3a5c76a347810b1258c243688794d81d5fecd84",
+        "36f53d1d176518613fb6ad22e4a04d979d2ad29e9807b3ec138a8d9f477bb2fa",
+        "ed61c60b63b327323c4c9c355d14592fb8b06845b147790b344cb9231e84dd8c"
+      ]
+    },
+    "T07_C02": {
+      "sample_id": "T07F2B__bg01_home_ase__g02_mars__global_08__boundary",
+      "prompt_variant_sha256": [
+        "737c0e7461faf5b95157cecbbb906813d84aa0df3d38bbd06a75a19a93e7875a",
+        "c07b3cc203bc6a1e41258287916fd3804c062aadcda3de2ca3c27a06c2bf5d12",
+        "6aa8218cc5d6ba665196dceef10156121881a3b09f132cd8343c3cbb3dda2bdf"
+      ]
+    },
+    "T07_C03": {
+      "sample_id": "T07F2B__bg01_home_ase__g03_earth__global_08__boundary",
+      "prompt_variant_sha256": [
+        "d10ce94b850127473506b613ac20f0d7f81e35fbf526dad1d5f0265b05ea4636",
+        "e231e84f2ae1ac6628bab81fe799de3573a17d50df94f78fe1b4dbd669780b71",
+        "9ccabc30e03f2b6779aa1d3e56ec636ef8b230fd5936651fcf671e6ac92171a6"
+      ]
+    },
+    "T07_C04": {
+      "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_minus__rep01",
+      "prompt_variant_sha256": [
+        "5bc4e820dc5f9403f823c7ad90366a2d949b9570ad8a1f036cd1a882c8228791",
+        "90133a212c28127f6393593f86c451985bd5afaaa3f5afdf6f5c55f8c67f49ae",
+        "4d1f6d46d7981c09b0b92ec8a10c2e2060354b8581243f2a6a89a63941812841"
+      ]
+    },
+    "T07_C05": {
+      "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+      "prompt_variant_sha256": [
+        "238fc06c55c5e8b1102baec392574bd8a6fa2274e220b2720167ae40fa082080",
+        "c1eea8a316c2a977c97469d9cc73ff175ab8db7e22876ea417c22a63ed23a5a4",
+        "4b16730f3ca5dd35eae864c63ede35f7f3fa460879bd26720a2275edf18efe91"
+      ]
+    },
+    "T08_C01": {
+      "sample_id": "T08V4F480__bg01_home_ase__g01_moon__global_11__s0p8686__e0p0050__m0p3113",
+      "prompt_variant_sha256": [
+        "ef28e18984206046bd5de85d4fa2bfd23de73dba6891625a5626c1dc36e0d146",
+        "047cc1dfd6662c79149bb55a57a645f356992ad23c7f12f6cd1bb6198e0439aa",
+        "865546638bd0a224c8543db76b595cd453995f35df7432351e71fab2e2f08b93"
+      ]
+    },
+    "T08_C02": {
+      "sample_id": "T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113",
+      "prompt_variant_sha256": [
+        "0b8988a9c6e2cfbb35723401250f82d0a2435ae3d61448fec43d26d6fee28a78",
+        "9aac34c5c48dd9ebe9372042b695d2425a19c9c9801e06bac0393e42f02c11c4",
+        "d7fe266f104894079fa170e2ebeb373db364aa6517ff4ce651fe89c123a8bb4c"
+      ]
+    },
+    "T08_C03": {
+      "sample_id": "T08V4F480__bg01_home_ase__g03_earth__global_11__s2p1375__e0p0050__m0p3113",
+      "prompt_variant_sha256": [
+        "b3577b4a6b4727871a719daa9cab70d8e300f92909edd2b27557f87e1c48e596",
+        "c89d86936f548df291d41ac9e7dccfaa4341af56f8605a87f6fec017628d4185",
+        "aee6c92786473d3a36a3df3daeba293b80526390861bee63202b6903bbca353f"
+      ]
+    },
+    "T08_C04": {
+      "sample_id": "T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_minus__rep01__s1p4700__e0p0180__m0p3800",
+      "prompt_variant_sha256": [
+        "fbfceed159d5c5e5c23eb3e5b7614d2a3dd53cc87a0593f9810055cfaf2135ac",
+        "67b146f228042d36f91aa28f6b83eab259a8999ca50b0b2323dae12495f43208",
+        "3f61dcef15cc8addf5c6d41a70bbbb465140cf23e9c96ea1ba203244ed9c9737"
+      ]
+    },
+    "T08_C05": {
+      "sample_id": "T08V4F480__bg01_home_ase__g03_earth__cf_A_book_initial_speed_mps_theta_plus__rep01__s2p0580__e0p0180__m0p3800",
+      "prompt_variant_sha256": [
+        "6fb0d5dd00795576590177a7355907aebd3c36ebf44fadd5f3168217c303a6fd",
+        "9aac62bb00ffefd405e43ff37d7f879e8d9f3a6d81b4d74c21fb8a23078c5d04",
+        "4672b02362728de633cf1713116017de8663cc90c6f5c3d72fd51c98a2cf0e6e"
+      ]
+    },
+    "T09_C01": {
+      "sample_id": "PROD_T09_bg01_home_ase_g01_moon_pull_p13",
+      "prompt_variant_sha256": [
+        "2525deee38852c836b46c7ad49cd19fd34dde9ec213c5d99259f3fb77c088614",
+        "426bb78a184b8d9917c057c1b4e60acb2ab93b329f57bbf3d0aa79985a7e682e",
+        "828e36f33534218983bde1610c3b5e24dc910908ca05c64ef01097e4b535d111"
+      ]
+    },
+    "T09_C02": {
+      "sample_id": "PROD_T09_bg01_home_ase_g02_mars_pull_p13",
+      "prompt_variant_sha256": [
+        "cafc648d7f2faefa8d1c64f4930e9720b7a8d0e3f528c8372ff0ad7b44cd2bc6",
+        "57eff5ca610d6058c1eb194b2ce97984ed91c5083e274d2e436561f75b79f851",
+        "da3c6709e5fed4e33cb1d67abc543da62cd704a3a084b4250dc4d1fad90886d1"
+      ]
+    },
+    "T09_C03": {
+      "sample_id": "PROD_T09_bg01_home_ase_g03_earth_pull_p13",
+      "prompt_variant_sha256": [
+        "6e0bc23a6feb8a42b2d905181be0f3ede40c14e28a0875158e234513fe5ad2fc",
+        "66833383d263f34338551801a3f7dd83f51b181539f70e135d799492cde85b27",
+        "b06da39000b92db3c0c9d45ce25d47b7f155b401b05e2924fb358c8050c31f38"
+      ]
+    },
+    "T09_C04": {
+      "sample_id": "PROD_T09_bg01_home_ase_g03_earth_mu_p00",
+      "prompt_variant_sha256": [
+        "a017971fcf88c4001b174be2b03b5ff20bc46ed243e54f9f5133e8f465941b12",
+        "13edecc0d5f8ef685c3ca40f049290cad3db840c91612b79eef064232d4aef55",
+        "f11c6516a67229b9b0b4b3532148574242c6e7bcb937dd67556826304a651eb7"
+      ]
+    },
+    "T09_C05": {
+      "sample_id": "PROD_T09_bg01_home_ase_g03_earth_mu_p10",
+      "prompt_variant_sha256": [
+        "a0f5f8bd485bae650e86fd9baab235726ca5f0e087a4b41eaf19536ef82136e5",
+        "efc313bceb6356e1fe8cbfa8332176d6c09b4bf9537bbb89254aa247091127fb",
+        "8ca6d90083a582d111b7eb66d463ac76be10cecc86124cc8fb263e6616b55588"
+      ]
+    },
+    "T10_C01": {
+      "sample_id": "PROD_T10_bg01_home_ase_g01_moon_supx_p00",
+      "prompt_variant_sha256": [
+        "13157dc76b4e00a06f88fd9d2c6400972d34edbd3f559ade52eaefec8680020e",
+        "b46bf6facf60d4838ffee336b41a9533f87a65b902286d043304fc3cd076690f",
+        "132b6328047952136b59335e8963ae0926d64c30a9bbe8079148ec710d1868d3"
+      ]
+    },
+    "T10_C02": {
+      "sample_id": "PROD_T10_bg01_home_ase_g02_mars_supx_p00",
+      "prompt_variant_sha256": [
+        "c25d1ca9573d21ddcb6853ebb8779dab7b1b0d0a8dd79cce20a865485314fbee",
+        "b809733fe174dd05561a766fbec38bb0723ae1660c2e708fd4aa56c8accfad1f",
+        "7503543e68242d9029b3c9b277bdf3fec997be564f9808c5a83676d5e445f8ff"
+      ]
+    },
+    "T10_C03": {
+      "sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p00",
+      "prompt_variant_sha256": [
+        "1b1fe4150a29773c937062bd18d00f076e9bb9157827d30ac4ff4d666583bb76",
+        "cd8bdf9dda9909f7516a9ec2711bd07950cf9df20f3732114824b89e32fce719",
+        "d97067e899060fdd85dbced189f8603c2887872c39afdffeca769a8a63da770a"
+      ]
+    },
+    "T10_C04": {
+      "sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p21",
+      "prompt_variant_sha256": [
+        "24426950fd34d1ba50973a6d50cf19efdb02b7badfda1e26b2d4dd416e2a1120",
+        "6aa75626b56bea7b44fe973aa8b95937be4fe51cd109d71ea6eb2c478f163554",
+        "10076a821550c9b9e3e04915d0f5ecb252648a55ee930be388657d8dbef84d3d"
+      ]
+    },
+    "T10_C05": {
+      "sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p17",
+      "prompt_variant_sha256": [
+        "5ae0a78ebd4c3e55caae43d58e61cf982d4721c1f9360b93cf044c87a3c5237b",
+        "3f26fb69c00acb8a31091b91b852e4c69a51bb83ef1699b6945f7268cfe088fd",
+        "d730a79adb9c8b4fdae182d9a81685f9aa6bd4e12d3eb6bd55c7bf8f8cae42ca"
+      ]
+    },
+    "T11_C01": {
+      "sample_id": "T11R011__bg01_home_ase__g01_moon__G_global_06",
+      "prompt_variant_sha256": [
+        "0596cbacf61c12470c8e480561de60213b2e7800a43102c07e21f8e2a33de2d5",
+        "e5e69023cc065f0beac649ecd07d62f690b922544e819ca9c390a1cb4088eebf",
+        "7c608a7f50bc9c97146b4273150a51fd149eaa852188b5009f5e3f27005602ed"
+      ]
+    },
+    "T11_C02": {
+      "sample_id": "T11R011__bg01_home_ase__g02_mars__G_global_06",
+      "prompt_variant_sha256": [
+        "fab52fbff3c63b5995c4628f1cfdbde5aa9f8c51cfbe42fec2114a7de2c42503",
+        "6bad8541101fdfa19f38031357ebbf3d12a345d6df767d995efe057b52746b93",
+        "912b66cdd35db7b907fcfed5752cfa135c28488e0782155ce9804bceb14b26c5"
+      ]
+    },
+    "T11_C03": {
+      "sample_id": "T11R011__bg01_home_ase__g03_earth__G_global_06",
+      "prompt_variant_sha256": [
+        "d58f9f1f0e021e6fb01c9a9d76a1df3bd4c8b0bf27e4e99445ebec356ef8d461",
+        "b7318fc27948a23af1a6ddeaea59bcffd882c1e311a8c45a031d8e951ae7d138",
+        "5e48597cfec16ff3341286c043df0cb14903eac32fb4f7c473dc915c6eda242e"
+      ]
+    },
+    "T11_C04": {
+      "sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_06",
+      "prompt_variant_sha256": [
+        "1fabdcdb9a3eb59fbbcd19e58a0c5545aaab0cb9db37f595e31c3202c5c0d965",
+        "430fec2b013725482aad7b3ee3e9a785d48422f8b76ac192a08c42f3fdb90d31",
+        "754a938aa5c67558e274407f53637b9c9f2b34158db84f93517c9d11d6d82ceb"
+      ]
+    },
+    "T11_C05": {
+      "sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_plus_07",
+      "prompt_variant_sha256": [
+        "2de6aa34fff169d0029dc85fa8d287625dde31648a49624c6ad0ccefe13ca02c",
+        "2a5ae699151ef265454fc0ecbb3814fca98b8da5a2f65a7013f6481419aac8e5",
+        "48b71869d14256ef90c97aa2a906c42a6fa1ee039b95e7a3865f9f65265f5d5d"
+      ]
+    },
+    "T12_C01": {
+      "sample_id": "T12F880R002__bg01_home_ase__p128",
+      "prompt_variant_sha256": [
+        "575902a8a17cad89c7de3ca82beb1d70402771e98149027c757812e68b56f6c2",
+        "96747505cf632923bb3e0b064694a40163252b9451027dcc0958a3361c9ab81d",
+        "52dcd4471287e1344c62c7962834509e0abd3d62cb0af79e980188da88aa16d7"
+      ]
+    },
+    "T12_C02": {
+      "sample_id": "T12F880R002__bg01_home_ase__p053",
+      "prompt_variant_sha256": [
+        "e43a52773ebbe91cf34089b3538a3103294e117d456db0b82bb845bcfc94a17d",
+        "4a505420b7f45ecdec5880f48c04130b4ea9845230e01d8cc518019dfb518c07",
+        "0c2b01d48e78386e08e7a4721d3ef73a562fc5c230345b6d05487d60998f04a2"
+      ]
+    },
+    "T12_C03": {
+      "sample_id": "T12F880R002__bg01_home_ase__p166",
+      "prompt_variant_sha256": [
+        "6fc5adda78f20626b17e31a43cec2c04213d1415bb0dfde9957b2546249c2d8d",
+        "bcdfb68bae08f2d2ceeec3a40c8d1272db6720a85b5099f2e21a6f9b6fe346c2",
+        "16fe99503bf47e1de99685af4887a11bb474a1acbeb3b1edf899560d001a4acd"
+      ]
+    },
+    "T12_C04": {
+      "sample_id": "T12F880R002__bg01_home_ase__p090",
+      "prompt_variant_sha256": [
+        "63af3b5a7b02b7d448cffa10341456df14520c37a2d1d7a429ac368962930bb9",
+        "ad56830acec31e5bc9da6a105591d23c26ca6d7cac7f7c4b9c26e679b56a3684",
+        "edf92913b70b37b635ddda18686de56233418be374f9793e859168cff7b84b6a"
+      ]
+    },
+    "T12_C05": {
+      "sample_id": "T12F880R002__bg01_home_ase__p006",
+      "prompt_variant_sha256": [
+        "8275b802f45fb8687c738c004244ec450e16032e826b345260aa16cbed4e21cd",
+        "f0b0608cfa1a3e36148f8bc025cf46f3ada1f63a600a65f12b51b29b613c3f8a",
+        "e7985d661907dce48b225e7cf04abad9670c5521278fde3fb2fce3b33c4e5d3d"
+      ]
+    },
+    "T13_C01": {
+      "sample_id": "T13F5__bg01_home_ase__g01_moon__09_EDGE_125mm_rgb3d",
+      "prompt_variant_sha256": [
+        "a407d0676bdd69abc777a8185545dae84982d2b1e0f8695760f00846956cd946",
+        "5ceee1e2272cb8e8ba99dbed020c7b0271e663fd6aa6b6d195cce52191a94f14",
+        "6037e6e96f8cfbb0932b4e18702b6bbaf9b23d1b736fb35b422a84ec003d194a"
+      ]
+    },
+    "T13_C02": {
+      "sample_id": "T13F5__bg01_home_ase__g02_mars__09_EDGE_125mm_rgb3d",
+      "prompt_variant_sha256": [
+        "fc3d7f6ed7ed9188b499bcd0ea7bf0655a1d5edcc8ce80e0f676d65af0f1bb68",
+        "125a960a42c24fd38c2f32c8718c360f7c65b59dec396db1cc5e9db043c0b9bf",
+        "4562fcdb034561e9fe6fd3b3d58da309cc0e4ef9c563d4e2707d5f79d33aad93"
+      ]
+    },
+    "T13_C03": {
+      "sample_id": "T13F5__bg01_home_ase__g03_earth__09_EDGE_125mm_rgb3d",
+      "prompt_variant_sha256": [
+        "4ae047aba6e70e55abe94a160c41b4d85aa83f09f98e48648abe7b702dd8c4d4",
+        "bcc365a0c781b166bd3c390aa22e5e246290a3ea19cd3576b1cd2f8a52520e0f",
+        "84fc793d3a84c50602dac7af8c28ad2056aec8919d437d1e99081788e826a1e2"
+      ]
+    },
+    "T13_C04": {
+      "sample_id": "T13F5__bg01_home_ase__g03_earth__10_EDGE_126mm_rgb3d",
+      "prompt_variant_sha256": [
+        "4ae047aba6e70e55abe94a160c41b4d85aa83f09f98e48648abe7b702dd8c4d4",
+        "bcc365a0c781b166bd3c390aa22e5e246290a3ea19cd3576b1cd2f8a52520e0f",
+        "84fc793d3a84c50602dac7af8c28ad2056aec8919d437d1e99081788e826a1e2"
+      ]
+    },
+    "T13_C05": {
+      "sample_id": "T13F5__bg01_home_ase__g03_earth__11_EDGE_127mm_rgb3d",
+      "prompt_variant_sha256": [
+        "4ae047aba6e70e55abe94a160c41b4d85aa83f09f98e48648abe7b702dd8c4d4",
+        "bcc365a0c781b166bd3c390aa22e5e246290a3ea19cd3576b1cd2f8a52520e0f",
+        "84fc793d3a84c50602dac7af8c28ad2056aec8919d437d1e99081788e826a1e2"
+      ]
+    },
+    "T14_C01": {
+      "sample_id": "T14V2__bg01_home_ase__g01_moon__pose_gate__G_global_07__gap032__yaw+06p2__v1315__mu057",
+      "prompt_variant_sha256": [
+        "021e01cecf3fc82f6db5ab0ec8ec1f5d6d4b54392430481eed84fc4d67bdb3ea",
+        "c925ce34e99448aa67296a232eed7c52b8beaec86b20efdba6199bd82a2206e4",
+        "20ee5ce1b15fccd03ed7b21207c627bf191720cdf91ca220a453f40692c0463e"
+      ]
+    },
+    "T14_C02": {
+      "sample_id": "T14V2__bg01_home_ase__g02_mars__pose_gate__G_global_07__gap032__yaw+05p6__v1174__mu057",
+      "prompt_variant_sha256": [
+        "898e90666e013ee50fd90102aa91e3f1695ae5e7dedae48d32400297fd16bfb3",
+        "3c81f96ce80d777faf6584f77cf83e27ee255dfdf7eb02c895a0f4371be05f02",
+        "bf12d3a84bb2e7ed79de196b763c992d970f4c5d84fdee21eeec3b849f479ec8"
+      ]
+    },
+    "T14_C03": {
+      "sample_id": "T14V2__bg01_home_ase__g03_earth__pose_gate__G_global_07__gap032__yaw+04p5__v1579__mu057",
+      "prompt_variant_sha256": [
+        "09ac5b338ed26e0d08f0080ca785ebc72f1e130dc89d8ea04e2af7967331f3a4",
+        "ab8fbc1f9e4904119ccec8d4c2ec7b1ff7c3b06e9bbd04384f4c1c38f2c7e3d7",
+        "89af87f4db0b39f895fd0b7ba3980a76c8627f502f44cf1b8dd54088f8748212"
+      ]
+    },
+    "T14_C04": {
+      "sample_id": "T14V2__bg01_home_ase__g03_earth__pose_gate__A_wedged_r01__gap018__yaw+00p0__v1950__mu035",
+      "prompt_variant_sha256": [
+        "38647b1d73ce0640140959f5ae6f41e7324b10bf001a8ad5f706e90493b9d94f",
+        "7944d168d28b74d06186a34b4b8fb9f0b946e999d76cd2e6ed2438428c46fffd",
+        "a360cf471c86e4db82b2edff3fa62a66f4e03df928ee25df781c4dc76078b62d"
+      ]
+    },
+    "T14_C05": {
+      "sample_id": "T14V2__bg01_home_ase__g03_earth__pose_gate__A_passed_r01__gap019__yaw+00p0__v1950__mu035",
+      "prompt_variant_sha256": [
+        "3bedf10a6836f2cb27847e77615e291126c9224cf1e34382bfd688d2dff92491",
+        "ef94d9bf2cdbb65b22178656051923e122326a7afd2286bfd0b17b416ea41bc1",
+        "c5558ed0136a59176993aef6bcb3fb541cf7e139deab4f2fa475213a4bc23f1d"
+      ]
+    },
+    "T15_C01": {
+      "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon",
+      "prompt_variant_sha256": [
+        "bb46d2b286e085c109addbc9c5c71df2bb75acc0ed5bfd0aa71cd78cfde4ca84",
+        "605b8728574f941806597b2746743ea494965f596028d5e703a5d9efc743fece",
+        "3e3ffda686da0a9e04351fe457cc408fea1deafecc91c090ecc04d43acd7a615"
+      ]
+    },
+    "T15_C02": {
+      "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_12",
+      "prompt_variant_sha256": [
+        "5527fce7aaad36a044ff6c838345dbe8c0096e46551d014909b2fc19a1683752",
+        "6aba93d884a41675a28201222ac6e5b5482f98d0fbd27bbdf8adacf010c4b866",
+        "57d975268c17a85183b84a858796e46ef7952616e78742b6d5d4c99bdde13fc4"
+      ]
+    },
+    "T15_C03": {
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+      "prompt_variant_sha256": [
+        "975a24df682613ed3bf019286989d537e04f65c508c38d19c43e07f989ec69b0",
+        "94cb7879258ea1ab0597b6a3f1462d70b7401b042678934dd3ddbf026385e014",
+        "ea8f21a4546fd8d70496048e0592914881f3033090e951720d3e28b001760310"
+      ]
+    },
+    "T15_C04": {
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+      "prompt_variant_sha256": [
+        "5271555a72afcf8d04085943caa3b7b70eabae2ae24aa84469afd6308e6eec47",
+        "4d3a5dc3296310a56fd05f7d177e92893e05a7c7c9e033722f57e0ea01ea35d7",
+        "eaa122268a3481f3a929d779079983b55d4fe18f0472a2c07afc44f5a8ddaea1"
+      ]
+    },
+    "T15_C05": {
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+      "prompt_variant_sha256": [
+        "73ce9dae40583150f08dcf4e6cb4d0619a369883b27c67424f5711daef2300d1",
+        "2dea10a62fad73b213bae0ff687f7d9ddf275d183c8d44a0477993234b82b910",
+        "02267b9152208642cb78da978b9d3206d120386950c8a4a9882ec93fb6582cd8"
+      ]
+    },
+    "T16_C01": {
+      "sample_id": "T16__bg01_home_ase__g01_moon__support_angle__p010",
+      "prompt_variant_sha256": [
+        "6f4630f03d55201f0dfdd5c5b5effeaf3ad46760d8643201c9213f403d860cee",
+        "4ecfc7e373d65eeebbc9bb415674d2913124181736531c2e90122320ad021282",
+        "71fe6f16339a0669470aa2f35e49b05f1da90408485fd704c119b560eb6a4981"
+      ]
+    },
+    "T16_C02": {
+      "sample_id": "T16__bg01_home_ase__g02_mars__support_angle__p010",
+      "prompt_variant_sha256": [
+        "dc95286d77b8f5ac2f2bd042661cfa2d2e9b2ae69c1bd88185de4255c486ebfd",
+        "1e84d37af9e21d5aa2614fdb89026727f95d2974c7424406c5feceaef34650bb",
+        "3cefc773ab89b2e0f97d92bfdb119403072434832cccf0eb1150da03f0ab2119"
+      ]
+    },
+    "T16_C03": {
+      "sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p010",
+      "prompt_variant_sha256": [
+        "8d59dfd709d1a3b11f2bc719b9b1cce999d28a90f410416c8ed6ecacffad01ba",
+        "5c53a7d00d68eee0166befc46f6acb3651eb242e5a841d61a6eaed819993cfa1",
+        "f0600b89196383b57911e4b5240ce77092acde686be6bd366fce9d7baf16b200"
+      ]
+    },
+    "T16_C04": {
+      "sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p023",
+      "prompt_variant_sha256": [
+        "b1b7098f3c088c9ac7c9d53de1376cd6619dbcb7ab22df1b51ec853202617ce3",
+        "c9e82fc7d9459e724c26f3226c9db50d6f6da55cf3a781fda745b66bd39ff812",
+        "ec53a4b6fd2ca6289f0d99193874da0b2e2fac2d99a91d92a10c35bb7d0e82ec"
+      ]
+    },
+    "T16_C05": {
+      "sample_id": "T16__bg01_home_ase__g03_earth__support_angle__p024",
+      "prompt_variant_sha256": [
+        "69b5e194ea7a6a25249027775492876406c6e831cff23aab7e22312e64334c52",
+        "b5bf29eb392e40b10991cb728398621a9c7f6a3ff4415c13b0630865114e5f1b",
+        "a4555ebeefdfea77b3e84cf94453b3ba0e1f26e8bfb1e649921719da32c77706"
+      ]
+    },
+    "T17_C01": {
+      "sample_id": "T17__bg01_home_ase__g01_moon__initial_speed__p012",
+      "prompt_variant_sha256": [
+        "8cb4cd9cc4d589c0998ae2480283591f988924a46494166286902169709bb5f4",
+        "ce2f454cea3077e289a4a5d6e63332b8728fe977af2c3413baa4a01ecb62e680",
+        "c535b8b782ad438ccc7d68fdf42f44261a0f7ffa8a8b23d7c476681040390bff"
+      ]
+    },
+    "T17_C02": {
+      "sample_id": "T17__bg01_home_ase__g02_mars__initial_speed__p012",
+      "prompt_variant_sha256": [
+        "cc13c3e06c8d5870ee422e3e361e47e6e4d48d6fdee5be9d28ac1ea2e1c9c893",
+        "b3f6e42fa9417b08df5e90d5adf4ba9054bcdc03bea438edc0f07b785f298e9a",
+        "88a2c161e1a2733de5855f12cbd93b709aec9ea394d4e9dfa0d7962201233787"
+      ]
+    },
+    "T17_C03": {
+      "sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p012",
+      "prompt_variant_sha256": [
+        "54e92d3b2978bcadc7fc6958a4dfeecd3d910a6df90c7f725ec4c71c7d312d0d",
+        "bf7516016f76fa7faf1cc57b09389598a7c10ac6f3dd23a326a1e65eaabe2fa1",
+        "ea42d9d83fb7d8b962848c42307961944d2b627ca46c27a2fd668053f8410294"
+      ]
+    },
+    "T17_C04": {
+      "sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p007",
+      "prompt_variant_sha256": [
+        "8b0fd791c808df0b5cc16523412656d46cb547a49cbaec632f8ad7ce95d69583",
+        "ca8b832334c8a84a1ec6ab30d994bc765fe557a86e5f1cb86a96b3d7f771a10f",
+        "3fc5adbb72f5840566c0f27b1bfe7f659ed9ca92b0682695d46d5be94a78f9c6"
+      ]
+    },
+    "T17_C05": {
+      "sample_id": "T17__bg01_home_ase__g03_earth__initial_speed__p008",
+      "prompt_variant_sha256": [
+        "63d8fc31a540e9f50047fbaac8d111e9675fc4e89d6cb83ff650d61b9fd79d04",
+        "10e605624c034124c89a103342a90ccc92381b81f673857303f2df76a27dfdb4",
+        "64df8def334ba78081f478bfa771977a126f3143bfba9d6471d9716490d6f436"
+      ]
+    },
+    "T18_C01": {
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+      "prompt_variant_sha256": [
+        "1704819f7b91343007adb5af71fb61a31c76a1758bd8e7f19ee268895c30c62d",
+        "aa2be3784c0952e37af5694bab42bb06b07cc229dbf9cad6b25aaa4e37b0204b",
+        "83e391c3c9e57e5cfd7877f5f8ac4a6d35340cb59d4e8dfd83d985a56abb411d"
+      ]
+    },
+    "T18_C02": {
+      "sample_id": "T18__bg01_home_ase__g02_mars__contact_friction__p019",
+      "prompt_variant_sha256": [
+        "89ccf3eafda0b9d1977fafdaea3f06efa319ecaa25a50634e56fde401163a17d",
+        "000ade4fe550823074be03a3da4775e1bca2399324eed49088643d3d195ea279",
+        "ffb2599018095473fa62b71b4aca3da46399599553f68ca8586cbfe9ee474b32"
+      ]
+    },
+    "T18_C03": {
+      "sample_id": "T18__bg01_home_ase__g03_earth__contact_friction__p019",
+      "prompt_variant_sha256": [
+        "a59ebb3694411b7226c9da08aa9f1b45f49f12a272c14f7279c6009af2415a52",
+        "e4e34c49c9a2de8bfacaf8e5588e4fe4f5ed9e668fb618cf8d6e7775d7774afa",
+        "2968ef5c5db9466d9e65ebb1f48964eae3468174dbc2a1013a8bc948267214ee"
+      ]
+    },
+    "T18_C04": {
+      "sample_id": "T18__bg01_home_ase__g03_earth__overlap_length__p005",
+      "prompt_variant_sha256": [
+        "c80cf30be6798b1acfb144b3ff4a1c7b85fbecc65ae97c3a26507468e3ad53a8",
+        "460a3c87b41fd14b070f279d14756fbc3769d6406f37199cea669a30e29b0e77",
+        "99f13dbe7a605487d8800f2e0104e19293dc8732fa2e3a5414311003a6581d5e"
+      ]
+    },
+    "T18_C05": {
+      "sample_id": "T18__bg01_home_ase__g03_earth__overlap_length__p006",
+      "prompt_variant_sha256": [
+        "ea80c36c4081f08888d0e41103bf7817c5b6717364889f0e6c4d8fce52f59ea6",
+        "89aede798f323ae262da25b2cd065845d8f3b54bc463ad278ac302fcb858343e",
+        "f72bc3637dd79be1428d32a45b81b5ab0f46dcd099f043cb31447fa2ab8aa574"
+      ]
+    },
+    "T19_C01": {
+      "sample_id": "T19__bg03_neutral_studio__g01_moon__restitution__p010",
+      "prompt_variant_sha256": [
+        "68e23958ee983083228c19b2c64b9d6ba10fa8e7a286dfb510d1340963634d71",
+        "21f1bd5800891b29784ab11e8bf96a5d080fa8713a8f3ebe71d139de3f7147e4",
+        "f57f43d963d1332551c1a1ac33d3d4b5721237bdbba343e0147e0c8785a46e10"
+      ]
+    },
+    "T19_C02": {
+      "sample_id": "T19__bg03_neutral_studio__g02_mars__restitution__p010",
+      "prompt_variant_sha256": [
+        "86df6245f2813c4cb7e783e7073deef23c8c92e835de8e44fc87b752dc8a4bb8",
+        "8920733896370088b9d3a459da4ac599c47c75d6cf22db115cf8c4aaf23af329",
+        "06dd294f9f2ab4bef11ba2ad7146a71967013f070e061c3ad180aba82999b993"
+      ]
+    },
+    "T19_C03": {
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__restitution__p010",
+      "prompt_variant_sha256": [
+        "dbe86d6b6bef4a4fe385d3e09ddf6035621f748c9b0bf7fc8da1d7872506e95a",
+        "7b61c26c8219df72f1c5d4525fbe28cd4de1c53bb3b78324d23e076060c428c2",
+        "cb12c1042499513397b9db95da3356f65a8755d6778c18ce1bee9e3a565c89ee"
+      ]
+    },
+    "T19_C04": {
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p002",
+      "prompt_variant_sha256": [
+        "4068cf3c2053ab9b7b72237c0f727c27dcc7ef7ac963a8cb5d177892fdfac0b0",
+        "99419614085a436e242e1394fc213075c3e4dd51447ed15f16f76d6b82dfae2e",
+        "054a714dab8fecb6a091559e91b7f8bfd0098b027ab20c2030715977b70cdec4"
+      ]
+    },
+    "T19_C05": {
+      "sample_id": "T19__bg03_neutral_studio__g03_earth__mass_ratio__p019",
+      "prompt_variant_sha256": [
+        "cb34e2aece6c0a9702b0b0d59a9432dfe00f19fe83ab28b1198829297a25cde6",
+        "e62af011854d6c8b11d9a3b0e73ad53c5e9e64bb75b77c3742e3d68066bde9ba",
+        "e11ee9d5d3ac1ec7680f6293c95650504fe27b051327a2b49a3bfeb54ea593c9"
+      ]
+    },
+    "T20_C01": {
+      "sample_id": "T20__bg01_home_ase__g01_moon__box_cup_gap__p010",
+      "prompt_variant_sha256": [
+        "00144d85d1eaa0b693fb2425b1a322ee0f0e5cb68206d35b657582e4626a416e",
+        "380598d4cf85c33b76266478db3f8f13bba1ca38f6b6e53c4bcf24e53b7bf341",
+        "67431bb3ec6efaa1dab95972c900a70a696a0aa31a3dc4bcc07890186f602d74"
+      ]
+    },
+    "T20_C02": {
+      "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p009",
+      "prompt_variant_sha256": [
+        "c5b2635cc199511d2cb1211a52516a8070fe67c88e02b9978e3f926928414f53",
+        "bad574190a8e64ee6a440a36c35e934ac23a5f0f1421641780dc48c94d3a12f0",
+        "5311f500c9514c186e92bbf1d725bdb733f59941caa4d2f6357d0090768c7e80"
+      ]
+    },
+    "T20_C03": {
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+      "prompt_variant_sha256": [
+        "d873af0de6891691081ee4504f568a14353624b9f0c086a13c09d149751fa078",
+        "fb1026492bdbc1e46a914bd463a0994d0ab7c84edf65c94fce11f901a15dc057",
+        "8e2b5fc0f5725a4e399551708624992c4fe3a159bf65186565f67a9c12d0eb2b"
+      ]
+    },
+    "T20_C04": {
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+      "prompt_variant_sha256": [
+        "e5b983a68bedcfe9de4232770e04a4bde39703aaf78e8e817768344ee05dc360",
+        "8660bb0e02f6c989b0fa1eb87218d1725fd7ec90e2d6039497923dcc73b1f0ad",
+        "0422e017f7bb3e7858c2fabf2381cb6610f73ef191a44eaf004f3a86993d5f49"
+      ]
+    },
+    "T20_C05": {
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p011",
+      "prompt_variant_sha256": [
+        "b1f54158dfad1e2a2e061e51d110e300b76afcc09f218fcb8faf0c48a05cb70a",
+        "11559a2cbe3fd9d8ecec8b022555a87fae2ec308749eab2268df4eec07774a60",
+        "e847d6759cfa20fc6b2af93b7a3ca2dbcb73a1114a51f5e63c5b7b880ff153d6"
+      ]
+    }
+  }
+}

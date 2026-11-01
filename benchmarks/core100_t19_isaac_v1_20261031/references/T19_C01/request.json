@@ -1,0 +1,30 @@
+{
+  "signature": {
+    "config_sha256": "0bafa3345deb48aa6f758c77e6181134553bff60e612cde650f24d8e14f08b34",
+    "code": {
+      "render.py": "feb6633cfb7c963440f9f87edaa573f754ceafb1f324dc4f3ea04ce0e4d2958a",
+      "assets.py": "d8112e704a4cc37e38cc9e83ff89aeaa9ee46d6ebc5bbb89b6771142851d1965",
+      "contract.py": "5b06f5ef50bd39a6362ae489fdb2eb84611e81d9687de42592d412eb532696ad",
+      "common.py": "e3380f39fdaa51c9943dc56d7f5d0e9a8c23966eaa17f825746b925e5dd7382a",
+      "qa.py": "c16cbe1e699772371d982e3a845f1715c645f6e1c485ab139db8403f2eda19a6"
+    },
+    "image": "nvcr.io/nvidia/isaac-sim@sha256:f3563cb2ba0c18af0b2fb321360dcb73a917b899f879e3213623d6bee484fa54",
+    "physics_only": false,
+    "runner_sha256": "89f2511cb723d09c11203dfe5ba8a49893aa2831f860668dacf881ac74c95b47",
+    "state_storage": "gzip_verified_v1",
+    "render_cache_layout": "per_gpu_v2",
+    "runtime_code": {},
+    "cpu_threads": 32
+  },
+  "gpu": 2,
+  "admission": {
+    "gpu": 2,
+    "slot": 2,
+    "worker_slot": 2,
+    "min_free_mib": 1536,
+    "required_free_mib": 8192,
+    "free_mib": 23273,
+    "utilization_percent": 0
+  },
+  "resources_sha256": "b465d51cbb93cf401ebb760bcd670e92c22abe9e86f0f0e009f312597f10b068"
+}

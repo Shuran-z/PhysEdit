@@ -1,0 +1,430 @@
+{
+  "schema": "verified-f5-contact-boundaries-v1",
+  "expected_cases": 5,
+  "completed_cases": 5,
+  "cases": [
+    {
+      "clip_id": "T13_C01",
+      "status": "contact_domain_scan_completed",
+      "probes": 15,
+      "intervals": 2,
+      "events_without_observed_grid_flip": [
+        "driver_to_falling_book_contact"
+      ],
+      "no_flip_scope": "An observed constant grid is not proof of no hidden root."
+    },
+    {
+      "clip_id": "T13_C02",
+      "status": "contact_domain_scan_completed",
+      "probes": 15,
+      "intervals": 2,
+      "events_without_observed_grid_flip": [
+        "driver_to_falling_book_contact"
+      ],
+      "no_flip_scope": "An observed constant grid is not proof of no hidden root."
+    },
+    {
+      "clip_id": "T13_C04",
+      "status": "contact_domain_scan_completed",
+      "probes": 15,
+      "intervals": 2,
+      "events_without_observed_grid_flip": [
+        "driver_to_falling_book_contact"
+      ],
+      "no_flip_scope": "An observed constant grid is not proof of no hidden root."
+    },
+    {
+      "clip_id": "T13_C05",
+      "status": "contact_domain_scan_completed",
+      "probes": 15,
+      "intervals": 2,
+      "events_without_observed_grid_flip": [
+        "driver_to_falling_book_contact"
+      ],
+      "no_flip_scope": "An observed constant grid is not proof of no hidden root."
+    },
+    {
+      "clip_id": "T13_C03",
+      "status": "contact_domain_scan_completed",
+      "probes": 15,
+      "intervals": 2,
+      "events_without_observed_grid_flip": [
+        "driver_to_falling_book_contact"
+      ],
+      "no_flip_scope": "An observed constant grid is not proof of no hidden root."
+    }
+  ],
+  "records": [
+    {
+      "clip_id": "T13_C01",
+      "target_event": "falling_book_to_drink_contact",
+      "worker_event": "second_contact",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1125,
+        0.112890625
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.043247767857142884,
+        0.04464285714285714
+      ],
+      "distance_bin": "near",
+      "source_state_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "source_config_sha256": "e21dda64a218f4745637deaaf62a9d66d9312f136c0a100b73d45859bd185b5b",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "3236f690d51eccfcd86fde78387632dbe67cfa7825f958d0d27e7a874cd3a007",
+      "source_prefix_max_position_error_m": 5.249376982288622e-05,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C01",
+      "target_event": "registered_two_contact_conjunction_and_order",
+      "worker_event": "ordered_chain",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1125,
+        0.112890625
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.043247767857142884,
+        0.04464285714285714
+      ],
+      "distance_bin": "near",
+      "source_state_sha256": "bb332022a0052eb0461b12375b2872189f65dab8e9c0e972bc06bae7e0cf8509",
+      "source_config_sha256": "e21dda64a218f4745637deaaf62a9d66d9312f136c0a100b73d45859bd185b5b",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "3236f690d51eccfcd86fde78387632dbe67cfa7825f958d0d27e7a874cd3a007",
+      "source_prefix_max_position_error_m": 5.249376982288622e-05,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C02",
+      "target_event": "falling_book_to_drink_contact",
+      "worker_event": "second_contact",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1125,
+        0.112890625
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.043247767857142884,
+        0.04464285714285714
+      ],
+      "distance_bin": "near",
+      "source_state_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "source_config_sha256": "49abaa1fb37b71d3982144852d498408cc7926027a146afef0ba695d56a4e3ec",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "b225ab5cc73f4d785720d4b9a9a33d42b4fd0b0e4e0f6db8c84c997647c74112",
+      "source_prefix_max_position_error_m": 0.0002475307851436979,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C02",
+      "target_event": "registered_two_contact_conjunction_and_order",
+      "worker_event": "ordered_chain",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1125,
+        0.112890625
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.043247767857142884,
+        0.04464285714285714
+      ],
+      "distance_bin": "near",
+      "source_state_sha256": "3018f9214b510874091031c68751621ca9574d96dff077e7e3ec0c78cf148f28",
+      "source_config_sha256": "49abaa1fb37b71d3982144852d498408cc7926027a146afef0ba695d56a4e3ec",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "b225ab5cc73f4d785720d4b9a9a33d42b4fd0b0e4e0f6db8c84c997647c74112",
+      "source_prefix_max_position_error_m": 0.0002475307851436979,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C04",
+      "target_event": "falling_book_to_drink_contact",
+      "worker_event": "second_contact",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.10893750000000002,
+        0.10934375000000002
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.126,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.05948660714285709,
+        0.060937499999999936
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "source_config_sha256": "ff7f9757e2c5fd68e31edaf2519c3585ec3aab77975ecae9214277b6704deacf",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "f94da392b8e8cc276c1f857483e74041b7b9647dd7f26f48a279343d63702c69",
+      "source_prefix_max_position_error_m": 0.0006783728995581841,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C04",
+      "target_event": "registered_two_contact_conjunction_and_order",
+      "worker_event": "ordered_chain",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.10893750000000002,
+        0.10934375000000002
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.126,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.05948660714285709,
+        0.060937499999999936
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "d889f317dffdbf44dd713d8aea105db9be30125f24fcae297813caddfed0d07e",
+      "source_config_sha256": "ff7f9757e2c5fd68e31edaf2519c3585ec3aab77975ecae9214277b6704deacf",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "f94da392b8e8cc276c1f857483e74041b7b9647dd7f26f48a279343d63702c69",
+      "source_prefix_max_position_error_m": 0.0006783728995581841,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C05",
+      "target_event": "falling_book_to_drink_contact",
+      "worker_event": "second_contact",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1084375,
+        0.10885937500000001
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.127,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.06478794642857141,
+        0.06629464285714284
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "source_config_sha256": "556d03140416f25dd6d6df01d2dc47a046577bc8a7e9c54a63f0f0e5dfbd7364",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "91e1a14421310c1905a2a774af589f5688eafff812e860fb21baf15cc174afb1",
+      "source_prefix_max_position_error_m": 0.0006709180496913182,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C05",
+      "target_event": "registered_two_contact_conjunction_and_order",
+      "worker_event": "ordered_chain",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.1084375,
+        0.10885937500000001
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.127,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.06478794642857141,
+        0.06629464285714284
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "72943fb139c0b00fb9b0992b8c4a036381bddf475c6d9e667a5950c07629089c",
+      "source_config_sha256": "556d03140416f25dd6d6df01d2dc47a046577bc8a7e9c54a63f0f0e5dfbd7364",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "91e1a14421310c1905a2a774af589f5688eafff812e860fb21baf15cc174afb1",
+      "source_prefix_max_position_error_m": 0.0006709180496913182,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C03",
+      "target_event": "falling_book_to_drink_contact",
+      "worker_event": "second_contact",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.10820312500000001,
+        0.10859375
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.05859374999999999,
+        0.05998883928571425
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "source_config_sha256": "0c59cf5cdfbd0f574ca32138864301877ee4708336fe6a1cd8e6b31259219337",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "cb54dff1a78c4d3a63e7d7ca9062adf9c21e10ab3dcb9b22b955f14bb51ff84e",
+      "source_prefix_max_position_error_m": 0.0007521164685826632,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    },
+    {
+      "clip_id": "T13_C03",
+      "target_event": "registered_two_contact_conjunction_and_order",
+      "worker_event": "ordered_chain",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "bracket": [
+        0.10820312500000001,
+        0.10859375
+      ],
+      "labels": [
+        0,
+        1
+      ],
+      "source_theta": 0.125,
+      "normalization_domain": [
+        0.02,
+        0.3
+      ],
+      "normalization_span": 0.27999999999999997,
+      "normalized_distance_interval": [
+        0.05859374999999999,
+        0.05998883928571425
+      ],
+      "distance_bin": "mid",
+      "source_state_sha256": "7cb8cdf83eaa4fecff80df13d33ddb08195ebf6b4bab383312efa934038196f8",
+      "source_config_sha256": "0c59cf5cdfbd0f574ca32138864301877ee4708336fe6a1cd8e6b31259219337",
+      "renderer_sha256": "618c77fbc325f037962520dcc0fc3459c07fd4bbfcc28fd4c19b2ff992bcac4e",
+      "result_sha256": "cb54dff1a78c4d3a63e7d7ca9062adf9c21e10ab3dcb9b22b955f14bb51ff84e",
+      "source_prefix_max_position_error_m": 0.0007521164685826632,
+      "probe_evidence_verified": true,
+      "reference_admitted": false,
+      "pair_admitted": false,
+      "scope": "New contact protocol only. Original terminal-fall boundary is not recovered."
+    }
+  ],
+  "historical_failures": [
+    {
+      "clip_id": "T13_C03",
+      "status": "failed",
+      "error": "F5 source contact/trajectory replay mismatch; no boundary admission"
+    },
+    {
+      "clip_id": "T13_C05",
+      "status": "failed",
+      "error": "F5 source contact/trajectory replay mismatch; no boundary admission"
+    },
+    {
+      "clip_id": "T13_C03",
+      "status": "failed",
+      "error": "F5 source contact/trajectory replay mismatch; no boundary admission"
+    }
+  ],
+  "reference_admissions": 0,
+  "pair_admissions": 0,
+  "failures": [],
+  "collection_note": "All five successful cases hash-verified against original source and probe states; historical failed attempts retained separately."
+}

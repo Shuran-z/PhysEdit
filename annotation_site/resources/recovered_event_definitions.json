@@ -1,0 +1,3067 @@
+{
+  "T03_C01": {
+    "events": {
+      "book_contacts_upper_can": {
+        "name": "书本接触上层罐子",
+        "definition": "The original book contacts the upper can at least once.",
+        "definition_zh": "书本接触上层罐子",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "can_lands_on_lower_shelf": {
+        "name": "罐子接触下层托架",
+        "definition": "The original upper can contacts the lower transfer ramp at least once.",
+        "definition_zh": "罐子接触下层托架",
+        "actors": [
+          "t03v5_upper_edge_can",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "phone_second_fall_original": {
+        "name": "手机完成二次跌落",
+        "definition": "Original C2 outcome: book-can, can-lower-shelf and can-phone contacts all occur, phone-floor contact occurs, and the phone center drops strictly more than 0.20 m from the pre-static-frame baseline. Contacts are source branch prerequisites, not a new contact-order test.",
+        "definition_zh": "手机完成二次跌落",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can",
+          "t03v5_lower_edge_phone"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+        "component_definitions": {
+          "phone_drop": {
+            "name": "手机下落量",
+            "definition": "Original phone-center drop relative to the pre-static baseline.",
+            "definition_zh": "手机下落量",
+            "actors": [
+              "t03v5_lower_edge_phone"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+            "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "phone_center_drop_from_pre_static_m",
+                  "operator": ">",
+                  "threshold": 0.2,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "book_can AND can_shelf AND can_phone AND phone_floor AND phone_drop"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+    "source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T03_C02": {
+    "events": {
+      "book_contacts_upper_can": {
+        "name": "书本接触上层罐子",
+        "definition": "The original book contacts the upper can at least once.",
+        "definition_zh": "书本接触上层罐子",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "can_lands_on_lower_shelf": {
+        "name": "罐子接触下层托架",
+        "definition": "The original upper can contacts the lower transfer ramp at least once.",
+        "definition_zh": "罐子接触下层托架",
+        "actors": [
+          "t03v5_upper_edge_can",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "phone_second_fall_original": {
+        "name": "手机完成二次跌落",
+        "definition": "Original C2 outcome: book-can, can-lower-shelf and can-phone contacts all occur, phone-floor contact occurs, and the phone center drops strictly more than 0.20 m from the pre-static-frame baseline. Contacts are source branch prerequisites, not a new contact-order test.",
+        "definition_zh": "手机完成二次跌落",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can",
+          "t03v5_lower_edge_phone"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+        "component_definitions": {
+          "phone_drop": {
+            "name": "手机下落量",
+            "definition": "Original phone-center drop relative to the pre-static baseline.",
+            "definition_zh": "手机下落量",
+            "actors": [
+              "t03v5_lower_edge_phone"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+            "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "phone_center_drop_from_pre_static_m",
+                  "operator": ">",
+                  "threshold": 0.2,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "book_can AND can_shelf AND can_phone AND phone_floor AND phone_drop"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+    "source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T03_C03": {
+    "events": {
+      "book_contacts_upper_can": {
+        "name": "书本接触上层罐子",
+        "definition": "The original book contacts the upper can at least once.",
+        "definition_zh": "书本接触上层罐子",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "can_lands_on_lower_shelf": {
+        "name": "罐子接触下层托架",
+        "definition": "The original upper can contacts the lower transfer ramp at least once.",
+        "definition_zh": "罐子接触下层托架",
+        "actors": [
+          "t03v5_upper_edge_can",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "phone_second_fall_original": {
+        "name": "手机完成二次跌落",
+        "definition": "Original C2 outcome: book-can, can-lower-shelf and can-phone contacts all occur, phone-floor contact occurs, and the phone center drops strictly more than 0.20 m from the pre-static-frame baseline. Contacts are source branch prerequisites, not a new contact-order test.",
+        "definition_zh": "手机完成二次跌落",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can",
+          "t03v5_lower_edge_phone"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+        "component_definitions": {
+          "phone_drop": {
+            "name": "手机下落量",
+            "definition": "Original phone-center drop relative to the pre-static baseline.",
+            "definition_zh": "手机下落量",
+            "actors": [
+              "t03v5_lower_edge_phone"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+            "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "phone_center_drop_from_pre_static_m",
+                  "operator": ">",
+                  "threshold": 0.2,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "book_can AND can_shelf AND can_phone AND phone_floor AND phone_drop"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+    "source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T03_C04": {
+    "events": {
+      "book_contacts_upper_can": {
+        "name": "书本接触上层罐子",
+        "definition": "The original book contacts the upper can at least once.",
+        "definition_zh": "书本接触上层罐子",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "can_lands_on_lower_shelf": {
+        "name": "罐子接触下层托架",
+        "definition": "The original upper can contacts the lower transfer ramp at least once.",
+        "definition_zh": "罐子接触下层托架",
+        "actors": [
+          "t03v5_upper_edge_can",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "phone_second_fall_original": {
+        "name": "手机完成二次跌落",
+        "definition": "Original C2 outcome: book-can, can-lower-shelf and can-phone contacts all occur, phone-floor contact occurs, and the phone center drops strictly more than 0.20 m from the pre-static-frame baseline. Contacts are source branch prerequisites, not a new contact-order test.",
+        "definition_zh": "手机完成二次跌落",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can",
+          "t03v5_lower_edge_phone"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+        "component_definitions": {
+          "phone_drop": {
+            "name": "手机下落量",
+            "definition": "Original phone-center drop relative to the pre-static baseline.",
+            "definition_zh": "手机下落量",
+            "actors": [
+              "t03v5_lower_edge_phone"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+            "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "phone_center_drop_from_pre_static_m",
+                  "operator": ">",
+                  "threshold": 0.2,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "book_can AND can_shelf AND can_phone AND phone_floor AND phone_drop"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+    "source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T03_C05": {
+    "events": {
+      "book_contacts_upper_can": {
+        "name": "书本接触上层罐子",
+        "definition": "The original book contacts the upper can at least once.",
+        "definition_zh": "书本接触上层罐子",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "can_lands_on_lower_shelf": {
+        "name": "罐子接触下层托架",
+        "definition": "The original upper can contacts the lower transfer ramp at least once.",
+        "definition_zh": "罐子接触下层托架",
+        "actors": [
+          "t03v5_upper_edge_can",
+          "t03v5_lower_transfer_ramp"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231"
+      },
+      "phone_second_fall_original": {
+        "name": "手机完成二次跌落",
+        "definition": "Original C2 outcome: book-can, can-lower-shelf and can-phone contacts all occur, phone-floor contact occurs, and the phone center drops strictly more than 0.20 m from the pre-static-frame baseline. Contacts are source branch prerequisites, not a new contact-order test.",
+        "definition_zh": "手机完成二次跌落",
+        "actors": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_edge_can",
+          "t03v5_lower_edge_phone"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+        "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+        "component_definitions": {
+          "phone_drop": {
+            "name": "手机下落量",
+            "definition": "Original phone-center drop relative to the pre-static baseline.",
+            "definition_zh": "手机下落量",
+            "actors": [
+              "t03v5_lower_edge_phone"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+            "original_source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "phone_center_drop_from_pre_static_m",
+                  "operator": ">",
+                  "threshold": 0.2,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "book_can AND can_shelf AND can_phone AND phone_floor AND phone_drop"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\6132aa3599_audit_t03_v5_multilevel_cascade.py",
+    "source_sha256": "6132aa3599e72e7edda34b8e890e16bc1e6b6e9cabb7e7655496de7511b11231",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T04_C01": {
+    "events": {
+      "original_full_chain": {
+        "name": "末端杯子达到原完整链判据",
+        "definition": "Original V4 full_chain: can2 contacts the mug AND (maximum mug rotation from its first pose is at least 18 degrees OR maximum 3D mug displacement from its first pose is at least 0.040 m).",
+        "definition_zh": "末端杯子达到原完整链判据",
+        "actors": [
+          "t04v3_chain_can_2",
+          "t04v3_chain_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+        "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+        "component_definitions": {
+          "rotation": {
+            "name": "杯子转角",
+            "definition": "Original maximum quaternion angle from first pose.",
+            "definition_zh": "杯子转角",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "degree",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_rotation_from_first_frame_deg",
+                  "operator": ">=",
+                  "threshold": 18.0,
+                  "unit": "degree"
+                }
+              ]
+            }
+          },
+          "displacement": {
+            "name": "杯子位移",
+            "definition": "Original maximum 3D displacement from first pose.",
+            "definition_zh": "杯子位移",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_3d_displacement_from_first_frame_m",
+                  "operator": ">=",
+                  "threshold": 0.04,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "can2_mug_contact AND (rotation OR displacement)"
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+    "source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T04_C02": {
+    "events": {
+      "original_full_chain": {
+        "name": "末端杯子达到原完整链判据",
+        "definition": "Original V4 full_chain: can2 contacts the mug AND (maximum mug rotation from its first pose is at least 18 degrees OR maximum 3D mug displacement from its first pose is at least 0.040 m).",
+        "definition_zh": "末端杯子达到原完整链判据",
+        "actors": [
+          "t04v3_chain_can_2",
+          "t04v3_chain_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+        "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+        "component_definitions": {
+          "rotation": {
+            "name": "杯子转角",
+            "definition": "Original maximum quaternion angle from first pose.",
+            "definition_zh": "杯子转角",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "degree",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_rotation_from_first_frame_deg",
+                  "operator": ">=",
+                  "threshold": 18.0,
+                  "unit": "degree"
+                }
+              ]
+            }
+          },
+          "displacement": {
+            "name": "杯子位移",
+            "definition": "Original maximum 3D displacement from first pose.",
+            "definition_zh": "杯子位移",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_3d_displacement_from_first_frame_m",
+                  "operator": ">=",
+                  "threshold": 0.04,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "can2_mug_contact AND (rotation OR displacement)"
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+    "source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T04_C03": {
+    "events": {
+      "original_full_chain": {
+        "name": "末端杯子达到原完整链判据",
+        "definition": "Original V4 full_chain: can2 contacts the mug AND (maximum mug rotation from its first pose is at least 18 degrees OR maximum 3D mug displacement from its first pose is at least 0.040 m).",
+        "definition_zh": "末端杯子达到原完整链判据",
+        "actors": [
+          "t04v3_chain_can_2",
+          "t04v3_chain_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+        "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+        "component_definitions": {
+          "rotation": {
+            "name": "杯子转角",
+            "definition": "Original maximum quaternion angle from first pose.",
+            "definition_zh": "杯子转角",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "degree",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_rotation_from_first_frame_deg",
+                  "operator": ">=",
+                  "threshold": 18.0,
+                  "unit": "degree"
+                }
+              ]
+            }
+          },
+          "displacement": {
+            "name": "杯子位移",
+            "definition": "Original maximum 3D displacement from first pose.",
+            "definition_zh": "杯子位移",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_3d_displacement_from_first_frame_m",
+                  "operator": ">=",
+                  "threshold": 0.04,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "can2_mug_contact AND (rotation OR displacement)"
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+    "source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T04_C04": {
+    "events": {
+      "original_full_chain": {
+        "name": "末端杯子达到原完整链判据",
+        "definition": "Original V4 full_chain: can2 contacts the mug AND (maximum mug rotation from its first pose is at least 18 degrees OR maximum 3D mug displacement from its first pose is at least 0.040 m).",
+        "definition_zh": "末端杯子达到原完整链判据",
+        "actors": [
+          "t04v3_chain_can_2",
+          "t04v3_chain_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+        "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+        "component_definitions": {
+          "rotation": {
+            "name": "杯子转角",
+            "definition": "Original maximum quaternion angle from first pose.",
+            "definition_zh": "杯子转角",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "degree",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_rotation_from_first_frame_deg",
+                  "operator": ">=",
+                  "threshold": 18.0,
+                  "unit": "degree"
+                }
+              ]
+            }
+          },
+          "displacement": {
+            "name": "杯子位移",
+            "definition": "Original maximum 3D displacement from first pose.",
+            "definition_zh": "杯子位移",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_3d_displacement_from_first_frame_m",
+                  "operator": ">=",
+                  "threshold": 0.04,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "can2_mug_contact AND (rotation OR displacement)"
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+    "source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T04_C05": {
+    "events": {
+      "original_full_chain": {
+        "name": "末端杯子达到原完整链判据",
+        "definition": "Original V4 full_chain: can2 contacts the mug AND (maximum mug rotation from its first pose is at least 18 degrees OR maximum 3D mug displacement from its first pose is at least 0.040 m).",
+        "definition_zh": "末端杯子达到原完整链判据",
+        "actors": [
+          "t04v3_chain_can_2",
+          "t04v3_chain_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+        "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+        "component_definitions": {
+          "rotation": {
+            "name": "杯子转角",
+            "definition": "Original maximum quaternion angle from first pose.",
+            "definition_zh": "杯子转角",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "degree",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_rotation_from_first_frame_deg",
+                  "operator": ">=",
+                  "threshold": 18.0,
+                  "unit": "degree"
+                }
+              ]
+            }
+          },
+          "displacement": {
+            "name": "杯子位移",
+            "definition": "Original maximum 3D displacement from first pose.",
+            "definition_zh": "杯子位移",
+            "actors": [
+              "t04v3_chain_mug"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+            "original_source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "mug_max_3d_displacement_from_first_frame_m",
+                  "operator": ">=",
+                  "threshold": 0.04,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "can2_mug_contact AND (rotation OR displacement)"
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\audit_t04_v4_quality.py",
+    "source_sha256": "73092bb1f8e1944b10ff273d370f26d6f6c9f910ef12c5a1e0559ae2ed1077d1",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T08_C01": {
+    "events": {
+      "t08_lower_impactor_book_below_table_8cm": {
+        "name": "下层书达到原离桌判据",
+        "definition": "The original t08_lower_impactor_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "下层书达到原离桌判据",
+        "actors": [
+          "t08_lower_impactor_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_lower_impactor_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_upper_payload_book_below_table_8cm": {
+        "name": "上层书达到原离桌判据",
+        "definition": "The original t08_upper_payload_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "上层书达到原离桌判据",
+        "actors": [
+          "t08_upper_payload_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_upper_payload_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_target_mug_below_table_8cm": {
+        "name": "杯子达到原离桌判据",
+        "definition": "The original t08_target_mug center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "杯子达到原离桌判据",
+        "actors": [
+          "t08_target_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_target_mug_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+    "source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T08_C02": {
+    "events": {
+      "t08_lower_impactor_book_below_table_8cm": {
+        "name": "下层书达到原离桌判据",
+        "definition": "The original t08_lower_impactor_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "下层书达到原离桌判据",
+        "actors": [
+          "t08_lower_impactor_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_lower_impactor_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_upper_payload_book_below_table_8cm": {
+        "name": "上层书达到原离桌判据",
+        "definition": "The original t08_upper_payload_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "上层书达到原离桌判据",
+        "actors": [
+          "t08_upper_payload_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_upper_payload_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_target_mug_below_table_8cm": {
+        "name": "杯子达到原离桌判据",
+        "definition": "The original t08_target_mug center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "杯子达到原离桌判据",
+        "actors": [
+          "t08_target_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_target_mug_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+    "source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T08_C03": {
+    "events": {
+      "t08_lower_impactor_book_below_table_8cm": {
+        "name": "下层书达到原离桌判据",
+        "definition": "The original t08_lower_impactor_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "下层书达到原离桌判据",
+        "actors": [
+          "t08_lower_impactor_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_lower_impactor_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_upper_payload_book_below_table_8cm": {
+        "name": "上层书达到原离桌判据",
+        "definition": "The original t08_upper_payload_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "上层书达到原离桌判据",
+        "actors": [
+          "t08_upper_payload_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_upper_payload_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_target_mug_below_table_8cm": {
+        "name": "杯子达到原离桌判据",
+        "definition": "The original t08_target_mug center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "杯子达到原离桌判据",
+        "actors": [
+          "t08_target_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_target_mug_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+    "source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T08_C04": {
+    "events": {
+      "t08_lower_impactor_book_below_table_8cm": {
+        "name": "下层书达到原离桌判据",
+        "definition": "The original t08_lower_impactor_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "下层书达到原离桌判据",
+        "actors": [
+          "t08_lower_impactor_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_lower_impactor_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_upper_payload_book_below_table_8cm": {
+        "name": "上层书达到原离桌判据",
+        "definition": "The original t08_upper_payload_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "上层书达到原离桌判据",
+        "actors": [
+          "t08_upper_payload_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_upper_payload_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_target_mug_below_table_8cm": {
+        "name": "杯子达到原离桌判据",
+        "definition": "The original t08_target_mug center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "杯子达到原离桌判据",
+        "actors": [
+          "t08_target_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_target_mug_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+    "source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T08_C05": {
+    "events": {
+      "t08_lower_impactor_book_below_table_8cm": {
+        "name": "下层书达到原离桌判据",
+        "definition": "The original t08_lower_impactor_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "下层书达到原离桌判据",
+        "actors": [
+          "t08_lower_impactor_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_lower_impactor_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_upper_payload_book_below_table_8cm": {
+        "name": "上层书达到原离桌判据",
+        "definition": "The original t08_upper_payload_book center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "上层书达到原离桌判据",
+        "actors": [
+          "t08_upper_payload_book"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_upper_payload_book_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t08_target_mug_below_table_8cm": {
+        "name": "杯子达到原离桌判据",
+        "definition": "The original t08_target_mug center reaches z strictly below the original table top minus 0.08 m at any frame. This is original left_table, not verified floor landing.",
+        "definition_zh": "杯子达到原离桌判据",
+        "actors": [
+          "t08_target_mug"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+        "original_source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t08_target_mug_min_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\scene_family_completion_20261018\\original_completion_sources\\analyze_t08_v3_metrics.py",
+    "source_sha256": "2526d7fb5889349b5ec563b2110a52b451ab94025da2ec399cc81da80ad7a35c",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T11_C01": {
+    "events": {
+      "t11_driver_eraser_final_center_below_minus_10cm": {
+        "name": "橡皮达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_driver_eraser final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "橡皮达到原末态跌落判据",
+        "actors": [
+          "t11_driver_eraser"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_driver_eraser_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_relay_pencil_case_final_center_below_minus_10cm": {
+        "name": "接力笔盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_relay_pencil_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "接力笔盒达到原末态跌落判据",
+        "actors": [
+          "t11_relay_pencil_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_relay_pencil_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_eyeglasses_case_final_center_below_minus_10cm": {
+        "name": "眼镜盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_eyeglasses_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "眼镜盒达到原末态跌落判据",
+        "actors": [
+          "t11_eyeglasses_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_eyeglasses_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+    "source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T11_C02": {
+    "events": {
+      "t11_driver_eraser_final_center_below_minus_10cm": {
+        "name": "橡皮达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_driver_eraser final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "橡皮达到原末态跌落判据",
+        "actors": [
+          "t11_driver_eraser"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_driver_eraser_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_relay_pencil_case_final_center_below_minus_10cm": {
+        "name": "接力笔盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_relay_pencil_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "接力笔盒达到原末态跌落判据",
+        "actors": [
+          "t11_relay_pencil_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_relay_pencil_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_eyeglasses_case_final_center_below_minus_10cm": {
+        "name": "眼镜盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_eyeglasses_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "眼镜盒达到原末态跌落判据",
+        "actors": [
+          "t11_eyeglasses_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_eyeglasses_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+    "source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T11_C03": {
+    "events": {
+      "t11_driver_eraser_final_center_below_minus_10cm": {
+        "name": "橡皮达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_driver_eraser final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "橡皮达到原末态跌落判据",
+        "actors": [
+          "t11_driver_eraser"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_driver_eraser_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_relay_pencil_case_final_center_below_minus_10cm": {
+        "name": "接力笔盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_relay_pencil_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "接力笔盒达到原末态跌落判据",
+        "actors": [
+          "t11_relay_pencil_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_relay_pencil_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_eyeglasses_case_final_center_below_minus_10cm": {
+        "name": "眼镜盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_eyeglasses_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "眼镜盒达到原末态跌落判据",
+        "actors": [
+          "t11_eyeglasses_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_eyeglasses_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+    "source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T11_C04": {
+    "events": {
+      "t11_driver_eraser_final_center_below_minus_10cm": {
+        "name": "橡皮达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_driver_eraser final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "橡皮达到原末态跌落判据",
+        "actors": [
+          "t11_driver_eraser"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_driver_eraser_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_relay_pencil_case_final_center_below_minus_10cm": {
+        "name": "接力笔盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_relay_pencil_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "接力笔盒达到原末态跌落判据",
+        "actors": [
+          "t11_relay_pencil_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_relay_pencil_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_eyeglasses_case_final_center_below_minus_10cm": {
+        "name": "眼镜盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_eyeglasses_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "眼镜盒达到原末态跌落判据",
+        "actors": [
+          "t11_eyeglasses_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_eyeglasses_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+    "source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T11_C05": {
+    "events": {
+      "t11_driver_eraser_final_center_below_minus_10cm": {
+        "name": "橡皮达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_driver_eraser final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "橡皮达到原末态跌落判据",
+        "actors": [
+          "t11_driver_eraser"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_driver_eraser_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_relay_pencil_case_final_center_below_minus_10cm": {
+        "name": "接力笔盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_relay_pencil_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "接力笔盒达到原末态跌落判据",
+        "actors": [
+          "t11_relay_pencil_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_relay_pencil_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "t11_eyeglasses_case_final_center_below_minus_10cm": {
+        "name": "眼镜盒达到原末态跌落判据",
+        "definition": "Original R011 release-gate fallen_objects predicate: the t11_eyeglasses_case final center world z is strictly below -0.10 m. The parameterized release script supports R011 through T11_FORMAL_QUALITY/REVISION; R011 pilot_release seals its four-outcome acceptance. Do not substitute the R009 -0.20 m probe predicate.",
+        "definition_zh": "眼镜盒达到原末态跌落判据",
+        "actors": [
+          "t11_eyeglasses_case"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+        "original_source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "t11_eyeglasses_case_final_center_world_z_m",
+              "operator": "<",
+              "threshold": -0.1,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\9039954de6_release_t11_r010_formal.py",
+    "source_sha256": "9039954de6ed25f85d8092c181d0936c7d28188e4314b3e1c131330085d977d3",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T16_C01": {
+    "events": {
+      "folder_downstream_contact": {
+        "name": "文件夹接触下游盒子",
+        "definition": "The original folder and downstream box contact at least once in the observation window. This is the native contact event in the source event sequence, distinct from downstream displacement.",
+        "definition_zh": "文件夹接触下游盒子",
+        "actors": [
+          "t16_folder",
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "downstream_response_original": {
+        "name": "下游盒子产生响应",
+        "definition": "Original tips_and_triggers_downstream predicate: downstream box final-to-first 3D displacement strictly exceeds 0.015 m. Maximum excursion and contact alone are not this predicate.",
+        "definition_zh": "下游盒子产生响应",
+        "actors": [
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "downstream_box_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "folder_motion_original": {
+        "name": "文件夹达到原运动判据",
+        "definition": "Original folder final-to-first 3D displacement strictly exceeds 0.08 m; original outcome gives downstream response priority over this secondary condition.",
+        "definition_zh": "文件夹达到原运动判据",
+        "actors": [
+          "t16_folder"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "folder_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T16_C02": {
+    "events": {
+      "folder_downstream_contact": {
+        "name": "文件夹接触下游盒子",
+        "definition": "The original folder and downstream box contact at least once in the observation window. This is the native contact event in the source event sequence, distinct from downstream displacement.",
+        "definition_zh": "文件夹接触下游盒子",
+        "actors": [
+          "t16_folder",
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "downstream_response_original": {
+        "name": "下游盒子产生响应",
+        "definition": "Original tips_and_triggers_downstream predicate: downstream box final-to-first 3D displacement strictly exceeds 0.015 m. Maximum excursion and contact alone are not this predicate.",
+        "definition_zh": "下游盒子产生响应",
+        "actors": [
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "downstream_box_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "folder_motion_original": {
+        "name": "文件夹达到原运动判据",
+        "definition": "Original folder final-to-first 3D displacement strictly exceeds 0.08 m; original outcome gives downstream response priority over this secondary condition.",
+        "definition_zh": "文件夹达到原运动判据",
+        "actors": [
+          "t16_folder"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "folder_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T16_C03": {
+    "events": {
+      "folder_downstream_contact": {
+        "name": "文件夹接触下游盒子",
+        "definition": "The original folder and downstream box contact at least once in the observation window. This is the native contact event in the source event sequence, distinct from downstream displacement.",
+        "definition_zh": "文件夹接触下游盒子",
+        "actors": [
+          "t16_folder",
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "downstream_response_original": {
+        "name": "下游盒子产生响应",
+        "definition": "Original tips_and_triggers_downstream predicate: downstream box final-to-first 3D displacement strictly exceeds 0.015 m. Maximum excursion and contact alone are not this predicate.",
+        "definition_zh": "下游盒子产生响应",
+        "actors": [
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "downstream_box_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "folder_motion_original": {
+        "name": "文件夹达到原运动判据",
+        "definition": "Original folder final-to-first 3D displacement strictly exceeds 0.08 m; original outcome gives downstream response priority over this secondary condition.",
+        "definition_zh": "文件夹达到原运动判据",
+        "actors": [
+          "t16_folder"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "folder_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T16_C04": {
+    "events": {
+      "folder_downstream_contact": {
+        "name": "文件夹接触下游盒子",
+        "definition": "The original folder and downstream box contact at least once in the observation window. This is the native contact event in the source event sequence, distinct from downstream displacement.",
+        "definition_zh": "文件夹接触下游盒子",
+        "actors": [
+          "t16_folder",
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "downstream_response_original": {
+        "name": "下游盒子产生响应",
+        "definition": "Original tips_and_triggers_downstream predicate: downstream box final-to-first 3D displacement strictly exceeds 0.015 m. Maximum excursion and contact alone are not this predicate.",
+        "definition_zh": "下游盒子产生响应",
+        "actors": [
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "downstream_box_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "folder_motion_original": {
+        "name": "文件夹达到原运动判据",
+        "definition": "Original folder final-to-first 3D displacement strictly exceeds 0.08 m; original outcome gives downstream response priority over this secondary condition.",
+        "definition_zh": "文件夹达到原运动判据",
+        "actors": [
+          "t16_folder"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "folder_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T16_C05": {
+    "events": {
+      "folder_downstream_contact": {
+        "name": "文件夹接触下游盒子",
+        "definition": "The original folder and downstream box contact at least once in the observation window. This is the native contact event in the source event sequence, distinct from downstream displacement.",
+        "definition_zh": "文件夹接触下游盒子",
+        "actors": [
+          "t16_folder",
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "downstream_response_original": {
+        "name": "下游盒子产生响应",
+        "definition": "Original tips_and_triggers_downstream predicate: downstream box final-to-first 3D displacement strictly exceeds 0.015 m. Maximum excursion and contact alone are not this predicate.",
+        "definition_zh": "下游盒子产生响应",
+        "actors": [
+          "t16_downstream_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "downstream_box_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "folder_motion_original": {
+        "name": "文件夹达到原运动判据",
+        "definition": "Original folder final-to-first 3D displacement strictly exceeds 0.08 m; original outcome gives downstream response priority over this secondary condition.",
+        "definition_zh": "文件夹达到原运动判据",
+        "actors": [
+          "t16_folder"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "folder_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.08,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T17_C01": {
+    "events": {
+      "can_tissue_box_contact": {
+        "name": "罐子接触纸巾盒",
+        "definition": "The original can and tissue box contact at least once in the observation window. The motion-based hit surrogate and final-frame contact are different events.",
+        "definition_zh": "罐子接触纸巾盒",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "hit_tissue_box_original": {
+        "name": "罐子触发纸巾盒命中分支",
+        "definition": "Original hit predicate: native can/tissue-box contact occurs OR tissue-box final-to-first 3D displacement exceeds 0.02 m. This is the original hits_tissue_box classifier, not contact alone.",
+        "definition_zh": "罐子触发纸巾盒命中分支",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "box_motion": {
+            "name": "纸巾盒末态位移",
+            "definition": "Original final-to-first 3D box displacement.",
+            "definition_zh": "纸巾盒末态位移",
+            "actors": [
+              "t17_tissue_box"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "tissue_box_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.02,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "native_can_box_contact OR box_motion"
+      },
+      "can_below_table_original": {
+        "name": "罐子末态达到原离桌判据",
+        "definition": "Original fell predicate: can final center z is strictly below source surface_z minus 0.05 m; hit has priority when deriving the outcome category.",
+        "definition_zh": "罐子末态达到原离桌判据",
+        "actors": [
+          "t17_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can_final_center_world_z_m",
+              "operator": "<",
+              "threshold": 0.7739999999999999,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T17_C02": {
+    "events": {
+      "can_tissue_box_contact": {
+        "name": "罐子接触纸巾盒",
+        "definition": "The original can and tissue box contact at least once in the observation window. The motion-based hit surrogate and final-frame contact are different events.",
+        "definition_zh": "罐子接触纸巾盒",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "hit_tissue_box_original": {
+        "name": "罐子触发纸巾盒命中分支",
+        "definition": "Original hit predicate: native can/tissue-box contact occurs OR tissue-box final-to-first 3D displacement exceeds 0.02 m. This is the original hits_tissue_box classifier, not contact alone.",
+        "definition_zh": "罐子触发纸巾盒命中分支",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "box_motion": {
+            "name": "纸巾盒末态位移",
+            "definition": "Original final-to-first 3D box displacement.",
+            "definition_zh": "纸巾盒末态位移",
+            "actors": [
+              "t17_tissue_box"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "tissue_box_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.02,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "native_can_box_contact OR box_motion"
+      },
+      "can_below_table_original": {
+        "name": "罐子末态达到原离桌判据",
+        "definition": "Original fell predicate: can final center z is strictly below source surface_z minus 0.05 m; hit has priority when deriving the outcome category.",
+        "definition_zh": "罐子末态达到原离桌判据",
+        "actors": [
+          "t17_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can_final_center_world_z_m",
+              "operator": "<",
+              "threshold": 0.7739999999999999,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T17_C03": {
+    "events": {
+      "can_tissue_box_contact": {
+        "name": "罐子接触纸巾盒",
+        "definition": "The original can and tissue box contact at least once in the observation window. The motion-based hit surrogate and final-frame contact are different events.",
+        "definition_zh": "罐子接触纸巾盒",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "hit_tissue_box_original": {
+        "name": "罐子触发纸巾盒命中分支",
+        "definition": "Original hit predicate: native can/tissue-box contact occurs OR tissue-box final-to-first 3D displacement exceeds 0.02 m. This is the original hits_tissue_box classifier, not contact alone.",
+        "definition_zh": "罐子触发纸巾盒命中分支",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "box_motion": {
+            "name": "纸巾盒末态位移",
+            "definition": "Original final-to-first 3D box displacement.",
+            "definition_zh": "纸巾盒末态位移",
+            "actors": [
+              "t17_tissue_box"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "tissue_box_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.02,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "native_can_box_contact OR box_motion"
+      },
+      "can_below_table_original": {
+        "name": "罐子末态达到原离桌判据",
+        "definition": "Original fell predicate: can final center z is strictly below source surface_z minus 0.05 m; hit has priority when deriving the outcome category.",
+        "definition_zh": "罐子末态达到原离桌判据",
+        "actors": [
+          "t17_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can_final_center_world_z_m",
+              "operator": "<",
+              "threshold": 0.7739999999999999,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T17_C04": {
+    "events": {
+      "can_tissue_box_contact": {
+        "name": "罐子接触纸巾盒",
+        "definition": "The original can and tissue box contact at least once in the observation window. The motion-based hit surrogate and final-frame contact are different events.",
+        "definition_zh": "罐子接触纸巾盒",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "hit_tissue_box_original": {
+        "name": "罐子触发纸巾盒命中分支",
+        "definition": "Original hit predicate: native can/tissue-box contact occurs OR tissue-box final-to-first 3D displacement exceeds 0.02 m. This is the original hits_tissue_box classifier, not contact alone.",
+        "definition_zh": "罐子触发纸巾盒命中分支",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "box_motion": {
+            "name": "纸巾盒末态位移",
+            "definition": "Original final-to-first 3D box displacement.",
+            "definition_zh": "纸巾盒末态位移",
+            "actors": [
+              "t17_tissue_box"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "tissue_box_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.02,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "native_can_box_contact OR box_motion"
+      },
+      "can_below_table_original": {
+        "name": "罐子末态达到原离桌判据",
+        "definition": "Original fell predicate: can final center z is strictly below source surface_z minus 0.05 m; hit has priority when deriving the outcome category.",
+        "definition_zh": "罐子末态达到原离桌判据",
+        "actors": [
+          "t17_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can_final_center_world_z_m",
+              "operator": "<",
+              "threshold": 0.7739999999999999,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T17_C05": {
+    "events": {
+      "can_tissue_box_contact": {
+        "name": "罐子接触纸巾盒",
+        "definition": "The original can and tissue box contact at least once in the observation window. The motion-based hit surrogate and final-frame contact are different events.",
+        "definition_zh": "罐子接触纸巾盒",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "scripts\\collect_t16_t20_published_events.py",
+        "original_source_sha256": "083572d8f251a02e3044910d9305201478665168f4205b8ccd2e82d90eec0a35"
+      },
+      "hit_tissue_box_original": {
+        "name": "罐子触发纸巾盒命中分支",
+        "definition": "Original hit predicate: native can/tissue-box contact occurs OR tissue-box final-to-first 3D displacement exceeds 0.02 m. This is the original hits_tissue_box classifier, not contact alone.",
+        "definition_zh": "罐子触发纸巾盒命中分支",
+        "actors": [
+          "t17_can",
+          "t17_tissue_box"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "box_motion": {
+            "name": "纸巾盒末态位移",
+            "definition": "Original final-to-first 3D box displacement.",
+            "definition_zh": "纸巾盒末态位移",
+            "actors": [
+              "t17_tissue_box"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "tissue_box_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.02,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "native_can_box_contact OR box_motion"
+      },
+      "can_below_table_original": {
+        "name": "罐子末态达到原离桌判据",
+        "definition": "Original fell predicate: can final center z is strictly below source surface_z minus 0.05 m; hit has priority when deriving the outcome category.",
+        "definition_zh": "罐子末态达到原离桌判据",
+        "actors": [
+          "t17_can"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can_final_center_world_z_m",
+              "operator": "<",
+              "threshold": 0.7739999999999999,
+              "unit": "m"
+            }
+          ]
+        }
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T19_C01": {
+    "events": {
+      "can2_transfer_original": {
+        "name": "第二个罐子达到原动量传播判据",
+        "definition": "Original two-can target response: can2 final-to-first 3D displacement strictly exceeds 0.015 m. This does not assert a later Isaac or multi-object target.",
+        "definition_zh": "第二个罐子达到原动量传播判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can2_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "target_edge_original": {
+        "name": "第二个罐子达到原边缘判据",
+        "definition": "Original two-can edge_event: can2 final center planar distance to support_center strictly exceeds support_radius OR final center z is below surface_z minus 0.05 m. The historical dual_can_edge_event label tests the target can only.",
+        "definition_zh": "第二个罐子达到原边缘判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "radial": {
+            "name": "末态径向距离",
+            "definition": "Original planar distance from support center.",
+            "definition_zh": "末态径向距离",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_radial_distance_m",
+                  "operator": ">",
+                  "threshold": 0.71,
+                  "unit": "m"
+                }
+              ]
+            }
+          },
+          "height": {
+            "name": "末态高度",
+            "definition": "Original target height test.",
+            "definition_zh": "末态高度",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_center_world_z_m",
+                  "operator": "<",
+                  "threshold": -0.05,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "radial OR height"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T19_C02": {
+    "events": {
+      "can2_transfer_original": {
+        "name": "第二个罐子达到原动量传播判据",
+        "definition": "Original two-can target response: can2 final-to-first 3D displacement strictly exceeds 0.015 m. This does not assert a later Isaac or multi-object target.",
+        "definition_zh": "第二个罐子达到原动量传播判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can2_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "target_edge_original": {
+        "name": "第二个罐子达到原边缘判据",
+        "definition": "Original two-can edge_event: can2 final center planar distance to support_center strictly exceeds support_radius OR final center z is below surface_z minus 0.05 m. The historical dual_can_edge_event label tests the target can only.",
+        "definition_zh": "第二个罐子达到原边缘判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "radial": {
+            "name": "末态径向距离",
+            "definition": "Original planar distance from support center.",
+            "definition_zh": "末态径向距离",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_radial_distance_m",
+                  "operator": ">",
+                  "threshold": 0.71,
+                  "unit": "m"
+                }
+              ]
+            }
+          },
+          "height": {
+            "name": "末态高度",
+            "definition": "Original target height test.",
+            "definition_zh": "末态高度",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_center_world_z_m",
+                  "operator": "<",
+                  "threshold": -0.05,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "radial OR height"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T19_C03": {
+    "events": {
+      "can2_transfer_original": {
+        "name": "第二个罐子达到原动量传播判据",
+        "definition": "Original two-can target response: can2 final-to-first 3D displacement strictly exceeds 0.015 m. This does not assert a later Isaac or multi-object target.",
+        "definition_zh": "第二个罐子达到原动量传播判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can2_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "target_edge_original": {
+        "name": "第二个罐子达到原边缘判据",
+        "definition": "Original two-can edge_event: can2 final center planar distance to support_center strictly exceeds support_radius OR final center z is below surface_z minus 0.05 m. The historical dual_can_edge_event label tests the target can only.",
+        "definition_zh": "第二个罐子达到原边缘判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "radial": {
+            "name": "末态径向距离",
+            "definition": "Original planar distance from support center.",
+            "definition_zh": "末态径向距离",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_radial_distance_m",
+                  "operator": ">",
+                  "threshold": 0.71,
+                  "unit": "m"
+                }
+              ]
+            }
+          },
+          "height": {
+            "name": "末态高度",
+            "definition": "Original target height test.",
+            "definition_zh": "末态高度",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_center_world_z_m",
+                  "operator": "<",
+                  "threshold": -0.05,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "radial OR height"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T19_C04": {
+    "events": {
+      "can2_transfer_original": {
+        "name": "第二个罐子达到原动量传播判据",
+        "definition": "Original two-can target response: can2 final-to-first 3D displacement strictly exceeds 0.015 m. This does not assert a later Isaac or multi-object target.",
+        "definition_zh": "第二个罐子达到原动量传播判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can2_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "target_edge_original": {
+        "name": "第二个罐子达到原边缘判据",
+        "definition": "Original two-can edge_event: can2 final center planar distance to support_center strictly exceeds support_radius OR final center z is below surface_z minus 0.05 m. The historical dual_can_edge_event label tests the target can only.",
+        "definition_zh": "第二个罐子达到原边缘判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "radial": {
+            "name": "末态径向距离",
+            "definition": "Original planar distance from support center.",
+            "definition_zh": "末态径向距离",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_radial_distance_m",
+                  "operator": ">",
+                  "threshold": 0.71,
+                  "unit": "m"
+                }
+              ]
+            }
+          },
+          "height": {
+            "name": "末态高度",
+            "definition": "Original target height test.",
+            "definition_zh": "末态高度",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_center_world_z_m",
+                  "operator": "<",
+                  "threshold": -0.05,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "radial OR height"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T19_C05": {
+    "events": {
+      "can2_transfer_original": {
+        "name": "第二个罐子达到原动量传播判据",
+        "definition": "Original two-can target response: can2 final-to-first 3D displacement strictly exceeds 0.015 m. This does not assert a later Isaac or multi-object target.",
+        "definition_zh": "第二个罐子达到原动量传播判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "metric_rule": {
+          "unit": "m",
+          "combine": "all",
+          "clauses": [
+            {
+              "quantity": "can2_final_3d_displacement_m",
+              "operator": ">",
+              "threshold": 0.015,
+              "unit": "m"
+            }
+          ]
+        }
+      },
+      "target_edge_original": {
+        "name": "第二个罐子达到原边缘判据",
+        "definition": "Original two-can edge_event: can2 final center planar distance to support_center strictly exceeds support_radius OR final center z is below surface_z minus 0.05 m. The historical dual_can_edge_event label tests the target can only.",
+        "definition_zh": "第二个罐子达到原边缘判据",
+        "actors": [
+          "t19_can2"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "radial": {
+            "name": "末态径向距离",
+            "definition": "Original planar distance from support center.",
+            "definition_zh": "末态径向距离",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_radial_distance_m",
+                  "operator": ">",
+                  "threshold": 0.71,
+                  "unit": "m"
+                }
+              ]
+            }
+          },
+          "height": {
+            "name": "末态高度",
+            "definition": "Original target height test.",
+            "definition_zh": "末态高度",
+            "actors": [
+              "t19_can2"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "can2_final_center_world_z_m",
+                  "operator": "<",
+                  "threshold": -0.05,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "source_boolean_expression": "radial OR height"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T20_C01": {
+    "events": {
+      "complete_propagation_original": {
+        "name": "三段接触依次完成且杯子响应",
+        "definition": "Original complete_propagation: first book-can, can-box and box-cup contacts all occur in nondecreasing (frame_index, physics_step_index) order AND cup final-to-first 3D displacement strictly exceeds 0.015 m. Three unordered contacts alone are insufficient.",
+        "definition_zh": "三段接触依次完成且杯子响应",
+        "actors": [
+          "t20_book",
+          "t20_can",
+          "t20_box",
+          "t20_cup"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "cup_response": {
+            "name": "杯子末态响应",
+            "definition": "Original cup final-to-first 3D displacement.",
+            "definition_zh": "杯子末态响应",
+            "actors": [
+              "t20_cup"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "cup_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.015,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "required_contact_pairs": [
+          [
+            "t20_book",
+            "t20_can"
+          ],
+          [
+            "t20_can",
+            "t20_box"
+          ],
+          [
+            "t20_box",
+            "t20_cup"
+          ]
+        ],
+        "source_order": "nondecreasing first (frame_index, physics_step_index)",
+        "source_boolean_expression": "ordered_three_contact_chain AND cup_response"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T20_C02": {
+    "events": {
+      "complete_propagation_original": {
+        "name": "三段接触依次完成且杯子响应",
+        "definition": "Original complete_propagation: first book-can, can-box and box-cup contacts all occur in nondecreasing (frame_index, physics_step_index) order AND cup final-to-first 3D displacement strictly exceeds 0.015 m. Three unordered contacts alone are insufficient.",
+        "definition_zh": "三段接触依次完成且杯子响应",
+        "actors": [
+          "t20_book",
+          "t20_can",
+          "t20_box",
+          "t20_cup"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "cup_response": {
+            "name": "杯子末态响应",
+            "definition": "Original cup final-to-first 3D displacement.",
+            "definition_zh": "杯子末态响应",
+            "actors": [
+              "t20_cup"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "cup_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.015,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "required_contact_pairs": [
+          [
+            "t20_book",
+            "t20_can"
+          ],
+          [
+            "t20_can",
+            "t20_box"
+          ],
+          [
+            "t20_box",
+            "t20_cup"
+          ]
+        ],
+        "source_order": "nondecreasing first (frame_index, physics_step_index)",
+        "source_boolean_expression": "ordered_three_contact_chain AND cup_response"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T20_C03": {
+    "events": {
+      "complete_propagation_original": {
+        "name": "三段接触依次完成且杯子响应",
+        "definition": "Original complete_propagation: first book-can, can-box and box-cup contacts all occur in nondecreasing (frame_index, physics_step_index) order AND cup final-to-first 3D displacement strictly exceeds 0.015 m. Three unordered contacts alone are insufficient.",
+        "definition_zh": "三段接触依次完成且杯子响应",
+        "actors": [
+          "t20_book",
+          "t20_can",
+          "t20_box",
+          "t20_cup"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "cup_response": {
+            "name": "杯子末态响应",
+            "definition": "Original cup final-to-first 3D displacement.",
+            "definition_zh": "杯子末态响应",
+            "actors": [
+              "t20_cup"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "cup_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.015,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "required_contact_pairs": [
+          [
+            "t20_book",
+            "t20_can"
+          ],
+          [
+            "t20_can",
+            "t20_box"
+          ],
+          [
+            "t20_box",
+            "t20_cup"
+          ]
+        ],
+        "source_order": "nondecreasing first (frame_index, physics_step_index)",
+        "source_boolean_expression": "ordered_three_contact_chain AND cup_response"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T20_C04": {
+    "events": {
+      "complete_propagation_original": {
+        "name": "三段接触依次完成且杯子响应",
+        "definition": "Original complete_propagation: first book-can, can-box and box-cup contacts all occur in nondecreasing (frame_index, physics_step_index) order AND cup final-to-first 3D displacement strictly exceeds 0.015 m. Three unordered contacts alone are insufficient.",
+        "definition_zh": "三段接触依次完成且杯子响应",
+        "actors": [
+          "t20_book",
+          "t20_can",
+          "t20_box",
+          "t20_cup"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "cup_response": {
+            "name": "杯子末态响应",
+            "definition": "Original cup final-to-first 3D displacement.",
+            "definition_zh": "杯子末态响应",
+            "actors": [
+              "t20_cup"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "cup_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.015,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "required_contact_pairs": [
+          [
+            "t20_book",
+            "t20_can"
+          ],
+          [
+            "t20_can",
+            "t20_box"
+          ],
+          [
+            "t20_box",
+            "t20_cup"
+          ]
+        ],
+        "source_order": "nondecreasing first (frame_index, physics_step_index)",
+        "source_boolean_expression": "ordered_three_contact_chain AND cup_response"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  },
+  "T20_C05": {
+    "events": {
+      "complete_propagation_original": {
+        "name": "三段接触依次完成且杯子响应",
+        "definition": "Original complete_propagation: first book-can, can-box and box-cup contacts all occur in nondecreasing (frame_index, physics_step_index) order AND cup final-to-first 3D displacement strictly exceeds 0.015 m. Three unordered contacts alone are insufficient.",
+        "definition_zh": "三段接触依次完成且杯子响应",
+        "actors": [
+          "t20_book",
+          "t20_can",
+          "t20_box",
+          "t20_cup"
+        ],
+        "applicable": true,
+        "minimum_evidence_times": 0,
+        "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+        "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+        "component_definitions": {
+          "cup_response": {
+            "name": "杯子末态响应",
+            "definition": "Original cup final-to-first 3D displacement.",
+            "definition_zh": "杯子末态响应",
+            "actors": [
+              "t20_cup"
+            ],
+            "applicable": true,
+            "minimum_evidence_times": 0,
+            "original_source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+            "original_source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+            "metric_rule": {
+              "unit": "m",
+              "combine": "all",
+              "clauses": [
+                {
+                  "quantity": "cup_final_3d_displacement_m",
+                  "operator": ">",
+                  "threshold": 0.015,
+                  "unit": "m"
+                }
+              ]
+            }
+          }
+        },
+        "required_contact_pairs": [
+          [
+            "t20_book",
+            "t20_can"
+          ],
+          [
+            "t20_can",
+            "t20_box"
+          ],
+          [
+            "t20_box",
+            "t20_cup"
+          ]
+        ],
+        "source_order": "nondecreasing first (frame_index, physics_step_index)",
+        "source_boolean_expression": "ordered_three_contact_chain AND cup_response"
+      }
+    },
+    "source": "review\\original_contract_audit_20261023\\remaining_sources\\fd4e8c6a1d_qa_pipeline.py",
+    "source_sha256": "fd4e8c6a1d1be6c81de420d86255596146bf9c3a3fda05ffec880898d335ccc7",
+    "scope": "original_outcome_predicates; per-family boundary target and reference admission still required"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "core100-recovered-numerical-bindings-v1",
+  "records": [
+    {
+      "clip_id": "T06_C04",
+      "canonical_event": "complete_required_contact_chain",
+      "target_event": "complete_required_contact_chain",
+      "engine": "isaac",
+      "theta": 1.4285714,
+      "reference_video_sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31",
+      "original_reference_video_sha256": "89dd8de040acb009a7cf946b7e014df30e69925e6cb20418c77ad6f150f92c01",
+      "reference_label": 0,
+      "source_original_state_sha256": "d140b412d71fc18e44bb3979170da1abb13681a95bf40ba97fcc8c65ccf5c9b4",
+      "source_pinned_config_sha256": "89c1c7772a60c4d3a230303f80600672e24741a429833062c7355555a0b5d17c",
+      "normalization_domain": [
+        1.0,
+        4.0
+      ],
+      "normalization_span": 3.0,
+      "original_boundary_interval": [
+        1.7056361783203124,
+        1.7060547051757813
+      ],
+      "evaluation_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          1.7056361783203124,
+          1.7060547051757813
+        ],
+        "normalization_span": 3.0,
+        "source": "D:\\sysu\\大三\\物理数据集\\PhysEdit-GravTrace\\review\\core100_binding_20261028\\t06_isaac_search_return_20261031.json",
+        "source_sha256": "569f3dd2922986c7fc4ccd7cc3844018e00fc6b85659dc10c61f6067c5ad4674"
+      },
+      "original_seed_preserved": true,
+      "source_force_mode_preserved": true,
+      "source_state_and_video_hash_match": true,
+      "supersedes": "Genesis-derived T06_C04 interval [1.5357143,1.6428571] does not apply to this Isaac reference.",
+      "formal_admitted": false,
+      "numerical_binding_only": true,
+      "native_source_event_reproduced": true,
+      "probe_count": 12,
+      "distance": {
+        "status": "resolved",
+        "bin": "mid",
+        "normalized_absolute_interval": [
+          0.0923549261067708,
+          0.09249443505859374
+        ],
+        "signed_interval": [
+          -0.27748330517578124,
+          -0.2770647783203124
+        ]
+      },
+      "bin": "mid",
+      "normalized_distance_interval": [
+        0.0923549261067708,
+        0.09249443505859374
+      ]
+    }
+  ]
+}

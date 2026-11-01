@@ -252,7 +252,11 @@ def build_inputs(spec, root):
         dest = root / 'input' / sid
         dest.mkdir(parents=True)
         shutil.copyfile(task['conditioning_image'], dest / 'conditioning.png')
-        shutil.copyfile(task['generation_prompt'], dest / 'prompt.txt')
+        from .prompt_contract import from_gravity_task, VERSION as PROMPT_POLICY
+        from .conditioned_measurement import descriptor
+        _, known, _ = descriptor(task)
+        text = from_gravity_task(task, member, known)
+        (dest / 'prompt.txt').write_text(text, encoding='utf-8')
         (dest / 'negative.txt').write_text('camera motion, cuts, distorted objects, watermark\n')
         w, h = task['image_size']
         canvas = profile.canvas or (704, 480)
@@ -265,7 +269,10 @@ def build_inputs(spec, root):
                    condition_frame_index=0, condition_time_ms=0.,
                    prompt_file=str((dest / 'prompt.txt').resolve()),
                    negative_prompt_file=str((dest / 'negative.txt').resolve()),
-                   prompt_source_class=task['prompt_source'], prompt_is_exact_official=False,
+                   prompt_source_class='structured_initial_conditions_en_v1', prompt_is_exact_official=False,
+                   prompt_policy=PROMPT_POLICY, prompt_language='en',
+                   original_prompt_sha256=task.get('source_generation_prompt_sha256',task['generation_prompt_sha256']),
+                   generation_prompt_sha256=sha256(dest / 'prompt.txt'),
                    source_video=task['reference_video'], source_video_sha256=member['reference_video_sha256'],
                    source_width=w, source_height=h, source_sample_fps=30., source_native_fps=30.,
                    source_orientation='landscape' if w >= h else 'portrait',

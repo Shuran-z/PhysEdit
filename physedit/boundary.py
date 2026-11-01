@@ -89,6 +89,8 @@ def validate(spec):
             raise ValueError('invalid clock')
         if not row.get('prompt') or not row.get('condition_image'):
             raise ValueError('missing inference input')
+        from .prompt_contract import validate_text
+        validate_text(row['prompt'])
         if row['evaluation_duration_s'] > (row['num_frames'] - 1) / fps + 1e-6:
             raise ValueError('native clock does not cover registered event horizon')
         if row['evaluation_duration_s'] <= 0:

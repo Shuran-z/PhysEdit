@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.private/
+*.sqlite3*
+invitations*
+data/

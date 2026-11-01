@@ -1,0 +1,1445 @@
+{
+  "schema": "isaac_t16_t20_13200_v1",
+  "event": "T19",
+  "classification": "CALIBRATION_ONLY",
+  "formal_video_count": 0,
+  "background_id": "bg01_home_ase",
+  "gravity_id": "g01_moon",
+  "gravity": [
+    0,
+    0,
+    -1.62
+  ],
+  "objects": [
+    {
+      "name": "tabletop_collision_slab",
+      "shape": "box",
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "pose": {
+        "position": [
+          0.0,
+          0.0,
+          -0.03199999999999992
+        ],
+        "euler_xyz": [
+          0,
+          0,
+          0
+        ]
+      },
+      "fixed": true,
+      "visualization": false,
+      "friction": 0.52,
+      "restitution": 0.01
+    },
+    {
+      "name": "t19_striker",
+      "asset_id": "can_ocean_tonic",
+      "asset_catalog_family": "t16_t20_realistic_v4",
+      "category": "can_ocean_tonic",
+      "semantic_label": "can_ocean_tonic",
+      "shape": "box",
+      "size": [
+        0.066,
+        0.066,
+        0.1236
+      ],
+      "pose": {
+        "position": [
+          -0.5,
+          -0.09296874999999999,
+          0.063
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.9185260230640565,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/beverage_can_ocean_tonic.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "friction": 0.015,
+      "restitution": 0.14,
+      "mass": 0.115,
+      "linear_damping": 0.012,
+      "angular_damping": 0.018,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "collision_visual_alignment": "catalog_authored_same_origin",
+      "collision_proxy": "cylinder",
+      "collision_proxy_radius": 0.033,
+      "collision_proxy_height": 0.1236,
+      "collision_geometry": "dimension_matched_cylinder_proxy"
+    },
+    {
+      "name": "t19_target",
+      "asset_id": "tissue_box_realistic_genesis_tri_v3",
+      "asset_catalog_family": "t16_t20_realistic_v4",
+      "category": "tissue_box_realistic_genesis_tri_v3",
+      "semantic_label": "tissue_box_realistic_genesis_tri_v3",
+      "shape": "box",
+      "size": [
+        0.23,
+        0.12,
+        0.075
+      ],
+      "pose": {
+        "position": [
+          -0.12,
+          0.0,
+          0.0387
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/tissue_box_realistic_genesis_tri_v3.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/collision/tissue_box_collision.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/collision/tissue_box_collision.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "friction": 0.09,
+      "restitution": 0.12,
+      "mass": 0.14400000000000002,
+      "linear_damping": 0.012,
+      "angular_damping": 0.018,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "collision_visual_alignment": "catalog_authored_same_origin",
+      "collision_proxy": "box",
+      "collision_proxy_size": [
+        0.231,
+        0.121,
+        0.076
+      ],
+      "collision_geometry": "dimension_matched_box_proxy"
+    }
+  ],
+  "background_objects": [
+    {
+      "instance_id": "chair_01",
+      "category": "chair",
+      "pose": {
+        "position": [
+          -2.3499999999999996,
+          -0.95,
+          -0.821568
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          0.6,
+          0.6,
+          0.9
+        ]
+      },
+      "source_mesh": "assets/meshes/chair_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.obj",
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "notes": "relative path resolved",
+      "asset_export_mode": "copy_obj_chain",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/model_external_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.mtl"
+      ],
+      "material_names": [
+        "Armchair_01"
+      ],
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_diff_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_roughness_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_nor_gl_2k.exr"
+      ],
+      "uv_status": "generated_planar_uv",
+      "uv_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vt_count": 8,
+        "face_with_uv_count": 12,
+        "has_uv": true,
+        "uv_status": "generated_planar_uv",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj.bak_no_uv",
+        "uv_axis_pair": [
+          0,
+          2
+        ]
+      },
+      "normal_status": "generated_vertex_normals",
+      "normal_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vn_count": 8,
+        "face_with_normals_count": 12,
+        "has_normals": true,
+        "normal_status": "generated_vertex_normals",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj.bak_no_normals",
+        "triangle_count": 12
+      },
+      "material_status": "external_asset_with_material",
+      "missing_mtl_refs": [],
+      "missing_textures": [],
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "collision_proxy_spec": null,
+      "material_chain": {},
+      "visual_vertex_count": 3230,
+      "visual_face_count": 5626,
+      "visual_quality_status": "ok",
+      "visual_quality_errors": [],
+      "visual_quality_warnings": [],
+      "original_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj",
+      "external_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.obj",
+      "visual_source": "external",
+      "collision_mode": "auto_convex",
+      "external_transform": {
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler_deg": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "translation_offset": [
+          0.0,
+          0.0,
+          0.000432
+        ]
+      },
+      "external_transform_baked": true,
+      "visual_placeholder": false,
+      "material_dir": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures",
+      "external_fallback_material": null,
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.450432,
+        "correction_dz": -0.44799999999999995,
+        "corrected_z": 0.0024320000000000452,
+        "verified_world_min_z": 0.002000000000000025
+      },
+      "name": "chair_01"
+    },
+    {
+      "instance_id": "table_01",
+      "category": "table",
+      "pose": {
+        "position": [
+          -1.0499999999999998,
+          -0.04999999999999982,
+          -0.8219789999999999
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          1.2,
+          0.8,
+          0.8
+        ]
+      },
+      "source_mesh": "assets/meshes/table_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.obj",
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "notes": "relative path resolved",
+      "asset_export_mode": "copy_obj_chain",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/model_external_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.mtl"
+      ],
+      "material_names": [
+        "side_table_tall_01"
+      ],
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_diff_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_rough_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_nor_gl_2k.exr"
+      ],
+      "uv_status": "generated_planar_uv",
+      "uv_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vt_count": 8,
+        "face_with_uv_count": 12,
+        "has_uv": true,
+        "uv_status": "generated_planar_uv",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj.bak_no_uv",
+        "uv_axis_pair": [
+          0,
+          1
+        ]
+      },
+      "normal_status": "generated_vertex_normals",
+      "normal_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vn_count": 8,
+        "face_with_normals_count": 12,
+        "has_normals": true,
+        "normal_status": "generated_vertex_normals",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj.bak_no_normals",
+        "triangle_count": 12
+      },
+      "material_status": "external_asset_with_material",
+      "missing_mtl_refs": [],
+      "missing_textures": [],
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "collision_proxy_spec": null,
+      "material_chain": {},
+      "visual_vertex_count": 3344,
+      "visual_face_count": 6408,
+      "visual_quality_status": "ok",
+      "visual_quality_errors": [],
+      "visual_quality_warnings": [],
+      "original_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj",
+      "external_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.obj",
+      "visual_source": "external",
+      "collision_mode": "auto_convex",
+      "external_transform": {
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler_deg": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "translation_offset": [
+          0.0,
+          0.0,
+          2.1e-05
+        ]
+      },
+      "external_transform_baked": true,
+      "visual_placeholder": false,
+      "material_dir": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures",
+      "external_fallback_material": null,
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.400021,
+        "correction_dz": -0.398,
+        "corrected_z": 0.002020999999999995,
+        "verified_world_min_z": 0.0019999999999999836
+      },
+      "name": "table_01"
+    },
+    {
+      "instance_id": "sofa_01",
+      "category": "sofa",
+      "pose": {
+        "position": [
+          0.8500000000000005,
+          1.35,
+          -0.822
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          1.8,
+          0.8,
+          0.9
+        ]
+      },
+      "source_mesh": "assets/meshes/sofa_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj",
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "notes": "relative path resolved",
+      "asset_export_mode": "copy_obj_chain",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/model_external_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.mtl"
+      ],
+      "material_names": [
+        "painted_wooden_sofa"
+      ],
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_diff_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_rough_2k.exr",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_nor_gl_2k.exr"
+      ],
+      "uv_status": "generated_planar_uv",
+      "uv_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vt_count": 8,
+        "face_with_uv_count": 12,
+        "has_uv": true,
+        "uv_status": "generated_planar_uv",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.obj.bak_no_uv",
+        "uv_axis_pair": [
+          0,
+          2
+        ]
+      },
+      "normal_status": "generated_vertex_normals",
+      "normal_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.obj",
+        "vertex_count": 8,
+        "face_count": 12,
+        "vn_count": 8,
+        "face_with_normals_count": 12,
+        "has_normals": true,
+        "normal_status": "generated_vertex_normals",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.obj.bak_no_normals",
+        "triangle_count": 12
+      },
+      "material_status": "external_asset_with_material",
+      "missing_mtl_refs": [],
+      "missing_textures": [],
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "collision_proxy_spec": null,
+      "material_chain": {},
+      "visual_vertex_count": 3067,
+      "visual_face_count": 3061,
+      "visual_quality_status": "ok",
+      "visual_quality_errors": [],
+      "visual_quality_warnings": [],
+      "original_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj",
+      "external_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj",
+      "visual_source": "external",
+      "collision_mode": "auto_convex",
+      "external_transform": {
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler_deg": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "translation_offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_placeholder": false,
+      "material_dir": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures",
+      "external_fallback_material": null,
+      "external_transform_baked": true,
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.45,
+        "correction_dz": -0.448,
+        "corrected_z": 0.0020000000000000018,
+        "verified_world_min_z": 0.001999999999999978
+      },
+      "name": "sofa_01"
+    },
+    {
+      "instance_id": "cabinet_01",
+      "category": "cabinet",
+      "pose": {
+        "position": [
+          1.6500000000000004,
+          -1.25,
+          -0.821415
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          0.8,
+          0.5,
+          1.8
+        ]
+      },
+      "source_mesh": "assets/meshes/cabinet_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj",
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "notes": "relative path resolved",
+      "asset_export_mode": "copy_obj_chain",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/model_external_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.mtl"
+      ],
+      "material_names": [
+        "vintage_cabinet_01_a",
+        "vintage_cabinet_01_b",
+        "vintage_cabinet_01_glass"
+      ],
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_diff_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_rough_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_nor_gl_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_diff_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_rough_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_nor_gl_2k.png"
+      ],
+      "uv_status": "generated_planar_uv",
+      "uv_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.obj",
+        "vertex_count": 172,
+        "face_count": 300,
+        "vt_count": 172,
+        "face_with_uv_count": 300,
+        "has_uv": true,
+        "uv_status": "generated_planar_uv",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.obj.bak_no_uv",
+        "uv_axis_pair": [
+          0,
+          2
+        ]
+      },
+      "normal_status": "generated_vertex_normals",
+      "normal_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.obj",
+        "vertex_count": 172,
+        "face_count": 300,
+        "vn_count": 172,
+        "face_with_normals_count": 300,
+        "has_normals": true,
+        "normal_status": "generated_vertex_normals",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.obj.bak_no_normals",
+        "triangle_count": 300
+      },
+      "material_status": "external_asset_with_material",
+      "missing_mtl_refs": [],
+      "missing_textures": [],
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "collision_proxy_spec": null,
+      "material_chain": {},
+      "visual_vertex_count": 31709,
+      "visual_face_count": 30775,
+      "visual_quality_status": "ok",
+      "visual_quality_errors": [],
+      "visual_quality_warnings": [],
+      "original_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj",
+      "external_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj",
+      "visual_source": "external",
+      "collision_mode": "auto_convex",
+      "external_transform": {
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler_deg": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "translation_offset": [
+          0.0,
+          0.0,
+          0.000585
+        ]
+      },
+      "visual_placeholder": false,
+      "material_dir": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures",
+      "external_fallback_material": null,
+      "external_transform_baked": true,
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.900585,
+        "correction_dz": -0.8979999999999999,
+        "corrected_z": 0.0025850000000000595,
+        "verified_world_min_z": 0.0020000000000000425
+      },
+      "name": "cabinet_01"
+    },
+    {
+      "instance_id": "lamp_01",
+      "category": "lamp",
+      "pose": {
+        "position": [
+          -0.5499999999999998,
+          1.75,
+          -0.7340059999999999
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          0.35,
+          0.35,
+          1.5
+        ]
+      },
+      "source_mesh": "assets/meshes/lamp_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj",
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "notes": "relative path resolved",
+      "asset_export_mode": "copy_obj_chain",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/model_external_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.mtl"
+      ],
+      "material_names": [
+        "desk_lamp_arm_01",
+        "desk_lamp_arm_01_light"
+      ],
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_diff_2k.jpg",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_rough_2k.exr",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_nor_gl_2k.exr"
+      ],
+      "uv_status": "generated_planar_uv",
+      "uv_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.obj",
+        "vertex_count": 344,
+        "face_count": 672,
+        "vt_count": 344,
+        "face_with_uv_count": 672,
+        "has_uv": true,
+        "uv_status": "generated_planar_uv",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.obj.bak_no_uv",
+        "uv_axis_pair": [
+          0,
+          2
+        ]
+      },
+      "normal_status": "generated_vertex_normals",
+      "normal_report": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.obj",
+        "vertex_count": 344,
+        "face_count": 672,
+        "vn_count": 344,
+        "face_with_normals_count": 672,
+        "has_normals": true,
+        "normal_status": "generated_vertex_normals",
+        "changed": true,
+        "backup_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.obj.bak_no_normals",
+        "triangle_count": 672
+      },
+      "material_status": "external_asset_with_material",
+      "missing_mtl_refs": [],
+      "missing_textures": [],
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "collision_proxy_spec": null,
+      "material_chain": {},
+      "visual_vertex_count": 13797,
+      "visual_face_count": 14350,
+      "visual_quality_status": "ok",
+      "visual_quality_errors": [],
+      "visual_quality_warnings": [],
+      "original_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj",
+      "external_visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj",
+      "visual_source": "external",
+      "collision_mode": "auto_convex",
+      "external_transform": {
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rotation_euler_deg": [
+          90.0,
+          0.0,
+          0.0
+        ],
+        "translation_offset": [
+          0.0,
+          0.0,
+          0.087994
+        ]
+      },
+      "visual_placeholder": false,
+      "material_dir": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures",
+      "external_fallback_material": null,
+      "external_transform_baked": true,
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.837994,
+        "correction_dz": -0.748,
+        "corrected_z": 0.08999400000000002,
+        "verified_world_min_z": 0.0020000000000000157
+      },
+      "name": "lamp_01"
+    },
+    {
+      "instance_id": "bed_01",
+      "category": "bed",
+      "pose": {
+        "position": [
+          -2.5,
+          2.0,
+          -0.822
+        ],
+        "quaternion_xyzw": null,
+        "euler_xyz": [
+          90.0,
+          0.0,
+          180.0
+        ]
+      },
+      "euler": [
+        90.0,
+        0.0,
+        180.0
+      ],
+      "quaternion": null,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "bbox": {
+        "min": null,
+        "max": null,
+        "extent": [
+          2.1,
+          1.6,
+          0.8
+        ]
+      },
+      "source_mesh": "assets/meshes/bed_001.obj",
+      "resolved_mesh": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.mtl",
+      "mtl_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.mtl"
+      ],
+      "is_proxy": false,
+      "proxy_type": null,
+      "proxy_spec": null,
+      "collision_type": "mesh",
+      "render_source": "external_visual",
+      "collision_source": "external_asset:auto_convex",
+      "material_status": "external_asset",
+      "visual_source": "external",
+      "external_transform_baked": true,
+      "notes": "added_bed_for_layout_fix_20260423",
+      "grounding_correction": {
+        "method": "mesh_world_min_z_to_floor_margin",
+        "floor_z": 0.0,
+        "floor_margin": 0.002,
+        "original_z": 0.42,
+        "correction_dz": -0.4179999999999999,
+        "corrected_z": 0.0020000000000000573,
+        "verified_world_min_z": 0.001999999999999993
+      },
+      "name": "bed_01"
+    },
+    {
+      "instance_id": "baxi_round_table_01",
+      "category": "wooden_baxi_round_table",
+      "pose": {
+        "position": [
+          0.0,
+          0.0,
+          -0.822
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "quaternion_xyzw": null,
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/wooden_baxi_round_table_pbr_v2.obj",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/wooden_baxi_round_table_pbr_v2.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/collision/wooden_baxi_round_tabletop_collision.obj",
+      "mtl_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/wooden_baxi_round_table_pbr_v2.mtl",
+      "is_proxy": false,
+      "collision_type": "mesh",
+      "render_source": "central_everyday_life_v1_pbr_visual",
+      "collision_source": "convex_round_tabletop",
+      "material_status": "polyhaven_cc0_pbr_2k_with_generated_uv_normals",
+      "decor_collision_policy": "physical",
+      "notes": "PBR visual upgraded 2026-08-28; physical collision and dimensions unchanged",
+      "geometry": {
+        "radius_m": 0.75,
+        "top_surface_z_world": 0.824,
+        "leg_count": 8,
+        "visual_vertices": 640,
+        "visual_faces": 362,
+        "collision_vertices": 96,
+        "collision_faces": 50
+      },
+      "texture_paths": [
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_diff_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_rough_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_nor_gl_2k.png",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_ao_2k.png"
+      ],
+      "uv_status": "generated_triplanar_uv_v1",
+      "normal_status": "generated_per_face_normals_v1",
+      "name": "baxi_round_table_01"
+    },
+    {
+      "name": "room_layout",
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/layout_room_home.obj",
+      "pose": {
+        "position": [
+          -3.55,
+          -2.25,
+          -0.824
+        ]
+      }
+    }
+  ],
+  "background_anchor": [
+    -3.55,
+    -2.25,
+    -0.824
+  ],
+  "lighting": {
+    "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+    "raytracing_env_map_required": true,
+    "raytracing_env_encoding": "linear",
+    "raytracing_env_euler": [
+      0,
+      0,
+      25
+    ],
+    "raytracing_lights_local": [
+      {
+        "pos": [
+          3.25,
+          2.07,
+          2.864
+        ],
+        "color": [
+          1.0,
+          0.93,
+          0.82
+        ],
+        "intensity": 7.2,
+        "radius": 0.52
+      },
+      {
+        "pos": [
+          4.47,
+          1.47,
+          2.304
+        ],
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ],
+        "intensity": 2.8,
+        "radius": 0.42
+      }
+    ]
+  },
+  "background_freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+  "source": {
+    "objects": [
+      {
+        "name": "t19_striker",
+        "asset_id": "can_ocean_tonic",
+        "asset_catalog_family": "t16_t20_realistic_v4",
+        "category": "can_ocean_tonic",
+        "semantic_label": "can_ocean_tonic",
+        "shape": "box",
+        "size": [
+          0.066,
+          0.066,
+          0.1236
+        ],
+        "pose": {
+          "position": [
+            -0.5,
+            -0.09296874999999999,
+            0.063
+          ],
+          "euler_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "fixed": false,
+        "motion": {
+          "type": "physics",
+          "initial_velocity": [
+            0.9185260230640565,
+            0.0,
+            0.0
+          ]
+        },
+        "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/beverage_can_ocean_tonic.obj",
+        "preserve_mesh_material": true,
+        "visualization": true,
+        "collision": true,
+        "friction": 0.015,
+        "restitution": 0.14,
+        "mass": 0.115,
+        "linear_damping": 0.012,
+        "angular_damping": 0.018,
+        "ccd_enabled": true,
+        "disable_sleep": true,
+        "contact_offset": 0.0012,
+        "camera_focus": true,
+        "collision_visual_alignment": "catalog_authored_same_origin",
+        "collision_proxy": "cylinder",
+        "collision_proxy_radius": 0.033,
+        "collision_proxy_height": 0.1236,
+        "collision_geometry": "dimension_matched_cylinder_proxy"
+      },
+      {
+        "name": "t19_target",
+        "asset_id": "tissue_box_realistic_genesis_tri_v3",
+        "asset_catalog_family": "t16_t20_realistic_v4",
+        "category": "tissue_box_realistic_genesis_tri_v3",
+        "semantic_label": "tissue_box_realistic_genesis_tri_v3",
+        "shape": "box",
+        "size": [
+          0.23,
+          0.12,
+          0.075
+        ],
+        "pose": {
+          "position": [
+            -0.12,
+            0.0,
+            0.0387
+          ],
+          "euler_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "fixed": false,
+        "motion": {
+          "type": "physics",
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/tissue_box_realistic_genesis_tri_v3.obj",
+        "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/collision/tissue_box_collision.obj",
+        "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/collision/tissue_box_collision.obj",
+        "preserve_mesh_material": true,
+        "visualization": true,
+        "collision": true,
+        "friction": 0.09,
+        "restitution": 0.12,
+        "mass": 0.14400000000000002,
+        "linear_damping": 0.012,
+        "angular_damping": 0.018,
+        "ccd_enabled": true,
+        "disable_sleep": true,
+        "contact_offset": 0.0012,
+        "camera_focus": true,
+        "collision_visual_alignment": "catalog_authored_same_origin",
+        "collision_proxy": "box",
+        "collision_proxy_size": [
+          0.231,
+          0.121,
+          0.076
+        ],
+        "collision_geometry": "dimension_matched_box_proxy"
+      }
+    ],
+    "runtime_forces": [],
+    "camera_center": [
+      -0.03,
+      0.0,
+      0.1
+    ],
+    "critical_look_at": [
+      -0.03,
+      -0.046484374999999994,
+      0.075
+    ],
+    "meta": {
+      "event_sequence": [
+        "striker_free_motion",
+        "target_contact_or_miss",
+        "momentum_transfer",
+        "object_divergence",
+        "secondary_contact_or_settle"
+      ],
+      "outcomes": [
+        "miss",
+        "glancing_collision",
+        "direct_transfer",
+        "secondary_transfer"
+      ],
+      "required_contact_pairs": [
+        [
+          "t19_striker",
+          "t19_target"
+        ]
+      ],
+      "actuated_objects": [],
+      "passive_objects": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "target_asset": "box",
+      "impact_eccentricity_m": -0.09296874999999999,
+      "striker_speed_mps": 0.9185260230640565,
+      "approach_friction": 0.52,
+      "approach_distance_m": 0.38,
+      "mass_ratio": 0.9,
+      "critical_object_names": [
+        "t19_striker",
+        "t19_target"
+      ]
+    }
+  },
+  "parameter": {
+    "source_parameter": {
+      "name": "impact_eccentricity",
+      "unit": "m"
+    },
+    "value": -0.09296874999999999
+  },
+  "event_spec": {
+    "event_sequence": [
+      "striker_free_motion",
+      "target_contact_or_miss",
+      "momentum_transfer",
+      "object_divergence",
+      "secondary_contact_or_settle"
+    ],
+    "outcomes": [
+      "miss",
+      "glancing_collision",
+      "direct_transfer",
+      "secondary_transfer"
+    ],
+    "required_contact_pairs": [
+      [
+        "t19_striker",
+        "t19_target"
+      ]
+    ],
+    "actuated_objects": [],
+    "passive_objects": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "target_asset": "box",
+    "impact_eccentricity_m": -0.09296874999999999,
+    "striker_speed_mps": 0.9185260230640565,
+    "approach_friction": 0.52,
+    "approach_distance_m": 0.38,
+    "mass_ratio": 0.9,
+    "critical_object_names": [
+      "t19_striker",
+      "t19_target"
+    ]
+  },
+  "media": {
+    "width": 854,
+    "height": 480,
+    "fps": 30,
+    "frames": 210
+  },
+  "cameras": {
+    "cam01": {
+      "position": [
+        0.0,
+        -1.7,
+        1.4
+      ],
+      "look_at": [
+        -0.08,
+        0.08,
+        0.08
+      ],
+      "fov_deg": 47.0,
+      "role": "high_oblique_side"
+    },
+    "cam02": {
+      "position": [
+        -1.5,
+        -0.1,
+        1.05
+      ],
+      "look_at": [
+        -0.12,
+        0.04,
+        0.16
+      ],
+      "fov_deg": 50.0,
+      "role": "folder_front"
+    },
+    "cam03": {
+      "position": [
+        1.0,
+        0.7,
+        0.95
+      ],
+      "look_at": [
+        -0.08,
+        0.02,
+        0.13
+      ],
+      "fov_deg": 55.0,
+      "role": "opposite_diagonal"
+    }
+  },
+  "camera_status": "SOURCE_RIG_PORTED_VISUAL_QA_PENDING",
+  "physics": {
+    "outer_dt": 0.0020833333333333333,
+    "outer_steps_per_frame": 16,
+    "substeps": 4,
+    "warmup_s": 0.0,
+    "solver_position_iterations": 32,
+    "solver_velocity_iterations": 8
+  },
+  "dependencies": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/registry.json": "2a97e215db2102a4c0c17aace29dd592ac4bddf40e2991cd3289f8782ce9b5c6",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/catalog.json": "dac3136e905df88d33765aad89a9ab25480dfdd369e487b6cd1e849e8b1f88ef",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T16_T20_rev2/physics_core/assets.py": "72f9cc22880b31e1521b5a425df3c69a5d585c7dee14c973dc87ff406ccf5d89",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T16_T20_rev2/physics_core/placement.py": "8dc3b9e1ad03e6bb7d61c72d5a603f0f1c0d965004ae6ecba47c4531ba838128",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json": "44cf6d158f0029dc26685c38434671b29f82be7c86bf3ae3027031ad9a8d10a4",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/profiles/bg01_home_ase.json": "6e7b1b232c6d8df69d8f87369afacdbd71b6eeeb65d3c5ca88a445d2fa20e40e",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/locks/bg01_home_ase.lock.json": "cd07838194529f885b1be32c41703e7b89e496cbf96daf7f636e9a1b4292f7f7",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/reference_images/01_home_T01V2_initial.png": "cb727c471001362153160979760827aab7d96eaa0e3d0d6dd1222b2e2e8a4d60",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/collision/wooden_baxi_round_tabletop_collision.obj": "91a5a2b9d2f183a9ae8db598ca9a68042fa831b849ec994139d60c48885e1e6b",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/wooden_baxi_round_table_pbr_v2.mtl": "87fe1f52b8ea7c86ddb5637c45dc73222fa9f44509444a16a26498a071dbabd7",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/../textures/wood_table_ao_2k.png": "d987d1a744ee06690da02c0db7ad10c7cf0816f6bf7a34b9b13b6059cd7fd287",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/../textures/wood_table_diff_2k.png": "de99e3d8d7afe58fedc3ae9caaf441d516547570643cff5a0259e547a6b0c00a",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/../textures/wood_table_rough_2k.png": "34081395ad3c2a12f4a9773a7e25d3dd15ff3ef5576552f96e5478054b0862fc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/../textures/wood_table_nor_gl_2k.png": "df9e6a65108803b305526e81f2211b9d32529f1992918421148ce17194558e27",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/../textures/wood_table_frame_diff_2k.png": "bcb0825982e3db0cf0777581d3d8fa766374cf339a7ebe46d899e92d6b1d57b5",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/tables/wooden_baxi_round_table_pbr_v2.obj": "1bfb6dd894e115389e442965ea27214546e70e2222a58e8c4514d858097a2a67",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_ao_2k.png": "d987d1a744ee06690da02c0db7ad10c7cf0816f6bf7a34b9b13b6059cd7fd287",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_diff_2k.png": "de99e3d8d7afe58fedc3ae9caaf441d516547570643cff5a0259e547a6b0c00a",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_frame_diff_2k.png": "bcb0825982e3db0cf0777581d3d8fa766374cf339a7ebe46d899e92d6b1d57b5",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_nor_gl_2k.png": "df9e6a65108803b305526e81f2211b9d32529f1992918421148ce17194558e27",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/everyday_life_v1/textures/wood_table_rough_2k.png": "34081395ad3c2a12f4a9773a7e25d3dd15ff3ef5576552f96e5478054b0862fc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/ceiling_white.png": "6e6c9e6dc7f39565cff52b8c9e3054615516f9c2b46aca83c4352d851b7e3fd2",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/floor_wood_oak.png": "edc180e5104ab57827691fd552e6a5d81f664687d65e3f7884473bb3384d10e1",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/layout_room_home.mtl": "3b4e8320962887bc85b07f8472d4cdf1c257a39a0c035cefd0fbfcfd98d96e75",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/wall_paint_warm.png": "95fdf009ff0fa778ff9794e3610ceda86493aaefe0adaf6c80ae4123b1d1911f",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/layout_home/layout_room_home.obj": "5aeac46d25e650ee0757375f4607f5ca8350c3bedcb7ac61b5e3c5963c5f7ab3",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.mtl": "32812fd2834a6cf60f173b3c1c7c3dc5653d89ae56af14c37989837ef1d8a996",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_albedo_002.png": "5871af668ff62917fe805305d394091380d9e10ddae3c4c5c26fd2f6348c2ee2",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/cabinet_001_002.obj": "73d5c59cd8e4f136a3d5d8054886a3bac52eac89f15fee45ab8a86806a409144",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/cabinet_01/model_external_collision.obj": "6a7d4abcac117b6a8457d348d120ed492d07d2f25d2dcab7ff46ac42295859b5",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.mtl": "ee59183d9b042c419e3a11992e1117d8818a2a1e60c930009f53bf9029f5efe2",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_albedo_002.png": "c40ef597aa9568fb0af9689117f515a0a866100c6a7b3139c7ff63c8780658a6",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/chair_001_002.obj": "f28330d5e5e9a139e25a87adc531c6fbe49a689800c50ef68ef2db8acba737b8",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/chair_01/model_external_collision.obj": "02394583b450320a703167c9f217362dcea6a2a281adf87f65499e258342c5a5",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.mtl": "4a06da3d0351459f5e30967e0bed3abdd1af630f76f20e3af6134c48f09222b0",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_albedo_002.png": "0dd3b726cdd71a3748ab0f51546fde9462b85f30a9a25631a81a777f31f2cb49",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/lamp_001_002.obj": "ef2d39da884658b96d9cfe42dbdec38d9a45a8542a231c264443c985b3a4c38e",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/lamp_01/model_external_collision.obj": "bef7c2e62eae8c1ca52643188102252d7e4af90c49ff825d0ddbebcc84dc3d07",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/model_external_collision.obj": "4ed1f507e1b1bf4d1bc75f3da27ae79f4dd61cdc85dc831c2bc4608d3ddec919",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.mtl": "8741dfaaffa1db8f37da2beebdfe704da863dfafe76c448e98a742d7ce6d0cb7",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_albedo_002.png": "c889fc56bdb2324b27d8b5e212284cd3b56c760e14ed25724da22f064e1e4867",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/sofa_01/sofa_001_002.obj": "081adec28f548f9c6b967df4050d5b1e5bd507b84143189a2aae8c068cc55390",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/model_external_collision.obj": "fa01314685c8b5b53dfdfb6723eaff2732fe59d38643c37e7b0597f1255c3f28",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.mtl": "2114fd33b68b141ccd2895a87438fe858e99c08f476c0ca683dba2285967aaed",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_albedo_002.png": "8e02d53b5ee4962da8a68529b8c03d838997db5b282d9bfbb6755a5df0b320fc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/assets/objects/table_01/table_001_002.obj": "106956b92ce7792644a1ee3b2038ebe0e3f987d90cd3fdde0196de69fe674017",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/metadata/object_instances.json": "c767a1f1c5196e02cae2a2a5063a8f9cc7d7cfc650420a5d5955062924f6ab62",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/metadata/scene_inventory.json": "c329161c235f2064c9c13a5e4e99c440e285a673f36fafe80c33f1f2f9e4330f",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/generated_scene_v1/scene_manifest_highpoly_obj_home_living_layoutfix_20260423.json": "a362baf4f5e4300284b81d323cd657661226506216b09a25d30075a6d9ee329b",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.mtl": "e81f932937d07b7e665fc9ba758045be7ef4a847fc53deedb96f21d2a77a76a0",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/textures/GothicBed_01_diff_2k.jpg": "3a5c824295c49c9a7e8404781e12f0e3a969bd0dad245211e099c113ac006716",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/textures/GothicBed_01_roughness_2k.jpg": "ad2bea7be72c342521d9960b2d395f4a20bf0e77a3d5a0f70fdce3eed61ec09c",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/textures/GothicBed_01_metallic_2k.exr": "e6a4b182584e890fc18ffd6b1b40bc2657066e9f0fa28e0fe24908a7c32c75a7",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/textures/GothicBed_01_nor_gl_2k.exr": "92c11a83a49ae0be94df2554003bb22330572be948fc9026acdded3129e1a82e",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/bed/model.obj": "50c2b503dbdf87b1d5c0cf075233b79c41a90bfa334a4226c565be53b5947fd6",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.mtl": "e7f03ddaa3a08fc9923698306252c13825df0d09ac6e1e32f167cb48ad3f402c",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_diff_2k.png": "3f2b833659bd9c06c93c1141108d8d538e15293b4a42c3bdb7d7686b5eb8742a",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_rough_2k.png": "01a3d753e086b59c68d6725b5c6db7a474d9c1cdccefbb1a49995ef0d9b0c2ee",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_metal_2k.png": "2961646c156e4a5167a2822723051f60618a8257e8d7addf35fd808c15c8f734",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_a_nor_gl_2k.png": "5a5d0748d14444851fb573ecaf9182788f8efcbe434c92fbbe1f05235f669fe1",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_diff_2k.png": "3a740bd6067861f52f476f00b169677ba67bc83f47aa1360c16977a17d3ed42b",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_rough_2k.png": "5d14bc021840ce3e2d9a297ff8cf40b45a57cc011448610a46f938856a81f023",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/textures/vintage_cabinet_01_b_nor_gl_2k.png": "1e0fb3f2a2aac4aa35b85346048a6d3cadd1e5bb5d895cf1219cc19e3802fe75",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/cabinet/model.obj": "3c2ecbe0e44d859e0e0edceb0ecb0806bbedf86eff8d57b149a6cf0ffe293992",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.mtl": "1e987a90e4f00fb9c61d825c2e9e8bc9be409a5a1b72182e6a1da6552c0804e4",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_diff_2k.jpg": "d45d6f6328a924b5099deb7ed88023ab066128a376ee2d16f48149872cec47de",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_roughness_2k.jpg": "08ed960815c0292e086b5dd240c5c27fcd95df1185be02128292d44367d22f31",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_metallic_2k.exr": "5473bc1b6118fe24331c31ef801ba6feb85ffaef9d0000ceedbd3059969704a6",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/textures/Armchair_01_nor_gl_2k.exr": "ce10d3e360ea3ad4ade15488b996c2e9f56cd2a4e0736adb8b6869e16f1bf8fb",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chair/model.obj": "305644756b9538fe18f544cca6cf38939f246b437041f8fa534ff31dcbdf54f0",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chinese_console_table/model.mtl": "284009910e139ce4ddc6844369544f6fe2b955b3e26ee74cf86b0e457d897479",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chinese_console_table/textures/chinese_console_table_diff_2k.jpg": "5c72f4df61ea1a074fa642b6bee038ebab4883173ebb687d4d61266448d176db",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chinese_console_table/textures/chinese_console_table_rough_2k.exr": "1ba43831ed9e1469e9a6c78cc28def43e53bd1cd55a0872315019762a09c6f06",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chinese_console_table/textures/chinese_console_table_nor_gl_2k.exr": "dc1862f3799ce9022ae26b6a26d089385384bfaae8f80a412760bf150ac4c168",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/chinese_console_table/model.obj": "d65b7f1f2c418d31d2ee19f81c24fa1469cab8398ae88d210f277079220e155f",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.mtl": "e041b8a7b6ee31855711bc9d438a85301a9598af63c8d67faaeaee476bed3a23",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_diff_2k.jpg": "c5f8c5be367a40585f89ce0aeac0224e36146eef63c12864222af080a9784869",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_rough_2k.exr": "233c58c11c924db2a04622c09695509d2612f60f3b42d9407b592508aec809cf",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_metal_2k.exr": "269268870cd731ee8c6d4af777182c499c3dc40438ade01a8c495e752c4427a8",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/textures/desk_lamp_arm_01_nor_gl_2k.exr": "f056008b2b5ebf588acfe5d5906fe85f13cf6c01a7016d135ae82848ef628518",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/lamp/model.obj": "b7936c2788ac5c4b8948bff36a28248e39bfa5c8e83e9189572976b9062aab11",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.mtl": "132eb9ce40dfff727d381f348618feac359c5388fa0242cd35e2a9a625e0a298",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_diff_2k.jpg": "fa84b54c66098baeec7ac7f8be2810bb5d7da9e42a1434092008dd6ba232ee88",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_rough_2k.exr": "1d839ae954ca503b62960180ae9f20bb849e4f87d7e1dfe7c5771a4be35e0884",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/textures/painted_wooden_sofa_nor_gl_2k.exr": "2d3b86b2a33bd61b8628251d019de846c5766ece054af6826ea8e9339a78a950",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/sofa/model.obj": "b568bd20e551ddc9c33bccb1d4566c3f9341cf3a7159ca77a570c4417926842c",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.mtl": "13a054449c181a1679849b6b310d2d206cb141fa2a54c18b261d5bd64501e162",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_diff_2k.jpg": "4fee076f845cb4ad8ca43d85bce92073b72bdad70a12269eddcade2c1898babc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_rough_2k.jpg": "76429e4e3c32dfa9a880a4e00f15e8c88ee74623005d97af8d94b40958c956cd",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_metal_2k.exr": "9ff0ff6108dffa9be96d7f062501f60694b1ccd75d143aadefd539f07cc7d367",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/textures/side_table_tall_01_nor_gl_2k.exr": "9b70f849b166f9e7918bb9e4bca8b513a8b14b564eb18a77ae5f7f930cae41c8",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/assets/polyhaven/table/model.obj": "072f21db7ead6b8f0aab565c3647add7a2b0635cd2a35f206ea9487c5226dfc3",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/data/generated_scene_v1/ase_scene_language.txt": "f70b77102d2e59d57f2695455a514a9321a23157f025057576ac3b39887f2645",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/data/generated_scene_v1/trajectory.txt": "b1aa66105c0b95e9f2e8bab3097e672dac3b8f1f16e950e778b919fd2c081c3c",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr": "5644d49e6cbdb0a6ab369c7b89de08fee10bfc26577977b45aef462d0688e1cb",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T16_T20_rev2/scenes/T19_can_momentum/__init__.py": "6561489905d1173b27317389d50e1e4c5d888cd19c70f35a49cb2c6cfe845fdc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T16_formal_52800_v1/render_preview.py": "1e11470d20985ae26ac46d6e78bc8acc5c29a211b12e271cb1b8b9b5d5e1b66b",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/beverage_can_ocean_tonic.obj": "5e5eb459a98e8555a8f81d06f1bc27fbbecbffcfe41dbddbc8f65bb0fb8c3aee",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/beverage_can_ocean_tonic.mtl": "c620b779024d5833e8fdaf305445753ad9f4ebfc8acfb618436065f9a243ad79",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../textures/can_ocean_tonic_print.png": "689ac1d99b95df828a75f9e4afd26d593cdab54bdc84c2f885bd2b2fbe29e3dc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_print_roughness.png": "2a9fb7de85d489f8dd80c5c837a09befb757c6b7fb04f43eabca93f73b2691c1",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_print_metallic.png": "f2cc792906ba0650b7e30aadaa043c3d2db80c92f14d4b62f6206a1f55bc3db2",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_print_normal.png": "9f434a0f8f97d5cd291c118eceb20bcaff796e8ba49034620802353fdbf77242",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_metal_basecolor.png": "76c1ceae50feea210d271deb89043084c2919fac6274c1bcad2b9f5a01ab4964",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_metal_roughness.png": "5a9c7136acfbcf74b05b955f159b8cacfef28735e951eec2d93bab1cbe6a6e29",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_metal_metallic.png": "92d103ae3b35360d5c817ca0287ddaf222ce4889a230003c99128f0c56eef900",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_metal_normal.png": "9f434a0f8f97d5cd291c118eceb20bcaff796e8ba49034620802353fdbf77242",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/cans/../../everyday_assets_v7/textures/can_groove_basecolor.png": "656def91adce25e123f6056c7a1f31d0e6fd05e56437b9ca7605ae92db5ed062",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/tissue_box_realistic_genesis_tri_v3.obj": "9600b7e5e97d0481c141d1decc04b64f149ad61d3dcd414873bbf8e7be057a6b",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/tissue_box_realistic_genesis_tri_v3.mtl": "d2de75c5e7e1eb2ab7f438c1e632af2a41fa70e328920f27127bcacc88a10709",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/../textures/tissue_box_side.png": "31ba011408cbe0e360d7ab4bb0963f98286ba492cc29ea66dd340ca87155873f",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/props/../textures/tissue_box_top.png": "d8c0209ddc46c1c1a99f4e443eeebfc457ab9a6fb6e0ecba219e20f9976fd865",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4_20260816/collision/tissue_box_collision.obj": "d1cf5fa2ade95baf314509d20cf70bf8869899c850a4c617b62ce9fcda1ad032"
+  },
+  "sample_id": "T19__bg01_home_ase__g01_moon__boundary_d2_plus_r1",
+  "production": {
+    "role": "BOUNDARY_CANDIDATE",
+    "cell": "T19__bg01_home_ase__g01_moon",
+    "boundary_depth": 2,
+    "level": "plus",
+    "repeat": 1,
+    "measured_bracket": [
+      -0.0940625,
+      -0.09296874999999999
+    ],
+    "calibration_qa_hashes": [
+      "452dbccb4c390cc5d265bc0f5649412bcb88f9a5fe67fa7815f59d8004e59f46",
+      "0ff2e2ce1a93fa5a222c44b91f82ca85f327f6e911e641830f9d1cc75f779007",
+      "192b06ae8a61f67a7eb1d1a55a4fbaefb9d3c27920b189e04406fcdda0efc719"
+    ],
+    "formal_admission": "PENDING_REPEATED_BOUNDARY_AND_VISUAL_QA",
+    "repeat_nuisance": {
+      "whole_event_y_translation_m": 0.0,
+      "same_within_triplet": true
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "origin": "PhysEdit-GravTrace/physedit",
+  "git_head": "52b6dfe2f148f7fdb9921fdd9285402f66a98203",
+  "snapshot": "current worktree bytes; hashes bind the exact scoring implementation",
+  "files": {
+    "__init__.py": "83077a58c0115bf4cd2d05bf15a0a80dee2f57ae202e37ec5b1f2dc26ed38a3f",
+    "boundary.py": "28ec594ec1f19685063d8cd06c48d270e3d2c38ecf8441e254319954642129f4",
+    "boundary_screening.py": "c284952d6a20d0b7c344808d93f889fa101900f02736b0043a707253e9e93a70",
+    "boundary_binding.py": "827145cd5e19ef2afc6b4a185376dd1789b5ad731ab15ff78c632787f6d591c7"
+  }
+}

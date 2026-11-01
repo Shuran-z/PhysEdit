@@ -1,0 +1,1333 @@
+{
+  "schema": "core100-source-physical-window-repair-v1",
+  "cases": {
+    "T06_C01": {
+      "clip_id": "T06_C01",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "e96ee44ef1ff23a01c4feff680e4dd161965400818471ba9bade8ab07b2506f0",
+      "reference": {
+        "clip_id": "T06_C01",
+        "source_sha256": "9230e30565ef95e2aef2af03a6d25ec403cef0b1eef613c00aaad0845c82eb97",
+        "derivative_sha256": "e96ee44ef1ff23a01c4feff680e4dd161965400818471ba9bade8ab07b2506f0",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C01_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C01_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "e96ee44ef1ff23a01c4feff680e4dd161965400818471ba9bade8ab07b2506f0"
+      },
+      "source_config_sha256": "0304d4f253d994acb8c467e0b90e9f4d9655b550b547095950a02bc9e96477b3",
+      "state_sha256": "5b9fa409f090e880fc3e40fb5dd899ecacbf3b59344c48f68c7a3a520eaba2b7",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T06_C01",
+        "target_event": "complete_required_contact_chain",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "0304d4f253d994acb8c467e0b90e9f4d9655b550b547095950a02bc9e96477b3",
+        "state_sha256": "5b9fa409f090e880fc3e40fb5dd899ecacbf3b59344c48f68c7a3a520eaba2b7",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "required_contacts": [
+            {
+              "pair": [
+                "t06_book_00",
+                "t06_book_01"
+              ],
+              "first": [
+                27,
+                3
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_01",
+                "t06_book_02"
+              ],
+              "first": [
+                32,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_02",
+                "t06_book_03"
+              ],
+              "first": [
+                39,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_03",
+                "t06_book_04"
+              ],
+              "first": [
+                49,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_04",
+                "t06_book_05"
+              ],
+              "first": [
+                70,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_05",
+                "t06_book_06"
+              ],
+              "first": [
+                103,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_06",
+                "t06_book_07"
+              ],
+              "first": [
+                130,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_07",
+                "t06_book_08"
+              ],
+              "first": [
+                152,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_08",
+                "t06_book_09"
+              ],
+              "first": [
+                172,
+                3
+              ]
+            }
+          ],
+          "pre_static_frames": 12,
+          "native_contact_frames_complete_after_release": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T06_C02": {
+      "clip_id": "T06_C02",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+      "reference": {
+        "clip_id": "T06_C02",
+        "source_sha256": "b6854615c5a431c6e590a59b300b6a5e63985737d0f5f17a3b761175c230d4ad",
+        "derivative_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C02_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C02_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001"
+      },
+      "source_config_sha256": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+      "state_sha256": "a076dab9c29b78abb127deae904ab01e38d8accdc11f1e634a7aef2e14a51026",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T06_C02",
+        "target_event": "complete_required_contact_chain",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+        "state_sha256": "a076dab9c29b78abb127deae904ab01e38d8accdc11f1e634a7aef2e14a51026",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "required_contacts": [
+            {
+              "pair": [
+                "t06_book_00",
+                "t06_book_01"
+              ],
+              "first": [
+                27,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_01",
+                "t06_book_02"
+              ],
+              "first": [
+                32,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_02",
+                "t06_book_03"
+              ],
+              "first": [
+                40,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_03",
+                "t06_book_04"
+              ],
+              "first": [
+                51,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_04",
+                "t06_book_05"
+              ],
+              "first": [
+                63,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_05",
+                "t06_book_06"
+              ],
+              "first": [
+                73,
+                3
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_06",
+                "t06_book_07"
+              ],
+              "first": [
+                84,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_07",
+                "t06_book_08"
+              ],
+              "first": [
+                94,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_08",
+                "t06_book_09"
+              ],
+              "first": [
+                104,
+                2
+              ]
+            }
+          ],
+          "pre_static_frames": 12,
+          "native_contact_frames_complete_after_release": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T06_C03": {
+      "clip_id": "T06_C03",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+      "reference": {
+        "clip_id": "T06_C03",
+        "source_sha256": "45e4edbc0190366cd244ee5ad1018c12271c48f394f4644e212ae7a4375e600a",
+        "derivative_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C03_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C03_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072"
+      },
+      "source_config_sha256": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+      "state_sha256": "bf9b0c81b301e109e94e32aecfc75fcbb5def321241f20e69ab8ee99acf2265d",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T06_C03",
+        "target_event": "complete_required_contact_chain",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+        "state_sha256": "bf9b0c81b301e109e94e32aecfc75fcbb5def321241f20e69ab8ee99acf2265d",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "required_contacts": [
+            {
+              "pair": [
+                "t06_book_00",
+                "t06_book_01"
+              ],
+              "first": [
+                27,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_01",
+                "t06_book_02"
+              ],
+              "first": [
+                32,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_02",
+                "t06_book_03"
+              ],
+              "first": [
+                40,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_03",
+                "t06_book_04"
+              ],
+              "first": [
+                46,
+                3
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_04",
+                "t06_book_05"
+              ],
+              "first": [
+                52,
+                3
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_05",
+                "t06_book_06"
+              ],
+              "first": [
+                57,
+                3
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_06",
+                "t06_book_07"
+              ],
+              "first": [
+                62,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_07",
+                "t06_book_08"
+              ],
+              "first": [
+                67,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_08",
+                "t06_book_09"
+              ],
+              "first": [
+                71,
+                3
+              ]
+            }
+          ],
+          "pre_static_frames": 12,
+          "native_contact_frames_complete_after_release": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T06_C04": {
+      "clip_id": "T06_C04",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31",
+      "reference": {
+        "clip_id": "T06_C04",
+        "source_sha256": "89dd8de040acb009a7cf946b7e014df30e69925e6cb20418c77ad6f150f92c01",
+        "derivative_sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C04_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C04_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31"
+      },
+      "source_config_sha256": "7b3fd22ac833a16f3e9adc168ccf67a3a3dd7fdac8a1d3824c3c5ae81fd42abc",
+      "state_sha256": "329dc267259ab53ab712e55a071daa63cc8d5baa5b91694fbb8ac940b7aca6db",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T06_C04",
+        "target_event": "complete_required_contact_chain",
+        "reference_label": 0,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "7b3fd22ac833a16f3e9adc168ccf67a3a3dd7fdac8a1d3824c3c5ae81fd42abc",
+        "state_sha256": "329dc267259ab53ab712e55a071daa63cc8d5baa5b91694fbb8ac940b7aca6db",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "required_contacts": [
+            {
+              "pair": [
+                "t06_book_00",
+                "t06_book_01"
+              ],
+              "first": [
+                30,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_01",
+                "t06_book_02"
+              ],
+              "first": [
+                52,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_02",
+                "t06_book_03"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_03",
+                "t06_book_04"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_04",
+                "t06_book_05"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_05",
+                "t06_book_06"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_06",
+                "t06_book_07"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_07",
+                "t06_book_08"
+              ],
+              "first": null
+            },
+            {
+              "pair": [
+                "t06_book_08",
+                "t06_book_09"
+              ],
+              "first": null
+            }
+          ],
+          "pre_static_frames": 12,
+          "native_contact_frames_complete_after_release": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T06_C05": {
+      "clip_id": "T06_C05",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "db74c70320d3412093acff4628a3863112c3c724ce1620d4583ef9ad24a969fd",
+      "reference": {
+        "clip_id": "T06_C05",
+        "source_sha256": "26541d8ae0de6d5ff0a6f8248601c4ab3ff92c48e51700b80d9e4b83306fd49f",
+        "derivative_sha256": "db74c70320d3412093acff4628a3863112c3c724ce1620d4583ef9ad24a969fd",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C05_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C05_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "db74c70320d3412093acff4628a3863112c3c724ce1620d4583ef9ad24a969fd"
+      },
+      "source_config_sha256": "57ffb316a80e01f273059b8c74c3fb7b71b44aaef080785e605f8f869933f058",
+      "state_sha256": "5481af09c395212fc8f058402e1655e1aaf9d6d27a013b14ad1394844570544d",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T06_C05",
+        "target_event": "complete_required_contact_chain",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "57ffb316a80e01f273059b8c74c3fb7b71b44aaef080785e605f8f869933f058",
+        "state_sha256": "5481af09c395212fc8f058402e1655e1aaf9d6d27a013b14ad1394844570544d",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "required_contacts": [
+            {
+              "pair": [
+                "t06_book_00",
+                "t06_book_01"
+              ],
+              "first": [
+                29,
+                2
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_01",
+                "t06_book_02"
+              ],
+              "first": [
+                40,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_02",
+                "t06_book_03"
+              ],
+              "first": [
+                79,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_03",
+                "t06_book_04"
+              ],
+              "first": [
+                90,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_04",
+                "t06_book_05"
+              ],
+              "first": [
+                97,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_05",
+                "t06_book_06"
+              ],
+              "first": [
+                102,
+                1
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_06",
+                "t06_book_07"
+              ],
+              "first": [
+                106,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_07",
+                "t06_book_08"
+              ],
+              "first": [
+                111,
+                0
+              ]
+            },
+            {
+              "pair": [
+                "t06_book_08",
+                "t06_book_09"
+              ],
+              "first": [
+                114,
+                3
+              ]
+            }
+          ],
+          "pre_static_frames": 12,
+          "native_contact_frames_complete_after_release": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T09_C01": {
+      "clip_id": "T09_C01",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "reference": {
+        "clip_id": "T09_C01",
+        "source_sha256": "22b73885dd0e9e2ca13d3109293eb8aa0e598fffbe8a9b592489024249e002cc",
+        "derivative_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T09_C01_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T09_C01_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011"
+      },
+      "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+      "state_sha256": "55c9300adc634cb007e6d4a290762d17bb41e2d4f832b339ad878106a5d22516",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T09_C01",
+        "target_event": "upper_nonpulled_book_on_table_at_end",
+        "reference_label": 0,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+        "state_sha256": "55c9300adc634cb007e6d4a290762d17bb41e2d4f832b339ad878106a5d22516",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "upper_books_on_table": [],
+          "end_frame": 209,
+          "extracted_book_excluded": "t09_book_03"
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T09_C02": {
+      "clip_id": "T09_C02",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "0677f49f8f7adc668cd0f99ea432665c4d16b01ab9972eb50f9389813509780d",
+      "reference": {
+        "clip_id": "T09_C02",
+        "source_sha256": "7de2a30278dac16b3876295be900f2d89c1abbb7ffa6a140312d3fd62dee7370",
+        "derivative_sha256": "0677f49f8f7adc668cd0f99ea432665c4d16b01ab9972eb50f9389813509780d",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T09_C02_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T09_C02_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "0677f49f8f7adc668cd0f99ea432665c4d16b01ab9972eb50f9389813509780d"
+      },
+      "source_config_sha256": "efeedadb8a5205ca2af9111cc05207bd2665d17e0925385a73c85e1b6e8901a7",
+      "state_sha256": "cffa9780e20e19b0c8d5460d73e3f61ffce56392ed49997f617a81bbe750ae06",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T09_C02",
+        "target_event": "upper_nonpulled_book_on_table_at_end",
+        "reference_label": 0,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "efeedadb8a5205ca2af9111cc05207bd2665d17e0925385a73c85e1b6e8901a7",
+        "state_sha256": "cffa9780e20e19b0c8d5460d73e3f61ffce56392ed49997f617a81bbe750ae06",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "upper_books_on_table": [],
+          "end_frame": 209,
+          "extracted_book_excluded": "t09_book_03"
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T09_C03": {
+      "clip_id": "T09_C03",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "07136e9d68d981b50fb0793f6920e00354de6ed2a0e17a0b112b1769261b40be",
+      "reference": {
+        "clip_id": "T09_C03",
+        "source_sha256": "f9623f07d22363cb9a379ab020fb2c8b01a59bf2c941b2306ced1231bad98695",
+        "derivative_sha256": "07136e9d68d981b50fb0793f6920e00354de6ed2a0e17a0b112b1769261b40be",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T09_C03_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T09_C03_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "07136e9d68d981b50fb0793f6920e00354de6ed2a0e17a0b112b1769261b40be"
+      },
+      "source_config_sha256": "734805cdc2dc291dac371837fafad1c4c904fd51393e90fec960cac59f2b7efb",
+      "state_sha256": "f80c964653cc95f16f7387dc98fe8f4fac6e3a1c305833bc6defe17fca9a8cbc",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T09_C03",
+        "target_event": "upper_nonpulled_book_on_table_at_end",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "734805cdc2dc291dac371837fafad1c4c904fd51393e90fec960cac59f2b7efb",
+        "state_sha256": "f80c964653cc95f16f7387dc98fe8f4fac6e3a1c305833bc6defe17fca9a8cbc",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "end_frame": 209,
+          "extracted_book_excluded": "t09_book_03"
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T09_C04": {
+      "clip_id": "T09_C04",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "5ef437508c283fe1cbecd7245819f2b596ca554576ad3fdb4b5ec1d8d0574195",
+      "reference": {
+        "clip_id": "T09_C04",
+        "source_sha256": "a1d2887bbbb3c2031e3f69950d6b9f7bebbc8a559958b56920db9622ac4ff204",
+        "derivative_sha256": "5ef437508c283fe1cbecd7245819f2b596ca554576ad3fdb4b5ec1d8d0574195",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T09_C04_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T09_C04_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "5ef437508c283fe1cbecd7245819f2b596ca554576ad3fdb4b5ec1d8d0574195"
+      },
+      "source_config_sha256": "79a5192b5318145746916084ce42a8919ae87856da1db6a855a6558e5910bd0c",
+      "state_sha256": "73598896d9b1ecd31168bdcb1b3aefd1587f7f605d9fd4f30e501de5f2ad6c8a",
+      "source_state_origin": "original_native_state",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T09_C04",
+        "target_event": "upper_nonpulled_book_on_table_at_end",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "79a5192b5318145746916084ce42a8919ae87856da1db6a855a6558e5910bd0c",
+        "state_sha256": "73598896d9b1ecd31168bdcb1b3aefd1587f7f605d9fd4f30e501de5f2ad6c8a",
+        "state_origin": "original_native_state",
+        "details": {
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "end_frame": 209,
+          "extracted_book_excluded": "t09_book_03"
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T09_C05": {
+      "clip_id": "T09_C05",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "b0db72a29be48b9966c64495e87399e2116f5bd23c419bbb75dd9fc46737bfc9",
+      "reference": {
+        "clip_id": "T09_C05",
+        "source_sha256": "075ae494524ef86b78a3536d578ada33e75704049291950cd50b7ae4b767cabf",
+        "derivative_sha256": "b0db72a29be48b9966c64495e87399e2116f5bd23c419bbb75dd9fc46737bfc9",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T09_C05_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T09_C05_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "b0db72a29be48b9966c64495e87399e2116f5bd23c419bbb75dd9fc46737bfc9"
+      },
+      "source_config_sha256": "a69b8bed6f2b75aa39d456f03bb8a5d4b6fd3859522dc77b24be1e13dde7b10d",
+      "state_sha256": "c192f2c328367c01ed83486adf486bdc70793901618201959bb248c458873356",
+      "source_state_origin": "original_native_state",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T09_C05",
+        "target_event": "upper_nonpulled_book_on_table_at_end",
+        "reference_label": 0,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "a69b8bed6f2b75aa39d456f03bb8a5d4b6fd3859522dc77b24be1e13dde7b10d",
+        "state_sha256": "c192f2c328367c01ed83486adf486bdc70793901618201959bb248c458873356",
+        "state_origin": "original_native_state",
+        "details": {
+          "upper_books_on_table": [],
+          "end_frame": 209,
+          "extracted_book_excluded": "t09_book_03"
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T10_C01": {
+      "clip_id": "T10_C01",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e",
+      "reference": {
+        "clip_id": "T10_C01",
+        "source_sha256": "670be1584b3d9d234f269d07df0aff8d73a935fa9a4fcdf97dcd5071fb524028",
+        "derivative_sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C01_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C01_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e"
+      },
+      "source_config_sha256": "f2455d5741d57048cf1d612c22acc973d6a12b35c732bbd02fbae6637976ac72",
+      "state_sha256": "a92c9641790e87dc3cb9bf0f925e58b44af79d7324b1c7340c410bb918b84573",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T10_C01",
+        "target_event": "support_pen_displacement_reaches_source_threshold",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "f2455d5741d57048cf1d612c22acc973d6a12b35c732bbd02fbae6637976ac72",
+        "state_sha256": "a92c9641790e87dc3cb9bf0f925e58b44af79d7324b1c7340c410bb918b84573",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "actor": "t10_support_pen",
+          "source_threshold_m": 0.04,
+          "maximum_displacement_m": 6.497811859913062,
+          "first_above_threshold_frame": 29,
+          "generated_video_requires_spatial_calibration": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T10_C02": {
+      "clip_id": "T10_C02",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a",
+      "reference": {
+        "clip_id": "T10_C02",
+        "source_sha256": "64b83107a0898819156d1d33f75d5076db5e43d6d2f51cdcc9f98fb27d7020a6",
+        "derivative_sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C02_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C02_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a"
+      },
+      "source_config_sha256": "633fb2641fe0ac4e33737e6d0d3ebdefb06bbc8e794d4c2e07f38e6eae75c895",
+      "state_sha256": "9f4feae1870ba3c2360cd0284014f4272a88df5d76fb17089421a4e2cb130483",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T10_C02",
+        "target_event": "support_pen_displacement_reaches_source_threshold",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "633fb2641fe0ac4e33737e6d0d3ebdefb06bbc8e794d4c2e07f38e6eae75c895",
+        "state_sha256": "9f4feae1870ba3c2360cd0284014f4272a88df5d76fb17089421a4e2cb130483",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "actor": "t10_support_pen",
+          "source_threshold_m": 0.04,
+          "maximum_displacement_m": 0.31894209572215304,
+          "first_above_threshold_frame": 30,
+          "generated_video_requires_spatial_calibration": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T10_C03": {
+      "clip_id": "T10_C03",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "71083e276db9d09912c9df90ff81d3bd94f618f4c09460feee2d26c48fa5a22c",
+      "reference": {
+        "clip_id": "T10_C03",
+        "source_sha256": "ddd29a9ec779a09c96722f822c661099bb013c51c3f3cfb1239897fe915e9077",
+        "derivative_sha256": "71083e276db9d09912c9df90ff81d3bd94f618f4c09460feee2d26c48fa5a22c",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C03_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C03_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "71083e276db9d09912c9df90ff81d3bd94f618f4c09460feee2d26c48fa5a22c"
+      },
+      "source_config_sha256": "82df74e23d6e248e4eae6dd514e247101ea7ac43a1d6de19564d81bab40dbaf9",
+      "state_sha256": "81cf74eed0ee8f0e44ea44310af309b8fc10b5b6c1baa380bb6d9ec5842c1866",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T10_C03",
+        "target_event": "support_pen_displacement_reaches_source_threshold",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "82df74e23d6e248e4eae6dd514e247101ea7ac43a1d6de19564d81bab40dbaf9",
+        "state_sha256": "81cf74eed0ee8f0e44ea44310af309b8fc10b5b6c1baa380bb6d9ec5842c1866",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "actor": "t10_support_pen",
+          "source_threshold_m": 0.04,
+          "maximum_displacement_m": 0.23019680390559727,
+          "first_above_threshold_frame": 54,
+          "generated_video_requires_spatial_calibration": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T10_C04": {
+      "clip_id": "T10_C04",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "f94034ff6760d2721338ec756689f3e3dadeeafd2e65d4ae4f5356504502159a",
+      "reference": {
+        "clip_id": "T10_C04",
+        "source_sha256": "93d539de5d358d94e230be01c202f3d7bb5edc8ad20b453b49f01e4c716d76f4",
+        "derivative_sha256": "f94034ff6760d2721338ec756689f3e3dadeeafd2e65d4ae4f5356504502159a",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C04_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C04_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "f94034ff6760d2721338ec756689f3e3dadeeafd2e65d4ae4f5356504502159a"
+      },
+      "source_config_sha256": "45cb9b5a74c3ae7d16d082ce52c5634a48aecbb1750ee012e8816faa9c991e9b",
+      "state_sha256": "06c9c664c0b8768a855739a60eec9d4ada6d06dfad8484b5974cd128acab1843",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T10_C04",
+        "target_event": "support_pen_displacement_reaches_source_threshold",
+        "reference_label": 0,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "45cb9b5a74c3ae7d16d082ce52c5634a48aecbb1750ee012e8816faa9c991e9b",
+        "state_sha256": "06c9c664c0b8768a855739a60eec9d4ada6d06dfad8484b5974cd128acab1843",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "actor": "t10_support_pen",
+          "source_threshold_m": 0.04,
+          "maximum_displacement_m": 0.02384352399762694,
+          "first_above_threshold_frame": null,
+          "generated_video_requires_spatial_calibration": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    },
+    "T10_C05": {
+      "clip_id": "T10_C05",
+      "required_horizon_s": 4.1,
+      "condition_frame_index": 4,
+      "reference_end_frame": 209,
+      "physical_frame_period_s": 0.02,
+      "reference_media_fps": 50.0,
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "reference": {
+        "clip_id": "T10_C05",
+        "source_sha256": "ef0f430d1c3ded6a7e6ab12cdf4e0cf3ca2b8e55dce73188f95cdbacc8a25a88",
+        "derivative_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C05_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C05_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864"
+      },
+      "source_config_sha256": "2e8bd05327d929f6da7e8ecfe4dec56297209f6c299c3d1d55d5b6410fdb6cdf",
+      "state_sha256": "a3cb7ceea4eda15b75ec1a9340cb5d11b2e1df3d48960d56ba98ceb17a7af5c8",
+      "source_state_origin": "supplemental_replay_not_original_annotation",
+      "window_status": "registered_source_end_window",
+      "boundary_window_status": "must_match_source_end_209_or_be_recomputed",
+      "terminal_rule": "Evaluate the last generated native frame at or before 4.1 s; retain its exact timestamp and discretization error.",
+      "generated_endpoint_rule": "floor(4.1 * fps + 1e-9)",
+      "shorter_native_outputs": "coverage_gap_not_zero",
+      "old_five_second_labels": "no_automatic_transfer_of_positives_terminal_labels_order_or_quality_failures",
+      "source_event": {
+        "clip_id": "T10_C05",
+        "target_event": "support_pen_displacement_reaches_source_threshold",
+        "reference_label": 1,
+        "horizon_s": 4.1,
+        "condition_frame_index": 4,
+        "reference_end_frame": 209,
+        "physical_frame_period_s": 0.02,
+        "source_config_sha256": "2e8bd05327d929f6da7e8ecfe4dec56297209f6c299c3d1d55d5b6410fdb6cdf",
+        "state_sha256": "a3cb7ceea4eda15b75ec1a9340cb5d11b2e1df3d48960d56ba98ceb17a7af5c8",
+        "state_origin": "supplemental_replay_not_original_annotation",
+        "details": {
+          "actor": "t10_support_pen",
+          "source_threshold_m": 0.04,
+          "maximum_displacement_m": 0.2309397453329391,
+          "first_above_threshold_frame": 173,
+          "generated_video_requires_spatial_calibration": true
+        },
+        "reference_video_admitted": false,
+        "boundary_admitted": false,
+        "pair_admitted": false
+      },
+      "reference_rgb_admitted": false,
+      "formal_boundary_admitted": false
+    }
+  },
+  "decision": "Use the complete available original physical trajectory; no extrapolation to 5 s. Selection uses source clocks only, independent of generated results.",
+  "evidence_sha256": {
+    "physical_window15_verified.json": "5d34d99eb384bcc10c41c7627616ef9ce1a9c31ac7ef8429a467c5fd8da3bb6f",
+    "physical_window15_event_truth.json": "5e9d42490fcf0b8f3b0f37d6444baa9eb58bf677601b9178a5687a6f8d25b90c"
+  }
+}

@@ -67,6 +67,9 @@ def write_rows(path, rows):
 def context(row):
     if row.get("input_failure"):
         raise ValueError(row["input_failure"])
+    if 'known_conditions' in row:
+        from .known_conditions import validate_reference_binding
+        validate_reference_binding(row['known_conditions'],row.get('source_video_sha256'),float(row['source_native_fps']))
     receipt = verified_completion(row)
     source = Path(row["source_video"])
     if (
