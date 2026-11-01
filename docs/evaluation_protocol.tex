@@ -1,0 +1,104 @@
+% Working evaluation-section fragment, 2026-10-31.
+% Protocol intent, not evidence that all Core100 gates or experiments passed.
+% Table counts must be filled from versioned generation/admission/label receipts.
+% Current evidence: review/cvpr_experiments_20261031/CORE100_EVALUATION_CHECKLIST.json
+% Input comparison: review/cvpr_experiments_20261031/experiment_comparability/REPORT.json
+
+\subsection{Evaluation Protocol}
+\label{sec:evaluation_protocol}
+
+\paragraph{Physical response at three levels.}
+The evaluation asks whether a generated continuation responds to a declared
+physical intervention. We examine the resulting event branch, the downstream
+event sequence, and quantitative dynamics where measurement is identifiable.
+These are complementary observations of the same intervention-response
+problem, with separate applicability conditions. They are reported
+separately rather than combined through arbitrary weights into one score.
+
+\paragraph{Inputs and evaluation units.}
+The test membership consists of 100 physical cases, split into ID80,
+OOD-1 (T03/T20, ten cases), and OOD-2 (T11/T19, ten cases). Each case has three
+English prompt variants. The primary generation setting uses seed zero for
+each variant. A generation slot is identified by model revision, input
+release, case, variant, seed, and sampling configuration; the actual prompt,
+condition image, and output video are bound by hashes. Three prompt variants
+are repeated conditions on one physical case, not three random seeds or
+independent trajectories.
+
+\paragraph{Reference and window admission.}
+Each target has a versioned event definition, a registered time origin and
+observation horizon, and a corresponding source-state record. Boundary
+evidence must use the same event, fixed physical context, intervention axis,
+input version, and observation window. A parameter-scan transition is not
+automatically a unique critical point: multiple observed transitions and
+unresolved interval distances are retained explicitly. Published scan points
+with different simulation seeds are distinguished from fixed-source-seed
+interventions. Source-event reproduction, RGB observability, and the
+numerical measurements required by a predicate are checked separately.
+
+For each generated output, native frame count, frame rate, decoding, and
+window coverage are verified. A shorter video cannot establish that an event
+does not occur later in the registered window. Playback is not slowed, frames
+are not repeated, and a static lead-in is not silently removed to make a
+video satisfy the protocol. Short-window observations require their own
+matching reference and boundary evidence before they can support a
+short-window physical score.
+
+\paragraph{VLM-assisted human assessment.}
+A frozen visual-language-model pipeline supplies preannotations for scene
+integrity and supported visible events. Scene integrity covers newly
+appearing foreign objects, scene replacement, loss of original-object
+identity, and severe geometry corruption. Such machine flags are review
+candidates; all registered videos remain in the inventory. Human reviewers
+can assess a video without waiting for a machine prediction. Disagreements
+and unobservable events remain explicit until resolved.
+
+Human event observations do not require invented timestamps when the
+registered form asks only for event labels. Where a sequence requires an
+order judgement, separate confirmation of the event order is required;
+two positive event labels do not establish their order. Likewise, an RGB
+judgement is not substituted for a calibrated displacement, angle, velocity,
+or other numerical predicate. An independent evaluation of the automatic
+assessor requires fresh human observations with machine predictions hidden;
+the production VLM-assisted labels are not described as independent gold.
+
+\paragraph{Physical metrics and coverage.}
+Branch accuracy compares admitted target-event observations with the
+corresponding reference branch. NearAcc evaluates the registered near-boundary
+subset using the frozen distance protocol. PairAcc requires both admitted
+opposite-branch endpoints of a registered pair to be correct under the same
+prompt variant and coupled seed; it is not the product of two marginal
+accuracies. EventExact requires the registered event bits and required order,
+whereas event-bit agreement alone is reported with a distinct label.
+GravTrace provides a separate quantitative gravity diagnostic on videos with
+the required trajectory, projection, clock, and identifiability evidence.
+
+Each table must identify the eligible reference set, generated-video
+coverage, unresolved annotations, measurement coverage, and confirmed
+generated failures. Missing reference evidence or an unreviewed label is not
+assigned an observed zero. A confirmed generated failure on an admitted task
+remains in that task's denominator under the frozen failure policy; exclusion
+by a machine quality flag alone is not permitted.
+
+\paragraph{Training-utility comparisons.}
+Base and adapted models are compared within a matched experiment using the
+same base revision, input manifest, native frame grid, resolution, sampler,
+seed, and prompt variant. Fixed training checkpoints are selected by the
+declared schedule rather than test performance. Actual optimizer steps,
+global batch size, and video presentations must be reported from runtime
+receipts; equal step numbers alone do not prove equal training budgets.
+Outputs from a different prompt release or native generation regime are not
+substituted into the original multi-model table.
+
+\paragraph{Statistical units.}
+Results are separated by prompt variant and ID/OOD split. Any aggregate
+retains the registered physical source groups as the uncertainty unit,
+keeping synchronized views, verified relatives, and repeated prompt
+conditions together. Small OOD sets are accompanied by counts and coverage;
+their prompt repetitions are not treated as independent physical trials.
+
+% Pending before final submission:
+% - independent human assessor validation and adjudication;
+% - current-reference/full-window admission and generated event labels;
+% - calibrated quantitative measurements and source-group uncertainty results;
+% - completed matched training-utility outputs and fixed-budget receipts.

@@ -15,9 +15,13 @@
       "policy": "Keep old T14 for formal evaluation. Never infer scene equivalence from directory name or publication date."
     },
     "T19": {
-      "status": "replacement_still_rendering_user_confirmed",
-      "old_reference_status": "retired_by_user",
-      "policy": "Do not admit old rejected T19 references. Bind replacement only after its release identity and quality are verified."
+      "status": "current_standard_release_correspondence_in_progress",
+      "previous_status": "replacement_still_rendering_user_confirmed",
+      "selected_repo": "phy2/phydataset",
+      "selected_revision": "33b72021608c628d714ec8657c78cfc270e63efd",
+      "selected_manifest": "releases/physedit/catalog/videos.jsonl.gz",
+      "current_numerical_binding_summary": "review/scene_family_completion_20261018/t19_current_release_binding_summary_20261030.json",
+      "policy": "Use current author-accepted release identities. Recovered original intervals require exact video hashes or a verified input-identical media replacement; unmatched old records remain historical. Media acceptance does not supply missing simulation state, normalization domain, or same-window truth."
     }
   }
 }

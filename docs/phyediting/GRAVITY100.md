@@ -1,3 +1,11 @@
+## 默认短英文版（2026-10-20，替代长英文输入）
+
+后续实验使用 `gravity100-compact-v2.tar.gz` 中的 `gravity100_compact_v2/tasks.jsonl` 并登记新 SHA256。固定100条的 LTX/CogVideoX 长度为47–120 tokens，Wan为60–197 tokens（含EOS），全部未超限。按用户确认，文本保留关键干预参数，其余完整精确参数留在 `generation_parameter_facts`。中文继续保留。旧长英文v1和中文包只作为历史版本。当前下载：[phy2 compact-v2](https://huggingface.co/datasets/phy2/phydataset/tree/main/benchmarks/english_compact_v2_20261020)。
+
+## 英文 prompt 升级（2026-10-20）
+
+新实验使用 `gravity100-en-v1.tar.gz` 中的 `gravity100_en_v1/tasks.jsonl`，并按新版文件 SHA256 注册输入。100条成员、参考视频、条件帧和评分时钟不变；prompt 从结构化初始参数重建，移除参考事件结果。旧中文包及其历史成绩保持原版本；不得混称为英文实验。统一规则见 [PROMPT_POLICY](../PROMPT_POLICY.md)。
+
 # 条件帧重力评测
 
 本协议包含100条单视角重力任务，覆盖T01–T20，每类5条。使用[清单CSV](gravity100.csv)固定样本、机位、条件帧与评测长度；同一条任务在所有生成模型中使用相同输入和时域。

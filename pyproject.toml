@@ -9,7 +9,7 @@ description = "Physical video generation and evaluation with single-view motion 
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
-dependencies = ["numpy", "scipy", "opencv-python-headless", "scikit-image==0.24.0"]
+dependencies = ["numpy", "scipy", "opencv-python-headless", "scikit-image==0.24.0", "sentencepiece>=0.2.0"]
 
 [project.optional-dependencies]
 test = ["pytest"]
@@ -24,7 +24,7 @@ packages = ["gravtrace", "physedit", "physedit.runners", "physedit.conditioned_m
 
 [tool.setuptools.package-data]
 scripts = ["sam31_frozen/*.py", "sam31_frozen/manifest.json"]
-physedit = ["qwen_prompt.json", "core100.json"]
+physedit = ["qwen_prompt.json", "core100.json", "prompt_tokenizers/*.model", "prompt_tokenizers/*.json", "prompt_tokenizers/*.md"]
 "physedit.conditioned_models" = ["registry.json"]
 
 [tool.setuptools.data-files]

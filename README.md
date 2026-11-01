@@ -1,5 +1,7 @@
 # PhysEdit
 
+仓库入口：[项目介绍](docs/DATASET_INTRODUCTION.md) · [数据集发布检查](docs/PUBLICATION_CHECK_20261029.md) · [目录与版本说明](docs/REPOSITORY_GUIDE.md) · [投稿进度与证据边界（2026-10-27）](docs/PROJECT_STATUS.md)
+
 物理视频生成与评测工具，提供图像生成视频、视频编辑与未来帧预测、SAM3.1单视角跟踪、重力、动摩擦与初速度测量，以及视觉指标和Qwen视频判断。
 
 | 测量指标 | 样本数 | 平均相对误差 | 最大相对误差 | 点估计覆盖率 |

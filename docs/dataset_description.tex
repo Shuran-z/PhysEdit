@@ -1,5 +1,5 @@
-% Draft for the CVPR paper. Replace target counts with frozen release counts
-% after media/state QA and source-group split assignment are complete.
+% Working fragment, updated 2026-10-31; not a submission-ready main document.
+% Insert released counts only after version, media/state QA and group audits.
 \subsection{Dataset Overview}
 \label{sec:dataset}
 
@@ -9,11 +9,10 @@ conditions and predict the resulting interaction outcomes. The benchmark is
 organized around 20 everyday rigid-body event types (T01--T20), including
 multi-stage cascades, relay interactions, and multi-object events. For each
 event, the data specification defines controlled scene configurations across
-four backgrounds and five gravity levels. The planned corpus combines
-simulations from Genesis and Isaac, with target capacities of 52,800 and
-20,160 videos, respectively (72,960 videos in total). These figures describe
-the design target; the released counts should be reported from the frozen,
-quality-audited manifests.
+four backgrounds and five gravity levels. The corpus combines simulations
+from Genesis and Isaac. Historical design capacities are not used as released
+dataset counts; the numbers of videos, trajectories, source groups, and
+quality-qualified records must come from versioned, audited release manifests.
 
 Each physical trajectory is rendered from three synchronized fixed camera
 views. The views share the same simulation state and therefore constitute
@@ -38,9 +37,12 @@ gravity inferred from generated or reference video. GravTrace is one
 measurement component of the benchmark and is not intended to summarize all
 physical mechanisms or event-level correctness.
 
-For the planned joint Genesis--Isaac protocol, the 16 training-pool event
-types are split by complete source groups into training, validation, and
-in-distribution test partitions, with an approximate 80/10/10 allocation.
+For the joint Genesis--Isaac protocol, evaluation membership is fixed at
+100 single-view cases: 80 in-distribution cases, 10 OOD-1 cases, and 10 OOD-2
+cases. A further 80 cases are reserved. Eligible data from the 16
+training-pool event types are assigned to training after excluding all test
+and reserve cases and their verified source relatives; no separate
+validation partition is specified.
 T03 and T20 are held out as OOD-1 event types, and T11 and T19 as OOD-2 event
 types. These are whole-event transfer evaluations: OOD-1 emphasizes unseen
 cascade events, whereas OOD-2 emphasizes unseen relay and multi-object
@@ -48,13 +50,29 @@ interactions. Both engines occur in the training regime, so these OOD sets do
 not constitute engine-held-out evaluation. Source groups bind together
 synchronized views, known background variants, repeats and branches from a
 critical family, and known corresponding configurations across engines.
-Continuous parameter scans are grouped by parameter intervals rather than by
-individually sampled points to reduce leakage between nearby configurations.
+Source-group exclusion and quality admission require separate verification;
+fixed test membership alone does not certify their completion.
 
-The target split capacities are 47,040 training, 5,880 validation, 5,880
-in-distribution test, 6,240 OOD-1, and 7,920 OOD-2 videos. Whole-group
-integrity takes priority over exact per-event ratios. These capacities are
-planning targets, not a claim that all target media have passed release QA or
-that the final group-level manifests have been frozen. In the paper, we will
-report the final number of videos, trajectories, source groups, and QA-passing
-samples from the released manifests, and state the associated data version.
+Core100 contains three bound English prompt variants per case. Existing
+model outputs retain their exact submitted text and conditioning images;
+updated wording is not retroactively assigned to an existing video. The
+current reference release replaces five T19 cases with separately registered
+Isaac references. Outputs generated from the superseded T19 inputs and their
+annotations are retained as provenance and do not stand in for new-input
+results. Compared models use the same case, variant, and input binding within
+each experiment. The variants do not create additional independent physical
+trajectories. Declared controls and initial conditions are provided without
+revealing future event outcomes.
+
+Reference event definitions, boundary eligibility, observable time windows,
+and generated-video assessment are audited independently of test membership.
+A video must cover the registered observation window before its full-window
+event outcome can be scored; shorter outputs can still support separately
+reported visual-quality or explicitly shorter-window observations. A
+separate Base/LoRA training-utility experiment binds both arms to one input
+manifest and native generation configuration. Its results are reported
+within that experiment rather than substituted into a main-table row with
+different submitted text or generation settings.
+
+% Before submission: insert audited release statistics and a source-group
+% exclusion receipt. This fragment does not certify either as completed.

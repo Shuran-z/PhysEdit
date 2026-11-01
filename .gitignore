@@ -54,6 +54,11 @@ CLAUDE.md
 /docs/intervention_audit_*/
 /docs/video_inventory_audit_*/
 /review/
+
+# Generated handoff documents, previews and their installed dependencies.
+# Authored application code and frozen resources stay visible to Git.
+/outputs/
+node_modules/
 /docs/phyediting/*.json
 !/docs/phyediting/latest_results.json
 
