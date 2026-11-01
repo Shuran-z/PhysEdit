@@ -9,10 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def configuration(env):
-    command = [sys.executable, '-c',
+    command = [sys.executable, '-X', 'utf8', '-c',
                'import json; from physedit import config; '
                'print(json.dumps({"hosts":config.HOSTS,"sites":list(config.SITES)}))']
-    return subprocess.run(command, cwd=ROOT, env=env, text=True, capture_output=True)
+    return subprocess.run(command, cwd=ROOT, env=env, text=True, encoding='utf-8', capture_output=True)
 
 
 def test_public_installation_does_not_enable_remote_hosts():

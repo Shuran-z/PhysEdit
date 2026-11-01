@@ -53,7 +53,8 @@ def prepared(tmp_path, monkeypatch):
                           initial_objects={'object': [30, 15, 46, 31]}, target_name='object',
                           physical_times_s=times, conditioning_frame=0, evaluation_start_frame=0,
                           generation_prompt='prompt.txt', generation_prompt_sha256=g100.sha256(prompt),
-                          prompt_source='fixture', image_size=[96, 64]))
+                          prompt_source='fixture', image_size=[96, 64],
+                          generation_parameter_facts=[['gravity','',float(old['reference_gravity_m_s2']),'m/s^2']]))
     manifest = tmp_path / 'manifest.csv'
     with manifest.open('w') as f:
         writer = csv.DictWriter(f, fieldnames=fields)

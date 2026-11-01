@@ -55,7 +55,7 @@ def reference_evidence(tmp, items):
 @pytest.fixture
 def registered(tmp_path):
     video(tmp_path/'source.avi')
-    items = [item(), item('missing', video='missing.avi'), item('unsupported',event='T01'),
+    items = [item(), item('missing', video='missing.avi'), item('unsupported',gravity=2.0),
              item('short',window=dict(start_frame=25,max_frames=2))]
     ip = dump(tmp_path/'items.jsonl',items)
     out = tmp_path/'input'
@@ -345,10 +345,12 @@ def test_cpu_one_click_success_and_failure_all_stages(tmp_path,monkeypatch,extra
     assert result['registered']==2 and result['scored']==1 and result['failed']==1
     assert result['failure_rate_percent']==50 and result['coverage_percent']==50
     registered = frontend.read_rows(tmp_path/'run/generation_rows.jsonl')
-    assert all(r['prompt_source_class'] == 'builtin_event_template' and
-               r['prompt_granularity'] == 'event_template' and not r['prompt_is_exact_official'] for r in registered)
+    assert all(r['prompt_source_class'] == 'structured_initial_conditions_en_v1' and
+               r['prompt_granularity'] == 'initial_conditions' and
+               r['prompt_policy'] == gen.PROMPT_POLICY and r['prompt_language'] == 'en' and
+               not r['prompt_is_exact_official'] for r in registered)
     assert Path(registered[0]['prompt_file']).read_text() == (
-        gen.EVENTS[item()['event']] + ' The camera is fixed. ' + gen.GRAVITY[item()['gravity']])
+        'Continue the scene; fixed camera. Gravity 9.81 m/s^2.')
     assert len(captured)==1 and captured[0]['motion']['speed']==[0,8] and 'v0' not in captured[0]['motion']
     assert captured[0]['offset_mode']=='anchor' and not captured[0]['window']['contact_check']
     assert len(read_rows:=frontend.read_rows(tmp_path/'run/predictions.jsonl'))==2
@@ -477,6 +479,10 @@ def test_diffusers_preserves_zero_seed_and_image_condition(tmp_path, monkeypatch
     row = runner_row(tmp_path)
     row['seed'] = 0
     class Pipeline:
+        @staticmethod
+        def tokenizer(text, *, add_special_tokens, truncation):
+            assert add_special_tokens is True and truncation is False
+            return {'input_ids': [1, 2, 3]}
         def __call__(self, prompt, image, generator, num_frames, num_inference_steps, guidance_scale, frame_rate):
             assert frame_rate == row['output_fps']
             assert image is not None

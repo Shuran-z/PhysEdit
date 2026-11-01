@@ -10,6 +10,7 @@ import pytest
 from physedit import gravity100 as g100, conditioned_measurement as cm, evaluations as ev
 from physedit.runners.media_contract import seal_completion, row_digest, validate_video
 from physedit.runners.oneclick_registry import MODELS
+from physedit.prompt_contract import VERSION as PROMPT_POLICY
 from test_gravity100_pipeline import prepared
 
 
@@ -157,7 +158,7 @@ LEGACY_HEAD54B_ROW_DIGESTS = {
 
 
 @pytest.mark.parametrize('model', LEGACY_HEAD54B_ROW_DIGESTS)
-def test_other_eleven_original100_rows_match_head54b_digest(prepared, model, monkeypatch):
+def test_other_eleven_media_and_clock_fields_match_head54b_digest(prepared, model, monkeypatch):
     spec, _, root = prepared
     profile = MODELS[model]
     if model == 'dynamicrafter_i2v':
@@ -180,7 +181,17 @@ def test_other_eleven_original100_rows_match_head54b_digest(prepared, model, mon
                     return label + value[len(str(path)):].replace('\\', '/')
         return value
     normalized = normalize(rows)
-    for row in normalized:
+    for actual, row in zip(rows, normalized):
+        # Only the separately versioned prompt contract changed since HEAD54b.
+        # Validate that contract before projecting to the original media schema.
+        assert actual['prompt_source_class'] == 'structured_initial_conditions_en_v1'
+        assert actual['prompt_language'] == 'en'
+        assert actual['prompt_policy'] == PROMPT_POLICY
+        assert actual['original_prompt_sha256'] == g100.sha256(root/'prompt.txt')
+        assert actual['generation_prompt_sha256'] == g100.sha256(actual['prompt_file'])
+        for key in ('prompt_policy', 'prompt_language', 'original_prompt_sha256', 'generation_prompt_sha256'):
+            row.pop(key)
+        row['prompt_source_class'] = 'fixture'
         row['source_video_sha256'] = '<reference-video-sha>'
     assert len(rows) == 100
     digest = hashlib.sha256(json.dumps([row_digest(row) for row in normalized]).encode()).hexdigest()
@@ -199,7 +210,9 @@ def test_physrvg_build_keeps_native49_and_adds_runner_granularity_only_here(prep
         assert row['condition_frames'] == 1 and row['condition_frame_index'] == 0
         assert row['prompt_granularity'] == 'registered_condition_continuation'
         assert row['raw_origin_frame'] == 4 and row['evaluation_output_frames'] == 45
-        assert g100.sha256(row['prompt_file']) == original_prompt_sha
+        assert row['original_prompt_sha256'] == original_prompt_sha
+        assert g100.sha256(row['prompt_file']) == row['generation_prompt_sha256']
+        assert g100.sha256(root/'prompt.txt') == original_prompt_sha
     # All other legacy row metadata remains absent rather than adding origin0 fields.
     spec.update(model='cogvideox_i2v', frames=81, fps=16)
     _, legacy_rows, _, _ = g100.build_inputs(spec, root / 'legacy')

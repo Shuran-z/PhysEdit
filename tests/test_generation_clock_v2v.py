@@ -117,6 +117,10 @@ def test_v2v_actual_adapter_passes_full_video_clock_and_strengths(tmp_path, monk
     monkeypatch.setitem(sys.modules,'torch',SimpleNamespace(Generator=Generator,inference_mode=nullcontext))
     monkeypatch.setitem(sys.modules,'diffusers.utils',SimpleNamespace(load_image=lambda _:None,export_to_video=lambda *a,**kw:None))
     class Pipe:
+        @staticmethod
+        def tokenizer(text, *, add_special_tokens, truncation):
+            assert add_special_tokens is True and truncation is False
+            return {'input_ids': [1, 2, 3]}
         def __call__(self,prompt,negative_prompt,video,frame_index,strength,denoise_strength,
                      height,width,num_frames,num_inference_steps,guidance_scale,generator,frame_rate):
             assert len(video)==1 and len(video[0])==161

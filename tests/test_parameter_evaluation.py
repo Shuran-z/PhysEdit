@@ -66,7 +66,9 @@ def case(tmp_path, kind='velocity', suffix='a'):
                 image_size=[854,480], camera=camera, camera_id='cam01', object_name='book',
                 object=dict(position=origin,corners=corners.tolist()), video=source.name, trajectory='fixture',
                 window=window, motion=dict(v0=v0,gravity_dir=[0,0,-1]), split='test_id', sensitivity_px=30,
-                generation_prompt='A book moves on a fixed table.')
+                generation_prompt='A book moves on a fixed table.',
+                generation_parameter_facts=[['gravity','',g,'m/s^2'],
+                    ['book.initial_velocity','',v0,'m/s']])
     row = dict(sample_id=suffix+'_seed',item_id=suffix,model_name='fixture',seed=1,gravity_truth=g,
                source_video=str(source),source_video_sha256=media.sha256(source), source_native_fps=fps,
                source_width=854,source_height=480,condition_frame_index=23,condition_image=str(condition),
@@ -263,7 +265,8 @@ def test_motion_requests_are_in_generation_prompt_but_not_estimator(tmp_path,mon
     original=Path(rows[0]['prompt_file']).read_bytes()
     attached=pe.attach_requested_parameters(spec,copy.deepcopy(rows),items,tmp_path/'requests')[0]
     assert attached['parameter_targets']['velocity_mps']==c[0]['motion']['v0']
-    assert 'requested world-coordinate velocity' in Path(attached['prompt_file']).read_text()
+    assert 'Target initial velocity [1.1,0.2,0.3] m/s.' in Path(attached['prompt_file']).read_text()
+    assert media.sha256(attached['prompt_file']) == attached['prompt_sha256']
     assert Path(rows[0]['prompt_file']).read_bytes()==original
     seen=[]
     real=pe.fit_velocity_with_frozen_gravity
