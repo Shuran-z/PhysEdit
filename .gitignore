@@ -69,3 +69,7 @@ node_modules/
 /docs/joint_split_v3/event_pool_routing.jsonl
 /docs/joint_split_v3/inventory_audit.json
 /docs/joint_split_v3/recovered_sidecar_references.jsonl
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db

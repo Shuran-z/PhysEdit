@@ -1,0 +1,60 @@
+% Draft for the CVPR paper. Replace target counts with frozen release counts
+% after media/state QA and source-group split assignment are complete.
+\subsection{Dataset Overview}
+\label{sec:dataset}
+
+We introduce \textit{EverydayBifurcationBench}, a benchmark for studying
+whether video models respond correctly to controlled changes in physical
+conditions and predict the resulting interaction outcomes. The benchmark is
+organized around 20 everyday rigid-body event types (T01--T20), including
+multi-stage cascades, relay interactions, and multi-object events. For each
+event, the data specification defines controlled scene configurations across
+four backgrounds and five gravity levels. The planned corpus combines
+simulations from Genesis and Isaac, with target capacities of 52,800 and
+20,160 videos, respectively (72,960 videos in total). These figures describe
+the design target; the released counts should be reported from the frozen,
+quality-audited manifests.
+
+Each physical trajectory is rendered from three synchronized fixed camera
+views. The views share the same simulation state and therefore constitute
+multiple observations of one trajectory, rather than independent physical
+trials. Depending on the event, controlled variables include gravity,
+initial velocity or impulse, object geometry and mass, friction, restitution,
+and support or contact conditions. In addition to broad parameter coverage,
+the design includes critical-boundary families: configurations immediately
+below, at, and above a candidate threshold, with repeated simulations where
+specified. Such families make it possible to study whether a model preserves
+the change in downstream outcomes induced by a localized intervention.
+
+The benchmark pairs rendered videos with structured supervision. Per-frame
+records include object position, orientation, linear and angular velocity,
+and contact information; event records describe key interactions, their
+order, and terminal outcomes. Configuration metadata records the simulation
+conditions and intervention-family membership. This representation supports
+separate evaluation of parameter response, event-branch prediction, and
+downstream event sequences. The accompanying PhysEdit pipeline runs video
+generation experiments, while GravTrace provides one quantitative measure of
+gravity inferred from generated or reference video. GravTrace is one
+measurement component of the benchmark and is not intended to summarize all
+physical mechanisms or event-level correctness.
+
+For the planned joint Genesis--Isaac protocol, the 16 training-pool event
+types are split by complete source groups into training, validation, and
+in-distribution test partitions, with an approximate 80/10/10 allocation.
+T03 and T20 are held out as OOD-1 event types, and T11 and T19 as OOD-2 event
+types. These are whole-event transfer evaluations: OOD-1 emphasizes unseen
+cascade events, whereas OOD-2 emphasizes unseen relay and multi-object
+interactions. Both engines occur in the training regime, so these OOD sets do
+not constitute engine-held-out evaluation. Source groups bind together
+synchronized views, known background variants, repeats and branches from a
+critical family, and known corresponding configurations across engines.
+Continuous parameter scans are grouped by parameter intervals rather than by
+individually sampled points to reduce leakage between nearby configurations.
+
+The target split capacities are 47,040 training, 5,880 validation, 5,880
+in-distribution test, 6,240 OOD-1, and 7,920 OOD-2 videos. Whole-group
+integrity takes priority over exact per-event ratios. These capacities are
+planning targets, not a claim that all target media have passed release QA or
+that the final group-level manifests have been frozen. In the paper, we will
+report the final number of videos, trajectories, source groups, and QA-passing
+samples from the released manifests, and state the associated data version.

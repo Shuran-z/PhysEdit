@@ -12,6 +12,20 @@ python -m gravtrace --help
 
 See the [critical-boundary workflow](../BOUNDARY_EVALUATION.md) and [protocol index](../docs/critical_boundary/README.md) before running an evaluation.
 
+## Current task entry points
+
+| Task | Tools |
+|---|---|
+| Current Core100 input identities | `prepare_core100_current_inputs.py`, `install_core100_t19_replacement.py` |
+| Existing boundary records and distances | `collect_core100_binding_evidence.py`, `recover_core100_released_scans.py`, `build_core100_distance_bindings.py` |
+| Original-family audit | `reaudit_core100_original_references.py` |
+| Local reference status / read-only export | `python -m physedit.core100_bindings status`, `python -m physedit.core100_bindings export --out NEW.jsonl` |
+| Download published dataset | `download_standardized_72000.py`, `download_physedit_final.py` |
+| Inventory / release assembly | `refresh_72000_inventory.py`, `assemble_72000_prompt_release.py` |
+| Simulator inversion | [physprobe/inversion/README.md](../physprobe/inversion/README.md) |
+
+`publish_*`, `launch_*`, `resume_*`, `render_*` and remote workers are operational tools, not an automatic setup sequence. Their names and paths stay stable because registered jobs and source receipts reference them. Read constants and `main()` before executing release-specific scripts.
+
 ## Evidence and recovery utilities
 
 - `audit_all_scene_boundary_sources.py`, `collect_scene_boundary_evidence.py`, `collect_original_search_tasks.py`: locate and reconcile historical scene-family search records.
