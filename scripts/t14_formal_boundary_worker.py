@@ -7,6 +7,7 @@ numerical recovery, not automatic visual admission or generated-video scoring.
 import argparse
 import copy
 import hashlib
+import gzip
 import json
 import math
 import os
@@ -18,7 +19,11 @@ import time
 PYTHON='/home/wangzijun_p25/miniconda3/envs/genesis/bin/python'
 
 
-def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def sha(path):
+    path=Path(path)
+    if not path.exists() and path.name=='physics.json':path=path.with_suffix('.json.gz')
+    raw=path.read_bytes()
+    return hashlib.sha256(gzip.decompress(raw) if path.name=='physics.json.gz' else raw).hexdigest()
 
 
 def save(path,value):

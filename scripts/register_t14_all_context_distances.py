@@ -17,7 +17,7 @@ def main():
     release=json.loads(Path('docs/critical_boundary/RELEASE_SELECTION.json').read_text())['scenes']['T14']
     if any(a['config']['dataset_version']!=release['required_dataset_version'] for j in jobs.values() for a in j['anchors']):raise ValueError('T14S or another release cannot enter old-T14 results')
     code=r'''
-import pathlib,json,hashlib
+import pathlib,json,hashlib,gzip
 root=pathlib.Path(ROOT_DIRECTORY);rows=[]
 for r in json.loads((root/'status.json').read_text()) if (root/'status.json').exists() else []:
  if r['status']!='scanned_original_triplet':rows.append(dict(result=r));continue
@@ -25,7 +25,10 @@ for r in json.loads((root/'status.json').read_text()) if (root/'status.json').ex
  for p in (root/r['job_id']).glob('*/receipt.json'):
   v=json.loads(p.read_text())
   for key,name in [('state_sha256','physics.json'),('config_sha256','config.json')]:
-   if hashlib.sha256((p.parent/name).read_bytes()).hexdigest()!=v[key]:raise ValueError('T14 numeric source changed')
+   file=p.parent/name
+   if not file.exists() and name=='physics.json':file=file.with_suffix('.json.gz')
+   raw=file.read_bytes();raw=gzip.decompress(raw) if file.suffix=='.gz' else raw
+   if hashlib.sha256(raw).hexdigest()!=v[key]:raise ValueError('T14 numeric source changed')
   probes.append(v)
  rows.append(dict(result=r,probes=probes))
 print(json.dumps(rows))

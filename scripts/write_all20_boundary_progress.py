@@ -87,6 +87,8 @@ def main():
  t07_B_refined=load('t07_B_E4_refinement_summary_20261022.json')
  t18=load('t18_table_contact_preparation_summary_20261020.json')
  search18=load('t18_event_distance_summary_20261020.json')
+ t19_current=load('t19_current_release_binding_summary_20261030.json')
+ outstanding=load('OUTSTANDING_REGISTERED_JOBS_20261030.json')
  supplemental=load('supplemental_scan_state_summary_20261020.json')
  replay_scans=load('t06_t10_replay_distance_summary_20261020.json')
  t03=load('original_value_distance_ledger/t03_binding_summary.json')
@@ -101,7 +103,7 @@ def main():
   'T14':(f"旧正式版已完成{t14.get('completed_contexts',0)}/180组；{t14.get('bound_distinct_samples',0)}条不同参考样本已接细化距离",f"选定180组任务已全部结束，失败{t14.get('failed_contexts',0)}项；其中{t14.get('contexts_without_observed_flip',0)}组三点内未观测翻转，保留样本且不捏造边界；T14S另列"),
   'T15':('原范围60组与扩展40组已扫描；原发布反事实参数对应和原范围归一化已接入',f"79个已观测局部区间已细化{t15_refined}个、剩余{79-t15_refined}个；尾部未静止任务已运行，余下原审计失败项继续定位，出界等错误原样保留"),
   'T18':(f"630份Genesis发布metadata已对应；567条多书原配置/事件已恢复，567套原干预配方全部精确重建；新搜索已完成{search18.get('completed_contexts',0)}/567",f"旧显存不足错误跳过的200项已修复等待逻辑并置于队列前部，已完成{search18.get('resource_recovery_cohort',{}).get('completed',0)}/200；总待算{search18.get('pending_contexts',0)}、实际失败{search18.get('failed_contexts',0)}。按原版本/拓扑/种子分别求界，旧两书版及Isaac另列"),
-  'T19':('旧渲染按用户要求停用；不计当前可用距离参考','等待新T19完成渲染并交付/发布；已知旧文件不能重新启用')}
+  'T19':(f"已按当前标准发布逐机位对应：{t19_current.get('bound_unique_trajectories',0)}条轨迹、{t19_current.get('bound_current_video_entries',0)}个视频绑定原求解区间，其中{t19_current.get('reviewed_updated_video_entries',0)}条为已核查且输入相同的更新视频",f"原台账另有{t19_current.get('unmatched_original_records',0)}条记录尚未匹配当前媒体/配置，不能套用同名旧值；其余当前配置的原值来源与归一化域继续核对；数值绑定不自动授予NearAcc")}
  for scene in ['T16','T17','T20']:
   overrides[scene]=(f"Genesis发布metadata已全部逐字节对应：{metadata.get('verified_metadata',{}).get(scene,0)}条；原参数扫描已登记{metadata.get('unique_bound_samples',{}).get(scene,0)}条不同样本的接触事件区间",'保留各原参数轴和修复版本；已有扫描区间与精确原求解值分列，其余命名事件/上下文继续处理')
  overrides['T07']=(f"A摩擦和C坡角120个原条件组已完成；360条分支已接距离；B采用用户确认E4桌面接触，{t07_B.get('reference_videos',0)}条真值已绑定，{t07_B.get('bound_distinct_samples',0)}条有原区间距离",f"B原60组三点中{t07_B.get('contexts_without_observed_flip',0)}组未观测到E4翻转，均保留；已观测{t07_B.get('original_intervals',0)}组区间，细化成功{t07_B_refined.get('refined',0)}、端点复现失败{t07_B_refined.get('failed',0)}；原0.16–0.22m区间不因复跑失败删除")
@@ -182,7 +184,17 @@ def main():
    retired_historical_samples=item['unique_samples_with_numerical_reference'] if item['retired'] else 0,
    publication_metadata_mapping_completed=scene in ['T16','T17','T18','T20'],
    all_families_completed=(scene=='T02' and t02_complete) or (scene=='T14' and t14_complete),
-   completion_status='数值对应完成' if scene=='T02' and t02_complete else '选定180组任务完成' if scene=='T14' and t14_complete else '等待新渲染' if scene=='T19' else '仍有未完成任务'))
+   completion_status='数值对应完成' if scene=='T02' and t02_complete else '选定180组任务完成' if scene=='T14' and t14_complete else '仍有未完成任务'))
+ for row in rows:
+  scene=row['scene'];q=outstanding.get('by_scene',{}).get(scene,{})
+  row['registered_conditional_jobs']=q.get('registered_conditional_jobs',0)
+  row['completed_conditional_jobs']=q.get('completed_conditional_jobs',0)
+  row['unfinished_conditional_jobs']=q.get('unfinished_conditional_jobs',0)
+  row['source_mismatch_unresolved']=q.get('source_event_mismatch_unresolved',0)
+  row['remaining_count_scope']='registered conditional jobs only; original-value linkage and optional refinement separate'
+  row['unresolved_endpoint_reproductions']=1 if scene=='T07' else 0
+  if scene=='T18':
+   row.update(registered_conditional_jobs=search18.get('source_candidates',567),completed_conditional_jobs=search18.get('completed_contexts',0),unfinished_conditional_jobs=search18.get('pending_contexts',0)+search18.get('failed_contexts',0))
  (OUT/'all20_evidence_progress.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
  with (OUT/'all20_evidence_progress.csv').open('w',encoding='utf-8-sig',newline='') as f:
   writer=csv.DictWriter(f,fieldnames=rows[0]);writer.writeheader();writer.writerows(rows)
@@ -190,11 +202,20 @@ def main():
  if target.exists() and not historical.exists():historical.write_text(target.read_text(encoding='utf-8'),encoding='utf-8')
  lines=['# T01–T20 临界搜索与发布参数对应：'+date.today().isoformat(),'',
   '此表只报告原值恢复、参数/版本对应、数值求解和距离接入。视频质量准入与生成模型打分另行统计，不作为找回临界值的额外门槛。',
-  '', '| 场景 | 原参数族 | 当前有数值参考的不同样本 | 已完成事项 | 未完成事项 |', '|---|---|---:|---|---|']
- for r in rows:lines.append(f"|{r['scene']}|{r['original_families']}|{r['numerical_reference_samples']}|{r['recovered_evidence']}|{r['remaining']}|")
+  '', '| 场景 | 原参数族 | 当前有数值参考的不同样本 | 已登记条件搜索：完成/总数（剩余） | 已完成事项 | 未完成事项 |', '|---|---|---:|---|---|---|']
+ for r in rows:
+  q=f"{r['completed_conditional_jobs']}/{r['registered_conditional_jobs']}（{r['unfinished_conditional_jobs']}）" if r['registered_conditional_jobs'] else '本队列未登记'
+  if r['scene']=='T07':q='60组扫描结束；端点复现剩余1项'
+  lines.append(f"|{r['scene']}|{r['original_families']}|{r['numerical_reference_samples']}|{q}|{r['recovered_evidence']}|{r['remaining']}|")
  lines+=['',f"当前活动版本共有{sum(r['numerical_reference_samples'] for r in rows)}条不同样本有数值参考。各场景按引擎、版本和样本ID去重；一个样本可能含多个事件或局部区间，不能累加记录行数当视频数量。原渲染star和T09旧下沉代理均不计入此数。",'',
   '原参数网格没有观测到事件翻转时记录无已观测边界，不捏造阈值，不删除原参考视频。不同物理结构不能仅按相邻参数编号配对。', '',
   '运行中的求解详见LATEST_EXECUTION_STATUS_20261019.json（文件名保留历史命名，内部date为当前快照日期）。数值参考数量不是生成模型NearAcc分数。']
+ if outstanding:
+  lines+=['','## 尚未完成的已登记任务','',
+   f"固定上下文条件搜索：{outstanding['conditional_completed']}/{outstanding['conditional_registered']}完成，剩余{outstanding['conditional_unfinished']}项；T18另有{outstanding['t18_unfinished']}项；T07-B另有1项端点复现。三类已登记任务合计尚有{outstanding['conditional_unfinished']+outstanding['t18_unfinished']+1}项未解决。",
+   '这些任务包含已有原区间的补充搜索、事件复现及数值扫描，不能称为同等数量的缺失临界点。原值可以直接关联的样本不被这些补充任务阻塞。',
+   f"T19另有{t19_current.get('unmatched_original_records',0)}条旧区间记录未对应当前视频；这是版本关联项，不是新增仿真任务。原扫描域未找到时保留原单位距离，不臆造NearAcc归一化。",
+   '选定任务结束、全参数族覆盖、当前发布视频对应、正式NearAcc准入分别记录；不把本队列未登记写成全场景完成。']
  target.write_text('\n'.join(lines)+'\n',encoding='utf-8');print('wrote current all20 search progress: 20 rows')
 
 

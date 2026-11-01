@@ -44,3 +44,19 @@ def test_failed_postprocessing_retries_without_changed_remote_results(monkeypatc
     assert calls.count('scripts.combine_recovered_boundary_distances')==2
     status=json.loads((tmp_path/'result_integration_20261020/status.json').read_text())
     assert status['status']=='listed_jobs_ended_review_results'
+
+
+def test_p26_collection_precedes_single_t18_registration(monkeypatch,tmp_path):
+    targets={'good.p26.json':'scripts.collect_t18_p26_migration','good.t18.json':'scripts.register_t18_table_contact_distances'}
+    setup(monkeypatch,tmp_path,targets)
+    monkeypatch.setattr(runner,'remote_text',lambda *a,**k:json.dumps([dict(name=n,running=False,fingerprint='x') for n in targets]))
+    commands=[]
+    def run(command,**kwargs):
+        commands.append(command)
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(runner.subprocess,'run',run)
+    runner.main()
+    modules=[c[c.index('-m')+1] for c in commands]
+    assert modules.count('scripts.register_t18_table_contact_distances')==1
+    assert modules.index('scripts.collect_t18_p26_migration')<modules.index('scripts.register_t18_table_contact_distances')
+    assert '--collect-only' in commands[modules.index('scripts.collect_t18_p26_migration')]

@@ -6,6 +6,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from physedit.boundary import digest, write_rows, write_json
+from physedit.prompt_contract import render_facts, VERSION as PROMPT_POLICY
 
 
 def build(audit_root, out, condition_root=None):
@@ -25,15 +26,16 @@ def build(audit_root, out, condition_root=None):
         image=audit_root/'conditioning'/'g03_earth.png'
         condition=condition_root.rstrip('/')+'/'+image.name if condition_root else str(image.resolve())
         # Distinct seed streams across points; results are an independent-pair pilot (K=1).
-        prompt=(f'Fixed camera. A book slides toward a closed laptop on a table; a phone rests on the floor. '
-                f'The book starts at {key["target_speed_mps"]} m/s toward the laptop. Gravity is 9.81 m/s^2. '
-                'Masses: book 0.58 kg, laptop 1.35 kg, phone 0.19 kg. '
-                'No further actuation. Preserve objects and geometry; show six seconds of physical motion.')
+        facts=[['book.initial_speed','',key['target_speed_mps'],'m/s'],
+               ['gravity','',9.81,'m/s^2'],['book.mass','',0.58,'kg'],
+               ['laptop.mass','',1.35,'kg'],['phone.mass','',0.19,'kg']]
+        prompt=render_facts(facts,duration_s=6.0)
         rows.append(dict(sample_id=f't15_earth_{slot}_s0',condition_image=condition,
              condition_sha256=digest(image),prompt=prompt,seed=39100+100*i,
              num_frames=161,fps=25,evaluation_duration_s=6.0,source_width=854,source_height=480,
              width=704,height=480,condition_frame_index=29,condition_time_s=29/30,
-             trigger_time_s=1.,observation_end_s=209/30))
+             trigger_time_s=1.,observation_end_s=209/30,prompt_language='en',
+             prompt_policy=PROMPT_POLICY,generation_parameter_facts=facts))
         keys.append(dict(sample_id=rows[-1]['sample_id'],scene_id='T15',source_group_id=r['group_id'],
              family_id='T15_Genesis_V11_home_earth_A',point_id=slot,theta=key['target_speed_mps'],
              target_event='laptop_falls_to_floor',events=dict(zip(event_names,key['reference_events'])),

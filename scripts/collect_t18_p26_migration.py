@@ -79,11 +79,11 @@ print(json.dumps(dict(previous_host='p25',previous_pid=pid,previous_root=root,ne
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--watch',action='store_true');args=p.parse_args();last=-1
+    p=argparse.ArgumentParser();p.add_argument('--watch',action='store_true');p.add_argument('--collect-only',action='store_true');args=p.parse_args();last=-1
     while True:
         try:
             result=collect();finish_handoff(result);n=len(result['results'])
-            if n>last and n:
+            if n>last and n and not args.collect_only:
                 subprocess.run([sys.executable,'-m','scripts.register_t18_table_contact_distances'],check=True)
                 subprocess.run([sys.executable,'-m','scripts.combine_recovered_boundary_distances'],check=True)
             last=n

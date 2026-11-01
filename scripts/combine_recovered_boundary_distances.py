@@ -26,7 +26,7 @@ def normalize(row,source,kind):
     if bracket is not None:row.update(original_boundary_interval=bracket,**distances(row['theta'],bracket=bracket))
     row['reference_category']=kind
     row['ledger_source']=str(source.resolve())
-    row['publication_status']='retired_T19_render' if row['scene_id']=='T19' else row.get('publication_status','published_reference')
+    row['publication_status']='retired_T19_render' if row['scene_id']=='T19' and not row.get('current_release_binding_verified') else row.get('publication_status','published_reference')
     row['extra_validation_blocks_distance']=False
     span=row.get('normalization_span') or (row.get('normalization_basis') or {}).get('normalization_span')
     if bracket is not None and span:
@@ -39,7 +39,22 @@ def normalize(row,source,kind):
         row['binning_grants_formal_admission']=False
     row['distance_record_id']=hashlib.sha256(json.dumps(dict(engine=row.get('engine'),revision=row.get('revision'),sample_id=row['sample_id'],family=row.get('family_id'),theta=row['theta'],parameter=row.get('parameter_name'),
         event=row.get('target_event'),kind=kind,bracket=bracket,point=row.get('original_critical_value',row.get('original_rendering_star'))),sort_keys=True).encode()).hexdigest()
+    patch=normalization_patches().get(row['distance_record_id'])
+    if patch:
+        if span and abs(span-patch['normalization_span'])>1e-10:raise ValueError('Recovered normalization conflicts with explicit source range')
+        row.update(patch);span=row['normalization_span'];row['binning_grants_formal_admission']=False
+        if bracket:
+            computed=pipeline_distance(dict(theta=row['theta'],boundary=dict(status='verified',bracket=bracket,normalization_span=span,source=str(source.resolve()))))
+            row.update(distance_computation=computed,distance_bin=computed['bin'],normalized_distance_lower=computed['normalized_absolute_interval'][0],normalized_distance_upper=computed['normalized_absolute_interval'][1])
+        elif row.get('absolute_distance') is not None:
+            row.update(normalized_distance_lower=row['absolute_distance']/span,normalized_distance_upper=row['absolute_distance']/span)
     return row
+
+def normalization_patches():
+    if not hasattr(normalization_patches,'cache'):
+        path=ROOT/'normalization_recovery_20261030.json'
+        normalization_patches.cache=json.loads(path.read_text(encoding='utf8'))['patches'] if path.exists() else {}
+    return normalization_patches.cache
 
 
 def main():
@@ -62,6 +77,8 @@ def main():
     sources.append((out/'remaining_family_scan_sample_distances.jsonl','supplemental'))
     sources.append((out/'conditional_family_sample_distances.jsonl','supplemental'))
     sources.append((out/'t18_table_contact_sample_distances.jsonl','supplemental'))
+    sources.append((out/'t19_current_release_distances.jsonl','recovered_original'))
+    sources.append((out/'t20_original_producer_distances.jsonl','recovered_original'))
     sources.append((out/'t12_remaining_grid_sample_distances.jsonl','supplemental'))
     sources.append((out/'t07_B_E4_sample_distances.jsonl','supplemental'))
     sources.append((out/'t07_B_full_grid_distances.jsonl','supplemental'))
@@ -111,9 +128,9 @@ def main():
     for scene in [f'T{i:02}' for i in range(1,21)]:
         selected=[r for r in rows if r['scene_id']==scene]
         counts={kind:len({(r['engine'],r.get('revision'),r['sample_id']) for r in selected if r['reference_category']==kind}) for kind in ['recovered_original','rendering_star','supplemental']}
-        numerical=[r for r in selected if r['reference_category'] not in ['rendering_star','diagnostic_proxy']]
+        numerical=[r for r in selected if r['reference_category'] not in ['rendering_star','diagnostic_proxy'] and r.get('publication_status')!='retired_T19_render']
         summary.append(dict(scene_id=scene,**counts,unique_samples_with_numerical_reference=len({(r['engine'],r.get('revision'),r['sample_id']) for r in numerical}),
-            completion='not_complete',retired=scene=='T19'))
+            completion='not_complete',retired=scene=='T19' and not numerical))
     (out/'combined_all20_summary.json').write_text(json.dumps(dict(all20_completed=False,scenes=summary,source_counts=source_counts,
         records=len(rows),important='Per-category counts overlap. Rendering-star distances are separate from solved boundary distances. Every scene still requires its full family/context coverage check.'),ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(dict(records=len(rows),scenes=summary),ensure_ascii=False))

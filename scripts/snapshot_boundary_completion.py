@@ -120,7 +120,7 @@ print(json.dumps(dict(running=p.exists() and PIPELINE.encode() in p.read_bytes()
           T12=dict(**t12,binding='HF Git/LFS IDs; see t12_latest_verified_records_20261019.jsonl.gz'),
           T13=dict(**t13,binding='four published archive SHA256 values')),
         numerical_jobs=jobs,additional_numerical_jobs=additional_jobs,numerical_distance_outputs=summaries,
-        T19='user confirmed replacement still rendering; old release retired',
+        T19=json.loads((ROOT/'t19_current_release_binding_summary_20261030.json').read_text(encoding='utf8')) if (ROOT/'t19_current_release_binding_summary_20261030.json').exists() else 'current release binding has not been refreshed',
         release_selection=json.loads(Path('docs/critical_boundary/RELEASE_SELECTION.json').read_text(encoding='utf-8')),
         formal_near_reference_count=json.loads((ROOT/'nearacc_readiness_summary.json').read_text(encoding='utf-8'))['completed_formal_near_reference_registrations'],
         important='Recovered current release configs/states are evidence inputs; do not equate them with completed thresholds or formal NearAcc references.')

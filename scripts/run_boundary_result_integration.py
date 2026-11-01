@@ -63,6 +63,8 @@ TARGETS.update({'t12_remaining_grid_p26_'+str(i)+'_launch_20261022.json':'script
 TARGETS.update({'t18_disk_recovery_'+str(i)+'_launch_20261025.json':'scripts.register_t18_table_contact_distances' for i in range(5)})
 TARGETS.update({'t12_timeout_recovery_'+str(i)+'_launch_20261025.json':'scripts.register_t12_remaining_grid' for i in range(4)})
 TARGETS['t13_seed0_repeat_launch_20261025.json']='scripts.collect_t13_repeatability'
+TARGETS['t07_endpoint_repeats_launch_20261030.json']='scripts.collect_t07_endpoint_repeats'
+TARGETS['t18_disk_temp_retry_launch_20261030.json']='scripts.register_t18_table_contact_distances'
 
 
 def main():
@@ -82,6 +84,12 @@ def main():
         temp.write_text(json.dumps(report,indent=2));temp.replace(root/'status.json')
     while True:
         launches={name:json.loads((ROOT/name).read_text(encoding='utf-8-sig')) for name in TARGETS if (ROOT/name).exists() and not (name=='t09_missing_state_replay_launch_20261020.json' and (ROOT/'t09_missing_state_replay_v2_launch_20261020.json').exists())}
+        p26_resume=ROOT/'t18_p26_resume_20261030.json'
+        if p26_resume.exists():
+            for i,row in enumerate(json.loads(p26_resume.read_text(encoding='utf8'))):
+                name='t18_p26_resumed_'+str(i)
+                launches[name]=dict(row,host='p26')
+                TARGETS[name]='scripts.collect_t18_p26_migration'
         # New conditional queues are discovered on every cycle, including
         # retries added after this watcher started.
         marker=ROOT/'conditional_family_launches_20261023.json'
@@ -118,13 +126,19 @@ print(json.dumps(rows))
                     statuses.extend(dict(last_statuses.get(name,dict(name=name,fingerprint=None)),running=None,unreachable=True) for name in subset)
             changed=[r for r in statuses if not r.get('unreachable') and cache.get(r['name'])!=r['fingerprint']]
             modules=sorted({TARGETS[r['name']] for r in changed})
+            if 'scripts.collect_t18_p26_migration' in modules:
+                # The registrar depends on the freshly collected p26 results.
+                # Run it once after collection, never concurrently in two collectors.
+                modules=[m for m in modules if m!='scripts.register_t18_table_contact_distances']
             # Publish a fresh heartbeat before potentially long collectors. A
             # stopped process must not leave its last snapshot looking live.
             heartbeat(status='collecting',jobs=statuses,unreachable_hosts=unreachable,modules=modules,errors=errors[-30:])
             succeeded=set()
             def run(module):
                 with (root/(module.split('.')[-1]+'.log')).open('a',encoding='utf-8') as log:
-                    result=subprocess.run([sys.executable,'-X','utf8','-m',module],stdout=log,stderr=subprocess.STDOUT,timeout=1800)
+                    command=[sys.executable,'-X','utf8','-m',module]
+                    if module=='scripts.collect_t18_p26_migration':command.append('--collect-only')
+                    result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,timeout=1800)
                 if result.returncode:raise RuntimeError(module+' failed; retained previous output, inspect its log')
             with ThreadPoolExecutor(max_workers=3) as executor:
                 futures={executor.submit(run,module):module for module in modules}
@@ -138,7 +152,11 @@ print(json.dumps(rows))
                     heartbeat(status='collecting',jobs=statuses,unreachable_hosts=unreachable,modules=modules,pending_modules=sorted(futures[f] for f in pending),completed_modules=sorted(succeeded),errors=errors[-30:])
             post_failed=False
             if succeeded or post_pending:
-                for module in ['scripts.combine_recovered_boundary_distances','scripts.snapshot_boundary_completion','scripts.write_all20_boundary_progress']:
+                if 'scripts.collect_t18_p26_migration' in succeeded:
+                    try:run('scripts.register_t18_table_contact_distances')
+                    except Exception as exc:
+                        post_failed=True;errors.append(dict(module='scripts.register_t18_table_contact_distances',error=str(exc),time=time.time()))
+                for module in ['scripts.bind_current_t19_distances','scripts.combine_recovered_boundary_distances','scripts.summarize_boundary_outstanding','scripts.snapshot_boundary_completion','scripts.audit_current_boundary_coverage','scripts.write_all20_boundary_progress']:
                     try:run(module)
                     except Exception as exc:
                         post_failed=True;errors.append(dict(module=module,error=str(exc),time=time.time()))

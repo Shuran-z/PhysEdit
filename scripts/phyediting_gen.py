@@ -1,7 +1,7 @@
 """Gravity-editing generation inputs for PhyEditing, and scoring of the generated videos.
 
 `build`: for benchmark items, the condition frame (the last frame of the static prelude, identical across the five
-gravities of a scene), a prompt (event description + target gravity) and a generation template row in the format
+gravities of a scene), an English prompt containing declared initial physical inputs, and a generation template row in the format
 the physedit runners read.
 
 `score`: generated videos tracked from their first frame (= the condition frame) are fitted in the item's declared
@@ -29,25 +29,17 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gravtrace.fit import safe_fit  # noqa: E402
+from physedit.prompt_contract import from_item as conditional_prompt, VERSION as PROMPT_POLICY
 
 CONDITION_FRAME = 23  # the prelude is static for 24 frames, so this frame is the same at every gravity
 MAX_SPEED = 8.0  # m/s, the launch-speed bound of `score --v0 agnostic` (tabletop pushes stay well below)
-EVENTS = {
-    "T03": "On a table, a thin book slides into a soda can standing at the table edge; the can falls off onto a lower shelf and a phone drops to the floor.",
-    "T05": "A soda can slides across a table toward two objects with a gap between them.",
-    "T08": "On a small table, a moving book hits another book that carries a mug; the mug and the books slide off the table edge and fall to the floor.",
-    "T16": "A folder leaning on a book tips over when its support is removed and falls onto a small box.",
-    "T17": "A red soda can rolls down a tilted book used as a ramp on a table, rolls past a tissue box and falls off the table edge.",
-    "T18": "A book is pulled out of a stack of books on a table; the books above lose their support, tilt and tumble down.",
-    "T19": "A soda can slides across a table and hits another can, which is pushed to the table edge and falls.",
-    "T20": "A sliding book pushes a soda can, which pushes a small box, which pushes a cup, in a chain reaction on a table.",
-}
+EVENTS = {f'T{n:02}': 'Continue the initial arrangement shown in the conditioning image.' for n in range(1,21)}
 GRAVITY = {
-    1.62: "The scene takes place under the Moon's low gravity (1.62 m/s^2), so falling objects drop slowly.",
-    3.71: "The scene takes place under Mars gravity (3.71 m/s^2), weaker than on Earth, so objects fall more slowly than usual.",
+    1.62: "The prescribed gravitational acceleration is 1.62 m/s^2.",
+    3.71: "The prescribed gravitational acceleration is 3.71 m/s^2.",
     9.81: "The scene takes place under normal Earth gravity (9.81 m/s^2).",
-    15.0: "The scene takes place under strong gravity (15 m/s^2), about 1.5 times Earth's, so objects fall faster than usual.",
-    24.0: "The scene takes place under very strong gravity (24 m/s^2), about 2.5 times Earth's, so objects fall very fast.",
+    15.0: "The prescribed gravitational acceleration is 15 m/s^2.",
+    24.0: "The prescribed gravitational acceleration is 24 m/s^2.",
 }
 NEGATIVE = "camera motion, cuts, blurry, distorted objects, objects appearing or disappearing, text, watermark"
 
@@ -75,7 +67,7 @@ def build(args) -> None:
         sid = hashlib.sha256(it['id'].encode()).hexdigest()[:24]
         host = args.host_root.rstrip('/')
         local = Path(args.data_root) / it['video']
-        prompt = it.get('generation_prompt') or EVENTS.get(it['event'])
+        prompt = conditional_prompt(it)
         reason = it.get('input_failure')
         if not reason and (not prompt or it['gravity'] not in GRAVITY):
             reason = 'unsupported_registered_prompt_or_gravity'
@@ -104,7 +96,7 @@ def build(args) -> None:
                     raise ValueError('condition_image_write_failure')
                 pdir = out / 'prompts' / sid
                 pdir.mkdir()
-                (pdir / 'prompt.txt').write_text(f"{prompt} The camera is fixed. {GRAVITY[it['gravity']]}")
+                (pdir / 'prompt.txt').write_text(prompt, encoding='utf-8')
                 (pdir / 'negative_prompt.txt').write_text(NEGATIVE)
                 per_g[it['gravity']] += 1
             except (OSError, ValueError, cv2.error) as error:
@@ -120,7 +112,7 @@ def build(args) -> None:
             'condition_frame_index': CONDITION_FRAME, 'condition_time_ms': 1000. * CONDITION_FRAME / it['fps'],
             'prompt_file': f'{host}/prompts/{sid}/prompt.txt', 'negative_prompt_file': f'{host}/prompts/{sid}/negative_prompt.txt',
             'prompt_granularity': 'fine', 'seed': args.seed, 'gravity_truth': it['gravity'],
-            'protocol': 'phyediting_gravity_v1', 'gen_height': 480, 'gen_width': 704 if w >= h else 480,
+            'protocol': 'phyediting_gravity_v1', 'prompt_policy': PROMPT_POLICY, 'prompt_language': 'en', 'gen_height': 480, 'gen_width': 704 if w >= h else 480,
             'input_failure': reason, 'split': it.get('split', 'unspecified'),
             'source_video_sha256': sha256(local) if local.is_file() else None,
             'inversion_applicability': eligibility[it['id']],
