@@ -1,17 +1,23 @@
 # Evaluating a model
 
+## Input version
+
+Start from [`catalog/active_core100_conditions.json`](../catalog/active_core100_conditions.json). Five T19 references use `core100-t19-isaac-v1-20261031`; the other 95 retain their frozen v6 inputs. Read the exact condition frame, observation window and prompt hashes from the bound task record. Existing generated cohorts and their reported results keep their original inputs.
+
+The released PhysProbe results use their registered reference libraries. Before evaluating replacement references, prepare matching simulation libraries, tracks and known-answer validation for that version; do not reuse an old T19 library or transfer its annotations. See [the reference replacement record](critical_boundary/CORE100_T19_REPLACEMENT.md).
+
 ## Requirements
 
 - Python 3.9 or newer with the packages of `pyproject.toml`: `pip install -e .`
 - The SAM 3.1 checkpoint `sam3.1_multiplex.pt` and a GPU host for tracking.
-- The Core100 tasks from [PhyDataset](https://huggingface.co/datasets/phy2/phydataset): reference videos, condition frames, prompts and the original Genesis scenes.
+- The Core100 tasks from [PhyDataset](https://huggingface.co/datasets/phy2/phydataset): reference videos, condition frames, prompts and each task's original scene and simulation backend.
 - The simulation libraries and predictability windows of the Core100 tasks, built once as listed below.
 
 All data live under `PHYSPROBE_WORK`, see `physprobe/inversion/paths.py`.
 
 ## Generate
 
-For every Core100 task, generate one video from its condition frame, which is frame 5 of the reference video, for each of the three prompt variants and three seeds. Store the videos in the layout of the [released generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations): one `resized.mp4` per item, resized to the reference resolution, next to its item record.
+For each task, generate one video from its registered condition frame for each of the three prompt variants and three seeds. The released PhysProbe cohort uses frame 5; this is not a default for other input versions. Store the videos in the layout of the [released generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations): one `resized.mp4` per item, resized to the reference resolution, next to its item record.
 
 ## Evaluate
 

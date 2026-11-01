@@ -1,17 +1,23 @@
 # 评测一个模型
 
+## 输入版本
+
+从 [`catalog/active_core100_conditions.json`](../catalog/active_core100_conditions.json) 加载当前参考。五条 T19 使用 `core100-t19-isaac-v1-20261031`，其余 95 条沿用冻结 v6。条件帧、观察窗和提示词哈希逐条读取，已有生成批次与结果仍保留其实际输入。
+
+已发布的 PhysProbe 结果使用该批次登记的参考库。替代参考需要对应版本的仿真库、跟踪和已知参数验证；不能沿用旧 T19 库或转移其人工标签。见[参考替换记录](critical_boundary/CORE100_T19_REPLACEMENT.md)。
+
 ## 需要准备
 
 - Python 3.9 或更新版本，安装 `pyproject.toml` 里的依赖：`pip install -e .`
 - SAM 3.1 权重 `sam3.1_multiplex.pt`，以及一台有 GPU 的机器用于跟踪。
-- [PhyDataset](https://huggingface.co/datasets/phy2/phydataset) 中的 Core100 任务：参考视频、条件帧、提示词和作者原始的 Genesis 场景。
+- [PhyDataset](https://huggingface.co/datasets/phy2/phydataset) 中的 Core100 任务：参考视频、条件帧、提示词和各任务对应的原场景及仿真后端。
 - Core100 任务的仿真库和可预测窗口，按下文一次性准备。
 
 所有数据放在 `PHYSPROBE_WORK` 下，见 `physprobe/inversion/paths.py`。
 
 ## 生成
 
-对每个 Core100 任务，以条件帧即参考视频第 5 帧为输入，三种提示词写法、三个随机种子各生成一条视频。存放方式和[已发布的生成视频](https://huggingface.co/datasets/phy2/phy2-benchmark-generations)相同：每条一个 `resized.mp4`，缩放到参考分辨率，旁边放它的条目记录。
+对每个任务，以逐项登记的条件帧为输入，三种提示词写法、三个随机种子各生成一条视频。已发布的 PhysProbe 批次使用第 5 帧，这不代表其他输入版本也采用第 5 帧。存放方式和[已发布的生成视频](https://huggingface.co/datasets/phy2/phy2-benchmark-generations)相同：每条一个 `resized.mp4`，缩放到参考分辨率，旁边放它的条目记录。
 
 ## 评测
 
