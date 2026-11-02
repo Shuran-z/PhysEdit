@@ -20,6 +20,10 @@ STATIC_PX, SHOULD_PX = 3.0, 10.0
 # PHYSPROBE_MOTION_WINDOW=inverted reproduces the earlier motion records (e.g. all_cc_revised_v6h_add128_gated_motion.jsonl).
 WINDOW = __import__('os').environ.get('PHYSPROBE_MOTION_WINDOW', 'fixed')
 assert WINDOW in ('fixed', 'inverted', 'official'), WINDOW   # 'official': old name of 'inverted'
+# PHYSPROBE_MOTION_SIM_TO_VIDEO=1: the simulated motion is taken only up to the simulation frame of the video's last tracked frame,
+# so a video shorter than the predictability window (e.g. 49 frames at 24 fps, 2 s) is not called static for motion the
+# simulation shows after the video has ended. Default off (the official records); no effect when the video covers the window.
+SIM_TO_VIDEO = __import__('os').environ.get('PHYSPROBE_MOTION_SIM_TO_VIDEO', '0') == '1'
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('tracks'); ap.add_argument('--items', default='all')
 ap.add_argument('--clock', choices=['realtime', 'reference'], default='realtime'); ap.add_argument('--workers', type=int, default=24)
 ap.add_argument('--with-truth', action='store_true')
@@ -65,7 +69,8 @@ def run_clip(clip):
             o = medfilt3(ob)[sel]
             obs_px = float(np.nanmax(np.abs(o - ob[i0]))) if np.isfinite(o).any() else float('nan')
             frac, sb = boxes[n]; F = len(sb); sbv = sb * sa + sb_
-            fr = [f for f in range(4, min(h, F - 1) + 1) if frac[f] >= ev.MIN_VIS]
+            hs = min(h, int(np.floor(np.nanmax(s)))) if SIM_TO_VIDEO else h
+            fr = [f for f in range(4, min(hs, F - 1) + 1) if frac[f] >= ev.MIN_VIS]
             sim_px = float(np.max(np.abs(sbv[fr] - sbv[4]))) if fr and frac[4] >= ev.MIN_VIS else float('nan')
             # motion onset (s after the condition frame): first frame moved > STATIC_PX (whole video for the observation)
             mv = np.nanmax(np.abs(medfilt3(ob) - ob[i0]), 1) > STATIC_PX; ko = k[mv & (k >= kc)]
