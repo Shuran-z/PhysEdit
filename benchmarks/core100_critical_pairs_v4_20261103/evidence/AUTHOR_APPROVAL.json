@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-03",
+  "source": "explicit_user_reply",
+  "question_item_id": "call_73469455023e4f7094cb54d4db79be53",
+  "user_reply": "换成cam02，补齐100条参考",
+  "clip_id": "T03_C02",
+  "old_camera": "cam03",
+  "new_camera": "cam02",
+  "old_inputs_outputs_labels_retained": true,
+  "new_input_requires_independent_generation_and_annotation": true
+}

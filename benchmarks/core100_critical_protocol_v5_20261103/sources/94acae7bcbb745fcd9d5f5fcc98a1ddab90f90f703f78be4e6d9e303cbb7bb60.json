@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "clip_id": "T06_C02",
+      "compared_with": "T06_C05",
+      "objects_and_physics_equal": true,
+      "normalized_force_pulse_maximum_difference": 4.099251083022892e-08,
+      "force_rounding_tolerance": 1e-06,
+      "source_seed_is_not_claimed_identical": true,
+      "source_ledger": {
+        "path": "review/core100_v2_resolution_20261102/T06_C05_released_axis_c484a1c9b08d.json",
+        "sha256": "c484a1c9b08d03ec699dca65c52c911efb48be6cc0f6cf63f5efac4443b87839"
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "compared_with": "T06_C05",
+      "objects_and_physics_equal": true,
+      "normalized_force_pulse_maximum_difference": 5.670847104399801e-08,
+      "force_rounding_tolerance": 1e-06,
+      "source_seed_is_not_claimed_identical": true,
+      "source_ledger": {
+        "path": "review/core100_v2_resolution_20261102/T06_C05_released_axis_c484a1c9b08d.json",
+        "sha256": "c484a1c9b08d03ec699dca65c52c911efb48be6cc0f6cf63f5efac4443b87839"
+      }
+    },
+    {
+      "clip_id": "T18_C01",
+      "theta": 0.04,
+      "objects_and_physics_equal_except_declared_book_friction": true,
+      "actual_source_seed_equal": true,
+      "camera_and_timing_equal": true,
+      "source_endpoint_label": 1,
+      "native_endpoint_record": {
+        "path": "review/core100_v2_resolution_20261102/t18_gpu_endpoints_collect_192ff733c419.json",
+        "sha256": "192ff733c4190e5f17a187c3d1fbd3f762378b19ad49110fc6ec5fcea08adc12"
+      },
+      "source_state_sha256": "9ca18649843173f16a8a369dc588973b7f6f2cf197910551def222248de58e56",
+      "source_reference_video_sha256": "fe3b30009efe0aa2462f405caa74db52779f9c6c38da6042174d6df306ac83f9"
+    },
+    {
+      "clip_id": "T18_C02",
+      "theta": 0.08,
+      "objects_and_physics_equal_except_declared_book_friction": true,
+      "actual_source_seed_equal": true,
+      "camera_and_timing_equal": true,
+      "source_endpoint_label": 0,
+      "native_endpoint_record": {
+        "path": "review/core100_v2_resolution_20261102/t18_gpu_endpoints_collect_192ff733c419.json",
+        "sha256": "192ff733c4190e5f17a187c3d1fbd3f762378b19ad49110fc6ec5fcea08adc12"
+      },
+      "source_state_sha256": "dd3f7e9548a1ef4bac16daf8e64a00095f4b732c92a4801d241322fbc894a20e",
+      "source_reference_video_sha256": "fe3b30009efe0aa2462f405caa74db52779f9c6c38da6042174d6df306ac83f9"
+    }
+  ],
+  "scope": "Additional source-context equality checks. Published T04/T10 are also checked in the roster builder; old references and model labels are not edited."
+}

@@ -1,0 +1,919 @@
+{
+  "points": [
+    {
+      "clip_id": "T06_C02",
+      "theta": 0.0571429,
+      "source_repeat": true,
+      "pid": 264170,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.0571429",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "5381abbcca86ca2dfb3b33a15ab8b74fc61670edb8f7c3002479ef3ee0a25273",
+      "source_config_sha256": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+      "source_state_sha256": "9663ba138dca890480d0de25832572f41b1a86ce03009e8d72323bc67f3748da",
+      "reference_video_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam01/cam01.json": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": false,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.0571429/physics.json",
+      "state_sha256": "d174a7e37daee63a0977c22f7becb5ddf264d423d0f96d00e49fdbf43d17e9c7",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          51,
+          63,
+          73,
+          84,
+          94,
+          104
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          51,
+          63,
+          73,
+          84,
+          94,
+          104
+        ]
+      },
+      "source_position_error_m": {
+        "frozen_tabletop_collision_slab": 0,
+        "t06_book_00": 0.0012431257264411868,
+        "t06_book_01": 0.0017022422386391246,
+        "t06_book_02": 0.002767582878123458,
+        "t06_book_03": 0.0029161797480282766,
+        "t06_book_04": 0.0035769913563045487,
+        "t06_book_05": 0.003083408629149785,
+        "t06_book_06": 0.0022251842650614405,
+        "t06_book_07": 0.0027982535052094386,
+        "t06_book_08": 0.004843665255479199,
+        "t06_book_09": 0.00832024078624136
+      },
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 826616995,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 3,
+        "entity_a": "t06_book_01",
+        "entity_b": "t06_book_02",
+        "geom_a": 2,
+        "geom_b": 3,
+        "penetration_m": 0.002196667715907097,
+        "position": [
+          -0.24732260406017303,
+          -0.07177973538637161,
+          0.24240875244140625
+        ],
+        "normal": [
+          -0.9999313950538635,
+          -0.011137375608086586,
+          0.003625220386311412
+        ],
+        "force": [
+          5.16024112701416,
+          0.057596605271101,
+          -3.0181806087493896
+        ],
+        "physics_substep_index": 653,
+        "telemetry_scope": "internal_substep",
+        "frame": 32
+      }
+    },
+    {
+      "clip_id": "T06_C02",
+      "theta": 0.12,
+      "source_repeat": false,
+      "pid": 264171,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.12",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "9a27764d39e09a9888bb70f3d4e2cd08f92e4576bdd40cf81de41e3570ad7474",
+      "source_config_sha256": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+      "source_state_sha256": "9663ba138dca890480d0de25832572f41b1a86ce03009e8d72323bc67f3748da",
+      "reference_video_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam01/cam01.json": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.12/physics.json",
+      "state_sha256": "fdbbd25d964d3c9051e25eae62bb55642a203963d2966390d0f9444b4b6ef926",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          30,
+          39,
+          53,
+          70,
+          84,
+          98,
+          113,
+          130,
+          145
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          51,
+          63,
+          73,
+          84,
+          94,
+          104
+        ]
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 826616995,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 0,
+        "entity_a": "t06_book_00",
+        "entity_b": "t06_book_01",
+        "geom_a": 1,
+        "geom_b": 2,
+        "penetration_m": 0.004605213645845652,
+        "position": [
+          -0.5521787405014038,
+          -0.07924643903970718,
+          0.21650482714176178
+        ],
+        "normal": [
+          -0.9995241761207581,
+          -0.0021651790011674166,
+          0.03076804243028164
+        ],
+        "force": [
+          1.0483516454696655,
+          -0.06337212771177292,
+          0.3953832983970642
+        ],
+        "physics_substep_index": 625,
+        "telemetry_scope": "internal_substep",
+        "frame": 31
+      }
+    },
+    {
+      "clip_id": "T06_C02",
+      "theta": 0.1225,
+      "source_repeat": false,
+      "pid": 264172,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.1225",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "02ec1c3771d6d750a77c445c5c37119da65406d660a19a72a351ee0e958c46c8",
+      "source_config_sha256": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+      "source_state_sha256": "9663ba138dca890480d0de25832572f41b1a86ce03009e8d72323bc67f3748da",
+      "reference_video_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam01/cam01.json": "2f23c95cd11ae74adc5a84e94ac0144a29d39a348c9ed8b9750867a24bc18fb6",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C02_0.1225/physics.json",
+      "state_sha256": "a8f7a9e1941c30c93c3eb2cf7289ddb0ada823b9509a8c2e860740392ec06822",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          30,
+          40,
+          55,
+          70,
+          84,
+          99,
+          115,
+          130,
+          145
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          51,
+          63,
+          73,
+          84,
+          94,
+          104
+        ]
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 826616995,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 2,
+        "entity_a": "t06_book_03",
+        "entity_b": "t06_book_04",
+        "geom_a": 4,
+        "geom_b": 5,
+        "penetration_m": 0.1406995803117752,
+        "position": [
+          0.0036375310737639666,
+          0.11508815735578537,
+          0.05650968849658966
+        ],
+        "normal": [
+          -0.2828786075115204,
+          -0.0042266035452485085,
+          0.9591465592384338
+        ],
+        "force": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "physics_substep_index": 2249,
+        "telemetry_scope": "internal_substep",
+        "frame": 132
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "theta": 0.0571429,
+      "source_repeat": true,
+      "pid": 264173,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.0571429",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "98fe904adf3633b071d31ff32b3c6db9fb2cb19cc81cc55823be20603647c0e6",
+      "source_config_sha256": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+      "source_state_sha256": "3a375b14576cb6c6741cc5212e4be06e1b4b0862c143e37032110b170b18471e",
+      "reference_video_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam01/cam01.json": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": false,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.0571429/physics.json",
+      "state_sha256": "56c64f26c0d693fe03c42ccf8a782c1872f816620568601d1964d23be04651cb",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          46,
+          52,
+          57,
+          62,
+          67,
+          72
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          46,
+          52,
+          57,
+          62,
+          67,
+          72
+        ]
+      },
+      "source_position_error_m": {
+        "frozen_tabletop_collision_slab": 0,
+        "t06_book_00": 0.00045886936144411237,
+        "t06_book_01": 0.0006085308071591991,
+        "t06_book_02": 0.0011293498628166924,
+        "t06_book_03": 0.0024236384267366465,
+        "t06_book_04": 0.002695758350444613,
+        "t06_book_05": 0.008829991090465516,
+        "t06_book_06": 0.004449810647172876,
+        "t06_book_07": 0.003618341416409119,
+        "t06_book_08": 0.003231318110090597,
+        "t06_book_09": 0.0029506042099058764
+      },
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 1817424301,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 3,
+        "entity_a": "t06_book_05",
+        "entity_b": "t06_book_06",
+        "geom_a": 6,
+        "geom_b": 7,
+        "penetration_m": 0.10656774044036865,
+        "position": [
+          0.2988274395465851,
+          0.11204012483358383,
+          0.08835900574922562
+        ],
+        "normal": [
+          -0.3950597643852234,
+          0.000696301634889096,
+          0.9186551570892334
+        ],
+        "force": [
+          0.43802109360694885,
+          -0.01722881570458412,
+          -0.3741491734981537
+        ],
+        "physics_substep_index": 1997,
+        "telemetry_scope": "internal_substep",
+        "frame": 116
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "theta": 0.12,
+      "source_repeat": false,
+      "pid": 264174,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.12",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "2ca01ce39641eb64c1976a6e3091903800f952962009f87192453cf22960f480",
+      "source_config_sha256": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+      "source_state_sha256": "3a375b14576cb6c6741cc5212e4be06e1b4b0862c143e37032110b170b18471e",
+      "reference_video_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam01/cam01.json": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.12/physics.json",
+      "state_sha256": "03a82a9f2bc4af35350dd532cb6b5a5b2c63f50ea276e9b0f228af62c24d18e5",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          30,
+          38,
+          48,
+          57,
+          64,
+          71,
+          79,
+          86,
+          94
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          46,
+          52,
+          57,
+          62,
+          67,
+          72
+        ]
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 1817424301,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 1,
+        "entity_a": "t06_book_04",
+        "entity_b": "t06_book_05",
+        "geom_a": 5,
+        "geom_b": 6,
+        "penetration_m": 0.18122082948684692,
+        "position": [
+          0.1529930830001831,
+          0.11322160810232162,
+          0.058278173208236694
+        ],
+        "normal": [
+          -0.2968677580356598,
+          0.0016112333396449685,
+          0.9549173712730408
+        ],
+        "force": [
+          0.0,
+          -0.0,
+          -0.0
+        ],
+        "physics_substep_index": 1621,
+        "telemetry_scope": "internal_substep",
+        "frame": 93
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "theta": 0.1225,
+      "source_repeat": false,
+      "pid": 264175,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.1225",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "764b9504a2de6e4ea2addb64f7257425c6eb434e5baec6c40418c9d59968c1ee",
+      "source_config_sha256": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+      "source_state_sha256": "3a375b14576cb6c6741cc5212e4be06e1b4b0862c143e37032110b170b18471e",
+      "reference_video_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam01/cam01.json": "c6fd009df24072789b9e26bd7ca9a488aa7e9929639fdb0d32430960307376fd",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        0.02,
+        0.085
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T06_C03_0.1225/physics.json",
+      "state_sha256": "c098dd44f481587dc7e0906fd360d60d6b081a1a17d2f855af4c5a1dd70b8769",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          30,
+          39,
+          49,
+          57,
+          64,
+          72,
+          80,
+          88,
+          95
+        ]
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_frames": [
+          27,
+          32,
+          40,
+          46,
+          52,
+          57,
+          62,
+          67,
+          72
+        ]
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 1817424301,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 0,
+        "entity_a": "t06_book_00",
+        "entity_b": "t06_book_01",
+        "geom_a": 1,
+        "geom_b": 2,
+        "penetration_m": 0.0032662060111761093,
+        "position": [
+          -0.5682820081710815,
+          -0.07930805534124374,
+          0.1900528073310852
+        ],
+        "normal": [
+          -0.9999996423721313,
+          -1.3690766536456067e-05,
+          0.0008470153552480042
+        ],
+        "force": [
+          8.508077621459961,
+          0.00011653939873212948,
+          -4.944320201873779
+        ],
+        "physics_substep_index": 625,
+        "telemetry_scope": "internal_substep",
+        "frame": 31
+      }
+    },
+    {
+      "clip_id": "T09_C01",
+      "theta": 15.5714286,
+      "source_repeat": true,
+      "pid": 264176,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_15.5714286",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "d32ed139913f0b53256995dafb32ef0ba94c0f4094d9d6f70bba69fca91db296",
+      "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam01/cam01.json": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        10.0,
+        16.0
+      ],
+      "outside_published_parameter_domain": false,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_15.5714286/physics.json",
+      "state_sha256": "cb8900b3548a4f44eff48a927939e4d19b79109490b79cdabd23c938c5b58d37",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_position_error_m": {
+        "frozen_tabletop_collision_slab": 0,
+        "t09_book_00": 1.1128438905741254e-05,
+        "t09_book_01": 1.725121260535489e-05,
+        "t09_book_02": 5.3652004701318694e-05,
+        "t09_book_03": 1.7909206130134813e-07,
+        "t09_book_04": 0.00016771744477393327,
+        "t09_book_05": 0.0001504429537030657,
+        "t09_book_06": 0.0004951346029008741,
+        "t09_book_07": 0.0005914927830312555
+      },
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 321758521,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 3,
+        "entity_a": "t09_book_04",
+        "entity_b": "t09_book_05",
+        "geom_a": 5,
+        "geom_b": 6,
+        "penetration_m": 0.0013590651797130704,
+        "position": [
+          -0.16298164427280426,
+          0.08765333145856857,
+          0.1362278163433075
+        ],
+        "normal": [
+          0.004769868217408657,
+          -0.0001381945185130462,
+          -0.9999886155128479
+        ],
+        "force": [
+          2.9529683589935303,
+          0.0747143030166626,
+          9.212648391723633
+        ],
+        "physics_substep_index": 861,
+        "telemetry_scope": "internal_substep",
+        "frame": 45
+      }
+    },
+    {
+      "clip_id": "T09_C01",
+      "theta": 4.25,
+      "source_repeat": false,
+      "pid": 264177,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.25",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "fa1038443a629036db6e49445f492ef111e26220015205045c9003032b8440a1",
+      "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam01/cam01.json": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        10.0,
+        16.0
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.25/physics.json",
+      "state_sha256": "6b0d6ce4dd691aa82aef30d8b70fe0fdc7e349d184e91e87d2b844de5ab43a16",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "ever_contacts": 1,
+        "first_contact_frame": 137
+      },
+      "source_measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 321758521,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 2,
+        "entity_a": "t09_book_03",
+        "entity_b": "t09_book_04",
+        "geom_a": 4,
+        "geom_b": 5,
+        "penetration_m": 0.12128991633653641,
+        "position": [
+          -0.12886743247509003,
+          0.08887185156345367,
+          0.1372186541557312
+        ],
+        "normal": [
+          0.20319584012031555,
+          -0.0003052449901588261,
+          -0.9791380763053894
+        ],
+        "force": [
+          0.5381378531455994,
+          0.0006157038151286542,
+          2.171734571456909
+        ],
+        "physics_substep_index": 1561,
+        "telemetry_scope": "internal_substep",
+        "frame": 89
+      }
+    },
+    {
+      "clip_id": "T09_C01",
+      "theta": 4.45,
+      "source_repeat": false,
+      "pid": 326389,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.45",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "eaed53dda53f1e3bcf4232abc88305b3e5c3d40c068c8092f39b404abc3f4f47",
+      "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam01/cam01.json": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        10.0,
+        16.0
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.45/physics.json",
+      "state_sha256": "63d91dce6dbf8c68927e6032c21aed79726cc4777b71364d0488a3d8b892589d",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 1,
+        "ever_contacts": 1,
+        "first_contact_frame": 156
+      },
+      "source_measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 321758521,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 1,
+        "entity_a": "t09_book_02",
+        "entity_b": "t09_book_04",
+        "geom_a": 3,
+        "geom_b": 5,
+        "penetration_m": 0.16654612123966217,
+        "position": [
+          -0.12984809279441833,
+          -0.0875801295042038,
+          0.10393814742565155
+        ],
+        "normal": [
+          0.5113191604614258,
+          0.0014123221626505256,
+          -0.8593897819519043
+        ],
+        "force": [
+          -0.14846748113632202,
+          -0.002122055971994996,
+          1.6600297689437866
+        ],
+        "physics_substep_index": 1893,
+        "telemetry_scope": "internal_substep",
+        "frame": 110
+      }
+    },
+    {
+      "clip_id": "T09_C01",
+      "theta": 4.5,
+      "source_repeat": false,
+      "pid": 326392,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.5",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "e30e3a72ffbe352637043273b96abb5b19b4f847dbe6de4895183faf24636dc9",
+      "source_config_sha256": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "source_hashes": {
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "/data_cached/wangzijun_p25/liyuhan/core100_t18_cpu_exact_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam01/cam01.json": "754d193b52d8b97ba615fb554bffbc8dfd3300b56719b42f543fa3d10acfab51",
+        "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain": [
+        10.0,
+        16.0
+      ],
+      "outside_published_parameter_domain": true,
+      "original_family_preserved": true,
+      "formal_admission": false,
+      "frozen_inputs_modified": false,
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.5/physics.json",
+      "state_sha256": "70689388787d88f567451ba8350c237979ddefcede9a069a22139b88a7e0d5e5",
+      "actual_objects_solver_seed_control_and_clock_verified": true,
+      "measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_measurement": {
+        "label": 0,
+        "ever_contacts": 0,
+        "first_contact_frame": null
+      },
+      "source_position_error_m": null,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 321758521,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/render_sample.py",
+        "renderer_sha256": "89189629b1924b8beba41ace57f3ec18bade43e3b2685e17a4779c4437bd2256",
+        "instrumentation_sha256": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "native_depth_diagnostic": {
+        "physics_step_index": 2,
+        "entity_a": "frozen_tabletop_collision_slab",
+        "entity_b": "t09_book_03",
+        "geom_a": 0,
+        "geom_b": 4,
+        "penetration_m": 0.0012456504628062248,
+        "position": [
+          -0.6011336445808411,
+          -0.09610217809677124,
+          -0.0009594596922397614
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "force": [
+          5.3655219078063965,
+          0.0,
+          10.31831169128418
+        ],
+        "physics_substep_index": 1209,
+        "telemetry_scope": "internal_substep",
+        "frame": 67
+      }
+    }
+  ],
+  "status": "completed",
+  "frozen_inputs_modified": false,
+  "normalization_domains_unchanged": true
+}

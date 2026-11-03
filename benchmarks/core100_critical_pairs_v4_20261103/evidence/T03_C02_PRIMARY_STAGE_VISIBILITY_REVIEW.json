@@ -1,0 +1,30 @@
+{
+  "clip_id": "T03_C02",
+  "author_clarification": "越缘下落即可，不要求落地",
+  "floor_visibility_required_for_primary_event": false,
+  "original_camera": "cam03",
+  "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+  "native_roi": [
+    530,
+    350,
+    730,
+    480
+  ],
+  "frames": [
+    96,
+    100,
+    103,
+    106,
+    108,
+    110,
+    111,
+    112
+  ],
+  "source_pixel_magnification": "2x nearest-neighbour; no inferred or generated pixels",
+  "image": "review/core100_six_replacements_20261103/t03_camera_candidates/cam03_phone_native_roi.png",
+  "image_sha256": "9e6c9febb84a16df82beb56936760ee2db807f2cc2056e73a9f8aa4f003af0f8",
+  "visual_review": "The small dark phone moves toward the bottom crop boundary. Its relevant downstream support edge and subsequent downward departure are not fully visible in cam03. The large blue upper book is a different actor. Disappearance alone is not an edge-fall label.",
+  "same_run_camera_with_visible_stage": "cam02",
+  "existing_frozen_input_changed": false,
+  "existing_primary_event_already_excludes_floor_impact": true
+}

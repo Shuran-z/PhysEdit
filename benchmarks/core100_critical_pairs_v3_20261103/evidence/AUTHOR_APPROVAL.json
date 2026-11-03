@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-03",
+  "decision": "允许准备6条替换的新版本",
+  "cases": [
+    "T04_C02",
+    "T06_C02",
+    "T06_C03",
+    "T10_C05",
+    "T18_C01",
+    "T18_C02"
+  ],
+  "constraints": {
+    "scenes": 20,
+    "per_scene": 5,
+    "old_inputs_models_annotations_preserved": true,
+    "new_generation_and_annotation_required": true,
+    "live_annotation_migration_authorized_by_this_artifact": false
+  },
+  "T18_implementation": "Render a separate original-GPU-state replay pair; do not mislabel new RGB as existing published videos."
+}

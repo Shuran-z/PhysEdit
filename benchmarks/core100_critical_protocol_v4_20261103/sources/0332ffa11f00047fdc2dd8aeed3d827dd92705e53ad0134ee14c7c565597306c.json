@@ -1,0 +1,208 @@
+{
+  "status": "candidate_only_pending_author_event_choice",
+  "rows": [
+    {
+      "clip_id": "T03_C01",
+      "kind": "frozen_reference",
+      "theta": 0.1,
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014/metadata/T03V5F480__bg01_home_ase__g01_moon__global_C_05__A0550000__B0008000__C0100000__r014__cam01.json.gz",
+      "expected_sha256": "a2796e1fbb9c05150d0e65bd30089dd1e06e58c0a1ab7eb5a03a8ff65eba55ba",
+      "reference_video_sha256": "bebdd0f52f72027a3d85919c107b730f162f8da242333ce22793b4ebfe8c311d",
+      "stored_state_sha256": "a2796e1fbb9c05150d0e65bd30089dd1e06e58c0a1ab7eb5a03a8ff65eba55ba",
+      "decoded_state_sha256": "587cae909f492c4e958419f7b956f89b9196604e74734a369c42c7da2c6f797d",
+      "measurement": {
+        "label": 0,
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "evidence_frames": [
+          4,
+          154
+        ],
+        "can_phone_contact_frame": 111,
+        "reason": "Complete reference window; no qualifying contact-then-edge-fall stage."
+      },
+      "experimental_seed": 3100935941,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C02",
+      "kind": "frozen_reference",
+      "theta": 0.1,
+      "state_path": "/data_cached/wangzijun_p25/hf_staging_t03_r032_delta_20260920/repo_root/data/T03/formal_480p_fullsim_r032_r034_delta_pass561_20260920/metadata/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.json.gz",
+      "expected_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+      "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "stored_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+      "decoded_state_sha256": "1e44203fcaf0d40dba844bd60afed8a7201f14a766f7abd177d7c350002ea0b6",
+      "measurement": {
+        "label": 1,
+        "can_phone_contact_frame": 100,
+        "first_frame": 113,
+        "confirmed_frame": 114,
+        "evidence_frames": [
+          100,
+          113,
+          114
+        ],
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "physical_frame_period_s": 0.03333333333333333,
+        "scope": "Observed contact then edge-fall onset; not complete C2 floor outcome or causal attribution."
+      },
+      "experimental_seed": 1652679045,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C02",
+      "kind": "existing_endpoint",
+      "theta": 0.1,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T03_C02/T03_C02/profile_0/0.1/physics.json.gz",
+      "expected_sha256": "bc9977cc9c31a8a4b666ae123d64bd79c08f513a5776ca6a5f07c5b0898d96a5",
+      "config_sha256": "6cbb384139a9117a87de573fff735a9b932f73dda0eb385dddd9e119007aca5d",
+      "stored_state_sha256": "fd52dff5e0494fc7c6c40cdecf7cefb347a17d98e9ef0f7220b4d89f5be9a4de",
+      "decoded_state_sha256": "bc9977cc9c31a8a4b666ae123d64bd79c08f513a5776ca6a5f07c5b0898d96a5",
+      "measurement": {
+        "label": 1,
+        "can_phone_contact_frame": 100,
+        "first_frame": 112,
+        "confirmed_frame": 113,
+        "evidence_frames": [
+          100,
+          112,
+          113
+        ],
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "physical_frame_period_s": 0.03333333333333333,
+        "scope": "Observed contact then edge-fall onset; not complete C2 floor outcome or causal attribution."
+      },
+      "experimental_seed": 1652679045,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C02",
+      "kind": "existing_endpoint",
+      "theta": 0.4,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T03_C02/T03_C02/profile_0/0.4/physics.json.gz",
+      "expected_sha256": "0028adff0ceb337fec81d29b2760e19183e3aae778ef8f16ce9a064e3c57b64c",
+      "config_sha256": "be05490da8bac7eaa310f2c79d70bc23a5d50d9b095d5eda22fc1341fa974158",
+      "stored_state_sha256": "d806ddb2c4a7e6066863a24768c564f29b45298f9eedc75646d8fbe3d1b4ed17",
+      "decoded_state_sha256": "0028adff0ceb337fec81d29b2760e19183e3aae778ef8f16ce9a064e3c57b64c",
+      "measurement": {
+        "label": 0,
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "evidence_frames": [
+          4,
+          154
+        ],
+        "can_phone_contact_frame": null,
+        "reason": "Complete reference window; no qualifying contact-then-edge-fall stage."
+      },
+      "experimental_seed": 1652679045,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C03",
+      "kind": "frozen_reference",
+      "theta": 0.1,
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014/metadata/T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014__cam01.json.gz",
+      "expected_sha256": "a9d1857c877fb78f689ec8169a2a8aa61e5095201bb09d002274e76a3467748a",
+      "reference_video_sha256": "4e61c885a4db36f9fdac0a5bdbafe7cbd8de2b15df53574f24a7c81adab05675",
+      "stored_state_sha256": "a9d1857c877fb78f689ec8169a2a8aa61e5095201bb09d002274e76a3467748a",
+      "decoded_state_sha256": "0af689f381c21e06af1bcaaef52b03d5a403a99769a26365edc0598e7b48e40b",
+      "measurement": {
+        "label": 1,
+        "can_phone_contact_frame": 106,
+        "first_frame": 124,
+        "confirmed_frame": 125,
+        "evidence_frames": [
+          106,
+          124,
+          125
+        ],
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "physical_frame_period_s": 0.03333333333333333,
+        "scope": "Observed contact then edge-fall onset; not complete C2 floor outcome or causal attribution."
+      },
+      "experimental_seed": 3152586458,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C03",
+      "kind": "existing_endpoint",
+      "theta": 0.1,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T03_C03/T03_C03/profile_0/0.1/physics.json.gz",
+      "expected_sha256": "4b19c4dc5af245ccb1d28e971abea940411ad5652e65ca802a0ca3423c1c3583",
+      "config_sha256": "a7a8f715685d51964697194f06cac4b48760fe522f3f68f62601f02d4126f0b0",
+      "stored_state_sha256": "1a9d7a85adbf0a24695bdaec5a0cd73a4ee836c350536d0495473f5c00e33416",
+      "decoded_state_sha256": "4b19c4dc5af245ccb1d28e971abea940411ad5652e65ca802a0ca3423c1c3583",
+      "measurement": {
+        "label": 1,
+        "can_phone_contact_frame": 107,
+        "first_frame": 120,
+        "confirmed_frame": 121,
+        "evidence_frames": [
+          107,
+          120,
+          121
+        ],
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "physical_frame_period_s": 0.03333333333333333,
+        "scope": "Observed contact then edge-fall onset; not complete C2 floor outcome or causal attribution."
+      },
+      "experimental_seed": 3152586458,
+      "declared_random_seed": null
+    },
+    {
+      "clip_id": "T03_C03",
+      "kind": "existing_endpoint",
+      "theta": 0.4,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T03_C03/T03_C03/profile_0/0.4/physics.json.gz",
+      "expected_sha256": "d5d5a6fa6375b94c45b97b085ede02e240a410e9cbc6e6a5ccb105c133c17a37",
+      "config_sha256": "80e6a997015b17b5d4a18745183e5c9bc4c6d9836b0c86558acf4a4e3484ef8b",
+      "stored_state_sha256": "450868d22bcb319d1e8436d8b48b70f19e91ba465cb1bd62d8cce321ffa8bb67",
+      "decoded_state_sha256": "d5d5a6fa6375b94c45b97b085ede02e240a410e9cbc6e6a5ccb105c133c17a37",
+      "measurement": {
+        "label": 0,
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "evidence_frames": [
+          4,
+          154
+        ],
+        "can_phone_contact_frame": null,
+        "reason": "Complete reference window; no qualifying contact-then-edge-fall stage."
+      },
+      "experimental_seed": 3152586458,
+      "declared_random_seed": null
+    }
+  ],
+  "source_registry_sha256": "08366d78e9e1b6c9cb7b5472759df3910ec37f18f8a0d5f7b234dddc1fb0e23e",
+  "module_sha256": "9c2f8e86ed842789f90b28663c22acee22ac3f3f4864d7030c878f9f55509156",
+  "simulations_started": 0,
+  "old_complete_C2_labels_transferred": false,
+  "active_scoring_modified": false
+}

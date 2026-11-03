@@ -1,0 +1,15 @@
+{
+  "clip_id": "T03_C02",
+  "reference_video_sha256": "b7a0d5bfb91962c673bacb1378b86ef172b360ccecc59ca94243921f459a5c03",
+  "status": "observable_for_registered_target",
+  "label": 1,
+  "event": "phone_edge_fall_after_can_contact",
+  "evidence_frames": [
+    110,
+    114,
+    118
+  ],
+  "reviewer": "assistant_visual_reference_review_20261103",
+  "independent_human_gold": false,
+  "definition_scope": "Can contacts the original phone, then that phone passes the support edge and begins descending. No floor impact required."
+}

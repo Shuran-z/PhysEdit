@@ -1,0 +1,282 @@
+{
+  "phase": "endpoints",
+  "status": "completed",
+  "points": [
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.04,
+      "pid": 547295,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.04",
+      "config_sha256": "eb89cdb1d114cb1b292c6c695a1737ac7deb8bef9b17119b776de71ff51051c8",
+      "original_frozen_config_sha256": "09d2f073c0b99eeb81fe8bbba705286374d38455e2b997d40347db8f9170df10",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.04/physics.json",
+      "state_sha256": "ad66854025b99ac17ae90f6cd5e4dd7a026972f66c01cd09484662325faff2df",
+      "reference_native_state_sha256": "12ef34cbfbb532e5a7dc0ed289c7c923f3d7115b342c3d1cb977a2dc06bd01dc",
+      "old_numerical_state_sha256": "1c2bcf9b26f9d21ee8dca82ff88c57d81bc2d71f98952683dbd4c46233d00c80",
+      "reference_video_sha256": "666e1ee997a8f4c719ff813c1cc073633fec092226250f4d3110057da1f950ae",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 2022945425,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            31
+          ]
+        ],
+        "cup_final_displacement_m": 0.9084746651013682
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            20
+          ]
+        ],
+        "cup_final_displacement_m": 0.9127339525434859
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "executed_parameter_value": 0.040000000000000036,
+      "recorded_experiment_gap": 0.03290909090909091,
+      "parameter_attestation": "Executed dynamic-object poses/velocity checked; descriptive legacy experiment fields are separately retained.",
+      "native_peak_penetration_m": 0.0003448450588621199,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    },
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.45,
+      "pid": 547296,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.45",
+      "config_sha256": "d07262e6917919e7390996ef4db6b2616e76448692474e97ddf5af90c1108469",
+      "original_frozen_config_sha256": "09d2f073c0b99eeb81fe8bbba705286374d38455e2b997d40347db8f9170df10",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.45/physics.json",
+      "state_sha256": "b8af0094ffcb59648d75d7bd5501acf0c68e7cffae480bf285509dc0c18ee185",
+      "reference_native_state_sha256": "12ef34cbfbb532e5a7dc0ed289c7c923f3d7115b342c3d1cb977a2dc06bd01dc",
+      "old_numerical_state_sha256": "1c2bcf9b26f9d21ee8dca82ff88c57d81bc2d71f98952683dbd4c46233d00c80",
+      "reference_video_sha256": "666e1ee997a8f4c719ff813c1cc073633fec092226250f4d3110057da1f950ae",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 2022945425,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            38,
+            4
+          ]
+        ],
+        "cup_final_displacement_m": 0.028046673430275997
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            20
+          ]
+        ],
+        "cup_final_displacement_m": 0.9127339525434859
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "executed_parameter_value": 0.4500000000000002,
+      "recorded_experiment_gap": 0.03290909090909091,
+      "parameter_attestation": "Executed dynamic-object poses/velocity checked; descriptive legacy experiment fields are separately retained.",
+      "native_peak_penetration_m": 0.0006742236437276006,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 0.5,
+      "pid": 547643,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C05_0.5",
+      "config_sha256": "d4140f2b95d66f10a2a065b49a5303315fd0dbb5ec2486634a5d4284955ea7f9",
+      "original_frozen_config_sha256": "fbfad2c1d20a285a08c23fa4a051fa3bf996e01e8b8a24100c29cf1d3751589e",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C05_0.5/physics.json",
+      "state_sha256": "f8009bdd611a7dd0353bb55057ac61c1b10dc8ea8b75efd415ca6a50209ba531",
+      "reference_native_state_sha256": "4075b1301907d99f29ef6458f4d8f5e7a6ac0c78233d3e154aa5f8f2e1b72f1f",
+      "old_numerical_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+      "reference_video_sha256": "d89c90774e742416cd148b4db7d44d332c0b88f9fbd0750eb5f2da841f6644af",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 733500356,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 0,
+        "first_contact_tuples": [
+          [
+            24,
+            21
+          ],
+          [
+            24,
+            36
+          ],
+          null
+        ],
+        "cup_final_displacement_m": 0.0015003681182861328
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            2
+          ],
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            22
+          ]
+        ],
+        "cup_final_displacement_m": 0.10554177035105061
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "executed_parameter_value": 0.5,
+      "recorded_experiment_gap": 0.003,
+      "parameter_attestation": "Executed dynamic-object poses/velocity checked; descriptive legacy experiment fields are separately retained.",
+      "native_peak_penetration_m": 7.918340998003259e-05,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 2.25,
+      "pid": 547644,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C05_2.25",
+      "config_sha256": "d24c739db5bc879da9c53cd1687ade9c0a72c1d6760b07ff46f20381e5f19a35",
+      "original_frozen_config_sha256": "fbfad2c1d20a285a08c23fa4a051fa3bf996e01e8b8a24100c29cf1d3751589e",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C05_2.25/physics.json",
+      "state_sha256": "2886062be5454d62254ee0ed84db4ff1c5da853d689aa364b5bfc0ff97183f6f",
+      "reference_native_state_sha256": "4075b1301907d99f29ef6458f4d8f5e7a6ac0c78233d3e154aa5f8f2e1b72f1f",
+      "old_numerical_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+      "reference_video_sha256": "d89c90774e742416cd148b4db7d44d332c0b88f9fbd0750eb5f2da841f6644af",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 733500356,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            4
+          ],
+          [
+            24,
+            8
+          ],
+          [
+            24,
+            39
+          ]
+        ],
+        "cup_final_displacement_m": 0.032411104005706945
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            2
+          ],
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            22
+          ]
+        ],
+        "cup_final_displacement_m": 0.10554177035105061
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "executed_parameter_value": 2.25,
+      "recorded_experiment_gap": 0.003,
+      "parameter_attestation": "Executed dynamic-object poses/velocity checked; descriptive legacy experiment fields are separately retained.",
+      "native_peak_penetration_m": 0.00035026081604883075,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    }
+  ],
+  "source_hashes": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+    "/data_cached/wangzijun_p25/liyuhan/core100_t16_c04_sealed_window_v2_20261030/native_bootstrap.py": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/contact_precision_render.py": "f7b8ed866872da64caa32043295049bf3e8ca8d29045c1675b2ef10c40a06977",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4"
+  },
+  "original_sources_modified": false
+}

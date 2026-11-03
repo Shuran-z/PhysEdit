@@ -1,0 +1,1873 @@
+{
+  "schema": "core100-t07-original-published-friction-readback-v1",
+  "cases": [
+    {
+      "clip_id": "T07_C01",
+      "reference_video_sha256": "cac6af50f855b78dc990708f0b19b25d39a03ac9b43b009b19090ad407159151",
+      "source": {
+        "sample_id": "T07F2B__bg01_home_ase__g01_moon__global_08__boundary",
+        "theta": 0.25,
+        "labels": {
+          "motion_ge_1cm": 1
+        },
+        "maximum_displacement_m": 0.2450789104156461,
+        "fixed_context_sha256": "9624d27db0b9eb80507f07e3770f40fe728799ebfbf0c38c73195966b37ce2ff",
+        "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g01_moon__global_08__boundary.json.gz",
+        "stored_state_sha256": "7cc095f71b919a93f08d64814ddb4427694c2c01e0c09da59b42b842eefeed10",
+        "state_sha256": "34ed4ab020029b51a3f4a52e249be4fb8f414abe298d08cfb1724eccef3f0f48",
+        "baseline_frame": 4,
+        "end_frame_index": 154,
+        "horizon_s": 5.0,
+        "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g01_moon__global_08__boundary/videos/T07F2B__bg01_home_ase__g01_moon__global_08__boundary__cam01.mp4"
+      },
+      "matched_points": 4,
+      "ambiguous_points": 0,
+      "original_family": "phone_surface_friction_coefficient",
+      "normalization_domain": [
+        0.2,
+        0.28
+      ],
+      "intervals": [],
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "fixed_context_fields": "All original object specifications except the phone friction; original solver and clock.",
+      "scope": "Observed original published contrasts; no same-random-seed, unique-root or numerical-convergence claim."
+    },
+    {
+      "clip_id": "T07_C02",
+      "reference_video_sha256": "e9f43c622acb27a5b8495b3dd7fc7eed9599174a70b366a2a239c8e6080d7107",
+      "source": {
+        "sample_id": "T07F2B__bg01_home_ase__g02_mars__global_08__boundary",
+        "theta": 0.25,
+        "labels": {
+          "motion_ge_1cm": 1
+        },
+        "maximum_displacement_m": 0.5563615863498308,
+        "fixed_context_sha256": "8a497457eac31937bc321f18c70db93288b6e0a31e1d891ef77c54ff1212553b",
+        "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g02_mars__global_08__boundary.json.gz",
+        "stored_state_sha256": "24d62f1efda5d509213cdb2f37c870d0ea940f84513ab4ea1e9d3a3b5c1f7417",
+        "state_sha256": "2cefb1aa930526b23c8a4e959f22eb5b1bab9c1be56c2a4c6c08fe784f02cfa3",
+        "baseline_frame": 4,
+        "end_frame_index": 154,
+        "horizon_s": 5.0,
+        "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g02_mars__global_08__boundary/videos/T07F2B__bg01_home_ase__g02_mars__global_08__boundary__cam01.mp4"
+      },
+      "matched_points": 4,
+      "ambiguous_points": 0,
+      "original_family": "phone_surface_friction_coefficient",
+      "normalization_domain": [
+        0.2,
+        0.28
+      ],
+      "intervals": [],
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "fixed_context_fields": "All original object specifications except the phone friction; original solver and clock.",
+      "scope": "Observed original published contrasts; no same-random-seed, unique-root or numerical-convergence claim."
+    },
+    {
+      "clip_id": "T07_C03",
+      "reference_video_sha256": "3432d5a73ac6593c0f5eb17635c917ec6435b78e6166e66989976c03680491fa",
+      "source": {
+        "sample_id": "T07F2B__bg01_home_ase__g03_earth__global_08__boundary",
+        "theta": 0.25,
+        "labels": {
+          "motion_ge_1cm": 1
+        },
+        "maximum_displacement_m": 0.5705630944562319,
+        "fixed_context_sha256": "58ac75cb9968274b9f37408095c2ea31593f99c6fa748c20a8a4ef0dd438cdcb",
+        "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__global_08__boundary.json.gz",
+        "stored_state_sha256": "ae380b89bee9d54b2769fba606d953e3469a12956495f4714ca992ce508f77c4",
+        "state_sha256": "e6f6e6abf6031ad9e97d593041e4e0e39e5e979dd04a8365558b42d89e313934",
+        "baseline_frame": 4,
+        "end_frame_index": 154,
+        "horizon_s": 5.0,
+        "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__global_08__boundary/videos/T07F2B__bg01_home_ase__g03_earth__global_08__boundary__cam01.mp4"
+      },
+      "matched_points": 4,
+      "ambiguous_points": 0,
+      "original_family": "phone_surface_friction_coefficient",
+      "normalization_domain": [
+        0.2,
+        0.28
+      ],
+      "intervals": [],
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "fixed_context_fields": "All original object specifications except the phone friction; original solver and clock.",
+      "scope": "Observed original published contrasts; no same-random-seed, unique-root or numerical-convergence claim."
+    },
+    {
+      "clip_id": "T07_C04",
+      "reference_video_sha256": "6b212e5e71ee50036aba0bca5b57e9c8f7f22b4199448c15d1c740524c460227",
+      "source": {
+        "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_minus__rep01",
+        "theta": 0.2,
+        "labels": {
+          "motion_ge_1cm": 1
+        },
+        "maximum_displacement_m": 0.5560174073368626,
+        "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+        "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_minus__rep01.json.gz",
+        "stored_state_sha256": "71a87fc743168d49df1fb6862597f126883cea453f2bef0e03a491d28c2ef133",
+        "state_sha256": "8b847dc8c63d86aec91c255e54de4e7a1cd6f0552e4817520c79130ab2dd41ab",
+        "baseline_frame": 4,
+        "end_frame_index": 154,
+        "horizon_s": 5.0,
+        "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_minus__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_minus__rep01__cam01.mp4"
+      },
+      "matched_points": 64,
+      "ambiguous_points": 0,
+      "original_family": "phone_surface_friction_coefficient",
+      "normalization_domain": [
+        0.2,
+        0.28
+      ],
+      "intervals": [
+        {
+          "event": "motion_ge_1cm",
+          "bracket": [
+            0.24,
+            0.28
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5007333994287636,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "902e316028799e892aa0b153b8b958a10d84cc61e1f86624b8865f49b2460b1b",
+                "state_sha256": "108baf9eaf9241305efd8b3ff4277a7e46eca012960fb100532efc9d539c561d",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501313994176082,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2c3accca1ab631b2efc47e5272e23ade249ddeb0cc6a7c7e07989d33e1a23137",
+                "state_sha256": "2998a3c9ceb68ffaefa9f95ada7255d969ee9f1941066e8a54ffe540c86b7c90",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010359851952382,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "dd95e4359924f708c735dc9bb94afb754ef02e63729014f7bf71e44b8e20a043",
+                "state_sha256": "7ee4c1515b47a92c27f3b69e77956c3c7335d0748d6c3f815a150d8898273747",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.508946667051147,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "3ba5bc707565d8937bf9c864f2b275c6da05983ecb3f0855d7a96cf7d81c36c4",
+                "state_sha256": "d1454251f13ea8d653f60ea5c68503b98876852f34ebd4980dcefb61698dff23",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551565877,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "0adcf4d4ecd17d72fb5c3d1522bf4aa794f88775e5062c865d92a508152f3a1a",
+                "state_sha256": "2fd3ae3a56f1c688d87c655234570cf8337be82045d49175d75bef9fce11fee5",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011501070448884,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "c918297c7604c41df9895f67c989cbc778018c888fdab01e65b8f9f61bf7d083",
+                "state_sha256": "1e7af84d84183ebe408426cd88d4f3c54bc2a00cd758d9c74ef0500542843445",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102012031547,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "713a7450fa3bf4a42d338b9aa204312e20fe817daba18cd97c6b6b906a03dc3a",
+                "state_sha256": "597ca1134bcd8e57d4b564e1f7d0d34b8122d3dc5cba5d56f60e72a009164b1c",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009428202996737,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2991f1e72a5509c6d70007f68f11568c3d0560b9c7902cc717f7ee53fe3bf69c",
+                "state_sha256": "3d657c99cefdcb12f9013ebde56d4b173cc0f66017b452c03bc0b76bf46852b3",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102012031547,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "5afaa27f8e2d0bf1386aa1cd5667f9cd457ed44fcc836321aa85e788895a58ff",
+                "state_sha256": "756ac3528629c8749cfcea652feb900faf7099132e2065115112504f63a05ac1",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5026654024508949,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "b61b471c0279e09b7323bd4f54a26c2c42975cb2055196ce2b62a3eae6bf1fca",
+                "state_sha256": "fd86f104e0e96d9d4e6d1b027ab83eaa18aa40926f9f65a510cb520b6ebb1805",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__global_07__boundary/videos/T07F2B__bg01_home_ase__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551691544,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "13283c9cfafb262a26b06e47a288d4d6af9767a9e92b7397b42d5c14a844f84f",
+                "state_sha256": "fb2ce03656bb0ad443c9f37348595d1c76e0484c31e522c08c61547be9c832a3",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5029335815238086,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "83b9f480e847980a3086eb523682e9d8abeea305ff9cbdf16b610652415494ee",
+                "state_sha256": "1c9d18ccd32a0658b32d53930940ba59a775c6e954771459ed29eceb65d28cf9",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011545772446181,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "a7cb4bcbef295bcf7c4524a5898f4396278e8efbcd22029f59b153d1b6c71fd2",
+                "state_sha256": "c667eb7c0eb709cb4ce1e5348d6baf89d78537c6766b0abfaba6f1754c449810",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009496675815065,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "0f1bbe3743b18c39ea95437e89e4e5a6221617e9d3d3771596ef4dc23d8e928c",
+                "state_sha256": "6d4b10291f38059dbc639f7655209464f785648bf4c2935aa62cd542ce94dcf8",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5012573025380104,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "030c5d4bbb69d4d675511d72fc55f8f1698f9999c824ee2b96160a1cfdd076e5",
+                "state_sha256": "7ffba4ccd4684b0b95489874f909ca2dfca8097b18d20c0d1ece973ee90e2a7e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501257212614168,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "325479eb00521b0579924a126ec27c17529f2e7f4b9f8d7c6f4aa2eaeca11c99",
+                "state_sha256": "dd9e783e2bd0b8eb93fc025ff20f6bea2d277dddcea9345f155694a09cd89e6f",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010360150154456,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "6036cc3f16f74b12c452b01a1c621509a1895007281365e5eae41ad35740136c",
+                "state_sha256": "f0d71783c3850a949c6707c74a823f02af48e289244d6d0678a9f28b8b262c76",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010364088365541,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "20731ea04827871506d1e665775af4ed2fc791a4b777542def91a5f0be10144e",
+                "state_sha256": "d172fbadb5c2452f0adf549d8f8dbe25d3d20bef54577a157204f661871b604e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551709496,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "f29548be3850b5421319115db8dfbd8ab06de2262c3f1031382aa61669156d35",
+                "state_sha256": "9f315eb428bd0ce62797a38bb9458dabc4dced5211915377bb3354d5712de148",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551709496,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "0e0a76e075fa6deba6e2dcdf4bffdc9b06245d816a79dc477f16ff2ddccb7724",
+                "state_sha256": "c234fb553c296cace74e6b0b885bd923ec13db7c21e5644dff5b80cb62d0aafd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary/videos/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009101904019039,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "abeeef2beb63b3738854463bf8efb70a31015fd90da8df82eaa3079acfe2a070",
+                "state_sha256": "baf021e36bee8e965d1ecfa108f82734152b82b877ec63b91898211ca701974b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102314721431,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2e7b78ef9895c31a292bfb1a97594b8e50bcf83521b0df6da7add5403ba3ff2d",
+                "state_sha256": "bd63b9a1ca2f376ec0c989a9c537059cfd118c843198b75f10f0e67ef45328e6",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010359856545831,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "7426d2029c98a185f59ef50b880230cff560d6a1732172a0938a8d4923c4a7f3",
+                "state_sha256": "4f847893977d7cb0ba123c11419c1c01eb4a30c63dbf0441b90add39246923ca",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551691544,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "921fbb25e4b2b1767c580e203cf2a47e8bc2b4661b7036009ce4ec43bf75821d",
+                "state_sha256": "e3c73932f02df6ce8b56feae5d98d3fd656f72fea6d516e9e35057e87644769a",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009250974907141,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "8c7908de7705dc2d90e0cdedf44e75c3c6007be96474864f96d0bd9121aebc95",
+                "state_sha256": "308c35ad02aff0defb69b6af349aaed204a42944f784b39b970d4fe3884a90fd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501195915887767,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "b5ad111eea0d86841a719b3f3ea64aaca2bebd3f283a1306c6af633764a0b1f1",
+                "state_sha256": "76c6a18736eeee276c0578eea7d1b166ebaf6c0109f9266a9ab0385b39ccf802",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501257242878022,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "7c86e546c6d6090720ce9f03a7be2023a18079192ddc9a17ba00591d5445656a",
+                "state_sha256": "0f9b16b0aef3698848e84c3b7a2ea32cfc121f7a1fa670002ef6e27102bcc740",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.50125721261939,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "71a37e7a24ca59549f2779efb37ff915102c66f40257eb1904ccd15ff58f5e13",
+                "state_sha256": "3cce4bd67b9212ec318cc0ce6b3096458365720548095a0bfd3700559d1a3147",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5023816571031144,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "621a788cda01f3bc9683fb2caf21a939a5fbda4e1c2e0fabde15fca9c40222bb",
+                "state_sha256": "b2695ffc3673274a499f16db8bfe500914b59703f4399b4ca4c28b2663ffa57b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898547078242,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "fca9cd75fbbe1d8546456fa3c3853606d131ddc16aa374a1e550c0a8625ce74c",
+                "state_sha256": "c950558a5f7456e3bc4bd7440db4b5dcc00c028bcb1d2ad465fb636ba966109b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary/videos/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010196773965058,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "4bd9d1e9768f373547ba80379a5df4ad2704e77ab004c7f8da7b6cae3dfa2c25",
+                "state_sha256": "81890ed1723955f1e117303cd7523aa3e397457acde602c1d9af2676006475f7",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5030813254436447,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "7320aa34ace25c2a181f0b5029cf31f37c8c2eb353d11ea875094afbe62e3421",
+                "state_sha256": "3f875ab05be33fd9e297525fd9d6f729707044f6da8f49cb0c010e350a76d7ad",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009141901994107,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "cc5e0760b6702b354abccdd1d9c7cc245afbcedf93080100f48bee96968f1d63",
+                "state_sha256": "19351c191692374f3e47c185f494485dd2ab6c973711f68c78eeaa8135cfb292",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5029143161793809,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "1a48de9d73bbafe8da4c7aaa295e810b2fd3f7b2bf65ee691babf664ff5b1605",
+                "state_sha256": "8037aa5ce17a36a680f0289243b7bf216dfbd3441ac5f9cd04e41ae944e5dd53",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010868964896807,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "ef38509ce16ee6f8e753f095afef135bbe8c19658e0a4c06a734eebb3fbf8ff6",
+                "state_sha256": "c2e991b901b2cae4d4865360a28923165260cdd54ec277f2e854f15c4fa7b6fb",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5008960342833043,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "a5e8f2f40dea9f7fd713c3cb60df896e1622f1bc0dfab5f04b88e19b862d4d95",
+                "state_sha256": "21e0891792ce7dcc994da249e2cbdcb50db00b4a5fbe1deb764927e2bbb570dd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009331052705112,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "36629569059beb1eafe261b5e01dffa2bf9eb41a7abeee65d5f1c9c74d14deb6",
+                "state_sha256": "7d50cc0388b9644e56e5a848fa007f0922c14c1c7d1920a5de7ad63f25923133",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5012572424276258,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "cf7e22dabab8744088fa41611172aa9734ffd479adffd774a70574c9ba6aba02",
+                "state_sha256": "8dfd8a77000e92e412e6e1f9b60d8c6e03585a325995ac9af5990d07c7be50ea",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.502832542236569,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "5349789bf5a3b037b79030cf186b2180705a118064597be2c58804c6728bd3ba",
+                "state_sha256": "ec4712b7af5d444a68b8120e9668b44fd3f221540f1c93278dc770cdfe38f6e5",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5027236401568278,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "e3dec079a5fdf2567ad54f6d9596fb3cfaf683f9b7f0faedcc2cdfc9e1de0878",
+                "state_sha256": "318fc0c0ad8fba36a7da4be5e68cbd0596d39e2979db188bb02beed0fdf6e28e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary/videos/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary__cam01.mp4"
+              }
+            ],
+            [
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "95ab83af743d3d5f14bbc193c56bbad1bb0becfef7856da320898a887a92f186",
+                "state_sha256": "048079117e2146f369d7950584e6a1a713955c37c9aa2b1af540b928bd2ead41",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "ac0afd942afaa7b5dbaa7707eea31cd2450cf52464cac2a648df493c592e6098",
+                "state_sha256": "cdde6c15ec9754373a88464a5f6b5f70d539d8acc5e3007d44e8a4b975783f72",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "354baa0ba9bfb199637bd8a9679235cae45ef499bc36806625d0d09e4f11781b",
+                "state_sha256": "f11e2bdd9c00550a5a59b5da1f9319ddd6a322f699cb98b466d2594dd18d8731",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "964fab5ac2afa729a7ea6041749d4db51e6d23bf257a1889e4dce739e9ef3314",
+                "state_sha256": "e7ce5f95f989b0fa1c2f00b6f2839598ed0b4ea19851026dae6c50787cf86676",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "e577b1812be2c75ce4828332c31ae9a7640193596a6349c34329bb2c30af37a1",
+                "state_sha256": "77ab18030740b8b2a9da71e5937deeaf1f4223db29e22c2bea3667214b83a4aa",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "2e70940be893d2335f81ee86b09df902f912d94f1f524624b687b93832ef89d2",
+                "state_sha256": "84e80c2cb18a011b614ec4fb64797095bf888c2ec296987c861087efa1d547fa",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "fa776665207bd72ea4aaa4999ad3d271eea450109527d80889d26875552ac3fa",
+                "state_sha256": "899e163d5a337a87f93970bd06135427540a1a90d584a2931bf49851b14a57ff",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "9dfa12e3832bb5f33c9e0e6d733adb2507805d90b087694221e495a089ca4645",
+                "state_sha256": "d3d8db86a120feafd9d352b45087a3a8a14af07a5726e9962c49a85eca8cf709",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "16cedd382a81828ea336f7846cece64dc299c8f6c211d93afb9c35b44f341eef",
+                "state_sha256": "d220c905ae47365a06e2840d386ecbbb6940ee2161d005d5e4035b65379c251c",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "b7bf06693cfeb67cac2a6777cb4788ef9c562d2551b74bc522bd0ec4fae335ab",
+                "state_sha256": "d34753e48d83a3d5da36f30820d16acf081219e1c0dc30140ba6e087eb546db1",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "b54723bf35e6b5cf67d309786c3bc97cfff5c37e72056362dad3d740e366e1c5",
+                "state_sha256": "52fd976c577a5d8c2825ee9b12b444a064a9bda9f9f5e558bef47ea7b35fdafd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "7d093c0bc40b6a4218e2969d9895fdd32f43573488cfcf78e847adca839a765e",
+                "state_sha256": "2edb90043538fea54dc74c9df7e43be983807862ef3eab10750a95914a344f9b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              }
+            ]
+          ]
+        }
+      ],
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "fixed_context_fields": "All original object specifications except the phone friction; original solver and clock.",
+      "scope": "Observed original published contrasts; no same-random-seed, unique-root or numerical-convergence claim."
+    },
+    {
+      "clip_id": "T07_C05",
+      "reference_video_sha256": "fc0b95a3ecbe80174d24e26d9ee45b28b70e764f1ddc7530e55b92060ec50451",
+      "source": {
+        "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+        "theta": 0.28,
+        "labels": {
+          "motion_ge_1cm": 0
+        },
+        "maximum_displacement_m": 0.003147928230030652,
+        "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+        "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+        "stored_state_sha256": "95ab83af743d3d5f14bbc193c56bbad1bb0becfef7856da320898a887a92f186",
+        "state_sha256": "048079117e2146f369d7950584e6a1a713955c37c9aa2b1af540b928bd2ead41",
+        "baseline_frame": 4,
+        "end_frame_index": 154,
+        "horizon_s": 5.0,
+        "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+      },
+      "matched_points": 64,
+      "ambiguous_points": 0,
+      "original_family": "phone_surface_friction_coefficient",
+      "normalization_domain": [
+        0.2,
+        0.28
+      ],
+      "intervals": [
+        {
+          "event": "motion_ge_1cm",
+          "bracket": [
+            0.24,
+            0.28
+          ],
+          "labels": [
+            1,
+            0
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5007333994287636,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "902e316028799e892aa0b153b8b958a10d84cc61e1f86624b8865f49b2460b1b",
+                "state_sha256": "108baf9eaf9241305efd8b3ff4277a7e46eca012960fb100532efc9d539c561d",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501313994176082,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2c3accca1ab631b2efc47e5272e23ade249ddeb0cc6a7c7e07989d33e1a23137",
+                "state_sha256": "2998a3c9ceb68ffaefa9f95ada7255d969ee9f1941066e8a54ffe540c86b7c90",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010359851952382,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "dd95e4359924f708c735dc9bb94afb754ef02e63729014f7bf71e44b8e20a043",
+                "state_sha256": "7ee4c1515b47a92c27f3b69e77956c3c7335d0748d6c3f815a150d8898273747",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.508946667051147,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "3ba5bc707565d8937bf9c864f2b275c6da05983ecb3f0855d7a96cf7d81c36c4",
+                "state_sha256": "d1454251f13ea8d653f60ea5c68503b98876852f34ebd4980dcefb61698dff23",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551565877,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "0adcf4d4ecd17d72fb5c3d1522bf4aa794f88775e5062c865d92a508152f3a1a",
+                "state_sha256": "2fd3ae3a56f1c688d87c655234570cf8337be82045d49175d75bef9fce11fee5",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011501070448884,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "c918297c7604c41df9895f67c989cbc778018c888fdab01e65b8f9f61bf7d083",
+                "state_sha256": "1e7af84d84183ebe408426cd88d4f3c54bc2a00cd758d9c74ef0500542843445",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102012031547,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "713a7450fa3bf4a42d338b9aa204312e20fe817daba18cd97c6b6b906a03dc3a",
+                "state_sha256": "597ca1134bcd8e57d4b564e1f7d0d34b8122d3dc5cba5d56f60e72a009164b1c",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009428202996737,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2991f1e72a5509c6d70007f68f11568c3d0560b9c7902cc717f7ee53fe3bf69c",
+                "state_sha256": "3d657c99cefdcb12f9013ebde56d4b173cc0f66017b452c03bc0b76bf46852b3",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102012031547,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "5afaa27f8e2d0bf1386aa1cd5667f9cd457ed44fcc836321aa85e788895a58ff",
+                "state_sha256": "756ac3528629c8749cfcea652feb900faf7099132e2065115112504f63a05ac1",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5026654024508949,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "b61b471c0279e09b7323bd4f54a26c2c42975cb2055196ce2b62a3eae6bf1fca",
+                "state_sha256": "fd86f104e0e96d9d4e6d1b027ab83eaa18aa40926f9f65a510cb520b6ebb1805",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__global_07__boundary/videos/T07F2B__bg01_home_ase__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551691544,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "13283c9cfafb262a26b06e47a288d4d6af9767a9e92b7397b42d5c14a844f84f",
+                "state_sha256": "fb2ce03656bb0ad443c9f37348595d1c76e0484c31e522c08c61547be9c832a3",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5029335815238086,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "83b9f480e847980a3086eb523682e9d8abeea305ff9cbdf16b610652415494ee",
+                "state_sha256": "1c9d18ccd32a0658b32d53930940ba59a775c6e954771459ed29eceb65d28cf9",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011545772446181,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "a7cb4bcbef295bcf7c4524a5898f4396278e8efbcd22029f59b153d1b6c71fd2",
+                "state_sha256": "c667eb7c0eb709cb4ce1e5348d6baf89d78537c6766b0abfaba6f1754c449810",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009496675815065,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "0f1bbe3743b18c39ea95437e89e4e5a6221617e9d3d3771596ef4dc23d8e928c",
+                "state_sha256": "6d4b10291f38059dbc639f7655209464f785648bf4c2935aa62cd542ce94dcf8",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5012573025380104,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "030c5d4bbb69d4d675511d72fc55f8f1698f9999c824ee2b96160a1cfdd076e5",
+                "state_sha256": "7ffba4ccd4684b0b95489874f909ca2dfca8097b18d20c0d1ece973ee90e2a7e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501257212614168,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "325479eb00521b0579924a126ec27c17529f2e7f4b9f8d7c6f4aa2eaeca11c99",
+                "state_sha256": "dd9e783e2bd0b8eb93fc025ff20f6bea2d277dddcea9345f155694a09cd89e6f",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010360150154456,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "6036cc3f16f74b12c452b01a1c621509a1895007281365e5eae41ad35740136c",
+                "state_sha256": "f0d71783c3850a949c6707c74a823f02af48e289244d6d0678a9f28b8b262c76",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010364088365541,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "20731ea04827871506d1e665775af4ed2fc791a4b777542def91a5f0be10144e",
+                "state_sha256": "d172fbadb5c2452f0adf549d8f8dbe25d3d20bef54577a157204f661871b604e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551709496,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "f29548be3850b5421319115db8dfbd8ab06de2262c3f1031382aa61669156d35",
+                "state_sha256": "9f315eb428bd0ce62797a38bb9458dabc4dced5211915377bb3354d5712de148",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551709496,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "0e0a76e075fa6deba6e2dcdf4bffdc9b06245d816a79dc477f16ff2ddccb7724",
+                "state_sha256": "c234fb553c296cace74e6b0b885bd923ec13db7c21e5644dff5b80cb62d0aafd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary/videos/T07F2B__bg02_physics_lab__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009101904019039,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "abeeef2beb63b3738854463bf8efb70a31015fd90da8df82eaa3079acfe2a070",
+                "state_sha256": "baf021e36bee8e965d1ecfa108f82734152b82b877ec63b91898211ca701974b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5011102314721431,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "2e7b78ef9895c31a292bfb1a97594b8e50bcf83521b0df6da7add5403ba3ff2d",
+                "state_sha256": "bd63b9a1ca2f376ec0c989a9c537059cfd118c843198b75f10f0e67ef45328e6",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010359856545831,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "7426d2029c98a185f59ef50b880230cff560d6a1732172a0938a8d4923c4a7f3",
+                "state_sha256": "4f847893977d7cb0ba123c11419c1c01eb4a30c63dbf0441b90add39246923ca",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898551691544,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "921fbb25e4b2b1767c580e203cf2a47e8bc2b4661b7036009ce4ec43bf75821d",
+                "state_sha256": "e3c73932f02df6ce8b56feae5d98d3fd656f72fea6d516e9e35057e87644769a",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009250974907141,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "8c7908de7705dc2d90e0cdedf44e75c3c6007be96474864f96d0bd9121aebc95",
+                "state_sha256": "308c35ad02aff0defb69b6af349aaed204a42944f784b39b970d4fe3884a90fd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501195915887767,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "b5ad111eea0d86841a719b3f3ea64aaca2bebd3f283a1306c6af633764a0b1f1",
+                "state_sha256": "76c6a18736eeee276c0578eea7d1b166ebaf6c0109f9266a9ab0385b39ccf802",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.501257242878022,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "7c86e546c6d6090720ce9f03a7be2023a18079192ddc9a17ba00591d5445656a",
+                "state_sha256": "0f9b16b0aef3698848e84c3b7a2ea32cfc121f7a1fa670002ef6e27102bcc740",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.50125721261939,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "71a37e7a24ca59549f2779efb37ff915102c66f40257eb1904ccd15ff58f5e13",
+                "state_sha256": "3cce4bd67b9212ec318cc0ce6b3096458365720548095a0bfd3700559d1a3147",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5023816571031144,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "621a788cda01f3bc9683fb2caf21a939a5fbda4e1c2e0fabde15fca9c40222bb",
+                "state_sha256": "b2695ffc3673274a499f16db8bfe500914b59703f4399b4ca4c28b2663ffa57b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009898547078242,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "fca9cd75fbbe1d8546456fa3c3853606d131ddc16aa374a1e550c0a8625ce74c",
+                "state_sha256": "c950558a5f7456e3bc4bd7440db4b5dcc00c028bcb1d2ad465fb636ba966109b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary/videos/T07F2B__bg03_neutral_studio__g03_earth__global_07__boundary__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010196773965058,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01.json.gz",
+                "stored_state_sha256": "4bd9d1e9768f373547ba80379a5df4ad2704e77ab004c7f8da7b6cae3dfa2c25",
+                "state_sha256": "81890ed1723955f1e117303cd7523aa3e397457acde602c1d9af2676006475f7",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5030813254436447,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02.json.gz",
+                "stored_state_sha256": "7320aa34ace25c2a181f0b5029cf31f37c8c2eb353d11ea875094afbe62e3421",
+                "state_sha256": "3f875ab05be33fd9e297525fd9d6f729707044f6da8f49cb0c010e350a76d7ad",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009141901994107,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03.json.gz",
+                "stored_state_sha256": "cc5e0760b6702b354abccdd1d9c7cc245afbcedf93080100f48bee96968f1d63",
+                "state_sha256": "19351c191692374f3e47c185f494485dd2ab6c973711f68c78eeaa8135cfb292",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5029143161793809,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01.json.gz",
+                "stored_state_sha256": "1a48de9d73bbafe8da4c7aaa295e810b2fd3f7b2bf65ee691babf664ff5b1605",
+                "state_sha256": "8037aa5ce17a36a680f0289243b7bf216dfbd3441ac5f9cd04e41ae944e5dd53",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5010868964896807,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02.json.gz",
+                "stored_state_sha256": "ef38509ce16ee6f8e753f095afef135bbe8c19658e0a4c06a734eebb3fbf8ff6",
+                "state_sha256": "c2e991b901b2cae4d4865360a28923165260cdd54ec277f2e854f15c4fa7b6fb",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5008960342833043,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03.json.gz",
+                "stored_state_sha256": "a5e8f2f40dea9f7fd713c3cb60df896e1622f1bc0dfab5f04b88e19b862d4d95",
+                "state_sha256": "21e0891792ce7dcc994da249e2cbdcb50db00b4a5fbe1deb764927e2bbb570dd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_B_initial_longitudinal_position_m_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5009331052705112,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01.json.gz",
+                "stored_state_sha256": "36629569059beb1eafe261b5e01dffa2bf9eb41a7abeee65d5f1c9c74d14deb6",
+                "state_sha256": "7d50cc0388b9644e56e5a848fa007f0922c14c1c7d1920a5de7ad63f25923133",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5012572424276258,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02.json.gz",
+                "stored_state_sha256": "cf7e22dabab8744088fa41611172aa9734ffd479adffd774a70574c9ba6aba02",
+                "state_sha256": "8dfd8a77000e92e412e6e1f9b60d8c6e03585a325995ac9af5990d07c7be50ea",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.502832542236569,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03.json.gz",
+                "stored_state_sha256": "5349789bf5a3b037b79030cf186b2180705a118064597be2c58804c6728bd3ba",
+                "state_sha256": "ec4712b7af5d444a68b8120e9668b44fd3f221540f1c93278dc770cdfe38f6e5",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_C_ramp_angle_deg_theta_star__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__global_07__boundary",
+                "theta": 0.24,
+                "labels": {
+                  "motion_ge_1cm": 1
+                },
+                "maximum_displacement_m": 0.5027236401568278,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary.json.gz",
+                "stored_state_sha256": "e3dec079a5fdf2567ad54f6d9596fb3cfaf683f9b7f0faedcc2cdfc9e1de0878",
+                "state_sha256": "318fc0c0ad8fba36a7da4be5e68cbd0596d39e2979db188bb02beed0fdf6e28e",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary/videos/T07F2B__bg04_library_shelf__g03_earth__global_07__boundary__cam01.mp4"
+              }
+            ],
+            [
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "95ab83af743d3d5f14bbc193c56bbad1bb0becfef7856da320898a887a92f186",
+                "state_sha256": "048079117e2146f369d7950584e6a1a713955c37c9aa2b1af540b928bd2ead41",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "ac0afd942afaa7b5dbaa7707eea31cd2450cf52464cac2a648df493c592e6098",
+                "state_sha256": "cdde6c15ec9754373a88464a5f6b5f70d539d8acc5e3007d44e8a4b975783f72",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "354baa0ba9bfb199637bd8a9679235cae45ef499bc36806625d0d09e4f11781b",
+                "state_sha256": "f11e2bdd9c00550a5a59b5da1f9319ddd6a322f699cb98b466d2594dd18d8731",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg01_home_ase__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "964fab5ac2afa729a7ea6041749d4db51e6d23bf257a1889e4dce739e9ef3314",
+                "state_sha256": "e7ce5f95f989b0fa1c2f00b6f2839598ed0b4ea19851026dae6c50787cf86676",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "e577b1812be2c75ce4828332c31ae9a7640193596a6349c34329bb2c30af37a1",
+                "state_sha256": "77ab18030740b8b2a9da71e5937deeaf1f4223db29e22c2bea3667214b83a4aa",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "2e70940be893d2335f81ee86b09df902f912d94f1f524624b687b93832ef89d2",
+                "state_sha256": "84e80c2cb18a011b614ec4fb64797095bf888c2ec296987c861087efa1d547fa",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg02_physics_lab__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "fa776665207bd72ea4aaa4999ad3d271eea450109527d80889d26875552ac3fa",
+                "state_sha256": "899e163d5a337a87f93970bd06135427540a1a90d584a2931bf49851b14a57ff",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "9dfa12e3832bb5f33c9e0e6d733adb2507805d90b087694221e495a089ca4645",
+                "state_sha256": "d3d8db86a120feafd9d352b45087a3a8a14af07a5726e9962c49a85eca8cf709",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "16cedd382a81828ea336f7846cece64dc299c8f6c211d93afb9c35b44f341eef",
+                "state_sha256": "d220c905ae47365a06e2840d386ecbbb6940ee2161d005d5e4035b65379c251c",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg03_neutral_studio__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01.json.gz",
+                "stored_state_sha256": "b7bf06693cfeb67cac2a6777cb4788ef9c562d2551b74bc522bd0ec4fae335ab",
+                "state_sha256": "d34753e48d83a3d5da36f30820d16acf081219e1c0dc30140ba6e087eb546db1",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep01__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02.json.gz",
+                "stored_state_sha256": "b54723bf35e6b5cf67d309786c3bc97cfff5c37e72056362dad3d740e366e1c5",
+                "state_sha256": "52fd976c577a5d8c2825ee9b12b444a064a9bda9f9f5e558bef47ea7b35fdafd",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep02__cam01.mp4"
+              },
+              {
+                "sample_id": "T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03",
+                "theta": 0.28,
+                "labels": {
+                  "motion_ge_1cm": 0
+                },
+                "maximum_displacement_m": 0.003147928230030652,
+                "fixed_context_sha256": "78f389d0a49eaae358782252010731ebddf03032e2fc8e3e57123892a959cde0",
+                "state_path": "review/scene_family_completion_20261018/completion_states/T07/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03.json.gz",
+                "stored_state_sha256": "7d093c0bc40b6a4218e2969d9895fdd32f43573488cfcf78e847adca839a765e",
+                "state_sha256": "2edb90043538fea54dc74c9df7e43be983807862ef3eab10750a95914a344f9b",
+                "baseline_frame": 4,
+                "end_frame_index": 154,
+                "horizon_s": 5.0,
+                "source_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v2_balanced_480p/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03/videos/T07F2B__bg04_library_shelf__g03_earth__cf_A_surface_friction_theta_plus__rep03__cam01.mp4"
+              }
+            ]
+          ]
+        }
+      ],
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "fixed_context_fields": "All original object specifications except the phone friction; original solver and clock.",
+      "scope": "Observed original published contrasts; no same-random-seed, unique-root or numerical-convergence claim."
+    }
+  ],
+  "saved_points_read": 880,
+  "simulations_started": 0,
+  "original_files_modified": false
+}

@@ -1,0 +1,491 @@
+{
+  "clip_id": "T10_C05",
+  "reference_video_sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4",
+  "source_state_sha256": "2bd868a8b01e9134803cb2662280b18e5e9f8aab2f1bcfb4d88fb10675e71d2d",
+  "parameter_facts": [
+    [
+      "gravity",
+      9.81,
+      "m/s²"
+    ],
+    [
+      "t10_supported_folder.mass",
+      0.05,
+      "kg"
+    ],
+    [
+      "t10_supported_folder.friction",
+      0.72,
+      ""
+    ],
+    [
+      "t10_supported_folder.restitution",
+      0.003,
+      ""
+    ],
+    [
+      "t10_support_pen.mass",
+      0.095,
+      "kg"
+    ],
+    [
+      "t10_support_pen.friction",
+      0.88,
+      ""
+    ],
+    [
+      "t10_support_pen.restitution",
+      0.003,
+      ""
+    ],
+    [
+      "t10_tape_roll.mass",
+      0.18,
+      "kg"
+    ],
+    [
+      "t10_tape_roll.friction",
+      0.4,
+      ""
+    ],
+    [
+      "t10_tape_roll.restitution",
+      0.008,
+      ""
+    ],
+    [
+      "t10_supported_folder.initial_angle",
+      38.24,
+      "°"
+    ],
+    [
+      "t10_support_pen.initial_X",
+      0.1974,
+      "m"
+    ],
+    [
+      "t10_support_pen.initial_Y",
+      0.08,
+      "m"
+    ],
+    [
+      "t10_support_pen.initial_Z",
+      0.16,
+      "m"
+    ],
+    [
+      "t10_tape_roll.initial_speed",
+      1.8,
+      "m/s"
+    ],
+    [
+      "frozen_tabletop_collision_slab.friction",
+      0.52,
+      ""
+    ]
+  ],
+  "original_experiment": {
+    "template_id": "T10",
+    "scene_family": "T10",
+    "base_world_id": "BW_SIDE_V25",
+    "base_world_name": "t10_supx_sweep",
+    "background_id": "bg01_home_ase",
+    "background_version": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+    "background_freeze_status": "ACTIVE_VISUAL_QA_PASS",
+    "background_profile_id": "bg01_home_ase__ebb_reference_four_backgrounds_floor_realism_v3_20260829",
+    "background_formal_integration_approved_by_user": true,
+    "gravity_id": "earth_normal",
+    "parameter": {
+      "parameter_name": "v_roll",
+      "parameter_value": 1.8,
+      "parameter_index": 18,
+      "single_primary_intervention": true
+    },
+    "support_surface": {
+      "center": [
+        0.0,
+        0.0,
+        -0.03199999999999992
+      ],
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "top_z": 0.0
+    },
+    "pretrigger_end_frame": 18,
+    "actuator": "initial_rolling_velocity_true_lateral_side_strike",
+    "event_graph": [
+      "folder_pen_settle_while_tape_held",
+      "release_tape_and_roll",
+      "clean_side_tape_pen_contact",
+      "pen_displacement",
+      "folder_support_loss",
+      "folder_slide_or_fall",
+      "final_settle"
+    ],
+    "required_contact_pairs": [
+      [
+        "t10_tape_roll",
+        "t10_support_pen"
+      ]
+    ],
+    "support_ejection_threshold_m": 0.04,
+    "duration_tracked_objects": [
+      "t10_tape_roll",
+      "t10_support_pen",
+      "t10_supported_folder"
+    ],
+    "tracked_objects": [
+      "t10_tape_roll",
+      "t10_support_pen",
+      "t10_supported_folder"
+    ],
+    "t10_design": {
+      "layout": "v20_original_folder_direction_true_side_tape",
+      "folder_direction_preserved": true,
+      "folder_base_x_m": -0.223,
+      "folder_y_m": 0.08,
+      "folder_near_edge_y_m": -0.09,
+      "folder_lean_deg_from_table": 38.24,
+      "folder_dims_m": [
+        0.58,
+        0.34,
+        0.0195
+      ],
+      "support_x_m": 0.1974,
+      "pen_y_m": 0.08,
+      "pen_center_outside_m": 0.0025,
+      "pen_overlap_under_folder_m": 0.0105,
+      "support_gap_left_rim_m": 0.0040231,
+      "support_gap_center_m": 0.0122977,
+      "support_gap_right_rim_m": 0.0205722,
+      "tape_x_m": 0.1974,
+      "tape_start_y_m": -0.305,
+      "first_contact_center_y_m": 0.009,
+      "tape_front_rim_at_first_contact_y_m": 0.0695,
+      "v_roll_mps": 1.8,
+      "aim_target_world_xy_m": [
+        0.1974,
+        0.08
+      ],
+      "collision_proxy": "cylinder",
+      "velocity_world_mps": [
+        0.0,
+        1.8,
+        0.0
+      ],
+      "omega_world_radps": [
+        -29.7520661,
+        0.0,
+        0.0
+      ],
+      "hold_during_settle": true,
+      "side_impact_invariant": "tape_outside_folder_at_first_pen_contact"
+    }
+  },
+  "dynamic_object_specs": [
+    {
+      "name": "frozen_tabletop_collision_slab",
+      "asset_id": "frozen_tabletop_collision_slab",
+      "category": "support_surface",
+      "semantic_label": "frozen_tabletop_collision_slab",
+      "shape": "box",
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "pose": {
+        "position": [
+          0.0,
+          0.0,
+          -0.03199999999999992
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": false,
+      "collision": true,
+      "friction": 0.52,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.36,
+        0.23,
+        0.13
+      ],
+      "roughness": 0.62,
+      "is_tabletop_collision_slab": true
+    },
+    {
+      "name": "t10_supported_folder",
+      "asset_id": "t10_supported_folder",
+      "category": "supported_folder",
+      "semantic_label": "supported_folder",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.0012616,
+          0.08,
+          0.1881554
+        ],
+        "euler_xyz": [
+          0.0,
+          -38.24,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.18,
+        0.34,
+        0.56
+      ],
+      "friction": 0.72,
+      "restitution": 0.003,
+      "linear_damping": 0.025,
+      "angular_damping": 0.04,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.05,
+      "size": [
+        0.58,
+        0.34,
+        0.0195
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/folders/folder_board_01.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.58,
+        0.34,
+        0.0195
+      ]
+    },
+    {
+      "name": "t10_support_pen",
+      "asset_id": "t10_support_pen",
+      "category": "support_pen",
+      "semantic_label": "support_pen",
+      "shape": "cylinder",
+      "pose": {
+        "position": [
+          0.1974,
+          0.08,
+          0.16
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.08,
+        0.12,
+        0.18
+      ],
+      "friction": 0.88,
+      "restitution": 0.003,
+      "linear_damping": 0.03,
+      "angular_damping": 0.04,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.095,
+      "radius": 0.0105,
+      "height": 0.32,
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/pens/support_pen_01.obj",
+      "collision_proxy": "cylinder",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_radius": 0.0105,
+      "collision_proxy_height": 0.32
+    },
+    {
+      "name": "t10_tape_roll",
+      "asset_id": "t10_tape_roll",
+      "category": "tape_roll",
+      "semantic_label": "tape_roll",
+      "shape": "cylinder",
+      "pose": {
+        "position": [
+          0.1974,
+          -0.305,
+          0.0615
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          1.8,
+          0.0
+        ],
+        "initial_angular_velocity": [
+          -29.75206611570248,
+          0.0,
+          0.0
+        ],
+        "prefer_separate_velocity_setters": true,
+        "hold_during_settle": true
+      },
+      "color": [
+        0.84,
+        0.66,
+        0.18
+      ],
+      "friction": 0.4,
+      "restitution": 0.008,
+      "linear_damping": 0.002,
+      "angular_damping": 0.004,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.18,
+      "radius": 0.0605,
+      "height": 0.038,
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/tape/tape_roll_01.obj",
+      "collision_proxy": "cylinder",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_radius": 0.0605,
+      "collision_proxy_height": 0.06
+    }
+  ],
+  "scene_overrides": {
+    "gravity": [
+      0,
+      0,
+      -9.81
+    ],
+    "dt": 0.005,
+    "substeps": 4,
+    "physics_steps_per_render_frame": 4,
+    "settle_steps": 80,
+    "record_contacts": true,
+    "static_scene_collision": false,
+    "layout_collision": false,
+    "add_ground_plane": false,
+    "static_visual_only_instance_ids": [
+      "baxi_round_table_01"
+    ],
+    "room_wall_colliders": false,
+    "room_boundary_safety": {
+      "enabled": false
+    },
+    "use_gjk_collision": true,
+    "enable_multi_contact": true,
+    "box_box_detection": true,
+    "raytracing": true,
+    "raytracing_state_limit": 8388608,
+    "raytracing_depth": 8,
+    "raytracing_rr_depth": 2,
+    "gravity_id": "g03_earth",
+    "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+    "raytracing_env_map_required": true,
+    "raytracing_env_encoding": "linear",
+    "raytracing_env_euler": [
+      0,
+      0,
+      25
+    ],
+    "raytracing_lights": [
+      {
+        "pos": [
+          -0.2999999999999998,
+          -0.18000000000000016,
+          2.04
+        ],
+        "color": [
+          1.0,
+          0.93,
+          0.82
+        ],
+        "intensity": 7.2,
+        "radius": 0.52
+      },
+      {
+        "pos": [
+          0.9199999999999999,
+          -0.78,
+          1.48
+        ],
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ],
+        "intensity": 2.8,
+        "radius": 0.42
+      }
+    ]
+  },
+  "runtime_forces": [],
+  "source_render_clock": {
+    "fps": 30,
+    "pre_static_frames": 18,
+    "physics_steps_per_render_frame": 4,
+    "fixed_view": {
+      "position": [
+        -1.1,
+        -0.96,
+        1.22
+      ],
+      "look_at": [
+        0.02,
+        0.0,
+        0.12
+      ],
+      "fov_deg": 51.0
+    }
+  },
+  "original_experiment_is_reference_metadata_not_a_model_or_judge_prompt": true
+}

@@ -1,0 +1,7 @@
+{
+  "version": "core100_critical_protocol_v5_20261103",
+  "registry": "../benchmarks/core100_critical_protocol_v5_20261103/registry_4f40d1956674.json",
+  "registry_sha256": "4f40d19566745859b48de90dffe7337f0f2c16e379559b3e9c1fd707bc5513bd",
+  "status": "prepared_not_live",
+  "roster_pointer": "catalog/core100_critical_pairs_v3.json"
+}

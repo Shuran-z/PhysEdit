@@ -35,6 +35,10 @@ def checked_predictions(path,jobs):
     if set(predictions)-set(known):raise ValueError('unknown or unscheduled prediction IDs')
     for sid,p in predictions.items():
         if p.get('video_sha256')!=known[sid]['video_sha256']:raise ValueError('prediction video hash mismatch')
+        if known[sid].get('event_contract_sha256'):
+            from .judge_contract import sampling_valid
+            if p.get('event_contract_sha256')!=known[sid]['event_contract_sha256']:raise ValueError('event_prediction_contract_mismatch')
+            if p.get('status')=='ok'and not sampling_valid(p,known[sid]):raise ValueError('event_prediction_sampling_contract_invalid')
     return predictions
 
 
@@ -60,6 +64,9 @@ def run_pipeline(run_dir,protocol_path,out_dir,quality_file=None,event_file=None
         from .boundary_binding import bind
         bind(list(keys.values()),boundary_bindings,root/'answers.jsonl')
     definitions=protocol['samples']
+    from .judge_contract import VERSION,observation_definitions,contract_hash,temporal_evidence_supported
+    job_schema=protocol.get('event_job_schema')
+    if job_schema not in (None,VERSION):raise ValueError('unsupported_event_job_schema')
     if set(definitions)!=set(keys):raise ValueError('protocol must cover whole roster')
     reviews=index(reviews_file)
     if set(reviews)-set(keys):raise ValueError('unknown reviewer sample')
@@ -75,6 +82,13 @@ def run_pipeline(run_dir,protocol_path,out_dir,quality_file=None,event_file=None
         jobs.append(dict(sample_id=sid,video=str(Path(obs['video']).resolve()),video_sha256=obs['video_sha256'],
             target=d['target'],window_s=inputs[sid]['evaluation_duration_s'],
             events={e:{'definition':v['definition'],'minimum_evidence_times':v.get('minimum_evidence_times',1)} for e,v in events.items()}))
+        if job_schema==VERSION:
+            fps=obs.get('fps',inputs[sid]['fps'])
+            if type(fps)not in(int,float)or not math.isfinite(fps)or fps<=0:raise ValueError('invalid_generated_media_clock')
+            if not isinstance(d.get('uncertainty_policy',''),str):raise ValueError('invalid_event_uncertainty_policy')
+            jobs[-1].update(events=observation_definitions(events),event_job_schema=VERSION,
+                uncertainty_policy=d.get('uncertainty_policy',''),generated_fps=fps,
+                last_observed_time_s=math.floor(inputs[sid]['evaluation_duration_s']*fps+1e-6)/fps)
         if d.get('generated_track'):
             track=Path(d['generated_track']).resolve()
             if digest(track)!=d.get('generated_track_sha256'):raise ValueError('generated tracking hash mismatch')
@@ -87,9 +101,10 @@ def run_pipeline(run_dir,protocol_path,out_dir,quality_file=None,event_file=None
         if sid in reviews:
             rev=reviews[sid]
             if rev.get('video_sha256')!=obs['video_sha256'] or not rev.get('reviewer') or not rev.get('evidence'):raise ValueError('human review must bind hash, reviewer, evidence')
+        if job_schema==VERSION:jobs[-1]['event_contract_sha256']=contract_hash(jobs[-1])
     out.mkdir(parents=True,exist_ok=False)
     write_json(out/'protocol.json',protocol)
-    quality_jobs=[{k:v for k,v in j.items() if k!='events'} for j in jobs]
+    quality_jobs=[{k:v for k,v in j.items() if k not in ('events','event_contract_sha256','event_job_schema','uncertainty_policy')} for j in jobs]
     write_rows(out/'quality_jobs.jsonl',quality_jobs)
     calls={}
     if execute and quality_file is None and quality_jobs:
@@ -133,10 +148,17 @@ def run_pipeline(run_dir,protocol_path,out_dir,quality_file=None,event_file=None
         for event,definition in job['events'].items():
             p=payload.get(event,{});p=p if isinstance(p,dict) else {};label=p.get('label')
             route='blocked_quality' if state!='pass' else 'review'
+            machine_reasons=[]
             minimum=definition['minimum_evidence_times']
-            if state=='pass' and evidence(p,job['window_s'],minimum,threshold) and p.get('contradictions')==[]:
-                if label in ('yes','no'):route='preannotated'
+            if state=='pass' and ep.get(sid,{}).get('status')=='ok' and evidence(p,job['window_s'],minimum,threshold) and p.get('contradictions')==[]:
+                if label in ('yes','no')and temporal_evidence_supported(p,definition,job):route='preannotated'
+                elif label in ('yes','no'):machine_reasons.append('final_frame_or_full_window_evidence_missing')
                 elif label=='not_observed':route='observation_only'
+                else:machine_reasons.append('event_uncertain_or_invalid_label')
+            elif state!='pass':machine_reasons.append('quality_not_passed')
+            elif ep.get(sid,{}).get('status')!='ok':machine_reasons.append('event_prediction_missing_or_failed')
+            elif p.get('contradictions')!=[]:machine_reasons.append('contradictory_or_missing_consistency_check')
+            else:machine_reasons.append('confidence_or_evidence_incomplete')
             if event in human:
                 h=human[event]
                 if state!='pass':raise ValueError('resolve quality before confirming events')
@@ -147,6 +169,9 @@ def run_pipeline(run_dir,protocol_path,out_dir,quality_file=None,event_file=None
                     if type(t) not in (int,float) or not math.isfinite(t) or not 0<=t<=job['window_s']:raise ValueError('invalid event time')
                     times[event]=t
             item=dict(sample_id=sid,event=event,route=route,video_sha256=job['video_sha256'],window_s=job['window_s'],prediction=p,human_label=None,reviewer=None)
+            if job_schema==VERSION:item.update(machine_review_reasons=machine_reasons,
+                event_contract_sha256=job['event_contract_sha256'],event_time_semantics=definition.get('time_semantics'),
+                last_observed_time_s=job['last_observed_time_s'])
             if route=='preannotated':pre.append(item)
             elif route=='review':queue.append(dict(item,kind='event'))
             routes[event]=route

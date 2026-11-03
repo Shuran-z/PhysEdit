@@ -1,0 +1,36 @@
+{
+  "clip_id": "T03_C02",
+  "previous_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+  "new_video_sha256": "b7a0d5bfb91962c673bacb1378b86ef172b360ccecc59ca94243921f459a5c03",
+  "previous_camera": "cam03",
+  "new_camera": "cam02",
+  "source_video_path": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam02.mp4",
+  "source_config_sha256": "ffee30e1a6b478ec3d34fe871abb69209df3b61c838a3a797dfb632cba1c5560",
+  "old_config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+  "physical_config_sha256": "a456fa3a52d273846702133823b032fa082b30ac45f606dc24e6592414e43a95",
+  "physical_objects_solver_seed_controls_equal": true,
+  "physical_state_source_unchanged": {
+    "state_path": "/data_cached/wangzijun_p25/hf_staging_t03_r032_delta_20260920/repo_root/data/T03/formal_480p_fullsim_r032_r034_delta_pass561_20260920/metadata/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.json.gz",
+    "decoded_state_sha256": "1e44203fcaf0d40dba844bd60afed8a7201f14a766f7abd177d7c350002ea0b6",
+    "stored_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+    "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+    "evidence": "review/core100_remaining74_admission_20261101/sealed_readbacks/177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430.json",
+    "scope": "Frozen reference state identity only; does not independently certify the camera or the numerical boundary."
+  },
+  "separate_cam02_native_state_file_claimed": false,
+  "same_physical_configuration_identity_not_new_trajectory_convergence_validation": true,
+  "source_media": {
+    "video_sha256": "b7a0d5bfb91962c673bacb1378b86ef172b360ccecc59ca94243921f459a5c03",
+    "frames": 210,
+    "fps": 30.0,
+    "width": 854,
+    "height": 480,
+    "timestamp_sha256": "20bfa16c037ce8c4a2cb9468322bddf2204060d1e1238a869350386028452cea",
+    "full_decode": true
+  },
+  "condition_frame_index": 4,
+  "condition_sha256": "f6a21c0bd8e6185c23eb3b093028ccb3169b2fdd302531a1abdc1861a0dc686e",
+  "horizon_s": 5.0,
+  "physical_parameters_or_prompt_changed": false,
+  "prior_generated_labels_or_inversion_calibration_transferred": false
+}

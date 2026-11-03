@@ -1,0 +1,1166 @@
+{
+  "clip_id": "T06_C02",
+  "reference_video_sha256": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460",
+  "source_state_sha256": "64d970627487426ddc6997e27096c7f1b6afb0bf4b225a75803d74e42f7ef3d6",
+  "parameter_facts": [
+    [
+      "gravity",
+      9.81,
+      "m/s²"
+    ],
+    [
+      "t06_book_00.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_00.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_00.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_01.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_01.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_01.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_02.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_02.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_02.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_03.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_03.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_03.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_04.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_04.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_04.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_05.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_05.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_05.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_06.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_06.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_06.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_07.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_07.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_07.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_08.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_08.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_08.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_09.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t06_book_09.friction",
+      0.58,
+      ""
+    ],
+    [
+      "t06_book_09.restitution",
+      0.04,
+      ""
+    ],
+    [
+      "t06_book_00.force_peak",
+      1.5134017662681514,
+      "N"
+    ],
+    [
+      "frozen_tabletop_collision_slab.friction",
+      0.52,
+      ""
+    ]
+  ],
+  "original_experiment": {
+    "template_id": "T06",
+    "scene_family": "T06",
+    "base_world_id": "BW06",
+    "base_world_name": "long_chain",
+    "background_id": "bg01_home_ase",
+    "background_version": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+    "background_freeze_status": "ACTIVE_VISUAL_QA_PASS",
+    "background_profile_id": "bg01_home_ase__ebb_reference_four_backgrounds_floor_realism_v3_20260829",
+    "background_formal_integration_approved_by_user": true,
+    "gravity_id": "earth_normal",
+    "parameter": {
+      "parameter_name": "impact_force",
+      "parameter_value": 1.5357143,
+      "parameter_index": 17,
+      "single_primary_intervention": true
+    },
+    "support_surface": {
+      "center": [
+        0.0,
+        0.0,
+        -0.03199999999999992
+      ],
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "top_z": 0.0
+    },
+    "pretrigger_end_frame": 0,
+    "actuator": "recorded_continuous_external_force",
+    "event_graph": [
+      "impact",
+      "book_00_tip",
+      "successive_contacts",
+      "propagation_stop_or_complete",
+      "settle"
+    ],
+    "required_contact_pairs": [
+      [
+        "t06_book_00",
+        "t06_book_01"
+      ],
+      [
+        "t06_book_01",
+        "t06_book_02"
+      ],
+      [
+        "t06_book_02",
+        "t06_book_03"
+      ],
+      [
+        "t06_book_03",
+        "t06_book_04"
+      ],
+      [
+        "t06_book_04",
+        "t06_book_05"
+      ],
+      [
+        "t06_book_05",
+        "t06_book_06"
+      ],
+      [
+        "t06_book_06",
+        "t06_book_07"
+      ],
+      [
+        "t06_book_07",
+        "t06_book_08"
+      ],
+      [
+        "t06_book_08",
+        "t06_book_09"
+      ]
+    ],
+    "tracked_objects": [
+      "t06_book_00",
+      "t06_book_01",
+      "t06_book_02",
+      "t06_book_03",
+      "t06_book_04",
+      "t06_book_05",
+      "t06_book_06",
+      "t06_book_07",
+      "t06_book_08",
+      "t06_book_09"
+    ]
+  },
+  "dynamic_object_specs": [
+    {
+      "name": "frozen_tabletop_collision_slab",
+      "asset_id": "frozen_tabletop_collision_slab",
+      "category": "support_surface",
+      "semantic_label": "frozen_tabletop_collision_slab",
+      "shape": "box",
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "pose": {
+        "position": [
+          0.0,
+          0.0,
+          -0.03199999999999992
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": false,
+      "collision": true,
+      "friction": 0.52,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.36,
+        0.23,
+        0.13
+      ],
+      "roughness": 0.62,
+      "is_tabletop_collision_slab": true
+    },
+    {
+      "name": "t06_book_00",
+      "asset_id": "t06_book_00",
+      "category": "book_00",
+      "semantic_label": "book_00",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.2895,
+          0.0,
+          0.1137272
+        ],
+        "euler_xyz": [
+          0.0,
+          91.0,
+          0.0
+        ],
+        "scale": [
+          0.9183673469387755,
+          1.0,
+          0.875
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.1,
+        0.22,
+        0.45
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.225,
+        0.178,
+        0.028
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_navy_physics.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.225,
+        0.178,
+        0.028
+      ]
+    },
+    {
+      "name": "t06_book_01",
+      "asset_id": "t06_book_01",
+      "category": "book_01",
+      "semantic_label": "book_01",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.2285,
+          0.0094255,
+          0.1235
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0625
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.54,
+        0.12,
+        0.18
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.245,
+        0.178,
+        0.034
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_burgundy_mechanics.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.245,
+        0.178,
+        0.034
+      ]
+    },
+    {
+      "name": "t06_book_02",
+      "asset_id": "t06_book_02",
+      "category": "book_02",
+      "semantic_label": "book_02",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.161,
+          0.017268,
+          0.1335
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          1.0816326530612246,
+          1.0,
+          1.28125
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.15,
+        0.38,
+        0.24
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.265,
+        0.178,
+        0.041
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_forest_botany.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.265,
+        0.178,
+        0.041
+      ]
+    },
+    {
+      "name": "t06_book_03",
+      "asset_id": "t06_book_03",
+      "category": "book_03",
+      "semantic_label": "book_03",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.0965,
+          0.0222222,
+          0.1185
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          0.9591836734693877,
+          1.0,
+          0.875
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.72,
+        0.42,
+        0.08
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.235,
+        0.178,
+        0.028
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_ochre_architecture.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.235,
+        0.178,
+        0.028
+      ]
+    },
+    {
+      "name": "t06_book_04",
+      "asset_id": "t06_book_04",
+      "category": "book_04",
+      "semantic_label": "book_04",
+      "shape": "box",
+      "pose": {
+        "position": [
+          -0.0355,
+          0.0246241,
+          0.1135
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          0.9183673469387755,
+          1.0,
+          1.0625
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.25,
+        0.31,
+        0.4
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.225,
+        0.178,
+        0.034
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_slate_astronomy.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.225,
+        0.178,
+        0.034
+      ]
+    },
+    {
+      "name": "t06_book_05",
+      "asset_id": "t06_book_05",
+      "category": "book_05",
+      "semantic_label": "book_05",
+      "shape": "box",
+      "pose": {
+        "position": [
+          0.032,
+          0.0246945,
+          0.1235
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.28125
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.08,
+        0.38,
+        0.58
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.245,
+        0.178,
+        0.041
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_blue_chemistry.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.245,
+        0.178,
+        0.041
+      ]
+    },
+    {
+      "name": "t06_book_06",
+      "asset_id": "t06_book_06",
+      "category": "book_06",
+      "semantic_label": "book_06",
+      "shape": "box",
+      "pose": {
+        "position": [
+          0.0965,
+          0.0222222,
+          0.1335
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          1.0816326530612246,
+          1.0,
+          0.875
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.44,
+        0.22,
+        0.52
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.265,
+        0.178,
+        0.028
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_navy_physics.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.265,
+        0.178,
+        0.028
+      ]
+    },
+    {
+      "name": "t06_book_07",
+      "asset_id": "t06_book_07",
+      "category": "book_07",
+      "semantic_label": "book_07",
+      "shape": "box",
+      "pose": {
+        "position": [
+          0.1575,
+          0.0176005,
+          0.1185
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          0.9591836734693877,
+          1.0,
+          1.0625
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.66,
+        0.26,
+        0.12
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.235,
+        0.178,
+        0.034
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_burgundy_mechanics.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.235,
+        0.178,
+        0.034
+      ]
+    },
+    {
+      "name": "t06_book_08",
+      "asset_id": "t06_book_08",
+      "category": "book_08",
+      "semantic_label": "book_08",
+      "shape": "box",
+      "pose": {
+        "position": [
+          0.225,
+          0.0098989,
+          0.1135
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          0.9183673469387755,
+          1.0,
+          1.28125
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.18,
+        0.48,
+        0.46
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.225,
+        0.178,
+        0.041
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_forest_botany.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.225,
+        0.178,
+        0.041
+      ]
+    },
+    {
+      "name": "t06_book_09",
+      "asset_id": "t06_book_09",
+      "category": "book_09",
+      "semantic_label": "book_09",
+      "shape": "box",
+      "pose": {
+        "position": [
+          0.2895,
+          -0.0,
+          0.1235
+        ],
+        "euler_xyz": [
+          0.0,
+          90.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          0.875
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "color": [
+        0.52,
+        0.48,
+        0.2
+      ],
+      "friction": 0.58,
+      "restitution": 0.04,
+      "linear_damping": 0.018,
+      "angular_damping": 0.025,
+      "ccd_enabled": true,
+      "disable_sleep": true,
+      "contact_offset": 0.0012,
+      "camera_focus": true,
+      "mass": 0.38,
+      "size": [
+        0.245,
+        0.178,
+        0.028
+      ],
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_ochre_architecture.obj",
+      "collision_proxy": "box",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy_size": [
+        0.245,
+        0.178,
+        0.028
+      ]
+    }
+  ],
+  "scene_overrides": {
+    "gravity": [
+      0,
+      0,
+      -9.81
+    ],
+    "dt": 0.005,
+    "substeps": 4,
+    "physics_steps_per_render_frame": 4,
+    "settle_steps": 80,
+    "record_contacts": true,
+    "static_scene_collision": false,
+    "layout_collision": false,
+    "add_ground_plane": false,
+    "static_visual_only_instance_ids": [
+      "baxi_round_table_01"
+    ],
+    "room_wall_colliders": false,
+    "room_boundary_safety": {
+      "enabled": false
+    },
+    "use_gjk_collision": true,
+    "enable_multi_contact": true,
+    "box_box_detection": true,
+    "raytracing": true,
+    "raytracing_state_limit": 8388608,
+    "raytracing_depth": 8,
+    "raytracing_rr_depth": 2,
+    "gravity_id": "g03_earth",
+    "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+    "raytracing_env_map_required": true,
+    "raytracing_env_encoding": "linear",
+    "raytracing_env_euler": [
+      0,
+      0,
+      25
+    ],
+    "raytracing_lights": [
+      {
+        "pos": [
+          -0.2999999999999998,
+          -0.18000000000000016,
+          2.04
+        ],
+        "color": [
+          1.0,
+          0.93,
+          0.82
+        ],
+        "intensity": 7.2,
+        "radius": 0.52
+      },
+      {
+        "pos": [
+          0.9199999999999999,
+          -0.78,
+          1.48
+        ],
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ],
+        "intensity": 2.8,
+        "radius": 0.42
+      }
+    ]
+  },
+  "runtime_forces": [
+    {
+      "name": "t06_impact_000",
+      "target": "t06_book_00",
+      "force_world": [
+        0.0876733,
+        0.0,
+        0.0070139
+      ],
+      "frame_start": 8,
+      "frame_end": 8
+    },
+    {
+      "name": "t06_impact_001",
+      "target": "t06_book_00",
+      "force_world": [
+        0.3306083,
+        0.0,
+        0.0264487
+      ],
+      "frame_start": 9,
+      "frame_end": 9
+    },
+    {
+      "name": "t06_impact_002",
+      "target": "t06_book_00",
+      "force_world": [
+        0.6731515,
+        0.0,
+        0.0538521
+      ],
+      "frame_start": 10,
+      "frame_end": 10
+    },
+    {
+      "name": "t06_impact_003",
+      "target": "t06_book_00",
+      "force_world": [
+        1.0368305,
+        0.0,
+        0.0829464
+      ],
+      "frame_start": 11,
+      "frame_end": 11
+    },
+    {
+      "name": "t06_impact_004",
+      "target": "t06_book_00",
+      "force_world": [
+        1.3383306,
+        0.0,
+        0.1070665
+      ],
+      "frame_start": 12,
+      "frame_end": 12
+    },
+    {
+      "name": "t06_impact_005",
+      "target": "t06_book_00",
+      "force_world": [
+        1.508582,
+        0.0,
+        0.1206866
+      ],
+      "frame_start": 13,
+      "frame_end": 13
+    },
+    {
+      "name": "t06_impact_006",
+      "target": "t06_book_00",
+      "force_world": [
+        1.508582,
+        0.0,
+        0.1206866
+      ],
+      "frame_start": 14,
+      "frame_end": 14
+    },
+    {
+      "name": "t06_impact_007",
+      "target": "t06_book_00",
+      "force_world": [
+        1.3383306,
+        0.0,
+        0.1070665
+      ],
+      "frame_start": 15,
+      "frame_end": 15
+    },
+    {
+      "name": "t06_impact_008",
+      "target": "t06_book_00",
+      "force_world": [
+        1.0368305,
+        0.0,
+        0.0829464
+      ],
+      "frame_start": 16,
+      "frame_end": 16
+    },
+    {
+      "name": "t06_impact_009",
+      "target": "t06_book_00",
+      "force_world": [
+        0.6731515,
+        0.0,
+        0.0538521
+      ],
+      "frame_start": 17,
+      "frame_end": 17
+    },
+    {
+      "name": "t06_impact_010",
+      "target": "t06_book_00",
+      "force_world": [
+        0.3306083,
+        0.0,
+        0.0264487
+      ],
+      "frame_start": 18,
+      "frame_end": 18
+    },
+    {
+      "name": "t06_impact_011",
+      "target": "t06_book_00",
+      "force_world": [
+        0.0876733,
+        0.0,
+        0.0070139
+      ],
+      "frame_start": 19,
+      "frame_end": 19
+    }
+  ],
+  "source_render_clock": {
+    "fps": 30,
+    "pre_static_frames": 12,
+    "physics_steps_per_render_frame": 4,
+    "fixed_view": {
+      "position": [
+        0.42,
+        -1.72,
+        1.1
+      ],
+      "look_at": [
+        0.02,
+        0.0,
+        0.14
+      ],
+      "fov_deg": 50.0
+    }
+  },
+  "original_experiment_is_reference_metadata_not_a_model_or_judge_prompt": true
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "clip_id": "T18_C01",
+    "result": {
+      "clip_id": "T18_C01",
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+      "source_theta": 0.526896551724138,
+      "normalization_domain": [
+        0.08,
+        0.8
+      ],
+      "intervals": [
+        {
+          "event": "upper_nonpulled_book_on_table_at_end",
+          "bracket": [
+            0.10405172413793104,
+            0.1044396551724138
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        }
+      ],
+      "status": "observed_transition",
+      "backend": "cpu64",
+      "profile": 1,
+      "unresolved_intervals": [],
+      "published_state_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068",
+      "source_config_sha256": "75bd44f0a4a3334ef67cdaa0f40c202daccbc7569072814f457db5dca30f62d3",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "formal_admission": false,
+      "original_media_and_labels_modified": false
+    },
+    "probe_count": 36
+  },
+  {
+    "clip_id": "T18_C02",
+    "result": {
+      "clip_id": "T18_C02",
+      "sample_id": "T18__bg01_home_ase__g02_mars__contact_friction__p019",
+      "source_theta": 0.526896551724138,
+      "normalization_domain": [
+        0.08,
+        0.8
+      ],
+      "intervals": [
+        {
+          "event": "upper_nonpulled_book_on_table_at_end",
+          "bracket": [
+            0.11607758620689654,
+            0.1164655172413793
+          ],
+          "labels": [
+            0,
+            1
+          ]
+        },
+        {
+          "event": "upper_nonpulled_book_on_table_at_end",
+          "bracket": [
+            0.39112068965517244,
+            0.3915086206896552
+          ],
+          "labels": [
+            1,
+            0
+          ]
+        }
+      ],
+      "status": "observed_transition",
+      "backend": "cpu64",
+      "profile": 2,
+      "unresolved_intervals": [],
+      "published_state_sha256": "45246a37091ffaa8c34eb5999a5ca0350134d090ca2100ef50c58f2d429e08d5",
+      "source_config_sha256": "5979d595712041c81f4d02cbb051ff7f9a1b8d1e2d110386ae1bd6fb0c3fe596",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "formal_admission": false,
+      "original_media_and_labels_modified": false
+    },
+    "probe_count": 42
+  },
+  {
+    "clip_id": "T18_C03",
+    "result": {
+      "clip_id": "T18_C03",
+      "sample_id": "T18__bg01_home_ase__g03_earth__contact_friction__p019",
+      "source_theta": 0.526896551724138,
+      "normalization_domain": [
+        0.08,
+        0.8
+      ],
+      "intervals": [],
+      "status": "no_observed_flip_in_finite_grid",
+      "backend": "cpu64",
+      "profile": 2,
+      "unresolved_intervals": [],
+      "published_state_sha256": "52a07784f0dcc7d02d27a0abe9b3730083111cd2547d40970cc6aafeb7c2638c",
+      "source_config_sha256": "3d6b8125ab7bf85d8ceda05ed8c904722dbc46536c376bf48d7e329f1e280684",
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "formal_admission": false,
+      "original_media_and_labels_modified": false
+    },
+    "probe_count": 29
+  }
+]

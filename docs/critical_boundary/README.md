@@ -4,6 +4,16 @@ This directory contains the protocol and user-facing workflow for the critical-b
 
 ## Start here
 
+- [第四版：100条临界参考接入完成](CORE100_CAMERA_REVISION_V4.md)：作者批准T03_C02改用cam02；100条数值及视觉参考齐全、待完成0条，Near14条。新名单和协议独立封存，未改线上旧任务；新机位需独立生成和标注。
+
+- [第三版：六条替换参考与独立评测入口](CORE100_SIX_REPLACEMENTS_V3.md)：保留该版100条数值、99条视觉参考的原记录；最后一条的cam02更新见第四版。使用第三版指针时仍读取该版结果，不套用第四版状态。
+
+- [新版Core100全100条临界流水线](CORE100_V2_CRITICAL_PIPELINE.md)：数值对应、参考准入、近桶和两种配对、筛查、复核与评分；以 `python -m physedit.core100_critical status` 查看当前接入数量。
+
+- [新版Core100：8条换入，仍为20场景各5条](CORE100_CRITICAL_PAIRS_V2.md)：新名单、参数真值及生成接口；保留旧版任务和成绩，换入8条需重新生成和标注。
+
+- [独立临界补充集：8条、4组真实发布异侧对照](../../benchmarks/critical_supplement_v1_20261101/README.md)：保留 Core100，独立导出和评分；[原6条未定位原因核查](CORE100_PENDING6_CAUSES.md)。
+
 - [Core100逐条距离接入与20场景完成数](CORE100_DISTANCE_BINDINGS.md)：区分边界区间、原校准值与原族待对齐；有限扫描无翻转不直接判不适用。运行 `python -m physedit.core100_bindings status --verify-evidence` 核对实际清单。
 - [原21条“不适用”逐项复核及纠正](CORE100_ORIGINAL_REFERENCE_REAUDIT.md)：原结论已撤回，列出漏接的原值、窗口截断、参数轴与事件不一致。
 

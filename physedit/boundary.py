@@ -180,12 +180,16 @@ def distance(key):
 
 def plan(spec):
     rows, keys = validate(spec)
-    return dict(schema='boundary_v1', model=spec['model'], registered=len(rows),
+    result=dict(schema='boundary_v1', model=spec['model'], registered=len(rows),
                 target_counts=dict(Counter(str(k['events'][k['target_event']]) for k in keys)),
                 inversion_status_counts=dict(Counter(k['inversion']['status'] for k in keys)),
                 generation_not_gated_by_inversion=True,
                 generation_candidates=len(rows), inputs_sha256=digest(spec['inputs']),
                 answers_sha256=digest(spec['answers']), executed=False)
+    if spec.get('native_generation_contract'):
+        from .native_boundary import coverage
+        result['native_generation']=coverage(spec['native_generation_contract'],rows)
+    return result
 
 
 def media(path, row):
@@ -220,6 +224,8 @@ def media(path, row):
 
 def run(spec, root):
     receipt = plan(spec)
+    if receipt.get('native_generation',{}).get('execution_supported')is False:
+        raise ValueError('native_model_window_incompatible_before_generation: '+str(receipt['native_generation']['unsupported_count']))
     inputs, keys = validate(spec)
     if not spec.get('generation_command'):
         raise ValueError('execution requires a generation_command; no implicit model download')

@@ -1,0 +1,398 @@
+{
+  "cases": [
+    {
+      "clip_id": "T08_C01",
+      "reference_video_sha256": "7ea5d07b092f6dac23c247de552e63bc750dd3c646aff84ef600a5fce6255924",
+      "source_state_sha256": "e7b22af1881b763c73e9642b665d5372015111c1c8e0f7d4d91e13d73bb22c2a",
+      "original_physical_specs_preserved": true,
+      "original_event_labels_preserved": true,
+      "parameter": "lower_impactor_initial_speed_mps",
+      "theta": 0.8686186043463,
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "normalization_domain": [
+        0.5892383514863788,
+        0.9956096283735368
+      ],
+      "intervals": [
+        {
+          "event": "t08_target_mug_below_table_8cm",
+          "bracket": [
+            0.8033769657523071,
+            0.8038531820924093
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            {
+              "theta": 0.8033769657523071,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 0
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C01/points/0.803376965752/physics.json.gz",
+              "state_sha256": "625c0fb4a36fb6620cac98c25885c04de9b266e3c98f03c11ca5f19190718734",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C01/points/0.803376965752/config.json",
+              "config_sha256": "e1474ef719f1b4df7412adc392bdbf46d925d0c984c8f4b66c9988d7502ce236",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 8.731108055875357e-05,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.025999999309917095,
+                "t08_upper_payload_book": 0.01599998964106729,
+                "t08_target_mug": 0.047500040288318474
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": 0.12750004028831846,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            },
+            {
+              "theta": 0.8038531820924093,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 1
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C01/points/0.803853182092/physics.json.gz",
+              "state_sha256": "7c7919e8f1018fbb9a6a5d4322b9e727c7ddbe82be3e51c295cd302bb8cfe147",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C01/points/0.803853182092/config.json",
+              "config_sha256": "a804cfa0e1964099dac9c5420f6edea6b1cdf5cce5d6638f140daebaeb7cf91c",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 0.0002509584761229977,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.02599999931200964,
+                "t08_upper_payload_book": 0.01599999616448905,
+                "t08_target_mug": -0.7595672637193778
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": -0.6795672637193778,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            }
+          ],
+          "parameter_bracket_width": 0.00047621634010219793
+        }
+      ],
+      "source_primary_event_matches": true,
+      "non_target_source_event_differences": {},
+      "source_repeat_max_position_difference_m": 0.0,
+      "verified_probe_count": 15,
+      "numerical_reference_profile": {
+        "id": "t08_cpu64_sub8_tc0p0005",
+        "backend": "genesis_cpu",
+        "precision_bits": 64,
+        "dt_s": 0.0005208333333333333,
+        "physics_steps_per_render_frame": 64,
+        "substeps": 8,
+        "constraint_timeconst_s": 0.0005,
+        "source_seed": 1391065259,
+        "seed_provenance": "Explicitly apply published state-header experiment.random_seed; historical actual backend seed not attested.",
+        "solver_changes": {
+          "use_raytracing": {
+            "original": null,
+            "refined": false
+          },
+          "constraint_timeconst": {
+            "original": 0.002,
+            "refined": 0.0005
+          },
+          "raytracing": {
+            "original": true,
+            "refined": false
+          },
+          "substeps": {
+            "original": 4,
+            "refined": 8
+          }
+        },
+        "reference_kind": "author_approved_numerical_refinement",
+        "original_rendering_search_value": false,
+        "uncertainty": {
+          "search_bracket": "Observed opposite-label interval at this fixed numerical profile; not a confidence interval.",
+          "original_to_refined_boundary_shift": "Not quantified: the original GPU32 probe has contact anomalies.",
+          "convergence_to_real_physics": "Not established by source repeatability or bracket width.",
+          "endpoint_repeatability": "Endpoints were each evaluated once; source was independently repeated with identical positions."
+        }
+      },
+      "formal_scope": "Only primary mug below-table event distance. No transfer of refined non-target event labels, exact timing, full-chain EventExact or original-rendering critical values.",
+      "refined_state_audit": "review/core100_v2_resolution_20261102/T08_C01_refined_state_audit_9ed7a4b55d56.json",
+      "full_chain_automatically_admitted": false
+    },
+    {
+      "clip_id": "T08_C02",
+      "reference_video_sha256": "d0183c7abbdc2695a967dd7235603257d04f465b92ee744d11d4c86ec50bff2e",
+      "source_state_sha256": "2989188e7916b60ca09195c30cf44ffb1322e244f69e4dc089bd0e3f73c8e885",
+      "original_physical_specs_preserved": true,
+      "original_event_labels_preserved": true,
+      "parameter": "lower_impactor_initial_speed_mps",
+      "theta": 1.3144938983181307,
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "normalization_domain": [
+        0.8917034631865681,
+        1.5066713688324773
+      ],
+      "intervals": [
+        {
+          "event": "t08_target_mug_below_table_8cm",
+          "bracket": [
+            1.2063940711538106,
+            1.2067544039110252
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            {
+              "theta": 1.2063940711538106,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 0
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20639407115/physics.json.gz",
+              "state_sha256": "76c6f35c6789c882784b13a16be0357241844b6020996918ec8f13407290cde8",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20639407115/config.json",
+              "config_sha256": "f976e8ee2d9846d8519902064072288fb1625e462c62518155155ecd38634f45",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 0.00013334681077993574,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.025999989448626786,
+                "t08_upper_payload_book": 0.015999995695868532,
+                "t08_target_mug": 0.0475000170622787
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": 0.1275000170622787,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            },
+            {
+              "theta": 1.2067544039110252,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 1
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20675440391/physics.json.gz",
+              "state_sha256": "c1be618aabf0952c4a01f03f91ed4de62984df28ed4547a404d139210331e780",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20675440391/config.json",
+              "config_sha256": "a07e67448dedf68401804a32887d24842ba59a68520014508777013bc1c4249d",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 0.00042248516817045,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.02599990299537304,
+                "t08_upper_payload_book": 0.015999994777379147,
+                "t08_target_mug": -0.777157083090418
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": -0.697157083090418,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            }
+          ],
+          "parameter_bracket_width": 0.0003603327572145876
+        }
+      ],
+      "source_primary_event_matches": true,
+      "non_target_source_event_differences": {
+        "t08_lower_impactor_book_below_table_8cm": {
+          "original": 1,
+          "refined": 0
+        }
+      },
+      "source_repeat_max_position_difference_m": 0.0,
+      "verified_probe_count": 16,
+      "numerical_reference_profile": {
+        "id": "t08_cpu64_sub8_tc0p0005",
+        "backend": "genesis_cpu",
+        "precision_bits": 64,
+        "dt_s": 0.0005208333333333333,
+        "physics_steps_per_render_frame": 64,
+        "substeps": 8,
+        "constraint_timeconst_s": 0.0005,
+        "source_seed": 1963352303,
+        "seed_provenance": "Explicitly apply published state-header experiment.random_seed; historical actual backend seed not attested.",
+        "solver_changes": {
+          "use_raytracing": {
+            "original": null,
+            "refined": false
+          },
+          "constraint_timeconst": {
+            "original": 0.002,
+            "refined": 0.0005
+          },
+          "raytracing": {
+            "original": true,
+            "refined": false
+          },
+          "substeps": {
+            "original": 4,
+            "refined": 8
+          }
+        },
+        "reference_kind": "author_approved_numerical_refinement",
+        "original_rendering_search_value": false,
+        "uncertainty": {
+          "search_bracket": "Observed opposite-label interval at this fixed numerical profile; not a confidence interval.",
+          "original_to_refined_boundary_shift": "Not quantified: the original GPU32 probe has contact anomalies.",
+          "convergence_to_real_physics": "Not established by source repeatability or bracket width.",
+          "endpoint_repeatability": "Endpoints were each evaluated once; source was independently repeated with identical positions."
+        }
+      },
+      "formal_scope": "Only primary mug below-table event distance. No transfer of refined non-target event labels, exact timing, full-chain EventExact or original-rendering critical values.",
+      "refined_state_audit": "review/core100_v2_resolution_20261102/T08_C02_refined_state_audit_c8d815b89f93.json",
+      "full_chain_automatically_admitted": false
+    },
+    {
+      "clip_id": "T08_C03",
+      "reference_video_sha256": "f73c849a313ce4c5f40b45c4cddca252bab945b10ab60becd48413ce3ea45c20",
+      "source_state_sha256": "fca4b4d6768a1d696d617dc4fd70e83e841a068ce6b3a7dd1c84fd8ba0a72155",
+      "original_physical_specs_preserved": true,
+      "original_event_labels_preserved": true,
+      "parameter": "lower_impactor_initial_speed_mps",
+      "theta": 2.1375,
+      "horizon_s": 5.0,
+      "condition_frame_index": 4,
+      "end_frame_index": 154,
+      "normalization_domain": [
+        1.45,
+        2.45
+      ],
+      "intervals": [
+        {
+          "event": "t08_target_mug_below_table_8cm",
+          "bracket": [
+            1.9500000000000002,
+            1.9502929687500001
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            {
+              "theta": 1.9500000000000002,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 0
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C03/points/1.95/physics.json.gz",
+              "state_sha256": "79e97bfc25ee9448eb963c43744378f53bed853bb45b38fa2c4d2c14d0cf5220",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C03/points/1.95/config.json",
+              "config_sha256": "deab0ad5263c03e48407e25853571f01867f6b37b9ccc71d7829799b8e1ae194",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 0.0001882783199323772,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.025999987870903442,
+                "t08_upper_payload_book": 0.01599986274330049,
+                "t08_target_mug": 0.04750003856651988
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": 0.12750003856651987,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            },
+            {
+              "theta": 1.9502929687500001,
+              "kind": "point",
+              "labels": {
+                "t08_lower_impactor_book_below_table_8cm": 0,
+                "t08_upper_payload_book_below_table_8cm": 0,
+                "t08_target_mug_below_table_8cm": 1
+              },
+              "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C03/points/1.95029296875/physics.json.gz",
+              "state_sha256": "74e2f1e1de07661ea1612459a1347c5a4e0ba4cf07bab02cf78b955bedf8c34d",
+              "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C03/points/1.95029296875/config.json",
+              "config_sha256": "47728e57bdd6d92ab9318984cffc8c4ce611173c27a5892883231adb8d9577c6",
+              "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+              "native_peak_m": 0.0006822838461922887,
+              "minimum_center_z_m": {
+                "t08_lower_impactor_book": 0.025999995695958122,
+                "t08_upper_payload_book": 0.015999641871271997,
+                "t08_target_mug": -0.7772264320865117
+              },
+              "threshold_z_m": -0.08,
+              "primary_z_margin_m": -0.6972264320865117,
+              "physical_inputs_axis_seed_and_clock_verified": true
+            }
+          ],
+          "parameter_bracket_width": 0.0002929687499999556
+        }
+      ],
+      "source_primary_event_matches": true,
+      "non_target_source_event_differences": {},
+      "source_repeat_max_position_difference_m": 0.0,
+      "verified_probe_count": 17,
+      "numerical_reference_profile": {
+        "id": "t08_cpu64_sub8_tc0p0005",
+        "backend": "genesis_cpu",
+        "precision_bits": 64,
+        "dt_s": 0.0005208333333333333,
+        "physics_steps_per_render_frame": 64,
+        "substeps": 8,
+        "constraint_timeconst_s": 0.0005,
+        "source_seed": 1583750337,
+        "seed_provenance": "Explicitly apply published state-header experiment.random_seed; historical actual backend seed not attested.",
+        "solver_changes": {
+          "use_raytracing": {
+            "original": null,
+            "refined": false
+          },
+          "constraint_timeconst": {
+            "original": 0.002,
+            "refined": 0.0005
+          },
+          "raytracing": {
+            "original": true,
+            "refined": false
+          },
+          "substeps": {
+            "original": 4,
+            "refined": 8
+          }
+        },
+        "reference_kind": "author_approved_numerical_refinement",
+        "original_rendering_search_value": false,
+        "uncertainty": {
+          "search_bracket": "Observed opposite-label interval at this fixed numerical profile; not a confidence interval.",
+          "original_to_refined_boundary_shift": "Not quantified: the original GPU32 probe has contact anomalies.",
+          "convergence_to_real_physics": "Not established by source repeatability or bracket width.",
+          "endpoint_repeatability": "Endpoints were each evaluated once; source was independently repeated with identical positions."
+        }
+      },
+      "formal_scope": "Only primary mug below-table event distance. No transfer of refined non-target event labels, exact timing, full-chain EventExact or original-rendering critical values.",
+      "refined_state_audit": "review/core100_v2_resolution_20261102/T08_C03_refined_state_audit_484df7a5323d.json",
+      "full_chain_automatically_admitted": false
+    }
+  ],
+  "author_authorization": {
+    "scope": [
+      "T08_C01",
+      "T08_C02",
+      "T08_C03"
+    ],
+    "authorization_source": "Explicit user reply in this chat on 2026-11-02",
+    "question_reply_id": "call_a3a9f711a49e4d4d8935e6748414585b",
+    "decision": "允许数值细化，单列配置与不确定性",
+    "reference_video_prompt_and_original_event_labels_unchanged": true,
+    "refined_intervals_are_not_original_rendering_search_values": true
+  },
+  "new_simulations": 0,
+  "frozen_inputs_modified": false,
+  "source_hashes": {
+    "review/core100_v2_resolution_20261102/AUTHOR_T08_NUMERICAL_REFINEMENT_20261102.json": "478aa135d97135e00f3d13780967d4a1e7c54fb11b03450e7eb06d9c070ef268",
+    "review/core100_v2_resolution_20261102/t08_refined_existing_artifacts.json": "6a53c9d37a97780c7486a414533f8951f8b2e5be27a4453500df3c59f9195343",
+    "review/core100_v2_resolution_20261102/t08_published_runtime_inputs.json": "a685e89652c22c2dc76c78f2f9b0e632fb541fe279989a09d20c634c7c1b3bac",
+    "scripts/recover_core100_v2_t08_refinement.py": "d065653e56c9924c56a8307bd349a6b9e190802b012ecdb401357f09f7012303",
+    "review/core100_v2_resolution_20261102/T08_C01_refined_state_audit_9ed7a4b55d56.json": "9ed7a4b55d5655606f62866489b0a8d76b40d706437058af137611b13b8159eb",
+    "review/core100_v2_resolution_20261102/T08_C02_refined_state_audit_c8d815b89f93.json": "c8d815b89f9326ac2da02b24a0e45073b30f717037c625510f5a1bbc1e3cf30c",
+    "review/core100_v2_resolution_20261102/T08_C03_refined_state_audit_484df7a5323d.json": "484df7a5323d57936716fd080f5aacb2148113af7f88623b0f9f400959e29159"
+  }
+}

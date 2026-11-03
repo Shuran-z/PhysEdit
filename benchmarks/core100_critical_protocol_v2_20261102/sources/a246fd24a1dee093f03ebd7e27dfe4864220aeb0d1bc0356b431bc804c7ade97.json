@@ -1,0 +1,71 @@
+{
+  "clip_id": "T16_C04",
+  "status": "completed",
+  "event": "folder_downstream_contact",
+  "source_theta": 83.9655172413793,
+  "normalization_domain": [
+    65.0,
+    90.0
+  ],
+  "horizon_s": 5.0,
+  "source_state_sha256": "d9c945d7182c3c51cd9e8a07392f919636f11fe0f3f6768fadf390ea9e4193e3",
+  "source_config_sha256": "c0cf8aca92dd78d1339d35a524ef6381f8cbf6b926528959cfac1bb0fbd82a72",
+  "points": [
+    {
+      "theta": 84.77370689655172,
+      "status": "completed",
+      "labels": {
+        "folder_downstream_contact": 1,
+        "downstream_response_original": 0,
+        "folder_motion_original": 1
+      },
+      "native_peak_m": 0.00016149552538990974,
+      "quality_passed": true,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t16_gpu_source_20261102/endpoints/84.7737068966/physics.json",
+      "state_sha256": "2116967042cab7bdd87df809ba99180fb08cdf7ff8d01d9ecc9ee9b29bc35824",
+      "config_sha256": "5240b0b75459e3e318eba827a201cd991e878a4e3a8cad068a3d7d953ca71a13",
+      "actual_original_intervention_verified": true,
+      "original_seed_solver_and_clock_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 977377260,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      }
+    },
+    {
+      "theta": 85.60546875,
+      "status": "completed",
+      "labels": {
+        "folder_downstream_contact": 0,
+        "downstream_response_original": 0,
+        "folder_motion_original": 1
+      },
+      "native_peak_m": 0.00045590262743644416,
+      "quality_passed": true,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t16_gpu_source_20261102/endpoints/85.60546875/physics.json",
+      "state_sha256": "a76deface3495b9297eb475f5f95275be4217c57abe39934d7b18db37ba77d64",
+      "config_sha256": "d9549da89ad3a2f014eae45890732016d535e0de0620b52e6f1bc3147a925f88",
+      "actual_original_intervention_verified": true,
+      "original_seed_solver_and_clock_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 977377260,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      }
+    }
+  ],
+  "elapsed_s": 386.33495354652405,
+  "new_parameter_searches_started": 1,
+  "source_files_modified": false,
+  "scope": "Original-renderer GPU32 local interval under unchanged source clock, seed and materials; not a global or numerically converged physical threshold."
+}

@@ -1,0 +1,1159 @@
+{
+  "sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+  "dataset_version": "everyday_bifurcation_T03_v5_formal_480p_fullsim_r032_pbr_scene",
+  "random_seed": 2201504954,
+  "manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json",
+  "_background_anchor": [
+    -0.0,
+    -0.0,
+    -0.0
+  ],
+  "skip_placement": true,
+  "use_full_scene": false,
+  "show_viewer": false,
+  "dynamic_objects": [
+    {
+      "name": "t03v5_upper_tabletop_collision_slab",
+      "asset_id": "t03v5_upper_tabletop_collision_slab",
+      "semantic_label": "t03v5_upper_tabletop_collision_slab",
+      "shape": "box",
+      "size": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "pose": {
+        "position": [
+          0.0,
+          0.0,
+          -0.032
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": false,
+      "collision": true,
+      "friction": 0.012,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.36,
+        0.23,
+        0.13
+      ],
+      "roughness": 0.62,
+      "is_tabletop_collision_slab": true
+    },
+    {
+      "name": "t03v5_lower_transfer_ramp",
+      "asset_id": "t03v5_lower_transfer_ramp",
+      "semantic_label": "t03v5_lower_transfer_ramp",
+      "shape": "box",
+      "size": [
+        0.56,
+        0.52,
+        0.1510316745352124
+      ],
+      "pose": {
+        "position": [
+          0.8200000000000001,
+          -0.055,
+          -0.28048416273239385
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/store/everyday_objects/t03_v5_multilevel_cascade/meshes/lower_transfer_shelf_r007.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/store/everyday_objects/t03_v5_multilevel_cascade/meshes/lower_transfer_shelf_r007_collision.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/store/everyday_objects/t03_v5_multilevel_cascade/meshes/lower_transfer_shelf_r007_collision.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": true,
+      "friction": 0.02,
+      "restitution": 0.02,
+      "mass": 0.0,
+      "camera_focus": false,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "roughness": 0.48,
+      "canonical_asset_manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/store/everyday_objects/t03_v5_multilevel_cascade/manifests/t03_v5_assets_r026.json"
+    },
+    {
+      "name": "t03v5_lower_shelf_leg_1",
+      "asset_id": "t03v5_lower_shelf_leg_1",
+      "semantic_label": "t03v5_lower_shelf_leg_1",
+      "shape": "box",
+      "size": [
+        0.022,
+        0.022,
+        0.3679999999999999
+      ],
+      "pose": {
+        "position": [
+          0.6200000000000001,
+          -0.255,
+          -0.556
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": true,
+      "collision": true,
+      "friction": 0.32,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.055,
+        0.065,
+        0.075
+      ],
+      "roughness": 0.26,
+      "metallic": 0.72
+    },
+    {
+      "name": "t03v5_lower_shelf_leg_2",
+      "asset_id": "t03v5_lower_shelf_leg_2",
+      "semantic_label": "t03v5_lower_shelf_leg_2",
+      "shape": "box",
+      "size": [
+        0.022,
+        0.022,
+        0.3679999999999999
+      ],
+      "pose": {
+        "position": [
+          0.6200000000000001,
+          0.14500000000000002,
+          -0.556
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": true,
+      "collision": true,
+      "friction": 0.32,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.055,
+        0.065,
+        0.075
+      ],
+      "roughness": 0.26,
+      "metallic": 0.72
+    },
+    {
+      "name": "t03v5_lower_shelf_leg_3",
+      "asset_id": "t03v5_lower_shelf_leg_3",
+      "semantic_label": "t03v5_lower_shelf_leg_3",
+      "shape": "box",
+      "size": [
+        0.022,
+        0.022,
+        0.3679999999999999
+      ],
+      "pose": {
+        "position": [
+          1.02,
+          -0.255,
+          -0.556
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": true,
+      "collision": true,
+      "friction": 0.32,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.055,
+        0.065,
+        0.075
+      ],
+      "roughness": 0.26,
+      "metallic": 0.72
+    },
+    {
+      "name": "t03v5_lower_shelf_leg_4",
+      "asset_id": "t03v5_lower_shelf_leg_4",
+      "semantic_label": "t03v5_lower_shelf_leg_4",
+      "shape": "box",
+      "size": [
+        0.022,
+        0.022,
+        0.3679999999999999
+      ],
+      "pose": {
+        "position": [
+          1.02,
+          0.14500000000000002,
+          -0.556
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": true,
+      "collision": true,
+      "friction": 0.32,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.055,
+        0.065,
+        0.075
+      ],
+      "roughness": 0.26,
+      "metallic": 0.72
+    },
+    {
+      "name": "t03v5_terminal_floor",
+      "asset_id": "t03v5_terminal_floor",
+      "semantic_label": "t03v5_terminal_floor",
+      "shape": "box",
+      "size": [
+        8.0,
+        4.0,
+        0.07
+      ],
+      "pose": {
+        "position": [
+          4.0,
+          -0.055,
+          -0.775
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": true,
+      "motion": {
+        "type": "none"
+      },
+      "visualization": false,
+      "collision": true,
+      "friction": 0.005,
+      "restitution": 0.01,
+      "mass": 0.0,
+      "camera_focus": false,
+      "color": [
+        0.36,
+        0.23,
+        0.13
+      ],
+      "roughness": 0.62
+    },
+    {
+      "name": "t03v5_upper_edge_can",
+      "asset_id": "can",
+      "semantic_label": "can",
+      "shape": "box",
+      "size": [
+        0.066,
+        0.066,
+        0.122
+      ],
+      "pose": {
+        "position": [
+          0.702,
+          -0.055,
+          0.0615
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/cans/generic_beverage_can_01.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/generic_beverage_can_01_collision.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/generic_beverage_can_01_collision.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "friction": 0.045,
+      "restitution": 0.02,
+      "mass": 0.37,
+      "camera_focus": true,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy": "cylinder",
+      "collision_proxy_size": [
+        0.066,
+        0.066,
+        0.122
+      ],
+      "ccd_enabled": true,
+      "contact_offset": 0.002,
+      "disable_sleep": true,
+      "linear_damping": 0.004,
+      "angular_damping": 0.018,
+      "collision_proxy_radius": 0.033,
+      "collision_proxy_height": 0.122
+    },
+    {
+      "name": "t03v5_lower_edge_phone",
+      "asset_id": "phone",
+      "semantic_label": "phone",
+      "shape": "box",
+      "size": [
+        0.158,
+        0.076,
+        0.0133
+      ],
+      "pose": {
+        "position": [
+          1.0,
+          -0.055,
+          -0.3114346085797129
+        ],
+        "euler_xyz": [
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/phones/phone_generic_01.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/phone_generic_01_collision.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/phone_generic_01_collision.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "friction": 0.28,
+      "restitution": 0.02,
+      "mass": 0.19,
+      "camera_focus": true,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy": "box",
+      "collision_proxy_size": [
+        0.158,
+        0.076,
+        0.0133
+      ],
+      "ccd_enabled": true,
+      "contact_offset": 0.0015,
+      "disable_sleep": false,
+      "linear_damping": 0.01,
+      "angular_damping": 0.045
+    },
+    {
+      "name": "t03v5_impulsed_book",
+      "asset_id": "book_thin",
+      "semantic_label": "book_thin",
+      "shape": "box",
+      "size": [
+        0.21,
+        0.148,
+        0.014
+      ],
+      "pose": {
+        "position": [
+          -0.67,
+          -0.055,
+          0.0075
+        ],
+        "euler_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fixed": false,
+      "motion": {
+        "type": "physics",
+        "initial_velocity": [
+          0.68,
+          0.0,
+          0.0
+        ]
+      },
+      "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/books/book_thin_01_v2.obj",
+      "collision_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/book_thin_01_v2_collision.obj",
+      "mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/everyday_objects/everyday_life_v1/collision/book_thin_01_v2_collision.obj",
+      "preserve_mesh_material": true,
+      "visualization": true,
+      "collision": true,
+      "convexify": false,
+      "friction": 0.012,
+      "restitution": 0.02,
+      "mass": 0.38,
+      "camera_focus": true,
+      "collision_visual_alignment": "same_origin_measured_bounds",
+      "collision_proxy": "box",
+      "collision_proxy_size": [
+        0.21,
+        0.148,
+        0.014
+      ],
+      "ccd_enabled": true,
+      "contact_offset": 0.001,
+      "disable_sleep": true,
+      "linear_damping": 0.002,
+      "angular_damping": 0.018
+    }
+  ],
+  "runtime_forces": [],
+  "scene_overrides": {
+    "gravity": [
+      0.0,
+      0.0,
+      -3.71
+    ],
+    "dt": 0.0005208333333333333,
+    "substeps": 32,
+    "settle_steps": 0,
+    "record_contacts": true,
+    "use_gjk_collision": true,
+    "enable_multi_contact": true,
+    "box_box_detection": true,
+    "iterations": 120,
+    "ls_iterations": 120,
+    "noslip_iterations": 0,
+    "constraint_timeconst": 0.004,
+    "room_wall_colliders": false,
+    "room_boundary_safety": {
+      "enabled": false
+    },
+    "static_scene_collision": false,
+    "layout_collision": false,
+    "add_ground_plane": false,
+    "static_visual_only_instance_ids": [
+      "baxi_round_table_01"
+    ],
+    "raytracing": true,
+    "raytracing_state_limit": 8388608,
+    "raytracing_depth": 10,
+    "raytracing_rr_depth": 3,
+    "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/backgrounds_v4/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+    "raytracing_env_map_required": true,
+    "raytracing_env_encoding": "linear",
+    "raytracing_env_euler": [
+      0,
+      0,
+      25
+    ],
+    "raytracing_lights": [
+      {
+        "pos": [
+          -0.3,
+          -0.18,
+          2.04
+        ],
+        "color": [
+          1.0,
+          0.93,
+          0.82
+        ],
+        "intensity": 7.2,
+        "radius": 0.52
+      },
+      {
+        "pos": [
+          0.92,
+          -0.78,
+          1.48
+        ],
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ],
+        "intensity": 2.8,
+        "radius": 0.42
+      },
+      {
+        "pos": [
+          0.18,
+          -1.02,
+          0.58
+        ],
+        "color": [
+          1.0,
+          0.91,
+          0.8
+        ],
+        "intensity": 1.25,
+        "radius": 0.24
+      },
+      {
+        "pos": [
+          0.82,
+          -0.66,
+          0.03
+        ],
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ],
+        "intensity": 0.72,
+        "radius": 0.18
+      }
+    ]
+  },
+  "render": {
+    "write_video": true,
+    "render_backend": "raytracing",
+    "fps": 30,
+    "frames": 210,
+    "pre_static_frames": 24,
+    "resolution": [
+      854,
+      480
+    ],
+    "physics_steps_per_render_frame": 64,
+    "raytracing_spp": 64,
+    "raytracing_denoise": true,
+    "use_native_recording": false,
+    "save_rgb_frames": true,
+    "save_depth_frames": false,
+    "save_seg_frames": false,
+    "camera_mode": "fixed_view",
+    "fixed_view": {
+      "role": "causal_chain_high_safe_r032",
+      "position": [
+        1.45,
+        -0.7,
+        0.55
+      ],
+      "look_at": [
+        0.28,
+        -0.055,
+        -0.18
+      ],
+      "fov_deg": 54.0
+    },
+    "camera_min_look_z": -0.7,
+    "video_master_encoding": {
+      "source": "lossless_png_sequence",
+      "codec": "libx264",
+      "crf": 16,
+      "preset": "slow",
+      "pixel_format": "yuv420p",
+      "faststart": true,
+      "disposable_renderer_mp4_must_be_replaced": true
+    },
+    "save_video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03.mp4",
+    "save_first_rgb": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/qa/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03__initial.png",
+    "save_last_rgb": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/qa/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03__final.png",
+    "save_rgb_frames_dir": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/lossless_rgb/cam03",
+    "camera_revision": "t03_three_role_event_visibility_r032_20260909"
+  },
+  "annotations": {
+    "enabled": false,
+    "save_path": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/metadata/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.json"
+  },
+  "experiment": {
+    "template_id": "T03",
+    "scene_family_id": "T03_NO_HUMAN_MULTILEVEL_CASCADE_V5",
+    "case": "upper_book_can_contact_to_lower_can_phone_contact_and_terminal_edge_branch",
+    "event_semantics_zh": "书本由一次声明冲量启动；书本撞击上层桌缘罐体，罐体越界后落到下层木质托架并撞击手机，手机最终在下层形成留置、临界或二次跌落分界。",
+    "event_semantics_en": "One declared impulse starts the book. Book-can contact drives an upper edge decision; a falling can then transfers momentum to a phone on a lower shelf, producing a retained, critical, or second-fall terminal branch.",
+    "human_hand_visible": false,
+    "human_mesh_present": false,
+    "visible_trigger_geometry_count": 0,
+    "visible_trigger_asset_forbidden": true,
+    "trigger_representation": "declared_one_shot_impulse_metadata_only",
+    "post_trigger_actuation": "none",
+    "runtime_forces_forbidden": true,
+    "scripted_transforms_forbidden": true,
+    "background_id": "bg01_home_ase",
+    "gravity_id": "g02_mars",
+    "gravity_vector_mps2": [
+      0.0,
+      0.0,
+      -3.71
+    ],
+    "trajectory_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+    "causal_parameter_group": "C",
+    "changed_variable": "lower_phone_com_edge_distance_m",
+    "outcome_hint": "simulator_labeled_after_run",
+    "replicate_index": 1,
+    "parameter": {
+      "world_units": "m_kg_s",
+      "book_initial_speed_mps": 0.68,
+      "book_mass_kg": 0.38,
+      "declared_one_shot_impulse_vector_Ns": [
+        0.2584,
+        0.0,
+        0.0
+      ],
+      "declared_one_shot_impulse_magnitude_Ns": 0.2584,
+      "declared_one_shot_impulse_duration_s": 0.0,
+      "declared_one_shot_impulse_equation": "J=m*delta_v",
+      "upper_can_mass_kg": 0.37,
+      "upper_can_com_edge_distance_m": 0.008,
+      "lower_phone_mass_kg": 0.19,
+      "lower_phone_com_edge_distance_m": 0.1,
+      "upper_table_friction_coefficient": 0.012,
+      "lower_transfer_ramp_friction_coefficient": 0.02,
+      "lower_transfer_ramp_slope_deg": 12.0,
+      "book_friction_coefficient": 0.012,
+      "can_friction_coefficient": 0.045,
+      "phone_friction_coefficient": 0.28,
+      "trigger_type": "declared_one_shot_impulse_on_book",
+      "trigger_time_s": 0.8,
+      "visible_trigger_geometry_count": 0,
+      "human_mesh_present": false,
+      "runtime_force_count": 0,
+      "scripted_transform_count": 0,
+      "post_trigger_actuation": "none",
+      "event_layout": "upper_table_to_continuous_inclined_shelf_to_floor_multilevel_cascade",
+      "canonical_asset_catalog": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/catalog.json",
+      "canonical_event_asset_manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/store/everyday_objects/t03_v5_multilevel_cascade/manifests/t03_v5_assets_r026.json",
+      "physics_timestep_s": 0.0005208333333333333,
+      "physics_steps_per_video_frame": 64,
+      "causal_event_chain": {
+        "schema_version": "t03_no_human_multilevel_cascade_graph_v1",
+        "nodes": [
+          {
+            "id": "E0",
+            "event": "declared_one_shot_book_impulse",
+            "observable": false
+          },
+          {
+            "id": "E1",
+            "event": "book_inertial_slide",
+            "observable": true
+          },
+          {
+            "id": "E2",
+            "event": "book_contacts_upper_can",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E3",
+            "event": "upper_can_receives_contact_impulse",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E4",
+            "event": "upper_support_edge_decision",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E5",
+            "event": "can_leaves_upper_support",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E6",
+            "event": "can_lands_on_lower_shelf",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E7",
+            "event": "can_contacts_lower_phone",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E8",
+            "event": "phone_receives_contact_impulse",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E9",
+            "event": "lower_support_edge_decision",
+            "observable": true,
+            "conditional": true
+          },
+          {
+            "id": "E10",
+            "event": "phone_retained_critical_or_second_fall",
+            "observable": true
+          },
+          {
+            "id": "E11",
+            "event": "terminal_floor_landing_and_settle",
+            "observable": true,
+            "conditional": true
+          }
+        ],
+        "edges": [
+          {
+            "from": "E0",
+            "to": "E1",
+            "mechanism": "J=m*delta_v"
+          },
+          {
+            "from": "E1",
+            "to": "E2",
+            "condition": "book_reaches_upper_target"
+          },
+          {
+            "from": "E2",
+            "to": "E3",
+            "mechanism": "recorded_book_can_contact_impulse"
+          },
+          {
+            "from": "E3",
+            "to": "E4",
+            "mechanism": "can_COM_vs_upper_support_polygon"
+          },
+          {
+            "from": "E4",
+            "to": "E5",
+            "condition": "upper_threshold_crossed"
+          },
+          {
+            "from": "E5",
+            "to": "E6",
+            "mechanism": "gravity_and_lower_shelf_contact"
+          },
+          {
+            "from": "E6",
+            "to": "E7",
+            "condition": "can_horizontal_momentum_reaches_phone"
+          },
+          {
+            "from": "E7",
+            "to": "E8",
+            "mechanism": "recorded_can_phone_contact_impulse"
+          },
+          {
+            "from": "E8",
+            "to": "E9",
+            "mechanism": "phone_COM_vs_lower_support_polygon"
+          },
+          {
+            "from": "E9",
+            "to": "E10",
+            "condition": "lower_threshold_branch"
+          },
+          {
+            "from": "E10",
+            "to": "E11",
+            "condition": "phone_leaves_lower_support"
+          }
+        ],
+        "single_variable_boundaries": {
+          "A": "book_initial_speed_mps",
+          "B": "upper_can_com_edge_distance_m",
+          "C": "lower_phone_com_edge_distance_m"
+        },
+        "required_prefixes_across_each_44_trajectory_set": [
+          "book_moves_but_stops_before_upper_can",
+          "book_can_contact_but_upper_can_retained",
+          "upper_can_falls_but_lower_phone_retained",
+          "upper_can_falls_contacts_phone_and_phone_is_critical",
+          "full_chain_phone_second_fall_and_terminal_settle"
+        ]
+      },
+      "gravity_vector_mps2": [
+        0.0,
+        0.0,
+        -3.71
+      ],
+      "gravity_magnitude_mps2": 3.71,
+      "parameter_name": "lower_phone_com_edge_distance_m",
+      "parameter_value": 0.1,
+      "solver_substeps": 32
+    },
+    "geometry_contract": {
+      "surface_z_m": 0.0,
+      "upper_tabletop_size_m": [
+        1.42,
+        0.76,
+        0.064
+      ],
+      "upper_table_right_edge_x_m": 0.71,
+      "lower_transfer_ramp_center_top_z_m": -0.28048416273239385,
+      "lower_transfer_ramp_size_m": [
+        0.56,
+        0.52,
+        0.1510316745352124
+      ],
+      "lower_transfer_ramp_slope_deg": 12.0,
+      "lower_transfer_ramp_right_edge_x_m": 1.1,
+      "lower_transfer_ramp_right_top_z_m": -0.34,
+      "lower_transfer_ramp_bottom_z_m": -0.3720000000000001,
+      "terminal_floor_top_z_m": -0.74,
+      "lane_y_m": -0.055,
+      "book_center_m": [
+        -0.67,
+        -0.055,
+        0.0075
+      ],
+      "upper_can_center_m": [
+        0.702,
+        -0.055,
+        0.0615
+      ],
+      "lower_phone_center_m": [
+        1.0,
+        -0.055,
+        -0.3114346085797129
+      ],
+      "initial_book_can_surface_gap_m": 1.234,
+      "initial_can_phone_horizontal_gap_m": 0.18600000000000005,
+      "human_visual_geometry_count": 0,
+      "terminal_floor_center_m": [
+        4.0,
+        -0.055,
+        -0.775
+      ],
+      "terminal_floor_size_m": [
+        8.0,
+        4.0,
+        0.07
+      ],
+      "terminal_floor_friction_coefficient": 0.005,
+      "terminal_floor_contains_expected_motion_envelope": true
+    },
+    "causal_graph_contract": {
+      "schema_version": "t03_no_human_multilevel_cascade_graph_v1",
+      "nodes": [
+        {
+          "id": "E0",
+          "event": "declared_one_shot_book_impulse",
+          "observable": false
+        },
+        {
+          "id": "E1",
+          "event": "book_inertial_slide",
+          "observable": true
+        },
+        {
+          "id": "E2",
+          "event": "book_contacts_upper_can",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E3",
+          "event": "upper_can_receives_contact_impulse",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E4",
+          "event": "upper_support_edge_decision",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E5",
+          "event": "can_leaves_upper_support",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E6",
+          "event": "can_lands_on_lower_shelf",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E7",
+          "event": "can_contacts_lower_phone",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E8",
+          "event": "phone_receives_contact_impulse",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E9",
+          "event": "lower_support_edge_decision",
+          "observable": true,
+          "conditional": true
+        },
+        {
+          "id": "E10",
+          "event": "phone_retained_critical_or_second_fall",
+          "observable": true
+        },
+        {
+          "id": "E11",
+          "event": "terminal_floor_landing_and_settle",
+          "observable": true,
+          "conditional": true
+        }
+      ],
+      "edges": [
+        {
+          "from": "E0",
+          "to": "E1",
+          "mechanism": "J=m*delta_v"
+        },
+        {
+          "from": "E1",
+          "to": "E2",
+          "condition": "book_reaches_upper_target"
+        },
+        {
+          "from": "E2",
+          "to": "E3",
+          "mechanism": "recorded_book_can_contact_impulse"
+        },
+        {
+          "from": "E3",
+          "to": "E4",
+          "mechanism": "can_COM_vs_upper_support_polygon"
+        },
+        {
+          "from": "E4",
+          "to": "E5",
+          "condition": "upper_threshold_crossed"
+        },
+        {
+          "from": "E5",
+          "to": "E6",
+          "mechanism": "gravity_and_lower_shelf_contact"
+        },
+        {
+          "from": "E6",
+          "to": "E7",
+          "condition": "can_horizontal_momentum_reaches_phone"
+        },
+        {
+          "from": "E7",
+          "to": "E8",
+          "mechanism": "recorded_can_phone_contact_impulse"
+        },
+        {
+          "from": "E8",
+          "to": "E9",
+          "mechanism": "phone_COM_vs_lower_support_polygon"
+        },
+        {
+          "from": "E9",
+          "to": "E10",
+          "condition": "lower_threshold_branch"
+        },
+        {
+          "from": "E10",
+          "to": "E11",
+          "condition": "phone_leaves_lower_support"
+        }
+      ],
+      "single_variable_boundaries": {
+        "A": "book_initial_speed_mps",
+        "B": "upper_can_com_edge_distance_m",
+        "C": "lower_phone_com_edge_distance_m"
+      },
+      "required_prefixes_across_each_44_trajectory_set": [
+        "book_moves_but_stops_before_upper_can",
+        "book_can_contact_but_upper_can_retained",
+        "upper_can_falls_but_lower_phone_retained",
+        "upper_can_falls_contacts_phone_and_phone_is_critical",
+        "full_chain_phone_second_fall_and_terminal_settle"
+      ]
+    },
+    "pre_sim_check": {
+      "schema_version": "t03v5_pre_sim_check_v1",
+      "status": "PASS",
+      "render_allowed": true,
+      "checks": {
+        "changed_variable_is_one_of_A_B_C": true,
+        "book_speed_in_calibration_envelope": true,
+        "upper_edge_distance_in_envelope": true,
+        "lower_edge_distance_in_envelope": true,
+        "book_and_can_initially_separated": true,
+        "can_above_lower_shelf": true,
+        "phone_initially_inside_lower_support": true,
+        "no_visible_trigger_geometry": true,
+        "no_human_mesh": true,
+        "no_runtime_force": true,
+        "no_scripted_transform": true,
+        "wood_material_available": true,
+        "lower_ramp_visual_available": true,
+        "lower_ramp_collision_available": true,
+        "canonical_asset_catalog_available": true,
+        "canonical_event_asset_manifest_available": true,
+        "runtime_assets_use_canonical_entrypoint": true,
+        "causal_chain_has_twelve_nodes": true
+      },
+      "errors": []
+    },
+    "render_preset": "t03v5_production_7s",
+    "quality_profile": {
+      "raytracing": true,
+      "write_video": true,
+      "resolution": [
+        854,
+        480
+      ],
+      "spp": 64,
+      "physics_dt": 0.0005208333333333333,
+      "solver_substeps": 32,
+      "physics_steps_per_render_frame": 64,
+      "purpose": "t03_spacing_timing_quality_repair_480p_64spp_full_simulator_dataset_master",
+      "artifact_class": "FORMAL_DATASET_MASTER",
+      "review_eligible": true,
+      "save_lossless_rgb_frames": true
+    },
+    "visual_use_policy": {
+      "artifact_class": "FORMAL_DATASET_MASTER",
+      "eligible_for_human_review": true,
+      "eligible_for_formal_dataset": true,
+      "requires_exact_frozen_manifest_and_asset_lock": true,
+      "requires_all_three_cameras": true,
+      "calibration_outputs_must_never_be_presented_as_quality_review": false
+    },
+    "visual_revision": "r013_cylinder_can_deliberate_impulse_phone_mu028",
+    "camera_framing_contract": "all cameras must show the initial book, upper contact and edge, lower shelf contact, lower phone edge, and terminal landing region",
+    "physics_contract": "only the book receives one initial delta-v at activation; all later motion comes from friction, gravity, and recorded rigid-body contacts; no hand, runtime force, or scripted transform",
+    "full_simulator_only": true,
+    "trajectory_replay_forbidden": true,
+    "cause_object_name": "t03v5_impulsed_book",
+    "upper_target_object_name": "t03v5_upper_edge_can",
+    "lower_terminal_object_name": "t03v5_lower_edge_phone",
+    "seed": 1652679045,
+    "frozen_background_registry_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+    "background_freeze": {
+      "freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+      "background_id": "bg01_home_ase",
+      "profile": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/profiles/bg01_home_ase.json",
+      "profile_sha256": "6e7b1b232c6d8df69d8f87369afacdbd71b6eeeb65d3c5ca88a445d2fa20e40e",
+      "manifest_sha256": "44cf6d158f0029dc26685c38434671b29f82be7c86bf3ae3027031ad9a8d10a4",
+      "asset_lock_sha256": "cd07838194529f885b1be32c41703e7b89e496cbf96daf7f636e9a1b4292f7f7",
+      "reference_image": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/reference_images/01_home_T01V2_initial.png",
+      "reference_image_sha256": "cb727c471001362153160979760827aab7d96eaa0e3d0d6dd1222b2e2e8a4d60",
+      "layout_geometry_camera_frozen": true,
+      "material_revision": "everyday_life_v1_home_pbr"
+    },
+    "sampling_design": "global_causal_coverage",
+    "sampling_design_id": "global_C_05",
+    "parameter_region": "simulator_observed",
+    "replicate_id": 1,
+    "formal_user_authorization": "2026-09-08_user_requested_scene_quality_optimization",
+    "three_camera_contract": "one_live_genesis_simulation_three_synchronized_views",
+    "physics_simulation_count": 1,
+    "formal_matrix": {
+      "background_count": 4,
+      "gravity_count": 5,
+      "trajectories_per_base_condition": 44,
+      "cameras_per_trajectory": 3
+    },
+    "revision": "r032_pbr_scene",
+    "timing_quality_gate": {
+      "status": "PASS",
+      "legacy_initial_book_can_surface_gap_m": 0.0,
+      "actual_initial_book_can_surface_gap_m": 1.234,
+      "minimum_initial_book_can_surface_gap_m": 1.15,
+      "pre_static_frames": 24,
+      "trigger_time_s": 0.8,
+      "full_chain_min_action_span_s": 3.4,
+      "reason": "repair legacy zero-gap contact and sub-second event collapse"
+    },
+    "camera_quality_gate": {
+      "status": "PASS",
+      "primary_camera_id": "cam01",
+      "background_id": "bg01_home_ase",
+      "required_visible_regions": [
+        "upper_table",
+        "lower_shelf",
+        "terminal_floor"
+      ],
+      "occlusion_repair": "safe_side_full_chain_view"
+    },
+    "containment_quality_gate": {
+      "status": "PASS",
+      "terminal_floor_size_m": [
+        8.0,
+        4.0,
+        0.07
+      ],
+      "terminal_floor_top_z_m": -0.74,
+      "terminal_floor_friction_coefficient": 0.005,
+      "reason": "prevent post-chain freefall and preserve a measurable terminal motion interval"
+    },
+    "background_freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+    "visual_quality_contract": {
+      "status": "PILOT",
+      "asset_pack": "t03_v5_multilevel_cascade_r026",
+      "support_asset": "not_required_low_gravity",
+      "support_visual": null,
+      "support_collision": null,
+      "camera_roles": [
+        "primary_event_wide_r032",
+        "reverse_event_wide_r032",
+        "causal_chain_high_safe_r032"
+      ],
+      "lighting_revision": "frozen_profile_native_lighting_r032",
+      "background_freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829"
+    }
+  },
+  "background_profile_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/profiles/bg01_home_ase.json",
+  "camera_id": "cam03",
+  "visual_revision": "r032_integrated_pbr_cradle_safe_cameras_native_frozen_lighting"
+}

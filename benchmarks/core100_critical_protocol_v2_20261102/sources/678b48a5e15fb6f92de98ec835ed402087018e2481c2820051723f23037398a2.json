@@ -1,0 +1,1476 @@
+{
+  "cases": [
+    {
+      "clip_id": "T20_C02",
+      "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p009",
+      "theta": 3.0454545454545454,
+      "label": 1,
+      "reference_video_sha256": "84523298f11f683747c34798a76a2f2629f68930f60e609d8de73818f4dc6526",
+      "source_state_sha256": "2060469260957cc33229eb8aea9372fb22031df12734c72b86e14ef3ef2c065d",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p009/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p009__cam01.json.gz",
+      "source": {
+        "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p009",
+        "theta": 3.0454545454545454,
+        "label": 1,
+        "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p009/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p009__cam01.json.gz",
+        "stored_state_sha256": "2060469260957cc33229eb8aea9372fb22031df12734c72b86e14ef3ef2c065d",
+        "decoded_state_sha256": "8f8906f935930b0795e60d52e2b53dc7d50aa88dff947235c5df03c2e6bb2501",
+        "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+        "cup_final_displacement_m": 1.0780186407743586,
+        "ordered_first_contacts": [
+          [
+            24,
+            1
+          ],
+          [
+            24,
+            3
+          ],
+          [
+            24,
+            10
+          ]
+        ],
+        "horizon_s": 5.0
+      },
+      "points_read": 12,
+      "same_context_points": 12,
+      "read_errors": [],
+      "observed_values": [
+        {
+          "theta": 0.5,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p001",
+              "theta": 0.5,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p001/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p001__cam01.json.gz",
+              "stored_state_sha256": "1091497feb793ad0411698c52da3891ff479bb9f87817c7535729fd17b0e6d30",
+              "decoded_state_sha256": "8a2705d9635bd639e9d0a5ac60b64f43f1b5ccc26746b906c11160ffa1c37374",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.001508951187133789,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  5
+                ],
+                [
+                  24,
+                  11
+                ],
+                null
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 0.8181818181818181,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p002",
+              "theta": 0.8181818181818181,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p002/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p002__cam01.json.gz",
+              "stored_state_sha256": "0e726257b59103c9aca6bac90ff8bfb6eb6bdb903cc31a0cfa3d62ad7210c3f9",
+              "decoded_state_sha256": "218b69a29779225f9943f1386177fd8efbc3b24fadd13390d763ebc1d904225f",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.0031630294109663013,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  7
+                ],
+                [
+                  26,
+                  2
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.1363636363636362,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p003",
+              "theta": 1.1363636363636362,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p003/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p003__cam01.json.gz",
+              "stored_state_sha256": "880fac37cff3f3e17fec0dd2aa3316fa6cded3ad1dbf16cc256334139c077cc9",
+              "decoded_state_sha256": "a45e3ccc61d62034c5efd65b7234bcf3f59c428c81c89eb7c663fe59c2e8afc2",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.025238363546524666,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  5
+                ],
+                [
+                  25,
+                  8
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.4545454545454546,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p004",
+              "theta": 1.4545454545454546,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p004/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p004__cam01.json.gz",
+              "stored_state_sha256": "41d48bf7b2fb36703a8e91418313db0c9bd99b028dd3b95652fbb70db994964f",
+              "decoded_state_sha256": "593420e741c49d6f207ec67d09222a3793a6bcf3082c39da53264a914f6c4a39",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.047789557136787016,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  3
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.7727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p005",
+              "theta": 1.7727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p005/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p005__cam01.json.gz",
+              "stored_state_sha256": "756831b7308012e277b78a0556258323e681e61afb80dff2eb16d5aaf0bf9c55",
+              "decoded_state_sha256": "1d62086bdd001aba4e86062f90f36a43ea5c3e415d45be2ac80458656f71b3ee",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.07265275528778554,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  0
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.090909090909091,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p006",
+              "theta": 2.090909090909091,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p006/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p006__cam01.json.gz",
+              "stored_state_sha256": "5e96d6edc4ee16fb26df20b31c51eb48e25a7a8b52b96d58a132e42eaad9cabc",
+              "decoded_state_sha256": "19ae893bbcf2c1347cbc65498d32189d68bfaf19ccefcc6f1f76fde028d35174",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.0911384601190858,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  14
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.409090909090909,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p007",
+              "theta": 2.409090909090909,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p007/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p007__cam01.json.gz",
+              "stored_state_sha256": "5ee5ab281cafeee8dcd31551212a77b9bf99fc08eadd5ace62a2532ae683b1b6",
+              "decoded_state_sha256": "751c7484c93a28cd194ebf08f66a325dc1f928b3ae9fc84cbc4681605d2bb27d",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.8434373653833845,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  12
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p008",
+              "theta": 2.727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p008/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p008__cam01.json.gz",
+              "stored_state_sha256": "c6baafab01c9ebd9d7c9e2d58140718d671a5cc80ca05fcef2a887ff8899de65",
+              "decoded_state_sha256": "c0164998059e555a3ccec3185c63e2936bced96e7100009f06ec6e6f7511c21f",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 0.997063402470023,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  11
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.0454545454545454,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p009",
+              "theta": 3.0454545454545454,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p009/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p009__cam01.json.gz",
+              "stored_state_sha256": "2060469260957cc33229eb8aea9372fb22031df12734c72b86e14ef3ef2c065d",
+              "decoded_state_sha256": "8f8906f935930b0795e60d52e2b53dc7d50aa88dff947235c5df03c2e6bb2501",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 1.0780186407743586,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  10
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.3636363636363638,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p010",
+              "theta": 3.3636363636363638,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p010/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p010__cam01.json.gz",
+              "stored_state_sha256": "bf04be6ddc60ccabcf8fe8514dbce5fff9f4e7f5bc54e8b53644608fb5d60e4a",
+              "decoded_state_sha256": "1020e22645f7cb95ccf44c1316e797bdb4ec0c23c4f18fb32ddfbe820dd2340d",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 1.2394973809717709,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  9
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.6818181818181817,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p011",
+              "theta": 3.6818181818181817,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p011/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p011__cam01.json.gz",
+              "stored_state_sha256": "21bec965c603dd9a73b6acb818336f85624f06e09a10ca1e5a0f9989202eaf3e",
+              "decoded_state_sha256": "c50bd2392d42e6b5d708207d9c3f4fca4f9c2be4cf7776954398b04025765a7b",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 1.3925438577108118,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  9
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 4.0,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p012",
+              "theta": 4.0,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p012/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p012__cam01.json.gz",
+              "stored_state_sha256": "f2fcba28309ef48e56ec78c6230d71c1d25b90c44fd8137833b40baae6b4ac7a",
+              "decoded_state_sha256": "5d6692a681e55d94887a76f9441d527713e0824257ed001090e84f9ec9695add",
+              "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+              "cup_final_displacement_m": 1.4526675360059946,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  8
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        }
+      ],
+      "intervals": [
+        {
+          "event": "complete_propagation_original",
+          "bracket": [
+            0.8181818181818181,
+            1.1363636363636362
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p002",
+                "theta": 0.8181818181818181,
+                "label": 0,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p002/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p002__cam01.json.gz",
+                "stored_state_sha256": "0e726257b59103c9aca6bac90ff8bfb6eb6bdb903cc31a0cfa3d62ad7210c3f9",
+                "decoded_state_sha256": "218b69a29779225f9943f1386177fd8efbc3b24fadd13390d763ebc1d904225f",
+                "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+                "cup_final_displacement_m": 0.0031630294109663013,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    3
+                  ],
+                  [
+                    24,
+                    7
+                  ],
+                  [
+                    26,
+                    2
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ],
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g02_mars__book_drive_speed__p003",
+                "theta": 1.1363636363636362,
+                "label": 1,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g02_mars__book_drive_speed__p003/metadata/T20__bg01_home_ase__g02_mars__book_drive_speed__p003__cam01.json.gz",
+                "stored_state_sha256": "880fac37cff3f3e17fec0dd2aa3316fa6cded3ad1dbf16cc256334139c077cc9",
+                "decoded_state_sha256": "a45e3ccc61d62034c5efd65b7234bcf3f59c428c81c89eb7c663fe59c2e8afc2",
+                "fixed_context_sha256": "3582b41ec8db37b0d667880e74c3df6905e040127d2f4520c58a9e0855482226",
+                "cup_final_displacement_m": 0.025238363546524666,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    2
+                  ],
+                  [
+                    24,
+                    5
+                  ],
+                  [
+                    25,
+                    8
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ]
+          ]
+        }
+      ],
+      "scope": "Same original object specifications except book speed, solver and clock. No-flip observations are not proof of nonexistence."
+    },
+    {
+      "clip_id": "T20_C03",
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+      "theta": 3.0454545454545454,
+      "label": 1,
+      "reference_video_sha256": "dcc3b49cb0ec1a158be8b0404978669433ff5789f0b9b6b5311e50b04cbf209c",
+      "source_state_sha256": "a4409be924866bfccbb4bc1bcd5a22b987c1afe243d22f98c5af9c8f71d1b6f9",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p009/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p009__cam01.json.gz",
+      "source": {
+        "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+        "theta": 3.0454545454545454,
+        "label": 1,
+        "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p009/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p009__cam01.json.gz",
+        "stored_state_sha256": "a4409be924866bfccbb4bc1bcd5a22b987c1afe243d22f98c5af9c8f71d1b6f9",
+        "decoded_state_sha256": "421784b118ae24ed0979b2d38e9526fc1909af1359105e9a49b4715cdba963fc",
+        "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+        "cup_final_displacement_m": 0.09244077742047432,
+        "ordered_first_contacts": [
+          [
+            24,
+            1
+          ],
+          [
+            24,
+            3
+          ],
+          [
+            24,
+            10
+          ]
+        ],
+        "horizon_s": 5.0
+      },
+      "points_read": 12,
+      "same_context_points": 12,
+      "read_errors": [],
+      "observed_values": [
+        {
+          "theta": 0.5,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p001",
+              "theta": 0.5,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p001/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p001__cam01.json.gz",
+              "stored_state_sha256": "d6417bef857aacb90a081d101b3dc5b82f5eb2f26c1505beba4975c120cc9162",
+              "decoded_state_sha256": "6ae4bb3a495bbde9b665ebe472dd3d8548a353a269894d291180221c1955b79c",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.001522422135552964,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  5
+                ],
+                [
+                  24,
+                  15
+                ],
+                null
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 0.8181818181818181,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p002",
+              "theta": 0.8181818181818181,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p002/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p002__cam01.json.gz",
+              "stored_state_sha256": "487c946f7418fc704a1586d3823a0f8f61fdb89f07efcf6a42584b04ba006163",
+              "decoded_state_sha256": "81675f9b76a1f89e700204cb01b4a882abb2cbec6f7d4633ce71a24ac1cf1005",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.001522422135552964,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  7
+                ],
+                null
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.1363636363636362,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p003",
+              "theta": 1.1363636363636362,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p003/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p003__cam01.json.gz",
+              "stored_state_sha256": "18199bf359bb9ec42e0008815be748fa3b03e19537b0a178c8cdc6ef97481248",
+              "decoded_state_sha256": "820dd669fad7cb86cc92b7931aa19858e925a14745146898575f697f781dbaa7",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.0015944972957384327,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  5
+                ],
+                [
+                  25,
+                  15
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.4545454545454546,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p004",
+              "theta": 1.4545454545454546,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p004/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p004__cam01.json.gz",
+              "stored_state_sha256": "c5e363106a691931fbb0876ac1de8a350f450448a4dc22f343b55ce38aeaf7c0",
+              "decoded_state_sha256": "b6580e881fd2722898692c9eedd60639db2e83f0e49e8498589e588993abbc56",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.006569572603235847,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  4
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.7727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p005",
+              "theta": 1.7727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p005/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p005__cam01.json.gz",
+              "stored_state_sha256": "eef5ed7c430cf2ed567907b784528aa9508add0f6bf3e41cdca88a836308c755",
+              "decoded_state_sha256": "645c3d580000e5b8722f3c6cbc6ebfc086b5af64ded8365c36b989b5c405838e",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.024364796615655562,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  1
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.090909090909091,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p006",
+              "theta": 2.090909090909091,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p006/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p006__cam01.json.gz",
+              "stored_state_sha256": "793e505d6a1c31b0cf41cdc540ca41e6e0a428559d6f956ecf016c75c84e7a73",
+              "decoded_state_sha256": "d8867643f59b5aed1202020becba53ac74b6af0838c0a30127e53d0b57f71b7d",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.03960438227518819,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  14
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.409090909090909,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p007",
+              "theta": 2.409090909090909,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p007/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p007__cam01.json.gz",
+              "stored_state_sha256": "ecae450e8a3021550bc66c2f6ab6395f49b9980ce9246b3796146b56255c85fe",
+              "decoded_state_sha256": "b5928f9cd38410c8fad494edd3c938184d230e840a4c92a99923621ec19d0d43",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.05847626264960692,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  13
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p008",
+              "theta": 2.727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p008/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p008__cam01.json.gz",
+              "stored_state_sha256": "ed7a1d690193544db684cf103c153732f7b4ef027a17f6a0c7d283b98f12b350",
+              "decoded_state_sha256": "9fb23c296c88e187ca4318a9c931611b70d42a5237b381981d08ce59a254c537",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.06767650677737345,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  11
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.0454545454545454,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+              "theta": 3.0454545454545454,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p009/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p009__cam01.json.gz",
+              "stored_state_sha256": "a4409be924866bfccbb4bc1bcd5a22b987c1afe243d22f98c5af9c8f71d1b6f9",
+              "decoded_state_sha256": "421784b118ae24ed0979b2d38e9526fc1909af1359105e9a49b4715cdba963fc",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.09244077742047432,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  10
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.3636363636363638,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+              "theta": 3.3636363636363638,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p010/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p010__cam01.json.gz",
+              "stored_state_sha256": "2d5e950efbe2a85b7f872f2cd9e19dec1b30935fd64ba47d4e8cbb384f849e5d",
+              "decoded_state_sha256": "5a61519204c59cde92db7a976c0b9d00f3c41cd03724fcdecfc5f5cce053eb61",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.10772828238184587,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  10
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.6818181818181817,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p011",
+              "theta": 3.6818181818181817,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p011/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p011__cam01.json.gz",
+              "stored_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+              "decoded_state_sha256": "24d014c91ba1d39b9df2cbecdf2fb1ffa7b72bcc91013b976fe032aec663715c",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.849496965064328,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  9
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 4.0,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p012",
+              "theta": 4.0,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p012/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p012__cam01.json.gz",
+              "stored_state_sha256": "059c7057d99134f204992d29f5adf8d9fb9f8e3cba54a69f3a3548dae7a4437c",
+              "decoded_state_sha256": "361219a79ce62307c90a9550b58b0456ed2e33dc0c6c4f3f1a4bcc02d583db94",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.8942463821463391,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  8
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        }
+      ],
+      "intervals": [
+        {
+          "event": "complete_propagation_original",
+          "bracket": [
+            1.4545454545454546,
+            1.7727272727272727
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p004",
+                "theta": 1.4545454545454546,
+                "label": 0,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p004/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p004__cam01.json.gz",
+                "stored_state_sha256": "c5e363106a691931fbb0876ac1de8a350f450448a4dc22f343b55ce38aeaf7c0",
+                "decoded_state_sha256": "b6580e881fd2722898692c9eedd60639db2e83f0e49e8498589e588993abbc56",
+                "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+                "cup_final_displacement_m": 0.006569572603235847,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    2
+                  ],
+                  [
+                    24,
+                    4
+                  ],
+                  [
+                    25,
+                    4
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ],
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p005",
+                "theta": 1.7727272727272727,
+                "label": 1,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p005/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p005__cam01.json.gz",
+                "stored_state_sha256": "eef5ed7c430cf2ed567907b784528aa9508add0f6bf3e41cdca88a836308c755",
+                "decoded_state_sha256": "645c3d580000e5b8722f3c6cbc6ebfc086b5af64ded8365c36b989b5c405838e",
+                "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+                "cup_final_displacement_m": 0.024364796615655562,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    1
+                  ],
+                  [
+                    24,
+                    4
+                  ],
+                  [
+                    25,
+                    1
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ]
+          ]
+        }
+      ],
+      "scope": "Same original object specifications except book speed, solver and clock. No-flip observations are not proof of nonexistence."
+    },
+    {
+      "clip_id": "T20_C04",
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+      "theta": 3.3636363636363638,
+      "label": 1,
+      "reference_video_sha256": "d5837b6424950f7dd03303de8695ca68a91c9ef6c9e44c3574af05b0585e981f",
+      "source_state_sha256": "2d5e950efbe2a85b7f872f2cd9e19dec1b30935fd64ba47d4e8cbb384f849e5d",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p010/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p010__cam01.json.gz",
+      "source": {
+        "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+        "theta": 3.3636363636363638,
+        "label": 1,
+        "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p010/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p010__cam01.json.gz",
+        "stored_state_sha256": "2d5e950efbe2a85b7f872f2cd9e19dec1b30935fd64ba47d4e8cbb384f849e5d",
+        "decoded_state_sha256": "5a61519204c59cde92db7a976c0b9d00f3c41cd03724fcdecfc5f5cce053eb61",
+        "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+        "cup_final_displacement_m": 0.10772828238184587,
+        "ordered_first_contacts": [
+          [
+            24,
+            1
+          ],
+          [
+            24,
+            2
+          ],
+          [
+            24,
+            10
+          ]
+        ],
+        "horizon_s": 5.0
+      },
+      "points_read": 12,
+      "same_context_points": 12,
+      "read_errors": [],
+      "observed_values": [
+        {
+          "theta": 0.5,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p001",
+              "theta": 0.5,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p001/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p001__cam01.json.gz",
+              "stored_state_sha256": "d6417bef857aacb90a081d101b3dc5b82f5eb2f26c1505beba4975c120cc9162",
+              "decoded_state_sha256": "6ae4bb3a495bbde9b665ebe472dd3d8548a353a269894d291180221c1955b79c",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.001522422135552964,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  5
+                ],
+                [
+                  24,
+                  15
+                ],
+                null
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 0.8181818181818181,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p002",
+              "theta": 0.8181818181818181,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p002/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p002__cam01.json.gz",
+              "stored_state_sha256": "487c946f7418fc704a1586d3823a0f8f61fdb89f07efcf6a42584b04ba006163",
+              "decoded_state_sha256": "81675f9b76a1f89e700204cb01b4a882abb2cbec6f7d4633ce71a24ac1cf1005",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.001522422135552964,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  7
+                ],
+                null
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.1363636363636362,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p003",
+              "theta": 1.1363636363636362,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p003/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p003__cam01.json.gz",
+              "stored_state_sha256": "18199bf359bb9ec42e0008815be748fa3b03e19537b0a178c8cdc6ef97481248",
+              "decoded_state_sha256": "820dd669fad7cb86cc92b7931aa19858e925a14745146898575f697f781dbaa7",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.0015944972957384327,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  5
+                ],
+                [
+                  25,
+                  15
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.4545454545454546,
+          "label": 0,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p004",
+              "theta": 1.4545454545454546,
+              "label": 0,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p004/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p004__cam01.json.gz",
+              "stored_state_sha256": "c5e363106a691931fbb0876ac1de8a350f450448a4dc22f343b55ce38aeaf7c0",
+              "decoded_state_sha256": "b6580e881fd2722898692c9eedd60639db2e83f0e49e8498589e588993abbc56",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.006569572603235847,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  4
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 1.7727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p005",
+              "theta": 1.7727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p005/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p005__cam01.json.gz",
+              "stored_state_sha256": "eef5ed7c430cf2ed567907b784528aa9508add0f6bf3e41cdca88a836308c755",
+              "decoded_state_sha256": "645c3d580000e5b8722f3c6cbc6ebfc086b5af64ded8365c36b989b5c405838e",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.024364796615655562,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  4
+                ],
+                [
+                  25,
+                  1
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.090909090909091,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p006",
+              "theta": 2.090909090909091,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p006/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p006__cam01.json.gz",
+              "stored_state_sha256": "793e505d6a1c31b0cf41cdc540ca41e6e0a428559d6f956ecf016c75c84e7a73",
+              "decoded_state_sha256": "d8867643f59b5aed1202020becba53ac74b6af0838c0a30127e53d0b57f71b7d",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.03960438227518819,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  14
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.409090909090909,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p007",
+              "theta": 2.409090909090909,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p007/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p007__cam01.json.gz",
+              "stored_state_sha256": "ecae450e8a3021550bc66c2f6ab6395f49b9980ce9246b3796146b56255c85fe",
+              "decoded_state_sha256": "b5928f9cd38410c8fad494edd3c938184d230e840a4c92a99923621ec19d0d43",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.05847626264960692,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  13
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 2.727272727272727,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p008",
+              "theta": 2.727272727272727,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p008/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p008__cam01.json.gz",
+              "stored_state_sha256": "ed7a1d690193544db684cf103c153732f7b4ef027a17f6a0c7d283b98f12b350",
+              "decoded_state_sha256": "9fb23c296c88e187ca4318a9c931611b70d42a5237b381981d08ce59a254c537",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.06767650677737345,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  11
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.0454545454545454,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p009",
+              "theta": 3.0454545454545454,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p009/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p009__cam01.json.gz",
+              "stored_state_sha256": "a4409be924866bfccbb4bc1bcd5a22b987c1afe243d22f98c5af9c8f71d1b6f9",
+              "decoded_state_sha256": "421784b118ae24ed0979b2d38e9526fc1909af1359105e9a49b4715cdba963fc",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.09244077742047432,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  3
+                ],
+                [
+                  24,
+                  10
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.3636363636363638,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p010",
+              "theta": 3.3636363636363638,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p010/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p010__cam01.json.gz",
+              "stored_state_sha256": "2d5e950efbe2a85b7f872f2cd9e19dec1b30935fd64ba47d4e8cbb384f849e5d",
+              "decoded_state_sha256": "5a61519204c59cde92db7a976c0b9d00f3c41cd03724fcdecfc5f5cce053eb61",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.10772828238184587,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  1
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  10
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 3.6818181818181817,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p011",
+              "theta": 3.6818181818181817,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p011/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p011__cam01.json.gz",
+              "stored_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+              "decoded_state_sha256": "24d014c91ba1d39b9df2cbecdf2fb1ffa7b72bcc91013b976fe032aec663715c",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.849496965064328,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  9
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        },
+        {
+          "theta": 4.0,
+          "label": 1,
+          "points": [
+            {
+              "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p012",
+              "theta": 4.0,
+              "label": 1,
+              "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p012/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p012__cam01.json.gz",
+              "stored_state_sha256": "059c7057d99134f204992d29f5adf8d9fb9f8e3cba54a69f3a3548dae7a4437c",
+              "decoded_state_sha256": "361219a79ce62307c90a9550b58b0456ed2e33dc0c6c4f3f1a4bcc02d583db94",
+              "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+              "cup_final_displacement_m": 0.8942463821463391,
+              "ordered_first_contacts": [
+                [
+                  24,
+                  0
+                ],
+                [
+                  24,
+                  2
+                ],
+                [
+                  24,
+                  8
+                ]
+              ],
+              "horizon_s": 5.0
+            }
+          ]
+        }
+      ],
+      "intervals": [
+        {
+          "event": "complete_propagation_original",
+          "bracket": [
+            1.4545454545454546,
+            1.7727272727272727
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p004",
+                "theta": 1.4545454545454546,
+                "label": 0,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p004/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p004__cam01.json.gz",
+                "stored_state_sha256": "c5e363106a691931fbb0876ac1de8a350f450448a4dc22f343b55ce38aeaf7c0",
+                "decoded_state_sha256": "b6580e881fd2722898692c9eedd60639db2e83f0e49e8498589e588993abbc56",
+                "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+                "cup_final_displacement_m": 0.006569572603235847,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    2
+                  ],
+                  [
+                    24,
+                    4
+                  ],
+                  [
+                    25,
+                    4
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ],
+            [
+              {
+                "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p005",
+                "theta": 1.7727272727272727,
+                "label": 1,
+                "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T20__bg01_home_ase__g03_earth__book_drive_speed__p005/metadata/T20__bg01_home_ase__g03_earth__book_drive_speed__p005__cam01.json.gz",
+                "stored_state_sha256": "eef5ed7c430cf2ed567907b784528aa9508add0f6bf3e41cdca88a836308c755",
+                "decoded_state_sha256": "645c3d580000e5b8722f3c6cbc6ebfc086b5af64ded8365c36b989b5c405838e",
+                "fixed_context_sha256": "fd586deca33be1f2f1e9866fccbfed1e5c096ac6c8e97363f906ff26b853b828",
+                "cup_final_displacement_m": 0.024364796615655562,
+                "ordered_first_contacts": [
+                  [
+                    24,
+                    1
+                  ],
+                  [
+                    24,
+                    4
+                  ],
+                  [
+                    25,
+                    1
+                  ]
+                ],
+                "horizon_s": 5.0
+              }
+            ]
+          ]
+        }
+      ],
+      "scope": "Same original object specifications except book speed, solver and clock. No-flip observations are not proof of nonexistence."
+    },
+    {
+      "clip_id": "T20_C05",
+      "sample_id": "T20__bg01_home_ase__g03_earth__book_drive_speed__p011",
+      "theta": 3.6818181818181817,
+      "label": 1,
+      "reference_video_sha256": "d89c90774e742416cd148b4db7d44d332c0b88f9fbd0750eb5f2da841f6644af",
+      "source_state_sha256": "130ab6cc7941f5994757edf94f2c68ccfd7edd30a6ddebc4a89e81054cba2ccb",
+      "state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phy2--phydataset/snapshots/474cbb0444fed4e4e038acdf6bc0a7b872fd2563/benchmarks/core100_recovery_v3_20261021/canonical/T20_C05/state.json",
+      "source": {
+        "sample_id": null,
+        "theta": 3.6818181818181817,
+        "label": 1,
+        "state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phy2--phydataset/snapshots/474cbb0444fed4e4e038acdf6bc0a7b872fd2563/benchmarks/core100_recovery_v3_20261021/canonical/T20_C05/state.json",
+        "stored_state_sha256": "4075b1301907d99f29ef6458f4d8f5e7a6ac0c78233d3e154aa5f8f2e1b72f1f",
+        "decoded_state_sha256": "4075b1301907d99f29ef6458f4d8f5e7a6ac0c78233d3e154aa5f8f2e1b72f1f",
+        "fixed_context_sha256": "82f55d4b8f40bb0bd2e7862304d1e80a11645ed85880a0092f6ea040198a87e3",
+        "cup_final_displacement_m": 0.10554177035105061,
+        "ordered_first_contacts": [
+          [
+            24,
+            2
+          ],
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            22
+          ]
+        ],
+        "horizon_s": 5.0
+      },
+      "status": "frozen_reference_and_old_numerical_source_digest_differ",
+      "points_read": 0,
+      "same_context_points": 0,
+      "read_errors": [],
+      "observed_values": [],
+      "intervals": [],
+      "scope": "Do not transfer an original production sweep to a differently configured frozen canonical reference. Resolve both states before adopting a boundary."
+    }
+  ],
+  "new_simulations": 0,
+  "original_sources_modified": false,
+  "source_readback_sha256": "177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430"
+}

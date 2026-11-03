@@ -1,0 +1,15 @@
+[
+  {
+    "clip_id": "T03_C02",
+    "kind": "camera_only",
+    "old_camera": "cam03",
+    "new_camera": "cam02",
+    "old_sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+    "new_sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+    "old_reference_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+    "new_reference_sha256": "b7a0d5bfb91962c673bacb1378b86ef172b360ccecc59ca94243921f459a5c03",
+    "physical_parameters_changed": false,
+    "prompt_changed": false,
+    "old_results_reusable": false
+  }
+]

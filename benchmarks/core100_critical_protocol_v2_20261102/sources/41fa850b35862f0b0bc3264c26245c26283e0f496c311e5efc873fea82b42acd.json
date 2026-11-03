@@ -1,0 +1,566 @@
+{
+  "clip_id": "T06_C04",
+  "source_state_sha256": "d140b412d71fc18e44bb3979170da1abb13681a95bf40ba97fcc8c65ccf5c9b4",
+  "reference_video_sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31",
+  "theta": 1.4285714,
+  "horizon_s": 4.1,
+  "intervals": [
+    {
+      "event": "complete_required_contact_chain",
+      "bracket": [
+        1.7056361783203124,
+        1.7060547051757813
+      ],
+      "labels": [
+        0,
+        1
+      ]
+    }
+  ],
+  "points": [
+    {
+      "theta": 1.4285714,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p4285714_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "3ee782b1d733e715526467b7a4710c22f33a8077352c08fcc2410b88e865b58b",
+      "config_sha256": "7b3fd22ac833a16f3e9adc168ccf67a3a3dd7fdac8a1d3824c3c5ae81fd42abc",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 100.096848487854,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          30,
+          52,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p4285714.json",
+      "source_force_waveform_maximum_error_N": 2.2247786310271853e-16,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": 0.0,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": true
+    },
+    {
+      "theta": 1.8571429,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p8571429_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "e5fb0706a083390564ca50301c00a7f36f05cfd03dda22abe63df5471b8398d1",
+      "config_sha256": "1e29f0178b10e7b36da944a786688a9ff173863d7372cc94d8ed15a4c376774c",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 103.44187307357788,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          28,
+          36,
+          62,
+          73,
+          80,
+          85,
+          90,
+          94,
+          98
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p8571429.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.64285715,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p64285715_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "06697e784124472d114c7cde3b11a08a8f09d62156d6f3a50cbf6eb29f18d907",
+      "config_sha256": "6fd4cb8f4db636296d312e3bd0eadd53fb3a3c98d1aae5431a18df73137219ca",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 102.17308211326599,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          29,
+          40,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p64285715.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7500000249999998,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p750000025_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "ce8a9974a659377e0ced4d84f4873532c0b148f8202ab24c4185d4ff47c3b5fa",
+      "config_sha256": "3c8a1eb5974882da1be672cd498c9578751ae9519bbcc25d223955cdf880d69c",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 99.82233834266663,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          29,
+          37,
+          75,
+          86,
+          93,
+          98,
+          103,
+          108,
+          111
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p750000025.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.6964285874999998,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p6964285875_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "568af7bc907f62d204e9aceddac29755d83b1326c85dbd9bfe406737b7ac32ec",
+      "config_sha256": "d35cb7c1c7d70f021af97f314407f4d5ca8a30c764dac07605e7111e81118262",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 98.4763331413269,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p6964285875.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7232143062499998,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p72321430625_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "ed24245c022897938684275d3e1c5149c71c07b19f0bf2378b9250bbf58cde98",
+      "config_sha256": "caefdb72178f276b33f09b027b3615ba449a593a5e77102887009c8eea322f8e",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 114.51447296142578,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          98,
+          110,
+          116,
+          122,
+          127,
+          131,
+          135
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p72321430625.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.709821446875,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p709821446875_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "631a7aafd9af110266761eca2707da98db14cd1bd8f3f2c614fee533de913f46",
+      "config_sha256": "9f0cfa4a87859580630e63dae77f42734f3b1699b5fb93951eb2fa95505fa7c4",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 105.5191764831543,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          113,
+          125,
+          131,
+          137,
+          142,
+          146,
+          150
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p709821446875.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7031250171874999,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p703125017187_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "67954d38591b01187b089d779775812f2b53704de235c06064d98ce7105097a8",
+      "config_sha256": "3c3482495d8420e0c1f5cd071185564f65c303f317202aa026f4f64a4ca61ae9",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 106.35971426963806,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p703125017187.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.70647323203125,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p706473232031_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "9a71a4fbc6f994cd3e537d81d9f30573fc2e3115b4e4f11d677684c34c412776",
+      "config_sha256": "6c9c88cd4079a7da501bcf2fe4d4965b3e653b51c1abe26e59aca2673dbca06e",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 106.58401298522949,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          160,
+          171,
+          178,
+          183,
+          188,
+          192,
+          196
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p706473232031.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7047991246093748,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p704799124609_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "7676e09ca1c50daa4b051d4f4e0b840acd0aba5a5c932edcf6623e8a6f8382d4",
+      "config_sha256": "ed104cec920e7307573a9e396099049a99bb5fd7d663d93e8c9dea2da46c152c",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 105.9760901927948,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p704799124609.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7056361783203124,
+      "label": 0,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p70563617832_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "82e2b44cdabeb1544cd08c337a03b37d4687630f36921b2dc1e928e7098fb11c",
+      "config_sha256": "373b894177c8e67a551ad02ed0282da8e8d5f63bf29b644cebe9eb5159c7cef1",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 112.78955721855164,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 0,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          175,
+          186,
+          193,
+          198,
+          203,
+          208,
+          null
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p70563617832.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    },
+    {
+      "theta": 1.7060547051757813,
+      "label": 1,
+      "state_path": "/data_cached/wangzijun_p25/isaac_out/repro_20260909/core100T06C04_core100_remaining29_t06_20261031_1p706054705176_genesis_control_hold_core100oct31_physics/state.json",
+      "state_sha256": "042415d703793f86be777026b3ed4795f71fef9a34c10901ee081d3a32481301",
+      "config_sha256": "3e54a6af9c8fc3f8ec896722d977cdd305b402f1390504516fee6930d130cfb1",
+      "producer_sha256": {
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/run_one.py": "a837178559c6dd316885d4303582182fec68473f835b462664e324845785e0be",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/render_repro.py": "1b1f6d633745a8e92ea812e76691529597550e4468908b7d1d09ab16f38c90b7",
+        "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd"
+      },
+      "elapsed_s": 106.32609796524048,
+      "seed": 1509217724,
+      "event": "complete_required_contact_chain",
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 4.1,
+      "formal_admission": false,
+      "measurement": {
+        "label": 1,
+        "required_pair_first_contact_frames": [
+          29,
+          38,
+          130,
+          141,
+          147,
+          153,
+          158,
+          162,
+          166
+        ]
+      },
+      "config_path": "/home/wangzijun_p25/liyuhan/isaac_sim_everyday_bifurcation/repro_20260909/inputs/core100T06C04_core100_remaining29_t06_20261031_1p706054705176.json",
+      "source_force_waveform_maximum_error_N": 0.0,
+      "original_engine_seed_force_mode_clock_and_physical_objects_verified": true,
+      "source_maximum_position_difference_m": null,
+      "damping_refinement_factor": 1,
+      "material_damping_description_change": [
+        "explicit generalized viscous force/torque; native PhysX damping disabled",
+        "source viscous forces resolved with refined substeps; native PhysX damping disabled"
+      ],
+      "source_trajectory_exact": null
+    }
+  ],
+  "native_source_measurement": {
+    "label": 0,
+    "required_pair_first_contact_frames": [
+      30,
+      52,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "source_config_snapshot_sha256": "89c1c7772a60c4d3a230303f80600672e24741a429833062c7355555a0b5d17c",
+  "result_sha256": "465f3005c4659cbb113c7dacb48d49142493cc41c7c174fdcd6574bdd5bc2bc0",
+  "new_simulations": 0,
+  "original_sources_modified": false,
+  "original_producer_sha256": {
+    "render_repro.py": "52e39f6b6235f9c51c6973bbf40b90d0b3d779a9fffd2f4246daafd8f963f79c",
+    "repro_contract.py": "64dd4419e36b3af09ac03aae163c680f0847ba7a37039b954a1ea11b4832cfcd",
+    "isaac_event_common.py": "e3380f39fdaa51c9943dc56d7f5d0e9a8c23966eaa17f825746b925e5dd7382a"
+  },
+  "original_producer_backup_sha256": "52e39f6b6235f9c51c6973bbf40b90d0b3d779a9fffd2f4246daafd8f963f79c",
+  "producer_difference_scope": "Later producer adds timestep refinement and inertia checks. Verified refinement factor1 for every point with unchanged bodies; exact full210-frame source trajectory; original clock/forces/material scalars unchanged.",
+  "scope": "Isaac native contact conjunction at frame4..209. Same force waveform and hold tail, no Genesis boundary or new toppling threshold.",
+  "source_local_snapshot_sha256": "569f3dd2922986c7fc4ccd7cc3844018e00fc6b85659dc10c61f6067c5ad4674",
+  "source_readback_sha256": "177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430"
+}

@@ -1,0 +1,102 @@
+{
+  "rows": [
+    {
+      "clip_id": "T04_C02",
+      "theta": 0.125,
+      "repeat": 1,
+      "pid": 2465751,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat1",
+      "config_sha256": "f26597eb30657a95ac79dab92b21878f5e266b0145881e1ac27a029e5305e88c",
+      "original_endpoint_config_sha256": "38ae95eba0a74a592f180c3c558ce0b201be5820a2ee371ca795a422e32a6a36",
+      "original_seed": 1212927170,
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "egl_index": 4,
+      "original_bootstrap_sha256": "bc178e90fa746e635af10936e2b9f112398f6930ffdf1713e233d113b4cf444f",
+      "candidate_bootstrap_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+      "removed_prelude": "import runpy as _resource_handoff\n_resource_handoff.run_path('/data2/liyuhan/core100_continue_20261031_device_policy/device_handoff.py')\n",
+      "physical_bootstrap_body_identical": true,
+      "source_contract_sha256": "ce88ecc8f5962d957d199c876ce9cd3041b3c4cd9acadc26d2ac2912de81d44c",
+      "original_sources_modified": false,
+      "formal_admission": false,
+      "alive": false,
+      "state_bytes": 70353088,
+      "log_tail": ".0001\n[INFO] [TRAJECTORY_DEBUG] ball_fell_from_table=True\n[INFO] [PHYSICS_DEBUG] ball_min_z_over_time = 0.0302\n[INFO] [PHYSICS_DEBUG] contact_count_table_ball = <api_unavailable>\n[OK] Saved annotations: /data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat1/physics.json\n\u001b[38;5;159m[Genesis] [15:13:02] [INFO] \ud83d\udca4 Exiting Genesis and caching compiled kernels...\u001b[0m\n",
+      "status": "completed",
+      "state_sha256": "f7e832cf17df131362439a0f280542d0aeccd0ef70d6d0fca043c93a00c6a8e2",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat1/physics.json",
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 1212927170,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py",
+        "renderer_sha256": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "physical_input_seed_solver_and_clock_verified": true,
+      "measurement": {
+        "label": 0,
+        "mug_maximum_displacement_m": 0.030833786177540873,
+        "mug_maximum_angle_deg": 0.7527795873729033,
+        "contact_frames": [
+          145,
+          146,
+          150,
+          151,
+          152,
+          153
+        ]
+      }
+    },
+    {
+      "clip_id": "T04_C02",
+      "theta": 0.125,
+      "repeat": 2,
+      "pid": 2465752,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat2",
+      "config_sha256": "9ba51cb31c0a8a04486a851009269176282b1bfd656b4a321c19b4f6c9de1ff7",
+      "original_endpoint_config_sha256": "38ae95eba0a74a592f180c3c558ce0b201be5820a2ee371ca795a422e32a6a36",
+      "original_seed": 1212927170,
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "egl_index": 4,
+      "original_bootstrap_sha256": "bc178e90fa746e635af10936e2b9f112398f6930ffdf1713e233d113b4cf444f",
+      "candidate_bootstrap_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+      "removed_prelude": "import runpy as _resource_handoff\n_resource_handoff.run_path('/data2/liyuhan/core100_continue_20261031_device_policy/device_handoff.py')\n",
+      "physical_bootstrap_body_identical": true,
+      "source_contract_sha256": "ce88ecc8f5962d957d199c876ce9cd3041b3c4cd9acadc26d2ac2912de81d44c",
+      "original_sources_modified": false,
+      "formal_admission": false,
+      "alive": false,
+      "state_bytes": 76813390,
+      "log_tail": ".0000\n[INFO] [TRAJECTORY_DEBUG] ball_fell_from_table=True\n[INFO] [PHYSICS_DEBUG] ball_min_z_over_time = 0.0315\n[INFO] [PHYSICS_DEBUG] contact_count_table_ball = <api_unavailable>\n[OK] Saved annotations: /data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat2/physics.json\n\u001b[38;5;159m[Genesis] [15:13:04] [INFO] \ud83d\udca4 Exiting Genesis and caching compiled kernels...\u001b[0m\n",
+      "status": "completed",
+      "state_sha256": "88d9a2ad6ec80e3dfba11846aa0dca0ea022468bf2374621fa11c4b389e089cc",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v3_t04_rechecks_20261103/endpoint_0p125_repeat2/physics.json",
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 1212927170,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py",
+        "renderer_sha256": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "physical_input_seed_solver_and_clock_verified": true,
+      "measurement": {
+        "label": 0,
+        "mug_maximum_displacement_m": 0.036330901035262694,
+        "mug_maximum_angle_deg": 0.5256062993888329,
+        "contact_frames": [
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          154
+        ]
+      }
+    }
+  ]
+}

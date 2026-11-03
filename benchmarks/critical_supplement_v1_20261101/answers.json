@@ -1,0 +1,737 @@
+{
+  "schema": "critical-supplement-answers-v1",
+  "points": [
+    {
+      "point_id": "T04_S01",
+      "source_group_id": "013ba0e608cb819b508343da",
+      "scene_id": "T04",
+      "family_id": "bottom_book_friction_coefficient",
+      "theta": 0.08,
+      "target_event": "original_full_chain",
+      "events": {
+        "original_full_chain": 1
+      },
+      "end_frame_index": 154,
+      "evaluation_duration_s": 5.0,
+      "reference_video_sha256": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+          "sheet_sha256": "1ad36947a6e588f8c2dac43e265e334d1a926fc1d5f8345f769955d98d9dbdff",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "Books leave the ramp and reach the cans; the mug responds and subsequently exits the view. Source contact and motion measurements support the registered full-chain target. Exit from view is not labeled identity loss.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "e83b71491f2888d799b11f1638b0fc27bc3841c7bf570275ca8b124b9716f0cb",
+      "measurements": {
+        "predicate": "can2-mug contact AND (mug rotation >=18 degrees OR displacement >=0.04 m)",
+        "mug_maximum_displacement_m": 15.383339094698341,
+        "mug_maximum_rotation_deg": 22.33164695964038
+      },
+      "source_state": "evidence/T04_S01.json.gz",
+      "source_state_sha256": "28e42b7ecd163aedb9b9938236e99f6afe368400b138d39540096057cecf66eb",
+      "pair_ids": [
+        "T04_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        0.08,
+        0.14
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          0.08,
+          0.105
+        ],
+        "normalization_span": 0.06000000000000001,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.4166666666666665
+        ],
+        "bin": null
+      }
+    },
+    {
+      "point_id": "T04_S02",
+      "source_group_id": "013ba0e608cb819b508343da",
+      "scene_id": "T04",
+      "family_id": "bottom_book_friction_coefficient",
+      "theta": 0.105,
+      "target_event": "original_full_chain",
+      "events": {
+        "original_full_chain": 0
+      },
+      "end_frame_index": 154,
+      "evaluation_duration_s": 5.0,
+      "reference_video_sha256": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+          "sheet_sha256": "4135e24686d65294b074af1fa47fbd2c0579883ca679b8982f593bac66b0d115",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "Book motion and a small mug response are visible. The saved trajectory stays below the registered 0.04 m / 18 degree terminal-motion criteria; no-motion is not claimed.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "e83b71491f2888d799b11f1638b0fc27bc3841c7bf570275ca8b124b9716f0cb",
+      "measurements": {
+        "predicate": "can2-mug contact AND (mug rotation >=18 degrees OR displacement >=0.04 m)",
+        "mug_maximum_displacement_m": 0.02256071420184454,
+        "mug_maximum_rotation_deg": 1.2535593993207528
+      },
+      "source_state": "evidence/T04_S02.json.gz",
+      "source_state_sha256": "24ff2c08c57fb1268ff624ef50a53c8b9e41e9ba76a7c416b08aa2f48af5834d",
+      "pair_ids": [
+        "T04_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        0.08,
+        0.14
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          0.08,
+          0.105
+        ],
+        "normalization_span": 0.06000000000000001,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.4166666666666665
+        ],
+        "bin": null
+      }
+    },
+    {
+      "point_id": "T05_S01",
+      "source_group_id": "9d3b5de39935d2e6baee06a9",
+      "scene_id": "T05",
+      "family_id": "gap_ratio",
+      "theta": 1.134,
+      "target_event": "gate_passage",
+      "events": {
+        "gate_passage": 0
+      },
+      "end_frame_index": 209,
+      "evaluation_duration_s": 6.833333333333333,
+      "reference_video_sha256": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+          "sheet_sha256": "504ece90db578cb72ca9fbc5b732642a67942ff431d9c1fcb0ad92f7f20bea90",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The phone approaches and remains at the channel entrance; the full-passage center threshold is never reached.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "b8fac81b7ff36b78cde103cd74e4af0ddaa23ef1a716bfe57deceb03ef94ee48",
+      "measurements": {
+        "maximum_phone_center_x_m": -0.16980288922786713,
+        "full_passage_threshold_x_m": 0.32390548959764603
+      },
+      "source_state": "evidence/T05_S01.json.gz",
+      "source_state_sha256": "01510e46a7ec3ef219f55378d1d20bf430655962ecbc3d70a3b2976b11511206",
+      "pair_ids": [
+        "T05_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        1.11,
+        1.16
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          1.134,
+          1.16
+        ],
+        "normalization_span": 0.04999999999999982,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.5200000000000023
+        ],
+        "bin": null
+      }
+    },
+    {
+      "point_id": "T05_S02",
+      "source_group_id": "9d3b5de39935d2e6baee06a9",
+      "scene_id": "T05",
+      "family_id": "gap_ratio",
+      "theta": 1.16,
+      "target_event": "gate_passage",
+      "events": {
+        "gate_passage": 1
+      },
+      "end_frame_index": 209,
+      "evaluation_duration_s": 6.833333333333333,
+      "reference_video_sha256": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+          "sheet_sha256": "5bda3db0037c6b35c337291e7032aa0d8fab70bc5e427cc02610a900a50017cd",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The phone is visible throughout the channel and beyond the far guide end; the registered complete-passage predicate is observable.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "b8fac81b7ff36b78cde103cd74e4af0ddaa23ef1a716bfe57deceb03ef94ee48",
+      "measurements": {
+        "maximum_phone_center_x_m": 0.42042961716651917,
+        "full_passage_threshold_x_m": 0.32390548959764603
+      },
+      "source_state": "evidence/T05_S02.json.gz",
+      "source_state_sha256": "0c76c1512e6f825bd2fd742446f77d4a190a28bf98980e8a95b1d1cf1a3ca359",
+      "pair_ids": [
+        "T05_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        1.11,
+        1.16
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          1.134,
+          1.16
+        ],
+        "normalization_span": 0.04999999999999982,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.5200000000000023
+        ],
+        "bin": null
+      }
+    },
+    {
+      "point_id": "T10_S01",
+      "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+      "scene_id": "T10",
+      "family_id": "support_x",
+      "theta": 0.204,
+      "target_event": "support_pen_displacement_reaches_source_threshold",
+      "events": {
+        "support_pen_displacement_reaches_source_threshold": 1
+      },
+      "end_frame_index": 209,
+      "evaluation_duration_s": 4.273333333333333,
+      "reference_video_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+          "sheet_sha256": "0a77dfee93003d8df4a7e760097a498c8de779a81c60b9923fb9323b58617a4d",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The support pen remains identifiable, partly behind the folder. The source displacement is 0.043987861 m; metric calibration is required for generated-video judgments.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "1a0461c296a261176b5b8ed8303051bcb028447ab87bab430bf3952123964f55",
+      "measurements": {
+        "maximum_pen_displacement_m": 0.04398786112777082,
+        "threshold_m": 0.04
+      },
+      "source_state": "evidence/T10_S01.json.gz",
+      "source_state_sha256": "f55f61d1fd059af3ffd1114724f8a6ce491efa703eed804b6dd809d910558634",
+      "pair_ids": [
+        "T10_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        0.08,
+        0.217
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          0.204,
+          0.2105
+        ],
+        "normalization_span": 0.137,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.047445255474452594
+        ],
+        "bin": "near"
+      }
+    },
+    {
+      "point_id": "T10_S02",
+      "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+      "scene_id": "T10",
+      "family_id": "support_x",
+      "theta": 0.2105,
+      "target_event": "support_pen_displacement_reaches_source_threshold",
+      "events": {
+        "support_pen_displacement_reaches_source_threshold": 0
+      },
+      "end_frame_index": 209,
+      "evaluation_duration_s": 4.273333333333333,
+      "reference_video_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+          "sheet_sha256": "346dda8f372e53911e926ee77879a2c93209faa2deaa9a7b52eb1e1ec6311021",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The support pen remains identifiable. Source displacement is 0.026447966 m, below 0.04 m; partial occlusion is not identity loss.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "1a0461c296a261176b5b8ed8303051bcb028447ab87bab430bf3952123964f55",
+      "measurements": {
+        "maximum_pen_displacement_m": 0.026447965619966214,
+        "threshold_m": 0.04
+      },
+      "source_state": "evidence/T10_S02.json.gz",
+      "source_state_sha256": "4ef0647716955b8a745fdecfd6e72b90439d49839dfba3a85910c8c2ed3451fb",
+      "pair_ids": [
+        "T10_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        0.08,
+        0.217
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          0.204,
+          0.2105
+        ],
+        "normalization_span": 0.137,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.047445255474452594
+        ],
+        "bin": "near"
+      }
+    },
+    {
+      "point_id": "T11_S01",
+      "source_group_id": "7cbcc04e987038725bc260c1",
+      "scene_id": "T11",
+      "family_id": "driver_initial_speed_command_mps",
+      "theta": 2.3,
+      "target_event": "t11_driver_eraser_final_center_below_minus_10cm",
+      "events": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 0
+      },
+      "end_frame_index": 154,
+      "evaluation_duration_s": 5.0,
+      "reference_video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+          "sheet_sha256": "e583e6df5e4f66f1f119bceb0bf4fbdd47f204b1b4e4c7c294da8c39a45ab235",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The eraser stays on the tabletop at frame154 while downstream objects fall; final-center event is measurable without requiring floor impact.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+      "measurements": {
+        "driver_final_z_m": 0.01749807596206665,
+        "threshold_z_m": -0.1,
+        "actual_initial_driver_speed_mps": 0.0,
+        "intervention_is_a_released_force_recipe_command": true
+      },
+      "source_state": "evidence/T11_S01.json.gz",
+      "source_state_sha256": "61f6d6abfe62a92ac8a5c32a16d5c34858542903ed7bc8d9fbbac344e71c4ae4",
+      "pair_ids": [
+        "T11_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        1.8,
+        3.6
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          2.3,
+          2.5
+        ],
+        "normalization_span": 1.8,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.1111111111111112
+        ],
+        "bin": null
+      }
+    },
+    {
+      "point_id": "T11_S02",
+      "source_group_id": "7cbcc04e987038725bc260c1",
+      "scene_id": "T11",
+      "family_id": "driver_initial_speed_command_mps",
+      "theta": 2.5,
+      "target_event": "t11_driver_eraser_final_center_below_minus_10cm",
+      "events": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1
+      },
+      "end_frame_index": 154,
+      "evaluation_duration_s": 5.0,
+      "reference_video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+      "gravity": 9.81,
+      "required_order": [],
+      "event_vector_scope": "target_event_only; full causal EventExact is not registered by this supplement",
+      "inversion": {
+        "status": "pending_reference_validation",
+        "reason": "No new inversion-eligibility registration; event generation remains retained."
+      },
+      "reference_admission": {
+        "status": "admitted",
+        "scope": "registered_target_reference_for_separate_pilot",
+        "state_and_video_identity_verified": true,
+        "reviewer": "assistant_visual_and_state_audit",
+        "review": {
+          "status": "pass_for_registered_target",
+          "video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+          "sheet_sha256": "f7c83afbbaf990be13c043fa12ab2248ae40f2fd2b73f68388994c2e31c9d774",
+          "frames_reviewed": [
+            4,
+            30,
+            60,
+            90,
+            120,
+            154,
+            180,
+            209
+          ],
+          "note": "The eraser moves beyond the edge and descends before frame154; the state confirms falling before it leaves the image. No identity-loss rejection is inferred from the later empty view.",
+          "automatic_judge_validated": false
+        },
+        "independent_human_reviewer_claimed": false,
+        "whole_video_physical_certification_granted": false
+      },
+      "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+      "measurements": {
+        "driver_final_z_m": -0.8065148591995239,
+        "threshold_z_m": -0.1,
+        "actual_initial_driver_speed_mps": 0.0,
+        "intervention_is_a_released_force_recipe_command": true
+      },
+      "source_state": "evidence/T11_S02.json.gz",
+      "source_state_sha256": "53e01e6582f3cefef39f4fdffa3e5174e6134905423fc397ffc35c69f31ffb46",
+      "pair_ids": [
+        "T11_published_contrast_01"
+      ],
+      "pairing_mode": "independent",
+      "normalization_domain": [
+        1.8,
+        3.6
+      ],
+      "boundary": {
+        "status": "verified",
+        "bracket": [
+          2.3,
+          2.5
+        ],
+        "normalization_span": 1.8,
+        "source": "reference_ledger.json",
+        "scope": "Observed published local contrast interval; not a unique deterministic or nearest-global physical threshold.",
+        "physical_threshold_certified": false
+      },
+      "distance": {
+        "normalized_absolute_interval": [
+          0.0,
+          0.1111111111111112
+        ],
+        "bin": null
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "pair_id": "T04_published_contrast_01",
+      "scene_id": "T04",
+      "source_group_id": "013ba0e608cb819b508343da",
+      "family_id": "bottom_book_friction_coefficient",
+      "points": [
+        "T04_S01",
+        "T04_S02"
+      ],
+      "endpoint_labels": [
+        1,
+        0
+      ],
+      "bracket": [
+        0.08,
+        0.105
+      ],
+      "normalization_domain": [
+        0.08,
+        0.14
+      ],
+      "pairing_mode": "independent"
+    },
+    {
+      "pair_id": "T05_published_contrast_01",
+      "scene_id": "T05",
+      "source_group_id": "9d3b5de39935d2e6baee06a9",
+      "family_id": "gap_ratio",
+      "points": [
+        "T05_S01",
+        "T05_S02"
+      ],
+      "endpoint_labels": [
+        0,
+        1
+      ],
+      "bracket": [
+        1.134,
+        1.16
+      ],
+      "normalization_domain": [
+        1.11,
+        1.16
+      ],
+      "pairing_mode": "independent"
+    },
+    {
+      "pair_id": "T10_published_contrast_01",
+      "scene_id": "T10",
+      "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+      "family_id": "support_x",
+      "points": [
+        "T10_S01",
+        "T10_S02"
+      ],
+      "endpoint_labels": [
+        1,
+        0
+      ],
+      "bracket": [
+        0.204,
+        0.2105
+      ],
+      "normalization_domain": [
+        0.08,
+        0.217
+      ],
+      "pairing_mode": "independent"
+    },
+    {
+      "pair_id": "T11_published_contrast_01",
+      "scene_id": "T11",
+      "source_group_id": "7cbcc04e987038725bc260c1",
+      "family_id": "driver_initial_speed_command_mps",
+      "points": [
+        "T11_S01",
+        "T11_S02"
+      ],
+      "endpoint_labels": [
+        0,
+        1
+      ],
+      "bracket": [
+        2.3,
+        2.5
+      ],
+      "normalization_domain": [
+        1.8,
+        3.6
+      ],
+      "pairing_mode": "independent"
+    }
+  ]
+}

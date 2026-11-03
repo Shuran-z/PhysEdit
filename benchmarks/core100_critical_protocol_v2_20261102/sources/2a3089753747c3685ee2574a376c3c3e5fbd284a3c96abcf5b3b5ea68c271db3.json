@@ -1,0 +1,137 @@
+{
+  "clip_id": "T14_C03",
+  "points": [
+    {
+      "theta": 0.0325,
+      "label": 1,
+      "first_exit_frame": 43,
+      "state_sha256": "9ffcd13ccaa1dfada685b2c992c2cf361ba8968480e4891fd805c40d662a69d9",
+      "config_sha256": "bfe526b47994dd648e0bb47fc17329fd041c20a84c6a33f27e101f608b557957",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.0325/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.0305078125,
+      "label": 0,
+      "first_exit_frame": null,
+      "state_sha256": "2db6c62035f81906ae63487e6569fa5b2761695f5a80a70f6af128a2dd3cbf71",
+      "config_sha256": "58d95f55e99572a27b870d8f138f0484dfc67ceb1e4260c1b854f78d4f46804b",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.0305078125/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.030566406249999997,
+      "label": 1,
+      "first_exit_frame": 46,
+      "state_sha256": "824dc1043131483a3f2cab902204fab9363b3e6d6a973241a7e2c6272c623948",
+      "config_sha256": "21edf19f581628ae767f0afaf6c1287fd34ab063aa84b1171718c3baf58f9b99",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.03056640625/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.039941406250000006,
+      "label": 1,
+      "first_exit_frame": 42,
+      "state_sha256": "27da00a66314c31b92acbb8f02f54dc64192cdb7a26017040978fcbd1e21e49c",
+      "config_sha256": "a1aa05ba37cd53769e83dddc8b9b749f4edb59d758f930ddc4321294c7a51043",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.03994140625/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.04,
+      "label": 0,
+      "first_exit_frame": null,
+      "state_sha256": "288ba5987f15aa117e1a0d076cfc66934a807c7719d44898cb28e2530ad784fc",
+      "config_sha256": "1c7b43e2288fd805b9abbabf367002b772057d822904b19afbe4bd64cfb29da7",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.04/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.04046875,
+      "label": 0,
+      "first_exit_frame": null,
+      "state_sha256": "353e46f9891268bafc55ce3869886499c7318f9604f8ad7c953098fafae3d036",
+      "config_sha256": "e63e3ada16cc4fe8d9030daa72bcb4bf2be61eb6bb7867db445e9bf067ea6112",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.04046875/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    },
+    {
+      "theta": 0.04052734375,
+      "label": 1,
+      "first_exit_frame": 42,
+      "state_sha256": "fc25ec8c5a3f41f76cb67392d1a3b4c93cfdf8775598baca26a9f7201862bbbb",
+      "config_sha256": "25c431ef25070c03be104437d2d10661da194064a9c6242a305934c4dd5e4d3c",
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T14_C03_A/T14_C03/profile_0/0.04052734375/physics.json.gz",
+      "native_peak_m": 0.00030004922882653773,
+      "original_physics_and_axis_verified": true
+    }
+  ],
+  "intervals": [
+    {
+      "event": "passed_channel",
+      "bracket": [
+        0.0305078125,
+        0.030566406249999997
+      ],
+      "labels": [
+        0,
+        1
+      ]
+    },
+    {
+      "event": "passed_channel",
+      "bracket": [
+        0.039941406250000006,
+        0.04
+      ],
+      "labels": [
+        1,
+        0
+      ]
+    },
+    {
+      "event": "passed_channel",
+      "bracket": [
+        0.04046875,
+        0.04052734375
+      ],
+      "labels": [
+        0,
+        1
+      ]
+    }
+  ],
+  "source_config_sha256": "de417842883fdf9dcb7cb31fe43ebe09248656640c865e6463c18e420deb4dca",
+  "source_repeat_diagnostic": {
+    "max_position_error_m": 0.002221668353115868,
+    "source_labels": {
+      "passed_channel": 1,
+      "terminal_contact_after_full_exit": 1
+    },
+    "repeated_labels": {
+      "passed_channel": 1,
+      "terminal_contact_after_full_exit": 1
+    },
+    "published_expected_labels": {
+      "passed_channel": 1,
+      "terminal_contact_after_full_exit": 1
+    },
+    "source_event_match": true,
+    "formal_admission": false
+  },
+  "new_simulations": 0,
+  "original_files_modified": false,
+  "reference_video_sha256": "ae34ab1c6893b9a46a2cbfdc83ba693abdf654a6f3197648275156cd57d065e6",
+  "source_state_sha256": "672b36f8493679bfd5a290ea26c0c1df033d7782ecb20607c0b75b64832207e6",
+  "original_reference_first_exit_frame": 45,
+  "archive_sha256": "402a0ae0fc30aa6b688254c3997a7151e9f34ce4e094ed18d67bdf57df74a653",
+  "horizon_s": 5.0,
+  "axis": "channel_throat_width_m",
+  "theta": 0.0325
+}

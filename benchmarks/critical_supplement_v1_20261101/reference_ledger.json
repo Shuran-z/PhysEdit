@@ -1,0 +1,482 @@
+[
+  {
+    "point_id": "T04_S01",
+    "proof": {
+      "supplement_id": "T04_S01",
+      "native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02",
+      "video_sha256": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+      "original_video_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v3_7s/formal_880_v1_480p/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02/videos/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02__cam01.mp4",
+      "original_video_sha256": null,
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": true,
+      "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02/metadata/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02__cam01.json.gz",
+      "source_state_raw_sha256": "817cac454958962928d97d68013feca6ba778ad27b671786bbe8f588a9500360",
+      "source_state_stored_sha256": "d20ab204f6a7e7912a839fcafb1984a42c521c188b611cb85977102a472e351b",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0020833333333333333,
+      "physics_steps_per_frame": 16,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "28e42b7ecd163aedb9b9938236e99f6afe368400b138d39540096057cecf66eb",
+        "contact_sheet.jpg": "e7e8043d229faa4038cfbe6c8e6cadd00d12d9c7b54ae3fa0d7353e6574cc46c",
+        "reference.mp4": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+        "condition.png": "1ed93d8c9c5aedc829e881fb29d59f446a1d7d1418db0a30a4c0114bbdb8a8de"
+      }
+    },
+    "source_download": {
+      "repo_id": "phyeditingvideo/Phyediting",
+      "revision": "3856c258368789c942dbc16d4983e756881ad986",
+      "path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02/videos/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "817cac454958962928d97d68013feca6ba778ad27b671786bbe8f588a9500360",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "013ba0e608cb819b508343da",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T04/genesis/physedit_genesis_t04_8590576ddf58bc9f/videos/physedit_genesis_t04_8590576ddf58bc9f__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T04_S01_visual.png",
+    "visual_evidence_sha256": "1ad36947a6e588f8c2dac43e265e334d1a926fc1d5f8345f769955d98d9dbdff"
+  },
+  {
+    "point_id": "T04_S02",
+    "proof": {
+      "supplement_id": "T04_S02",
+      "native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02",
+      "video_sha256": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+      "original_video_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v3_7s/formal_880_v1_480p/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02/videos/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02__cam01.mp4",
+      "original_video_sha256": null,
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": true,
+      "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02/metadata/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02__cam01.json.gz",
+      "source_state_raw_sha256": "3d40d64ba37cfba12f8041dfa6c7646c693142ffa019c698ffe42addbabe0111",
+      "source_state_stored_sha256": "e485870a3321a19cfcaa9588109e8851f0560af216e736ae6e3bad6739fc7808",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0020833333333333333,
+      "physics_steps_per_frame": 16,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "24ff2c08c57fb1268ff624ef50a53c8b9e41e9ba76a7c416b08aa2f48af5834d",
+        "contact_sheet.jpg": "b46e1d0877d98c2bb0d409bf32c11ef224d380078a5f190dc05ae833c01ff507",
+        "reference.mp4": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+        "condition.png": "1ed93d8c9c5aedc829e881fb29d59f446a1d7d1418db0a30a4c0114bbdb8a8de"
+      }
+    },
+    "source_download": {
+      "repo_id": "phyeditingvideo/Phyediting",
+      "revision": "3856c258368789c942dbc16d4983e756881ad986",
+      "path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02/videos/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "3d40d64ba37cfba12f8041dfa6c7646c693142ffa019c698ffe42addbabe0111",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "013ba0e608cb819b508343da",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T04/genesis/physedit_genesis_t04_6f2390c1ae488df0/videos/physedit_genesis_t04_6f2390c1ae488df0__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T04_S02_visual.png",
+    "visual_evidence_sha256": "4135e24686d65294b074af1fa47fbd2c0579883ca679b8982f593bac66b0d115"
+  },
+  {
+    "point_id": "T05_S01",
+    "proof": {
+      "supplement_id": "T05_S01",
+      "native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02",
+      "video_sha256": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+      "original_video_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T05_v2_7s/formal_880_v1_480p/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02/videos/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02__cam01.mp4",
+      "original_video_sha256": null,
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": true,
+      "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260904_delta/T05/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02/metadata/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02__cam01.json.gz",
+      "source_state_raw_sha256": "051851f3d83162a9431e6802ea6629b3307947e6b0d6ba8b12e1755e8e2dcb73",
+      "source_state_stored_sha256": "29beb192b7acfd6fce0eaa5de2f4bd2523c5737cfc5088c2b57938977ef6a901",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0020833333333333333,
+      "physics_steps_per_frame": 16,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "01510e46a7ec3ef219f55378d1d20bf430655962ecbc3d70a3b2976b11511206",
+        "contact_sheet.jpg": "7f3450270d4abc491f1313b134a98f86555d6649ccb43278077c21c66dc15ccb",
+        "reference.mp4": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+        "condition.png": "3ea4bd35a1202b7e5ab88ef044682c58105febc6d04554f3be19b84003893099"
+      }
+    },
+    "source_download": {
+      "repo_id": "phyeditingvideo/Phyediting",
+      "revision": "3856c258368789c942dbc16d4983e756881ad986",
+      "path": "staging/t04_t05/formal_880_v1_480p_20260904_delta/T05/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02/videos/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "051851f3d83162a9431e6802ea6629b3307947e6b0d6ba8b12e1755e8e2dcb73",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "9d3b5de39935d2e6baee06a9",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T05/genesis/physedit_genesis_t05_86669cf7ccc55a2f/videos/physedit_genesis_t05_86669cf7ccc55a2f__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T05_S01_visual.png",
+    "visual_evidence_sha256": "504ece90db578cb72ca9fbc5b732642a67942ff431d9c1fcb0ad92f7f20bea90"
+  },
+  {
+    "point_id": "T05_S02",
+    "proof": {
+      "supplement_id": "T05_S02",
+      "native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02",
+      "video_sha256": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+      "original_video_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T05_v2_7s/formal_880_v1_480p/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02/videos/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02__cam01.mp4",
+      "original_video_sha256": null,
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": true,
+      "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T05/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02/metadata/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02__cam01.json.gz",
+      "source_state_raw_sha256": "6452bcea82ee7e8d1fcad7621da13aee440f2c1c8c5318676731f327d597b6bd",
+      "source_state_stored_sha256": "79ed75928bd14eba2d1f6262fd3731faea312a43c557adb5c672c51f25207822",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0020833333333333333,
+      "physics_steps_per_frame": 16,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "0c76c1512e6f825bd2fd742446f77d4a190a28bf98980e8a95b1d1cf1a3ca359",
+        "contact_sheet.jpg": "f13d4c59e0e0419fa1e9348578de4fdedff40ad745e1ad450986edeb272a9e62",
+        "reference.mp4": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+        "condition.png": "471f25bba8dbfa6b2c93ebed6f23f9dc3c1b1f30b3315948f1a54eebfadba1cb"
+      }
+    },
+    "source_download": {
+      "repo_id": "phyeditingvideo/Phyediting",
+      "revision": "3856c258368789c942dbc16d4983e756881ad986",
+      "path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T05/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02/videos/T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "6452bcea82ee7e8d1fcad7621da13aee440f2c1c8c5318676731f327d597b6bd",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "9d3b5de39935d2e6baee06a9",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T05/genesis/physedit_genesis_t05_47ec89ceca2bdd90/videos/physedit_genesis_t05_47ec89ceca2bdd90__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T05_S02_visual.png",
+    "visual_evidence_sha256": "5bda3db0037c6b35c337291e7032aa0d8fab70bc5e427cc02610a900a50017cd"
+  },
+  {
+    "point_id": "T10_S01",
+    "proof": {
+      "supplement_id": "T10_S01",
+      "native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p19",
+      "video_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+      "original_video_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p19__cam01.mp4",
+      "original_video_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": false,
+      "source_state_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p19__cam01.json",
+      "source_state_raw_sha256": "1e7616bd4e49c8d6553e9015bbb470386a8fd731f3aba0985b4fc374144d1599",
+      "source_state_stored_sha256": "1e7616bd4e49c8d6553e9015bbb470386a8fd731f3aba0985b4fc374144d1599",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.005,
+      "physics_steps_per_frame": 4,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "f55f61d1fd059af3ffd1114724f8a6ce491efa703eed804b6dd809d910558634",
+        "contact_sheet.jpg": "aa74a7be8f198191b44e001364686e35f07b178a9e4528c1709b1ce05e25fc22",
+        "reference.mp4": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+        "condition.png": "c6bca5eb2f2e7a0b6da96e4f9da9f709078df69ce5b4cb654d5a81fa1c58a203"
+      }
+    },
+    "source_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "0df3971705a89673a2913566ae888ab5fbc444be",
+      "path": "data/T10/genesis_44_480p_20260927/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p19__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "1e7616bd4e49c8d6553e9015bbb470386a8fd731f3aba0985b4fc374144d1599",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T10/genesis/physedit_genesis_t10_27fa44c4f57591ba/videos/physedit_genesis_t10_27fa44c4f57591ba__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T10_S01_visual.png",
+    "visual_evidence_sha256": "0a77dfee93003d8df4a7e760097a498c8de779a81c60b9923fb9323b58617a4d"
+  },
+  {
+    "point_id": "T10_S02",
+    "proof": {
+      "supplement_id": "T10_S02",
+      "native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p20",
+      "video_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+      "original_video_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p20__cam01.mp4",
+      "original_video_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": false,
+      "source_state_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p20__cam01.json",
+      "source_state_raw_sha256": "08c574f46a6aeb6f87c89c1538115a00215b8e01deef1f7a52d10ec881e64e8c",
+      "source_state_stored_sha256": "08c574f46a6aeb6f87c89c1538115a00215b8e01deef1f7a52d10ec881e64e8c",
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.005,
+      "physics_steps_per_frame": 4,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "4ef0647716955b8a745fdecfd6e72b90439d49839dfba3a85910c8c2ed3451fb",
+        "contact_sheet.jpg": "e08a65427038d67a7f1f34e56dceb0699ef0f8ee9ae1e76f55e3ec9c274e4483",
+        "reference.mp4": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+        "condition.png": "dc45371ae67ce887d63ec1542fe172c7ce429f4bf6f9445c78ebfd6de874e54e"
+      }
+    },
+    "source_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "0df3971705a89673a2913566ae888ab5fbc444be",
+      "path": "data/T10/genesis_44_480p_20260927/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p20__cam01.mp4",
+      "member": ""
+    },
+    "raw_metadata_sha256": "08c574f46a6aeb6f87c89c1538115a00215b8e01deef1f7a52d10ec881e64e8c",
+    "split": "protected_core100_reserve80_lineage",
+    "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "PENDING_REVIEW",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T10/genesis/physedit_genesis_t10_10b28c90863b50e3/videos/physedit_genesis_t10_10b28c90863b50e3__cam01.mp4",
+      "member": ""
+    },
+    "visual_evidence": "evidence/T10_S02_visual.png",
+    "visual_evidence_sha256": "346dda8f372e53911e926ee77879a2c93209faa2deaa9a7b52eb1e1ec6311021"
+  },
+  {
+    "point_id": "T11_S01",
+    "proof": {
+      "supplement_id": "T11_S01",
+      "native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03",
+      "video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+      "original_video_path": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/videos/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03__cam01.mp4",
+      "original_video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": false,
+      "source_state_path": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/annotations/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03__cam01.json.gz",
+      "source_state_raw_sha256": "15519985583312d6b999c9ed357366d0121959bd0b8585200f372697edd5d816",
+      "source_state_stored_sha256": "eafa4c57b2d2c22f5d05e895027fa75ebe88a65987f7854d0a606ed0b89de57c",
+      "media": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0004975124378109452,
+      "physics_steps_per_frame": 67,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "61f6d6abfe62a92ac8a5c32a16d5c34858542903ed7bc8d9fbbac344e71c4ae4",
+        "contact_sheet.jpg": "942cc1e228c862c488ffb5ba8ebf80cfc6ddabc69bdeecff14c056cca1e6f37d",
+        "reference.mp4": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+        "condition.png": "6aa57a83511ee8a45f589bd5653fbb754d1d276787c01225de3f9e1e647ead3a"
+      }
+    },
+    "source_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "0df3971705a89673a2913566ae888ab5fbc444be",
+      "path": "data/T11/genesis_720p_reconciled_20261017/shards/p25_part_013.tar.gz",
+      "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/videos/cam01.mp4"
+    },
+    "raw_metadata_sha256": "15519985583312d6b999c9ed357366d0121959bd0b8585200f372697edd5d816",
+    "split": "ood_holdout",
+    "source_group_id": "7cbcc04e987038725bc260c1",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "USABLE_PER_EXISTING_SOURCE_ACCEPTANCE",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T11/genesis/archives/media_d8f5fc97f7761ccc.tar.gz",
+      "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/videos/cam01.mp4"
+    },
+    "visual_evidence": "evidence/T11_S01_visual.png",
+    "visual_evidence_sha256": "e583e6df5e4f66f1f119bceb0bf4fbdd47f204b1b4e4c7c294da8c39a45ab235"
+  },
+  {
+    "point_id": "T11_S02",
+    "proof": {
+      "supplement_id": "T11_S02",
+      "native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04",
+      "video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+      "original_video_path": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/videos/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04__cam01.mp4",
+      "original_video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+      "state_video_byte_identity_verified": true,
+      "same_immutable_release_source_video_and_metadata_verified": false,
+      "source_state_path": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/annotations/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04__cam01.json.gz",
+      "source_state_raw_sha256": "cfb42d19a2309541941921b397f503ce843c3eab30d4f850f219669ee0a44d82",
+      "source_state_stored_sha256": "6f1fe34e27241d85ea0b59eb8d7c4d23af3ed7f83af8638d0b0e7d4d14b12eba",
+      "media": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "physics_dt_s": 0.0004975124378109452,
+      "physics_steps_per_frame": 67,
+      "condition_frame_index": 4,
+      "contact_sheet_frames": [
+        4,
+        30,
+        60,
+        90,
+        120,
+        154,
+        180,
+        209
+      ],
+      "files": {
+        "source_state.json.gz": "53e01e6582f3cefef39f4fdffa3e5174e6134905423fc397ffc35c69f31ffb46",
+        "contact_sheet.jpg": "d63c6714a68841eeaf6be5e7c2f8424d4f80eb585a54a7f40009535528b1dc23",
+        "reference.mp4": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+        "condition.png": "6aa57a83511ee8a45f589bd5653fbb754d1d276787c01225de3f9e1e647ead3a"
+      }
+    },
+    "source_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "0df3971705a89673a2913566ae888ab5fbc444be",
+      "path": "data/T11/genesis_720p_reconciled_20261017/shards/p25_part_013.tar.gz",
+      "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/videos/cam01.mp4"
+    },
+    "raw_metadata_sha256": "cfb42d19a2309541941921b397f503ce843c3eab30d4f850f219669ee0a44d82",
+    "split": "ood_holdout",
+    "source_group_id": "7cbcc04e987038725bc260c1",
+    "training_hash_overlap": false,
+    "training_group_overlap": false,
+    "quality_admission_status": "USABLE_PER_EXISTING_SOURCE_ACCEPTANCE",
+    "reference_download": {
+      "repo_id": "phy2/phydataset",
+      "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+      "path": "data/T11/genesis/archives/media_d8f5fc97f7761ccc.tar.gz",
+      "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/videos/cam01.mp4"
+    },
+    "visual_evidence": "evidence/T11_S02_visual.png",
+    "visual_evidence_sha256": "f7c83afbbaf990be13c043fa12ab2248ae40f2fd2b73f68388994c2e31c9d774"
+  }
+]

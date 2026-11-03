@@ -1,0 +1,1301 @@
+{
+  "job": {
+    "clip_id": "T04_C02",
+    "sample_id": "T04F880V1__bg01_home_ase__g02_mars__global_03__rep01",
+    "family": "support_release",
+    "theta": 0.15,
+    "domain": [
+      0.1,
+      0.2
+    ],
+    "grid": [
+      0.0,
+      0.025,
+      0.05,
+      0.1,
+      0.125,
+      0.15000000000000002,
+      0.17500000000000002,
+      0.2,
+      0.4,
+      0.8
+    ],
+    "tolerance": 0.0005,
+    "expected_labels": {
+      "original_full_chain": 0
+    },
+    "state_sha256": "68f1d003cba7e92ab6b3d247f0c14f2ca4364f99d05cfb19632c6d26a06fee48",
+    "config_sha256": "d0fd628336c1f31950870b042af6cec33f822b3f98fb88a4d9183d7a37dc00a0",
+    "config_provenance": "Reconstructed from hash-verified published state header; original config file not certified",
+    "horizon_s": 5.0,
+    "end_frame_index": 154,
+    "reference_video_sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8",
+    "numeric_only": true,
+    "physical_frame_period_s": 0.03333333333333333
+  },
+  "rows": [
+    {
+      "point": "0.125",
+      "peak_pairs": [
+        {
+          "physics_step_index": 2,
+          "entity_a": "t04v3_folder_ramp_pbr",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 1,
+          "geom_b": 6,
+          "penetration_m": 0.15131749212741852,
+          "position": [
+            0.2884905934333801,
+            0.08932483941316605,
+            0.025788888335227966
+          ],
+          "normal": [
+            -0.13343699276447296,
+            0.0,
+            -0.991057276725769
+          ],
+          "force": [
+            0.23581166565418243,
+            0.0,
+            8.068046569824219
+          ],
+          "physics_substep_index": 29729,
+          "telemetry_scope": "internal_substep",
+          "frame": 140
+        },
+        {
+          "physics_step_index": 12,
+          "entity_a": "t04v3_folder_ramp_pbr",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 1,
+          "geom_b": 5,
+          "penetration_m": 0.05210871994495392,
+          "position": [
+            -0.10352221131324768,
+            0.23999999463558197,
+            0.07600725442171097
+          ],
+          "normal": [
+            -0.12706463038921356,
+            -6.404558803296823e-07,
+            -0.9918944239616394
+          ],
+          "force": [
+            0.037075456231832504,
+            0.06419271975755692,
+            0.28941914439201355
+          ],
+          "physics_substep_index": 7105,
+          "telemetry_scope": "internal_substep",
+          "frame": 51
+        },
+        {
+          "physics_step_index": 8,
+          "entity_a": "t04v3_support_bar_guide_downslope",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 3,
+          "geom_b": 5,
+          "penetration_m": 0.03115345537662506,
+          "position": [
+            -0.06580602377653122,
+            0.15088292956352234,
+            0.0711757093667984
+          ],
+          "normal": [
+            0.9918960332870483,
+            0.0,
+            -0.12705226242542267
+          ],
+          "force": [
+            -0.0,
+            0.0,
+            0.0
+          ],
+          "physics_substep_index": 5505,
+          "telemetry_scope": "internal_substep",
+          "frame": 45
+        },
+        {
+          "physics_step_index": 0,
+          "entity_a": "t04v3_support_bar_endstop",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 4,
+          "geom_b": 5,
+          "penetration_m": 0.025228558108210564,
+          "position": [
+            -0.10621327906847,
+            0.2920782268047333,
+            0.0763528123497963
+          ],
+          "normal": [
+            -0.0,
+            1.0,
+            -0.0
+          ],
+          "force": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "physics_substep_index": 4353,
+          "telemetry_scope": "internal_substep",
+          "frame": 41
+        },
+        {
+          "physics_step_index": 8,
+          "entity_a": "t04v3_stack_book_middle",
+          "entity_b": "t04v3_stack_book_top",
+          "geom_a": 7,
+          "geom_b": 8,
+          "penetration_m": 0.012728266417980194,
+          "position": [
+            0.495223730802536,
+            0.08056728541851044,
+            0.07990114390850067
+          ],
+          "normal": [
+            -0.14742925763130188,
+            -5.94312405155506e-06,
+            -0.9890726208686829
+          ],
+          "force": [
+            -0.03032723441720009,
+            4.450933829502901e-06,
+            0.7617162466049194
+          ],
+          "physics_substep_index": 33409,
+          "telemetry_scope": "internal_substep",
+          "frame": 154
+        },
+        {
+          "physics_step_index": 12,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_stack_book_middle",
+          "geom_a": 6,
+          "geom_b": 7,
+          "penetration_m": 0.010439828038215637,
+          "position": [
+            0.4661436378955841,
+            0.07917996495962143,
+            0.03164941444993019
+          ],
+          "normal": [
+            -0.1475013792514801,
+            2.8047111300111283e-06,
+            -0.9890617728233337
+          ],
+          "force": [
+            -0.02488640882074833,
+            -6.493853106803726e-06,
+            2.3446543216705322
+          ],
+          "physics_substep_index": 32193,
+          "telemetry_scope": "internal_substep",
+          "frame": 149
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_chain_can_2",
+          "geom_a": 9,
+          "geom_b": 10,
+          "penetration_m": 0.0013316896511241794,
+          "position": [
+            0.45400309562683105,
+            -0.0008087810128927231,
+            0.11755044758319855
+          ],
+          "normal": [
+            -0.9964413642883301,
+            -0.08422119915485382,
+            -0.0033570739906281233
+          ],
+          "force": [
+            0.8391129374504089,
+            -0.036750711500644684,
+            -0.04207981750369072
+          ],
+          "physics_substep_index": 28385,
+          "telemetry_scope": "internal_substep",
+          "frame": 134
+        },
+        {
+          "physics_step_index": 5,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_chain_mug",
+          "geom_a": 10,
+          "geom_b": 11,
+          "penetration_m": 0.0005299246404320002,
+          "position": [
+            0.587963879108429,
+            0.0020074271596968174,
+            0.004903924185782671
+          ],
+          "normal": [
+            -0.9877159595489502,
+            0.15625697374343872,
+            -0.0008934859652072191
+          ],
+          "force": [
+            0.2353387326002121,
+            -0.0072969431057572365,
+            0.03839196264743805
+          ],
+          "physics_substep_index": 31057,
+          "telemetry_scope": "internal_substep",
+          "frame": 145
+        },
+        {
+          "physics_step_index": 0,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_chain_can_1",
+          "geom_a": 6,
+          "geom_b": 9,
+          "penetration_m": 0.0003946386859752238,
+          "position": [
+            0.33794859051704407,
+            0.0006417908007279038,
+            0.051690030843019485
+          ],
+          "normal": [
+            -0.9975394010543823,
+            0.07009511440992355,
+            -0.001272148103453219
+          ],
+          "force": [
+            2.9567952156066895,
+            -0.20769643783569336,
+            -0.7962575554847717
+          ],
+          "physics_substep_index": 26625,
+          "telemetry_scope": "internal_substep",
+          "frame": 128
+        },
+        {
+          "physics_step_index": 15,
+          "entity_a": "t04v3_tabletop_collision_slab",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 0,
+          "geom_b": 6,
+          "penetration_m": 0.0002218000590801239,
+          "position": [
+            0.4598689079284668,
+            0.08828859031200409,
+            -0.00020880624651908875
+          ],
+          "normal": [
+            -0.0,
+            -0.0,
+            -1.0
+          ],
+          "force": [
+            -1.7803224325180054,
+            0.0,
+            5.236242294311523
+          ],
+          "physics_substep_index": 31473,
+          "telemetry_scope": "internal_substep",
+          "frame": 146
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 10,
+          "geom_b": 0,
+          "penetration_m": 0.00016871956177055836,
+          "position": [
+            0.45830246806144714,
+            0.019396914169192314,
+            -8.210852683987468e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -5.500507904798724e-05,
+            -3.647722041932866e-05,
+            -0.25335079431533813
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 9,
+          "geom_b": 0,
+          "penetration_m": 0.00016871899424586445,
+          "position": [
+            0.343302458524704,
+            -0.019396930932998657,
+            -8.210481610149145e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -0.00010284883319400251,
+            -0.00016452139243483543,
+            -0.15038084983825684
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        }
+      ],
+      "scene_overrides": {
+        "gravity": [
+          0.0,
+          0.0,
+          -3.71
+        ],
+        "dt": 0.0020833333333333333,
+        "substeps": 16,
+        "settle_steps": 0,
+        "record_contacts": true,
+        "use_gjk_collision": true,
+        "enable_multi_contact": true,
+        "box_box_detection": true,
+        "iterations": 100,
+        "ls_iterations": 100,
+        "noslip_iterations": 0,
+        "constraint_timeconst": 0.005,
+        "room_wall_colliders": false,
+        "room_boundary_safety": {
+          "enabled": false
+        },
+        "static_scene_collision": false,
+        "layout_collision": false,
+        "add_ground_plane": false,
+        "static_visual_only_instance_ids": [
+          "baxi_round_table_01"
+        ],
+        "raytracing": false,
+        "raytracing_state_limit": 8388608,
+        "raytracing_depth": 8,
+        "raytracing_rr_depth": 2,
+        "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+        "raytracing_env_map_required": true,
+        "raytracing_env_encoding": "linear",
+        "raytracing_env_euler": [
+          0,
+          0,
+          25
+        ],
+        "raytracing_lights": [
+          {
+            "pos": [
+              -0.2999999999999998,
+              -0.18000000000000016,
+              2.04
+            ],
+            "color": [
+              1.0,
+              0.93,
+              0.82
+            ],
+            "intensity": 7.2,
+            "radius": 0.52
+          },
+          {
+            "pos": [
+              0.9199999999999999,
+              -0.78,
+              1.48
+            ],
+            "color": [
+              0.82,
+              0.9,
+              1.0
+            ],
+            "intensity": 2.8,
+            "radius": 0.42
+          }
+        ]
+      },
+      "runtime": {
+        "backend": "gpu32",
+        "actual_init_seed": 1212927170,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py",
+        "renderer_sha256": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+        "instrumentation_sha256": "bc178e90fa746e635af10936e2b9f112398f6930ffdf1713e233d113b4cf444f",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "state_keys": [
+        "experiment",
+        "manifest",
+        "render",
+        "scene_overrides",
+        "room_boundary",
+        "time_diagnostic",
+        "frames",
+        "dynamic_objects",
+        "runtime_forces",
+        "camera_id",
+        "camera_bundle",
+        "wall_boundary_safety_summary",
+        "trajectory_debug",
+        "physics_debug",
+        "runtime_force_summary",
+        "native_substep_telemetry"
+      ],
+      "frame_keys": [
+        "frame_index",
+        "objects",
+        "contacts",
+        "native_last_substep_contacts",
+        "original_exterior_contacts"
+      ]
+    },
+    {
+      "point": "0.15",
+      "peak_pairs": [
+        {
+          "physics_step_index": 8,
+          "entity_a": "t04v3_folder_ramp_pbr",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 1,
+          "geom_b": 6,
+          "penetration_m": 0.15998722612857819,
+          "position": [
+            0.2884906530380249,
+            0.0869281142950058,
+            0.025789178907871246
+          ],
+          "normal": [
+            -0.1534365713596344,
+            0.0,
+            -0.9881585240364075
+          ],
+          "force": [
+            0.13376423716545105,
+            0.0,
+            2.7040159702301025
+          ],
+          "physics_substep_index": 30599,
+          "telemetry_scope": "internal_substep",
+          "frame": 143
+        },
+        {
+          "physics_step_index": 7,
+          "entity_a": "t04v3_support_bar_guide_downslope",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 3,
+          "geom_b": 5,
+          "penetration_m": 0.05767378956079483,
+          "position": [
+            -0.0658130794763565,
+            0.12383688986301422,
+            0.07117664813995361
+          ],
+          "normal": [
+            0.9918943047523499,
+            0.0,
+            -0.12706539034843445
+          ],
+          "force": [
+            -73.54996490478516,
+            16.313220977783203,
+            9.422026634216309
+          ],
+          "physics_substep_index": 2417,
+          "telemetry_scope": "internal_substep",
+          "frame": 33
+        },
+        {
+          "physics_step_index": 2,
+          "entity_a": "t04v3_stack_book_middle",
+          "entity_b": "t04v3_stack_book_top",
+          "geom_a": 7,
+          "geom_b": 8,
+          "penetration_m": 0.031440529972314835,
+          "position": [
+            0.4701482057571411,
+            0.06365889310836792,
+            0.0854020044207573
+          ],
+          "normal": [
+            -0.13734129071235657,
+            -1.915049688250292e-05,
+            -0.9905237555503845
+          ],
+          "force": [
+            -0.0192585252225399,
+            7.251734587043757e-06,
+            0.3849638104438782
+          ],
+          "physics_substep_index": 33057,
+          "telemetry_scope": "internal_substep",
+          "frame": 153
+        },
+        {
+          "physics_step_index": 4,
+          "entity_a": "t04v3_support_bar_endstop",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 4,
+          "geom_b": 5,
+          "penetration_m": 0.02548966370522976,
+          "position": [
+            -0.11615791916847229,
+            0.29205793142318726,
+            0.07762594521045685
+          ],
+          "normal": [
+            4.7112504120150334e-08,
+            0.9999999403953552,
+            3.677705819882249e-07
+          ],
+          "force": [
+            29.257871627807617,
+            -106.22679901123047,
+            -12.997018814086914
+          ],
+          "physics_substep_index": 4417,
+          "telemetry_scope": "internal_substep",
+          "frame": 41
+        },
+        {
+          "physics_step_index": 11,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_stack_book_middle",
+          "geom_a": 6,
+          "geom_b": 7,
+          "penetration_m": 0.001352391205728054,
+          "position": [
+            0.2093009650707245,
+            0.06886129081249237,
+            0.07193979620933533
+          ],
+          "normal": [
+            -0.14220672845840454,
+            0.006438466254621744,
+            -0.9898160696029663
+          ],
+          "force": [
+            0.08814647793769836,
+            -0.12731659412384033,
+            1.679507851600647
+          ],
+          "physics_substep_index": 30641,
+          "telemetry_scope": "internal_substep",
+          "frame": 143
+        },
+        {
+          "physics_step_index": 9,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_chain_can_2",
+          "geom_a": 9,
+          "geom_b": 10,
+          "penetration_m": 0.0007956985500641167,
+          "position": [
+            0.45345762372016907,
+            0.0014365691458806396,
+            0.11741988360881805
+          ],
+          "normal": [
+            -0.9877936840057373,
+            0.15575850009918213,
+            -0.001650045276619494
+          ],
+          "force": [
+            0.4806230664253235,
+            0.024372799322009087,
+            0.029031168669462204
+          ],
+          "physics_substep_index": 28049,
+          "telemetry_scope": "internal_substep",
+          "frame": 133
+        },
+        {
+          "physics_step_index": 9,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_chain_mug",
+          "geom_a": 10,
+          "geom_b": 11,
+          "penetration_m": 0.0004976950003765523,
+          "position": [
+            0.5881322622299194,
+            -0.0016413209959864616,
+            0.07217508554458618
+          ],
+          "normal": [
+            -0.9891654849052429,
+            -0.1467636674642563,
+            -0.003465956309810281
+          ],
+          "force": [
+            1.6550159454345703,
+            0.06428459286689758,
+            -0.29224371910095215
+          ],
+          "physics_substep_index": 30865,
+          "telemetry_scope": "internal_substep",
+          "frame": 144
+        },
+        {
+          "physics_step_index": 11,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_chain_can_1",
+          "geom_a": 6,
+          "geom_b": 9,
+          "penetration_m": 0.000415902555687353,
+          "position": [
+            0.33784183859825134,
+            -0.0006241875234991312,
+            0.05170217528939247
+          ],
+          "normal": [
+            -0.9977101683616638,
+            -0.06762633472681046,
+            -0.001017408911138773
+          ],
+          "force": [
+            1.788596272468567,
+            -0.0246426984667778,
+            0.051751550287008286
+          ],
+          "physics_substep_index": 26289,
+          "telemetry_scope": "internal_substep",
+          "frame": 126
+        },
+        {
+          "physics_step_index": 0,
+          "entity_a": "t04v3_stack_book_middle",
+          "entity_b": "t04v3_chain_can_1",
+          "geom_a": 7,
+          "geom_b": 9,
+          "penetration_m": 0.00030106655322015285,
+          "position": [
+            0.4801146984100342,
+            0.003811539150774479,
+            0.0839749276638031
+          ],
+          "normal": [
+            -0.9940416216850281,
+            -0.10900063812732697,
+            0.0003192626463714987
+          ],
+          "force": [
+            1.9329310655593872,
+            0.21197211742401123,
+            -0.5256863236427307
+          ],
+          "physics_substep_index": 32257,
+          "telemetry_scope": "internal_substep",
+          "frame": 150
+        },
+        {
+          "physics_step_index": 15,
+          "entity_a": "t04v3_tabletop_collision_slab",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 0,
+          "geom_b": 6,
+          "penetration_m": 0.00022883154451847076,
+          "position": [
+            0.4705177843570709,
+            0.08697601407766342,
+            -0.00022831186652183533
+          ],
+          "normal": [
+            -0.0,
+            -0.0,
+            -1.0
+          ],
+          "force": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "physics_substep_index": 31729,
+          "telemetry_scope": "internal_substep",
+          "frame": 147
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 10,
+          "geom_b": 0,
+          "penetration_m": 0.00016871956177055836,
+          "position": [
+            0.45830246806144714,
+            0.019396914169192314,
+            -8.210852683987468e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -5.492923082783818e-05,
+            -3.6477740650298074e-05,
+            -0.2533506453037262
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 9,
+          "geom_b": 0,
+          "penetration_m": 0.00016871899424586445,
+          "position": [
+            0.343302458524704,
+            -0.019396930932998657,
+            -8.210481610149145e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -0.00010521871445234865,
+            -0.00016405084170401096,
+            -0.15038111805915833
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        }
+      ],
+      "scene_overrides": {
+        "gravity": [
+          0.0,
+          0.0,
+          -3.71
+        ],
+        "dt": 0.0020833333333333333,
+        "substeps": 16,
+        "settle_steps": 0,
+        "record_contacts": true,
+        "use_gjk_collision": true,
+        "enable_multi_contact": true,
+        "box_box_detection": true,
+        "iterations": 100,
+        "ls_iterations": 100,
+        "noslip_iterations": 0,
+        "constraint_timeconst": 0.005,
+        "room_wall_colliders": false,
+        "room_boundary_safety": {
+          "enabled": false
+        },
+        "static_scene_collision": false,
+        "layout_collision": false,
+        "add_ground_plane": false,
+        "static_visual_only_instance_ids": [
+          "baxi_round_table_01"
+        ],
+        "raytracing": false,
+        "raytracing_state_limit": 8388608,
+        "raytracing_depth": 8,
+        "raytracing_rr_depth": 2,
+        "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+        "raytracing_env_map_required": true,
+        "raytracing_env_encoding": "linear",
+        "raytracing_env_euler": [
+          0,
+          0,
+          25
+        ],
+        "raytracing_lights": [
+          {
+            "pos": [
+              -0.2999999999999998,
+              -0.18000000000000016,
+              2.04
+            ],
+            "color": [
+              1.0,
+              0.93,
+              0.82
+            ],
+            "intensity": 7.2,
+            "radius": 0.52
+          },
+          {
+            "pos": [
+              0.9199999999999999,
+              -0.78,
+              1.48
+            ],
+            "color": [
+              0.82,
+              0.9,
+              1.0
+            ],
+            "intensity": 2.8,
+            "radius": 0.42
+          }
+        ]
+      },
+      "runtime": {
+        "backend": "gpu32",
+        "actual_init_seed": 1212927170,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py",
+        "renderer_sha256": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "state_keys": [
+        "experiment",
+        "manifest",
+        "render",
+        "scene_overrides",
+        "room_boundary",
+        "time_diagnostic",
+        "frames",
+        "dynamic_objects",
+        "runtime_forces",
+        "camera_id",
+        "camera_bundle",
+        "wall_boundary_safety_summary",
+        "trajectory_debug",
+        "physics_debug",
+        "runtime_force_summary",
+        "native_substep_telemetry"
+      ],
+      "frame_keys": [
+        "frame_index",
+        "objects",
+        "contacts",
+        "native_last_substep_contacts",
+        "original_exterior_contacts"
+      ]
+    },
+    {
+      "point": "source_repeat",
+      "peak_pairs": [
+        {
+          "physics_step_index": 2,
+          "entity_a": "t04v3_folder_ramp_pbr",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 1,
+          "geom_b": 6,
+          "penetration_m": 0.17708085477352142,
+          "position": [
+            0.2884906530380249,
+            -0.08998436480760574,
+            0.02578923851251602
+          ],
+          "normal": [
+            -0.14568905532360077,
+            0.0,
+            -0.9893304109573364
+          ],
+          "force": [
+            0.22974848747253418,
+            0.07019391655921936,
+            3.841669797897339
+          ],
+          "physics_substep_index": 32801,
+          "telemetry_scope": "internal_substep",
+          "frame": 152
+        },
+        {
+          "physics_step_index": 3,
+          "entity_a": "t04v3_support_bar_endstop",
+          "entity_b": "t04v3_removable_support_bar",
+          "geom_a": 4,
+          "geom_b": 5,
+          "penetration_m": 0.025500575080513954,
+          "position": [
+            -0.11615254729986191,
+            0.29207390546798706,
+            0.0776255652308464
+          ],
+          "normal": [
+            3.8441319816229225e-07,
+            1.0,
+            3.000813876496977e-06
+          ],
+          "force": [
+            41.048248291015625,
+            -109.80919647216797,
+            -5.071898460388184
+          ],
+          "physics_substep_index": 3633,
+          "telemetry_scope": "internal_substep",
+          "frame": 38
+        },
+        {
+          "physics_step_index": 10,
+          "entity_a": "t04v3_stack_book_middle",
+          "entity_b": "t04v3_stack_book_top",
+          "geom_a": 7,
+          "geom_b": 8,
+          "penetration_m": 0.017476893961429596,
+          "position": [
+            0.2688342332839966,
+            0.07056965678930283,
+            0.1129932850599289
+          ],
+          "normal": [
+            -0.12705865502357483,
+            6.006544026604388e-07,
+            -0.9918951988220215
+          ],
+          "force": [
+            -0.025573190301656723,
+            0.01906421035528183,
+            1.1533758640289307
+          ],
+          "physics_substep_index": 26273,
+          "telemetry_scope": "internal_substep",
+          "frame": 126
+        },
+        {
+          "physics_step_index": 1,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_stack_book_middle",
+          "geom_a": 6,
+          "geom_b": 7,
+          "penetration_m": 0.003999188542366028,
+          "position": [
+            0.24427248537540436,
+            -0.08998474478721619,
+            0.06464608758687973
+          ],
+          "normal": [
+            -0.1457076221704483,
+            -5.651883384416578e-06,
+            -0.9893276691436768
+          ],
+          "force": [
+            -0.021499553695321083,
+            9.655533176555764e-06,
+            1.7299696207046509
+          ],
+          "physics_substep_index": 32273,
+          "telemetry_scope": "internal_substep",
+          "frame": 150
+        },
+        {
+          "physics_step_index": 10,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_chain_can_2",
+          "geom_a": 9,
+          "geom_b": 10,
+          "penetration_m": 0.0008790756692178547,
+          "position": [
+            0.45427951216697693,
+            0.0007188018644228578,
+            0.00504536647349596
+          ],
+          "normal": [
+            -0.9962161183357239,
+            0.0868610218167305,
+            -0.002911240328103304
+          ],
+          "force": [
+            0.4059847891330719,
+            0.0063227033242583275,
+            0.022434474900364876
+          ],
+          "physics_substep_index": 28065,
+          "telemetry_scope": "internal_substep",
+          "frame": 133
+        },
+        {
+          "physics_step_index": 11,
+          "entity_a": "t04v3_stack_book_bottom",
+          "entity_b": "t04v3_chain_can_1",
+          "geom_a": 6,
+          "geom_b": 9,
+          "penetration_m": 0.00041151297045871615,
+          "position": [
+            0.3378389775753021,
+            -0.0006250453880056739,
+            0.051697105169296265
+          ],
+          "normal": [
+            -0.9976873993873596,
+            -0.06796063482761383,
+            -0.0010160700185224414
+          ],
+          "force": [
+            1.631119728088379,
+            -0.03742670267820358,
+            0.20669923722743988
+          ],
+          "physics_substep_index": 26289,
+          "telemetry_scope": "internal_substep",
+          "frame": 126
+        },
+        {
+          "physics_step_index": 8,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_chain_mug",
+          "geom_a": 10,
+          "geom_b": 11,
+          "penetration_m": 0.00040706319850869477,
+          "position": [
+            0.588436484336853,
+            -0.005839467514306307,
+            0.09067391604185104
+          ],
+          "normal": [
+            -0.9875953793525696,
+            -0.15701939165592194,
+            0.0004922078223899007
+          ],
+          "force": [
+            1.0132088661193848,
+            -0.057078778743743896,
+            -0.07263211160898209
+          ],
+          "physics_substep_index": 30849,
+          "telemetry_scope": "internal_substep",
+          "frame": 144
+        },
+        {
+          "physics_step_index": 3,
+          "entity_a": "t04v3_tabletop_collision_slab",
+          "entity_b": "t04v3_stack_book_bottom",
+          "geom_a": 0,
+          "geom_b": 6,
+          "penetration_m": 0.000328700989484787,
+          "position": [
+            0.46332409977912903,
+            -0.090035580098629,
+            -0.0003253556787967682
+          ],
+          "normal": [
+            -0.0,
+            -0.0,
+            -1.0
+          ],
+          "force": [
+            -1.3571842908859253,
+            0.0,
+            3.991718292236328
+          ],
+          "physics_substep_index": 31537,
+          "telemetry_scope": "internal_substep",
+          "frame": 147
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_stack_book_middle",
+          "entity_b": "t04v3_chain_can_1",
+          "geom_a": 7,
+          "geom_b": 9,
+          "penetration_m": 0.0002221217000624165,
+          "position": [
+            0.4703778922557831,
+            0.0005299203330650926,
+            0.08370071649551392
+          ],
+          "normal": [
+            -0.9972984194755554,
+            -0.07345451414585114,
+            -0.00030843549757264555
+          ],
+          "force": [
+            2.0515239238739014,
+            0.0013366371858865023,
+            0.11266157776117325
+          ],
+          "physics_substep_index": 31713,
+          "telemetry_scope": "internal_substep",
+          "frame": 147
+        },
+        {
+          "physics_step_index": 13,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_stack_book_top",
+          "geom_a": 9,
+          "geom_b": 8,
+          "penetration_m": 0.00019739077833946794,
+          "position": [
+            0.49543556571006775,
+            0.005272424314171076,
+            0.12257237732410431
+          ],
+          "normal": [
+            0.9916635155677795,
+            -0.004127970430999994,
+            -0.12878726422786713
+          ],
+          "force": [
+            -0.9513866305351257,
+            0.0038261464796960354,
+            -0.128803551197052
+          ],
+          "physics_substep_index": 33489,
+          "telemetry_scope": "internal_substep",
+          "frame": 154
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_2",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 10,
+          "geom_b": 0,
+          "penetration_m": 0.00016871956177055836,
+          "position": [
+            0.45830246806144714,
+            0.019396914169192314,
+            -8.210852683987468e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -5.4392567108152434e-05,
+            -3.657258639577776e-05,
+            -0.2533515393733978
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        },
+        {
+          "physics_step_index": 14,
+          "entity_a": "t04v3_chain_can_1",
+          "entity_b": "t04v3_tabletop_collision_slab",
+          "geom_a": 9,
+          "geom_b": 0,
+          "penetration_m": 0.00016871899424586445,
+          "position": [
+            0.343302458524704,
+            -0.019396930932998657,
+            -8.210481610149145e-05
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            0.9999998807907104
+          ],
+          "force": [
+            -0.00010523324453970417,
+            -0.0001640981645323336,
+            -0.150379940867424
+          ],
+          "physics_substep_index": 225,
+          "telemetry_scope": "internal_substep",
+          "frame": 24
+        }
+      ],
+      "scene_overrides": {
+        "gravity": [
+          0.0,
+          0.0,
+          -3.71
+        ],
+        "dt": 0.0020833333333333333,
+        "substeps": 16,
+        "settle_steps": 0,
+        "record_contacts": true,
+        "use_gjk_collision": true,
+        "enable_multi_contact": true,
+        "box_box_detection": true,
+        "iterations": 100,
+        "ls_iterations": 100,
+        "noslip_iterations": 0,
+        "constraint_timeconst": 0.005,
+        "room_wall_colliders": false,
+        "room_boundary_safety": {
+          "enabled": false
+        },
+        "static_scene_collision": false,
+        "layout_collision": false,
+        "add_ground_plane": false,
+        "static_visual_only_instance_ids": [
+          "baxi_round_table_01"
+        ],
+        "raytracing": false,
+        "raytracing_state_limit": 8388608,
+        "raytracing_depth": 8,
+        "raytracing_rr_depth": 2,
+        "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+        "raytracing_env_map_required": true,
+        "raytracing_env_encoding": "linear",
+        "raytracing_env_euler": [
+          0,
+          0,
+          25
+        ],
+        "raytracing_lights": [
+          {
+            "pos": [
+              -0.2999999999999998,
+              -0.18000000000000016,
+              2.04
+            ],
+            "color": [
+              1.0,
+              0.93,
+              0.82
+            ],
+            "intensity": 7.2,
+            "radius": 0.52
+          },
+          {
+            "pos": [
+              0.9199999999999999,
+              -0.78,
+              1.48
+            ],
+            "color": [
+              0.82,
+              0.9,
+              1.0
+            ],
+            "intensity": 2.8,
+            "radius": 0.42
+          }
+        ]
+      },
+      "runtime": {
+        "backend": "gpu32",
+        "actual_init_seed": 1212927170,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py",
+        "renderer_sha256": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "state_keys": [
+        "experiment",
+        "manifest",
+        "render",
+        "scene_overrides",
+        "room_boundary",
+        "time_diagnostic",
+        "frames",
+        "dynamic_objects",
+        "runtime_forces",
+        "camera_id",
+        "camera_bundle",
+        "wall_boundary_safety_summary",
+        "trajectory_debug",
+        "physics_debug",
+        "runtime_force_summary",
+        "native_substep_telemetry"
+      ],
+      "frame_keys": [
+        "frame_index",
+        "objects",
+        "contacts",
+        "native_last_substep_contacts",
+        "original_exterior_contacts"
+      ]
+    }
+  ]
+}

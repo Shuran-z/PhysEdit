@@ -1,0 +1,3705 @@
+{
+  "parent_version": "core100-t19-isaac-v1-20261031",
+  "tasks": [
+    {
+      "clip_id": "T04_C01",
+      "sample_id": "T04F880V1__bg01_home_ase__g01_moon__global_03__rep01",
+      "source_video_sha256": "5d0931944f25399117bf9acd6707a20a5c32cda1a3afbe711c9be0d3af80f307",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01/videos/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "unverified",
+        "physical_dt_s": null,
+        "media_fps": null,
+        "release_frame": null,
+        "frame_count": null
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.friction",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.friction",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.friction",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.friction",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.friction",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.friction",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.friction",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_friction_coefficient",
+          0.105,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          "",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.material friction",
+          "",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.material friction",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          "",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.material friction",
+          "",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          "",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.material friction",
+          "",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.material friction",
+          "",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.material friction",
+          "",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          "",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.material friction",
+          "",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          "",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_material friction_coefficient",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          "",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          "",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          "",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          "",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01/videos/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "5d0931944f25399117bf9acd6707a20a5c32cda1a3afbe711c9be0d3af80f307"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Removable support bar. Gravity 1.62 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+      "prompt_token_counts": {
+        "ltx": 115,
+        "cogvideox": 115,
+        "wan": 133
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.material friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t04v3_removable_support_bar.restitution",
+        "t04v3_stack_book_bottom.mass",
+        "t04v3_stack_book_bottom.material friction",
+        "t04v3_stack_book_bottom.restitution",
+        "t04v3_stack_book_middle.mass",
+        "t04v3_stack_book_middle.material friction",
+        "t04v3_stack_book_middle.restitution",
+        "t04v3_stack_book_top.mass",
+        "t04v3_stack_book_top.material friction",
+        "t04v3_stack_book_top.restitution",
+        "t04v3_chain_can_1.mass",
+        "t04v3_chain_can_1.material friction",
+        "t04v3_chain_can_1.restitution",
+        "t04v3_chain_can_2.mass",
+        "t04v3_chain_can_2.material friction",
+        "t04v3_chain_can_2.restitution",
+        "t04v3_chain_mug.mass",
+        "t04v3_chain_mug.material friction",
+        "t04v3_chain_mug.restitution",
+        "ramp_material friction_coefficient",
+        "table_material friction_coefficient"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Removable support bar. Gravity 1.62 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Keep the camera fixed. Off-screen force acts on Removable support bar. Gravity 1.62 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Off-screen force acts on Removable support bar. Camera stays fixed. Gravity 1.62 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 133
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 134
+        },
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 134
+        }
+      ],
+      "prompt_variant_sha256": [
+        "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+        "547449860f9e1de8403a96f11ba723c908a1a6f46a19fb1d78f8cb1e9d8248ce",
+        "e2f8ff1a38a7c75354669559b7bc4fd55e041b1016a3a3ca636c90347b83c0da"
+      ],
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Removable support bar."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t04v3_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_ramp_support_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": false,
+            "pose": {
+              "position": [
+                -0.445,
+                0.0,
+                0.0459271233168216
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.85
+          },
+          {
+            "name": "t04v3_folder_ramp_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1,
+                0.0,
+                0.06244982510819708
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.42
+          },
+          {
+            "name": "t04v3_support_bar_guide_upslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.11177311570373336,
+                0.20850000000000002,
+                0.09017046266627837
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_guide_downslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.05721892136128171,
+                0.20850000000000002,
+                0.08318190919320409
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_endstop",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08284417862068999,
+                0.307,
+                0.09957081368341163
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_removable_support_bar",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.15,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08453413791508795,
+                0.045,
+                0.08637861759696423
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.11
+          },
+          {
+            "name": "t04v3_stack_book_bottom",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.22517245866124377,
+                0.0,
+                0.10842748917129652
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.4
+          },
+          {
+            "name": "t04v3_stack_book_middle",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24751984426648693,
+                -0.012,
+                0.1543391909107286
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.62
+          },
+          {
+            "name": "t04v3_stack_book_top",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.27497838911950234,
+                0.014,
+                0.19183210110125581
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.28
+          },
+          {
+            "name": "t04v3_chain_can_1",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.37,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_can_2",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.485,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_mug",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.63,
+                0.0,
+                0.0479
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.16
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "physical_support_bar_pull",
+            "target": "t04v3_removable_support_bar",
+            "force_world": [
+              0.0,
+              0.46,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 32
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 24
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014\\actual_evidence\\4d9af3eac59346790eb6a69f.json.gz",
+        "source_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01/metadata/T04F880V1__bg01_home_ase__g01_moon__global_03__rep01__cam01.json.gz",
+        "status": "pinned_hf_trajectory_read"
+      },
+      "previous_prompt_variant_sha256": [
+        "5a2e97f70f210e5a42e37f385ad04fc338b1d63bdadca9a41a5f6c486e1c054c",
+        "bea94218a2e935e3a7a43b6f18cb8847c353fb99fb55b422d46416dc22f6bef5",
+        "6180b94c3aa80292b51e9abe6290cb69e4fb49df88a47b67dd22e2835b4e951b"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "5a2e97f70f210e5a42e37f385ad04fc338b1d63bdadca9a41a5f6c486e1c054c",
+          "bea94218a2e935e3a7a43b6f18cb8847c353fb99fb55b422d46416dc22f6bef5",
+          "6180b94c3aa80292b51e9abe6290cb69e4fb49df88a47b67dd22e2835b4e951b"
+        ]
+      }
+    },
+    {
+      "clip_id": "T04_C03",
+      "sample_id": "T04F880V1__bg01_home_ase__g03_earth__global_03__rep01",
+      "source_video_sha256": "d2720f3f0dd6e2a972a0790373e371665ac00c62230809f906f9dbc50ae3b9df",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01/videos/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "unverified",
+        "physical_dt_s": null,
+        "media_fps": null,
+        "release_frame": null,
+        "frame_count": null
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.friction",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.friction",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.friction",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.friction",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.friction",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.friction",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.friction",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_friction_coefficient",
+          0.105,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          "",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.material friction",
+          "",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.material friction",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          "",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.material friction",
+          "",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          "",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.material friction",
+          "",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.material friction",
+          "",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.material friction",
+          "",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          "",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.material friction",
+          "",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          "",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_material friction_coefficient",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          "",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          "",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          "",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          "",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01/videos/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "d2720f3f0dd6e2a972a0790373e371665ac00c62230809f906f9dbc50ae3b9df"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Removable support bar. Gravity 9.81 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+      "prompt_token_counts": {
+        "ltx": 115,
+        "cogvideox": 115,
+        "wan": 133
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.material friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t04v3_removable_support_bar.restitution",
+        "t04v3_stack_book_bottom.mass",
+        "t04v3_stack_book_bottom.material friction",
+        "t04v3_stack_book_bottom.restitution",
+        "t04v3_stack_book_middle.mass",
+        "t04v3_stack_book_middle.material friction",
+        "t04v3_stack_book_middle.restitution",
+        "t04v3_stack_book_top.mass",
+        "t04v3_stack_book_top.material friction",
+        "t04v3_stack_book_top.restitution",
+        "t04v3_chain_can_1.mass",
+        "t04v3_chain_can_1.material friction",
+        "t04v3_chain_can_1.restitution",
+        "t04v3_chain_can_2.mass",
+        "t04v3_chain_can_2.material friction",
+        "t04v3_chain_can_2.restitution",
+        "t04v3_chain_mug.mass",
+        "t04v3_chain_mug.material friction",
+        "t04v3_chain_mug.restitution",
+        "ramp_material friction_coefficient",
+        "table_material friction_coefficient"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Removable support bar. Gravity 9.81 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Keep the camera fixed. Off-screen force acts on Removable support bar. Gravity 9.81 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Off-screen force acts on Removable support bar. Camera stays fixed. Gravity 9.81 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 133
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 134
+        },
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 134
+        }
+      ],
+      "prompt_variant_sha256": [
+        "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+        "8f22a3e4d80049cdc7efddacba3d4ec3d3e1bf3d5028064bcb11043ae3b0d2f5",
+        "9ab36bb07ffed67e92e5429355f8e60c1f9126fed2ae08687da9eca095f4bf53"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01/metadata/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01__cam01.json.gz",
+        "source_sha256": "248a6f6fd9bf95bb0f53951761dcabc87dff1d105d99f43952f779f0b84bb7c7",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v3_7s/formal_880_v1_480p/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01/videos/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01__cam01.mp4",
+        "local_video_sha256": null
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Removable support bar."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t04v3_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_ramp_support_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": false,
+            "pose": {
+              "position": [
+                -0.445,
+                0.0,
+                0.0459271233168216
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.85
+          },
+          {
+            "name": "t04v3_folder_ramp_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1,
+                0.0,
+                0.06244982510819708
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.42
+          },
+          {
+            "name": "t04v3_support_bar_guide_upslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.11177311570373336,
+                0.20850000000000002,
+                0.09017046266627837
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_guide_downslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.05721892136128171,
+                0.20850000000000002,
+                0.08318190919320409
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_endstop",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08284417862068999,
+                0.307,
+                0.09957081368341163
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_removable_support_bar",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.15,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08453413791508795,
+                0.045,
+                0.08637861759696423
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.11
+          },
+          {
+            "name": "t04v3_stack_book_bottom",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.22517245866124377,
+                0.0,
+                0.10842748917129652
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.4
+          },
+          {
+            "name": "t04v3_stack_book_middle",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24751984426648693,
+                -0.012,
+                0.1543391909107286
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.62
+          },
+          {
+            "name": "t04v3_stack_book_top",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.27497838911950234,
+                0.014,
+                0.19183210110125581
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.28
+          },
+          {
+            "name": "t04v3_chain_can_1",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.37,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_can_2",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.485,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_mug",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.63,
+                0.0,
+                0.0479
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.16
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "physical_support_bar_pull",
+            "target": "t04v3_removable_support_bar",
+            "force_world": [
+              0.0,
+              0.46,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 32
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 24
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014\\actual_evidence\\a25bf639fea66cb691b72815.json.gz",
+        "source_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01/metadata/T04F880V1__bg01_home_ase__g03_earth__global_03__rep01__cam01.json.gz",
+        "status": "local_p25_sha256_matches_pinned_hf"
+      },
+      "previous_prompt_variant_sha256": [
+        "645010308ca844a3649494e342643d03c747c1b8364131637a280dbec3435dc1",
+        "c8824060ff046cbf9fe380583df5335b12af2c98beb5428275d49c4650b3eaff",
+        "fec0f74399d05768719a15270ea8a73d7418ceddb4a4b5149b573185082b7630"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "645010308ca844a3649494e342643d03c747c1b8364131637a280dbec3435dc1",
+          "c8824060ff046cbf9fe380583df5335b12af2c98beb5428275d49c4650b3eaff",
+          "fec0f74399d05768719a15270ea8a73d7418ceddb4a4b5149b573185082b7630"
+        ]
+      }
+    },
+    {
+      "clip_id": "T05_C01",
+      "sample_id": "T05F880V1__bg01_home_ase__g01_moon__global_16__rep01",
+      "source_video_sha256": "ba65662bffd4b0de9d1ea2f77fc019b2b8624cff2f5b05483759fc08b4d38b1d",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T05/T05F880V1__bg01_home_ase__g01_moon__global_16__rep01/videos/T05F880V1__bg01_home_ase__g01_moon__global_16__rep01__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "unverified",
+        "physical_dt_s": null,
+        "media_fps": null,
+        "release_frame": null,
+        "frame_count": null
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.friction",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.friction",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          0.086184,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          4.0,
+          "°"
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_friction_coefficient",
+          0.049,
+          ""
+        ],
+        [
+          "guide_friction_coefficient",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          0.06,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          0.06,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          "",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.material friction",
+          "",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.material friction",
+          "",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          "",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          "",
+          0.086184,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          "",
+          4.0,
+          "°"
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_material friction_coefficient",
+          "",
+          0.049,
+          ""
+        ],
+        [
+          "guide_material friction_coefficient",
+          "",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          "",
+          0.06,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          "",
+          0.06,
+          "m/s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "initial_conditions_only",
+      "reference": {
+        "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T05/T05F880V1__bg01_home_ase__g01_moon__global_16__rep01/videos/T05F880V1__bg01_home_ase__g01_moon__global_16__rep01__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "ba65662bffd4b0de9d1ea2f77fc019b2b8624cff2f5b05483759fc08b4d38b1d"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Table material friction 0.34. Initial speed 0.06 m/s. Moving phone initial speed 0.06 m/s. Gap width 0.086184 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08. Moving phone restitution 0.025.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "7b39b6185230433227518fdf37973ad5abc799bd73bbffa10a7274770fb961b8",
+      "prompt_token_counts": {
+        "ltx": 116,
+        "cogvideox": 116,
+        "wan": 152
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "table_material friction_coefficient",
+        "initial_speed_mps",
+        "t05v2_moving_phone.initial_speed",
+        "gap_width_m",
+        "initial_yaw_deg",
+        "t05v2_moving_phone.mass",
+        "t05v2_downstream_can.mass",
+        "t05v2_moving_phone.material friction",
+        "t05v2_downstream_can.material friction",
+        "phone_tray_material friction_coefficient",
+        "guide_material friction_coefficient",
+        "t05v2_moving_phone.restitution"
+      ],
+      "omitted_parameter_keys": [
+        "t05v2_downstream_can.restitution",
+        "tray_angle_deg"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Table material friction 0.34. Initial speed 0.06 m/s. Moving phone initial speed 0.06 m/s. Gap width 0.086184 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08. Moving phone restitution 0.025.",
+        "Continue this scene with a fixed camera. Gravity 1.62 m/s^2. Table material friction 0.34. Initial speed 0.06 m/s. Moving phone initial speed 0.06 m/s. Gap width 0.086184 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08. Moving phone restitution 0.025.",
+        "Fixed camera; continue the physical motion. Gravity 1.62 m/s^2. Table material friction 0.34. Initial speed 0.06 m/s. Moving phone initial speed 0.06 m/s. Gap width 0.086184 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08. Moving phone restitution 0.025."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 152
+        },
+        {
+          "ltx": 118,
+          "cogvideox": 118,
+          "wan": 153
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 154
+        }
+      ],
+      "prompt_variant_sha256": [
+        "7b39b6185230433227518fdf37973ad5abc799bd73bbffa10a7274770fb961b8",
+        "68bf0e25a524b6b3d83fb4ebfcc47f42d482919ccafd2d742d2e3952bd836e0e",
+        "d3b857003af39743bd0aba3e7201d48b1b0d67e374a9a5b0c9695aef2e9e6be0"
+      ],
+      "condition_recovery_version": "core100-recovery-v3-20261021"
+    },
+    {
+      "clip_id": "T05_C03",
+      "sample_id": "T05F880V1__bg01_home_ase__g03_earth__global_16__rep01",
+      "source_video_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260904_delta/T05/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01/videos/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "unverified",
+        "physical_dt_s": null,
+        "media_fps": null,
+        "release_frame": null,
+        "frame_count": null
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.friction",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.friction",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          0.09008522020293933,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          4.0,
+          "°"
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_friction_coefficient",
+          0.049,
+          ""
+        ],
+        [
+          "guide_friction_coefficient",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          0.118,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          0.118,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          "",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.material friction",
+          "",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.material friction",
+          "",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          "",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          "",
+          0.09008522020293933,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          "",
+          4.0,
+          "°"
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_material friction_coefficient",
+          "",
+          0.049,
+          ""
+        ],
+        [
+          "guide_material friction_coefficient",
+          "",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          "",
+          0.118,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          "",
+          0.118,
+          "m/s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "initial_conditions_only",
+      "reference": {
+        "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260904_delta/T05/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01/videos/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Table material friction 0.34. Initial speed 0.118 m/s. Moving phone initial speed 0.118 m/s. Gap width 0.09008522020293933 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "c640bc4d5c526fb2c3d40808b49940f279a6ba951b15e214f942865c57b630a8",
+      "prompt_token_counts": {
+        "ltx": 112,
+        "cogvideox": 112,
+        "wan": 154
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "table_material friction_coefficient",
+        "initial_speed_mps",
+        "t05v2_moving_phone.initial_speed",
+        "gap_width_m",
+        "initial_yaw_deg",
+        "t05v2_moving_phone.mass",
+        "t05v2_downstream_can.mass",
+        "t05v2_moving_phone.material friction",
+        "t05v2_downstream_can.material friction",
+        "phone_tray_material friction_coefficient",
+        "guide_material friction_coefficient"
+      ],
+      "omitted_parameter_keys": [
+        "t05v2_moving_phone.restitution",
+        "t05v2_downstream_can.restitution",
+        "tray_angle_deg"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Table material friction 0.34. Initial speed 0.118 m/s. Moving phone initial speed 0.118 m/s. Gap width 0.09008522020293933 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08.",
+        "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Table material friction 0.34. Initial speed 0.118 m/s. Moving phone initial speed 0.118 m/s. Gap width 0.09008522020293933 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08.",
+        "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Table material friction 0.34. Initial speed 0.118 m/s. Moving phone initial speed 0.118 m/s. Gap width 0.09008522020293933 m. Initial yaw 4 deg. Moving phone mass 0.19 kg. Downstream can mass 0.07 kg. Moving phone material friction 0.049. Downstream can material friction 0.3. Phone tray material friction 0.049. Guide material friction 0.08."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 112,
+          "cogvideox": 112,
+          "wan": 154
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 155
+        },
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 156
+        }
+      ],
+      "prompt_variant_sha256": [
+        "c640bc4d5c526fb2c3d40808b49940f279a6ba951b15e214f942865c57b630a8",
+        "65fce66605dc9b904251e69b60dbedac68a634c04cdb5ab9704e5ebb94700ecb",
+        "72bbf2eaae46ac550fb9e0e1a7e6eac0f4346e31851bfc4d4924acd8fbd98eb3"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6/staging/t04_t05/formal_880_v1_480p_20260904_delta/T05/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01/metadata/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01__cam01.json.gz",
+        "source_sha256": "4a8def53705f0db3ec6fe88c60945089cd53fb64873bd1646f2118242c776593",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T05_v2_7s/formal_880_v1_480p/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01/videos/T05F880V1__bg01_home_ase__g03_earth__global_16__rep01__cam01.mp4",
+        "local_video_sha256": null
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021"
+    },
+    {
+      "clip_id": "T10_C01",
+      "sample_id": "PROD_T10_bg01_home_ase_g01_moon_supx_p00",
+      "source_video_sha256": "670be1584b3d9d234f269d07df0aff8d73a935fa9a4fcdf97dcd5071fb524028",
+      "source_repo": "phy2/phydataset",
+      "source_revision": "5ae6ed9b2754bef708ce598b8ea7777e5aaf4ba9",
+      "source_video_path": "data/T10/genesis_44_480p_20260927/videos/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.02,
+        "media_fps": 30,
+        "release_frame": 18,
+        "frame_count": 210,
+        "source": "source-config clock and author audit; timing is independent of unresolved T10 geometry"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.friction",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.friction",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.friction",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          47.84,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          "",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.material friction",
+          "",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          "",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.material friction",
+          "",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          "",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.material friction",
+          "",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          "",
+          47.84,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          "",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          "",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          "",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          "",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.material friction",
+          "",
+          0.52,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.36,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "initial_conditions_only",
+      "reference": {
+        "clip_id": "T10_C01",
+        "source_sha256": "670be1584b3d9d234f269d07df0aff8d73a935fa9a4fcdf97dcd5071fb524028",
+        "derivative_sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C01_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C01_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "13157dc76b4e00a06f88fd9d2c6400972d34edbd3f559ade52eaefec8680020e",
+      "prompt_token_counts": {
+        "ltx": 113,
+        "cogvideox": 113,
+        "wan": 131
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t10_supported_folder.material friction",
+        "release_time",
+        "t10_tape_roll.initial_speed",
+        "t10_supported_folder.initial_angle",
+        "t10_support_pen.initial_X",
+        "t10_support_pen.initial_Y",
+        "t10_support_pen.initial_Z",
+        "t10_supported_folder.mass",
+        "t10_support_pen.mass",
+        "t10_tape_roll.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t10_supported_folder.restitution",
+        "t10_support_pen.material friction",
+        "t10_support_pen.restitution",
+        "t10_tape_roll.material friction",
+        "t10_tape_roll.restitution",
+        "frozen_tabletop_collision_slab.material friction"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Continue this scene with a fixed camera. Gravity 1.62 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Fixed camera; continue the physical motion. Gravity 1.62 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 131
+        },
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 132
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 133
+        }
+      ],
+      "prompt_variant_sha256": [
+        "13157dc76b4e00a06f88fd9d2c6400972d34edbd3f559ade52eaefec8680020e",
+        "b46bf6facf60d4838ffee336b41a9533f87a65b902286d043304fc3cd076690f",
+        "132b6328047952136b59335e8963ae0926d64c30a9bbe8079148ec710d1868d3"
+      ],
+      "generation_time_contract": "realtime; release at 0.36 seconds; 50 fps derivative reference",
+      "historical_state_candidate": {
+        "path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam01.json",
+        "sha256": "b74d7d956678fddcdf121fe6436c180bee4e732925d8a3d3d7bb47a936cf3d20",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam02/videos/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam02.mp4",
+        "direct_cam01_binding_verified": false
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021"
+    },
+    {
+      "clip_id": "T10_C02",
+      "sample_id": "PROD_T10_bg01_home_ase_g02_mars_supx_p00",
+      "source_video_sha256": "64b83107a0898819156d1d33f75d5076db5e43d6d2f51cdcc9f98fb27d7020a6",
+      "source_repo": "phy2/phydataset",
+      "source_revision": "5ae6ed9b2754bef708ce598b8ea7777e5aaf4ba9",
+      "source_video_path": "data/T10/genesis_44_480p_20260927/videos/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.02,
+        "media_fps": 30,
+        "release_frame": 18,
+        "frame_count": 210,
+        "source": "source-config clock and author audit; timing is independent of unresolved T10 geometry"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.friction",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.friction",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.friction",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          47.84,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          "",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.material friction",
+          "",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          "",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.material friction",
+          "",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          "",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.material friction",
+          "",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          "",
+          47.84,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          "",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          "",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          "",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          "",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.material friction",
+          "",
+          0.52,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.36,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "initial_conditions_only",
+      "reference": {
+        "clip_id": "T10_C02",
+        "source_sha256": "64b83107a0898819156d1d33f75d5076db5e43d6d2f51cdcc9f98fb27d7020a6",
+        "derivative_sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C02_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C02_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "c25d1ca9573d21ddcb6853ebb8779dab7b1b0d0a8dd79cce20a865485314fbee",
+      "prompt_token_counts": {
+        "ltx": 113,
+        "cogvideox": 113,
+        "wan": 131
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t10_supported_folder.material friction",
+        "release_time",
+        "t10_tape_roll.initial_speed",
+        "t10_supported_folder.initial_angle",
+        "t10_support_pen.initial_X",
+        "t10_support_pen.initial_Y",
+        "t10_support_pen.initial_Z",
+        "t10_supported_folder.mass",
+        "t10_support_pen.mass",
+        "t10_tape_roll.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t10_supported_folder.restitution",
+        "t10_support_pen.material friction",
+        "t10_support_pen.restitution",
+        "t10_tape_roll.material friction",
+        "t10_tape_roll.restitution",
+        "frozen_tabletop_collision_slab.material friction"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Continue this scene with a fixed camera. Gravity 3.71 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Fixed camera; continue the physical motion. Gravity 3.71 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 1.8 m/s. Supported folder initial angle 47.84 deg. Support pen initial x 0.08 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 131
+        },
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 132
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 133
+        }
+      ],
+      "prompt_variant_sha256": [
+        "c25d1ca9573d21ddcb6853ebb8779dab7b1b0d0a8dd79cce20a865485314fbee",
+        "b809733fe174dd05561a766fbec38bb0723ae1660c2e708fd4aa56c8accfad1f",
+        "7503543e68242d9029b3c9b277bdf3fec997be564f9808c5a83676d5e445f8ff"
+      ],
+      "generation_time_contract": "realtime; release at 0.36 seconds; 50 fps derivative reference",
+      "historical_state_candidate": {
+        "path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam01.json",
+        "sha256": "13dfb62358389aab59792b421a841704ea485aa9a0c23efc71df0c2c6396987f",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam02/videos/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam02.mp4",
+        "direct_cam01_binding_verified": false
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021"
+    },
+    {
+      "clip_id": "T11_C01",
+      "sample_id": "T11R011__bg01_home_ase__g01_moon__G_global_06",
+      "source_video_sha256": "7a83eee8d9e00fce180bed3885c47a4a589d693a956c20b8c07b113e8184ca36",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t11/formal_r011_720p_qualified_20260908/samples/T11R011__bg01_home_ase__g01_moon__G_global_06/videos/T11R011__bg01_home_ase__g01_moon__G_global_06__cam01.mp4",
+      "configuration_status": "video_hash_bound_header",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 60,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "37f3342a08593ee165a7424cdda237461a1216460289e240d3c2b533bba5679f"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {
+          "t11_tabletop_collision_slab": 0.04,
+          "t11_driver_eraser": 0.03,
+          "t11_eyeglasses_case": 0.08,
+          "t11_relay_pencil_case": 0.04,
+          "t11_floor_collision_slab": 0.46
+        },
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t11_driver_eraser.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.friction",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.friction",
+          0.08,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          0.05,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          0.13,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.04,
+          ""
+        ],
+        [
+          "driver_initial_speed_mps",
+          0.0,
+          "m/s"
+        ],
+        [
+          "driver_relay_gap_m",
+          0.28,
+          "m"
+        ],
+        [
+          "relay_case_gap_m",
+          0.14465753424657535,
+          "m"
+        ],
+        [
+          "case_edge_margin_m",
+          0.0504,
+          "m"
+        ],
+        [
+          "driver_force_before_first_contact_n",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "driver_force_between_contacts_n",
+          0.85,
+          "N"
+        ],
+        [
+          "driver_force_after_second_contact_n",
+          0.4166666666666666,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.force_peak",
+          0.2633333333333333,
+          "N"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t11_driver_eraser.mass",
+          "",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.material friction",
+          "",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          "",
+          0.06,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          "",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.material friction",
+          "",
+          0.08,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          "",
+          0.05,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          "",
+          0.13,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.material friction",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          "",
+          0.06,
+          ""
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "driver_initial_speed_mps",
+          "",
+          0.0,
+          "m/s"
+        ],
+        [
+          "driver_relay_gap_m",
+          "",
+          0.28,
+          "m"
+        ],
+        [
+          "relay_case_gap_m",
+          "",
+          0.14465753424657535,
+          "m"
+        ],
+        [
+          "case_edge_margin_m",
+          "",
+          0.0504,
+          "m"
+        ],
+        [
+          "driver_force_before_first_contact_n",
+          "",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "driver_force_between_contacts_n",
+          "",
+          0.85,
+          "N"
+        ],
+        [
+          "driver_force_after_second_contact_n",
+          "",
+          0.4166666666666666,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.force_peak",
+          "",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "t11_tabletop_collision_slab.material friction",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.material friction",
+          "",
+          0.46,
+          ""
+        ],
+        [
+          "dynamics_start_time",
+          "",
+          2.0,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "source_video_path": "staging/t11/formal_r011_720p_qualified_20260908/samples/T11R011__bg01_home_ase__g01_moon__G_global_06/videos/T11R011__bg01_home_ase__g01_moon__G_global_06__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "7a83eee8d9e00fce180bed3885c47a4a589d693a956c20b8c07b113e8184ca36"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Eraser. Gravity 1.62 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "0596cbacf61c12470c8e480561de60213b2e7800a43102c07e21f8e2a33de2d5",
+      "prompt_token_counts": {
+        "ltx": 112,
+        "cogvideox": 112,
+        "wan": 151
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "table_material friction_coefficient",
+        "driver_initial_speed_mps",
+        "t11_driver_eraser.force_peak",
+        "dynamics_start_time",
+        "t11_driver_eraser.mass",
+        "t11_eyeglasses_case.mass",
+        "t11_relay_pencil_case.mass",
+        "t11_driver_eraser.material friction",
+        "t11_eyeglasses_case.material friction",
+        "t11_relay_pencil_case.material friction"
+      ],
+      "omitted_parameter_keys": [
+        "t11_driver_eraser.restitution",
+        "t11_eyeglasses_case.restitution",
+        "t11_relay_pencil_case.restitution",
+        "driver_relay_gap_m",
+        "relay_case_gap_m",
+        "case_edge_margin_m",
+        "driver_force_before_first_contact_n",
+        "driver_force_between_contacts_n",
+        "driver_force_after_second_contact_n",
+        "t11_tabletop_collision_slab.material friction",
+        "t11_floor_collision_slab.material friction"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Eraser. Gravity 1.62 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+        "Keep the camera fixed. Off-screen force acts on Eraser. Gravity 1.62 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+        "Off-screen force acts on Eraser. Camera stays fixed. Gravity 1.62 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 112,
+          "cogvideox": 112,
+          "wan": 151
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 152
+        },
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 152
+        }
+      ],
+      "prompt_variant_sha256": [
+        "0596cbacf61c12470c8e480561de60213b2e7800a43102c07e21f8e2a33de2d5",
+        "e5e69023cc065f0beac649ecd07d62f690b922544e819ca9c390a1cb4088eebf",
+        "7c608a7f50bc9c97146b4273150a51fd149eaa852188b5009f5e3f27005602ed"
+      ],
+      "header_provenance": {
+        "path": "/data_cached/wangzijun_p25/hf_staging_t11_r011_partial_20260920_phy2_phydataset/repo_root/data/T11/formal_r011_720p_partial_20260920/metadata/T11R011__bg01_home_ase__g01_moon__G_global_06/T11R011__bg01_home_ase__g01_moon__G_global_06__cam01.json.gz",
+        "source_sha256": "37f3342a08593ee165a7424cdda237461a1216460289e240d3c2b533bba5679f",
+        "recorded_video": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g01_moon__G_global_06/videos/T11R011__bg01_home_ase__g01_moon__G_global_06__cam01.mp4",
+        "local_video_sha256": "7a83eee8d9e00fce180bed3885c47a4a589d693a956c20b8c07b113e8184ca36"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Eraser."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t11_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t11_driver_eraser",
+            "motion": {
+              "type": "set_velocity",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.18805753424657545,
+                0.0,
+                0.0177
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_eyeglasses_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.5720999999999999,
+                0.0,
+                0.0202
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_relay_pencil_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.24094246575342457,
+                0.0,
+                0.018199999999999997
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.13
+          },
+          {
+            "name": "t11_floor_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                -0.2,
+                -0.874
+              ],
+              "euler_xyz": [
+                0,
+                0,
+                0
+              ]
+            },
+            "mass": 0.0
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.2633333333333333,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 60
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014\\actual_evidence\\32bf57eb2811566240814974.json.gz",
+        "source_path": "/data_cached/wangzijun_p25/hf_staging_t11_r011_partial_20260920_phy2_phydataset/repo_root/data/T11/formal_r011_720p_partial_20260920/metadata/T11R011__bg01_home_ase__g01_moon__G_global_06/T11R011__bg01_home_ase__g01_moon__G_global_06__cam01.json.gz",
+        "status": "local_p25_sha256_matches_pinned_hf"
+      },
+      "previous_prompt_variant_sha256": [
+        "1074b7a053a4ea20236716eca60a9310fc2f3769d7b1470d04b28a673ba119d1",
+        "802896f21d637ba927ad3466574d7fb97a4d12dac50cd5248cfd17b449c2fdeb",
+        "e5ba7dce8a4a3bcecd6b7c8860ee7cdae11ddd7493336e31f9d32bc9d23039e9"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "1074b7a053a4ea20236716eca60a9310fc2f3769d7b1470d04b28a673ba119d1",
+          "802896f21d637ba927ad3466574d7fb97a4d12dac50cd5248cfd17b449c2fdeb",
+          "e5ba7dce8a4a3bcecd6b7c8860ee7cdae11ddd7493336e31f9d32bc9d23039e9"
+        ]
+      }
+    },
+    {
+      "clip_id": "T11_C02",
+      "sample_id": "T11R011__bg01_home_ase__g02_mars__G_global_06",
+      "source_video_sha256": "880008d7be3cfc0cc1d871b3d01efb5c328b4f685cc4fb654f6b300e79aa1ff8",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t11/formal_r011_720p_qualified_20260908/samples/T11R011__bg01_home_ase__g02_mars__G_global_06/videos/T11R011__bg01_home_ase__g02_mars__G_global_06__cam01.mp4",
+      "configuration_status": "video_hash_bound_header",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 60,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "65f943d6c341eac7f5485fd896a8ad6359639da1e48a675fb9e917de80c129fe"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {
+          "t11_tabletop_collision_slab": 0.04,
+          "t11_driver_eraser": 0.03,
+          "t11_eyeglasses_case": 0.08,
+          "t11_relay_pencil_case": 0.04,
+          "t11_floor_collision_slab": 0.46
+        },
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t11_driver_eraser.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.friction",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.friction",
+          0.08,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          0.05,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          0.13,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.04,
+          ""
+        ],
+        [
+          "driver_initial_speed_mps",
+          0.0,
+          "m/s"
+        ],
+        [
+          "driver_relay_gap_m",
+          0.28,
+          "m"
+        ],
+        [
+          "relay_case_gap_m",
+          0.14465753424657535,
+          "m"
+        ],
+        [
+          "case_edge_margin_m",
+          0.0504,
+          "m"
+        ],
+        [
+          "driver_force_before_first_contact_n",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "driver_force_between_contacts_n",
+          0.85,
+          "N"
+        ],
+        [
+          "driver_force_after_second_contact_n",
+          0.4166666666666666,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.force_peak",
+          0.2633333333333333,
+          "N"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t11_driver_eraser.mass",
+          "",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.material friction",
+          "",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          "",
+          0.06,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          "",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.material friction",
+          "",
+          0.08,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          "",
+          0.05,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          "",
+          0.13,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.material friction",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          "",
+          0.06,
+          ""
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "driver_initial_speed_mps",
+          "",
+          0.0,
+          "m/s"
+        ],
+        [
+          "driver_relay_gap_m",
+          "",
+          0.28,
+          "m"
+        ],
+        [
+          "relay_case_gap_m",
+          "",
+          0.14465753424657535,
+          "m"
+        ],
+        [
+          "case_edge_margin_m",
+          "",
+          0.0504,
+          "m"
+        ],
+        [
+          "driver_force_before_first_contact_n",
+          "",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "driver_force_between_contacts_n",
+          "",
+          0.85,
+          "N"
+        ],
+        [
+          "driver_force_after_second_contact_n",
+          "",
+          0.4166666666666666,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.force_peak",
+          "",
+          0.2633333333333333,
+          "N"
+        ],
+        [
+          "t11_tabletop_collision_slab.material friction",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.material friction",
+          "",
+          0.46,
+          ""
+        ],
+        [
+          "dynamics_start_time",
+          "",
+          2.0,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "source_video_path": "staging/t11/formal_r011_720p_qualified_20260908/samples/T11R011__bg01_home_ase__g02_mars__G_global_06/videos/T11R011__bg01_home_ase__g02_mars__G_global_06__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "880008d7be3cfc0cc1d871b3d01efb5c328b4f685cc4fb654f6b300e79aa1ff8"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Eraser. Gravity 3.71 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "fab52fbff3c63b5995c4628f1cfdbde5aa9f8c51cfbe42fec2114a7de2c42503",
+      "prompt_token_counts": {
+        "ltx": 112,
+        "cogvideox": 112,
+        "wan": 151
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "table_material friction_coefficient",
+        "driver_initial_speed_mps",
+        "t11_driver_eraser.force_peak",
+        "dynamics_start_time",
+        "t11_driver_eraser.mass",
+        "t11_eyeglasses_case.mass",
+        "t11_relay_pencil_case.mass",
+        "t11_driver_eraser.material friction",
+        "t11_eyeglasses_case.material friction",
+        "t11_relay_pencil_case.material friction"
+      ],
+      "omitted_parameter_keys": [
+        "t11_driver_eraser.restitution",
+        "t11_eyeglasses_case.restitution",
+        "t11_relay_pencil_case.restitution",
+        "driver_relay_gap_m",
+        "relay_case_gap_m",
+        "case_edge_margin_m",
+        "driver_force_before_first_contact_n",
+        "driver_force_between_contacts_n",
+        "driver_force_after_second_contact_n",
+        "t11_tabletop_collision_slab.material friction",
+        "t11_floor_collision_slab.material friction"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Eraser. Gravity 3.71 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+        "Keep the camera fixed. Off-screen force acts on Eraser. Gravity 3.71 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04.",
+        "Off-screen force acts on Eraser. Camera stays fixed. Gravity 3.71 m/s^2. Table material friction 0.04. Driver initial speed 0 m/s. Driver eraser force peak 0.2633333333333333 N. Dynamics start time 2 s. Driver eraser mass 0.12 kg. Eyeglasses case mass 0.12 kg. Relay pencil case mass 0.13 kg. Driver eraser material friction 0.03. Eyeglasses case material friction 0.08. Relay pencil case material friction 0.04."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 112,
+          "cogvideox": 112,
+          "wan": 151
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 152
+        },
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 152
+        }
+      ],
+      "prompt_variant_sha256": [
+        "fab52fbff3c63b5995c4628f1cfdbde5aa9f8c51cfbe42fec2114a7de2c42503",
+        "6bad8541101fdfa19f38031357ebbf3d12a345d6df767d995efe057b52746b93",
+        "912b66cdd35db7b907fcfed5752cfa135c28488e0782155ce9804bceb14b26c5"
+      ],
+      "header_provenance": {
+        "path": "/data_cached/wangzijun_p25/hf_staging_t11_r011_partial_20260920_phy2_phydataset/repo_root/data/T11/formal_r011_720p_partial_20260920/metadata/T11R011__bg01_home_ase__g02_mars__G_global_06/T11R011__bg01_home_ase__g02_mars__G_global_06__cam01.json.gz",
+        "source_sha256": "65f943d6c341eac7f5485fd896a8ad6359639da1e48a675fb9e917de80c129fe",
+        "recorded_video": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g02_mars__G_global_06/videos/T11R011__bg01_home_ase__g02_mars__G_global_06__cam01.mp4",
+        "local_video_sha256": "880008d7be3cfc0cc1d871b3d01efb5c328b4f685cc4fb654f6b300e79aa1ff8"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Eraser."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t11_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t11_driver_eraser",
+            "motion": {
+              "type": "set_velocity",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.18805753424657545,
+                0.0,
+                0.0177
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_eyeglasses_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.5720999999999999,
+                0.0,
+                0.0202
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_relay_pencil_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.24094246575342457,
+                0.0,
+                0.018199999999999997
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.13
+          },
+          {
+            "name": "t11_floor_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                -0.2,
+                -0.874
+              ],
+              "euler_xyz": [
+                0,
+                0,
+                0
+              ]
+            },
+            "mass": 0.0
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.2633333333333333,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 60
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014\\actual_evidence\\7444c6a7c3d5b87e7c162536.json.gz",
+        "source_path": "/data_cached/wangzijun_p25/hf_staging_t11_r011_partial_20260920_phy2_phydataset/repo_root/data/T11/formal_r011_720p_partial_20260920/metadata/T11R011__bg01_home_ase__g02_mars__G_global_06/T11R011__bg01_home_ase__g02_mars__G_global_06__cam01.json.gz",
+        "status": "local_p25_sha256_matches_pinned_hf"
+      },
+      "previous_prompt_variant_sha256": [
+        "17cbb71dc3f9c5eb74896d3e382c808f09b7894eab0469e8dd1975f69ed7aa17",
+        "434bfb04df85b7006cf248f81a75658520deb4e5a1cd1844f96c3e23d71b8164",
+        "045ba72bbe21ee8bbd1606c8d39cf68385ab3f16deaf53cf66255034076d81f8"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "17cbb71dc3f9c5eb74896d3e382c808f09b7894eab0469e8dd1975f69ed7aa17",
+          "434bfb04df85b7006cf248f81a75658520deb4e5a1cd1844f96c3e23d71b8164",
+          "045ba72bbe21ee8bbd1606c8d39cf68385ab3f16deaf53cf66255034076d81f8"
+        ]
+      }
+    }
+  ]
+}

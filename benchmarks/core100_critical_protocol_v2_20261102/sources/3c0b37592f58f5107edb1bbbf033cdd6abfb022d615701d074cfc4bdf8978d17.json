@@ -1,0 +1,48 @@
+[
+  {
+    "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T01_v2_7s/scripts/render_t03_v5_multicam_r008.py",
+    "sha256": "76bea0d2a7dd30c3c7b15da3a5169c7e5d70a429c6d78090f00401ef769ed31c",
+    "parts": [
+      {
+        "line": 11,
+        "text": "\nimport argparse\nimport copy\nimport hashlib\nimport importlib.util\nimport json\nimport math\nimport sys\nfrom pathlib import Path\nfrom typing import Any\n\nimport numpy as np"
+      },
+      {
+        "line": 146,
+        "text": "\n\n# --------------------------- dynamic imports ---------------------------\n\ndef _load_module(path: Path, name: str) -> Any:\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f'Failed to load module from {path}')\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)\n    return module\n"
+      },
+      {
+        "line": 147,
+        "text": "\n# --------------------------- dynamic imports ---------------------------\n\ndef _load_module(path: Path, name: str) -> Any:\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f'Failed to load module from {path}')\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)\n    return module\n\n"
+      },
+      {
+        "line": 150,
+        "text": "def _load_module(path: Path, name: str) -> Any:\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f'Failed to load module from {path}')\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)\n    return module\n\n\ndef _load_stage06() -> Any:\n    script_path = Path(__file__).resolve().parent / '06_run_genesis_import.py'\n    if not script_path.exists():"
+      },
+      {
+        "line": 161,
+        "text": "    if not script_path.exists():\n        raise FileNotFoundError(f'Missing stage-06 script: {script_path}')\n    if str(script_path.parent) not in sys.path:\n        sys.path.insert(0, str(script_path.parent))\n    return _load_module(script_path, 'stage06_run_genesis_import_motion_collision')\n\n\ndef _load_stage09() -> Any | None:\n    script_path = Path(__file__).resolve().parent / '09_render_scene_video.py'\n    if not script_path.exists():\n        return None\n    if str(script_path.parent) not in sys.path:"
+      },
+      {
+        "line": 170,
+        "text": "    if not script_path.exists():\n        return None\n    if str(script_path.parent) not in sys.path:\n        sys.path.insert(0, str(script_path.parent))\n    return _load_module(script_path, 'stage09_render_scene_video_motion_collision')\n\n\ndef _load_placement_utils() -> Any:\n    script_path = Path(__file__).resolve().parent / 'placement_utils.py'\n    if not script_path.exists():\n        raise FileNotFoundError(f'Missing placement utils: {script_path}')\n    if str(script_path.parent) not in sys.path:"
+      },
+      {
+        "line": 179,
+        "text": "    if not script_path.exists():\n        raise FileNotFoundError(f'Missing placement utils: {script_path}')\n    if str(script_path.parent) not in sys.path:\n        sys.path.insert(0, str(script_path.parent))\n    return _load_module(script_path, 'placement_utils_motion_collision')\n\n\n# --------------------------- scene building ---------------------------\n\ndef _build_scene_with_overrides(stage06: Any, show_viewer: bool, scene_cfg: dict[str, Any]) -> Any:\n    gs = stage06.gs\n    kwargs: dict[str, Any] = {'show_viewer': show_viewer}"
+      },
+      {
+        "line": 688,
+        "text": "        vis = bool(spec.get('visualization', True))\n        coll = bool(spec.get('collision', True))\n        common = {'pos': pos, **orientation, 'size': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed, 'visualization': vis, 'collision': coll}\n        return stage06._try_call_variants(\n            gs.morphs.Box,\n            [\n                common,\n                {'pos': pos, **orientation, 'extents': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed, 'visualization': vis, 'collision': coll},\n                {'pos': pos, **orientation, 'size': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed},\n                {'pos': pos, 'extents': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed},\n                {'size': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed},\n                {'size': (float(size[0]), float(size[1]), float(size[2]))},"
+      },
+      {
+        "line": 697,
+        "text": "                {'pos': pos, 'extents': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed},\n                {'size': (float(size[0]), float(size[1]), float(size[2])), 'fixed': fixed},\n                {'size': (float(size[0]), float(size[1]), float(size[2]))},\n            ],\n            'gs.morphs.Box',\n        )\n\n    if shape == 'cylinder':\n        radius = float(spec.get('radius', 0.04))\n        height = float(spec.get('height', 0.12))\n        return stage06._try_call_variants(\n            gs.morphs.Cylinder,"
+      },
+      {
+        "line": 1065,
+        "text": "        visual_ent = None\n        if split_mesh:\n            collision_spec = dict(spec)\n            if collision_proxy == 'box':\n                proxy_size = spec.get('collision_proxy_size', spec.get('size', [0.08, 0.08, 0.08]))\n                collision_spec.update(\n                    mesh_path=None,\n                    shape='box',\n                    size=proxy_size,\n                    visualization=False,\n                    collision=True,\n                    preserve_mesh_material=False,"
+      }
+    ]
+  }
+]

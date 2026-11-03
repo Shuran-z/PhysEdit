@@ -1,0 +1,1318 @@
+{
+  "clip_id": "T08_C02",
+  "job": {
+    "clip_id": "T08_C02",
+    "scene_id": "T08",
+    "sample_id": "T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113",
+    "original_config_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/everyday_bifurcation_T07_T08_v2_independent/configs/formal_v4_480p/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/cam01.json",
+    "original_config_sha256": "78bdaa605a2e7c6a1f6090d83b68fc18f26a187c285d60adeb14e7f862c496e0",
+    "base_config": {
+      "sample_id": "T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113",
+      "dataset_version": "everyday_bifurcation_T08_two_book_stack_v4_formal_480p",
+      "seed": 1963352303,
+      "manifest": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json",
+      "background_profile_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/profiles/bg01_home_ase.json",
+      "background_profile_sha256": "6e7b1b232c6d8df69d8f87369afacdbd71b6eeeb65d3c5ca88a445d2fa20e40e",
+      "background_manifest_sha256": "44cf6d158f0029dc26685c38434671b29f82be7c86bf3ae3027031ad9a8d10a4",
+      "background_freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+      "background_asset_lock": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/configs/frozen_backgrounds_v2/candidates/floor_realism_v3/locks/bg01_home_ase.lock.json",
+      "background_asset_lock_sha256": "cd07838194529f885b1be32c41703e7b89e496cbf96daf7f636e9a1b4292f7f7",
+      "background_reference_image": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/configs/frozen_backgrounds_v2/reference_images/01_home_T01V2_initial.png",
+      "background_reference_image_sha256": "cb727c471001362153160979760827aab7d96eaa0e3d0d6dd1222b2e2e8a4d60",
+      "background_anchor": [
+        -3.55,
+        -2.25,
+        -0.824
+      ],
+      "background_registry": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/configs/frozen_backgrounds_v2/registry.json",
+      "skip_placement": true,
+      "use_full_scene": false,
+      "show_viewer": false,
+      "dynamic_objects": [
+        {
+          "name": "t08_floor_collision_slab",
+          "asset_id": "t08_floor_collision_slab",
+          "category": "support_surface",
+          "semantic_label": "floor_support_surface",
+          "shape": "box",
+          "size": [
+            20.0,
+            20.0,
+            0.08
+          ],
+          "pose": {
+            "position": [
+              0.0,
+              -0.35,
+              -0.864
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fixed": true,
+          "motion": {
+            "type": "none"
+          },
+          "visualization": false,
+          "collision": true,
+          "friction": 0.14,
+          "restitution": 0.035,
+          "contact_offset": 0.006,
+          "mass": 0.0,
+          "camera_focus": false,
+          "is_floor_collision_slab": true
+        },
+        {
+          "name": "event_chain_support_surface_collision_slab",
+          "asset_id": "frozen_tabletop_collision_slab",
+          "category": "support_surface",
+          "semantic_label": "support_surface",
+          "shape": "box",
+          "size": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "pose": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03199999999999992
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fixed": true,
+          "motion": {
+            "type": "none"
+          },
+          "visualization": false,
+          "collision": true,
+          "friction": 0.055,
+          "restitution": 0.01,
+          "mass": 0.0,
+          "camera_focus": false,
+          "is_tabletop_collision_slab": true
+        },
+        {
+          "name": "t08_target_mug",
+          "asset_id": "ceramic_mug_01",
+          "category": "mug",
+          "semantic_label": "mug",
+          "size": [
+            0.126645,
+            0.08729,
+            0.095
+          ],
+          "pose": {
+            "position": [
+              0.005,
+              -0.115,
+              0.0485
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              32.0
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "preserve_mesh_material": false,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "mass": 0.31125,
+          "friction": 0.18,
+          "restitution": 0.045,
+          "linear_damping": 0.01,
+          "angular_damping": 0.014,
+          "ccd_enabled": false,
+          "disable_sleep": true,
+          "contact_offset": 0.001,
+          "camera_focus": true,
+          "asset_visual_sha256": "fce9ea504eca0245f1757fada4a9f862a9ef489c31e13c1e73d9c4e8637c0760",
+          "asset_collision_sha256": "61e0f14451f19966c58353bc3c8622322220f5e75f62ea4f18ce64866cd749bb",
+          "source_visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/mugs/ceramic_mug_01.obj",
+          "visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/mugs/ceramic_mug_01.obj",
+          "collision_proxy": "cylinder",
+          "collision_proxy_radius": 0.047,
+          "collision_proxy_height": 0.095,
+          "color": [
+            0.7,
+            0.76,
+            0.72
+          ],
+          "diffuse_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/mug_outer_basecolor.png",
+          "roughness_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/mug_outer_roughness.png"
+        },
+        {
+          "name": "t08_lower_impactor_book",
+          "asset_id": "book_thick_01_v2",
+          "category": "book",
+          "semantic_label": "book",
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "pose": {
+            "position": [
+              0.0,
+              0.235,
+              0.027
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "set_velocity",
+            "initial_velocity": [
+              0.0,
+              -1.3144938983181307,
+              0.0
+            ]
+          },
+          "preserve_mesh_material": false,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "mass": 0.58,
+          "friction": 0.24,
+          "restitution": 0.04,
+          "linear_damping": 0.008,
+          "angular_damping": 0.012,
+          "ccd_enabled": false,
+          "disable_sleep": true,
+          "contact_offset": 0.0005,
+          "camera_focus": true,
+          "asset_visual_sha256": "e0a9b417493bdfd8f2115f14671c5fa25a8df228b0717ddd5b4320b23d997d4d",
+          "asset_collision_sha256": "713b803bb1ff69532e1ba0544b4ad519a5e0e6303e1303cb215e2db0eb3da3eb",
+          "source_visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/books/book_thick_01_v2.obj",
+          "visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/books/book_thick_01_v2.obj",
+          "collision_proxy": "box",
+          "collision_proxy_size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "color": [
+            0.34,
+            0.2,
+            0.17
+          ],
+          "diffuse_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/book_olive_basecolor.png",
+          "roughness_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/book_olive_roughness.png"
+        },
+        {
+          "name": "t08_upper_payload_book",
+          "asset_id": "book_textbook_01_v2",
+          "category": "book",
+          "semantic_label": "book",
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "pose": {
+            "position": [
+              0.012,
+              0.25,
+              0.07
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              -4.0
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "preserve_mesh_material": false,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "mass": 0.42,
+          "friction": 0.34,
+          "restitution": 0.035,
+          "linear_damping": 0.01,
+          "angular_damping": 0.014,
+          "ccd_enabled": false,
+          "disable_sleep": true,
+          "contact_offset": 0.0005,
+          "camera_focus": true,
+          "asset_visual_sha256": "241b0c83bc53649baaa9d4aeef489d82967cb5935018664d194cb4b723e8fd84",
+          "asset_collision_sha256": "3ff7fe3de43121ec4ae601fecad6fb0e6ae202154668f90689d74f27f0341f35",
+          "source_visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/books/book_textbook_01_v2.obj",
+          "visual_mesh_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/books/book_textbook_01_v2.obj",
+          "collision_proxy": "box",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "color": [
+            0.34,
+            0.2,
+            0.17
+          ],
+          "diffuse_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/book_burgundy_basecolor.png",
+          "roughness_texture_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/everyday_objects/everyday_life_v1/textures/book_burgundy_roughness.png"
+        }
+      ],
+      "runtime_forces": [],
+      "experiment": {
+        "template_id": "T08",
+        "background_id": "bg01_home_ase",
+        "gravity_id": "g02_mars",
+        "gravity_mps2": 3.71,
+        "physics_motion_only": true,
+        "scripted_transform": false,
+        "random_seed": 1963352303,
+        "scene_family_id": "T08_TWO_BOOK_STACK_MUG_EDGE_CASCADE_V4",
+        "event_definition": "a pushed lower book frictionally carries an upper book, impacts a mug, and all three bodies may independently cross the table edge, land and travel on the floor",
+        "actuator": "E0_lower_book_initial_velocity_only",
+        "event_graph": [
+          "E0_lower_book_velocity_assignment",
+          "E1_lower_book_frictionally_carries_upper_book",
+          "E2_upper_book_relative_slip_or_stack_hold",
+          "E3_lower_book_mug_oblique_contact",
+          "E4_three_body_linear_and_angular_momentum_partition",
+          "E5_independent_tabletop_translation_rotation_and_book_book_contact",
+          "E6a_mug_edge_crossing_optional",
+          "E6b_lower_book_edge_crossing_optional",
+          "E6c_upper_book_edge_crossing_optional",
+          "E7_optional_free_fall_and_floor_impacts",
+          "E8_post_landing_slide_roll_or_tumble",
+          "E9_stable_final_state"
+        ],
+        "tracked_objects": [
+          "t08_lower_impactor_book",
+          "t08_upper_payload_book",
+          "t08_target_mug"
+        ],
+        "required_contact_pairs": [
+          [
+            "t08_lower_impactor_book",
+            "t08_upper_payload_book"
+          ],
+          [
+            "t08_lower_impactor_book",
+            "t08_target_mug"
+          ]
+        ],
+        "table_top_z": 0.0,
+        "floor_top_z": -0.824,
+        "table_bounds_xy": {
+          "x_min": -0.71,
+          "x_max": 0.71,
+          "y_min": -0.38,
+          "y_max": 0.38
+        },
+        "book_initial_speed_mps": 1.3144938983181307,
+        "impact_eccentricity_m": 0.0050000000000000044,
+        "lower_book_mass_kg": 0.58,
+        "upper_book_mass_kg": 0.42,
+        "book_stack_total_mass_kg": 1.0,
+        "mug_total_mass_kg": 0.31125,
+        "required_outputs": [
+          "gravity_mps2",
+          "lower_book_mass_kg",
+          "upper_book_mass_kg",
+          "book_stack_total_mass_kg",
+          "mug_total_mass_kg",
+          "book_initial_speed_mps",
+          "impact_eccentricity_m",
+          "lower_book_upper_book_contact",
+          "lower_book_mug_contact",
+          "contact_time_s",
+          "lower_book_post_impact_table_path_m",
+          "upper_book_post_impact_table_path_m",
+          "mug_post_impact_table_path_m",
+          "lower_book_left_table",
+          "upper_book_left_table",
+          "mug_left_table",
+          "lower_book_fell_to_floor",
+          "upper_book_fell_to_floor",
+          "mug_fell_to_floor",
+          "lower_book_landing_time_s",
+          "upper_book_landing_time_s",
+          "mug_landing_time_s",
+          "lower_book_post_landing_path_m",
+          "upper_book_post_landing_path_m",
+          "mug_post_landing_path_m",
+          "mug_floor_max_penetration_m",
+          "mug_floor_penetration_valid",
+          "mug_floor_contact_verified",
+          "mug_floor_contact_time_s",
+          "lower_book_final_support",
+          "upper_book_final_support",
+          "mug_final_support",
+          "settle_time_s",
+          "outcome_label"
+        ],
+        "allowed_outcomes": [
+          "no_mug_contact",
+          "all_remain_on_table",
+          "mug_falls_only",
+          "one_book_and_mug_fall",
+          "both_books_and_mug_fall",
+          "book_only_fall",
+          "left_table_without_verified_floor_landing",
+          "contact_unsettled_at_end"
+        ],
+        "critical_surface_definition": {
+          "primary": "which bodies in the two-book stack plus mug transition from table support to floor support after collision",
+          "continuous_observables": [
+            "post_impact_table_path_m",
+            "landing_time_s",
+            "post_landing_path_m",
+            "post_landing_displacement_m"
+          ]
+        },
+        "counterfactual_group": "global_coverage",
+        "counterfactual_region": "global",
+        "all_physics_values": {
+          "A_book_initial_speed_mps": 1.3144938983181307,
+          "B_impact_eccentricity_m": 0.0050000000000000044,
+          "C_mug_total_mass_kg": 0.31125
+        },
+        "single_primary_intervention": false,
+        "replicate": 1,
+        "global_index": 11,
+        "formal_sampling": {
+          "matrix_revision": "t08_v4_two_book_formal_480p_20260903",
+          "trajectories_per_background_gravity": 44,
+          "camera_count": 3,
+          "physics_shared_across_cameras": true,
+          "solver_revision": "t08_solver_v5_tc002_halfdt_ss4_20260904"
+        }
+      },
+      "scene_overrides": {
+        "gravity": [
+          0.0,
+          0.0,
+          -3.71
+        ],
+        "dt": 0.0005208333333333333,
+        "substeps": 8,
+        "physics_steps_per_render_frame": 64,
+        "solver_iterations": 240,
+        "iterations": 240,
+        "ls_iterations": 120,
+        "noslip_iterations": 4,
+        "tolerance": 1e-07,
+        "ls_tolerance": 0.0001,
+        "noslip_tolerance": 1e-07,
+        "constraint_timeconst": 0.0005,
+        "contact_resolve_time": 0.002,
+        "settle_steps": 0,
+        "record_contacts": true,
+        "static_scene_collision": false,
+        "layout_collision": false,
+        "add_ground_plane": false,
+        "room_wall_colliders": false,
+        "room_boundary_safety": {
+          "enabled": false
+        },
+        "use_gjk_collision": true,
+        "enable_multi_contact": true,
+        "box_box_detection": true,
+        "raytracing": false,
+        "raytracing_state_limit": 8388608,
+        "raytracing_depth": 8,
+        "raytracing_rr_depth": 2,
+        "raytracing_env_map": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+        "raytracing_env_map_required": true,
+        "raytracing_env_encoding": "linear",
+        "raytracing_env_euler": [
+          0,
+          0,
+          25
+        ],
+        "raytracing_lights": [
+          {
+            "pos": [
+              -0.2999999999999998,
+              -0.18000000000000016,
+              2.04
+            ],
+            "color": [
+              1.0,
+              0.93,
+              0.82
+            ],
+            "intensity": 7.2,
+            "radius": 0.52
+          },
+          {
+            "pos": [
+              0.9199999999999999,
+              -0.78,
+              1.48
+            ],
+            "color": [
+              0.82,
+              0.9,
+              1.0
+            ],
+            "intensity": 2.8,
+            "radius": 0.42
+          }
+        ],
+        "use_raytracing": false
+      },
+      "render": {
+        "write_video": true,
+        "render_backend": "raster",
+        "fps": 30,
+        "frames": 210,
+        "pre_static_frames": 30,
+        "resolution": [
+          854,
+          480
+        ],
+        "physics_steps_per_render_frame": 64,
+        "raytracing_spp": 32,
+        "raytracing_denoise": true,
+        "use_native_recording": false,
+        "save_rgb_frames": false,
+        "save_depth_frames": false,
+        "save_seg_frames": false,
+        "camera_mode": "fixed_view",
+        "fixed_view": {
+          "position": [
+            0.02,
+            -1.78,
+            0.76
+          ],
+          "look_at": [
+            0.02,
+            0.1,
+            -0.18
+          ],
+          "fov_deg": 68.0
+        },
+        "save_video": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v4_480p/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/videos/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01.mp4",
+        "save_first_rgb": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v4_480p/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/qa/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01__initial.png",
+        "save_last_rgb": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v4_480p/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/qa/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01__final.png"
+      },
+      "annotations": {
+        "enabled": true,
+        "schema_version": "ebb_trajectory_annotation_v3",
+        "record_per_frame_pose": true,
+        "record_per_frame_velocity": true,
+        "record_contacts": true,
+        "record_event_graph": true,
+        "conditional_parameter_policy": "emit_only_if_event_uses_parameter",
+        "impulse_used": false,
+        "save_path": "/data/yangkaiyuan/boundary_five_scene_20261028/importer/everyday_bifurcation_T07_T08_v2_independent/outputs/formal_v4_480p/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113/metadata/T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113__cam01.json"
+      },
+      "sample_metadata": {
+        "background_freeze_id": "ebb_t01_reference_four_backgrounds_floor_realism_v3_20260829",
+        "geometry_revision": "home_living_groundfix_baxi_roundtable_20260812",
+        "material_revision": "everyday_life_v1_home_pbr",
+        "t08_revision": "two_book_stack_mug_edge_cascade_v4_20260903",
+        "retired_predecessor": "T08_ECCENTRIC_BOOK_MUG_STABILITY_V2",
+        "production_resolution_policy": "854x480_formal_20260903",
+        "formal_matrix": "4_backgrounds_x_5_gravities_x_44_two_book_trajectories",
+        "formal_kind": "formal_v4_480p",
+        "visual_qa": "v4_four_background_reference_gate"
+      },
+      "camera_id": "cam01",
+      "random_seed": 1963352303
+    },
+    "theta": 1.3144938983181307,
+    "grid": [
+      0.8917034631865681,
+      0.9224518584688637,
+      1.1069422301626364,
+      1.291432601856409,
+      1.5066713688324773
+    ],
+    "domain": [
+      0.8917034631865681,
+      1.5066713688324773
+    ],
+    "family": "A_book_initial_speed_mps",
+    "domain_source": "Original build_t08_v4_formal_480p.py gravity-scaled published parameter range",
+    "renderer_file": "renderer_t08_aggregate_cpu64.py",
+    "formal_admission": false,
+    "published_runtime_state_stored_sha256": "8d0ecd4b1b77f7373978fbafb17f1939428048234065f691f26b8de51db0b10a",
+    "published_runtime_state_decoded_sha256": "2989188e7916b60ca09195c30cf44ffb1322e244f69e4dc089bd0e3f73c8e885",
+    "base_context_provenance": "Pinned released cam01 state header, not pre-runtime config candidate",
+    "render_profile_note": "Numerical diagnostics use raster graphics with CPU64 physics; actual published collision specs, dt and steps restored. No new reference RGB admitted.",
+    "seed_note": "Explicitly apply published state-header experiment.random_seed; historical actual backend seed not attested.",
+    "repair_note": "Separate numerical profile; no gate relaxation, old data unchanged."
+  },
+  "report": {
+    "clip_id": "T08_C02",
+    "sample_id": "T08V4F480__bg01_home_ase__g02_mars__global_11__s1p3145__e0p0050__m0p3113",
+    "status": "conditional_core_search_completed",
+    "source_theta": 1.3144938983181307,
+    "source_events": {
+      "t08_lower_impactor_book_below_table_8cm": 0,
+      "t08_upper_payload_book_below_table_8cm": 0,
+      "t08_target_mug_below_table_8cm": 1
+    },
+    "normalization_domain": [
+      0.8917034631865681,
+      1.5066713688324773
+    ],
+    "intervals": [
+      {
+        "event": "t08_target_mug_below_table_8cm",
+        "bracket": [
+          1.2063940711538106,
+          1.2067544039110252
+        ],
+        "labels": [
+          0,
+          1
+        ]
+      }
+    ],
+    "unresolved_intervals": [],
+    "invalid_probes": [],
+    "probes": [
+      {
+        "theta": 1.3144938983181307,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.0002997309592117636,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.31449389832/physics.json.gz",
+        "state_sha256": "c8cea3faf599361dcbdda69eb04f4f27034f8de43f1800ccda94b780ed90099d",
+        "config_sha256": "aee428d37563a398213a11af81097afc2da51bdfac6f54c5090d09663bead546",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 153.64017176628113,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.291432601856409,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00028346615136076725,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.29143260186/physics.json.gz",
+        "state_sha256": "a736a34f898e7feb9d8467578b75df5430fa9181dcf974a4bc8de6b551415602",
+        "config_sha256": "4e41ba143ae372a3159f4b1f0b7321d076f1de73bd19daf647d4dbaee200e268",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 150.98503041267395,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.5066713688324773,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00034088623610872837,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.50667136883/physics.json.gz",
+        "state_sha256": "c9a49db4226ec04ab14be5f44850cc9233b9175b7b507736c0e4b50d826d7185",
+        "config_sha256": "d7a82de1619a88b8c1b4fdb4bf1fa57bd3f207aa7c40736f698b94001731764e",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 151.73214101791382,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.1069422301626364,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 9.6167983539282e-05,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.10694223016/physics.json.gz",
+        "state_sha256": "5fc2d534b0b45650a14db2467b3f148e8b657ee34c2a8e32f046ba3357a772d6",
+        "config_sha256": "b51d1979895801934039608af84c7a4d8cf57d3d0df14d5f10fd2f98a6352771",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 150.73649334907532,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 0.9224518584688637,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 3.7791342865686056e-05,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.922451858469/physics.json.gz",
+        "state_sha256": "1bf955a70094f8835b74d4321802a30ae83e0d1a2c10e124ce1a0cbdd8dea746",
+        "config_sha256": "2fd196e0820bcefbbf71ee48dfec1e134228f3599af4ddf3fdeed15210768d55",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 153.55149674415588,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 0.8917034631865681,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 3.07773229624303e-05,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.891703463187/physics.json.gz",
+        "state_sha256": "c5fbe7f753440ac63cc4d4e7f0d198252f03fa8e61c1b68df255c5257cf785fa",
+        "config_sha256": "3c06d54b5dde5d8c67e93077ae7a65b23e686eb014c73c427b69e4554c0eb4d8",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 154.99925541877747,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.1991874160095226,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 0.00012699676795976107,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.19918741601/physics.json.gz",
+        "state_sha256": "df0726fe21df621de5c4185da05703d0e91e34f0e429d27646e6a10f895b4300",
+        "config_sha256": "c8463791ecbe9bbecb7dbd831ad871fbf69432862467a6441c1d5ed032b38ede",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 153.94006872177124,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2453100089329658,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.0003244286221627535,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.24531000893/physics.json.gz",
+        "state_sha256": "ba0316f67c92e16903e1e532ba3c3ff18dc389c2329cd6f23e2ebca4bebb2b9b",
+        "config_sha256": "15fce279816ac4733b22d6a474985bcfae43f41fe4e13d80757279ac7f7d83cf",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 159.90216851234436,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2222487124712442,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.0003365809668066655,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.22224871247/physics.json.gz",
+        "state_sha256": "06f35e93d9373d0e642274a5e67cbfb157a1d807f2553d99526715ff87fc9516",
+        "config_sha256": "84eb981bc5352c4296b4ce45f623e035f462a50c1d8d0ad2a27538b85ef688dd",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 150.94065594673157,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2107180642403834,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00034624746671563233,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.21071806424/physics.json.gz",
+        "state_sha256": "3b73ece216394f30128bb6fb84b9e5923b2d8ef6c39e0103a6dab200ffc39ba1",
+        "config_sha256": "3655a2d4b6509c497834e6407f25cc7bd97c57d1a44a7e1f154714ffa915f14d",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 150.63856768608093,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.204952740124953,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 0.00011604679238363044,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20495274012/physics.json.gz",
+        "state_sha256": "9a058beb69d69da4ec61affdc09a50ddb18dfd13834a1457b18c024147059cf9",
+        "config_sha256": "a4e696be30c4cf2c520ee6dd7491798ded4b091f585818fc1ce4dd16af2fc8fe",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 151.40223479270935,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2078354021826683,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00036222435388455487,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20783540218/physics.json.gz",
+        "state_sha256": "29a31b36d39c0a8aa06c64a92b5073df410d5946b92a14f3d8e3d3f921ff600e",
+        "config_sha256": "33b797af78e3c98378d8e73fb71132e7cf569067e6a698a2649f81e18f086d53",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 149.19338297843933,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2063940711538106,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 0
+        },
+        "native_peak_m": 0.00013334681077993574,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20639407115/physics.json.gz",
+        "state_sha256": "76c6f35c6789c882784b13a16be0357241844b6020996918ec8f13407290cde8",
+        "config_sha256": "f976e8ee2d9846d8519902064072288fb1625e462c62518155155ecd38634f45",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 153.09398126602173,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2071147366682395,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00042215300854719917,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20711473667/physics.json.gz",
+        "state_sha256": "58ef45f02f793ebd76073b521a95054bac192a089487ed9fb7707cb83844c46d",
+        "config_sha256": "6f4aa1b0c9af80cc53e8e390722458ce154f47a14e9b507449348759697735b5",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 182.68707466125488,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      },
+      {
+        "theta": 1.2067544039110252,
+        "labels": {
+          "t08_lower_impactor_book_below_table_8cm": 0,
+          "t08_upper_payload_book_below_table_8cm": 0,
+          "t08_target_mug_below_table_8cm": 1
+        },
+        "native_peak_m": 0.00042248516817045,
+        "quality_passed": true,
+        "threshold_z_m": -0.08,
+        "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20675440391/physics.json.gz",
+        "state_sha256": "c1be618aabf0952c4a01f03f91ed4de62984df28ed4547a404d139210331e780",
+        "config_sha256": "a07e67448dedf68401804a32887d24842ba59a68520014508777013bc1c4249d",
+        "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+        "elapsed_s": 154.04785084724426,
+        "execution_host": "sg88n5-2",
+        "telemetry": "every_internal_substep_aggregate",
+        "formal_admission": false
+      }
+    ],
+    "source_repeat": {
+      "theta": 1.3144938983181307,
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "native_peak_m": 0.0002997309592117636,
+      "quality_passed": true,
+      "threshold_z_m": -0.08,
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/source_repeat/physics.json.gz",
+      "state_sha256": "f80f8dde0fd2c95a16ad7bc1827dc9ba44e7d5ae914dc2fc96fa01ff0c0d73a5",
+      "config_sha256": "d219e11d787bb062518bd51cc1b25fe2b40a438b8768023815cf3a29bb9e6c64",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "elapsed_s": 151.98615646362305,
+      "execution_host": "sg88n5-2",
+      "telemetry": "every_internal_substep_aggregate",
+      "formal_admission": false
+    },
+    "horizon_s": 5.0,
+    "condition_frame_index": 4,
+    "end_frame_index": 154,
+    "execution_host": "sg88n5-2",
+    "original_config_sha256": "78bdaa605a2e7c6a1f6090d83b68fc18f26a187c285d60adeb14e7f862c496e0",
+    "reference_admitted": false,
+    "pair_admitted": false,
+    "formal_admission": false,
+    "scope": "Independent corrected CPU64 reference, exact Core100 physical source inputs and original gravity-scaled speed slice, preserving the source world-space velocity direction. Invalid probes are unavailable, not negative labels. A no-flip finite grid does not prove no hidden boundary. Old reference videos and labels unchanged."
+  },
+  "verified_points": [
+    {
+      "theta": 1.3144938983181307,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.31449389832/physics.json.gz",
+      "state_sha256": "c8cea3faf599361dcbdda69eb04f4f27034f8de43f1800ccda94b780ed90099d",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.31449389832/config.json",
+      "config_sha256": "aee428d37563a398213a11af81097afc2da51bdfac6f54c5090d09663bead546",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.0002997309592117636,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.0259999983492772,
+        "t08_upper_payload_book": 0.015999981489514786,
+        "t08_target_mug": -0.7763948013707905
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6963948013707906,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.291432601856409,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.29143260186/physics.json.gz",
+      "state_sha256": "a736a34f898e7feb9d8467578b75df5430fa9181dcf974a4bc8de6b551415602",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.29143260186/config.json",
+      "config_sha256": "4e41ba143ae372a3159f4b1f0b7321d076f1de73bd19daf647d4dbaee200e268",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00028346615136076725,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599999839567899,
+        "t08_upper_payload_book": 0.015997744862620168,
+        "t08_target_mug": -0.7763860895686447
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6963860895686448,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.5066713688324773,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.50667136883/physics.json.gz",
+      "state_sha256": "c9a49db4226ec04ab14be5f44850cc9233b9175b7b507736c0e4b50d826d7185",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.50667136883/config.json",
+      "config_sha256": "d7a82de1619a88b8c1b4fdb4bf1fa57bd3f207aa7c40736f698b94001731764e",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00034088623610872837,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999991658317928,
+        "t08_upper_payload_book": 0.01599999665245346,
+        "t08_target_mug": -0.7765000949049496
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6965000949049497,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.1069422301626364,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.10694223016/physics.json.gz",
+      "state_sha256": "5fc2d534b0b45650a14db2467b3f148e8b657ee34c2a8e32f046ba3357a772d6",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.10694223016/config.json",
+      "config_sha256": "b51d1979895801934039608af84c7a4d8cf57d3d0df14d5f10fd2f98a6352771",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 9.6167983539282e-05,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599995945723329,
+        "t08_upper_payload_book": 0.04132529475140144,
+        "t08_target_mug": 0.04750001514728235
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.12750001514728235,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 0.9224518584688637,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.922451858469/physics.json.gz",
+      "state_sha256": "1bf955a70094f8835b74d4321802a30ae83e0d1a2c10e124ce1a0cbdd8dea746",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.922451858469/config.json",
+      "config_sha256": "2fd196e0820bcefbbf71ee48dfec1e134228f3599af4ddf3fdeed15210768d55",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 3.7791342865686056e-05,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599996325132276,
+        "t08_upper_payload_book": 0.050298232127267736,
+        "t08_target_mug": 0.04750001336492022
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.12750001336492023,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 0.8917034631865681,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.891703463187/physics.json.gz",
+      "state_sha256": "c5fbe7f753440ac63cc4d4e7f0d198252f03fa8e61c1b68df255c5257cf785fa",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/0.891703463187/config.json",
+      "config_sha256": "3c06d54b5dde5d8c67e93077ae7a65b23e686eb014c73c427b69e4554c0eb4d8",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 3.07773229624303e-05,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999993965788885,
+        "t08_upper_payload_book": 0.05326099498428885,
+        "t08_target_mug": 0.04750001300738605
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.12750001300738606,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.1991874160095226,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.19918741601/physics.json.gz",
+      "state_sha256": "df0726fe21df621de5c4185da05703d0e91e34f0e429d27646e6a10f895b4300",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.19918741601/config.json",
+      "config_sha256": "c8463791ecbe9bbecb7dbd831ad871fbf69432862467a6441c1d5ed032b38ede",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00012699676795976107,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599999842318643,
+        "t08_upper_payload_book": 0.015999982567089285,
+        "t08_target_mug": 0.04750001706227758
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.1275000170622776,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2453100089329658,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.24531000893/physics.json.gz",
+      "state_sha256": "ba0316f67c92e16903e1e532ba3c3ff18dc389c2329cd6f23e2ebca4bebb2b9b",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.24531000893/config.json",
+      "config_sha256": "15fce279816ac4733b22d6a474985bcfae43f41fe4e13d80757279ac7f7d83cf",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.0003244286221627535,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999997571374774,
+        "t08_upper_payload_book": 0.015999996667796248,
+        "t08_target_mug": -0.7762708608710289
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.696270860871029,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2222487124712442,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.22224871247/physics.json.gz",
+      "state_sha256": "06f35e93d9373d0e642274a5e67cbfb157a1d807f2553d99526715ff87fc9516",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.22224871247/config.json",
+      "config_sha256": "84eb981bc5352c4296b4ce45f623e035f462a50c1d8d0ad2a27538b85ef688dd",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.0003365809668066655,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999995219665492,
+        "t08_upper_payload_book": 0.015999996663988294,
+        "t08_target_mug": -0.7762821284335311
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6962821284335311,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2107180642403834,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.21071806424/physics.json.gz",
+      "state_sha256": "3b73ece216394f30128bb6fb84b9e5923b2d8ef6c39e0103a6dab200ffc39ba1",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.21071806424/config.json",
+      "config_sha256": "3655a2d4b6509c497834e6407f25cc7bd97c57d1a44a7e1f154714ffa915f14d",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00034624746671563233,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.0259999983254772,
+        "t08_upper_payload_book": 0.015934460712375607,
+        "t08_target_mug": -0.7771570209210765
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6971570209210766,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.204952740124953,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20495274012/physics.json.gz",
+      "state_sha256": "9a058beb69d69da4ec61affdc09a50ddb18dfd13834a1457b18c024147059cf9",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20495274012/config.json",
+      "config_sha256": "a4e696be30c4cf2c520ee6dd7491798ded4b091f585818fc1ce4dd16af2fc8fe",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00011604679238363044,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999997475425203,
+        "t08_upper_payload_book": 0.015964106097062725,
+        "t08_target_mug": 0.04750001706227935
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.12750001706227934,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2078354021826683,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20783540218/physics.json.gz",
+      "state_sha256": "29a31b36d39c0a8aa06c64a92b5073df410d5946b92a14f3d8e3d3f921ff600e",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20783540218/config.json",
+      "config_sha256": "33b797af78e3c98378d8e73fb71132e7cf569067e6a698a2649f81e18f086d53",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00036222435388455487,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599999841532052,
+        "t08_upper_payload_book": 0.015966640321414996,
+        "t08_target_mug": -0.7771631240904356
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6971631240904357,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2063940711538106,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 0
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20639407115/physics.json.gz",
+      "state_sha256": "76c6f35c6789c882784b13a16be0357241844b6020996918ec8f13407290cde8",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20639407115/config.json",
+      "config_sha256": "f976e8ee2d9846d8519902064072288fb1625e462c62518155155ecd38634f45",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00013334681077993574,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999989448626786,
+        "t08_upper_payload_book": 0.015999995695868532,
+        "t08_target_mug": 0.0475000170622787
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": 0.1275000170622787,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2071147366682395,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20711473667/physics.json.gz",
+      "state_sha256": "58ef45f02f793ebd76073b521a95054bac192a089487ed9fb7707cb83844c46d",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20711473667/config.json",
+      "config_sha256": "6f4aa1b0c9af80cc53e8e390722458ce154f47a14e9b507449348759697735b5",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00042215300854719917,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.025999998417524286,
+        "t08_upper_payload_book": 0.015989576293677973,
+        "t08_target_mug": -0.7771554182528995
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6971554182528995,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.2067544039110252,
+      "kind": "point",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20675440391/physics.json.gz",
+      "state_sha256": "c1be618aabf0952c4a01f03f91ed4de62984df28ed4547a404d139210331e780",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/points/1.20675440391/config.json",
+      "config_sha256": "a07e67448dedf68401804a32887d24842ba59a68520014508777013bc1c4249d",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.00042248516817045,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.02599990299537304,
+        "t08_upper_payload_book": 0.015999994777379147,
+        "t08_target_mug": -0.777157083090418
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.697157083090418,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    },
+    {
+      "theta": 1.3144938983181307,
+      "kind": "source_repeat",
+      "labels": {
+        "t08_lower_impactor_book_below_table_8cm": 0,
+        "t08_upper_payload_book_below_table_8cm": 0,
+        "t08_target_mug_below_table_8cm": 1
+      },
+      "state_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/source_repeat/physics.json.gz",
+      "state_sha256": "f80f8dde0fd2c95a16ad7bc1827dc9ba44e7d5ae914dc2fc96fa01ff0c0d73a5",
+      "config_path": "/data/yangkaiyuan/core100_t08_published_context_v7_20261029/searches/T08_C02/source_repeat/config.json",
+      "config_sha256": "d219e11d787bb062518bd51cc1b25fe2b40a438b8768023815cf3a29bb9e6c64",
+      "renderer_sha256": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+      "native_peak_m": 0.0002997309592117636,
+      "minimum_center_z_m": {
+        "t08_lower_impactor_book": 0.0259999983492772,
+        "t08_upper_payload_book": 0.015999981489514786,
+        "t08_target_mug": -0.7763948013707905
+      },
+      "threshold_z_m": -0.08,
+      "primary_z_margin_m": -0.6963948013707906,
+      "physical_inputs_axis_seed_and_clock_verified": true
+    }
+  ],
+  "source_repeat_error_m": 0.0,
+  "bootstrap_path": "/data/yangkaiyuan/boundary_five_scene_20261028/egl_bootstrap.py",
+  "bootstrap_sha256": "14d9e0c31d6ab1680597eaae14f1f8e9e9074ac1f983b1a6e799b84922dfcb59",
+  "bootstrap_source": "\"\"\"Bind native GL/EGL entry points and error queries; run the unchanged renderer.\"\"\"\nimport ctypes\nimport json\nimport os\nfrom pathlib import Path\nimport runpy\nimport sys\n\n\ndef install_gl_dispatch():\n    from OpenGL.platform import baseplatform\n    native=ctypes.CDLL('libGL.so.1')\n    egl_native=ctypes.CDLL('libEGL.so.1')\n    original=baseplatform.BasePlatform.constructFunction\n    def bind(platform,name,dll,*args,**kwargs):\n        symbol=name.decode() if isinstance(name,bytes) else name\n        library=egl_native if symbol.startswith('egl') else native if symbol.startswith('gl') else None\n        if library is not None and hasattr(library,symbol):\n            dll=library;kwargs['force_extension']=False\n        return original(platform,name,dll,*args,**kwargs)\n    baseplatform.BasePlatform.constructFunction=bind\n    from OpenGL.raw.GL import _errors\n    get_error=native.glGetError;get_error.argtypes=[];get_error.restype=ctypes.c_uint\n    _errors._error_checker._registeredChecker=get_error\n    _errors._error_checker._currentChecker=get_error\n    from OpenGL import EGL  # noqa: F401\n    from OpenGL.raw.EGL import _errors as egl_errors\n    egl_error=egl_native.eglGetError;egl_error.argtypes=[];egl_error.restype=ctypes.c_uint\n    egl_errors._error_checker._registeredChecker=egl_error\n    egl_errors._error_checker._currentChecker=egl_error\n\n\ndef main():\n    if len(sys.argv)<2:raise SystemExit('usage: egl_renderer_bootstrap.py ORIGINAL_RENDERER [ARGS]')\n    if '--config' not in sys.argv:raise SystemExit('numeric bootstrap requires an explicit config')\n    config_path=Path(sys.argv[sys.argv.index('--config')+1])\n    os.environ.setdefault('PYOPENGL_PLATFORM','egl')\n    device=os.environ.get('CUDA_VISIBLE_DEVICES','').split(',')[0]\n    if device.isdecimal():os.environ.setdefault('EGL_DEVICE_ID',device)\n    import pyglet\n    pyglet.options[\"headless\"]=True\n    install_gl_dispatch()\n    print('[video_bootstrap] Native GL/EGL dispatch; original video writer and CUDA physics retained',flush=True)\n    renderer=Path(sys.argv[1]).resolve()\n    sys.path.insert(0,str(renderer.parent))\n    sys.argv=sys.argv[1:]\n    runpy.run_path(str(renderer),run_name='__main__')\n\n\nif __name__=='__main__':main()\n",
+  "verified_remote_hashes": {
+    "t08_jobs.json": "a9961fdcbc1cddd67a60131f19faa37079273431df57596df10097e91d8c98c2",
+    "renderer_t08_aggregate_cpu64.py": "0e71637e821b6db1ebad21a92986b7b99057621d68a7d84a079163583835b47a",
+    "worker.py": "84a7d5c4ef33a329aba8f406dd17d8e779386bcda264a89979f5c4ec4177618d",
+    "searches/T08_C02/result.json": "d450bc2aadedd758b809aa262f820f4899020d8b4726f8f5a33d6de7bd8eaa23"
+  },
+  "new_simulations": 0,
+  "source_files_modified": false,
+  "audit_script_sha256": "d065653e56c9924c56a8307bd349a6b9e190802b012ecdb401357f09f7012303"
+}

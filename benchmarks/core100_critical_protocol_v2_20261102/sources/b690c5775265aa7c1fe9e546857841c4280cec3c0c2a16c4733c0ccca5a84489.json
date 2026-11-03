@@ -1,0 +1,99 @@
+{
+  "points": [
+    {
+      "theta": 0.1,
+      "stored_state_sha256": "a9eaac33c65b001a64f270e266805f93afcf0882639780e10fabf8a13e8a55d7",
+      "decoded_state_sha256": "7082f8eeab3c916e3281747d894439549405b9888fd39b671432d2dfa488c6f1",
+      "label": 0,
+      "can_mug_contact_frames": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "mug_maximum_displacement_m": 0.033121359614681496,
+      "mug_maximum_angle_deg": 0.5326678629312127,
+      "maximum_saved_book_ramp_overlap_m": 0.00040868770010727903,
+      "frame_at_peak": 129,
+      "native_peak_m": 0.17234009504318237,
+      "config_seed": 1212927170
+    },
+    {
+      "theta": 0.125,
+      "stored_state_sha256": "6f57613f97a09066f9781dfefbfd8550fd00eed71c3c583c011783c01d1924ad",
+      "decoded_state_sha256": "a1e851d5e29d0a70c487bc7debb0707a4e1dddf2560da743e421d58bd49195e5",
+      "label": 1,
+      "can_mug_contact_frames": [
+        145,
+        146,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "mug_maximum_displacement_m": 0.045203664708055404,
+      "mug_maximum_angle_deg": 0.2956931146028092,
+      "maximum_saved_book_ramp_overlap_m": 0.0002618073967468326,
+      "frame_at_peak": 145,
+      "native_peak_m": 0.15131749212741852,
+      "config_seed": 1212927170
+    },
+    {
+      "theta": 0.15,
+      "stored_state_sha256": "370c9a1b25e4ff0a8ca730a872c9bbc13932d858c1e4b39b2b71c69e71536bae",
+      "decoded_state_sha256": "a4d34ac02e3b1abbd7c52ec395a2bdb4057b637d7df7e00a870af6a3176a790c",
+      "label": 0,
+      "can_mug_contact_frames": [
+        144,
+        145,
+        147,
+        148,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "mug_maximum_displacement_m": 0.0346705199196218,
+      "mug_maximum_angle_deg": 0.6112072839202098,
+      "maximum_saved_book_ramp_overlap_m": 0.00029717003522248403,
+      "frame_at_peak": 145,
+      "native_peak_m": 0.17708085477352142,
+      "config_seed": 1212927170
+    }
+  ],
+  "native_top_level_keys": [
+    "experiment",
+    "manifest",
+    "render",
+    "scene_overrides",
+    "room_boundary",
+    "time_diagnostic",
+    "frames",
+    "dynamic_objects",
+    "runtime_forces",
+    "camera_id",
+    "camera_bundle",
+    "wall_boundary_safety_summary",
+    "trajectory_debug",
+    "physics_debug",
+    "runtime_force_summary"
+  ],
+  "original_experiment_seed": null,
+  "matching_config_paths": [],
+  "candidate_projects": [
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v3_7s",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v5_pin_flap_pendulum",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T04_v2_7s"
+  ],
+  "formal_admission": false,
+  "source_modified": false
+}

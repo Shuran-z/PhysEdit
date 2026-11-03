@@ -1,0 +1,874 @@
+{
+  "cases": [
+    {
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p018",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p018/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p018__cam01.json.gz",
+      "stored_state_sha256": "e799820c488d2c4cfee26722fdef19f7c3ab13046fdf4d472513b22958e0baca",
+      "theta": 0.5020689655172415,
+      "variant_id": "T18_b9_e1_aligned_right",
+      "book_count": 9,
+      "supported": [
+        "t18_book_02",
+        "t18_book_03",
+        "t18_book_04",
+        "t18_book_05",
+        "t18_book_06",
+        "t18_book_07",
+        "t18_book_08"
+      ],
+      "moving_books": {
+        "t18_book_01": {
+          "type": "physics",
+          "initial_velocity": [
+            3.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "physical_specs": {
+        "t18_book_00": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.52,
+              2.25,
+              0.8514999999999999
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_01": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.52,
+              2.25,
+              0.8945
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              3.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_02": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              0.9275
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_03": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              0.9605
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_04": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              1.0035
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_05": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              1.0465
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_06": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              1.0795
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_07": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              1.1124999999999998
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        },
+        "t18_book_08": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.425,
+              2.25,
+              1.1454999999999997
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5020689655172415
+        }
+      }
+    },
+    {
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p019/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p019__cam01.json.gz",
+      "stored_state_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068",
+      "theta": 0.526896551724138,
+      "variant_id": "T18_b8_e0_lateral_stagger_left",
+      "book_count": 8,
+      "supported": [
+        "t18_book_01",
+        "t18_book_02",
+        "t18_book_03",
+        "t18_book_04",
+        "t18_book_05",
+        "t18_book_06",
+        "t18_book_07"
+      ],
+      "moving_books": {
+        "t18_book_00": {
+          "type": "physics",
+          "initial_velocity": [
+            -3.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "physical_specs": {
+        "t18_book_00": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.52,
+              2.254,
+              0.8514999999999999
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              -3.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_01": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.246,
+              0.8945
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_02": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.254,
+              0.9275
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_03": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.6275,
+              2.246,
+              0.9705
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_04": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.254,
+              1.0135
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_05": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.246,
+              1.0465
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_06": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.254,
+              1.0795
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        },
+        "t18_book_07": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.6275,
+              2.246,
+              1.1124999999999998
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.526896551724138
+        }
+      }
+    },
+    {
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p020",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p020/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p020__cam01.json.gz",
+      "stored_state_sha256": "090b1b12043f5526288e370e4a4f0ace6f684dd0ec39cca4108668ccb84de5ac",
+      "theta": 0.5517241379310345,
+      "variant_id": "T18_b6_e0_lateral_stagger_right",
+      "book_count": 6,
+      "supported": [
+        "t18_book_01",
+        "t18_book_02",
+        "t18_book_03",
+        "t18_book_04",
+        "t18_book_05"
+      ],
+      "moving_books": {
+        "t18_book_00": {
+          "type": "physics",
+          "initial_velocity": [
+            3.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "physical_specs": {
+        "t18_book_00": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.52,
+              2.256,
+              0.8514999999999999
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              3.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        },
+        "t18_book_01": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.4125,
+              2.244,
+              0.8945
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        },
+        "t18_book_02": {
+          "size": [
+            0.27,
+            0.19,
+            0.052
+          ],
+          "collision_proxy_size": [
+            0.2715,
+            0.1915,
+            0.0535
+          ],
+          "mass": 0.48,
+          "pose": {
+            "position": [
+              3.4125,
+              2.256,
+              0.9375
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        },
+        "t18_book_03": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.4125,
+              2.244,
+              0.9805
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        },
+        "t18_book_04": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.4125,
+              2.256,
+              1.0135
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        },
+        "t18_book_05": {
+          "size": [
+            0.245,
+            0.178,
+            0.032
+          ],
+          "collision_proxy_size": [
+            0.2465,
+            0.1795,
+            0.0335
+          ],
+          "mass": 0.4,
+          "pose": {
+            "position": [
+              3.4125,
+              2.244,
+              1.0465
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "friction": 0.5517241379310345
+        }
+      }
+    }
+  ],
+  "simulations_started": 0,
+  "original_files_modified": false,
+  "conclusion": "Neighboring friction IDs also change physical topology, placement and/or extraction. They are not a fixed-context friction contrast."
+}

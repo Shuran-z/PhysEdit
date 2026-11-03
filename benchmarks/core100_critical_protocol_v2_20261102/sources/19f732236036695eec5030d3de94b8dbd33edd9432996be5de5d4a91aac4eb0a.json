@@ -1,0 +1,70 @@
+{
+  "known_config": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production_OLD_bak_1789103953/PROD_T10_bg01_home_ase_g03_earth_vroll_p17__cam01/cam01.json",
+  "known_config_sha256": "eaf110bdc2842a8476e59fe432e7de4173c31a3c9f5194a4b6b504baebee2f4b",
+  "recorded_seed": 2084650909,
+  "calculated_seed": 1694010865,
+  "formula_matches": false,
+  "old_supx_candidate_seed": 458604821,
+  "scene_overrides_template": {
+    "gravity": [
+      0,
+      0,
+      -9.81
+    ],
+    "dt": 0.005,
+    "substeps": 4,
+    "physics_steps_per_render_frame": 4,
+    "settle_steps": 80,
+    "record_contacts": true,
+    "static_scene_collision": false,
+    "layout_collision": false,
+    "add_ground_plane": false,
+    "static_visual_only_instance_ids": [
+      "baxi_round_table_01"
+    ],
+    "room_wall_colliders": false,
+    "room_boundary_safety": {
+      "enabled": false
+    },
+    "use_gjk_collision": true,
+    "enable_multi_contact": true,
+    "box_box_detection": true,
+    "raytracing": true,
+    "raytracing_state_limit": 8388608,
+    "raytracing_depth": 8,
+    "raytracing_rr_depth": 2,
+    "gravity_id": "g03_earth"
+  },
+  "source_reconstructed_overrides": {
+    "gravity": [
+      0,
+      0,
+      -9.81
+    ],
+    "dt": 0.005,
+    "substeps": 4,
+    "physics_steps_per_render_frame": 4,
+    "settle_steps": 80,
+    "record_contacts": true,
+    "static_scene_collision": false,
+    "layout_collision": false,
+    "add_ground_plane": false,
+    "static_visual_only_instance_ids": [
+      "baxi_round_table_01"
+    ],
+    "room_wall_colliders": false,
+    "room_boundary_safety": {
+      "enabled": false
+    },
+    "use_gjk_collision": true,
+    "enable_multi_contact": true,
+    "box_box_detection": true,
+    "raytracing": true,
+    "raytracing_state_limit": 8388608,
+    "raytracing_depth": 8,
+    "raytracing_rr_depth": 2,
+    "gravity_id": "g03_earth"
+  },
+  "native_spec_count": 4,
+  "template_spec_count": 4
+}

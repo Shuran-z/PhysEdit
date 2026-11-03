@@ -1,0 +1,312 @@
+{
+  "clip_id": "T03_C02",
+  "sample_id": "T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032",
+  "source_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+  "source_repo": "phyeditingvideo/Phyediting",
+  "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+  "source_video_path": "data/T03/formal_480p_fullsim_r032_r034_completion_20260914/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03.mp4",
+  "configuration_status": "historical_inventory_not_certified",
+  "verified_parameter_truth": {},
+  "clock": {
+    "status": "unverified",
+    "physical_dt_s": null,
+    "media_fps": null,
+    "release_frame": null,
+    "frame_count": null
+  },
+  "contact_friction": {
+    "status": "pair_specific_verification_required",
+    "material_coefficients": {},
+    "combine_rule_candidate": "genesis_max_floor_0.01"
+  },
+  "parameter_facts": [
+    [
+      "gravity",
+      3.71,
+      "m/s²"
+    ],
+    [
+      "t03v5_upper_edge_can.mass",
+      0.37,
+      "kg"
+    ],
+    [
+      "t03v5_upper_edge_can.friction",
+      0.045,
+      ""
+    ],
+    [
+      "t03v5_upper_edge_can.restitution",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_lower_edge_phone.mass",
+      0.19,
+      "kg"
+    ],
+    [
+      "t03v5_lower_edge_phone.friction",
+      0.28,
+      ""
+    ],
+    [
+      "t03v5_lower_edge_phone.restitution",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.mass",
+      0.38,
+      "kg"
+    ],
+    [
+      "t03v5_impulsed_book.friction",
+      0.012,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.restitution",
+      0.02,
+      ""
+    ],
+    [
+      "book_initial_speed_mps",
+      0.68,
+      "m/s"
+    ],
+    [
+      "upper_can_com_edge_distance_m",
+      0.008,
+      "m"
+    ],
+    [
+      "lower_phone_com_edge_distance_m",
+      0.1,
+      "m"
+    ],
+    [
+      "lower_transfer_ramp_slope_deg",
+      12.0,
+      "°"
+    ],
+    [
+      "lower_transfer_ramp_friction_coefficient",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.initial_speed",
+      0.68,
+      "m/s"
+    ],
+    [
+      "t03v5_upper_tabletop_collision_slab.friction",
+      0.012,
+      ""
+    ],
+    [
+      "t03v5_lower_transfer_ramp.friction",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_lower_transfer_ramp.angle",
+      0.0,
+      "°"
+    ]
+  ],
+  "prompt_generation_facts": [
+    [
+      "gravity",
+      "",
+      3.71,
+      "m/s²"
+    ],
+    [
+      "t03v5_upper_edge_can.mass",
+      "",
+      0.37,
+      "kg"
+    ],
+    [
+      "t03v5_upper_edge_can.material friction",
+      "",
+      0.045,
+      ""
+    ],
+    [
+      "t03v5_upper_edge_can.restitution",
+      "",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_lower_edge_phone.mass",
+      "",
+      0.19,
+      "kg"
+    ],
+    [
+      "t03v5_lower_edge_phone.material friction",
+      "",
+      0.28,
+      ""
+    ],
+    [
+      "t03v5_lower_edge_phone.restitution",
+      "",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.mass",
+      "",
+      0.38,
+      "kg"
+    ],
+    [
+      "t03v5_impulsed_book.material friction",
+      "",
+      0.012,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.restitution",
+      "",
+      0.02,
+      ""
+    ],
+    [
+      "book_initial_speed_mps",
+      "",
+      0.68,
+      "m/s"
+    ],
+    [
+      "upper_can_com_edge_distance_m",
+      "",
+      0.008,
+      "m"
+    ],
+    [
+      "lower_phone_com_edge_distance_m",
+      "",
+      0.1,
+      "m"
+    ],
+    [
+      "lower_transfer_ramp_slope_deg",
+      "",
+      12.0,
+      "°"
+    ],
+    [
+      "lower_transfer_ramp_material friction_coefficient",
+      "",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_impulsed_book.initial_speed",
+      "",
+      0.68,
+      "m/s"
+    ],
+    [
+      "t03v5_upper_tabletop_collision_slab.material friction",
+      "",
+      0.012,
+      ""
+    ],
+    [
+      "t03v5_lower_transfer_ramp.material friction",
+      "",
+      0.02,
+      ""
+    ],
+    [
+      "t03v5_lower_transfer_ramp.angle",
+      "",
+      0.0,
+      "°"
+    ]
+  ],
+  "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+  "prompt_status": "initial_conditions_only",
+  "reference": {
+    "source_video_path": "data/T03/formal_480p_fullsim_r032_r034_completion_20260914/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03.mp4",
+    "source_repo": "phyeditingvideo/Phyediting",
+    "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+    "sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac"
+  },
+  "prompt_en": "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Lower transfer ramp material friction 0.02. Book initial speed 0.68 m/s. Upper can com edge distance 0.008 m. Lower phone com edge distance 0.1 m. Upper can mass 0.37 kg. Lower phone mass 0.19 kg. Book mass 0.38 kg. Upper can material friction 0.045. Lower phone material friction 0.28. Book material friction 0.012. Upper tabletop surface material friction 0.012. Upper can restitution 0.02.",
+  "prompt_language": "en",
+  "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+  "prompt_sha256": "6f9111d5e4dc9bfff98529293100cd15613a8bc4ba39279b4bbc2420fb6e30e9",
+  "prompt_token_counts": {
+    "ltx": 115,
+    "cogvideox": 115,
+    "wan": 155
+  },
+  "token_budget": 120,
+  "selected_parameter_keys": [
+    "gravity",
+    "lower_transfer_ramp_material friction_coefficient",
+    "book_initial_speed_mps",
+    "upper_can_com_edge_distance_m",
+    "lower_phone_com_edge_distance_m",
+    "t03v5_upper_edge_can.mass",
+    "t03v5_lower_edge_phone.mass",
+    "t03v5_impulsed_book.mass",
+    "t03v5_upper_edge_can.material friction",
+    "t03v5_lower_edge_phone.material friction",
+    "t03v5_impulsed_book.material friction",
+    "t03v5_upper_tabletop_collision_slab.material friction",
+    "t03v5_upper_edge_can.restitution"
+  ],
+  "omitted_parameter_keys": [
+    "t03v5_lower_edge_phone.restitution",
+    "t03v5_impulsed_book.restitution",
+    "lower_transfer_ramp_slope_deg",
+    "t03v5_impulsed_book.initial_speed",
+    "t03v5_lower_transfer_ramp.material friction",
+    "t03v5_lower_transfer_ramp.angle"
+  ],
+  "full_parameters_location": "parameter_facts; metadata only, not a model input",
+  "default_variant": 1,
+  "prompt_variants_en": [
+    "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Lower transfer ramp material friction 0.02. Book initial speed 0.68 m/s. Upper can com edge distance 0.008 m. Lower phone com edge distance 0.1 m. Upper can mass 0.37 kg. Lower phone mass 0.19 kg. Book mass 0.38 kg. Upper can material friction 0.045. Lower phone material friction 0.28. Book material friction 0.012. Upper tabletop surface material friction 0.012. Upper can restitution 0.02.",
+    "Continue this scene with a fixed camera. Gravity 3.71 m/s^2. Lower transfer ramp material friction 0.02. Book initial speed 0.68 m/s. Upper can com edge distance 0.008 m. Lower phone com edge distance 0.1 m. Upper can mass 0.37 kg. Lower phone mass 0.19 kg. Book mass 0.38 kg. Upper can material friction 0.045. Lower phone material friction 0.28. Book material friction 0.012. Upper tabletop surface material friction 0.012. Upper can restitution 0.02.",
+    "Fixed camera; continue the physical motion. Gravity 3.71 m/s^2. Lower transfer ramp material friction 0.02. Book initial speed 0.68 m/s. Upper can com edge distance 0.008 m. Lower phone com edge distance 0.1 m. Upper can mass 0.37 kg. Lower phone mass 0.19 kg. Book mass 0.38 kg. Upper can material friction 0.045. Lower phone material friction 0.28. Book material friction 0.012. Upper tabletop surface material friction 0.012. Upper can restitution 0.02."
+  ],
+  "prompt_variant_token_counts": [
+    {
+      "ltx": 115,
+      "cogvideox": 115,
+      "wan": 155
+    },
+    {
+      "ltx": 117,
+      "cogvideox": 117,
+      "wan": 156
+    },
+    {
+      "ltx": 116,
+      "cogvideox": 116,
+      "wan": 157
+    }
+  ],
+  "prompt_variant_sha256": [
+    "6f9111d5e4dc9bfff98529293100cd15613a8bc4ba39279b4bbc2420fb6e30e9",
+    "ed77667f0aa695b02030a359b1e892bcfd2016cfbf7ebfd9e95a3ab09d42dccb",
+    "4fb462e74ba950c9ac529af44aa3942700315bfc2d8c69d7650926904cdb7532"
+  ],
+  "header_provenance": {
+    "path": "/data_cached/wangzijun_p25/hf_staging_t03_r032_delta_20260920/repo_root/data/T03/formal_480p_fullsim_r032_r034_delta_pass561_20260920/metadata/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.json.gz",
+    "source_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+    "recorded_video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.mp4",
+    "local_video_sha256": "17a3d9d58428b956bae992a5eccf90a7659a0ec196b00d65094ee171ad4b172a"
+  },
+  "condition_recovery_version": "core100-recovery-v3-20261021"
+}

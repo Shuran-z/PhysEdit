@@ -1,0 +1,193 @@
+{
+  "case": "T11_C03",
+  "parameter": "original_G_global_path",
+  "old_interval": [
+    0.388892197576643,
+    0.389468606164474
+  ],
+  "rows": [
+    {
+      "theta": 0.388892197576643,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T11_C03__G_global_original/T11_C03/profile_0/0.388892197577/physics.json.gz",
+      "stored_state_sha256": "d6c5b87c6cfb620162bd553e8b9c9acde3e34d391ed6274bf21d1f4c18e73c52",
+      "decoded_state_sha256": "86272c65b1990dd3bcfd2f5ab79769a341b6408854a3eec3d526b95109c8c8c3",
+      "config_sha256": "b29290e59cd46b1f555517f809229ecbefbc6bbeb677dc9b4cd751dc63d821c7",
+      "old_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 0,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "new_events": {
+        "t11_eyeglasses_case_edge_fall_begins": {
+          "label": 1,
+          "first_frame": 99,
+          "confirmed_frame": 100,
+          "evidence_frames": [
+            99,
+            100
+          ],
+          "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+        },
+        "t11_relay_pencil_case_edge_fall_begins": {
+          "label": 1,
+          "first_frame": 115,
+          "confirmed_frame": 116,
+          "evidence_frames": [
+            115,
+            116
+          ],
+          "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+        },
+        "t11_driver_eraser_edge_fall_begins": {
+          "label": 0,
+          "first_frame": null,
+          "evidence_frames": [
+            4,
+            154
+          ],
+          "reason": "Complete native state window; no qualifying edge-fall transition."
+        },
+        "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+          "label": 1,
+          "first_frame": 78,
+          "evidence_frames": [
+            78
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+          "label": 1,
+          "first_frame": 85,
+          "evidence_frames": [
+            85
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_eyeglasses_case_contacts_floor": {
+          "label": 1,
+          "first_frame": 109,
+          "evidence_frames": [
+            109
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_relay_pencil_case_contacts_floor": {
+          "label": 1,
+          "first_frame": 123,
+          "evidence_frames": [
+            123
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_driver_eraser_contacts_floor": {
+          "label": 0,
+          "first_frame": null,
+          "evidence_frames": [
+            4,
+            154
+          ],
+          "reason": "Complete recorded reference window; no named contact."
+        }
+      },
+      "backend": "gpu32",
+      "retained_native_depth_diagnostic_m": 0.3451820909976959,
+      "original_exterior_contact_semantics_verified": true
+    },
+    {
+      "theta": 0.389468606164474,
+      "state_path": "/data2/liyuhan/core100_continue_families_20261031/T11_C03__G_global_original/T11_C03/profile_0/0.389468606164/physics.json.gz",
+      "stored_state_sha256": "518a786b9646cee5936138fe47ce9e2ecf2ec31b31cad47599171b559b433fa8",
+      "decoded_state_sha256": "8f6a877d3c0e3715112051f85bfdd677e33067ab1029883c759cc03a7f0524fe",
+      "config_sha256": "80d525d7860e563dc3eeed7d6ca6da9603471f00eb7402026356657cef9b07cb",
+      "old_labels": {
+        "t11_driver_eraser_final_center_below_minus_10cm": 1,
+        "t11_relay_pencil_case_final_center_below_minus_10cm": 1,
+        "t11_eyeglasses_case_final_center_below_minus_10cm": 1
+      },
+      "new_events": {
+        "t11_eyeglasses_case_edge_fall_begins": {
+          "label": 1,
+          "first_frame": 100,
+          "confirmed_frame": 101,
+          "evidence_frames": [
+            100,
+            101
+          ],
+          "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+        },
+        "t11_relay_pencil_case_edge_fall_begins": {
+          "label": 1,
+          "first_frame": 115,
+          "confirmed_frame": 116,
+          "evidence_frames": [
+            115,
+            116
+          ],
+          "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+        },
+        "t11_driver_eraser_edge_fall_begins": {
+          "label": 1,
+          "first_frame": 143,
+          "confirmed_frame": 144,
+          "evidence_frames": [
+            143,
+            144
+          ],
+          "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+        },
+        "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+          "label": 1,
+          "first_frame": 78,
+          "evidence_frames": [
+            78
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+          "label": 1,
+          "first_frame": 85,
+          "evidence_frames": [
+            85
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_eyeglasses_case_contacts_floor": {
+          "label": 1,
+          "first_frame": 109,
+          "evidence_frames": [
+            109
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_relay_pencil_case_contacts_floor": {
+          "label": 1,
+          "first_frame": 123,
+          "evidence_frames": [
+            123
+          ],
+          "reason": "Original named exterior contact record."
+        },
+        "t11_driver_eraser_contacts_floor": {
+          "label": 1,
+          "first_frame": 152,
+          "evidence_frames": [
+            152
+          ],
+          "reason": "Original named exterior contact record."
+        }
+      },
+      "backend": "gpu32",
+      "retained_native_depth_diagnostic_m": 0.3557802140712738,
+      "original_exterior_contact_semantics_verified": true
+    }
+  ],
+  "new_endpoint_labels": [
+    0,
+    1
+  ],
+  "new_definition_sha256": "d463f5fa8c24cd2fca9690ae14c02a06e51d1ec15353459f09b30c15a85de93c",
+  "source_registry_sha256": "99526466ed6d844842b760ed8af9717d6177d5b24f76f3b2b564b4d5903c84ca",
+  "new_simulations": 0,
+  "formal_admission": false,
+  "scope": "Read existing original-family states under new event. Native quality diagnostics retained; neither scalar depth nor this readback alone certifies physical/RGB boundary admission."
+}

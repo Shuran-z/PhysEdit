@@ -1,0 +1,80 @@
+{
+  "cases": [
+    {
+      "clip_id": "T14_C04",
+      "sample_id": "T14V2__bg01_home_ase__g03_earth__pose_gate__A_wedged_r01__gap018__yaw+00p0__v1950__mu035",
+      "reference_video_sha256": "e375d6391bca795b2e1959250259182d53f7c6fa8d4aae6e4bb90333f9949674",
+      "source_state_sha256": "a78392865d0f76d2225f6b2d973e17765e88740f8db1ac25d4b82f2227aec73f",
+      "config_sha256": "24df10f31707ee34977fc8d406c19330a61a665ebe6511c132a18747dac6b012",
+      "theta": 0.018,
+      "fixed_context_sha256": "5a565f14571e5f897bd2633124ae14b477209d239e50111036b204a5596bc968",
+      "source_calibration_contract_sha256": "edb03c4fc22175cfe48b68b0a5a08eecb62fd867bedddd1d24e7adfb8ac4ca67",
+      "bracket": [
+        0.018,
+        0.019
+      ],
+      "event": "passed_channel",
+      "label": 0,
+      "original_gate_event": {
+        "label": 0,
+        "first_exit_frame": null,
+        "classification_contract": {
+          "marker_name": "t14v2_marker",
+          "left_book_name": "t14v2_corridor_book_left",
+          "right_book_name": "t14v2_corridor_book_right",
+          "eraser_name": "t14v2_terminal_eraser",
+          "channel_center_y_m": 0.0,
+          "channel_entry_center_x_m": -0.227,
+          "channel_exit_center_x_m": 0.217,
+          "late_speed_threshold_mps": 0.035,
+          "eraser_displacement_threshold_m": 0.01
+        }
+      },
+      "horizon_s": 5.0,
+      "declared_intervention": "Symmetric lateral translation of the two corridor books; all other source physical inputs and camera fixed.",
+      "scope": "Original released observed interval. Fine historical probes are retained separately and not transferred across contexts."
+    },
+    {
+      "clip_id": "T14_C05",
+      "sample_id": "T14V2__bg01_home_ase__g03_earth__pose_gate__A_passed_r01__gap019__yaw+00p0__v1950__mu035",
+      "reference_video_sha256": "e1ea4a13716699147669df58b7075712c78946ec2c256db0e2551ca17ae4f4c1",
+      "source_state_sha256": "1c86b2ce71bbe4afb22d36dbb2521426a05b9b6741dfb1b18b991a16022ba310",
+      "config_sha256": "b2b7a6f8d01c2992dabc107fbd0df61fba262c1fd74a0f02e62c798c33302c24",
+      "theta": 0.019,
+      "fixed_context_sha256": "5a565f14571e5f897bd2633124ae14b477209d239e50111036b204a5596bc968",
+      "source_calibration_contract_sha256": "edb03c4fc22175cfe48b68b0a5a08eecb62fd867bedddd1d24e7adfb8ac4ca67",
+      "bracket": [
+        0.018,
+        0.019
+      ],
+      "event": "passed_channel",
+      "label": 1,
+      "original_gate_event": {
+        "label": 1,
+        "first_exit_frame": 39,
+        "classification_contract": {
+          "marker_name": "t14v2_marker",
+          "left_book_name": "t14v2_corridor_book_left",
+          "right_book_name": "t14v2_corridor_book_right",
+          "eraser_name": "t14v2_terminal_eraser",
+          "channel_center_y_m": 0.0,
+          "channel_entry_center_x_m": -0.227,
+          "channel_exit_center_x_m": 0.217,
+          "late_speed_threshold_mps": 0.035,
+          "eraser_displacement_threshold_m": 0.01
+        }
+      },
+      "horizon_s": 5.0,
+      "declared_intervention": "Symmetric lateral translation of the two corridor books; all other source physical inputs and camera fixed.",
+      "scope": "Original released observed interval. Fine historical probes are retained separately and not transferred across contexts."
+    }
+  ],
+  "source_hashes": {
+    "review/original_search_tasks_20261018/t14_original_family_bindings.json": "144d9a7448f75015527b80333ea6f0507aeaf5699471fb8d2a47022f43873ad9",
+    "review/original_search_tasks_20261018/t14_source_identity.json": "fb23b814e3e30e3299f3802bfd81732bc9dc4c41c52349d07afb7ab5a0fcd432",
+    "review/scene_family_completion_20261018/p26_configs.json": "76b5f35d0cc78aa7faf94331c6f145b73728b4fbb459494144a7b985632060e2",
+    "review/core100_remaining74_admission_20261101/sealed_readbacks/177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430.json": "177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430"
+  },
+  "new_simulations": 0,
+  "original_files_modified": false
+}

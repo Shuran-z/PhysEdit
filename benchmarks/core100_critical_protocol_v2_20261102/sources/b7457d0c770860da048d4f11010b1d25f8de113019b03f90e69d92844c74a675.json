@@ -1,0 +1,912 @@
+{
+  "clip_id": "T09_C01",
+  "points": [
+    {
+      "theta": 15.5714286,
+      "source_repeat": true,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_15.5714286/physics.json",
+      "state_sha256": "cb8900b3548a4f44eff48a927939e4d19b79109490b79cdabd23c938c5b58d37",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "original_configuration_seed_solver_and_clock_verified": true,
+      "window": [
+        4,
+        209
+      ],
+      "native_fps": 30,
+      "simulation_frame_period_s": 0.02,
+      "original_source_position_error_m": {
+        "frozen_tabletop_collision_slab": 0,
+        "t09_book_00": 1.1128438905741254e-05,
+        "t09_book_01": 1.725121260535489e-05,
+        "t09_book_02": 5.3652004701318694e-05,
+        "t09_book_03": 1.7909206130134813e-07,
+        "t09_book_04": 0.00016771744477393327,
+        "t09_book_05": 0.0001504429537030657,
+        "t09_book_06": 0.0004951346029008741,
+        "t09_book_07": 0.0005914927830312555
+      },
+      "target_contact_history": [],
+      "terminal_frames": [
+        {
+          "frame": 200,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 201,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 202,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 203,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 204,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 205,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 206,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 207,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 208,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 209,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        }
+      ],
+      "maximum_saved_frame_obb_overlap_m": 0.0015562358453626857,
+      "maximum_saved_geometry": {
+        "frame": 45,
+        "pair": [
+          "t09_book_04",
+          "t09_book_05"
+        ],
+        "depth_m": 0.0015562358453626857
+      },
+      "all_saved_positions_finite": true,
+      "raw_native_depth_diagnostic": {
+        "physics_step_index": 3,
+        "entity_a": "t09_book_04",
+        "entity_b": "t09_book_05",
+        "geom_a": 5,
+        "geom_b": 6,
+        "penetration_m": 0.0013590651797130704,
+        "position": [
+          -0.16298164427280426,
+          0.08765333145856857,
+          0.1362278163433075
+        ],
+        "normal": [
+          0.004769868217408657,
+          -0.0001381945185130462,
+          -0.9999886155128479
+        ],
+        "force": [
+          2.9529683589935303,
+          0.0747143030166626,
+          9.212648391723633
+        ],
+        "physics_substep_index": 861,
+        "telemetry_scope": "internal_substep",
+        "frame": 45
+      },
+      "formal_admission": false
+    },
+    {
+      "theta": 4.25,
+      "source_repeat": false,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.25/physics.json",
+      "state_sha256": "6b0d6ce4dd691aa82aef30d8b70fe0fdc7e349d184e91e87d2b844de5ab43a16",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "original_configuration_seed_solver_and_clock_verified": true,
+      "window": [
+        4,
+        209
+      ],
+      "native_fps": 30,
+      "simulation_frame_period_s": 0.02,
+      "original_source_position_error_m": null,
+      "target_contact_history": [
+        137,
+        138,
+        139,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "terminal_frames": [
+        {
+          "frame": 200,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.005152106721659895,
+          "minimum_target_bottom_to_table_plane_distance_m": 2.357337458569475e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8533319234848022e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 201,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.00501676390463562,
+          "minimum_target_bottom_to_table_plane_distance_m": 2.3269713242402013e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8458813428878784e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 202,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.004876845564295046,
+          "minimum_target_bottom_to_table_plane_distance_m": 7.376292301825016e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8253922462463379e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 203,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.0047335287343415605,
+          "minimum_target_bottom_to_table_plane_distance_m": 2.51746855334245e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8309801816940308e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 204,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.004587443619589186,
+          "minimum_target_bottom_to_table_plane_distance_m": 6.343745379278065e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.816079020500183e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 205,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.004439122639691203,
+          "minimum_target_bottom_to_table_plane_distance_m": 3.4001560053620317e-08,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8477439880371094e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 206,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.004288790699273078,
+          "minimum_target_bottom_to_table_plane_distance_m": 3.7538273353621143e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.8831342458724976e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 207,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.0041367575627483145,
+          "minimum_target_bottom_to_table_plane_distance_m": 6.038328639879076e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.9241124391555786e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 208,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.003983113098972164,
+          "minimum_target_bottom_to_table_plane_distance_m": 6.371393696108507e-07,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.9744038581848145e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 209,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_05",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.0038279622287338035,
+          "minimum_target_bottom_to_table_plane_distance_m": 3.6449265938820474e-08,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_05",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 2.002343535423279e-06,
+          "all_target_contacts_inside_support": true
+        }
+      ],
+      "maximum_saved_frame_obb_overlap_m": 0.002861429868839839,
+      "maximum_saved_geometry": {
+        "frame": 119,
+        "pair": [
+          "frozen_tabletop_collision_slab",
+          "t09_book_03"
+        ],
+        "depth_m": 0.002861429868839839
+      },
+      "all_saved_positions_finite": true,
+      "raw_native_depth_diagnostic": {
+        "physics_step_index": 2,
+        "entity_a": "t09_book_03",
+        "entity_b": "t09_book_04",
+        "geom_a": 4,
+        "geom_b": 5,
+        "penetration_m": 0.12128991633653641,
+        "position": [
+          -0.12886743247509003,
+          0.08887185156345367,
+          0.1372186541557312
+        ],
+        "normal": [
+          0.20319584012031555,
+          -0.0003052449901588261,
+          -0.9791380763053894
+        ],
+        "force": [
+          0.5381378531455994,
+          0.0006157038151286542,
+          2.171734571456909
+        ],
+        "physics_substep_index": 1561,
+        "telemetry_scope": "internal_substep",
+        "frame": 89
+      },
+      "formal_admission": false
+    },
+    {
+      "theta": 4.45,
+      "source_repeat": false,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.45/physics.json",
+      "state_sha256": "63d91dce6dbf8c68927e6032c21aed79726cc4777b71364d0488a3d8b892589d",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "original_configuration_seed_solver_and_clock_verified": true,
+      "window": [
+        4,
+        209
+      ],
+      "native_fps": 30,
+      "simulation_frame_period_s": 0.02,
+      "original_source_position_error_m": null,
+      "target_contact_history": [
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        164,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "terminal_frames": [
+        {
+          "frame": 200,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.022367634808090966,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.0983110540555008e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 9.201467037200928e-07,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 201,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.023010731756915134,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.0854050355169065e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 6.155130449769786e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 202,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.023726352119948918,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.1293208507026642e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 5.101785063743591e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 203,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.02459129662215262,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.1006975891292292e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.636694469198119e-05,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 204,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.025509149961595895,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.112304947981091e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.6782432794570923e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 205,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.02659733160144353,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.0855494493935969e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 2.989545464515686e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 206,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 1.7018469185142715e-06,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.10361525733349e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 8.773058652877808e-07,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 207,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.029037832459868948,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.1423808968583082e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 5.839380264660576e-06,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 208,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 1.7083538639689477e-06,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.1148446290021319e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 8.67992639541626e-07,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 209,
+          "label": 1,
+          "upper_books_on_table": [
+            "t09_book_04",
+            "t09_book_06",
+            "t09_book_07"
+          ],
+          "maximum_target_bottom_to_table_plane_distance_m": 0.03205933413507404,
+          "minimum_target_bottom_to_table_plane_distance_m": 1.1059772737354034e-06,
+          "independently_confirmed_top_contact_witness_books": [
+            "t09_book_04",
+            "t09_book_06"
+          ],
+          "target_table_maximum_contact_depth_m": 1.4808028936386108e-06,
+          "all_target_contacts_inside_support": true
+        }
+      ],
+      "maximum_saved_frame_obb_overlap_m": 0.0026081747864301758,
+      "maximum_saved_geometry": {
+        "frame": 157,
+        "pair": [
+          "t09_book_06",
+          "t09_book_07"
+        ],
+        "depth_m": 0.0026081747864301758
+      },
+      "all_saved_positions_finite": true,
+      "raw_native_depth_diagnostic": {
+        "physics_step_index": 1,
+        "entity_a": "t09_book_02",
+        "entity_b": "t09_book_04",
+        "geom_a": 3,
+        "geom_b": 5,
+        "penetration_m": 0.16654612123966217,
+        "position": [
+          -0.12984809279441833,
+          -0.0875801295042038,
+          0.10393814742565155
+        ],
+        "normal": [
+          0.5113191604614258,
+          0.0014123221626505256,
+          -0.8593897819519043
+        ],
+        "force": [
+          -0.14846748113632202,
+          -0.002122055971994996,
+          1.6600297689437866
+        ],
+        "physics_substep_index": 1893,
+        "telemetry_scope": "internal_substep",
+        "frame": 110
+      },
+      "formal_admission": false
+    },
+    {
+      "theta": 4.5,
+      "source_repeat": false,
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_legacy_exact_probes_20261102/T09_C01_4.5/physics.json",
+      "state_sha256": "70689388787d88f567451ba8350c237979ddefcede9a069a22139b88a7e0d5e5",
+      "source_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "reference_video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "original_configuration_seed_solver_and_clock_verified": true,
+      "window": [
+        4,
+        209
+      ],
+      "native_fps": 30,
+      "simulation_frame_period_s": 0.02,
+      "original_source_position_error_m": null,
+      "target_contact_history": [],
+      "terminal_frames": [
+        {
+          "frame": 200,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 201,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 202,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 203,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 204,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 205,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 206,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 207,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 208,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        },
+        {
+          "frame": 209,
+          "label": 0,
+          "upper_books_on_table": [],
+          "maximum_target_bottom_to_table_plane_distance_m": 0,
+          "minimum_target_bottom_to_table_plane_distance_m": 0,
+          "independently_confirmed_top_contact_witness_books": [],
+          "target_table_maximum_contact_depth_m": 0,
+          "all_target_contacts_inside_support": true
+        }
+      ],
+      "maximum_saved_frame_obb_overlap_m": 0.0017409755751128658,
+      "maximum_saved_geometry": {
+        "frame": 67,
+        "pair": [
+          "frozen_tabletop_collision_slab",
+          "t09_book_03"
+        ],
+        "depth_m": 0.0017409755751128658
+      },
+      "all_saved_positions_finite": true,
+      "raw_native_depth_diagnostic": {
+        "physics_step_index": 2,
+        "entity_a": "frozen_tabletop_collision_slab",
+        "entity_b": "t09_book_03",
+        "geom_a": 0,
+        "geom_b": 4,
+        "penetration_m": 0.0012456504628062248,
+        "position": [
+          -0.6011336445808411,
+          -0.09610217809677124,
+          -0.0009594596922397614
+        ],
+        "normal": [
+          -0.0,
+          -0.0,
+          -1.0
+        ],
+        "force": [
+          5.3655219078063965,
+          0.0,
+          10.31831169128418
+        ],
+        "physics_substep_index": 1209,
+        "telemetry_scope": "internal_substep",
+        "frame": 67
+      },
+      "formal_admission": false
+    }
+  ],
+  "original_event": "upper_nonpulled_book_on_table_at_end",
+  "source_files_modified": false,
+  "new_simulations": 0,
+  "scope": "Original terminal table contact at native frame209. Saved-pose OBB geometry does not reconstruct internal peak poses or establish physical convergence.",
+  "source_hashes": {
+    "review\\core100_v2_resolution_20261102\\legacy_exact_collect_ce48d6cf66d9.json": "ce48d6cf66d910bb2642284ec47f3dfef72ed2dee0a81db652e41c4faf08c37a",
+    "scripts\\audit_core100_v2_t09_terminal.py": "ac1cf65d9b6341f51d126f2480e3b6a2ce00441da513ce3467306ed14439e80f",
+    "scripts\\audit_core100_v2_t03_contact_geometry.py": "28f4e52a200d2b6348e2a5ab7259395195c8afe86768abf050a625309731cf67"
+  }
+}

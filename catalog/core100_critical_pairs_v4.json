@@ -1,0 +1,7 @@
+{
+  "version": "core100-critical-pairs-v4-20261103",
+  "release_root": "../benchmarks/core100_critical_pairs_v4_20261103",
+  "manifest": "MANIFEST.json",
+  "manifest_sha256": "a880841c405822412fc4d6d1da68ec776088dd58523a7aca4d44eb94d7608f5b",
+  "status": "prepared_not_live"
+}

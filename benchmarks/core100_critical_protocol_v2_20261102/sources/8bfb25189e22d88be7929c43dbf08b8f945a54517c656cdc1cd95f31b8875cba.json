@@ -1,0 +1,134 @@
+{
+  "phase": "source",
+  "status": "completed",
+  "points": [
+    {
+      "clip_id": "T08_C01",
+      "theta": 0.8686186043463,
+      "pid": 77927,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C01",
+      "config_sha256": "f742470c65f52ad6afd76ca8ac6780b73e45d3c8d6606fd7a13df4816d490a5f",
+      "original_config_sha256": "46d08809f4148e879e95586e2a9b234acb6e3a78ff10e3e431c78c7381c2d91c",
+      "source_physics_from": "hash-pinned released runtime header, not the later edited cam01 config",
+      "status": "completed",
+      "source_state_sha256": "e7b22af1881b763c73e9642b665d5372015111c1c8e0f7d4d91e13d73bb22c2a",
+      "reference_video_sha256": "7ea5d07b092f6dac23c247de552e63bc750dd3c646aff84ef600a5fce6255924",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C01/physics.json",
+      "state_sha256": "e4b068ae0fc0d7ab33e8ceec423492c0ca9691ec930eeb455ca6bfc1cadd1d88",
+      "original_specs_and_intervention_verified": true,
+      "original_solver_differences": {},
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/scripts/render_t08_v3_multicam.py",
+        "renderer_sha256": "a79b32e89606d05feb1e58a78e307e3546179f59d1a6537058ac3e3b3995974a",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.7765007615089417,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 78
+      },
+      "source_measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.7764995694160461,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 76
+      },
+      "source_maximum_position_difference_m": 0.1298730468223861,
+      "native_peak_penetration_m": 0.0008528828620910645,
+      "horizon_s": 5.0,
+      "native_frame_count": 210,
+      "seed_scope": "Original config seed/experiment header preserved. Actual original gs.init seed was not attested by the released state; current executed seed recorded separately."
+    },
+    {
+      "clip_id": "T08_C02",
+      "theta": 1.3144938983181307,
+      "pid": 77928,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C02",
+      "config_sha256": "4a4b5a14d3628965abbfb0cdbd43d58f8e3a67bcf7822ab67438a7292a982a7d",
+      "original_config_sha256": "78bdaa605a2e7c6a1f6090d83b68fc18f26a187c285d60adeb14e7f862c496e0",
+      "source_physics_from": "hash-pinned released runtime header, not the later edited cam01 config",
+      "status": "completed",
+      "source_state_sha256": "2989188e7916b60ca09195c30cf44ffb1322e244f69e4dc089bd0e3f73c8e885",
+      "reference_video_sha256": "d0183c7abbdc2695a967dd7235603257d04f465b92ee744d11d4c86ec50bff2e",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C02/physics.json",
+      "state_sha256": "ab8e592391f45e2e3d22f7624eedfd23f095839e5c13e6ece0fc02ad8e12af43",
+      "original_specs_and_intervention_verified": true,
+      "original_solver_differences": {},
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/scripts/render_t08_v3_multicam.py",
+        "renderer_sha256": "a79b32e89606d05feb1e58a78e307e3546179f59d1a6537058ac3e3b3995974a",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.7761755585670471,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 61
+      },
+      "source_measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.776233971118927,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 61
+      },
+      "source_maximum_position_difference_m": 3.2545612141495557,
+      "native_peak_penetration_m": 0.651221513748169,
+      "horizon_s": 5.0,
+      "native_frame_count": 210,
+      "seed_scope": "Original config seed/experiment header preserved. Actual original gs.init seed was not attested by the released state; current executed seed recorded separately."
+    },
+    {
+      "clip_id": "T08_C03",
+      "theta": 2.1375,
+      "pid": 77930,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C03",
+      "config_sha256": "eca48299da05eea0c81e5c5817a9169c84acbd79d0d3022a36433470c1a4b3d9",
+      "original_config_sha256": "b95bf8990d36c50cca37fad627ce3a5c6801bba046e0baa37479b76341d28547",
+      "source_physics_from": "hash-pinned released runtime header, not the later edited cam01 config",
+      "status": "completed",
+      "source_state_sha256": "fca4b4d6768a1d696d617dc4fd70e83e841a068ce6b3a7dd1c84fd8ba0a72155",
+      "reference_video_sha256": "f73c849a313ce4c5f40b45c4cddca252bab945b10ab60becd48413ce3ea45c20",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t08_gpu_20261102/source/T08_C03/physics.json",
+      "state_sha256": "652b5d9bf1474d2c24d630dd11f3c02d62113aae55f983532c19e05ecdae0ada",
+      "original_specs_and_intervention_verified": true,
+      "original_solver_differences": {},
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T07_T08_v2_independent/scripts/render_t08_v3_multicam.py",
+        "renderer_sha256": "a79b32e89606d05feb1e58a78e307e3546179f59d1a6537058ac3e3b3995974a",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.7764837741851807,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 48
+      },
+      "source_measurement": {
+        "label": 1,
+        "minimum_mug_world_z_m": -0.7764992713928223,
+        "threshold_world_z_m": -0.08,
+        "first_threshold_frame": 48
+      },
+      "source_maximum_position_difference_m": 0.00801551508238105,
+      "native_peak_penetration_m": 0.0021123886108398438,
+      "horizon_s": 5.0,
+      "native_frame_count": 210,
+      "seed_scope": "Original config seed/experiment header preserved. Actual original gs.init seed was not attested by the released state; current executed seed recorded separately."
+    }
+  ],
+  "original_sources_modified": false,
+  "scope": "Original recorded object specifications and solver settings on GPU32, with added observation-only telemetry; not a physical convergence certificate."
+}

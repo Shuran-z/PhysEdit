@@ -1,0 +1,218 @@
+{
+  "clip_id": "T20_C01",
+  "family": "box_cup_gap",
+  "source_theta": 0.03290909090909091,
+  "sample_id": "T20__bg01_home_ase__g01_moon__box_cup_gap__p010",
+  "normalization_domain_in_job": null,
+  "observed": [
+    {
+      "theta": 0.03290909090909091,
+      "labels": {
+        "complete_propagation_original": 1
+      },
+      "receipt_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.0329090909091/receipt.json",
+      "state_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.0329090909091/physics.json.gz",
+      "state_sha256": "7975e264c3bd86c4f8f98b19f13860b4d4de9e32989ef36cc1436ebf20234993",
+      "config_sha256": "653b678a2c51d677b2f4c5847f7634983f8afc93d8aef82607bfe437aecd9d3d",
+      "original_seed_solver_and_intervention_verified": true,
+      "physics_frame_period_s": 0.03333333333333333,
+      "original_quality_passed": false,
+      "all_contact_peak_m": 0.006865621078759432,
+      "named_object_contact_peak_m": 0.006865621078759432,
+      "top_contact_pairs": [
+        [
+          "t20_book / t20_can",
+          0.006865621078759432
+        ],
+        [
+          "@geom_0 / t20_cup",
+          0.005658774171024561
+        ],
+        [
+          "t20_box / t20_cup",
+          0.0043863216415047646
+        ],
+        [
+          "t20_box / t20_can",
+          0.004151450004428625
+        ],
+        [
+          "@geom_8 / t20_book",
+          0.0006216168403625488
+        ],
+        [
+          "@geom_8 / t20_can",
+          0.0006064772605895996
+        ]
+      ]
+    },
+    {
+      "theta": 0.3,
+      "labels": {
+        "complete_propagation_original": 1
+      },
+      "receipt_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.3/receipt.json",
+      "state_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.3/physics.json.gz",
+      "state_sha256": "81fb114b28bba568e2a3b0632dd282655fc26f6f614aad5b5667ce05bf6c8630",
+      "config_sha256": "6fb2db36d9ab20aa61e41ab1487a9d071adb66b2e7cd023d31e2aa62f152f79d",
+      "original_seed_solver_and_intervention_verified": true,
+      "physics_frame_period_s": 0.03333333333333333,
+      "original_quality_passed": false,
+      "all_contact_peak_m": 0.0068657780066132545,
+      "named_object_contact_peak_m": 0.0068657780066132545,
+      "top_contact_pairs": [
+        [
+          "t20_book / t20_can",
+          0.0068657780066132545
+        ],
+        [
+          "t20_box / t20_can",
+          0.004151493310928345
+        ],
+        [
+          "t20_box / t20_cup",
+          0.003016724484041333
+        ],
+        [
+          "@geom_8 / t20_can",
+          0.0004976392374373972
+        ],
+        [
+          "@geom_8 / t20_book",
+          0.0003075599670410156
+        ],
+        [
+          "@geom_8 / t20_cup",
+          0.0002532601065468043
+        ]
+      ]
+    },
+    {
+      "theta": 0.4318359375,
+      "labels": {
+        "complete_propagation_original": 1
+      },
+      "receipt_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.4318359375/receipt.json",
+      "state_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.4318359375/physics.json.gz",
+      "state_sha256": "179ca3cd8ce5b6a94dc25d41d1c01b7e105194578e86ea0bdcff673ee00ddbba",
+      "config_sha256": "cc655343f24c700dc29b56d6d0e9839ced0758ad40f85a089866b32825403156",
+      "original_seed_solver_and_intervention_verified": true,
+      "physics_frame_period_s": 0.03333333333333333,
+      "original_quality_passed": false,
+      "all_contact_peak_m": 0.00686589116230607,
+      "named_object_contact_peak_m": 0.00686589116230607,
+      "top_contact_pairs": [
+        [
+          "t20_book / t20_can",
+          0.00686589116230607
+        ],
+        [
+          "t20_box / t20_can",
+          0.0041512660682201385
+        ],
+        [
+          "t20_box / t20_cup",
+          0.00214780168607831
+        ],
+        [
+          "@geom_8 / t20_book",
+          0.0005942583084106445
+        ],
+        [
+          "@geom_8 / t20_box",
+          0.000331878662109375
+        ],
+        [
+          "@geom_8 / t20_can",
+          0.0002837180800270289
+        ]
+      ]
+    },
+    {
+      "theta": 0.43212890625,
+      "labels": {
+        "complete_propagation_original": 0
+      },
+      "receipt_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.43212890625/receipt.json",
+      "state_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.43212890625/physics.json.gz",
+      "state_sha256": "096be1fd186c5985499bee400a3260dd0d3247a5b936c8b44de2587485aa9acf",
+      "config_sha256": "1bafcb3e48bcd501a03def8742cc74a6361c792cc2124ad704abb2a0b875e3c8",
+      "original_seed_solver_and_intervention_verified": true,
+      "physics_frame_period_s": 0.03333333333333333,
+      "original_quality_passed": false,
+      "all_contact_peak_m": 0.006865796633064747,
+      "named_object_contact_peak_m": 0.006865796633064747,
+      "top_contact_pairs": [
+        [
+          "t20_book / t20_can",
+          0.006865796633064747
+        ],
+        [
+          "t20_box / t20_can",
+          0.0041515822522342205
+        ],
+        [
+          "t20_box / t20_cup",
+          0.002151581458747387
+        ],
+        [
+          "@geom_8 / t20_book",
+          0.00042897462844848633
+        ],
+        [
+          "@geom_8 / t20_box",
+          0.00030815601348876953
+        ],
+        [
+          "@geom_8 / t20_can",
+          0.00025957822799682617
+        ]
+      ]
+    },
+    {
+      "theta": 0.45,
+      "labels": {
+        "complete_propagation_original": 0
+      },
+      "receipt_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.45/receipt.json",
+      "state_path": "/data/yangkaiyuan/core100_continue_original_20261031/T20_C01/T20_C01/profile_0/0.45/physics.json.gz",
+      "state_sha256": "ad897698d1c2b579fd13db3d8f35b29128a1a914c0701fd505c262313e2228de",
+      "config_sha256": "e6ca8c7779df411ce1dff5d9f89df69e69cce5b47b27fd30db284ae0c6fdd942",
+      "original_seed_solver_and_intervention_verified": true,
+      "physics_frame_period_s": 0.03333333333333333,
+      "original_quality_passed": false,
+      "all_contact_peak_m": 0.006865841336548328,
+      "named_object_contact_peak_m": 0.006865841336548328,
+      "top_contact_pairs": [
+        [
+          "t20_book / t20_can",
+          0.006865841336548328
+        ],
+        [
+          "t20_box / t20_can",
+          0.004151254892349243
+        ],
+        [
+          "t20_box / t20_cup",
+          0.0016363514587283134
+        ],
+        [
+          "@geom_8 / t20_book",
+          0.0002686381048988551
+        ],
+        [
+          "@geom_8 / t20_cup",
+          0.0002532601065468043
+        ],
+        [
+          "@geom_8 / t20_can",
+          0.0002395510528003797
+        ]
+      ]
+    }
+  ],
+  "source_config_sha256": "547226daaf6f32b279b697df753313e04f46f27932076a97db4506f11e4fbeb5",
+  "original_intervention_source_sha256": "7cfe4fb952b9c34f55f43512df1d3228a33c5e1d9301484e3f92aeec6b2d00cf",
+  "new_simulations": 0,
+  "source_files_modified": false
+}

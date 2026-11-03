@@ -1,0 +1,77 @@
+[
+  {
+    "camera": "cam01",
+    "config": "/data_cached/wangzijun_p25/t03_configs_r032_pbr_scene/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/cam01.json",
+    "config_sha256": "2073922b5e286ed437c441559df4b2f8e2afe78a9f2154bfbb1cc1b24345ccf3",
+    "video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.mp4",
+    "exists": true,
+    "view": {
+      "role": "primary_event_wide_r032",
+      "position": [
+        1.55,
+        -0.92,
+        0.2
+      ],
+      "look_at": [
+        0.35,
+        -0.055,
+        -0.27
+      ],
+      "fov_deg": 62.0
+    },
+    "physical_keys": {
+      "random_seed": 2201504954,
+      "seed": null
+    }
+  },
+  {
+    "camera": "cam02",
+    "config": "/data_cached/wangzijun_p25/t03_configs_r032_pbr_scene/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/cam02.json",
+    "config_sha256": "ffee30e1a6b478ec3d34fe871abb69209df3b61c838a3a797dfb632cba1c5560",
+    "video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam02.mp4",
+    "exists": true,
+    "view": {
+      "role": "reverse_event_wide_r032",
+      "position": [
+        1.55,
+        0.92,
+        0.25
+      ],
+      "look_at": [
+        0.35,
+        -0.055,
+        -0.25
+      ],
+      "fov_deg": 62.0
+    },
+    "physical_keys": {
+      "random_seed": 2201504954,
+      "seed": null
+    }
+  },
+  {
+    "camera": "cam03",
+    "config": "/data_cached/wangzijun_p25/t03_configs_r032_pbr_scene/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/cam03.json",
+    "config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+    "video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam03.mp4",
+    "exists": true,
+    "view": {
+      "role": "causal_chain_high_safe_r032",
+      "position": [
+        1.45,
+        -0.7,
+        0.55
+      ],
+      "look_at": [
+        0.28,
+        -0.055,
+        -0.18
+      ],
+      "fov_deg": 54.0
+    },
+    "physical_keys": {
+      "random_seed": 2201504954,
+      "seed": null
+    }
+  }
+]

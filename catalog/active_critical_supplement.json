@@ -1,0 +1,9 @@
+{
+  "schema": "active-critical-supplement-v1",
+  "version": "critical_supplement_v1_20261101",
+  "release_root": "../benchmarks/critical_supplement_v1_20261101",
+  "manifest": "MANIFEST.json",
+  "manifest_sha256": "9d87eec13ddc7613e6dbbc1a73d7de80d9775d7e00d340e5651d1253db509399",
+  "separate_from_core100": true,
+  "generated_model_outputs": 0
+}

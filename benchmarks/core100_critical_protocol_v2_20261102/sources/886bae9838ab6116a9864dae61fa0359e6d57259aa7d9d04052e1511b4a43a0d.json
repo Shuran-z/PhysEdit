@@ -1,0 +1,340 @@
+{
+  "started": [
+    {
+      "clip_id": "T10_C05",
+      "seed": 0,
+      "theta": 0.19581014257194804,
+      "side": "low",
+      "pid": 2183621,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed0_low",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "93ffd8dc09be5fece050319e4d30e484310c09b6e188db79ff231322656305f0",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "3c999a124a74d538857afebfb3f1791e418c4c32e7e4407fb748f6cd474aee1d",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 0,
+      "theta": 0.22153623709189865,
+      "side": "high",
+      "pid": 2183622,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed0_high",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "5e866a2907781d7541a380b8b37c4bb1c49228845fbd2de464dee500a620073a",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "3c999a124a74d538857afebfb3f1791e418c4c32e7e4407fb748f6cd474aee1d",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 1,
+      "theta": 0.19581014257194804,
+      "side": "low",
+      "pid": 2183624,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed1_low",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "ad9f52a85b8fdf9722d31423595ba7d99b0c67d783d37eeca5d8980a76c5a50e",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "d44b57e2cf14eb656a2093b60e3f3da5e72fe6c74fa29203e16043fd5e624f64",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 1,
+      "theta": 0.22153623709189865,
+      "side": "high",
+      "pid": 2183625,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed1_high",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "258a093d109c3a9372f0efed837b9355c5332234c0e3a06679139b083ef8c6d4",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "d44b57e2cf14eb656a2093b60e3f3da5e72fe6c74fa29203e16043fd5e624f64",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    }
+  ],
+  "pending": [],
+  "geometry": {
+    "nominal_domain": [
+      -0.05,
+      0.28
+    ],
+    "geometrically_admissible_support_x": [
+      0.19580014257194803,
+      0.22154623709189866
+    ],
+    "inset_m": 1e-05,
+    "folder_angle_deg": 38.0,
+    "folder_base_clearance_m": 0.0009999673078935683,
+    "rules": [
+      "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+      "support_x+pen_radius < folder_high_end_x-0.002 m"
+    ],
+    "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+    "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+  },
+  "all_dispatched": [
+    {
+      "clip_id": "T10_C05",
+      "seed": 0,
+      "theta": 0.19581014257194804,
+      "side": "low",
+      "pid": 2183621,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed0_low",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "93ffd8dc09be5fece050319e4d30e484310c09b6e188db79ff231322656305f0",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "3c999a124a74d538857afebfb3f1791e418c4c32e7e4407fb748f6cd474aee1d",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 1,
+      "theta": 0.19581014257194804,
+      "side": "low",
+      "pid": 2183624,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed1_low",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "ad9f52a85b8fdf9722d31423595ba7d99b0c67d783d37eeca5d8980a76c5a50e",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "d44b57e2cf14eb656a2093b60e3f3da5e72fe6c74fa29203e16043fd5e624f64",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 0,
+      "theta": 0.22153623709189865,
+      "side": "high",
+      "pid": 2183622,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed0_high",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "5e866a2907781d7541a380b8b37c4bb1c49228845fbd2de464dee500a620073a",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "3c999a124a74d538857afebfb3f1791e418c4c32e7e4407fb748f6cd474aee1d",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    },
+    {
+      "clip_id": "T10_C05",
+      "seed": 1,
+      "theta": 0.22153623709189865,
+      "side": "high",
+      "pid": 2183625,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/valid_support_endpoints/seed1_high",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "config_sha256": "258a093d109c3a9372f0efed837b9355c5332234c0e3a06679139b083ef8c6d4",
+      "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "source_probe_state_sha256": "d44b57e2cf14eb656a2093b60e3f3da5e72fe6c74fa29203e16043fd5e624f64",
+      "original_seed_recovered": false,
+      "formal_admission": false,
+      "geometry": {
+        "nominal_domain": [
+          -0.05,
+          0.28
+        ],
+        "geometrically_admissible_support_x": [
+          0.19580014257194803,
+          0.22154623709189866
+        ],
+        "inset_m": 1e-05,
+        "folder_angle_deg": 38.0,
+        "folder_base_clearance_m": 0.0009999673078935683,
+        "rules": [
+          "underside_height(support_x-pen_radius)-pen_height >= -1e-6 m",
+          "support_x+pen_radius < folder_high_end_x-0.002 m"
+        ],
+        "original_recipe_source": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/scripts/build_project.py",
+        "original_recipe_sha256": "64be64be75f44a4ea4faf6766248e6ecf6630e6d9b3c0aa262ecc28652876b4d"
+      },
+      "normalization_domain_unchanged": [
+        -0.05,
+        0.28
+      ],
+      "frozen_inputs_modified": false
+    }
+  ],
+  "duplicate_launched": false,
+  "source_comparison_sha256": "79f65df7a4e9bae50e70b6a0cf10a067c4a6a81d44b33aa6a624fd52e8e4b6a1"
+}

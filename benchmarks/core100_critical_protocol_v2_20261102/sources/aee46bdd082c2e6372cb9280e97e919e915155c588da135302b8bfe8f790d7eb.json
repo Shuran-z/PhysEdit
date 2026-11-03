@@ -1,0 +1,230 @@
+{
+  "status": "completed",
+  "result": {
+    "points": [
+      {
+        "kind": "source",
+        "theta": 0.1,
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t03_original_gpu_20261102/T03_C01_source/physics.json",
+        "state_sha256": "17e7d7c9808925b082fff380974f7204069ad7e260d728af034f73f84ae5d34f",
+        "box_pair": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_tabletop_collision_slab"
+        ],
+        "book_collision_size": [
+          0.21,
+          0.148,
+          0.014
+        ],
+        "slab_collision_size": [
+          1.42,
+          0.76,
+          0.064
+        ],
+        "pose_independent_geometric_depth_upper_bound_m": 0.16064680330268608,
+        "maximum_internal_reported_depth_m": 0.36100032925605774,
+        "peak_report": {
+          "physics_step_index": 20,
+          "entity_a": "t03v5_upper_tabletop_collision_slab",
+          "entity_b": "t03v5_impulsed_book",
+          "geom_a": 0,
+          "geom_b": 9,
+          "penetration_m": 0.36100032925605774,
+          "position": [
+            0.7099721431732178,
+            -0.12900033593177795,
+            -1.4901161193847656e-08
+          ],
+          "normal": [
+            -1.3405167464952683e-07,
+            0.0,
+            -1.0
+          ],
+          "force": [
+            -0.0038510672748088837,
+            0.0,
+            0.32092586159706116
+          ],
+          "physics_substep_index": 141953,
+          "telemetry_scope": "internal_substep",
+          "frame": 93
+        },
+        "reported_depth_exceeds_any_pose_box_overlap_bound": true,
+        "maximum_saved_frame_box_overlap_m": 0.00013108943687803465,
+        "saved_frames_above_1mm": [],
+        "maximum_render_step_exterior_pair_depth_m": 0.0002240521862404421,
+        "internal_peak_pose_reconstructed": false,
+        "all_saved_frames_finite": true,
+        "formal_admission": false
+      },
+      {
+        "kind": "endpoint",
+        "theta": 0.006,
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t03_original_gpu_20261102/endpoints/0.006/physics.json",
+        "state_sha256": "ce34628ec49dfee69059a15ae1fdf225224b1999bee94a7c8de243c076da7423",
+        "box_pair": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_tabletop_collision_slab"
+        ],
+        "book_collision_size": [
+          0.21,
+          0.148,
+          0.014
+        ],
+        "slab_collision_size": [
+          1.42,
+          0.76,
+          0.064
+        ],
+        "pose_independent_geometric_depth_upper_bound_m": 0.16064680330268608,
+        "maximum_internal_reported_depth_m": 0.36100077629089355,
+        "peak_report": {
+          "physics_step_index": 28,
+          "entity_a": "t03v5_upper_tabletop_collision_slab",
+          "entity_b": "t03v5_impulsed_book",
+          "geom_a": 0,
+          "geom_b": 9,
+          "penetration_m": 0.36100077629089355,
+          "position": [
+            0.7100265622138977,
+            0.19949960708618164,
+            -2.8312206268310547e-07
+          ],
+          "normal": [
+            -0.020871244370937347,
+            0.0,
+            -0.999782145023346
+          ],
+          "force": [
+            7.369266033172607,
+            0.0,
+            830.4736938476562
+          ],
+          "physics_substep_index": 172933,
+          "telemetry_scope": "internal_substep",
+          "frame": 108
+        },
+        "reported_depth_exceeds_any_pose_box_overlap_bound": true,
+        "maximum_saved_frame_box_overlap_m": 0.000185718860339662,
+        "saved_frames_above_1mm": [],
+        "maximum_render_step_exterior_pair_depth_m": 0.0002177084534196183,
+        "internal_peak_pose_reconstructed": false,
+        "all_saved_frames_finite": true,
+        "formal_admission": false
+      },
+      {
+        "kind": "endpoint",
+        "theta": 0.06866666666666667,
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t03_original_gpu_20261102/endpoints/0.0686666666667/physics.json",
+        "state_sha256": "eacadeac926837a158fd06b7ac0c10e719ab8b3dbfd85e26a6c5b6910117e2c9",
+        "box_pair": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_tabletop_collision_slab"
+        ],
+        "book_collision_size": [
+          0.21,
+          0.148,
+          0.014
+        ],
+        "slab_collision_size": [
+          1.42,
+          0.76,
+          0.064
+        ],
+        "pose_independent_geometric_depth_upper_bound_m": 0.16064680330268608,
+        "maximum_internal_reported_depth_m": 0.3610038161277771,
+        "peak_report": {
+          "physics_step_index": 54,
+          "entity_a": "t03v5_upper_tabletop_collision_slab",
+          "entity_b": "t03v5_impulsed_book",
+          "geom_a": 0,
+          "geom_b": 9,
+          "penetration_m": 0.3610038161277771,
+          "position": [
+            0.7099999785423279,
+            0.018996328115463257,
+            -1.6763806343078613e-07
+          ],
+          "normal": [
+            -0.11074698716402054,
+            0.0,
+            -0.9938486218452454
+          ],
+          "force": [
+            0.02103487215936184,
+            0.0,
+            0.21183224022388458
+          ],
+          "physics_substep_index": 196289,
+          "telemetry_scope": "internal_substep",
+          "frame": 119
+        },
+        "reported_depth_exceeds_any_pose_box_overlap_bound": true,
+        "maximum_saved_frame_box_overlap_m": 0.00020547527078187966,
+        "saved_frames_above_1mm": [],
+        "maximum_render_step_exterior_pair_depth_m": 0.3610038161277771,
+        "internal_peak_pose_reconstructed": false,
+        "all_saved_frames_finite": true,
+        "formal_admission": false
+      },
+      {
+        "kind": "endpoint",
+        "theta": 0.08433333333333333,
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t03_original_gpu_20261102/endpoints/0.0843333333333/physics.json",
+        "state_sha256": "773c333cd0c00a6a311942ca25223cdc66c4a551927bf10f52155f606c2eceba",
+        "box_pair": [
+          "t03v5_impulsed_book",
+          "t03v5_upper_tabletop_collision_slab"
+        ],
+        "book_collision_size": [
+          0.21,
+          0.148,
+          0.014
+        ],
+        "slab_collision_size": [
+          1.42,
+          0.76,
+          0.064
+        ],
+        "pose_independent_geometric_depth_upper_bound_m": 0.16064680330268608,
+        "maximum_internal_reported_depth_m": 0.25089403986930847,
+        "peak_report": {
+          "physics_step_index": 32,
+          "entity_a": "t03v5_upper_tabletop_collision_slab",
+          "entity_b": "t03v5_impulsed_book",
+          "geom_a": 0,
+          "geom_b": 9,
+          "penetration_m": 0.25089403986930847,
+          "position": [
+            0.7099999189376831,
+            0.018894270062446594,
+            -5.21540641784668e-08
+          ],
+          "normal": [
+            -0.030045920982956886,
+            0.0,
+            -0.9995484948158264
+          ],
+          "force": [
+            0.008698687888681889,
+            0.0,
+            0.48184219002723694
+          ],
+          "physics_substep_index": 179201,
+          "telemetry_scope": "internal_substep",
+          "frame": 111
+        },
+        "reported_depth_exceeds_any_pose_box_overlap_bound": true,
+        "maximum_saved_frame_box_overlap_m": 0.00017356684609343143,
+        "saved_frames_above_1mm": [],
+        "maximum_render_step_exterior_pair_depth_m": 0.2508377432823181,
+        "internal_peak_pose_reconstructed": false,
+        "all_saved_frames_finite": true,
+        "formal_admission": false
+      }
+    ],
+    "source_files_modified": false,
+    "new_simulations": 0,
+    "conclusion": "Internal maxima incompatible with geometric box overlap must not be reported as observed centimeter penetration. Saved-frame overlap is independently measured; no internal-substep convergence or general physical certification is asserted."
+  }
+}

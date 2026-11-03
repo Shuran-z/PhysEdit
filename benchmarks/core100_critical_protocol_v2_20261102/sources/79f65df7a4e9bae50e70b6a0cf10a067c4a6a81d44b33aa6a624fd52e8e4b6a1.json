@@ -1,0 +1,74 @@
+[
+  {
+    "seed": 0,
+    "source_measurement": {
+      "label": 1,
+      "maximum_displacement_m": 0.3220556743305129,
+      "first_threshold_frame": 25,
+      "first_tape_pen_contact": [
+        23,
+        3
+      ]
+    },
+    "measurement": {
+      "label": 1,
+      "maximum_displacement_m": 0.32205121370361484,
+      "first_threshold_frame": 25,
+      "first_tape_pen_contact": [
+        23,
+        3
+      ]
+    },
+    "position_errors": {
+      "frozen_tabletop_collision_slab": 0,
+      "t10_supported_folder": 0.0016527850494510805,
+      "t10_support_pen": 0.001497740823279074,
+      "t10_tape_roll": 0.001158936724583526
+    },
+    "prefix_errors": {
+      "frozen_tabletop_collision_slab": 0,
+      "t10_supported_folder": 1.1372150348039545e-07,
+      "t10_support_pen": 2.0445023080724841e-07,
+      "t10_tape_roll": 4.021286522788522e-07
+    },
+    "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/source_seed_0/physics.json",
+    "state_sha256": "3c999a124a74d538857afebfb3f1791e418c4c32e7e4407fb748f6cd474aee1d",
+    "original_seed_recovered": false
+  },
+  {
+    "seed": 1,
+    "source_measurement": {
+      "label": 1,
+      "maximum_displacement_m": 0.3220556743305129,
+      "first_threshold_frame": 25,
+      "first_tape_pen_contact": [
+        23,
+        3
+      ]
+    },
+    "measurement": {
+      "label": 1,
+      "maximum_displacement_m": 0.32175098169823463,
+      "first_threshold_frame": 25,
+      "first_tape_pen_contact": [
+        23,
+        3
+      ]
+    },
+    "position_errors": {
+      "frozen_tabletop_collision_slab": 0,
+      "t10_supported_folder": 0.000888825594793143,
+      "t10_support_pen": 0.0014013891522902614,
+      "t10_tape_roll": 0.0002933239763222931
+    },
+    "prefix_errors": {
+      "frozen_tabletop_collision_slab": 0,
+      "t10_supported_folder": 1.9265606746851826e-07,
+      "t10_support_pen": 5.633447005068043e-07,
+      "t10_tape_roll": 7.99254001378359e-06
+    },
+    "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t10_metadata_probe_20261102/source_seed_1/physics.json",
+    "state_sha256": "d44b57e2cf14eb656a2093b60e3f3da5e72fe6c74fa29203e16043fd5e624f64",
+    "original_seed_recovered": false
+  }
+]

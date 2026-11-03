@@ -1,0 +1,345 @@
+{
+  "clip_id": "T10_C05",
+  "config_sha256": "2e8bd05327d929f6da7e8ecfe4dec56297209f6c299c3d1d55d5b6410fdb6cdf",
+  "parent_video_sha256": "ef0f430d1c3ded6a7e6ab12cdf4e0cf3ca2b8e55dce73188f95cdbacc8a25a88",
+  "frozen_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+  "archived_state_stored_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+  "archived_state_decoded_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+  "camera": {
+    "position": [
+      0.02,
+      -1.78,
+      0.76
+    ],
+    "look_at": [
+      0.02,
+      0.0,
+      0.15
+    ],
+    "fov_deg": 50.0
+  },
+  "archived_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03.mp4",
+  "projected_centers": [
+    {
+      "frame": 4,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            423.0124533516972,
+            225.49371594426378
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            479.27706262836693,
+            230.66771259032222
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            489.5643091200277,
+            297.9483535758708
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 12,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            423.0124533516972,
+            225.49371594426378
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            479.27706262836693,
+            230.66771259032222
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            489.5643091200277,
+            297.9483535758708
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 24,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            422.92029496856617,
+            225.30659157900504
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            478.92208008501393,
+            228.2266982592932
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            479.0406925683974,
+            257.08517311465533
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 40,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            426.979702212837,
+            229.34333576760983
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            482.0083223698225,
+            219.104372325516
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.4518493331089,
+            249.025787200524
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 60,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.96498930191433,
+            243.2255868668517
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.07938660238113,
+            235.36315739898558
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.4831423827255,
+            248.96032616730508
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 80,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.9089780859488,
+            243.28089588097734
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.81231756031355,
+            244.57270271241083
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.49419741758817,
+            248.99985877165992
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 100,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.84797850231,
+            243.34439372670172
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.80766386478496,
+            244.57202327593217
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.5023559336264,
+            249.04494859158564
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 120,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.79821078607193,
+            243.3706846091736
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.8027596665674,
+            244.57070785343785
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.5077846104264,
+            249.05693832802157
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 145,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.7419290554133,
+            243.3846290704146
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.79661846205937,
+            244.56906827792258
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.51356427018914,
+            249.05658764402486
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 170,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.6855180942516,
+            243.39855917197585
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.78977407850095,
+            244.5674786815701
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.5193616278658,
+            249.05624539023668
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 190,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.64092638224355,
+            243.4096072021083
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.7826797523359,
+            244.5662472650363
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.52414163186745,
+            249.05597026156158
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 209,
+      "centers": [
+        {
+          "name": "t10_supported_folder",
+          "pixel": [
+            432.5980717522872,
+            243.4201968884615
+          ]
+        },
+        {
+          "name": "t10_support_pen",
+          "pixel": [
+            495.7759382857432,
+            244.56512019226463
+          ]
+        },
+        {
+          "name": "t10_tape_roll",
+          "pixel": [
+            476.52850415591286,
+            249.05577990839168
+          ]
+        }
+      ]
+    }
+  ],
+  "number_to_actor": [
+    "t10_supported_folder",
+    "t10_support_pen",
+    "t10_tape_roll"
+  ],
+  "admission": false,
+  "scope": "Cross-camera world-pose projection diagnostic only; no same-trajectory assumption or automatic event admission.",
+  "image_path": "review/core100_v2_resolution_20261102/T10_C05_camera_projection.jpg",
+  "image_sha256": "8fef20e23cd3772804626fb16f0074be3decb77e8f348bd691b4719846811391"
+}

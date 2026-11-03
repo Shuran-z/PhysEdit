@@ -1,0 +1,125 @@
+{
+  "phase": "source",
+  "status": "completed",
+  "points": [
+    {
+      "clip_id": "T07_C01",
+      "theta": 0.25,
+      "status": "completed",
+      "event": "motion_ge_1cm",
+      "measurement": {
+        "label": 1,
+        "first_threshold_frame": 49,
+        "maximum_displacement_m": 0.24507879423991047
+      },
+      "reference_measurement": {
+        "label": 1,
+        "first_threshold_frame": 49,
+        "maximum_displacement_m": 0.2450789104156461
+      },
+      "source_state_sha256": "7cc095f71b919a93f08d64814ddb4427694c2c01e0c09da59b42b842eefeed10",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t07_gpu_20261102/source/T07_C01/physics.json",
+      "state_sha256": "678802411a22f7de4f011a8c885cc9985d21a1ba00f559f8dac448ab89beb557",
+      "config_sha256": "0b4f5684c07b38d2d6e9ccafa35b2c3bfc7bb0c448876c15e0f6961c7436a6cd",
+      "original_seed_solver_and_intervention_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T01_v2_7s/scripts/render_t01_t05_production_v3_multicam.py",
+        "renderer_sha256": "d3e760d3f855da3017c952b4c661cafc0ebed1429d803e5eeb7a60c412b868d0",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "original_source_specs_match": true,
+      "original_source_solver_differences": {},
+      "seed_execution_note": "Original config seed preserved; this original wrapper did not record an explicit gs.init seed.",
+      "native_peak_m": 8.794199675321579e-05,
+      "quality_passed": true,
+      "source_full_trajectory_exact": false,
+      "source_position_error_m": 8.642905517096493e-06,
+      "source_theta": 0.25,
+      "horizon_s": 5.0
+    },
+    {
+      "clip_id": "T07_C02",
+      "theta": 0.25,
+      "status": "completed",
+      "event": "motion_ge_1cm",
+      "measurement": {
+        "label": 1,
+        "first_threshold_frame": 40,
+        "maximum_displacement_m": 0.5563327841937544
+      },
+      "reference_measurement": {
+        "label": 1,
+        "first_threshold_frame": 40,
+        "maximum_displacement_m": 0.5563615863498308
+      },
+      "source_state_sha256": "24d62f1efda5d509213cdb2f37c870d0ea940f84513ab4ea1e9d3a3b5c1f7417",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t07_gpu_20261102/source/T07_C02/physics.json",
+      "state_sha256": "74c8143e9d817bb4573f75659d8d471bd23aa341006753b3e4b0f575482e3df0",
+      "config_sha256": "f68caff6ae38b31f366360fc16445813c959aab1bf7649f2ed06a0ccecb5bede",
+      "original_seed_solver_and_intervention_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T01_v2_7s/scripts/render_t01_t05_production_v3_multicam.py",
+        "renderer_sha256": "d3e760d3f855da3017c952b4c661cafc0ebed1429d803e5eeb7a60c412b868d0",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "original_source_specs_match": true,
+      "original_source_solver_differences": {},
+      "seed_execution_note": "Original config seed preserved; this original wrapper did not record an explicit gs.init seed.",
+      "native_peak_m": 0.00014923233538866043,
+      "quality_passed": true,
+      "source_full_trajectory_exact": false,
+      "source_position_error_m": 9.419704786624643e-05,
+      "source_theta": 0.25,
+      "horizon_s": 5.0
+    },
+    {
+      "clip_id": "T07_C03",
+      "theta": 0.25,
+      "status": "completed",
+      "event": "motion_ge_1cm",
+      "measurement": {
+        "label": 1,
+        "first_threshold_frame": 34,
+        "maximum_displacement_m": 0.5685904640660349
+      },
+      "reference_measurement": {
+        "label": 1,
+        "first_threshold_frame": 34,
+        "maximum_displacement_m": 0.5705630944562319
+      },
+      "source_state_sha256": "ae380b89bee9d54b2769fba606d953e3469a12956495f4714ca992ce508f77c4",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t07_gpu_20261102/source/T07_C03/physics.json",
+      "state_sha256": "e35d6953611464b8bc94299a81bcf3e9db3f611b048611b2cb0e2596dd7e1fc4",
+      "config_sha256": "874be7dc2dd95aae6b0cbf4d1061fa5857723a6e8a4ba95bb4650a225e982f03",
+      "original_seed_solver_and_intervention_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": null,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T01_v2_7s/scripts/render_t01_t05_production_v3_multicam.py",
+        "renderer_sha256": "d3e760d3f855da3017c952b4c661cafc0ebed1429d803e5eeb7a60c412b868d0",
+        "instrumentation_sha256": "892a2331dd842c0380c4a8a0d2b43eb100057c6ff5ec2fb2d5c871af106e71e7",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "original_source_specs_match": true,
+      "original_source_solver_differences": {},
+      "seed_execution_note": "Original config seed preserved; this original wrapper did not record an explicit gs.init seed.",
+      "native_peak_m": 0.00023038173094391823,
+      "quality_passed": true,
+      "source_full_trajectory_exact": false,
+      "source_position_error_m": 0.006494309378650998,
+      "source_theta": 0.25,
+      "horizon_s": 5.0
+    }
+  ],
+  "original_sources_modified": false,
+  "scope": "Original-settings GPU32 probes; no numerical-convergence or exact-published-trajectory claim."
+}

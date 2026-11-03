@@ -1,0 +1,667 @@
+{
+  "schema": "t11-original-released-global-joint-path-v1",
+  "original_family": "joint_global_configuration",
+  "original_matrix_sha256": "92aa7940d0acfd6198e92533233cc908c4f11e4fec0f584b5f1b3fe90b39e316",
+  "published_rows": [
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_01",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_01/cam01.json",
+      "sha256": "bf566aefd160875e032e1a58c37f3fb51444c24e7e59fe388dd49f8ef89fdde6",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.0,
+        "relay_case_gap_m": 0.07,
+        "case_edge_margin_m": 0.15,
+        "relay_block_mass_kg": 0.065,
+        "case_friction_coefficient": 0.22
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_01",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_01/cam01.json",
+      "sha256": "ac08dde8845097cc40312a0ebf2daa723b5cee601c582c84504e28019493a90f",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.0,
+        "relay_case_gap_m": 0.07,
+        "case_edge_margin_m": 0.15,
+        "relay_block_mass_kg": 0.065,
+        "case_friction_coefficient": 0.22
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_01",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_01/cam01.json",
+      "sha256": "a0f1bedeccc0af8b4db3bf88a944ec6464e364d599503afce53f15d677f5b6ae",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.0,
+        "relay_case_gap_m": 0.07,
+        "case_edge_margin_m": 0.15,
+        "relay_block_mass_kg": 0.065,
+        "case_friction_coefficient": 0.22
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_02",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_02/cam01.json",
+      "sha256": "2bbc7a65a189815e1c5ae3e1fbe0732e1f443106c6c0773d3ddeceecc52c7544",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.25,
+        "relay_case_gap_m": 0.055,
+        "case_edge_margin_m": 0.125,
+        "relay_block_mass_kg": 0.075,
+        "case_friction_coefficient": 0.18
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_02",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_02/cam01.json",
+      "sha256": "6e799a8d6cfaf88b2cfe684fbd0eb00a8fd8e6327f02effa5bc67c31fe336e6c",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.25,
+        "relay_case_gap_m": 0.055,
+        "case_edge_margin_m": 0.125,
+        "relay_block_mass_kg": 0.075,
+        "case_friction_coefficient": 0.18
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_02",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_02/cam01.json",
+      "sha256": "a4493cf0c33eb8c9bb0e4fffad6fe6f153146a58275f9fe6c2dd54eee89dcfca",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.25,
+        "relay_case_gap_m": 0.055,
+        "case_edge_margin_m": 0.125,
+        "relay_block_mass_kg": 0.075,
+        "case_friction_coefficient": 0.18
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_03",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_03/cam01.json",
+      "sha256": "1e817a491f2e505a8ec8e0896a92c3c813e11d5daa36e40074bba5573534cf7f",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.45,
+        "relay_case_gap_m": 0.045,
+        "case_edge_margin_m": 0.105,
+        "relay_block_mass_kg": 0.0875,
+        "case_friction_coefficient": 0.15
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_03",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_03/cam01.json",
+      "sha256": "221d1c6d83c19b5a9edc242169ac2c79dbcfc7e1ecd12de0c2ed68ecb4a5c223",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.45,
+        "relay_case_gap_m": 0.045,
+        "case_edge_margin_m": 0.105,
+        "relay_block_mass_kg": 0.0875,
+        "case_friction_coefficient": 0.15
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_03",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_03/cam01.json",
+      "sha256": "ce20af8ee3b945a52467ae8b8542ac89f1033d5339aa9d8d7dd6ea647f0c3be1",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.45,
+        "relay_case_gap_m": 0.045,
+        "case_edge_margin_m": 0.105,
+        "relay_block_mass_kg": 0.0875,
+        "case_friction_coefficient": 0.15
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_04",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_04/cam01.json",
+      "sha256": "3045d98c074d47c8887d370c6473b9afe750484d2abdaeefe84f31c991541f82",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.65,
+        "relay_case_gap_m": 0.035,
+        "case_edge_margin_m": 0.085,
+        "relay_block_mass_kg": 0.1,
+        "case_friction_coefficient": 0.12
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_04",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_04/cam01.json",
+      "sha256": "da984339168fa4be6aabd362500fbd0c09b68955378355e030304b6e75b7a708",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.65,
+        "relay_case_gap_m": 0.035,
+        "case_edge_margin_m": 0.085,
+        "relay_block_mass_kg": 0.1,
+        "case_friction_coefficient": 0.12
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_04",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_04/cam01.json",
+      "sha256": "10820c1baa2cd697c87ed722316c219034871e8b1b31222f31b0bbdbed0a2687",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.65,
+        "relay_case_gap_m": 0.035,
+        "case_edge_margin_m": 0.085,
+        "relay_block_mass_kg": 0.1,
+        "case_friction_coefficient": 0.12
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_05",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_05/cam01.json",
+      "sha256": "6cef7858316b8a6d895832b7b4350dfeb33fb7e5e6c3910860b73b5c3548da62",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.85,
+        "relay_case_gap_m": 0.03,
+        "case_edge_margin_m": 0.07,
+        "relay_block_mass_kg": 0.115,
+        "case_friction_coefficient": 0.1
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_05",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_05/cam01.json",
+      "sha256": "ecf4259f7006cad87441edd8aa5256351748862e7738cc79ce256bd2484a93e5",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.85,
+        "relay_case_gap_m": 0.03,
+        "case_edge_margin_m": 0.07,
+        "relay_block_mass_kg": 0.115,
+        "case_friction_coefficient": 0.1
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_05",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_05/cam01.json",
+      "sha256": "84d455fb3518c7521763ad4c607459cbbedcb5f0c4b54a356ae0cb1e551c88af",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 2.85,
+        "relay_case_gap_m": 0.03,
+        "case_edge_margin_m": 0.07,
+        "relay_block_mass_kg": 0.115,
+        "case_friction_coefficient": 0.1
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_06",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_06/cam01.json",
+      "sha256": "68c8dd3b7ff119e6af9442e1bfecae919951d861fb2e9bf5e3dbc19cfff25121",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_06",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_06/cam01.json",
+      "sha256": "b0ecefcaf8cafab98393c18c2e74a008e1b91877b9b2ac49489818d8790a7bc0",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_06",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_06/cam01.json",
+      "sha256": "d793fd84b1097f0f2772199a1ac10876dc26ae57ec0708ded6b018623fbf41f9",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_07",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_07/cam01.json",
+      "sha256": "9313aacfb7375ce6326653abce095b07d6cae1bf1cafcab6a6af957e2c03b8cc",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.3,
+        "relay_case_gap_m": 0.018,
+        "case_edge_margin_m": 0.04,
+        "relay_block_mass_kg": 0.15,
+        "case_friction_coefficient": 0.06
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_07",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_07/cam01.json",
+      "sha256": "4185c9130e275591650b1d21292093cd3df86397e4680dfd200e0e3e06a30011",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.3,
+        "relay_case_gap_m": 0.018,
+        "case_edge_margin_m": 0.04,
+        "relay_block_mass_kg": 0.15,
+        "case_friction_coefficient": 0.06
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_07",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_07/cam01.json",
+      "sha256": "6ab3e6693a49b5ddf15e7098181d3c997d4d15834ae913f7c59117ccf3624bbe",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.3,
+        "relay_case_gap_m": 0.018,
+        "case_edge_margin_m": 0.04,
+        "relay_block_mass_kg": 0.15,
+        "case_friction_coefficient": 0.06
+      }
+    },
+    {
+      "context": "bg01_home_ase__g01_moon",
+      "design_id": "G_global_08",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g01_moon__G_global_08/cam01.json",
+      "sha256": "dae6feba791983fef5943befcd81c4647ae8239e5293f85ebbdb4e123e5846f0",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.55,
+        "relay_case_gap_m": 0.012,
+        "case_edge_margin_m": 0.03,
+        "relay_block_mass_kg": 0.175,
+        "case_friction_coefficient": 0.04
+      }
+    },
+    {
+      "context": "bg01_home_ase__g02_mars",
+      "design_id": "G_global_08",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g02_mars__G_global_08/cam01.json",
+      "sha256": "866ace307a49211870688aa5bcc5a9cfa40bc86cd46258ec30b1210bff02486d",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.55,
+        "relay_case_gap_m": 0.012,
+        "case_edge_margin_m": 0.03,
+        "relay_block_mass_kg": 0.175,
+        "case_friction_coefficient": 0.04
+      }
+    },
+    {
+      "context": "bg01_home_ase__g03_earth",
+      "design_id": "G_global_08",
+      "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T11_v3_relay_edge/configs/formal_r010_720p/T11R010__bg01_home_ase__g03_earth__G_global_08/cam01.json",
+      "sha256": "9f958df10f3d408188e97a5125b84af41c3f509b068687fd0dad2973931b8e06",
+      "nominal_vector": {
+        "driver_initial_speed_mps": 3.55,
+        "relay_case_gap_m": 0.012,
+        "case_edge_margin_m": 0.03,
+        "relay_block_mass_kg": 0.175,
+        "case_friction_coefficient": 0.04
+      }
+    }
+  ],
+  "cases": [
+    {
+      "clip_id": "T11_C01",
+      "context": "bg01_home_ase__g01_moon",
+      "joint_path": {
+        "nodes": [
+          {
+            "driver_initial_speed_mps": 2.0,
+            "relay_case_gap_m": 0.07,
+            "case_edge_margin_m": 0.15,
+            "relay_block_mass_kg": 0.065,
+            "case_friction_coefficient": 0.22
+          },
+          {
+            "driver_initial_speed_mps": 2.25,
+            "relay_case_gap_m": 0.055,
+            "case_edge_margin_m": 0.125,
+            "relay_block_mass_kg": 0.075,
+            "case_friction_coefficient": 0.18
+          },
+          {
+            "driver_initial_speed_mps": 2.45,
+            "relay_case_gap_m": 0.045,
+            "case_edge_margin_m": 0.105,
+            "relay_block_mass_kg": 0.0875,
+            "case_friction_coefficient": 0.15
+          },
+          {
+            "driver_initial_speed_mps": 2.65,
+            "relay_case_gap_m": 0.035,
+            "case_edge_margin_m": 0.085,
+            "relay_block_mass_kg": 0.1,
+            "case_friction_coefficient": 0.12
+          },
+          {
+            "driver_initial_speed_mps": 2.85,
+            "relay_case_gap_m": 0.03,
+            "case_edge_margin_m": 0.07,
+            "relay_block_mass_kg": 0.115,
+            "case_friction_coefficient": 0.1
+          },
+          {
+            "driver_initial_speed_mps": 3.05,
+            "relay_case_gap_m": 0.024,
+            "case_edge_margin_m": 0.055,
+            "relay_block_mass_kg": 0.13,
+            "case_friction_coefficient": 0.08
+          },
+          {
+            "driver_initial_speed_mps": 3.3,
+            "relay_case_gap_m": 0.018,
+            "case_edge_margin_m": 0.04,
+            "relay_block_mass_kg": 0.15,
+            "case_friction_coefficient": 0.06
+          },
+          {
+            "driver_initial_speed_mps": 3.55,
+            "relay_case_gap_m": 0.012,
+            "case_edge_margin_m": 0.03,
+            "relay_block_mass_kg": 0.175,
+            "case_friction_coefficient": 0.04
+          }
+        ],
+        "input_ranges": {
+          "driver_initial_speed_mps": [
+            2.0,
+            3.55
+          ],
+          "relay_case_gap_m": [
+            0.012,
+            0.07
+          ],
+          "case_edge_margin_m": [
+            0.03,
+            0.15
+          ],
+          "relay_block_mass_kg": [
+            0.065,
+            0.175
+          ],
+          "case_friction_coefficient": [
+            0.04,
+            0.22
+          ]
+        },
+        "coordinates": [
+          0.0,
+          0.19176046053845838,
+          0.3393210590231814,
+          0.4868816575079043,
+          0.6026156513973099,
+          0.7209977526762721,
+          0.8571301738015854,
+          1.0
+        ],
+        "unnormalized_length": 2.2965976519647855,
+        "normalization_domain": [
+          0.0,
+          1.0
+        ],
+        "distance_definition": "arc length along the original ordered joint sweep, after per-input range normalization"
+      },
+      "source_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      },
+      "source_coordinate": 0.7209977526762721,
+      "source_config_sha256": "b173bfae2435ef78233980bdfe35947979f2ccf3f7681ede9e7a67426b9bfaf2",
+      "source_no_op_exact": true,
+      "all_eight_released_controlled_physics_match": true,
+      "comparison_tolerance": 1e-10
+    },
+    {
+      "clip_id": "T11_C02",
+      "context": "bg01_home_ase__g02_mars",
+      "joint_path": {
+        "nodes": [
+          {
+            "driver_initial_speed_mps": 2.0,
+            "relay_case_gap_m": 0.07,
+            "case_edge_margin_m": 0.15,
+            "relay_block_mass_kg": 0.065,
+            "case_friction_coefficient": 0.22
+          },
+          {
+            "driver_initial_speed_mps": 2.25,
+            "relay_case_gap_m": 0.055,
+            "case_edge_margin_m": 0.125,
+            "relay_block_mass_kg": 0.075,
+            "case_friction_coefficient": 0.18
+          },
+          {
+            "driver_initial_speed_mps": 2.45,
+            "relay_case_gap_m": 0.045,
+            "case_edge_margin_m": 0.105,
+            "relay_block_mass_kg": 0.0875,
+            "case_friction_coefficient": 0.15
+          },
+          {
+            "driver_initial_speed_mps": 2.65,
+            "relay_case_gap_m": 0.035,
+            "case_edge_margin_m": 0.085,
+            "relay_block_mass_kg": 0.1,
+            "case_friction_coefficient": 0.12
+          },
+          {
+            "driver_initial_speed_mps": 2.85,
+            "relay_case_gap_m": 0.03,
+            "case_edge_margin_m": 0.07,
+            "relay_block_mass_kg": 0.115,
+            "case_friction_coefficient": 0.1
+          },
+          {
+            "driver_initial_speed_mps": 3.05,
+            "relay_case_gap_m": 0.024,
+            "case_edge_margin_m": 0.055,
+            "relay_block_mass_kg": 0.13,
+            "case_friction_coefficient": 0.08
+          },
+          {
+            "driver_initial_speed_mps": 3.3,
+            "relay_case_gap_m": 0.018,
+            "case_edge_margin_m": 0.04,
+            "relay_block_mass_kg": 0.15,
+            "case_friction_coefficient": 0.06
+          },
+          {
+            "driver_initial_speed_mps": 3.55,
+            "relay_case_gap_m": 0.012,
+            "case_edge_margin_m": 0.03,
+            "relay_block_mass_kg": 0.175,
+            "case_friction_coefficient": 0.04
+          }
+        ],
+        "input_ranges": {
+          "driver_initial_speed_mps": [
+            2.0,
+            3.55
+          ],
+          "relay_case_gap_m": [
+            0.012,
+            0.07
+          ],
+          "case_edge_margin_m": [
+            0.03,
+            0.15
+          ],
+          "relay_block_mass_kg": [
+            0.065,
+            0.175
+          ],
+          "case_friction_coefficient": [
+            0.04,
+            0.22
+          ]
+        },
+        "coordinates": [
+          0.0,
+          0.19176046053845838,
+          0.3393210590231814,
+          0.4868816575079043,
+          0.6026156513973099,
+          0.7209977526762721,
+          0.8571301738015854,
+          1.0
+        ],
+        "unnormalized_length": 2.2965976519647855,
+        "normalization_domain": [
+          0.0,
+          1.0
+        ],
+        "distance_definition": "arc length along the original ordered joint sweep, after per-input range normalization"
+      },
+      "source_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      },
+      "source_coordinate": 0.7209977526762721,
+      "source_config_sha256": "6569236012721d2b4de7e3dab2cfb6522ba9e199c1ce4f8164c7a9bbb88b2644",
+      "source_no_op_exact": true,
+      "all_eight_released_controlled_physics_match": true,
+      "comparison_tolerance": 1e-10
+    },
+    {
+      "clip_id": "T11_C03",
+      "context": "bg01_home_ase__g03_earth",
+      "joint_path": {
+        "nodes": [
+          {
+            "driver_initial_speed_mps": 2.0,
+            "relay_case_gap_m": 0.07,
+            "case_edge_margin_m": 0.15,
+            "relay_block_mass_kg": 0.065,
+            "case_friction_coefficient": 0.22
+          },
+          {
+            "driver_initial_speed_mps": 2.25,
+            "relay_case_gap_m": 0.055,
+            "case_edge_margin_m": 0.125,
+            "relay_block_mass_kg": 0.075,
+            "case_friction_coefficient": 0.18
+          },
+          {
+            "driver_initial_speed_mps": 2.45,
+            "relay_case_gap_m": 0.045,
+            "case_edge_margin_m": 0.105,
+            "relay_block_mass_kg": 0.0875,
+            "case_friction_coefficient": 0.15
+          },
+          {
+            "driver_initial_speed_mps": 2.65,
+            "relay_case_gap_m": 0.035,
+            "case_edge_margin_m": 0.085,
+            "relay_block_mass_kg": 0.1,
+            "case_friction_coefficient": 0.12
+          },
+          {
+            "driver_initial_speed_mps": 2.85,
+            "relay_case_gap_m": 0.03,
+            "case_edge_margin_m": 0.07,
+            "relay_block_mass_kg": 0.115,
+            "case_friction_coefficient": 0.1
+          },
+          {
+            "driver_initial_speed_mps": 3.05,
+            "relay_case_gap_m": 0.024,
+            "case_edge_margin_m": 0.055,
+            "relay_block_mass_kg": 0.13,
+            "case_friction_coefficient": 0.08
+          },
+          {
+            "driver_initial_speed_mps": 3.3,
+            "relay_case_gap_m": 0.018,
+            "case_edge_margin_m": 0.04,
+            "relay_block_mass_kg": 0.15,
+            "case_friction_coefficient": 0.06
+          },
+          {
+            "driver_initial_speed_mps": 3.55,
+            "relay_case_gap_m": 0.012,
+            "case_edge_margin_m": 0.03,
+            "relay_block_mass_kg": 0.175,
+            "case_friction_coefficient": 0.04
+          }
+        ],
+        "input_ranges": {
+          "driver_initial_speed_mps": [
+            2.0,
+            3.55
+          ],
+          "relay_case_gap_m": [
+            0.012,
+            0.07
+          ],
+          "case_edge_margin_m": [
+            0.03,
+            0.15
+          ],
+          "relay_block_mass_kg": [
+            0.065,
+            0.175
+          ],
+          "case_friction_coefficient": [
+            0.04,
+            0.22
+          ]
+        },
+        "coordinates": [
+          0.0,
+          0.19176046053845838,
+          0.3393210590231814,
+          0.4868816575079043,
+          0.6026156513973099,
+          0.7209977526762721,
+          0.8571301738015854,
+          1.0
+        ],
+        "unnormalized_length": 2.2965976519647855,
+        "normalization_domain": [
+          0.0,
+          1.0
+        ],
+        "distance_definition": "arc length along the original ordered joint sweep, after per-input range normalization"
+      },
+      "source_vector": {
+        "driver_initial_speed_mps": 3.05,
+        "relay_case_gap_m": 0.024,
+        "case_edge_margin_m": 0.055,
+        "relay_block_mass_kg": 0.13,
+        "case_friction_coefficient": 0.08
+      },
+      "source_coordinate": 0.7209977526762721,
+      "source_config_sha256": "ba970e791b625a291072fec95c684a0250e4597a25b93da199bb5b77c83beb2d",
+      "source_no_op_exact": true,
+      "all_eight_released_controlled_physics_match": true,
+      "comparison_tolerance": 1e-10
+    }
+  ],
+  "helper_sha256": "c6a219c7dd7a3490bafe2efe62d61284ca9c16cc0647edc6c1afb5debbec62e4",
+  "helper_source": "\"\"\"Explicit coordinates on an ordered, released joint-parameter sweep.\n\nDistances are along that path after per-input range normalization. They are\nneither nearest distances in the full parameter space nor single-input effects.\n\"\"\"\nimport bisect\nimport copy\nimport math\n\n\nT11_KEYS = ('driver_initial_speed_mps', 'relay_case_gap_m', 'case_edge_margin_m',\n            'relay_block_mass_kg', 'case_friction_coefficient')\n\n\ndef make_joint_path(nodes):\n    if len(nodes) < 2 or any(set(node) != set(T11_KEYS) for node in nodes):\n        raise ValueError('joint_path_requires_original_five_input_vectors')\n    if any(type(x) not in (int, float) or not math.isfinite(x)\n           for node in nodes for x in node.values()):\n        raise ValueError('joint_path_nonfinite_input')\n    spans = {key:max(n[key] for n in nodes)-min(n[key] for n in nodes) for key in T11_KEYS}\n    if any(value <= 0 for value in spans.values()):\n        raise ValueError('joint_path_degenerate_input_range')\n    cumulative = [0.]\n    for left, right in zip(nodes, nodes[1:]):\n        length = math.sqrt(sum(((right[key]-left[key])/spans[key])**2 for key in T11_KEYS))\n        if length <= 0:\n            raise ValueError('joint_path_duplicate_adjacent_vectors')\n        cumulative.append(cumulative[-1]+length)\n    return dict(nodes=copy.deepcopy(nodes), input_ranges={\n        key:[min(n[key] for n in nodes),max(n[key] for n in nodes)] for key in T11_KEYS},\n        coordinates=[s/cumulative[-1] for s in cumulative],\n        unnormalized_length=cumulative[-1], normalization_domain=[0.,1.],\n        distance_definition='arc length along the original ordered joint sweep, after per-input range normalization')\n\n\ndef vector_at(path, coordinate):\n    if not math.isfinite(coordinate) or not 0 <= coordinate <= 1:\n        raise ValueError('joint_path_coordinate_outside_original_path')\n    positions=path['coordinates'];nodes=path['nodes']\n    for position,node in zip(positions,nodes):\n        if coordinate == position:\n            return copy.deepcopy(node)\n    i=bisect.bisect_right(positions,coordinate)-1\n    fraction=(coordinate-positions[i])/(positions[i+1]-positions[i])\n    return {key:nodes[i][key]+fraction*(nodes[i+1][key]-nodes[i][key]) for key in T11_KEYS}\n\n\ndef _mapped(vector):\n    def lerp(value,low,high,a,b):\n        return a+max(0.,min(1.,(value-low)/(high-low)))*(b-a)\n    speed=vector['driver_initial_speed_mps']\n    return dict(gap=lerp(vector['relay_case_gap_m'],.012,.085,.12,.27),\n        margin=lerp(vector['case_edge_margin_m'],.025,.175,.008,.22),\n        pre=lerp(speed,1.8,3.6,.18,.30),\n        relay=.35+10.*max(0.,vector['relay_block_mass_kg']-.08),\n        post=lerp(speed,1.8,3.6,0.,.60),\n        delay=int(round(lerp(speed,1.8,3.6,0.,20.))))\n\n\ndef t11_joint_intervention(config, source_vector, target_vector):\n    \"\"\"Apply the released r010 joint recipe, preserving the frozen source.\"\"\"\n    c=copy.deepcopy(config);p=c['experiment']['parameter']\n    if p['parameter_value'] != source_vector or set(target_vector) != set(T11_KEYS):\n        raise ValueError('original_joint_source_or_target_mismatch')\n    objects={o['name']:o for o in c['dynamic_objects']}\n    mapped_source=_mapped(source_vector);mapped=_mapped(target_vector)\n    if (not math.isclose(p['relay_case_gap_m'],mapped_source['gap'],abs_tol=1e-10) or\n            not math.isclose(p['case_edge_margin_m'],mapped_source['margin'],abs_tol=1e-10) or\n            objects['t11_relay_pencil_case']['mass'] != source_vector['relay_block_mass_kg'] or\n            objects['t11_eyeglasses_case']['friction'] != source_vector['case_friction_coefficient']):\n        raise ValueError('original_joint_recipe_does_not_match_source_physics')\n    force=next(f for f in c['runtime_forces'] if f['target']=='t11_driver_eraser')\n    for field,key in [('force_world','pre'),('force_world_after_first_contact','relay'),\n                      ('force_world_relay_phase','relay'),('force_world_after_contact','post')]:\n        if not math.isclose(force[field][0],mapped_source[key],abs_tol=1e-10):\n            raise ValueError('original_joint_source_force_mismatch:'+field)\n    if force['stop_after_contact_delay_frames'] != mapped_source['delay']:\n        raise ValueError('original_joint_source_duration_mismatch')\n    if target_vector == source_vector:\n        return c\n    shift=mapped['margin']-mapped_source['margin'];gap_shift=mapped['gap']-mapped_source['gap']\n    for name in ('t11_driver_eraser','t11_relay_pencil_case'):\n        objects[name]['pose']['position'][0]-=shift+gap_shift\n    objects['t11_eyeglasses_case']['pose']['position'][0]-=shift\n    for name,field,value in [('t11_relay_pencil_case','mass',target_vector['relay_block_mass_kg']),\n                             ('t11_eyeglasses_case','friction',target_vector['case_friction_coefficient'])]:\n        objects[name][field]=value\n        if isinstance(objects[name].get('material_preset'),dict):\n            objects[name]['material_preset'][field]=value\n    for field,key in [('force_world','pre'),('force_world_after_first_contact','relay'),\n                      ('force_world_relay_phase','relay'),('force_world_after_contact','post')]:\n        force[field][0]=mapped[key]\n    force['stop_after_contact_delay_frames']=mapped['delay']\n    p.update(parameter_value=copy.deepcopy(target_vector),relay_case_gap_m=mapped['gap'],\n        case_edge_margin_m=mapped['margin'],pencil_tin_mass_kg=target_vector['relay_block_mass_kg'],\n        case_friction_coefficient=target_vector['case_friction_coefficient'],\n        driver_force_before_first_contact_n=mapped['pre'],driver_force_between_contacts_n=mapped['relay'],\n        driver_force_after_second_contact_n=mapped['post'],driver_force_after_second_contact_frames=mapped['delay'])\n    return c\n",
+  "global_nearest_boundary_claimed": false,
+  "frozen_inputs_modified": false
+}

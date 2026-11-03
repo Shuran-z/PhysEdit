@@ -1,5 +1,7 @@
 # 独立质量筛查 → 事件预标注 → 人工回填 → 评分
 
+2026-11-03：Core100新导出启用`registered-observations-v2`事件合同。事件任务保留`actors`、`affected_actor_options`、`required_contact_pairs`、`time_semantics`及全局`uncertainty_policy`；质量任务不接收这些事件答案相关上下文。事件预测需带同一`event_contract_sha256`和实际抽帧`times_s`，末态事件证据须含观察窗内最后一个实际帧。旧协议不加该字段时沿用原接口；旧登记文件不改写。高置信度仍只产生预标注，未作新VLM准确性验证。
+
 2026-10-21：可选[全景视觉完整性筛查 scene-integrity-v2](SCENE_INTEGRITY_V2.md)，增加无关实体侵入、人物/卡通角色和场景替换检查；使用采样序号证据与程序路由。旧默认质量策略及历史回答保留。机器拒绝候选仍需人工确认。
 
 ## 边界来源绑定与离散样本恢复（2026-10-18）

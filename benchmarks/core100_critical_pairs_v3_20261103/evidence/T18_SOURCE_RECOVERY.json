@@ -1,0 +1,97 @@
+{
+  "status": "collected",
+  "sources": [
+    {
+      "clip_id": "T18_C01",
+      "pid": 4072217,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_t18_replacement_rgb_replay_v2_20261103/T18_C01",
+      "theta": 0.04,
+      "source_state_sha256": "9ca18649843173f16a8a369dc588973b7f6f2cf197910551def222248de58e56",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t18_gpu_20261102/endpoints/T18_C03_0.04/physics.json",
+      "replay_sha256": "31e92229b2f64ccb6bb6cdafb09bf617f8dac3b52ae032c1e0097abba1f1ef10",
+      "config_sha256": "e9b2a78afc99c354bbaf89ca3d810e7d3b9174502ac61833b71146b1cd4096e3",
+      "source_config_sha256": "5403fc58a5afcf202d2fec79b956222bb8c3eb37c03c0aef7c665d862326f17e",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "is_new_reference_render": true,
+      "is_pose_replay": true,
+      "simulations_started": 0,
+      "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+      "bootstrap_sha256": "ccc4a2185b64b19d3a27db6946c5a6bc110355c4d065947c257ea4ad0d68b8fd",
+      "simulation_steps_forbidden": true,
+      "status": "completed_integrity_and_replay_pose_verified",
+      "video_sha256": "54800b89bf6edebe9d55839607b443d3f3bf5037d47a514f2b69be12939ee4e2",
+      "media": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "rendered_state_sha256": "f9fc70f1eb4873cef9d3cf495d1f875233eea94220b083f22c13d2c898cbd2f0",
+      "maximum_exported_position_difference_m": 0.0,
+      "maximum_exported_quaternion_difference": 0.0,
+      "compared_actors": [
+        "t18_book_00",
+        "t18_book_01",
+        "t18_book_02",
+        "t18_book_03",
+        "t18_book_04",
+        "t18_book_05"
+      ],
+      "verification_limit": "Exported pose equality and source hashes; independent visual event review required.",
+      "files": {
+        "reference.mp4": "54800b89bf6edebe9d55839607b443d3f3bf5037d47a514f2b69be12939ee4e2",
+        "condition.png": "db0c36058bb3ffa5c0ac51ddf2f52ef9339f451299d874b26a255df76baeed51",
+        "config.json": "e9b2a78afc99c354bbaf89ca3d810e7d3b9174502ac61833b71146b1cd4096e3",
+        "source_state.json.gz": "29bacc81a6b0654cba5a86ae90b30b51daf61a92cd78d6935d032af5a558ee08",
+        "DISPATCH.json": "2076d333812664b8a81e21e7d325152fdb3d3c1008ec86413e5d55fb9edd68c3"
+      }
+    },
+    {
+      "clip_id": "T18_C02",
+      "pid": 4073649,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_t18_replacement_rgb_replay_v2_20261103/T18_C02",
+      "theta": 0.08,
+      "source_state_sha256": "dd3f7e9548a1ef4bac16daf8e64a00095f4b732c92a4801d241322fbc894a20e",
+      "source_state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t18_gpu_20261102/endpoints/T18_C03_0.08/physics.json",
+      "replay_sha256": "2cc386810e7bd9dd6d9f968cdd5ac871787b209103e4a46dcc22f3533f7831d1",
+      "config_sha256": "841f73158e9f0a2f73e3b644d5a1671989ca5c9cd5bcfdd66689db3ed36f3175",
+      "source_config_sha256": "a93a9676fff18af5037a55a6164dc6472b37cf53be5ab655a9ca1a185178a22f",
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "is_new_reference_render": true,
+      "is_pose_replay": true,
+      "simulations_started": 0,
+      "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+      "bootstrap_sha256": "ccc4a2185b64b19d3a27db6946c5a6bc110355c4d065947c257ea4ad0d68b8fd",
+      "simulation_steps_forbidden": true,
+      "status": "completed_integrity_and_replay_pose_verified",
+      "video_sha256": "ba52e556caea4d304d23458acc406cd2ff29649084985c6742426c9bc32f9b79",
+      "media": {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "rendered_state_sha256": "87f17734d9222039958124bde5907107208e97d32d776b0f2a6299c942b06233",
+      "maximum_exported_position_difference_m": 0.0,
+      "maximum_exported_quaternion_difference": 0.0,
+      "compared_actors": [
+        "t18_book_00",
+        "t18_book_01",
+        "t18_book_02",
+        "t18_book_03",
+        "t18_book_04",
+        "t18_book_05"
+      ],
+      "verification_limit": "Exported pose equality and source hashes; independent visual event review required.",
+      "files": {
+        "reference.mp4": "ba52e556caea4d304d23458acc406cd2ff29649084985c6742426c9bc32f9b79",
+        "condition.png": "db0c36058bb3ffa5c0ac51ddf2f52ef9339f451299d874b26a255df76baeed51",
+        "config.json": "841f73158e9f0a2f73e3b644d5a1671989ca5c9cd5bcfdd66689db3ed36f3175",
+        "source_state.json.gz": "437e0e4e7de58a5438645ebdf372e9d38471bb30fe8d874a0c9ee99f990d8bc8",
+        "DISPATCH.json": "81f00cd3a7976f6943ad833c28e9508a27a219df138985d8244457e0bc5eb7b1"
+      }
+    }
+  ],
+  "archive": "/data_cached/wangzijun_p25/liyuhan/core100_t18_replacement_rgb_replay_v2_20261103/validated_pair.zip",
+  "archive_sha256": "fb602e9d08e9607e4552da8567c11cd31a55956635638e62dd0e254db68e90b6"
+}

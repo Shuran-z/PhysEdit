@@ -1,0 +1,12 @@
+{
+  "scope": [
+    "T08_C01",
+    "T08_C02",
+    "T08_C03"
+  ],
+  "authorization_source": "Explicit user reply in this chat on 2026-11-02",
+  "question_reply_id": "call_a3a9f711a49e4d4d8935e6748414585b",
+  "decision": "允许数值细化，单列配置与不确定性",
+  "reference_video_prompt_and_original_event_labels_unchanged": true,
+  "refined_intervals_are_not_original_rendering_search_values": true
+}

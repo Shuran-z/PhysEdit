@@ -1,0 +1,88 @@
+{
+  "video_sha256": "bebdd0f52f72027a3d85919c107b730f162f8da242333ce22793b4ebfe8c311d",
+  "roi": [
+    500,
+    240,
+    780,
+    455
+  ],
+  "groups": [
+    {
+      "group": 0,
+      "frames": [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ],
+      "image_path": "review/core100_v2_resolution_20261102/T03_C01_dense_roi_0.jpg",
+      "image_sha256": "606a200272d9f34d2b96c64cedbf2af1477fa2f38785db20efea9bee22eeaeb7"
+    },
+    {
+      "group": 1,
+      "frames": [
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136
+      ],
+      "image_path": "review/core100_v2_resolution_20261102/T03_C01_dense_roi_1.jpg",
+      "image_sha256": "73ad98fd658168025b348fce507e5b38534ca607fb04dbc3478e87e7c7d9cc26"
+    },
+    {
+      "group": 2,
+      "frames": [
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ],
+      "image_path": "review/core100_v2_resolution_20261102/T03_C01_dense_roi_2.jpg",
+      "image_sha256": "80a96758f0061170ea2bdad6aa99ad0a1ca442abb0de34dfdf12994d04eb67c0"
+    }
+  ],
+  "source_pixels_only": true
+}

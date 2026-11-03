@@ -1,0 +1,12 @@
+{
+  "cases": [
+    "T03_C02",
+    "T03_C03"
+  ],
+  "decision": "采用分阶段主事件（推荐）",
+  "primary_event": "phone_edge_fall_after_can_contact",
+  "complete_floor_outcome_preserved": true,
+  "frozen_videos_prompts_and_old_labels_preserved": true,
+  "authority": "Explicit user reply in this thread",
+  "recorded_at_utc": "2026-11-03T08:00:05.940936+00:00"
+}

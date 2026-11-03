@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "clip_id": "T03_C04",
+      "sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_minus_rep01__A0470000__B0008000__C0006000__r014",
+      "theta": 0.47000000000000003,
+      "event": "book_contacts_upper_can",
+      "label": 0,
+      "fixed_context_sha256": "e5a573d307c8332f7e93ada33b84569b725ab5f1de33b470836debc93e36cb9c",
+      "reference_video_sha256": "54a97a1b440576eb9fbadb2795e844c0d53e89c90a565c5d3b59bda3cf43ba4b",
+      "source_state_sha256": "7bc04bc63df4f708ec5f5ae71b84f59fb878c7398d23b888fc810f12f42bab47",
+      "decoded_state_sha256": "4c797f289c4a2c7a4274dd5300893dd88f1cbb32cb38c997ed31726c132d4c9d",
+      "first_contact_frame": null,
+      "horizon_s": 5.0,
+      "native_camera": "cam03",
+      "condition_sha256": "c9de0558f1086fb083848be932496d7e7b2b1e9daab71efc59efbe98ff9c2a76",
+      "intervention": "Original cf-A speed with the declared equivalent impulse J=m*v; all remaining recorded physical inputs fixed.",
+      "scope": "Original released observed contact contrast; no unique root or fine-grid precision is claimed."
+    },
+    {
+      "clip_id": "T03_C05",
+      "sample_id": "T03V5F480__bg01_home_ase__g03_earth__cfA_theta_plus_rep01__A0730000__B0008000__C0006000__r014",
+      "theta": 0.73,
+      "event": "book_contacts_upper_can",
+      "label": 1,
+      "fixed_context_sha256": "e5a573d307c8332f7e93ada33b84569b725ab5f1de33b470836debc93e36cb9c",
+      "reference_video_sha256": "7b0f85749ebce77a976866a134a4b855137dbacdefe13052692ad56ae488902e",
+      "source_state_sha256": "9ecef92f157dfc4c1d76987a808abbb865f02ef17a9ffd5835d058e3f79fbcf7",
+      "decoded_state_sha256": "f42712fc1eacebd8b7758ca20df0861a4098b502638bb1722022c8ed07cbb0b1",
+      "first_contact_frame": 78,
+      "horizon_s": 5.0,
+      "native_camera": "cam03",
+      "condition_sha256": "7634c491005b21814e2278290f387477206de6ecf669055f6e1a2c850f4c4212",
+      "intervention": "Original cf-A speed with the declared equivalent impulse J=m*v; all remaining recorded physical inputs fixed.",
+      "scope": "Original released observed contact contrast; no unique root or fine-grid precision is claimed."
+    }
+  ],
+  "bracket": [
+    0.47000000000000003,
+    0.73
+  ],
+  "new_simulations": 0,
+  "source_files_modified": false,
+  "reference_admission": "Existing per-video book-contact admission is retained, not expanded to the full chain.",
+  "condition_images_byte_identical": false,
+  "condition_visual_review": "Assistant checked both original condition images; same camera and actor layout, not independent human gold.",
+  "source_readback_sha256": "177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430"
+}

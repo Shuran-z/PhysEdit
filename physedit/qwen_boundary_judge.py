@@ -22,6 +22,7 @@ def main():
     from .boundary_triage import parse_with_closing_brace_repair
     from .boundary import digest
     from .boundary_window import select_frames
+    from .judge_contract import VERSION,contract_hash,instruction_text
     kwargs={}
     if a.max_memory_json:kwargs['max_memory']={int(k) if k.isdigit() else k:v for k,v in json.loads(a.max_memory_json).items()}
     model=AutoModelForMultimodalLM.from_pretrained(a.model,local_files_only=True,torch_dtype=torch.bfloat16,device_map=a.device_map,**kwargs).eval()
@@ -41,7 +42,10 @@ def main():
         for line in Path(a.manifest).read_text(encoding='utf-8').splitlines():
             if not line.strip():continue
             j=json.loads(line);start=time.time();r={'sample_id':j['sample_id'],'video_sha256':j['video_sha256']}
+            if j.get('event_contract_sha256'):r['event_contract_sha256']=j['event_contract_sha256']
             try:
+                if j.get('event_job_schema')==VERSION and j.get('event_contract_sha256')!=contract_hash(j):
+                    raise ValueError('event contract changed after scheduling')
                 if digest(j['video'])!=j['video_sha256']:raise ValueError('video hash mismatch')
                 cap=cv2.VideoCapture(j['video']);fps=cap.get(5);n=int(cap.get(7))
                 if fps<=0 or j['window_s']>(n-1)/fps+1e-6:raise ValueError('video does not cover horizon')
@@ -52,8 +56,7 @@ def main():
                     tr=json.loads(Path(j['generated_track']).read_text(encoding='utf-8'))
                     if tr.get('video_sha256')!=j['video_sha256']:raise ValueError('wrong tracking video')
                     ids,_=select_frames(tr['frames'],end);boxes={x['frame']:x['bbox_xyxy'] for x in tr['frames']}
-                content=[{'type':'text','text':prompt+'\nTarget: '+j['target']}];images=[];times=[];hashes=[]
-                if a.stage=='events':content.append({'type':'text','text':'Registered definitions: '+json.dumps(j['events'])})
+                content=[{'type':'text','text':instruction_text(prompt,j,a.stage)}];images=[];times=[];hashes=[]
                 for sample_index,idx in enumerate(ids):
                     cap.set(1,idx);ok,f=cap.read()
                     if not ok:raise ValueError('decode failure')

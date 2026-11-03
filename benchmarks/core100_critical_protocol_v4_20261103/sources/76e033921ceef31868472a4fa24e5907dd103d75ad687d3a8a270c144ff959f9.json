@@ -1,0 +1,338 @@
+{
+  "points": [
+    {
+      "clip_id": "T03_C02",
+      "theta": 0.1,
+      "pid": 3094697,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.1",
+      "config_sha256": "2042d6ca171a3bdf5dd1b123bdc290d370683e5e14516a8768a319e7dd203fc5",
+      "original_config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+      "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "event_module_sha256": "9c2f8e86ed842789f90b28663c22acee22ac3f3f4864d7030c878f9f55509156",
+      "original_random_seed": 2201504954,
+      "expected_Genesis_seed": 54021306,
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "egl_index": 4,
+      "physical_bootstrap_body_identical": true,
+      "bootstrap_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+      "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+      "formal_admission": false,
+      "alive": false,
+      "status": "completed",
+      "log_tail": "121m15.98\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [16:09:06] [INFO] Running at \u001b[38;5;121m15.98\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n[INFO] rendering progress: 210/210 | focus=[1.357, -0.055, -0.707] | <none>_z=None <none>_z=None\n[INFO] motion signal (first vs last RGB mean abs diff) = 0.5418\n[OK] Saved annotations: /data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.1/physics.json\n\u001b[38;5;159m[Genesis] [16:09:13] [INFO] \ud83d\udca4 Exiting Genesis and caching compiled kernels...\u001b[0m\n",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.1/physics.json",
+      "state_sha256": "f3580663bc7d738a9b2cd4bb2bb12179699dbb8d1d03c78cf7812b894eea5966",
+      "original_C_axis_solver_seed_and_clock_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 54021306,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/scripts/render_t03_v5_multicam_r032.py",
+        "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "nonphysical_background_profile_differences": {
+        "raytracing_env_map": [
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/backgrounds_v4/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr"
+        ],
+        "raytracing_lights": [
+          [
+            {
+              "pos": [
+                -0.3,
+                -0.18,
+                2.04
+              ],
+              "color": [
+                1.0,
+                0.93,
+                0.82
+              ],
+              "intensity": 7.2,
+              "radius": 0.52
+            },
+            {
+              "pos": [
+                0.92,
+                -0.78,
+                1.48
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 2.8,
+              "radius": 0.42
+            },
+            {
+              "pos": [
+                0.18,
+                -1.02,
+                0.58
+              ],
+              "color": [
+                1.0,
+                0.91,
+                0.8
+              ],
+              "intensity": 1.25,
+              "radius": 0.24
+            },
+            {
+              "pos": [
+                0.82,
+                -0.66,
+                0.03
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 0.72,
+              "radius": 0.18
+            }
+          ],
+          [
+            {
+              "pos": [
+                -0.2999999999999998,
+                -0.18000000000000016,
+                2.04
+              ],
+              "color": [
+                1.0,
+                0.93,
+                0.82
+              ],
+              "intensity": 7.2,
+              "radius": 0.52
+            },
+            {
+              "pos": [
+                0.9199999999999999,
+                -0.78,
+                1.48
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 2.8,
+              "radius": 0.42
+            }
+          ]
+        ]
+      },
+      "measurement": {
+        "label": 1,
+        "can_phone_contact_frame": 100,
+        "first_frame": 113,
+        "confirmed_frame": 114,
+        "evidence_frames": [
+          100,
+          113,
+          114
+        ],
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "physical_frame_period_s": 0.03333333333333333,
+        "scope": "Observed contact then edge-fall onset; not complete C2 floor outcome or causal attribution."
+      },
+      "source_full_window_position_errors_m": {
+        "t03v5_upper_tabletop_collision_slab": 0,
+        "t03v5_lower_transfer_ramp": 0,
+        "t03v5_lower_shelf_leg_1": 0,
+        "t03v5_lower_shelf_leg_2": 0,
+        "t03v5_lower_shelf_leg_3": 0,
+        "t03v5_lower_shelf_leg_4": 0,
+        "t03v5_terminal_floor": 0,
+        "t03v5_upper_edge_can": 0.022001954993378932,
+        "t03v5_lower_edge_phone": 0.012722876322291738,
+        "t03v5_impulsed_book": 0.09764540063652043
+      },
+      "original_native_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16"
+    },
+    {
+      "clip_id": "T03_C02",
+      "theta": 0.4,
+      "pid": 3094698,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.4",
+      "config_sha256": "b1455e7a1f385db2c25dcf2936886861e0448bc7d8232c9d654d95845517332c",
+      "original_config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+      "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "event_module_sha256": "9c2f8e86ed842789f90b28663c22acee22ac3f3f4864d7030c878f9f55509156",
+      "original_random_seed": 2201504954,
+      "expected_Genesis_seed": 54021306,
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "egl_index": 4,
+      "physical_bootstrap_body_identical": true,
+      "bootstrap_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+      "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+      "formal_admission": false,
+      "alive": false,
+      "status": "excluded_wrong_C_geometry",
+      "excluded_evidence": {
+        "pid": 3094698,
+        "exact_owned_command_verified": true,
+        "signal_sent": true,
+        "reason": "Initial phone z must follow original 12-degree C-axis incline; this candidate changed x only.",
+        "exclude_from_any_boundary": true,
+        "time_utc": "2026-11-03T07:55:39.854463+00:00"
+      },
+      "log_tail": "Excluded from boundary evidence."
+    },
+    {
+      "clip_id": "T03_C02",
+      "theta": 0.4,
+      "pid": 3132178,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.4_original_incline",
+      "config_sha256": "0e3544ed515d9e69b1eaa0b1ad5bcc42b8ce047913a63430c9625a51694fef57",
+      "original_config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+      "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "event_module_sha256": "9c2f8e86ed842789f90b28663c22acee22ac3f3f4864d7030c878f9f55509156",
+      "original_random_seed": 2201504954,
+      "expected_Genesis_seed": 54021306,
+      "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+      "egl_index": 4,
+      "physical_bootstrap_body_identical": true,
+      "bootstrap_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+      "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+      "formal_admission": false,
+      "alive": false,
+      "status": "completed",
+      "log_tail": ";5;159m FPS.\u001b[0m\n[INFO] rendering progress: 210/210 | focus=[1.235, -0.054, -0.563] | <none>_z=None <none>_z=None\n[INFO] motion signal (first vs last RGB mean abs diff) = 0.2718\n[WARN] Very low motion signal in rendered video. Check camera framing / object visibility.\n[OK] Saved annotations: /data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.4_original_incline/physics.json\n\u001b[38;5;159m[Genesis] [16:12:03] [INFO] \ud83d\udca4 Exiting Genesis and caching compiled kernels...\u001b[0m\n",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v4_t03_r032_original_seed_20261103/C_0.4_original_incline/physics.json",
+      "state_sha256": "88a2b3bd90c675fa7d652b3cd17d0c792dd58733133430f2be94bbd550babcdb",
+      "original_C_axis_solver_seed_and_clock_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 54021306,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/scripts/render_t03_v5_multicam_r032.py",
+        "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+        "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false
+      },
+      "nonphysical_background_profile_differences": {
+        "raytracing_env_map": [
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/backgrounds_v4/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr"
+        ],
+        "raytracing_lights": [
+          [
+            {
+              "pos": [
+                -0.3,
+                -0.18,
+                2.04
+              ],
+              "color": [
+                1.0,
+                0.93,
+                0.82
+              ],
+              "intensity": 7.2,
+              "radius": 0.52
+            },
+            {
+              "pos": [
+                0.92,
+                -0.78,
+                1.48
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 2.8,
+              "radius": 0.42
+            },
+            {
+              "pos": [
+                0.18,
+                -1.02,
+                0.58
+              ],
+              "color": [
+                1.0,
+                0.91,
+                0.8
+              ],
+              "intensity": 1.25,
+              "radius": 0.24
+            },
+            {
+              "pos": [
+                0.82,
+                -0.66,
+                0.03
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 0.72,
+              "radius": 0.18
+            }
+          ],
+          [
+            {
+              "pos": [
+                -0.2999999999999998,
+                -0.18000000000000016,
+                2.04
+              ],
+              "color": [
+                1.0,
+                0.93,
+                0.82
+              ],
+              "intensity": 7.2,
+              "radius": 0.52
+            },
+            {
+              "pos": [
+                0.9199999999999999,
+                -0.78,
+                1.48
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 2.8,
+              "radius": 0.42
+            }
+          ]
+        ]
+      },
+      "measurement": {
+        "label": 0,
+        "version": "t03-observable-stage-candidate-v1",
+        "window_frames": [
+          4,
+          154
+        ],
+        "evidence_frames": [
+          4,
+          154
+        ],
+        "can_phone_contact_frame": null,
+        "reason": "Complete reference window; no qualifying contact-then-edge-fall stage."
+      },
+      "source_full_window_position_errors_m": null,
+      "original_native_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16"
+    }
+  ]
+}

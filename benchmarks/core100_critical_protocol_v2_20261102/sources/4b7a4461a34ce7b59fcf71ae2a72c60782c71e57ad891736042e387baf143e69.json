@@ -1,0 +1,327 @@
+{
+  "clip_id": "T18_C05",
+  "original": {
+    "original_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phy2--phydataset/snapshots/a249aa4ad5a9355244935e30e5812137ffdb927d/benchmarks/core100_release_v4_20261022/canonical/T18_C05/state.json",
+    "original_stored_state_sha256": "9c226a99584f2c71ca50551062eb890a345ea9ae54e6bf5e51f3fec644e85d79",
+    "original_decoded_state_sha256": "9c226a99584f2c71ca50551062eb890a345ea9ae54e6bf5e51f3fec644e85d79",
+    "reference_video_sha256": "7ef0a0fcc092a34ffcd06e5e7532c2086baf4b2c41c3ee4590ebaa29249364c7",
+    "original_contact_history": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154
+    ],
+    "original_terminal_frames": [
+      {
+        "frame": 145,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 146,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 147,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 148,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 149,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 150,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 151,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 152,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 153,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      },
+      {
+        "frame": 154,
+        "label": 1,
+        "upper_books_on_table": [
+          "t18_book_04",
+          "t18_book_05",
+          "t18_book_06",
+          "t18_book_07",
+          "t18_book_08"
+        ]
+      }
+    ],
+    "original_state_modified": false
+  },
+  "repeats": {
+    "points": [
+      {
+        "kind": "endpoint",
+        "clip_id": "T18_C05",
+        "theta": 0.15,
+        "pid": 500126,
+        "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t18_gpu_20261102/c05_event_repeats_gpu4_retry/endpoint",
+        "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+        "config_sha256": "970f6cffaa5880775e679bf82cef3a4395cf36a8c6d56234b08dc73ab93deb32",
+        "parent_config_sha256": "c9a5ee5a29c5516a9be5df26eb062c8f04fe932b1d5092f54bfafc7e01402983",
+        "parent_state_sha256": "116ba66a7e070601d45c15aa7c2ea37e70489347b527c66c3810813ff6688097",
+        "original_solver_and_physical_inputs_preserved": true,
+        "seed": 3358189476,
+        "source_hashes": {
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t16_t20_physical_v5_20260816.py": "7a1f1b7fe1731dc45393231ab179275bfd7aafff66d0f328cdf287a025ed759d",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_base_physical_v5_20260816.py": "fc9df4b206e1cf82cafd2c2ed97e720847235584773c7b92353d2e29b8d518bf",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/06_run_genesis_import.py": "020168020e233ff41e0a3be9099f565fb2c218c1685f5ab3edbccf40899ec1cc",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/common.py": "60663bc613e3447d89dad5291142c17c2e1a787eb163237ca822e886acadb4ba",
+          "/data_cached/wangzijun_p25/core100_recovery_20261021/release_native_render.py": "83c8c1fb3969c5e0448f485fd6f22dd31b82eeb78732288d29acdfb53d9bc11a",
+          "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/worker.py": "3c77c6187baa6513f6772ebc5d521545ac01a124eb227c5386f0c7f251e42c12",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/t18_table_contact_boundary_worker.py": "1cb53c3e5fd815d9676773bab769fb482c6c8faa15621a77919ba471021ef7b8",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/backups/expansive_motion_v4_20260823_174934/scripts/build_project.py": "d4afbf471e6599fe37d9802e089f986dc05ea2043fe8b7b44fb6c15842a1b422"
+        },
+        "frozen_inputs_modified": false,
+        "formal_admission": false,
+        "status": "failed"
+      },
+      {
+        "kind": "source",
+        "clip_id": "T18_C05",
+        "theta": 0.06534482758620688,
+        "pid": 500122,
+        "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t18_gpu_20261102/c05_event_repeats_gpu4_retry/source",
+        "gpu_uuid": "GPU-a1763893-4894-cb56-2d97-06d695d6f419",
+        "config_sha256": "8082333e5973caf85697d22777f7e0ef70839d2ffe80e9ca9daeafba00408059",
+        "parent_config_sha256": "f74db0f840dd940a20357dca300c518c33f16bdd89e493cfb1c05a8d372901ca",
+        "parent_state_sha256": "002d1c27bdc07f9412b5850d678a8b6766fb7d50008138ae22528f4009208c66",
+        "original_solver_and_physical_inputs_preserved": true,
+        "seed": 3358189476,
+        "source_hashes": {
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t16_t20_physical_v5_20260816.py": "7a1f1b7fe1731dc45393231ab179275bfd7aafff66d0f328cdf287a025ed759d",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_base_physical_v5_20260816.py": "fc9df4b206e1cf82cafd2c2ed97e720847235584773c7b92353d2e29b8d518bf",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/06_run_genesis_import.py": "020168020e233ff41e0a3be9099f565fb2c218c1685f5ab3edbccf40899ec1cc",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/common.py": "60663bc613e3447d89dad5291142c17c2e1a787eb163237ca822e886acadb4ba",
+          "/data_cached/wangzijun_p25/core100_recovery_20261021/release_native_render.py": "83c8c1fb3969c5e0448f485fd6f22dd31b82eeb78732288d29acdfb53d9bc11a",
+          "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/worker.py": "3c77c6187baa6513f6772ebc5d521545ac01a124eb227c5386f0c7f251e42c12",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/native_bootstrap.py": "1a4b48ec891a8518d2f535d4a3af2898b855af3c46c464bec29b0b586f4e18dc",
+          "/data_cached/wangzijun_p25/liyuhan/core100_t18_native_overlap_20261029/t18_table_contact_boundary_worker.py": "1cb53c3e5fd815d9676773bab769fb482c6c8faa15621a77919ba471021ef7b8",
+          "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/backups/expansive_motion_v4_20260823_174934/scripts/build_project.py": "d4afbf471e6599fe37d9802e089f986dc05ea2043fe8b7b44fb6c15842a1b422"
+        },
+        "frozen_inputs_modified": false,
+        "formal_admission": false,
+        "status": "failed"
+      }
+    ],
+    "status": "pending"
+  },
+  "additional_repeats_successful": false,
+  "additional_repeat_limitation": "Failed CUDA attempts provide no event observations and no repeatability evidence; use only the separately hash-bound original and completed initial source replay.",
+  "source_trajectory_equivalence_claimed": false,
+  "original_numeric_profile_preserved": true,
+  "source_video_visual_review": {
+    "image_path": "review/core100_remaining74_admission_20261101/reference_review/T18_C05/original_sheet.jpg",
+    "image_sha256": "06e5bc57f30a230ce9c76392ef1407be270ab38a8631a5bf364923762ea8bf47",
+    "reviewer": "assistant_visual_review_not_independent_human_gold",
+    "notes": "The five non-extracted upper books visibly lean onto the tabletop; the travelling blue extracted book is not the target."
+  },
+  "scope": "Named terminal event and fixed-profile observed interval only; source arrangement drift is retained and not called exact trajectory reproduction.",
+  "source_hashes": {
+    "review\\core100_v2_resolution_20261102\\t18_c05_repeat_collect_3eb9228a77a3.json": "3eb9228a77a3fa74c45f37835c3fe1ae647e65e10cf4568a3c479fdaa9d8f254",
+    "scripts\\verify_core100_v2_t18_c05_event_equivalence.py": "2cac918dba3064cebb3b5801a2f7a54f26c7551ac9549f9e4a0536d9439bc1f0",
+    "scripts\\repeat_core100_v2_t18_c05.py": "32a300ab0099d6a6f8eea3a0e4727a8bc78a2ae7a5bc38300a1f9faf2974ef15",
+    "review\\core100_remaining74_admission_20261101\\reference_review\\T18_C05\\original_sheet.jpg": "06e5bc57f30a230ce9c76392ef1407be270ab38a8631a5bf364923762ea8bf47"
+  }
+}

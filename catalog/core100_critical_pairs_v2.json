@@ -1,0 +1,8 @@
+{
+  "version": "core100-critical-pairs-v2-20261101",
+  "release_root": "../benchmarks/core100_critical_pairs_v2_20261101",
+  "manifest": "MANIFEST.json",
+  "manifest_sha256": "d2f8b84898ac8c67589a99e13b46ec255e46915a05cf89f41a80541ded94450e",
+  "status": "prepared_new_100_case_roster; existing_live_tasks_preserved",
+  "unchanged_running_release": "catalog/active_core100_conditions.json"
+}

@@ -1,0 +1,13 @@
+{
+  "new_published_source_groups": [
+    "013ba0e608cb819b508343da",
+    "35b064bd3e4bb7633c86f0ae",
+    "7cbc1d072bad48eb07ebe1b1"
+  ],
+  "current_training_overlap": [],
+  "existing_training_modified": false,
+  "new_T18_references_are_local_counterfactual_replays": true,
+  "source_family_exclusion_retained": "T18 Earth friction source already held out; new states and RGB not in current training catalog",
+  "independent_context_claim": false,
+  "numerical_seed_variation": "Published T04/T06/T10 contrast evidence retains per-source seeds; do not describe these as shared-reference-seed interventions."
+}

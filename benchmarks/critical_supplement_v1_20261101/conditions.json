@@ -1,0 +1,2942 @@
+{
+  "schema": "critical-supplement-conditions-v1",
+  "version": "critical_supplement_v1_20261101",
+  "tasks": [
+    {
+      "point_id": "T04_S01",
+      "scene_id": "T04",
+      "native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02",
+      "reference_video_sha256": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T04/genesis/physedit_genesis_t04_8590576ddf58bc9f/videos/physedit_genesis_t04_8590576ddf58bc9f__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T04_S01.png",
+      "condition_image_sha256": "1ed93d8c9c5aedc829e881fb29d59f446a1d7d1418db0a30a4c0114bbdb8a8de",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "013ba0e608cb819b508343da",
+      "family_id": "bottom_book_friction_coefficient",
+      "theta": 0.08,
+      "evaluation_duration_s": 5.0,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 154,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.08.",
+        "Continue this scene with a fixed camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.08.",
+        "Preserve the scene and camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.08."
+      ],
+      "prompt_sha256": [
+        "4f1e607c821de6cc7dceda3f50d88424237cde6e4e5da928ed51f37054ed487d",
+        "c7681cb3542f066544f59b68c8e8349b398751b235a4cf4dde71a13fc02bd35d",
+        "c0a6985962a29a7d1b5f088be9d6dbe1c26335cb5e6312f5ad9df814e86a790e"
+      ],
+      "source_prompt_sha256": "d99ad200ae41d00597f248f00c2a194aae6f31f2e0d5982b1c0d1891ec5e4a07",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 19,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.6333333333333333,
+        "active_state_frames": 131,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 5.0,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 79,
+          "cogvideox": 79,
+          "wan": 96
+        },
+        {
+          "ltx": 85,
+          "cogvideox": 85,
+          "wan": 100
+        },
+        {
+          "ltx": 84,
+          "cogvideox": 84,
+          "wan": 99
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.friction",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.friction",
+          0.08,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.friction",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.friction",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.friction",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.friction",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.friction",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_friction_coefficient",
+          0.08,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          0.46,
+          "N"
+        ]
+      ],
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Removable support bar."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t04v3_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_ramp_support_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": false,
+            "pose": {
+              "position": [
+                -0.445,
+                0.0,
+                0.0459271233168216
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.85
+          },
+          {
+            "name": "t04v3_folder_ramp_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1,
+                0.0,
+                0.06244982510819708
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.42
+          },
+          {
+            "name": "t04v3_support_bar_guide_upslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.11177311570373336,
+                0.20850000000000002,
+                0.09017046266627837
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_guide_downslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.05721892136128171,
+                0.20850000000000002,
+                0.08318190919320409
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_endstop",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08284417862068999,
+                0.307,
+                0.09957081368341163
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_removable_support_bar",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.15,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08453413791508795,
+                0.045,
+                0.08637861759696423
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.11
+          },
+          {
+            "name": "t04v3_stack_book_bottom",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.22517245866124377,
+                0.0,
+                0.10842748917129652
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.4
+          },
+          {
+            "name": "t04v3_stack_book_middle",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24751984426648693,
+                -0.012,
+                0.1543391909107286
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.62
+          },
+          {
+            "name": "t04v3_stack_book_top",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.27497838911950234,
+                0.014,
+                0.19183210110125581
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.28
+          },
+          {
+            "name": "t04v3_chain_can_1",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.37,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_can_2",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.485,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_mug",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.63,
+                0.0,
+                0.0479
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.16
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "physical_support_bar_pull",
+            "target": "t04v3_removable_support_bar",
+            "force_world": [
+              0.0,
+              0.46,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 32
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 24
+      },
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T04_S02",
+      "scene_id": "T04",
+      "native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02",
+      "reference_video_sha256": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T04/genesis/physedit_genesis_t04_6f2390c1ae488df0/videos/physedit_genesis_t04_6f2390c1ae488df0__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T04_S02.png",
+      "condition_image_sha256": "1ed93d8c9c5aedc829e881fb29d59f446a1d7d1418db0a30a4c0114bbdb8a8de",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "013ba0e608cb819b508343da",
+      "family_id": "bottom_book_friction_coefficient",
+      "theta": 0.105,
+      "evaluation_duration_s": 5.0,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 154,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.105.",
+        "Continue this scene with a fixed camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.105.",
+        "Preserve the scene and camera. Hold initial state for 19/30 s. Gravity 9.81 m/s^2. Then pull the support bar off-screen in +Y: 0.46 N for 1.1 s; bar initial speed 0.15 m/s. Extraction setting 0.175 m. Ramp 7.3 deg; bottom book and ramp friction 0.105."
+      ],
+      "prompt_sha256": [
+        "a65efff6cae7e10ff7239572852f25efd87b3aa4d9972a98e926ca52d38b31c3",
+        "3e7b79d2c88fe1223872e851fb85a12cd1e99766cb5f5435ef85892a6f90bd18",
+        "42567db33ae841d9d028683e8cffe8dee599aef86d7cdd4c8f686452eb4af477"
+      ],
+      "source_prompt_sha256": "d99ad200ae41d00597f248f00c2a194aae6f31f2e0d5982b1c0d1891ec5e4a07",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 19,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.6333333333333333,
+        "active_state_frames": 131,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 5.0,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 80,
+          "cogvideox": 80,
+          "wan": 97
+        },
+        {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 101
+        },
+        {
+          "ltx": 85,
+          "cogvideox": 85,
+          "wan": 100
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.friction",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.friction",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.friction",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.friction",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.friction",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.friction",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.friction",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_friction_coefficient",
+          0.105,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          0.46,
+          "N"
+        ]
+      ],
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Removable support bar."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t04v3_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_ramp_support_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": false,
+            "pose": {
+              "position": [
+                -0.445,
+                0.0,
+                0.0459271233168216
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.85
+          },
+          {
+            "name": "t04v3_folder_ramp_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1,
+                0.0,
+                0.06244982510819708
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.42
+          },
+          {
+            "name": "t04v3_support_bar_guide_upslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.11177311570373336,
+                0.20850000000000002,
+                0.09017046266627837
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_guide_downslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.05721892136128171,
+                0.20850000000000002,
+                0.08318190919320409
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_endstop",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08284417862068999,
+                0.307,
+                0.09957081368341163
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_removable_support_bar",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.15,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08453413791508795,
+                0.045,
+                0.08637861759696423
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.11
+          },
+          {
+            "name": "t04v3_stack_book_bottom",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.22517245866124377,
+                0.0,
+                0.10842748917129652
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.4
+          },
+          {
+            "name": "t04v3_stack_book_middle",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24751984426648693,
+                -0.012,
+                0.1543391909107286
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.62
+          },
+          {
+            "name": "t04v3_stack_book_top",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.27497838911950234,
+                0.014,
+                0.19183210110125581
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.28
+          },
+          {
+            "name": "t04v3_chain_can_1",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.37,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_can_2",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.485,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_mug",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.63,
+                0.0,
+                0.0479
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.16
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "physical_support_bar_pull",
+            "target": "t04v3_removable_support_bar",
+            "force_world": [
+              0.0,
+              0.46,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 32
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 24
+      },
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T05_S01",
+      "scene_id": "T05",
+      "native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02",
+      "reference_video_sha256": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T05/genesis/physedit_genesis_t05_86669cf7ccc55a2f/videos/physedit_genesis_t05_86669cf7ccc55a2f__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T05_S01.png",
+      "condition_image_sha256": "3ea4bd35a1202b7e5ab88ef044682c58105febc6d04554f3be19b84003893099",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "9d3b5de39935d2e6baee06a9",
+      "family_id": "gap_ratio",
+      "theta": 1.134,
+      "evaluation_duration_s": 6.833333333333333,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 209,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.134; width 0.086184 m.",
+        "Continue this scene with a fixed camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.134; width 0.086184 m.",
+        "Preserve the scene and camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.134; width 0.086184 m."
+      ],
+      "prompt_sha256": [
+        "ec52d5f742c7d8d0f349de6f206e6602d7faebf73d8e7589c7994736935bf270",
+        "de17570ccce7acc4d9878647f65974453b590269095ef3d9c7982471bf0ad80d",
+        "8170f20df7990e0070ef2929ac06abb16583354e04998727bba061f8a0b82394"
+      ],
+      "source_prompt_sha256": "011eb0b06d2f2982e8951036551e629ef1c342b89e6f1d265b916ad056865918",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 22,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.7333333333333333,
+        "active_state_frames": 183,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 6.833333333333333,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 76,
+          "cogvideox": 76,
+          "wan": 99
+        },
+        {
+          "ltx": 82,
+          "cogvideox": 82,
+          "wan": 103
+        },
+        {
+          "ltx": 81,
+          "cogvideox": 81,
+          "wan": 102
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.friction",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.friction",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          0.086184,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          4.0,
+          "°"
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_friction_coefficient",
+          0.049,
+          ""
+        ],
+        [
+          "guide_friction_coefficient",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          0.118,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          0.118,
+          "m/s"
+        ]
+      ],
+      "external_control_disclosure": null,
+      "external_control_inputs": null,
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T05_S02",
+      "scene_id": "T05",
+      "native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02",
+      "reference_video_sha256": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T05/genesis/physedit_genesis_t05_47ec89ceca2bdd90/videos/physedit_genesis_t05_47ec89ceca2bdd90__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T05_S02.png",
+      "condition_image_sha256": "471f25bba8dbfa6b2c93ebed6f23f9dc3c1b1f30b3315948f1a54eebfadba1cb",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "9d3b5de39935d2e6baee06a9",
+      "family_id": "gap_ratio",
+      "theta": 1.16,
+      "evaluation_duration_s": 6.833333333333333,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 209,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.16; width 0.08815999999999999 m.",
+        "Continue this scene with a fixed camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.16; width 0.08815999999999999 m.",
+        "Preserve the scene and camera. Hold initial state for 11/15 s. Gravity 9.81 m/s^2. Then phone initial speed 0.118 m/s; yaw 4 deg. Tray 3 deg; phone/tray friction 0.049; guide friction 0.08. Guide gap ratio 1.16; width 0.08815999999999999 m."
+      ],
+      "prompt_sha256": [
+        "328b28fff12d142dcbde9f09a24ad5b28b067e7a2a61c76be8085485d973271e",
+        "25760a887eae4824604d1334f7ed966884522e1f714e8f6352022582e5239fc2",
+        "d05e99fa87287cd2014d2ff2639dcede24c6fcd5745c7032d90e6ce821c7c042"
+      ],
+      "source_prompt_sha256": "4d560737334e90e84cc9d961e5d443da9358a6b482518abc48ed8c80fdd477fa",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 22,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.7333333333333333,
+        "active_state_frames": 183,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 6.833333333333333,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 80,
+          "cogvideox": 80,
+          "wan": 109
+        },
+        {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 113
+        },
+        {
+          "ltx": 85,
+          "cogvideox": 85,
+          "wan": 112
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t05v2_moving_phone.mass",
+          0.19,
+          "kg"
+        ],
+        [
+          "t05v2_moving_phone.friction",
+          0.049,
+          ""
+        ],
+        [
+          "t05v2_moving_phone.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t05v2_downstream_can.friction",
+          0.3,
+          ""
+        ],
+        [
+          "t05v2_downstream_can.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "tray_angle_deg",
+          3.0,
+          "°"
+        ],
+        [
+          "gap_width_m",
+          0.08815999999999999,
+          "m"
+        ],
+        [
+          "initial_yaw_deg",
+          4.0,
+          "°"
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "phone_tray_friction_coefficient",
+          0.049,
+          ""
+        ],
+        [
+          "guide_friction_coefficient",
+          0.08,
+          ""
+        ],
+        [
+          "initial_speed_mps",
+          0.118,
+          "m/s"
+        ],
+        [
+          "t05v2_moving_phone.initial_speed",
+          0.118,
+          "m/s"
+        ]
+      ],
+      "external_control_disclosure": null,
+      "external_control_inputs": null,
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T10_S01",
+      "scene_id": "T10",
+      "native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p19",
+      "reference_video_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T10/genesis/physedit_genesis_t10_27fa44c4f57591ba/videos/physedit_genesis_t10_27fa44c4f57591ba__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T10_S01.png",
+      "condition_image_sha256": "c6bca5eb2f2e7a0b6da96e4f9da9f709078df69ce5b4cb654d5a81fa1c58a203",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+      "family_id": "support_x",
+      "theta": 0.204,
+      "evaluation_duration_s": 4.273333333333333,
+      "physical_frame_period_s": 0.02,
+      "end_frame_index": 209,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.204,0.08,0.16] m. Folder angle 37.8 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg.",
+        "Continue this scene with a fixed camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.204,0.08,0.16] m. Folder angle 37.8 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg.",
+        "Preserve the scene and camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.204,0.08,0.16] m. Folder angle 37.8 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg."
+      ],
+      "prompt_sha256": [
+        "e8eae3fbe0e06897d87dbde8060007084c0675415e415755d21e1247a9f27d32",
+        "7a210905ca606d2dabd8b3ba1757d7332e1b5fca8f9c95ee5b3248b30c2fb78d",
+        "07813222415462366a6881a2492a954fa8d199f1f6a27ee96e8a90cc4a556a30"
+      ],
+      "source_prompt_sha256": "7b86d718ad75373193ebdc8f4784d52d7b4e9122f4f9a05e6db4c76014da531c",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 13,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.43333333333333335,
+        "active_state_frames": 192,
+        "active_frame_period_s": 0.02,
+        "physical_observation_duration_s": 4.273333333333333,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 80,
+          "cogvideox": 80,
+          "wan": 100
+        },
+        {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 104
+        },
+        {
+          "ltx": 85,
+          "cogvideox": 85,
+          "wan": 103
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.friction",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.friction",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.friction",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          37.8,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          0.204,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "external_control_disclosure": null,
+      "external_control_inputs": null,
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T10_S02",
+      "scene_id": "T10",
+      "native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p20",
+      "reference_video_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T10/genesis/physedit_genesis_t10_10b28c90863b50e3/videos/physedit_genesis_t10_10b28c90863b50e3__cam01.mp4",
+        "member": ""
+      },
+      "condition_image": "assets/T10_S02.png",
+      "condition_image_sha256": "dc45371ae67ce887d63ec1542fe172c7ce429f4bf6f9445c78ebfd6de874e54e",
+      "condition_frame_index": 4,
+      "source_width": 854,
+      "source_height": 480,
+      "source_group_id": "7cbc1d072bad48eb07ebe1b1",
+      "family_id": "support_x",
+      "theta": 0.2105,
+      "evaluation_duration_s": 4.273333333333333,
+      "physical_frame_period_s": 0.02,
+      "end_frame_index": 209,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.2105,0.08,0.16] m. Folder angle 37.37 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg.",
+        "Continue this scene with a fixed camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.2105,0.08,0.16] m. Folder angle 37.37 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg.",
+        "Preserve the scene and camera. Hold initial state for 13/30 s. Gravity 9.81 m/s^2. Then tape roll speed 1.8 m/s. Pen initial position [0.2105,0.08,0.16] m. Folder angle 37.37 deg. Masses: folder 0.05 kg, pen 0.095 kg, roll 0.18 kg."
+      ],
+      "prompt_sha256": [
+        "851ed1a4ecd2fa0e627a59b5ba056f309c7f35b6b1761c50958a5fbf49b034b3",
+        "e9f009cb724b1c04c64ec3790f166f601c41d0752fcff05c5bde83167e4442c5",
+        "9caa6fc86549cf734d5577d0d51d5880b6d587f38cb3fb59fe25664ae017d1b5"
+      ],
+      "source_prompt_sha256": "e23d5d4e46ce44cd5ed49e76d0cd24d2c5954a9564602d90645f74a78a621d6b",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 13,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 0.43333333333333335,
+        "active_state_frames": 192,
+        "active_frame_period_s": 0.02,
+        "physical_observation_duration_s": 4.273333333333333,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame."
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 80,
+          "cogvideox": 80,
+          "wan": 102
+        },
+        {
+          "ltx": 86,
+          "cogvideox": 86,
+          "wan": 106
+        },
+        {
+          "ltx": 85,
+          "cogvideox": 85,
+          "wan": 105
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.friction",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.friction",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.friction",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          37.37,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          0.2105,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          1.8,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "external_control_disclosure": null,
+      "external_control_inputs": null,
+      "training_partition": "protected_core100_reserve80_lineage"
+    },
+    {
+      "point_id": "T11_S01",
+      "scene_id": "T11",
+      "native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03",
+      "reference_video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T11/genesis/archives/media_d8f5fc97f7761ccc.tar.gz",
+        "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/videos/cam01.mp4"
+      },
+      "condition_image": "assets/T11_S01.png",
+      "condition_image_sha256": "6aa57a83511ee8a45f589bd5653fbb754d1d276787c01225de3f9e1e647ead3a",
+      "condition_frame_index": 4,
+      "source_width": 1280,
+      "source_height": 720,
+      "source_group_id": "7cbcc04e987038725bc260c1",
+      "family_id": "driver_initial_speed_command_mps",
+      "theta": 2.3,
+      "evaluation_duration_s": 5.0,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 154,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.3 m/s. Off-screen +X eraser force: 0.21333333333333332 N before eraser-relay contact; 0.55 N until relay-case contact; 0.16666666666666657 N for 6 frames afterward. Active force frames 0-105 at 30 Hz.",
+        "Continue this scene with a fixed camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.3 m/s. Off-screen +X eraser force: 0.21333333333333332 N before eraser-relay contact; 0.55 N until relay-case contact; 0.16666666666666657 N for 6 frames afterward. Active force frames 0-105 at 30 Hz.",
+        "Preserve the scene and camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.3 m/s. Off-screen +X eraser force: 0.21333333333333332 N before eraser-relay contact; 0.55 N until relay-case contact; 0.16666666666666657 N for 6 frames afterward. Active force frames 0-105 at 30 Hz."
+      ],
+      "prompt_sha256": [
+        "56842c214105d30c644d2fa90d0c13d155b4c24844844870b28f035d21ec2ec3",
+        "c26bdbd5588389fb639452a46f33a8407e1238ecc0615fcaea0d644fdfd1cae1",
+        "6a2170419bb0d67a91e2003ddf586f5f271a06045b2868735e3e13145cbdbfaa"
+      ],
+      "source_prompt_sha256": "daa8b09a9f0995d50eb944a4c07bff03534febf6f5c1b5faa0b474738234d042",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 55,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 1.8333333333333333,
+        "active_state_frames": 95,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 5.0,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame.",
+        "conditional_force_recipe": {
+          "target": "t11_driver_eraser",
+          "force_world": [
+            0.21333333333333332,
+            0.0,
+            0.0
+          ],
+          "force_world_after_first_contact": [
+            0.55,
+            0.0,
+            0.0
+          ],
+          "force_world_after_contact": [
+            0.16666666666666657,
+            0.0,
+            0.0
+          ],
+          "first_contact_pair": [
+            "t11_driver_eraser",
+            "t11_relay_pencil_case"
+          ],
+          "stop_on_contact_pair": [
+            "t11_relay_pencil_case",
+            "t11_eyeglasses_case"
+          ],
+          "stop_after_contact_delay_frames": 6,
+          "frame_start": 0,
+          "frame_end": 105
+        }
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 109,
+          "cogvideox": 109,
+          "wan": 144
+        },
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 148
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 147
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity_vector",
+          [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "m/s^2"
+        ],
+        [
+          "t11_tabletop_collision_slab.fixed",
+          true,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.mass",
+          0.0,
+          "kg"
+        ],
+        [
+          "t11_tabletop_collision_slab.restitution",
+          0.01,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.size",
+          [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "m"
+        ],
+        [
+          "t11_tabletop_collision_slab.initial_position",
+          [
+            0.0,
+            0.0,
+            -0.032
+          ],
+          "m"
+        ],
+        [
+          "t11_tabletop_collision_slab.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_driver_eraser.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_driver_eraser.friction",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_driver_eraser.size",
+          [
+            0.1,
+            0.05,
+            0.035
+          ],
+          "m"
+        ],
+        [
+          "t11_driver_eraser.initial_position",
+          [
+            -0.24599360730593617,
+            0.0,
+            0.0177
+          ],
+          "m"
+        ],
+        [
+          "t11_driver_eraser.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_driver_eraser.initial_velocity",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m/s"
+        ],
+        [
+          "t11_eyeglasses_case.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.friction",
+          0.12,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          0.05,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.size",
+          [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "m"
+        ],
+        [
+          "t11_eyeglasses_case.initial_position",
+          [
+            0.5367666666666666,
+            0.0,
+            0.0202
+          ],
+          "m"
+        ],
+        [
+          "t11_eyeglasses_case.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_relay_pencil_case.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          0.1,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.size",
+          [
+            0.198,
+            0.078,
+            0.036
+          ],
+          "m"
+        ],
+        [
+          "t11_relay_pencil_case.initial_position",
+          [
+            0.18300639269406385,
+            0.0,
+            0.018199999999999997
+          ],
+          "m"
+        ],
+        [
+          "t11_relay_pencil_case.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_floor_collision_slab.fixed",
+          true,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.friction",
+          0.46,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.mass",
+          0.0,
+          "kg"
+        ],
+        [
+          "t11_floor_collision_slab.restitution",
+          0.03,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.size",
+          [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "m"
+        ],
+        [
+          "t11_floor_collision_slab.initial_position",
+          [
+            0.0,
+            -0.2,
+            -0.874
+          ],
+          "m"
+        ],
+        [
+          "t11_floor_collision_slab.initial_euler_xyz",
+          [
+            0,
+            0,
+            0
+          ],
+          "degrees"
+        ],
+        [
+          "prescribed_parameters.gravity_vector_mps2",
+          [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "m/s^2"
+        ],
+        [
+          "prescribed_parameters.driver_initial_speed_mps",
+          0.0,
+          "m/s"
+        ],
+        [
+          "prescribed_parameters.driver_relay_gap_m",
+          0.28,
+          "m"
+        ],
+        [
+          "prescribed_parameters.relay_case_gap_m",
+          0.16726027397260274,
+          "m"
+        ],
+        [
+          "prescribed_parameters.case_edge_margin_m",
+          0.08573333333333333,
+          "m"
+        ],
+        [
+          "prescribed_parameters.case_friction_coefficient",
+          0.12,
+          ""
+        ],
+        [
+          "prescribed_parameters.driver_mass_kg",
+          0.12,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.case_mass_kg",
+          0.2,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.table_friction_coefficient",
+          0.04,
+          ""
+        ],
+        [
+          "prescribed_parameters.pencil_tin_mass_kg",
+          0.1,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.driver_force_before_first_contact_n",
+          0.21333333333333332,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_between_contacts_n",
+          0.55,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_after_second_contact_n",
+          0.16666666666666657,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_after_second_contact_frames",
+          6,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.force_world",
+          [
+            0.21333333333333332,
+            0.0,
+            0.0
+          ],
+          "N"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.frame_start",
+          0,
+          "frame index"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.frame_end",
+          105,
+          "frame index"
+        ]
+      ],
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen contact-dependent force drives Eraser."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t11_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t11_driver_eraser",
+            "motion": {
+              "type": "set_velocity",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24599360730593617,
+                0.0,
+                0.0177
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_eyeglasses_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.5367666666666666,
+                0.0,
+                0.0202
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_relay_pencil_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.18300639269406385,
+                0.0,
+                0.018199999999999997
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.1
+          },
+          {
+            "name": "t11_floor_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                -0.2,
+                -0.874
+              ],
+              "euler_xyz": [
+                0,
+                0,
+                0
+              ]
+            },
+            "mass": 0.0
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.21333333333333332,
+              0.0,
+              0.0
+            ],
+            "first_contact_pair": [
+              "t11_driver_eraser",
+              "t11_relay_pencil_case"
+            ],
+            "force_world_after_first_contact": [
+              0.55,
+              0.0,
+              0.0
+            ],
+            "resume_after_first_contact_delay_frames": 0,
+            "force_world_relay_phase": [
+              0.55,
+              0.0,
+              0.0
+            ],
+            "force_world_after_contact": [
+              0.16666666666666657,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105,
+            "stop_on_contact_pair": [
+              "t11_relay_pencil_case",
+              "t11_eyeglasses_case"
+            ],
+            "stop_after_contact_delay_frames": 6
+          }
+        ],
+        "mechanisms": {},
+        "render": {
+          "write_video": true,
+          "render_backend": "raytracing",
+          "fps": 30,
+          "frames": 210,
+          "pre_static_frames": 60,
+          "resolution": [
+            1280,
+            720
+          ],
+          "physics_steps_per_render_frame": 67,
+          "use_native_recording": false,
+          "save_rgb_frames": false,
+          "save_depth_frames": false,
+          "save_seg_frames": false,
+          "camera_mode": "fixed_view",
+          "fixed_view": {
+            "position": [
+              0.3,
+              -1.08,
+              0.5
+            ],
+            "look_at": [
+              0.38,
+              0.0,
+              -0.16
+            ],
+            "fov_deg": 45.0
+          },
+          "raytracing_spp": 64,
+          "raytracing_denoise": true,
+          "save_video": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/videos/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03__cam01.mp4",
+          "save_first_rgb": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/qa/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03__cam01__initial.png",
+          "save_last_rgb": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03/qa/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03__cam01__final.png"
+        },
+        "fps": null,
+        "pre_static_frames": null
+      },
+      "training_partition": "ood_holdout"
+    },
+    {
+      "point_id": "T11_S02",
+      "scene_id": "T11",
+      "native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04",
+      "reference_video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+      "reference_download": {
+        "repo_id": "phy2/phydataset",
+        "revision": "2d78126612b10a9aeb122b967084036c4d9f378f",
+        "path": "data/T11/genesis/archives/media_d8f5fc97f7761ccc.tar.gz",
+        "member": "samples/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/videos/cam01.mp4"
+      },
+      "condition_image": "assets/T11_S02.png",
+      "condition_image_sha256": "6aa57a83511ee8a45f589bd5653fbb754d1d276787c01225de3f9e1e647ead3a",
+      "condition_frame_index": 4,
+      "source_width": 1280,
+      "source_height": 720,
+      "source_group_id": "7cbcc04e987038725bc260c1",
+      "family_id": "driver_initial_speed_command_mps",
+      "theta": 2.5,
+      "evaluation_duration_s": 5.0,
+      "physical_frame_period_s": 0.03333333333333333,
+      "end_frame_index": 154,
+      "reference_media_fps": "30/1",
+      "prompt_variants_en": [
+        "Fixed camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.5 m/s. Off-screen +X eraser force: 0.22666666666666666 N before eraser-relay contact; 0.55 N until relay-case contact; 0.23333333333333328 N for 8 frames afterward. Active force frames 0-105 at 30 Hz.",
+        "Continue this scene with a fixed camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.5 m/s. Off-screen +X eraser force: 0.22666666666666666 N before eraser-relay contact; 0.55 N until relay-case contact; 0.23333333333333328 N for 8 frames afterward. Active force frames 0-105 at 30 Hz.",
+        "Preserve the scene and camera. Hold initial state for 11/6 s. Gravity 9.81 m/s^2. Then eraser initial speed 0 m/s. Nominal drive 2.5 m/s. Off-screen +X eraser force: 0.22666666666666666 N before eraser-relay contact; 0.55 N until relay-case contact; 0.23333333333333328 N for 8 frames afterward. Active force frames 0-105 at 30 Hz."
+      ],
+      "prompt_sha256": [
+        "0eccc2dd469103d11af3cb238176e428d39584b69faa25110269237241c0e981",
+        "0a0b568b72f644c852b5151dead536d41e674c61c5d49a9cc08ae7f45cb8c456",
+        "f159002f08d9d14d4411cdf44e9d3dab9a8c9ef6ec0e0c4e4991e8fd390346ff"
+      ],
+      "source_prompt_sha256": "f37406caf8dc8ae63860269d9ee90ff591bdd082ce965f4cac6df20b93a26162",
+      "prompt_policy": "compact-three-variants-declared-source-schedule-v1",
+      "declared_schedule": {
+        "remaining_static_frames": 55,
+        "static_clock_hz": 30.0,
+        "initial_hold_duration_s": 1.8333333333333333,
+        "active_state_frames": 95,
+        "active_frame_period_s": 0.03333333333333333,
+        "physical_observation_duration_s": 5.0,
+        "clock_convention": "After condition frame 4: remaining saved static frames at source media FPS, then each saved active state at dt*steps_per_frame.",
+        "conditional_force_recipe": {
+          "target": "t11_driver_eraser",
+          "force_world": [
+            0.22666666666666666,
+            0.0,
+            0.0
+          ],
+          "force_world_after_first_contact": [
+            0.55,
+            0.0,
+            0.0
+          ],
+          "force_world_after_contact": [
+            0.23333333333333328,
+            0.0,
+            0.0
+          ],
+          "first_contact_pair": [
+            "t11_driver_eraser",
+            "t11_relay_pencil_case"
+          ],
+          "stop_on_contact_pair": [
+            "t11_relay_pencil_case",
+            "t11_eyeglasses_case"
+          ],
+          "stop_after_contact_delay_frames": 8,
+          "frame_start": 0,
+          "frame_end": 105
+        }
+      },
+      "prompt_token_counts": [
+        {
+          "ltx": 108,
+          "cogvideox": 108,
+          "wan": 144
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 148
+        },
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 147
+        }
+      ],
+      "parameter_facts": [
+        [
+          "gravity_vector",
+          [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "m/s^2"
+        ],
+        [
+          "t11_tabletop_collision_slab.fixed",
+          true,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.mass",
+          0.0,
+          "kg"
+        ],
+        [
+          "t11_tabletop_collision_slab.restitution",
+          0.01,
+          ""
+        ],
+        [
+          "t11_tabletop_collision_slab.size",
+          [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "m"
+        ],
+        [
+          "t11_tabletop_collision_slab.initial_position",
+          [
+            0.0,
+            0.0,
+            -0.032
+          ],
+          "m"
+        ],
+        [
+          "t11_tabletop_collision_slab.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_driver_eraser.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_driver_eraser.friction",
+          0.03,
+          ""
+        ],
+        [
+          "t11_driver_eraser.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_driver_eraser.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_driver_eraser.size",
+          [
+            0.1,
+            0.05,
+            0.035
+          ],
+          "m"
+        ],
+        [
+          "t11_driver_eraser.initial_position",
+          [
+            -0.24599360730593617,
+            0.0,
+            0.0177
+          ],
+          "m"
+        ],
+        [
+          "t11_driver_eraser.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_driver_eraser.initial_velocity",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m/s"
+        ],
+        [
+          "t11_eyeglasses_case.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.friction",
+          0.12,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.mass",
+          0.12,
+          "kg"
+        ],
+        [
+          "t11_eyeglasses_case.restitution",
+          0.05,
+          ""
+        ],
+        [
+          "t11_eyeglasses_case.size",
+          [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "m"
+        ],
+        [
+          "t11_eyeglasses_case.initial_position",
+          [
+            0.5367666666666666,
+            0.0,
+            0.0202
+          ],
+          "m"
+        ],
+        [
+          "t11_eyeglasses_case.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_relay_pencil_case.fixed",
+          false,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.friction",
+          0.04,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.mass",
+          0.1,
+          "kg"
+        ],
+        [
+          "t11_relay_pencil_case.restitution",
+          0.06,
+          ""
+        ],
+        [
+          "t11_relay_pencil_case.size",
+          [
+            0.198,
+            0.078,
+            0.036
+          ],
+          "m"
+        ],
+        [
+          "t11_relay_pencil_case.initial_position",
+          [
+            0.18300639269406385,
+            0.0,
+            0.018199999999999997
+          ],
+          "m"
+        ],
+        [
+          "t11_relay_pencil_case.initial_euler_xyz",
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "degrees"
+        ],
+        [
+          "t11_floor_collision_slab.fixed",
+          true,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.friction",
+          0.46,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.mass",
+          0.0,
+          "kg"
+        ],
+        [
+          "t11_floor_collision_slab.restitution",
+          0.03,
+          ""
+        ],
+        [
+          "t11_floor_collision_slab.size",
+          [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "m"
+        ],
+        [
+          "t11_floor_collision_slab.initial_position",
+          [
+            0.0,
+            -0.2,
+            -0.874
+          ],
+          "m"
+        ],
+        [
+          "t11_floor_collision_slab.initial_euler_xyz",
+          [
+            0,
+            0,
+            0
+          ],
+          "degrees"
+        ],
+        [
+          "prescribed_parameters.gravity_vector_mps2",
+          [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "m/s^2"
+        ],
+        [
+          "prescribed_parameters.driver_initial_speed_mps",
+          0.0,
+          "m/s"
+        ],
+        [
+          "prescribed_parameters.driver_relay_gap_m",
+          0.28,
+          "m"
+        ],
+        [
+          "prescribed_parameters.relay_case_gap_m",
+          0.16726027397260274,
+          "m"
+        ],
+        [
+          "prescribed_parameters.case_edge_margin_m",
+          0.08573333333333333,
+          "m"
+        ],
+        [
+          "prescribed_parameters.case_friction_coefficient",
+          0.12,
+          ""
+        ],
+        [
+          "prescribed_parameters.driver_mass_kg",
+          0.12,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.case_mass_kg",
+          0.2,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.table_friction_coefficient",
+          0.04,
+          ""
+        ],
+        [
+          "prescribed_parameters.pencil_tin_mass_kg",
+          0.1,
+          "kg"
+        ],
+        [
+          "prescribed_parameters.driver_force_before_first_contact_n",
+          0.22666666666666666,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_between_contacts_n",
+          0.55,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_after_second_contact_n",
+          0.23333333333333328,
+          "N"
+        ],
+        [
+          "prescribed_parameters.driver_force_after_second_contact_frames",
+          8,
+          "N"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.force_world",
+          [
+            0.22666666666666666,
+            0.0,
+            0.0
+          ],
+          "N"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.frame_start",
+          0,
+          "frame index"
+        ],
+        [
+          "t11_driver_eraser.prescribed_force_1.frame_end",
+          105,
+          "frame index"
+        ]
+      ],
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen contact-dependent force drives Eraser."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t11_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t11_driver_eraser",
+            "motion": {
+              "type": "set_velocity",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24599360730593617,
+                0.0,
+                0.0177
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_eyeglasses_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.5367666666666666,
+                0.0,
+                0.0202
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.12
+          },
+          {
+            "name": "t11_relay_pencil_case",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.18300639269406385,
+                0.0,
+                0.018199999999999997
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.1
+          },
+          {
+            "name": "t11_floor_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                -0.2,
+                -0.874
+              ],
+              "euler_xyz": [
+                0,
+                0,
+                0
+              ]
+            },
+            "mass": 0.0
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.22666666666666666,
+              0.0,
+              0.0
+            ],
+            "first_contact_pair": [
+              "t11_driver_eraser",
+              "t11_relay_pencil_case"
+            ],
+            "force_world_after_first_contact": [
+              0.55,
+              0.0,
+              0.0
+            ],
+            "resume_after_first_contact_delay_frames": 0,
+            "force_world_relay_phase": [
+              0.55,
+              0.0,
+              0.0
+            ],
+            "force_world_after_contact": [
+              0.23333333333333328,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105,
+            "stop_on_contact_pair": [
+              "t11_relay_pencil_case",
+              "t11_eyeglasses_case"
+            ],
+            "stop_after_contact_delay_frames": 8
+          }
+        ],
+        "mechanisms": {},
+        "render": {
+          "write_video": true,
+          "render_backend": "raytracing",
+          "fps": 30,
+          "frames": 210,
+          "pre_static_frames": 60,
+          "resolution": [
+            1280,
+            720
+          ],
+          "physics_steps_per_render_frame": 67,
+          "use_native_recording": false,
+          "save_rgb_frames": false,
+          "save_depth_frames": false,
+          "save_seg_frames": false,
+          "camera_mode": "fixed_view",
+          "fixed_view": {
+            "position": [
+              0.3,
+              -1.08,
+              0.5
+            ],
+            "look_at": [
+              0.38,
+              0.0,
+              -0.16
+            ],
+            "fov_deg": 45.0
+          },
+          "raytracing_spp": 64,
+          "raytracing_denoise": true,
+          "save_video": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/videos/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04__cam01.mp4",
+          "save_first_rgb": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/qa/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04__cam01__initial.png",
+          "save_last_rgb": "/data_cached/wangzijun_p25/phyediting_t11_r011/formal_880_720p/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04/qa/T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04__cam01__final.png"
+        },
+        "fps": null,
+        "pre_static_frames": null
+      },
+      "training_partition": "ood_holdout"
+    }
+  ]
+}

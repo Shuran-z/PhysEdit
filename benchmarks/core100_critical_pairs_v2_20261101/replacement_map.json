@@ -1,0 +1,162 @@
+[
+  {
+    "clip_id": "T04_C01",
+    "supplement_point_id": "T04_S01",
+    "old_native_sample_id": "T04F880V1__bg01_home_ase__g01_moon__global_03__rep01",
+    "old_reference_sha256": "5d0931944f25399117bf9acd6707a20a5c32cda1a3afbe711c9be0d3af80f307",
+    "new_native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_minus__rep02",
+    "new_reference_sha256": "8ed382385bce50b42d876f937a4c2a0c8bb9bb5236378b33d5ac61f788c683d4",
+    "reason": "replace_unresolved_original_context",
+    "event": "original_full_chain",
+    "label": 1,
+    "family_id": "bottom_book_friction_coefficient",
+    "theta": 0.08,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.4166666666666665
+      ],
+      "bin": null
+    }
+  },
+  {
+    "clip_id": "T04_C03",
+    "supplement_point_id": "T04_S02",
+    "old_native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__global_03__rep01",
+    "old_reference_sha256": "d2720f3f0dd6e2a972a0790373e371665ac00c62230809f906f9dbc50ae3b9df",
+    "new_native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_star__rep02",
+    "new_reference_sha256": "65ff91ebbd1860a9904b672144a227c4052b725174a5b82c5ca0f282006961e9",
+    "reason": "complete_opposite_pair_preserve_other_gravity_and_original_pair_coverage",
+    "event": "original_full_chain",
+    "label": 0,
+    "family_id": "bottom_book_friction_coefficient",
+    "theta": 0.105,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.4166666666666665
+      ],
+      "bin": null
+    }
+  },
+  {
+    "clip_id": "T05_C01",
+    "supplement_point_id": "T05_S01",
+    "old_native_sample_id": "T05F880V1__bg01_home_ase__g01_moon__global_16__rep01",
+    "old_reference_sha256": "ba65662bffd4b0de9d1ea2f77fc019b2b8624cff2f5b05483759fc08b4d38b1d",
+    "new_native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_star__rep02",
+    "new_reference_sha256": "a726b813639d4fcbbd29da36340c8283f0ad86be0fbca92ef3ab3d4a4b82c7fa",
+    "reason": "replace_unresolved_original_context",
+    "event": "gate_passage",
+    "label": 0,
+    "family_id": "gap_ratio",
+    "theta": 1.134,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.5200000000000023
+      ],
+      "bin": null
+    }
+  },
+  {
+    "clip_id": "T05_C03",
+    "supplement_point_id": "T05_S02",
+    "old_native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__global_16__rep01",
+    "old_reference_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+    "new_native_sample_id": "T05F880V1__bg01_home_ase__g03_earth__cf_gate_passage_plus__rep02",
+    "new_reference_sha256": "64fde43cbc60b235be9c128bb1cfe0a14042c1d203663fd445c70c91a1fdb751",
+    "reason": "complete_opposite_pair_preserve_other_gravity_and_original_pair_coverage",
+    "event": "gate_passage",
+    "label": 1,
+    "family_id": "gap_ratio",
+    "theta": 1.16,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.5200000000000023
+      ],
+      "bin": null
+    }
+  },
+  {
+    "clip_id": "T10_C01",
+    "supplement_point_id": "T10_S01",
+    "old_native_sample_id": "PROD_T10_bg01_home_ase_g01_moon_supx_p00",
+    "old_reference_sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e",
+    "new_native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p19",
+    "new_reference_sha256": "5b064cc1b07d66aa203848975ea4f8e8cb306d66d94bb15d5bf5e2bb9577ca89",
+    "reason": "replace_unresolved_original_context",
+    "event": "support_pen_displacement_reaches_source_threshold",
+    "label": 1,
+    "family_id": "support_x",
+    "theta": 0.204,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.047445255474452594
+      ],
+      "bin": "near"
+    }
+  },
+  {
+    "clip_id": "T10_C02",
+    "supplement_point_id": "T10_S02",
+    "old_native_sample_id": "PROD_T10_bg01_home_ase_g02_mars_supx_p00",
+    "old_reference_sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a",
+    "new_native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p20",
+    "new_reference_sha256": "e6ccbc64faf9b83b6d9fc2995ddd091af0f56c6c68644e1b5d1c0954a432b481",
+    "reason": "replace_unresolved_original_context",
+    "event": "support_pen_displacement_reaches_source_threshold",
+    "label": 0,
+    "family_id": "support_x",
+    "theta": 0.2105,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.047445255474452594
+      ],
+      "bin": "near"
+    }
+  },
+  {
+    "clip_id": "T11_C01",
+    "supplement_point_id": "T11_S01",
+    "old_native_sample_id": "T11R011__bg01_home_ase__g01_moon__G_global_06",
+    "old_reference_sha256": "7a83eee8d9e00fce180bed3885c47a4a589d693a956c20b8c07b113e8184ca36",
+    "new_native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_03",
+    "new_reference_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+    "reason": "replace_unresolved_original_context",
+    "event": "t11_driver_eraser_final_center_below_minus_10cm",
+    "label": 0,
+    "family_id": "driver_initial_speed_command_mps",
+    "theta": 2.3,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.1111111111111112
+      ],
+      "bin": null
+    }
+  },
+  {
+    "clip_id": "T11_C02",
+    "supplement_point_id": "T11_S02",
+    "old_native_sample_id": "T11R011__bg01_home_ase__g02_mars__G_global_06",
+    "old_reference_sha256": "880008d7be3cfc0cc1d871b3d01efb5c328b4f685cc4fb654f6b300e79aa1ff8",
+    "new_native_sample_id": "T11R011__bg01_home_ase__g03_earth__A_speed_theta_minus_04",
+    "new_reference_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+    "reason": "replace_unresolved_original_context",
+    "event": "t11_driver_eraser_final_center_below_minus_10cm",
+    "label": 1,
+    "family_id": "driver_initial_speed_command_mps",
+    "theta": 2.5,
+    "distance": {
+      "normalized_absolute_interval": [
+        0.0,
+        0.1111111111111112
+      ],
+      "bin": null
+    }
+  }
+]

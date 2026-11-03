@@ -1,0 +1,186 @@
+{
+  "receipts": [
+    {
+      "theta": 0.0,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.35816025733947754,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0/physics.json.gz",
+      "state_sha256": "818e222b374ff35c209f7459a5bee27efdda9c6b19132a2be10528633de77313",
+      "config_sha256": "2aecf6f57f298b01eabf4d5224f835079dc96afbd78baa7dfb152ba142780963",
+      "elapsed_s": 629.9478523731232,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.1,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.17234009504318237,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.1/physics.json.gz",
+      "state_sha256": "7082f8eeab3c916e3281747d894439549405b9888fd39b671432d2dfa488c6f1",
+      "config_sha256": "ff8c8f8f37851f91b2962fab6bb2c4b1b908cb54fe8fed4f2db2bc668f803503",
+      "elapsed_s": 807.3157126903534,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.8,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.18749935925006866,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.8/physics.json.gz",
+      "state_sha256": "704b6f52d64ea1b4f84533e5e5f447957b522f05403cf73e022d015157c44175",
+      "config_sha256": "8953df5cd728810f6b4769fc9ab53da1c5215d2c1bd0b3f33946679040664085",
+      "elapsed_s": 682.4451103210449,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.125,
+      "labels": {
+        "original_full_chain": 1
+      },
+      "native_peak_m": 0.15131749212741852,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.125/physics.json.gz",
+      "state_sha256": "a1e851d5e29d0a70c487bc7debb0707a4e1dddf2560da743e421d58bd49195e5",
+      "config_sha256": "38ae95eba0a74a592f180c3c558ce0b201be5820a2ee371ca795a422e32a6a36",
+      "elapsed_s": 751.691237449646,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.17500000000000002,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.1712682545185089,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.175/physics.json.gz",
+      "state_sha256": "a18968453e0afe5c197300d1d3c86008b190382f5608f71c565b1b6ad1271451",
+      "config_sha256": "c715160d3e174937aeae212e18a52492378982e9a19dab1c99e004b9f63752d1",
+      "elapsed_s": 1375.2265150547028,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.15,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.17708085477352142,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/source_repeat/physics.json.gz",
+      "state_sha256": "a4d34ac02e3b1abbd7c52ec395a2bdb4057b637d7df7e00a870af6a3176a790c",
+      "config_sha256": "6bef1bf69b753516cc77433332d329a1eda8637512278c9f693d307cb674b569",
+      "elapsed_s": 528.7411448955536,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.037500000000000006,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.1529579907655716,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.0375/physics.json.gz",
+      "state_sha256": "b5123ce7b6cd5bd1102e9d4c46ca8882e374161a91cf46f39215a44e5493733f",
+      "config_sha256": "701f36637dfb0aedf26e4d17df9d0307df53a380c56bd7b04ff045c097d9c06b",
+      "elapsed_s": 742.3367967605591,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.4,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.11134588718414307,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.4/physics.json.gz",
+      "state_sha256": "8333880fbcc2e26ed12cc6ffdfb124ac24225c9c1e37db2b8953ec5c285453b9",
+      "config_sha256": "8889daaa2a48f34fd097f3284ede3f12ba92cd9cf40496a864dfff09d3ee8956",
+      "elapsed_s": 975.3546626567841,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.025,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.16215305030345917,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.025/physics.json.gz",
+      "state_sha256": "8ab9e147faef33fd19e1582d952c54ae62d119c95d5a5773745e45c9c16832f3",
+      "config_sha256": "4dd7c79e2fd55fa4b92322f71c187e6896568cf30ca35a441cd7babc0e1b75de",
+      "elapsed_s": 667.1935377120972,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.2,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.14341096580028534,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.2/physics.json.gz",
+      "state_sha256": "a4dbfaea0d04c475e61823b46e51b824864d0601fff3df8f83c84b5a02642422",
+      "config_sha256": "f213780037ba9e40a91331f39265f1868a30d057674516a556eb2e5d53e65cb0",
+      "elapsed_s": 1650.4839310646057,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.05,
+      "labels": {
+        "original_full_chain": 1
+      },
+      "native_peak_m": 0.14766326546669006,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.05/physics.json.gz",
+      "state_sha256": "fad9d8f9eb9a0fee908f65685070607d781948c6b6035fcd7d7737f9c67c8ef1",
+      "config_sha256": "f2c8040ad6c243cebd39c6630ca25873c80debfb2e79b4aba2410bbd2b1a426d",
+      "elapsed_s": 1002.572105884552,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    },
+    {
+      "theta": 0.15,
+      "labels": {
+        "original_full_chain": 0
+      },
+      "native_peak_m": 0.15998722612857819,
+      "quality_passed": false,
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.15/physics.json.gz",
+      "state_sha256": "5df372b3aa61ce1831a97606ac4b81e9577911a50de9d663c687f45d20195a6d",
+      "config_sha256": "9a576205e10e9cb30148b73b4952a779c333ab9258ac106ce3d28aaed6690c07",
+      "elapsed_s": 650.1405222415924,
+      "backend": "gpu32",
+      "telemetry": "all_native_internal_substeps_including_unknown_static_geometry"
+    }
+  ],
+  "source_audit": {
+    "max_position_error_m": 0.11946689830131862,
+    "source_labels": {
+      "original_full_chain": 0
+    },
+    "repeated_labels": {
+      "original_full_chain": 0
+    },
+    "published_expected_labels": {
+      "original_full_chain": 0
+    },
+    "source_event_match": true,
+    "formal_admission": false
+  }
+}

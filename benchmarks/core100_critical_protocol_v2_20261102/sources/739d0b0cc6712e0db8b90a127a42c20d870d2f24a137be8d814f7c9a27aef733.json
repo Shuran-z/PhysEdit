@@ -1,0 +1,2492 @@
+{
+  "cases": [
+    {
+      "clip_id": "T15_C01",
+      "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon",
+      "parameter": "driver_book_initial_speed_mps",
+      "theta": 1.4,
+      "label": 1,
+      "event": "laptop_reaches_original_fall_criterion",
+      "source_state_sha256": "6428ff8ad0c963e34829d8ad584542b1b332496ff7c030c6021f33dbfb4b0a8f",
+      "reference_video_sha256": "7cda112c0057556cfcb58e53b2b1fe04c9bdc836e4a340c0ec9ae08d6b472817",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/deliverymoon/T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon/metadata/physics.json",
+      "video_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/hf_staging_v11_20260916/repo_root/data/T15/formal_v11_480p_20260914/videos/T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon__cam01.mp4",
+      "source": {
+        "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon",
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/deliverymoon/T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon/metadata/physics.json",
+        "state_sha256": "6428ff8ad0c963e34829d8ad584542b1b332496ff7c030c6021f33dbfb4b0a8f",
+        "theta": 1.4,
+        "label": 1,
+        "fixed_context_sha256": "59966c3ded9986e9181f777f3ac6754bb025bc6a87bba62ad51589f916f8abd4",
+        "media_binding_sha256": "cff5b67d4363a8e9997fdf6de6b252fd399363e5876c4cf9db57a93a824a00fe",
+        "render_config_sha256": "a5582fec362dae26eacff593e3eaed2a8071ce677d6e1e5a56f1fb9229019499",
+        "original_physics_config_sha256": "67a8dc3465b381e5954d8befdb091b682df457d08ef5f051f5ba9ccaa79a3ba4",
+        "actual_pose_audit_sha256": "317ca8deae25027052fdfcbc43bda76c80ebf82bcf3b2f84bfee64a24ec528e9",
+        "first_laptop_phone_contact_frame": 87,
+        "minimum_laptop_world_z_m": -0.7996012441370238,
+        "horizon_s": 5.0,
+        "camera": "cam01",
+        "calibrated_source_id": "T15V11__bg01_home_ase__g01_moon__search_22"
+      },
+      "matched_original_records": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/deliverymoon/T15V11__bg01_home_ase__g01_moon__formal_global_12__deliverymoon/metadata/physics.json",
+          "state_sha256": "6428ff8ad0c963e34829d8ad584542b1b332496ff7c030c6021f33dbfb4b0a8f",
+          "theta": 1.4,
+          "label": 1,
+          "fixed_context_sha256": "59966c3ded9986e9181f777f3ac6754bb025bc6a87bba62ad51589f916f8abd4",
+          "media_binding_sha256": "cff5b67d4363a8e9997fdf6de6b252fd399363e5876c4cf9db57a93a824a00fe",
+          "render_config_sha256": "a5582fec362dae26eacff593e3eaed2a8071ce677d6e1e5a56f1fb9229019499",
+          "original_physics_config_sha256": "67a8dc3465b381e5954d8befdb091b682df457d08ef5f051f5ba9ccaa79a3ba4",
+          "actual_pose_audit_sha256": "317ca8deae25027052fdfcbc43bda76c80ebf82bcf3b2f84bfee64a24ec528e9",
+          "first_laptop_phone_contact_frame": 87,
+          "minimum_laptop_world_z_m": -0.7996012441370238,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g01_moon__search_22"
+        }
+      ],
+      "other_contexts": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep01__deliverymoon",
+          "theta": 0.792,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep02__deliverymoon",
+          "theta": 0.792,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep03__deliverymoon",
+          "theta": 0.792,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep01__deliverymoon",
+          "theta": 1.056,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep02__deliverymoon",
+          "theta": 1.056,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep03__deliverymoon",
+          "theta": 1.056,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_star_rep01__deliverymoon",
+          "theta": 0.924,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_star_rep02__deliverymoon",
+          "theta": 0.924,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_star_rep03__deliverymoon",
+          "theta": 0.924,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_minus_rep01__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "ecde44098309b377fa579c14905945318079a37b6e3c19af529601864a984f72",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_minus_rep02__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "ecde44098309b377fa579c14905945318079a37b6e3c19af529601864a984f72",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_minus_rep03__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "ecde44098309b377fa579c14905945318079a37b6e3c19af529601864a984f72",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_plus_rep01__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "fd7979d7f0420f09fca990f92a9dd89e583255a7a0202467cb47badca7bd60c5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_plus_rep02__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "fd7979d7f0420f09fca990f92a9dd89e583255a7a0202467cb47badca7bd60c5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_plus_rep03__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "fd7979d7f0420f09fca990f92a9dd89e583255a7a0202467cb47badca7bd60c5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep01__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep02__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep03__deliverymoon",
+          "theta": 1.298,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep01__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "6084aaa572da2b2687ae9a56a8b0dab2f504a8a77605023d791425561abd021a",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep02__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "6084aaa572da2b2687ae9a56a8b0dab2f504a8a77605023d791425561abd021a",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep03__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "6084aaa572da2b2687ae9a56a8b0dab2f504a8a77605023d791425561abd021a",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep01__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "ff22e1c4c1b54c29200c472fc47067f6ebfb1a174eee6587b5bdaf93f4ebec53",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep02__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "ff22e1c4c1b54c29200c472fc47067f6ebfb1a174eee6587b5bdaf93f4ebec53",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep03__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "ff22e1c4c1b54c29200c472fc47067f6ebfb1a174eee6587b5bdaf93f4ebec53",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_star_rep01__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "15cf57b0e6c037e901321d802b2ac4497604341571216d94691d47c441145d3f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_star_rep02__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "15cf57b0e6c037e901321d802b2ac4497604341571216d94691d47c441145d3f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_star_rep03__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "15cf57b0e6c037e901321d802b2ac4497604341571216d94691d47c441145d3f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_01__deliverymoon",
+          "theta": 0.49500000000000005,
+          "context_sha256": "32647d843363c304bc2a620ef342a70e155ab7420aba974004a774694025094c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_02__deliverymoon",
+          "theta": 0.638,
+          "context_sha256": "39fb687a94da3281c1dae00ee8c293e0e723deb2d3016b46d4e6c9bc55cf8ff5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_03__deliverymoon",
+          "theta": 0.77,
+          "context_sha256": "112550b8605412a969af9212cdef4c253088eb54676bbf4114fb30ddcb41f937",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_04__deliverymoon",
+          "theta": 0.8580000000000001,
+          "context_sha256": "5c70acec5585198a7b22f1ac46932815dd5a65dee917e168ed12c7ec408f4393",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_05__deliverymoon",
+          "theta": 0.9460000000000001,
+          "context_sha256": "b03369776d127b62f83a3c0826245632d7045b39d06acbf5f703f2dd120447e0",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_06__deliverymoon",
+          "theta": 1.034,
+          "context_sha256": "ff86f6416046fb479d33aaf21960da264f80bbdf3969a2fc674eb7593aac0ad2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_07__deliverymoon",
+          "theta": 1.1,
+          "context_sha256": "391346c55e2095c5806987d7100a0cbf6836a0e18071a668ea8384bdc5ecfa30",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_08__deliverymoon",
+          "theta": 1.1550000000000002,
+          "context_sha256": "be007a821b0c75b9e7c12dc7bed3758889913e288725448c380f4c356f1d2bd2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_09__deliverymoon",
+          "theta": 1.2100000000000002,
+          "context_sha256": "d3fc68bbf0044505fff2da4b6a35c7002c030c143b0a30557d64adc820cf05cd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_10__deliverymoon",
+          "theta": 1.276,
+          "context_sha256": "aef53999f54fd82e44d19b76932eb19cba9e64cbf7d9c9349df171bd767b35a5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_11__deliverymoon",
+          "theta": 1.342,
+          "context_sha256": "dd012f4fa68d0c75032fbbf65c5b7f1c2ddebe3936c70a97fe86fd8cfda4f662",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_13__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "0096ee3d1ac915162aa97acb35666774240a11eecaac166cd44d8096197b2777",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_14__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "fc50d8351b8608cb070e5237505f2e93749a386c036203e597d2b6c61c6361ed",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_15__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "9c152004b0156c64eef83d8752bdec15037a52064cd3a6208c98b5537f0428f5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_16__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "07023d7e02e6ee0cd047f15f00d32d17f4b16545222486fff01520db6c1dbd56",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g01_moon__formal_global_17__deliverymoon",
+          "theta": 1.4,
+          "context_sha256": "bfd79fa52e2ba9127667f2d37ec3f05e39aabca9b2eefebb85132cfc66cb0a03",
+          "context_differing_keys": [
+            "objects"
+          ]
+        }
+      ],
+      "read_errors": [
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep01/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep01/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep03/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_minus_rep03/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep01/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep01/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep03/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_plus_rep03/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_star_rep02/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfA_theta_star_rep02/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_minus_rep02/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_minus_rep02/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_plus_rep02/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_plus_rep02/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep01/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep01/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep03/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfB_theta_star_rep03/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep01/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep01/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep03/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_minus_rep03/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep01/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep01/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep03/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_plus_rep03/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_star_rep02/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_cfC_theta_star_rep02/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_02/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_02/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_04/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_04/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_06/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_06/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_08/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_08/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_10/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_10/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_12/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_12/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_14/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_14/metadata/media_binding.json'"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_16/metadata/physics.json",
+          "error_type": "FileNotFoundError",
+          "error": "[Errno 2] No such file or directory: '/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g01_moon__formal_global_16/metadata/media_binding.json'"
+        }
+      ],
+      "conflicting_theta_labels": {},
+      "intervals": [],
+      "scope": "Original V11 published observations, exact simulator/profile and 5s target; no unique or fine physical root claim."
+    },
+    {
+      "clip_id": "T15_C02",
+      "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_12",
+      "parameter": "driver_book_initial_speed_mps",
+      "theta": 1.9500000000000002,
+      "label": 1,
+      "event": "laptop_reaches_original_fall_criterion",
+      "source_state_sha256": "9f365e876e899a6cc5d35301ecfcf72a6acfe1e3e37c00616618871e17c168f6",
+      "reference_video_sha256": "5cb16ff515d1ad6c8c95ff801e12c6be7020275ff87a0eff887cc21cc777a680",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g02_mars__formal_global_12/metadata/physics.json",
+      "video_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/hf_staging_v11_20260916/repo_root/data/T15/formal_v11_480p_20260914/videos/T15V11__bg01_home_ase__g02_mars__formal_global_12__cam01.mp4",
+      "source": {
+        "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_12",
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g02_mars__formal_global_12/metadata/physics.json",
+        "state_sha256": "9f365e876e899a6cc5d35301ecfcf72a6acfe1e3e37c00616618871e17c168f6",
+        "theta": 1.9500000000000002,
+        "label": 1,
+        "fixed_context_sha256": "1af28120142c9b7757bb4b56dbaa45255c6259a4aa279e354d7808966f08e860",
+        "media_binding_sha256": "b96055258b3c61a8316e69d64d365f80e4bc3121df06ffc00e051dbc8f973a54",
+        "render_config_sha256": "ef3213d904c129faf1a7d1f89453c4297cfe017ab254e63b30caf7374c27d96f",
+        "original_physics_config_sha256": "e203032eb9740655b5816be69637beeff23951e407b179c31092a5a20af9059a",
+        "actual_pose_audit_sha256": "d9234ab12ec804a493ff1035146935ed2148f865a641c258b42a554e8df6162c",
+        "first_laptop_phone_contact_frame": 67,
+        "minimum_laptop_world_z_m": -0.8030649793345793,
+        "horizon_s": 5.0,
+        "camera": "cam01",
+        "calibrated_source_id": "T15V11__bg01_home_ase__g02_mars__search_24"
+      },
+      "matched_original_records": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_12",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g02_mars__formal_global_12/metadata/physics.json",
+          "state_sha256": "9f365e876e899a6cc5d35301ecfcf72a6acfe1e3e37c00616618871e17c168f6",
+          "theta": 1.9500000000000002,
+          "label": 1,
+          "fixed_context_sha256": "1af28120142c9b7757bb4b56dbaa45255c6259a4aa279e354d7808966f08e860",
+          "media_binding_sha256": "b96055258b3c61a8316e69d64d365f80e4bc3121df06ffc00e051dbc8f973a54",
+          "render_config_sha256": "ef3213d904c129faf1a7d1f89453c4297cfe017ab254e63b30caf7374c27d96f",
+          "original_physics_config_sha256": "e203032eb9740655b5816be69637beeff23951e407b179c31092a5a20af9059a",
+          "actual_pose_audit_sha256": "d9234ab12ec804a493ff1035146935ed2148f865a641c258b42a554e8df6162c",
+          "first_laptop_phone_contact_frame": 67,
+          "minimum_laptop_world_z_m": -0.8030649793345793,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g02_mars__search_24"
+        }
+      ],
+      "other_contexts": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_minus_rep01",
+          "theta": 1.08,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_minus_rep02",
+          "theta": 1.08,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_minus_rep03",
+          "theta": 1.08,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_plus_rep01",
+          "theta": 1.44,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_plus_rep02",
+          "theta": 1.44,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_plus_rep03",
+          "theta": 1.44,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_star_rep01",
+          "theta": 1.26,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_star_rep02",
+          "theta": 1.26,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfA_theta_star_rep03",
+          "theta": 1.26,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_minus_rep01",
+          "theta": 1.77,
+          "context_sha256": "1aeba931d15ade14464dd34bd129582d51434f3a3a34e495eacf8866bcabfcf9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_minus_rep02",
+          "theta": 1.77,
+          "context_sha256": "1aeba931d15ade14464dd34bd129582d51434f3a3a34e495eacf8866bcabfcf9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_minus_rep03",
+          "theta": 1.77,
+          "context_sha256": "1aeba931d15ade14464dd34bd129582d51434f3a3a34e495eacf8866bcabfcf9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_plus_rep01",
+          "theta": 1.77,
+          "context_sha256": "b5a840b1557749fb6de6b1d83d2b354a6c67989580b998d567cec256ddb31e1b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_plus_rep02",
+          "theta": 1.77,
+          "context_sha256": "b5a840b1557749fb6de6b1d83d2b354a6c67989580b998d567cec256ddb31e1b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_plus_rep03",
+          "theta": 1.77,
+          "context_sha256": "b5a840b1557749fb6de6b1d83d2b354a6c67989580b998d567cec256ddb31e1b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_star_rep01",
+          "theta": 1.77,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_star_rep02",
+          "theta": 1.77,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfB_theta_star_rep03",
+          "theta": 1.77,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_minus_rep01",
+          "theta": 2.07,
+          "context_sha256": "28e460703823e6206be058274059ce625c490d5783cb362ee4d996a7ae8b7928",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_minus_rep02",
+          "theta": 2.07,
+          "context_sha256": "28e460703823e6206be058274059ce625c490d5783cb362ee4d996a7ae8b7928",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_minus_rep03",
+          "theta": 2.07,
+          "context_sha256": "28e460703823e6206be058274059ce625c490d5783cb362ee4d996a7ae8b7928",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_plus_rep01",
+          "theta": 2.07,
+          "context_sha256": "5da507080a2c8a99afdf46f408e4bcaef71453cefc1acfc7f79e4486da36dacc",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_plus_rep02",
+          "theta": 2.07,
+          "context_sha256": "5da507080a2c8a99afdf46f408e4bcaef71453cefc1acfc7f79e4486da36dacc",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_plus_rep03",
+          "theta": 2.07,
+          "context_sha256": "5da507080a2c8a99afdf46f408e4bcaef71453cefc1acfc7f79e4486da36dacc",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_star_rep01",
+          "theta": 2.07,
+          "context_sha256": "d14d51fe3448da5bcfa456b5761a80dcf42ff5f2b6566ef2c59dc8648c380b02",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_star_rep02",
+          "theta": 2.07,
+          "context_sha256": "d14d51fe3448da5bcfa456b5761a80dcf42ff5f2b6566ef2c59dc8648c380b02",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_cfC_theta_star_rep03",
+          "theta": 2.07,
+          "context_sha256": "d14d51fe3448da5bcfa456b5761a80dcf42ff5f2b6566ef2c59dc8648c380b02",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_01",
+          "theta": 0.675,
+          "context_sha256": "9a236a1bda3a42b0915fe04a6a4b3e05dcc1690c11ed65436f146b4545e72acf",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_02",
+          "theta": 0.8699999999999999,
+          "context_sha256": "010b54715d7e8901f626fbae2250cfb60adf36467f233885d48806ed12214046",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_03",
+          "theta": 1.0499999999999998,
+          "context_sha256": "2a7b4ceb9ba0758be4d7d914b5a5fb601b5f7ad80dfef79926fdfbda9e8bf30b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_04",
+          "theta": 1.17,
+          "context_sha256": "28b63e71532f3ad7ebd089b5526f18250f2624355bac0603d08ebcb35469a3d9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_05",
+          "theta": 1.29,
+          "context_sha256": "530f0cfd24c803510dab950a75144c1c53dff10f2054cb75ccfe8df1e5ca971c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_06",
+          "theta": 1.41,
+          "context_sha256": "cc67f4ff66801c28d3cf2950d5f60bf1e8538dbaa839139476d66233e94bb2e8",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_07",
+          "theta": 1.5,
+          "context_sha256": "bd76657843634d998eeeab5470d2f9c303f21e3f2af92edc25fa0b26cfe8b734",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_08",
+          "theta": 1.5750000000000002,
+          "context_sha256": "e95ff5d73663b1d38fd45d57249190032c1aa6f243c46977754f8d314956fed5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_09",
+          "theta": 1.6500000000000001,
+          "context_sha256": "51538a1da145aa211f1a5a5908ae9527a6203de0e7dcf5de869e3c13f634b29a",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_10",
+          "theta": 1.7399999999999998,
+          "context_sha256": "b091718eef7497df181962a211d9ff155e1362b66b172336cae04fba786a3332",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_11",
+          "theta": 1.83,
+          "context_sha256": "9436aed925661318dab0a3190011ec6fccc2444784559c3a8f441be543d53fb3",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_13",
+          "theta": 2.07,
+          "context_sha256": "97342558470ec2b2becb9a3a35df68867f815576c765c17b920653c932c1f894",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_14",
+          "theta": 2.2,
+          "context_sha256": "469e2182065a7b5640c3de0b998d0a905c011ac893c661b4c466c5079c0551d4",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_15",
+          "theta": 2.2,
+          "context_sha256": "b8ddf47fd5fe320a4cb83703b59b13935f1d8ef84f8f0573cc4407a3bb8c4fd5",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_16",
+          "theta": 2.2,
+          "context_sha256": "49fa004b749fcd842c6ac0c6ddbb77f9dc8d398928043bc8ee1bd8e26035a24e",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g02_mars__formal_global_17",
+          "theta": 2.2,
+          "context_sha256": "a769be5a58cedaf021ed6d93341048460c7deaf402ed96fdf18a0dd1f46ae0b9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        }
+      ],
+      "read_errors": [],
+      "conflicting_theta_labels": {},
+      "intervals": [],
+      "scope": "Original V11 published observations, exact simulator/profile and 5s target; no unique or fine physical root claim."
+    },
+    {
+      "clip_id": "T15_C03",
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+      "parameter": "driver_book_initial_speed_mps",
+      "theta": 3.12,
+      "label": 1,
+      "event": "laptop_reaches_original_fall_criterion",
+      "source_state_sha256": "e2bb0f5b393d9bd41edb5f5cabe058169365a626032ad8d363458b4f92c62218",
+      "reference_video_sha256": "291e03ad4dbdb1813c16b98a91fe1ad300cd2003d8e7449a99c446ac41d575f3",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_global_12/metadata/physics.json",
+      "video_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/hf_staging_v11_20260916/repo_root/data/T15/formal_v11_480p_20260914/videos/T15V11__bg01_home_ase__g03_earth__formal_global_12__cam01.mp4",
+      "source": {
+        "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_global_12/metadata/physics.json",
+        "state_sha256": "e2bb0f5b393d9bd41edb5f5cabe058169365a626032ad8d363458b4f92c62218",
+        "theta": 3.12,
+        "label": 1,
+        "fixed_context_sha256": "4f033b01eb034d8410b79c762e47cd4bd4c7bb959ab266a108d92d9eef10179d",
+        "media_binding_sha256": "2dd63495e77ca221781c4804baf0f6b8958a16ec36aa104589b4ccb7cae0c4f9",
+        "render_config_sha256": "8e533677531edec6c282c12fc383be91db8d33f1d672d8c0e3f81c1759021a5e",
+        "original_physics_config_sha256": "455dbe0085d0a8d62194641e3ea72e94f02f85194be70ac07bd4075fb163acd4",
+        "actual_pose_audit_sha256": "2a8b9490999225e39e501e3ab7e202d6cf72ec3958bf7ce37a73dd5e81fee90b",
+        "first_laptop_phone_contact_frame": 52,
+        "minimum_laptop_world_z_m": -0.800852109769885,
+        "horizon_s": 5.0,
+        "camera": "cam01",
+        "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+      },
+      "matched_original_records": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_global_12/metadata/physics.json",
+          "state_sha256": "e2bb0f5b393d9bd41edb5f5cabe058169365a626032ad8d363458b4f92c62218",
+          "theta": 3.12,
+          "label": 1,
+          "fixed_context_sha256": "4f033b01eb034d8410b79c762e47cd4bd4c7bb959ab266a108d92d9eef10179d",
+          "media_binding_sha256": "2dd63495e77ca221781c4804baf0f6b8958a16ec36aa104589b4ccb7cae0c4f9",
+          "render_config_sha256": "8e533677531edec6c282c12fc383be91db8d33f1d672d8c0e3f81c1759021a5e",
+          "original_physics_config_sha256": "455dbe0085d0a8d62194641e3ea72e94f02f85194be70ac07bd4075fb163acd4",
+          "actual_pose_audit_sha256": "2a8b9490999225e39e501e3ab7e202d6cf72ec3958bf7ce37a73dd5e81fee90b",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.800852109769885,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        }
+      ],
+      "other_contexts": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep01",
+          "theta": 1.728,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep02",
+          "theta": 1.728,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep03",
+          "theta": 1.728,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep01",
+          "theta": 2.304,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep02",
+          "theta": 2.304,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep03",
+          "theta": 2.304,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep01",
+          "theta": 2.016,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep02",
+          "theta": 2.016,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep03",
+          "theta": 2.016,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+          "theta": 2.832,
+          "context_sha256": "fb746a389fc44bf998ae39ed4e03d88a4d753d6666d7451ce2e673595dedb4aa",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02",
+          "theta": 2.832,
+          "context_sha256": "fb746a389fc44bf998ae39ed4e03d88a4d753d6666d7451ce2e673595dedb4aa",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03",
+          "theta": 2.832,
+          "context_sha256": "fb746a389fc44bf998ae39ed4e03d88a4d753d6666d7451ce2e673595dedb4aa",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+          "theta": 2.832,
+          "context_sha256": "65d4be48284803a7cc4653fff86898d3ef47626b3b9897b324856dacc06f1f9b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep02",
+          "theta": 2.832,
+          "context_sha256": "65d4be48284803a7cc4653fff86898d3ef47626b3b9897b324856dacc06f1f9b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep03",
+          "theta": 2.832,
+          "context_sha256": "65d4be48284803a7cc4653fff86898d3ef47626b3b9897b324856dacc06f1f9b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01",
+          "theta": 2.832,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02",
+          "theta": 2.832,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03",
+          "theta": 2.832,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep01",
+          "theta": 3.3,
+          "context_sha256": "1157d3c387140dde3f2d3387a8bd3886dfc7d5537d88d8eba50af20f3de133c0",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep02",
+          "theta": 3.3,
+          "context_sha256": "1157d3c387140dde3f2d3387a8bd3886dfc7d5537d88d8eba50af20f3de133c0",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep03",
+          "theta": 3.3,
+          "context_sha256": "1157d3c387140dde3f2d3387a8bd3886dfc7d5537d88d8eba50af20f3de133c0",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep01",
+          "theta": 3.3,
+          "context_sha256": "5b9e38b6ae7d7cec52ce73016b70977a8786f8879f7eeb8cbf6737cc547528da",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep02",
+          "theta": 3.3,
+          "context_sha256": "5b9e38b6ae7d7cec52ce73016b70977a8786f8879f7eeb8cbf6737cc547528da",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep03",
+          "theta": 3.3,
+          "context_sha256": "5b9e38b6ae7d7cec52ce73016b70977a8786f8879f7eeb8cbf6737cc547528da",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep01",
+          "theta": 3.3,
+          "context_sha256": "d1e3068a337c0bf145ad9e332b6e0e2d8a224d1b456fafa3740e78d11ea0f115",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep02",
+          "theta": 3.3,
+          "context_sha256": "d1e3068a337c0bf145ad9e332b6e0e2d8a224d1b456fafa3740e78d11ea0f115",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep03",
+          "theta": 3.3,
+          "context_sha256": "d1e3068a337c0bf145ad9e332b6e0e2d8a224d1b456fafa3740e78d11ea0f115",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_01",
+          "theta": 1.08,
+          "context_sha256": "7aa1186e1fdf49a244e2eae237234ea3c60156f8443107480dd8b48812df6611",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_02",
+          "theta": 1.392,
+          "context_sha256": "fcb5106fae89532585a084946394574d1a2296e0af79aa9838d5e7a8920c6181",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_03",
+          "theta": 1.68,
+          "context_sha256": "8f18188da75fad6f7180f7e35d11eb21f06eb0166054ad2c88a63d2cdab03194",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_04",
+          "theta": 1.8719999999999999,
+          "context_sha256": "ea8e9b4adf4fca139f181517f012da2aec109e49981d0a6397c3ca00c09e55c8",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_05",
+          "theta": 2.064,
+          "context_sha256": "7ef8c6d83079bc76014d25f5d101ffd63b6187f97e9f5a98934327f52d527f91",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_06",
+          "theta": 2.256,
+          "context_sha256": "f25ee67c202c6f03e5b17d45c6240b99a51a3926d9ea49f2d893db74bc6235d6",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_07",
+          "theta": 2.4,
+          "context_sha256": "826bf715f65da0992c61d680e9be5071e274aede15e246c9b2f82b60181e8f23",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_08",
+          "theta": 2.52,
+          "context_sha256": "4e355f0863a25e91279ef98ef011d12412b01248c450ff7ab959d908ac3246fe",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_09",
+          "theta": 2.64,
+          "context_sha256": "78c6cad394425215f093006c8d4fcd5e5b8eff7d8f701355172acd07feeef4d6",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_10",
+          "theta": 2.784,
+          "context_sha256": "b40af673791fe0d297e27416ae014fb9b82e11d71f2e2faee5fbd8eb1c953492",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_11",
+          "theta": 2.928,
+          "context_sha256": "de55e9629be029d601b85fd583b13d0a1049bb69062af1af9296c515de221d67",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_13",
+          "theta": 3.3,
+          "context_sha256": "4cbfaf3bb8653d162405f81248fe0775bed8c35a9d9c51e509dae9cd0d881874",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_14",
+          "theta": 3.3,
+          "context_sha256": "2570ee0a3adf34fc797077fa0aaecb36ba1acdc7356fd04c493b9cf32f1eaf96",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_15",
+          "theta": 3.3,
+          "context_sha256": "db9047123ef4a586d5ac33deb848e92ecf8519692727cf87f20f49053f5a7097",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_16",
+          "theta": 3.3,
+          "context_sha256": "3d33d44b1e72a281873f55245f732ca2b695a2076c58422dec4698c7ed15ad2a",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_17",
+          "theta": 3.3,
+          "context_sha256": "70c04da1bf363d6d1d7f58874f60e8176f402cdb2a261e14e62dab2ae8690768",
+          "context_differing_keys": [
+            "objects"
+          ]
+        }
+      ],
+      "read_errors": [],
+      "conflicting_theta_labels": {},
+      "intervals": [],
+      "scope": "Original V11 published observations, exact simulator/profile and 5s target; no unique or fine physical root claim."
+    },
+    {
+      "clip_id": "T15_C04",
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+      "parameter": "laptop_edge_margin_m",
+      "theta": 0.085,
+      "label": 0,
+      "event": "laptop_contacts_phone",
+      "source_state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+      "reference_video_sha256": "535b2246c82c5d1fa3107c9570365461feefc10161c2941211c15ecbae10fdc3",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+      "video_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/hf_staging_v11_20260916/repo_root/data/T15/formal_v11_480p_20260914/videos/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01__cam01.mp4",
+      "source": {
+        "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+        "state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+        "theta": 0.08499999999999996,
+        "label": 0,
+        "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+        "media_binding_sha256": "d7d3717b19dcabb2f728bac4647b098b3f9b863a0bd325b987d8575f2383016e",
+        "render_config_sha256": "e0c6535400c7561178bdc25e681bd114206a299efc19f599d775ff225aa85ad9",
+        "original_physics_config_sha256": "11ba630b79ea70563c619c6bd7a4fc859263b75781a814033e5eaab2664f64e8",
+        "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+        "first_laptop_phone_contact_frame": null,
+        "minimum_laptop_world_z_m": -0.8110039854890174,
+        "horizon_s": 5.0,
+        "camera": "cam01",
+        "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+      },
+      "matched_original_records": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+          "state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "d7d3717b19dcabb2f728bac4647b098b3f9b863a0bd325b987d8575f2383016e",
+          "render_config_sha256": "e0c6535400c7561178bdc25e681bd114206a299efc19f599d775ff225aa85ad9",
+          "original_physics_config_sha256": "11ba630b79ea70563c619c6bd7a4fc859263b75781a814033e5eaab2664f64e8",
+          "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854890174,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02/metadata/physics.json",
+          "state_sha256": "5a04af6cb11a45e586f08643fce2bc009e36fe8db894b60dd7c92820fe76dcf1",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "8f7abb0b1ad0056135594e7c1dbff5f64d26d3b8bd28e11ad2a4f20e1c2a3d65",
+          "render_config_sha256": "75f947e29d29a23288d7e69c28215954a39cd7f2fdecc71d3a14d857556d14d1",
+          "original_physics_config_sha256": "7dfcfc65c698c1c10f19b07f21e58813b460c5a01298a3d5302bf887782b364b",
+          "actual_pose_audit_sha256": "860f6899adbcfafdea48e772eaaaf350762f7c2336d04b872ee9087f89674035",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854891443,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03/metadata/physics.json",
+          "state_sha256": "2663b4fa704f1e34bf524f0bb9ab77268c4e82717cfdb5fb695cd36817ff8127",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "e8171157fe6ddcd60343654b2efc9684ec2f0d76dce92208ab12481cdf26b0b5",
+          "render_config_sha256": "5e8b437de044140b913aecae5ff0000eb42188692eab8af538c7397b91d02b4b",
+          "original_physics_config_sha256": "2bec4090a6dfa50f479bbd9394b65221ed7a66779b97005f7c44f70678b7e93c",
+          "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854890174,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01/metadata/physics.json",
+          "state_sha256": "d82b643de309cc230d6f8f6caec0032fa4041e89817a6d5573a93c37758a21f0",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "7fc0c0dc02f5dc2ec323dc0bbf6fad87d6a852eacdd25f0fa0c3f686f0539588",
+          "render_config_sha256": "dd0b538f1ebda24fa8416bb11ab1d25e4469ca73a8b83fc21de65f03dfca976d",
+          "original_physics_config_sha256": "866704761d5c1e1c76bca601df9cb47273eee02c7ebdbbbbcec651f68cb08482",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.802013864884254,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep02/metadata/physics.json",
+          "state_sha256": "cf65df20334fb37851ce3bd118ad1ce8b0f2295102851837679ac2031e9a667b",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "6fe7b9f8e54966b06efefd55d95442ad437befe3b4d87cb23f25231c33c22e3a",
+          "render_config_sha256": "a03184369bcf71c85daf9367871aa06e4ba45ef36d5628e91194a16babb4d19c",
+          "original_physics_config_sha256": "b5b3f8fc862cb2aa98d197bea17b4ecd1b25bcc16c449c0a5262eddc2dddd4ed",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8020138648842543,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep03/metadata/physics.json",
+          "state_sha256": "834559ef80a3e7828d0f1c580f854778d2f67626453ff2306be471c4fc45d30f",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "fc13e03c0864ad9c6b02dc216f8e3dc82d2cb12d0f4c29254090e9c09f5330f7",
+          "render_config_sha256": "f30bff8cdbe24f1cdec8ca9d3ca31a1481ebca72a6d2040655ff85965f9678ba",
+          "original_physics_config_sha256": "a526c231d37f1ceb5f8fef087d3d8dd80e2dd7d740c60ace96384cea6e5e4f8d",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.802013864884254,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01/metadata/physics.json",
+          "state_sha256": "cd7db07859cd0d92acbe3d11acacd501ce48268bc3b7dc025b1f43f3b761653c",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "20f46c52be1f9ab5ed021b72e988a74b517f04842b4d9f7315b4f08e5c7d8bbb",
+          "render_config_sha256": "8e7fca116c2951656fa12b3d6fc05cc5ca47c396fd3f247578621ff05f453591",
+          "original_physics_config_sha256": "b4518fc46e65a42aa9440ae9a33650968c23b099cee15c158098f60d1f6122d7",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076437,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02/metadata/physics.json",
+          "state_sha256": "46fc05f1e6637503b9e22f8a8a151d9dedccae4217a6ab975629b83d5c064cb7",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "c1393a93c57948a823931323e7043359fc8a9375e857aa756cdf4fd4141e5c88",
+          "render_config_sha256": "11119afd3248cc3369b054f1e0715c22f79da76236e259b4f926ca03a3e1c356",
+          "original_physics_config_sha256": "403e5a057a25470cb0274beb40091b000c37cacc4c813a8f8254721b70732eb2",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076423,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03/metadata/physics.json",
+          "state_sha256": "fa6023f95a571337032e13b4d097920052c416d3f816afccbc4498c9c3c7a0ee",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "5d5367243085b58975de2ef8b9814e0a6afac542793fbea516a5c50abeae5445",
+          "render_config_sha256": "46dc36d3196b4a9ac9209b9872b8158f29d01ea1652c2c29ea697bbc31a77192",
+          "original_physics_config_sha256": "965e63fe6b0439ae7caf0c04ea4782955ae02d97ddca61dd8dbf28635cb54e68",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076437,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        }
+      ],
+      "other_contexts": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_01",
+          "theta": 0.12,
+          "context_sha256": "fca8a3cf1ea013391099d15cc0a3c5d7bae81cf0e8c1813c2c3ecab11ec2661f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_02",
+          "theta": 0.09999999999999998,
+          "context_sha256": "2baffbbd4ce6cd6c4053895fd99a00980b2df7cc92023462894c8066e3f53abb",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_03",
+          "theta": 0.08999999999999997,
+          "context_sha256": "85e27cfb8bb0a2194f01a76973f32fcfe9abef8523de124916e11e37dd3ab66f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_04",
+          "theta": 0.07499999999999996,
+          "context_sha256": "41ddfcc10405329cdb1757d794cb97e0aa531c3734ce3c0f1b2d66c224271706",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_05",
+          "theta": 0.06499999999999995,
+          "context_sha256": "7e2753799cd54ab2f3dea114458c9a3ae794feda11cd64ff846b439ea0402737",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_06",
+          "theta": 0.05500000000000005,
+          "context_sha256": "1fca821e141fa09e2482e8d1eeebcb24138948fc83c992ddfff980fe968b162e",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_07",
+          "theta": 0.050000000000000044,
+          "context_sha256": "64224ea3738b51e0a56a5fb3ef97acc55ff2a0027ace774ff790d6ac89fbe004",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_08",
+          "theta": 0.04500000000000004,
+          "context_sha256": "b36025e3308364befdbdbfaefe657cad0cc971c530948564ece627bb789c2f43",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_09",
+          "theta": 0.040000000000000036,
+          "context_sha256": "e5ba2f3f0f3273874d8bb0ab99baf768cfdddf2e1eef3857d1012e4cf5b5d7ce",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_10",
+          "theta": 0.03500000000000003,
+          "context_sha256": "18dd75296ad80584a4da119337a378e6ab8ba6cc86a0d0e5b70935ffe5531ecc",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_11",
+          "theta": 0.030000000000000027,
+          "context_sha256": "6be4d8b036f37f88e0d2ba6617eb3d68e97ba3d912b1e2db13fd7fa209a62a50",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+          "theta": 0.025000000000000022,
+          "context_sha256": "fa415b5c1f2b05578649121eb2a7ef8075135731da89fa96c8d9e154047a1313",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_13",
+          "theta": 0.020000000000000018,
+          "context_sha256": "a5eae25a2adda8653040829cba22e8864a8ef66af8fb79133fe8642a34e7e367",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_14",
+          "theta": 0.015000000000000013,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_15",
+          "theta": 0.01200000000000001,
+          "context_sha256": "e90e7df418d70d0957673935c60bedf55276d5f563cd5a7a866642cf1e50ffe2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_16",
+          "theta": 0.010000000000000009,
+          "context_sha256": "673ce937bc1ff9506b67ddba30286a699356f6e8a2f610293b23cb75e08a8cf2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_17",
+          "theta": 0.008000000000000007,
+          "context_sha256": "567b2af380d5b35273a16450e7338c6f91b659f75b3b6f953f58c08b77e16eb9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        }
+      ],
+      "read_errors": [],
+      "conflicting_theta_labels": {},
+      "intervals": [
+        {
+          "event": "laptop_contacts_phone",
+          "bracket": [
+            0.050000000000000044,
+            0.08499999999999996
+          ],
+          "endpoint_labels": [
+            1,
+            0
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01/metadata/physics.json",
+                "state_sha256": "cd7db07859cd0d92acbe3d11acacd501ce48268bc3b7dc025b1f43f3b761653c",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "20f46c52be1f9ab5ed021b72e988a74b517f04842b4d9f7315b4f08e5c7d8bbb",
+                "render_config_sha256": "8e7fca116c2951656fa12b3d6fc05cc5ca47c396fd3f247578621ff05f453591",
+                "original_physics_config_sha256": "b4518fc46e65a42aa9440ae9a33650968c23b099cee15c158098f60d1f6122d7",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076437,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02/metadata/physics.json",
+                "state_sha256": "46fc05f1e6637503b9e22f8a8a151d9dedccae4217a6ab975629b83d5c064cb7",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "c1393a93c57948a823931323e7043359fc8a9375e857aa756cdf4fd4141e5c88",
+                "render_config_sha256": "11119afd3248cc3369b054f1e0715c22f79da76236e259b4f926ca03a3e1c356",
+                "original_physics_config_sha256": "403e5a057a25470cb0274beb40091b000c37cacc4c813a8f8254721b70732eb2",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076423,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03/metadata/physics.json",
+                "state_sha256": "fa6023f95a571337032e13b4d097920052c416d3f816afccbc4498c9c3c7a0ee",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "5d5367243085b58975de2ef8b9814e0a6afac542793fbea516a5c50abeae5445",
+                "render_config_sha256": "46dc36d3196b4a9ac9209b9872b8158f29d01ea1652c2c29ea697bbc31a77192",
+                "original_physics_config_sha256": "965e63fe6b0439ae7caf0c04ea4782955ae02d97ddca61dd8dbf28635cb54e68",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076437,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              }
+            ],
+            [
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+                "state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "d7d3717b19dcabb2f728bac4647b098b3f9b863a0bd325b987d8575f2383016e",
+                "render_config_sha256": "e0c6535400c7561178bdc25e681bd114206a299efc19f599d775ff225aa85ad9",
+                "original_physics_config_sha256": "11ba630b79ea70563c619c6bd7a4fc859263b75781a814033e5eaab2664f64e8",
+                "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854890174,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02/metadata/physics.json",
+                "state_sha256": "5a04af6cb11a45e586f08643fce2bc009e36fe8db894b60dd7c92820fe76dcf1",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "8f7abb0b1ad0056135594e7c1dbff5f64d26d3b8bd28e11ad2a4f20e1c2a3d65",
+                "render_config_sha256": "75f947e29d29a23288d7e69c28215954a39cd7f2fdecc71d3a14d857556d14d1",
+                "original_physics_config_sha256": "7dfcfc65c698c1c10f19b07f21e58813b460c5a01298a3d5302bf887782b364b",
+                "actual_pose_audit_sha256": "860f6899adbcfafdea48e772eaaaf350762f7c2336d04b872ee9087f89674035",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854891443,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03/metadata/physics.json",
+                "state_sha256": "2663b4fa704f1e34bf524f0bb9ab77268c4e82717cfdb5fb695cd36817ff8127",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "e8171157fe6ddcd60343654b2efc9684ec2f0d76dce92208ab12481cdf26b0b5",
+                "render_config_sha256": "5e8b437de044140b913aecae5ff0000eb42188692eab8af538c7397b91d02b4b",
+                "original_physics_config_sha256": "2bec4090a6dfa50f479bbd9394b65221ed7a66779b97005f7c44f70678b7e93c",
+                "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854890174,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              }
+            ]
+          ]
+        }
+      ],
+      "scope": "Original V11 published observations, exact simulator/profile and 5s target; no unique or fine physical root claim."
+    },
+    {
+      "clip_id": "T15_C05",
+      "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+      "parameter": "laptop_edge_margin_m",
+      "theta": 0.02,
+      "label": 1,
+      "event": "laptop_contacts_phone",
+      "source_state_sha256": "d82b643de309cc230d6f8f6caec0032fa4041e89817a6d5573a93c37758a21f0",
+      "reference_video_sha256": "5e075492f5abfdb4aaf7d5f7b670c4da90ab0b5ae8a9ad23bdf0e1bbae18728e",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01/metadata/physics.json",
+      "video_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/hf_staging_v11_20260916/repo_root/data/T15/formal_v11_480p_20260914/videos/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01__cam01.mp4",
+      "source": {
+        "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+        "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01/metadata/physics.json",
+        "state_sha256": "d82b643de309cc230d6f8f6caec0032fa4041e89817a6d5573a93c37758a21f0",
+        "theta": 0.020000000000000018,
+        "label": 1,
+        "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+        "media_binding_sha256": "7fc0c0dc02f5dc2ec323dc0bbf6fad87d6a852eacdd25f0fa0c3f686f0539588",
+        "render_config_sha256": "dd0b538f1ebda24fa8416bb11ab1d25e4469ca73a8b83fc21de65f03dfca976d",
+        "original_physics_config_sha256": "866704761d5c1e1c76bca601df9cb47273eee02c7ebdbbbbcec651f68cb08482",
+        "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+        "first_laptop_phone_contact_frame": 52,
+        "minimum_laptop_world_z_m": -0.802013864884254,
+        "horizon_s": 5.0,
+        "camera": "cam01",
+        "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+      },
+      "matched_original_records": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+          "state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "d7d3717b19dcabb2f728bac4647b098b3f9b863a0bd325b987d8575f2383016e",
+          "render_config_sha256": "e0c6535400c7561178bdc25e681bd114206a299efc19f599d775ff225aa85ad9",
+          "original_physics_config_sha256": "11ba630b79ea70563c619c6bd7a4fc859263b75781a814033e5eaab2664f64e8",
+          "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854890174,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02/metadata/physics.json",
+          "state_sha256": "5a04af6cb11a45e586f08643fce2bc009e36fe8db894b60dd7c92820fe76dcf1",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "8f7abb0b1ad0056135594e7c1dbff5f64d26d3b8bd28e11ad2a4f20e1c2a3d65",
+          "render_config_sha256": "75f947e29d29a23288d7e69c28215954a39cd7f2fdecc71d3a14d857556d14d1",
+          "original_physics_config_sha256": "7dfcfc65c698c1c10f19b07f21e58813b460c5a01298a3d5302bf887782b364b",
+          "actual_pose_audit_sha256": "860f6899adbcfafdea48e772eaaaf350762f7c2336d04b872ee9087f89674035",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854891443,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03/metadata/physics.json",
+          "state_sha256": "2663b4fa704f1e34bf524f0bb9ab77268c4e82717cfdb5fb695cd36817ff8127",
+          "theta": 0.08499999999999996,
+          "label": 0,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "e8171157fe6ddcd60343654b2efc9684ec2f0d76dce92208ab12481cdf26b0b5",
+          "render_config_sha256": "5e8b437de044140b913aecae5ff0000eb42188692eab8af538c7397b91d02b4b",
+          "original_physics_config_sha256": "2bec4090a6dfa50f479bbd9394b65221ed7a66779b97005f7c44f70678b7e93c",
+          "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+          "first_laptop_phone_contact_frame": null,
+          "minimum_laptop_world_z_m": -0.8110039854890174,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep01/metadata/physics.json",
+          "state_sha256": "d82b643de309cc230d6f8f6caec0032fa4041e89817a6d5573a93c37758a21f0",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "7fc0c0dc02f5dc2ec323dc0bbf6fad87d6a852eacdd25f0fa0c3f686f0539588",
+          "render_config_sha256": "dd0b538f1ebda24fa8416bb11ab1d25e4469ca73a8b83fc21de65f03dfca976d",
+          "original_physics_config_sha256": "866704761d5c1e1c76bca601df9cb47273eee02c7ebdbbbbcec651f68cb08482",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.802013864884254,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep02/metadata/physics.json",
+          "state_sha256": "cf65df20334fb37851ce3bd118ad1ce8b0f2295102851837679ac2031e9a667b",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "6fe7b9f8e54966b06efefd55d95442ad437befe3b4d87cb23f25231c33c22e3a",
+          "render_config_sha256": "a03184369bcf71c85daf9367871aa06e4ba45ef36d5628e91194a16babb4d19c",
+          "original_physics_config_sha256": "b5b3f8fc862cb2aa98d197bea17b4ecd1b25bcc16c449c0a5262eddc2dddd4ed",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8020138648842543,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_plus_rep03/metadata/physics.json",
+          "state_sha256": "834559ef80a3e7828d0f1c580f854778d2f67626453ff2306be471c4fc45d30f",
+          "theta": 0.020000000000000018,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "fc13e03c0864ad9c6b02dc216f8e3dc82d2cb12d0f4c29254090e9c09f5330f7",
+          "render_config_sha256": "f30bff8cdbe24f1cdec8ca9d3ca31a1481ebca72a6d2040655ff85965f9678ba",
+          "original_physics_config_sha256": "a526c231d37f1ceb5f8fef087d3d8dd80e2dd7d740c60ace96384cea6e5e4f8d",
+          "actual_pose_audit_sha256": "808dcbe74f007629fad41b7d0613e8393f2e21bf23431939001d0d3aae26cf83",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.802013864884254,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01/metadata/physics.json",
+          "state_sha256": "cd7db07859cd0d92acbe3d11acacd501ce48268bc3b7dc025b1f43f3b761653c",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "20f46c52be1f9ab5ed021b72e988a74b517f04842b4d9f7315b4f08e5c7d8bbb",
+          "render_config_sha256": "8e7fca116c2951656fa12b3d6fc05cc5ca47c396fd3f247578621ff05f453591",
+          "original_physics_config_sha256": "b4518fc46e65a42aa9440ae9a33650968c23b099cee15c158098f60d1f6122d7",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076437,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02/metadata/physics.json",
+          "state_sha256": "46fc05f1e6637503b9e22f8a8a151d9dedccae4217a6ab975629b83d5c064cb7",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "c1393a93c57948a823931323e7043359fc8a9375e857aa756cdf4fd4141e5c88",
+          "render_config_sha256": "11119afd3248cc3369b054f1e0715c22f79da76236e259b4f926ca03a3e1c356",
+          "original_physics_config_sha256": "403e5a057a25470cb0274beb40091b000c37cacc4c813a8f8254721b70732eb2",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076423,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03",
+          "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03/metadata/physics.json",
+          "state_sha256": "fa6023f95a571337032e13b4d097920052c416d3f816afccbc4498c9c3c7a0ee",
+          "theta": 0.050000000000000044,
+          "label": 1,
+          "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+          "media_binding_sha256": "5d5367243085b58975de2ef8b9814e0a6afac542793fbea516a5c50abeae5445",
+          "render_config_sha256": "46dc36d3196b4a9ac9209b9872b8158f29d01ea1652c2c29ea697bbc31a77192",
+          "original_physics_config_sha256": "965e63fe6b0439ae7caf0c04ea4782955ae02d97ddca61dd8dbf28635cb54e68",
+          "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+          "first_laptop_phone_contact_frame": 52,
+          "minimum_laptop_world_z_m": -0.8051849315076437,
+          "horizon_s": 5.0,
+          "camera": "cam01",
+          "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+        }
+      ],
+      "other_contexts": [
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_minus_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "de8b0abff4b4272c299424d29f2ed3a07e191f82f213f09258446b7c7cd874de",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_plus_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "30d5fa06a5b901fd89924405768ed6b482b47c35271947c41c83c99ee675bc09",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep01",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep02",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfA_theta_star_rep03",
+          "theta": 0.050000000000000044,
+          "context_sha256": "fc8dccefa6cff8bacb2996c7b51c06b6d3c4c1208e8451e3f0dd520d9160f3ee",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_minus_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "123fd6afccd363b5cd9a3b466529a1cf9b6df3ecdfd9ddc88bc38dde77c0862b",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_plus_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "bdb166562e92e405df1baf3ed9a168f04a42036dd353035a58c28b0432911f3c",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep01",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep02",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfC_theta_star_rep03",
+          "theta": 0.020000000000000018,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_01",
+          "theta": 0.12,
+          "context_sha256": "fca8a3cf1ea013391099d15cc0a3c5d7bae81cf0e8c1813c2c3ecab11ec2661f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_02",
+          "theta": 0.09999999999999998,
+          "context_sha256": "2baffbbd4ce6cd6c4053895fd99a00980b2df7cc92023462894c8066e3f53abb",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_03",
+          "theta": 0.08999999999999997,
+          "context_sha256": "85e27cfb8bb0a2194f01a76973f32fcfe9abef8523de124916e11e37dd3ab66f",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_04",
+          "theta": 0.07499999999999996,
+          "context_sha256": "41ddfcc10405329cdb1757d794cb97e0aa531c3734ce3c0f1b2d66c224271706",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_05",
+          "theta": 0.06499999999999995,
+          "context_sha256": "7e2753799cd54ab2f3dea114458c9a3ae794feda11cd64ff846b439ea0402737",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_06",
+          "theta": 0.05500000000000005,
+          "context_sha256": "1fca821e141fa09e2482e8d1eeebcb24138948fc83c992ddfff980fe968b162e",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_07",
+          "theta": 0.050000000000000044,
+          "context_sha256": "64224ea3738b51e0a56a5fb3ef97acc55ff2a0027ace774ff790d6ac89fbe004",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_08",
+          "theta": 0.04500000000000004,
+          "context_sha256": "b36025e3308364befdbdbfaefe657cad0cc971c530948564ece627bb789c2f43",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_09",
+          "theta": 0.040000000000000036,
+          "context_sha256": "e5ba2f3f0f3273874d8bb0ab99baf768cfdddf2e1eef3857d1012e4cf5b5d7ce",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_10",
+          "theta": 0.03500000000000003,
+          "context_sha256": "18dd75296ad80584a4da119337a378e6ab8ba6cc86a0d0e5b70935ffe5531ecc",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_11",
+          "theta": 0.030000000000000027,
+          "context_sha256": "6be4d8b036f37f88e0d2ba6617eb3d68e97ba3d912b1e2db13fd7fa209a62a50",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_12",
+          "theta": 0.025000000000000022,
+          "context_sha256": "fa415b5c1f2b05578649121eb2a7ef8075135731da89fa96c8d9e154047a1313",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_13",
+          "theta": 0.020000000000000018,
+          "context_sha256": "a5eae25a2adda8653040829cba22e8864a8ef66af8fb79133fe8642a34e7e367",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_14",
+          "theta": 0.015000000000000013,
+          "context_sha256": "247106e8278ae479544a3c176314b312c7e341a3b299109043b933ee5b5fb5fd",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_15",
+          "theta": 0.01200000000000001,
+          "context_sha256": "e90e7df418d70d0957673935c60bedf55276d5f563cd5a7a866642cf1e50ffe2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_16",
+          "theta": 0.010000000000000009,
+          "context_sha256": "673ce937bc1ff9506b67ddba30286a699356f6e8a2f610293b23cb75e08a8cf2",
+          "context_differing_keys": [
+            "objects"
+          ]
+        },
+        {
+          "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_global_17",
+          "theta": 0.008000000000000007,
+          "context_sha256": "567b2af380d5b35273a16450e7338c6f91b659f75b3b6f953f58c08b77e16eb9",
+          "context_differing_keys": [
+            "objects"
+          ]
+        }
+      ],
+      "read_errors": [],
+      "conflicting_theta_labels": {},
+      "intervals": [
+        {
+          "event": "laptop_contacts_phone",
+          "bracket": [
+            0.050000000000000044,
+            0.08499999999999996
+          ],
+          "endpoint_labels": [
+            1,
+            0
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep01/metadata/physics.json",
+                "state_sha256": "cd7db07859cd0d92acbe3d11acacd501ce48268bc3b7dc025b1f43f3b761653c",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "20f46c52be1f9ab5ed021b72e988a74b517f04842b4d9f7315b4f08e5c7d8bbb",
+                "render_config_sha256": "8e7fca116c2951656fa12b3d6fc05cc5ca47c396fd3f247578621ff05f453591",
+                "original_physics_config_sha256": "b4518fc46e65a42aa9440ae9a33650968c23b099cee15c158098f60d1f6122d7",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076437,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep02/metadata/physics.json",
+                "state_sha256": "46fc05f1e6637503b9e22f8a8a151d9dedccae4217a6ab975629b83d5c064cb7",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "c1393a93c57948a823931323e7043359fc8a9375e857aa756cdf4fd4141e5c88",
+                "render_config_sha256": "11119afd3248cc3369b054f1e0715c22f79da76236e259b4f926ca03a3e1c356",
+                "original_physics_config_sha256": "403e5a057a25470cb0274beb40091b000c37cacc4c813a8f8254721b70732eb2",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076423,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_star_rep03/metadata/physics.json",
+                "state_sha256": "fa6023f95a571337032e13b4d097920052c416d3f816afccbc4498c9c3c7a0ee",
+                "theta": 0.050000000000000044,
+                "label": 1,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "5d5367243085b58975de2ef8b9814e0a6afac542793fbea516a5c50abeae5445",
+                "render_config_sha256": "46dc36d3196b4a9ac9209b9872b8158f29d01ea1652c2c29ea697bbc31a77192",
+                "original_physics_config_sha256": "965e63fe6b0439ae7caf0c04ea4782955ae02d97ddca61dd8dbf28635cb54e68",
+                "actual_pose_audit_sha256": "1fe95aaa2bddf770d7d53fed8c5c45b0d14838f3c04427556258bfc158a32c22",
+                "first_laptop_phone_contact_frame": 52,
+                "minimum_laptop_world_z_m": -0.8051849315076437,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              }
+            ],
+            [
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep01/metadata/physics.json",
+                "state_sha256": "1611598bb7cfb3a88c15a3b04ba264c3e6124aeee3c55b9a9b70cf318add8b84",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "d7d3717b19dcabb2f728bac4647b098b3f9b863a0bd325b987d8575f2383016e",
+                "render_config_sha256": "e0c6535400c7561178bdc25e681bd114206a299efc19f599d775ff225aa85ad9",
+                "original_physics_config_sha256": "11ba630b79ea70563c619c6bd7a4fc859263b75781a814033e5eaab2664f64e8",
+                "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854890174,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep02/metadata/physics.json",
+                "state_sha256": "5a04af6cb11a45e586f08643fce2bc009e36fe8db894b60dd7c92820fe76dcf1",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "8f7abb0b1ad0056135594e7c1dbff5f64d26d3b8bd28e11ad2a4f20e1c2a3d65",
+                "render_config_sha256": "75f947e29d29a23288d7e69c28215954a39cd7f2fdecc71d3a14d857556d14d1",
+                "original_physics_config_sha256": "7dfcfc65c698c1c10f19b07f21e58813b460c5a01298a3d5302bf887782b364b",
+                "actual_pose_audit_sha256": "860f6899adbcfafdea48e772eaaaf350762f7c2336d04b872ee9087f89674035",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854891443,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              },
+              {
+                "sample_id": "T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03",
+                "state_path": "/data_cached/wangzijun_p25/liyuhan/ebb_new_outputs/t15/v11_20260914/formal/T15V11__bg01_home_ase__g03_earth__formal_cfB_theta_minus_rep03/metadata/physics.json",
+                "state_sha256": "2663b4fa704f1e34bf524f0bb9ab77268c4e82717cfdb5fb695cd36817ff8127",
+                "theta": 0.08499999999999996,
+                "label": 0,
+                "fixed_context_sha256": "6c056d4817d0535c5098b0cce270c539476bfa7f6968e2fa6ca93827bbda1d51",
+                "media_binding_sha256": "e8171157fe6ddcd60343654b2efc9684ec2f0d76dce92208ab12481cdf26b0b5",
+                "render_config_sha256": "5e8b437de044140b913aecae5ff0000eb42188692eab8af538c7397b91d02b4b",
+                "original_physics_config_sha256": "2bec4090a6dfa50f479bbd9394b65221ed7a66779b97005f7c44f70678b7e93c",
+                "actual_pose_audit_sha256": "c78f39ef015bc198faea8e6bc963ca70bce064d9298378b7a8f99e6fcdf015f1",
+                "first_laptop_phone_contact_frame": null,
+                "minimum_laptop_world_z_m": -0.8110039854890174,
+                "horizon_s": 5.0,
+                "camera": "cam01",
+                "calibrated_source_id": "T15V11__bg01_home_ase__g03_earth__search_16"
+              }
+            ]
+          ]
+        }
+      ],
+      "scope": "Original V11 published observations, exact simulator/profile and 5s target; no unique or fine physical root claim."
+    }
+  ],
+  "new_simulations": 0,
+  "source_files_modified": false,
+  "source_readback_sha256": "177d1346ea0267e18b96d98737e4c5325fdc6e7071e03e4000f2208fc7ce8430"
+}

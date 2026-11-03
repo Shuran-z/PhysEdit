@@ -1,0 +1,60 @@
+{
+  "schema": "core100-rebalanced-roster-v1",
+  "version": "core100-critical-pairs-v2-20261101",
+  "registered_cases": 100,
+  "scene_counts": {
+    "T01": 5,
+    "T02": 5,
+    "T03": 5,
+    "T04": 5,
+    "T05": 5,
+    "T06": 5,
+    "T07": 5,
+    "T08": 5,
+    "T09": 5,
+    "T10": 5,
+    "T11": 5,
+    "T12": 5,
+    "T13": 5,
+    "T14": 5,
+    "T15": 5,
+    "T16": 5,
+    "T17": 5,
+    "T18": 5,
+    "T19": 5,
+    "T20": 5
+  },
+  "retained": 92,
+  "replaced": 8,
+  "replacement_pairs": 4,
+  "reference_selection_basis": "source event contrast and dataset coverage; no generated-model scores used",
+  "model_generation_and_annotation_pending": [
+    "T04_C01",
+    "T04_C03",
+    "T05_C01",
+    "T05_C03",
+    "T10_C01",
+    "T10_C02",
+    "T11_C01",
+    "T11_C02"
+  ],
+  "legacy_tasks_outputs_annotations_modified": false,
+  "training_split_modified": false,
+  "parent_manifest": {
+    "path": "benchmarks\\core100_t19_isaac_v1_20261031\\MANIFEST.json",
+    "sha256": "f9873e65845cf30cfeda72426eb72556beb4f71da0f2ca16ca17af3548ccd6bf"
+  },
+  "supplement_manifest": {
+    "path": "benchmarks\\critical_supplement_v1_20261101\\MANIFEST.json",
+    "sha256": "9d87eec13ddc7613e6dbbc1a73d7de80d9775d7e00d340e5651d1253db509399"
+  },
+  "retained_reference_limits": "Preserve original calibrations, numerical-only records and their admission limits.",
+  "new_reference_limits": "Observed local contrast intervals; only T10 new pair is Near. Target-only events do not establish full EventExact; inversion pending.",
+  "files": {
+    "known_conditions.json": "50e266c30c7d60ceb792947eda982aa184a173897c45d79b499208661cab0f39",
+    "previous_eight_conditions.json": "bc13cb9a299e231ba9ab741343dcfc2e9890e3b9b548d10c608686aebdb3fd62",
+    "replacement_answers.json": "4c6637487fa5d65ea245fe41c75365f1800f971aeae402f71e70c18eae39e9dd",
+    "replacement_map.json": "80e2e749b5028d9f5e5d40134056996376b4d951615cff144b37f5d2d6520e81",
+    "retained_distance_references.json": "a934e2ff089cfe0d8e56da38017de493658d98ebf8e0d514bbe4792d062605e4"
+  }
+}

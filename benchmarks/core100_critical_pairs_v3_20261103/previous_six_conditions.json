@@ -1,0 +1,4350 @@
+{
+  "tasks": [
+    {
+      "clip_id": "T04_C02",
+      "sample_id": "T04F880V1__bg01_home_ase__g02_mars__global_03__rep01",
+      "source_video_sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01/videos/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "unverified",
+        "physical_dt_s": null,
+        "media_fps": null,
+        "release_frame": null,
+        "frame_count": null
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.friction",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.friction",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.friction",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.friction",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.friction",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.friction",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.friction",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_friction_coefficient",
+          0.105,
+          ""
+        ],
+        [
+          "table_friction_coefficient",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t04v3_removable_support_bar.mass",
+          "",
+          0.11,
+          "kg"
+        ],
+        [
+          "t04v3_removable_support_bar.material friction",
+          "",
+          0.22,
+          ""
+        ],
+        [
+          "t04v3_removable_support_bar.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_bottom.material friction",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "t04v3_stack_book_bottom.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.mass",
+          "",
+          0.62,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_middle.material friction",
+          "",
+          0.16,
+          ""
+        ],
+        [
+          "t04v3_stack_book_middle.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.mass",
+          "",
+          0.28,
+          "kg"
+        ],
+        [
+          "t04v3_stack_book_top.material friction",
+          "",
+          0.19,
+          ""
+        ],
+        [
+          "t04v3_stack_book_top.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_1.material friction",
+          "",
+          0.27,
+          ""
+        ],
+        [
+          "t04v3_chain_can_1.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.mass",
+          "",
+          0.07,
+          "kg"
+        ],
+        [
+          "t04v3_chain_can_2.material friction",
+          "",
+          0.24300000000000002,
+          ""
+        ],
+        [
+          "t04v3_chain_can_2.restitution",
+          "",
+          0.055,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.mass",
+          "",
+          0.16,
+          "kg"
+        ],
+        [
+          "t04v3_chain_mug.material friction",
+          "",
+          0.29,
+          ""
+        ],
+        [
+          "t04v3_chain_mug.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "ramp_angle_deg",
+          "",
+          7.3,
+          "°"
+        ],
+        [
+          "ramp_material friction_coefficient",
+          "",
+          0.105,
+          ""
+        ],
+        [
+          "table_material friction_coefficient",
+          "",
+          0.34,
+          ""
+        ],
+        [
+          "commanded_extraction_distance_m",
+          "",
+          0.175,
+          "m"
+        ],
+        [
+          "commanded_extraction_speed_mps",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "support_pull_force_magnitude_n",
+          "",
+          0.46,
+          "N"
+        ],
+        [
+          "support_pull_force_duration_s",
+          "",
+          1.1,
+          "s"
+        ],
+        [
+          "t04v3_removable_support_bar.initial_speed",
+          "",
+          0.15,
+          "m/s"
+        ],
+        [
+          "t04v3_removable_support_bar.force_peak",
+          "",
+          0.46,
+          "N"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "source_video_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01/videos/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Removable support bar. Gravity 3.71 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+      "prompt_token_counts": {
+        "ltx": 115,
+        "cogvideox": 115,
+        "wan": 133
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.material friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t04v3_removable_support_bar.restitution",
+        "t04v3_stack_book_bottom.mass",
+        "t04v3_stack_book_bottom.material friction",
+        "t04v3_stack_book_bottom.restitution",
+        "t04v3_stack_book_middle.mass",
+        "t04v3_stack_book_middle.material friction",
+        "t04v3_stack_book_middle.restitution",
+        "t04v3_stack_book_top.mass",
+        "t04v3_stack_book_top.material friction",
+        "t04v3_stack_book_top.restitution",
+        "t04v3_chain_can_1.mass",
+        "t04v3_chain_can_1.material friction",
+        "t04v3_chain_can_1.restitution",
+        "t04v3_chain_can_2.mass",
+        "t04v3_chain_can_2.material friction",
+        "t04v3_chain_can_2.restitution",
+        "t04v3_chain_mug.mass",
+        "t04v3_chain_mug.material friction",
+        "t04v3_chain_mug.restitution",
+        "ramp_material friction_coefficient",
+        "table_material friction_coefficient"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Removable support bar. Gravity 3.71 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Keep the camera fixed. Off-screen force acts on Removable support bar. Gravity 3.71 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg.",
+        "Off-screen force acts on Removable support bar. Camera stays fixed. Gravity 3.71 m/s^2. Removable support bar material friction 0.22. Ramp angle 7.3 deg. Support extraction distance 0.175 m. Support extraction speed 0.15 m/s. Support pull force magnitude 0.46 N. Support pull force duration 1.1 s. Removable support bar initial speed 0.15 m/s. Removable support bar force peak 0.46 N. Removable support bar mass 0.11 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 133
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 134
+        },
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 134
+        }
+      ],
+      "prompt_variant_sha256": [
+        "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+        "352f5c8db4da9949465a3992b1a1dd2190ac322cb133b4e101a485d876a22f31",
+        "8db2294f7c22eeb33b702d58e0951871e0a7fdcfae9c66b1602d403d251e007c"
+      ],
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Removable support bar."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "t04v3_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.032
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_ramp_support_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": false,
+            "pose": {
+              "position": [
+                -0.445,
+                0.0,
+                0.0459271233168216
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.85
+          },
+          {
+            "name": "t04v3_folder_ramp_pbr",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1,
+                0.0,
+                0.06244982510819708
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.42
+          },
+          {
+            "name": "t04v3_support_bar_guide_upslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.11177311570373336,
+                0.20850000000000002,
+                0.09017046266627837
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_guide_downslope",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.05721892136128171,
+                0.20850000000000002,
+                0.08318190919320409
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_support_bar_endstop",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08284417862068999,
+                0.307,
+                0.09957081368341163
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t04v3_removable_support_bar",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.15,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.08453413791508795,
+                0.045,
+                0.08637861759696423
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.11
+          },
+          {
+            "name": "t04v3_stack_book_bottom",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.22517245866124377,
+                0.0,
+                0.10842748917129652
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.4
+          },
+          {
+            "name": "t04v3_stack_book_middle",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.24751984426648693,
+                -0.012,
+                0.1543391909107286
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.62
+          },
+          {
+            "name": "t04v3_stack_book_top",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.27497838911950234,
+                0.014,
+                0.19183210110125581
+              ],
+              "euler_xyz": [
+                0.0,
+                7.3,
+                0.0
+              ]
+            },
+            "mass": 0.28
+          },
+          {
+            "name": "t04v3_chain_can_1",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.37,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_can_2",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.485,
+                0.0,
+                0.0622
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.07
+          },
+          {
+            "name": "t04v3_chain_mug",
+            "motion": {
+              "type": "physics"
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.63,
+                0.0,
+                0.0479
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.16
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "physical_support_bar_pull",
+            "target": "t04v3_removable_support_bar",
+            "force_world": [
+              0.0,
+              0.46,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 32
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 24
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014\\actual_evidence\\2f98d527979e567c9b9596b3.json.gz",
+        "source_path": "staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01/metadata/T04F880V1__bg01_home_ase__g02_mars__global_03__rep01__cam01.json.gz",
+        "status": "pinned_hf_trajectory_read"
+      },
+      "previous_prompt_variant_sha256": [
+        "402a73817270ca4a654fe8117bd9082a9b0cf055860d35afb22cb1993e8826ec",
+        "fe6d3147ba2dabdc3cbb004dbecd0ef3ccf7a32b692c64f16a6036b2b822216e",
+        "06db68ddb8ce234ad6b3c7570dd3e776f973ffcde0b0393290873450704e2ed7"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "402a73817270ca4a654fe8117bd9082a9b0cf055860d35afb22cb1993e8826ec",
+          "fe6d3147ba2dabdc3cbb004dbecd0ef3ccf7a32b692c64f16a6036b2b822216e",
+          "06db68ddb8ce234ad6b3c7570dd3e776f973ffcde0b0393290873450704e2ed7"
+        ]
+      }
+    },
+    {
+      "clip_id": "T06_C02",
+      "sample_id": "PROD_T06_bg01_home_ase_g02_mars_gap_p08",
+      "source_video_sha256": "b6854615c5a431c6e590a59b300b6a5e63985737d0f5f17a3b761175c230d4ad",
+      "source_repo": "phy2/phydataset",
+      "source_revision": "5ae6ed9b2754bef708ce598b8ea7777e5aaf4ba9",
+      "source_video_path": "data/T06/genesis_44_480p_20260927/videos/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.02,
+        "media_fps": 30,
+        "release_frame": 12,
+        "frame_count": 210,
+        "source": "source-config clock and author audit; timing is independent of unresolved T10 geometry"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t06_book_00.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_00.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_00.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_01.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_01.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_01.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_02.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_02.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_02.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_03.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_03.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_03.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_04.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_04.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_04.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_05.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_05.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_05.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_06.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_06.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_06.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_07.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_07.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_07.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_08.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_08.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_08.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_09.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_09.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_09.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_00.force_peak",
+          3.9418836025891224,
+          "N"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t06_book_00.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_00.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_00.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_01.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_01.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_01.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_02.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_02.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_02.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_03.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_03.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_03.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_04.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_04.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_04.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_05.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_05.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_05.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_06.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_06.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_06.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_07.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_07.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_07.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_08.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_08.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_08.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_09.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_09.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_09.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_00.force_peak",
+          "",
+          3.9418836025891224,
+          "N"
+        ],
+        [
+          "frozen_tabletop_collision_slab.material friction",
+          "",
+          0.52,
+          ""
+        ],
+        [
+          "dynamics_start_time",
+          "",
+          0.24,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "clip_id": "T06_C02",
+        "source_sha256": "b6854615c5a431c6e590a59b300b6a5e63985737d0f5f17a3b761175c230d4ad",
+        "derivative_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C02_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C02_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Book 00. Gravity 3.71 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "85be7a3513c728a4011bfdec70cf8ec77ca4095f99427a0490603971d57b63d0",
+      "prompt_token_counts": {
+        "ltx": 116,
+        "cogvideox": 116,
+        "wan": 174
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t06_book_00.force_peak",
+        "frozen_tabletop_collision_slab.material friction",
+        "dynamics_start_time",
+        "t06_book_00.mass",
+        "t06_book_01.mass",
+        "t06_book_02.mass",
+        "t06_book_03.mass",
+        "t06_book_04.mass",
+        "t06_book_05.mass",
+        "t06_book_06.mass",
+        "t06_book_07.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t06_book_00.material friction",
+        "t06_book_00.restitution",
+        "t06_book_01.material friction",
+        "t06_book_01.restitution",
+        "t06_book_02.material friction",
+        "t06_book_02.restitution",
+        "t06_book_03.material friction",
+        "t06_book_03.restitution",
+        "t06_book_04.material friction",
+        "t06_book_04.restitution",
+        "t06_book_05.material friction",
+        "t06_book_05.restitution",
+        "t06_book_06.material friction",
+        "t06_book_06.restitution",
+        "t06_book_07.material friction",
+        "t06_book_07.restitution",
+        "t06_book_08.mass",
+        "t06_book_08.material friction",
+        "t06_book_08.restitution",
+        "t06_book_09.mass",
+        "t06_book_09.material friction",
+        "t06_book_09.restitution"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Book 00. Gravity 3.71 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+        "Keep the camera fixed. Off-screen force acts on Book 00. Gravity 3.71 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+        "Off-screen force acts on Book 00. Camera stays fixed. Gravity 3.71 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 174
+        },
+        {
+          "ltx": 118,
+          "cogvideox": 118,
+          "wan": 175
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 175
+        }
+      ],
+      "prompt_variant_sha256": [
+        "85be7a3513c728a4011bfdec70cf8ec77ca4095f99427a0490603971d57b63d0",
+        "f73fb311176e5cc0bb42a236428151ecee6231178a9d78a32f5a3f79c25f39c2",
+        "ae3bf56f8efe81ce996dbb41aecb1b03227fdcb93b4ebe6362293b14e6a657e4"
+      ],
+      "generation_time_contract": "realtime; release at 0.24 seconds; 50 fps derivative reference",
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Book 00."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "frozen_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.03199999999999992
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t06_book_00",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.4116429,
+                0.0,
+                0.1137272
+              ],
+              "euler_xyz": [
+                0.0,
+                91.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_01",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.3235,
+                0.00956,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_02",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.2288571,
+                0.0172727,
+                0.1335
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0816326530612246,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_03",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1372143,
+                0.0222222,
+                0.1185
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9591836734693877,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_04",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.0490714,
+                0.0246447,
+                0.1135
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_05",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0455714,
+                0.0246936,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_06",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.1372143,
+                0.0222222,
+                0.1335
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0816326530612246,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_07",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.2253571,
+                0.0175072,
+                0.1185
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9591836734693877,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_08",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.32,
+                0.0098923,
+                0.1135
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_09",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.4116429,
+                0.0,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t06_impact_000",
+            "target": "t06_book_00",
+            "force_world": [
+              0.2283584,
+              0.0,
+              0.0182687
+            ],
+            "frame_start": 8,
+            "frame_end": 8
+          },
+          {
+            "name": "t06_impact_001",
+            "target": "t06_book_00",
+            "force_world": [
+              0.8611193,
+              0.0,
+              0.0688895
+            ],
+            "frame_start": 9,
+            "frame_end": 9
+          },
+          {
+            "name": "t06_impact_002",
+            "target": "t06_book_00",
+            "force_world": [
+              1.7533249,
+              0.0,
+              0.140266
+            ],
+            "frame_start": 10,
+            "frame_end": 10
+          },
+          {
+            "name": "t06_impact_003",
+            "target": "t06_book_00",
+            "force_world": [
+              2.7005817,
+              0.0,
+              0.2160465
+            ],
+            "frame_start": 11,
+            "frame_end": 11
+          },
+          {
+            "name": "t06_impact_004",
+            "target": "t06_book_00",
+            "force_world": [
+              3.4858845,
+              0.0,
+              0.2788708
+            ],
+            "frame_start": 12,
+            "frame_end": 12
+          },
+          {
+            "name": "t06_impact_005",
+            "target": "t06_book_00",
+            "force_world": [
+              3.9293298,
+              0.0,
+              0.3143464
+            ],
+            "frame_start": 13,
+            "frame_end": 13
+          },
+          {
+            "name": "t06_impact_006",
+            "target": "t06_book_00",
+            "force_world": [
+              3.9293298,
+              0.0,
+              0.3143464
+            ],
+            "frame_start": 14,
+            "frame_end": 14
+          },
+          {
+            "name": "t06_impact_007",
+            "target": "t06_book_00",
+            "force_world": [
+              3.4858845,
+              0.0,
+              0.2788708
+            ],
+            "frame_start": 15,
+            "frame_end": 15
+          },
+          {
+            "name": "t06_impact_008",
+            "target": "t06_book_00",
+            "force_world": [
+              2.7005817,
+              0.0,
+              0.2160465
+            ],
+            "frame_start": 16,
+            "frame_end": 16
+          },
+          {
+            "name": "t06_impact_009",
+            "target": "t06_book_00",
+            "force_world": [
+              1.7533249,
+              0.0,
+              0.140266
+            ],
+            "frame_start": 17,
+            "frame_end": 17
+          },
+          {
+            "name": "t06_impact_010",
+            "target": "t06_book_00",
+            "force_world": [
+              0.8611193,
+              0.0,
+              0.0688895
+            ],
+            "frame_start": 18,
+            "frame_end": 18
+          },
+          {
+            "name": "t06_impact_011",
+            "target": "t06_book_00",
+            "force_world": [
+              0.2283584,
+              0.0,
+              0.0182687
+            ],
+            "frame_start": 19,
+            "frame_end": 19
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 12
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014/t0610_verified_evidence.jsonl.gz",
+        "source_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T06/production_2640_480p_20260904/metadata/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam01.json.gz",
+        "video_binding": "sha256_match"
+      },
+      "previous_prompt_variant_sha256": [
+        "0123c6437811d6a24ca61a223c78e857871873c28ed6904c9f2294f2de17f16d",
+        "821dbd1670eb4cf987d0f901e2380b9a01e4b42adf2fc5db1d22266ed297b25d",
+        "d80ebfdd122dcac94a212b06b087552cd7e7647ce3354d95409e8462776d1c23"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "0123c6437811d6a24ca61a223c78e857871873c28ed6904c9f2294f2de17f16d",
+          "821dbd1670eb4cf987d0f901e2380b9a01e4b42adf2fc5db1d22266ed297b25d",
+          "d80ebfdd122dcac94a212b06b087552cd7e7647ce3354d95409e8462776d1c23"
+        ]
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "sample_id": "PROD_T06_bg01_home_ase_g03_earth_gap_p08",
+      "source_video_sha256": "45e4edbc0190366cd244ee5ad1018c12271c48f394f4644e212ae7a4375e600a",
+      "source_repo": "phy2/phydataset",
+      "source_revision": "5ae6ed9b2754bef708ce598b8ea7777e5aaf4ba9",
+      "source_video_path": "data/T06/genesis_44_480p_20260927/videos/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam01.mp4",
+      "configuration_status": "historical_inventory_not_certified",
+      "verified_parameter_truth": {},
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.02,
+        "media_fps": 30,
+        "release_frame": 12,
+        "frame_count": 210,
+        "source": "source-config clock and author audit; timing is independent of unresolved T10 geometry"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t06_book_00.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_00.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_00.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_01.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_01.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_01.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_02.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_02.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_02.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_03.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_03.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_03.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_04.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_04.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_04.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_05.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_05.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_05.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_06.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_06.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_06.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_07.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_07.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_07.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_08.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_08.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_08.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_09.mass",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_09.friction",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_09.restitution",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_00.force_peak",
+          3.9418836025891224,
+          "N"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t06_book_00.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_00.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_00.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_01.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_01.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_01.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_02.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_02.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_02.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_03.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_03.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_03.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_04.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_04.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_04.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_05.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_05.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_05.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_06.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_06.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_06.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_07.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_07.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_07.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_08.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_08.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_08.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_09.mass",
+          "",
+          0.38,
+          "kg"
+        ],
+        [
+          "t06_book_09.material friction",
+          "",
+          0.58,
+          ""
+        ],
+        [
+          "t06_book_09.restitution",
+          "",
+          0.04,
+          ""
+        ],
+        [
+          "t06_book_00.force_peak",
+          "",
+          3.9418836025891224,
+          "N"
+        ],
+        [
+          "frozen_tabletop_collision_slab.material friction",
+          "",
+          0.52,
+          ""
+        ],
+        [
+          "dynamics_start_time",
+          "",
+          0.24,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "declared_control_source_explicit_no_outcome_leak",
+      "reference": {
+        "clip_id": "T06_C03",
+        "source_sha256": "45e4edbc0190366cd244ee5ad1018c12271c48f394f4644e212ae7a4375e600a",
+        "derivative_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T06_C03_realtime.mp4",
+        "release_frame": 12,
+        "release_time_s": 0.24,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T06_C03_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072"
+      },
+      "prompt_en": "Fixed camera. Off-screen force acts on Book 00. Gravity 9.81 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "english-declared-controls-three-prompts-v6-20261023",
+      "prompt_sha256": "c345b9d0dbe67e119799a1a0135d3ee5ca97bc83e75b39984c0579e665b0777f",
+      "prompt_token_counts": {
+        "ltx": 116,
+        "cogvideox": 116,
+        "wan": 174
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t06_book_00.force_peak",
+        "frozen_tabletop_collision_slab.material friction",
+        "dynamics_start_time",
+        "t06_book_00.mass",
+        "t06_book_01.mass",
+        "t06_book_02.mass",
+        "t06_book_03.mass",
+        "t06_book_04.mass",
+        "t06_book_05.mass",
+        "t06_book_06.mass",
+        "t06_book_07.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t06_book_00.material friction",
+        "t06_book_00.restitution",
+        "t06_book_01.material friction",
+        "t06_book_01.restitution",
+        "t06_book_02.material friction",
+        "t06_book_02.restitution",
+        "t06_book_03.material friction",
+        "t06_book_03.restitution",
+        "t06_book_04.material friction",
+        "t06_book_04.restitution",
+        "t06_book_05.material friction",
+        "t06_book_05.restitution",
+        "t06_book_06.material friction",
+        "t06_book_06.restitution",
+        "t06_book_07.material friction",
+        "t06_book_07.restitution",
+        "t06_book_08.mass",
+        "t06_book_08.material friction",
+        "t06_book_08.restitution",
+        "t06_book_09.mass",
+        "t06_book_09.material friction",
+        "t06_book_09.restitution"
+      ],
+      "full_parameters_location": "prompt_generation_facts and external_control_inputs; metadata only",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Fixed camera. Off-screen force acts on Book 00. Gravity 9.81 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+        "Keep the camera fixed. Off-screen force acts on Book 00. Gravity 9.81 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg.",
+        "Off-screen force acts on Book 00. Camera stays fixed. Gravity 9.81 m/s^2. Book 00 force peak 3.9418836025891224 N. Frozen tabletop surface material friction 0.52. Dynamics start time 0.24 s. Book 00 mass 0.38 kg. Book 01 mass 0.38 kg. Book 02 mass 0.38 kg. Book 03 mass 0.38 kg. Book 04 mass 0.38 kg. Book 05 mass 0.38 kg. Book 06 mass 0.38 kg. Book 07 mass 0.38 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 116,
+          "cogvideox": 116,
+          "wan": 174
+        },
+        {
+          "ltx": 118,
+          "cogvideox": 118,
+          "wan": 175
+        },
+        {
+          "ltx": 117,
+          "cogvideox": 117,
+          "wan": 175
+        }
+      ],
+      "prompt_variant_sha256": [
+        "c345b9d0dbe67e119799a1a0135d3ee5ca97bc83e75b39984c0579e665b0777f",
+        "3989061cbbdd3ad7c8286867cde212891d3963e71ce94c1c25bdd29f0d2e6ab4",
+        "2be69645768064a54eeacb42eb77abdb81aafc3300697cac699da9f85aafa677"
+      ],
+      "generation_time_contract": "realtime; release at 0.24 seconds; 50 fps derivative reference",
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "external_control_disclosure": {
+        "kinds": [
+          "offscreen_runtime_force"
+        ],
+        "disclosure": "Off-screen force acts on Book 00."
+      },
+      "external_control_inputs": {
+        "objects": [
+          {
+            "name": "frozen_tabletop_collision_slab",
+            "motion": {
+              "type": "none"
+            },
+            "fixed": true,
+            "visualization": false,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0,
+                0.0,
+                -0.03199999999999992
+              ],
+              "euler_xyz": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "mass": 0.0
+          },
+          {
+            "name": "t06_book_00",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.4116429,
+                0.0,
+                0.1137272
+              ],
+              "euler_xyz": [
+                0.0,
+                91.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_01",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.3235,
+                0.00956,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_02",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.2288571,
+                0.0172727,
+                0.1335
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0816326530612246,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_03",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.1372143,
+                0.0222222,
+                0.1185
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9591836734693877,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_04",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                -0.0490714,
+                0.0246447,
+                0.1135
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_05",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.0455714,
+                0.0246936,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_06",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.1372143,
+                0.0222222,
+                0.1335
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0816326530612246,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_07",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.2253571,
+                0.0175072,
+                0.1185
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9591836734693877,
+                1.0,
+                1.0625
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_08",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.32,
+                0.0098923,
+                0.1135
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                0.9183673469387755,
+                1.0,
+                1.28125
+              ]
+            },
+            "mass": 0.38
+          },
+          {
+            "name": "t06_book_09",
+            "motion": {
+              "type": "physics",
+              "initial_velocity": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "fixed": false,
+            "visualization": true,
+            "collision": true,
+            "pose": {
+              "position": [
+                0.4116429,
+                0.0,
+                0.1235
+              ],
+              "euler_xyz": [
+                0.0,
+                90.0,
+                0.0
+              ],
+              "scale": [
+                1.0,
+                1.0,
+                0.875
+              ]
+            },
+            "mass": 0.38
+          }
+        ],
+        "runtime_forces": [
+          {
+            "name": "t06_impact_000",
+            "target": "t06_book_00",
+            "force_world": [
+              0.2283584,
+              0.0,
+              0.0182687
+            ],
+            "frame_start": 8,
+            "frame_end": 8
+          },
+          {
+            "name": "t06_impact_001",
+            "target": "t06_book_00",
+            "force_world": [
+              0.8611193,
+              0.0,
+              0.0688895
+            ],
+            "frame_start": 9,
+            "frame_end": 9
+          },
+          {
+            "name": "t06_impact_002",
+            "target": "t06_book_00",
+            "force_world": [
+              1.7533249,
+              0.0,
+              0.140266
+            ],
+            "frame_start": 10,
+            "frame_end": 10
+          },
+          {
+            "name": "t06_impact_003",
+            "target": "t06_book_00",
+            "force_world": [
+              2.7005817,
+              0.0,
+              0.2160465
+            ],
+            "frame_start": 11,
+            "frame_end": 11
+          },
+          {
+            "name": "t06_impact_004",
+            "target": "t06_book_00",
+            "force_world": [
+              3.4858845,
+              0.0,
+              0.2788708
+            ],
+            "frame_start": 12,
+            "frame_end": 12
+          },
+          {
+            "name": "t06_impact_005",
+            "target": "t06_book_00",
+            "force_world": [
+              3.9293298,
+              0.0,
+              0.3143464
+            ],
+            "frame_start": 13,
+            "frame_end": 13
+          },
+          {
+            "name": "t06_impact_006",
+            "target": "t06_book_00",
+            "force_world": [
+              3.9293298,
+              0.0,
+              0.3143464
+            ],
+            "frame_start": 14,
+            "frame_end": 14
+          },
+          {
+            "name": "t06_impact_007",
+            "target": "t06_book_00",
+            "force_world": [
+              3.4858845,
+              0.0,
+              0.2788708
+            ],
+            "frame_start": 15,
+            "frame_end": 15
+          },
+          {
+            "name": "t06_impact_008",
+            "target": "t06_book_00",
+            "force_world": [
+              2.7005817,
+              0.0,
+              0.2160465
+            ],
+            "frame_start": 16,
+            "frame_end": 16
+          },
+          {
+            "name": "t06_impact_009",
+            "target": "t06_book_00",
+            "force_world": [
+              1.7533249,
+              0.0,
+              0.140266
+            ],
+            "frame_start": 17,
+            "frame_end": 17
+          },
+          {
+            "name": "t06_impact_010",
+            "target": "t06_book_00",
+            "force_world": [
+              0.8611193,
+              0.0,
+              0.0688895
+            ],
+            "frame_start": 18,
+            "frame_end": 18
+          },
+          {
+            "name": "t06_impact_011",
+            "target": "t06_book_00",
+            "force_world": [
+              0.2283584,
+              0.0,
+              0.0182687
+            ],
+            "frame_start": 19,
+            "frame_end": 19
+          }
+        ],
+        "mechanisms": {},
+        "render": {},
+        "fps": 30,
+        "pre_static_frames": 12
+      },
+      "external_control_evidence": {
+        "file": "annotation_revision_20261014/t0610_verified_evidence.jsonl.gz",
+        "source_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T06/production_2640_480p_20260904/metadata/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam01.json.gz",
+        "video_binding": "sha256_match"
+      },
+      "previous_prompt_variant_sha256": [
+        "291bbf3db9c1c82d23b7b14537be7e8849ce0d6e9e71d756ae1422491c2165bd",
+        "a361433a87a4500518535f3701c7ecc6c176f87cd5d1156c076abea0b02ce3fd",
+        "5f40010f93c18100665e13afb5bb75413faf53a71ea2ad8b8fc5fe8cd05eabe6"
+      ],
+      "prompt_control_parent": {
+        "version": "core100-offscreen-prompts-v5-20261023",
+        "revision": "433772dc8ce1d7f08a026d6df44a976554e50301",
+        "previous_prompt_variant_sha256": [
+          "291bbf3db9c1c82d23b7b14537be7e8849ce0d6e9e71d756ae1422491c2165bd",
+          "a361433a87a4500518535f3701c7ecc6c176f87cd5d1156c076abea0b02ce3fd",
+          "5f40010f93c18100665e13afb5bb75413faf53a71ea2ad8b8fc5fe8cd05eabe6"
+        ]
+      }
+    },
+    {
+      "clip_id": "T10_C05",
+      "sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p17",
+      "source_video_sha256": "ef0f430d1c3ded6a7e6ab12cdf4e0cf3ca2b8e55dce73188f95cdbacc8a25a88",
+      "source_repo": "phy2/phydataset",
+      "source_revision": "5ae6ed9b2754bef708ce598b8ea7777e5aaf4ba9",
+      "source_video_path": "data/T10/genesis_44_480p_20260927/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam01.mp4",
+      "configuration_status": "reconstructed_configuration_validated_against_frozen_video",
+      "verified_parameter_truth": {
+        "gravity": 9.81,
+        "support_x_m": 0.2171429,
+        "folder_lean_deg": 38.0,
+        "tape_initial_speed_mps": 3.0
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.02,
+        "media_fps": 30,
+        "release_frame": 18,
+        "frame_count": 210,
+        "source": "source-config clock and author audit; timing is independent of unresolved T10 geometry"
+      },
+      "contact_friction": {
+        "status": "pair_specific_verification_required",
+        "material_coefficients": {},
+        "combine_rule_candidate": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.friction",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.friction",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.friction",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          38.0,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          0.2171429,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          3.0,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.friction",
+          0.52,
+          ""
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          9.81,
+          "m/s²"
+        ],
+        [
+          "t10_supported_folder.mass",
+          "",
+          0.05,
+          "kg"
+        ],
+        [
+          "t10_supported_folder.material friction",
+          "",
+          0.72,
+          ""
+        ],
+        [
+          "t10_supported_folder.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_support_pen.mass",
+          "",
+          0.095,
+          "kg"
+        ],
+        [
+          "t10_support_pen.material friction",
+          "",
+          0.88,
+          ""
+        ],
+        [
+          "t10_support_pen.restitution",
+          "",
+          0.003,
+          ""
+        ],
+        [
+          "t10_tape_roll.mass",
+          "",
+          0.18,
+          "kg"
+        ],
+        [
+          "t10_tape_roll.material friction",
+          "",
+          0.4,
+          ""
+        ],
+        [
+          "t10_tape_roll.restitution",
+          "",
+          0.008,
+          ""
+        ],
+        [
+          "t10_supported_folder.initial_angle",
+          "",
+          38.0,
+          "°"
+        ],
+        [
+          "t10_support_pen.initial_X",
+          "",
+          0.2171429,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Y",
+          "",
+          0.08,
+          "m"
+        ],
+        [
+          "t10_support_pen.initial_Z",
+          "",
+          0.16,
+          "m"
+        ],
+        [
+          "t10_tape_roll.initial_speed",
+          "",
+          3.0,
+          "m/s"
+        ],
+        [
+          "frozen_tabletop_collision_slab.material friction",
+          "",
+          0.52,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.36,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "v3_inventory_initial_facts_not_newly_certified",
+      "prompt_status": "validated_reconstructed_initial_inputs",
+      "reference": {
+        "clip_id": "T10_C05",
+        "source_sha256": "ef0f430d1c3ded6a7e6ab12cdf4e0cf3ca2b8e55dce73188f95cdbacc8a25a88",
+        "derivative_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+        "source_media_fps": 30.0,
+        "media_fps": 50.0,
+        "frames": 210,
+        "decoded_frames_identical": true,
+        "video": "realtime_videos/T10_C05_realtime.mp4",
+        "release_frame": 18,
+        "release_time_s": 0.36,
+        "physical_dt_s": 0.02,
+        "physical_seconds_per_media_second": 1.0,
+        "repo_id": "phy2/phydataset",
+        "path": "benchmarks/core100_conditions_correction_v2_20261021/realtime_videos/T10_C05_realtime.mp4",
+        "revision": "9571bada6d339e433cfa48758911698dc581d321",
+        "sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 3 m/s. Supported folder initial angle 38 deg. Support pen initial x 0.2171429 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "5ae0a78ebd4c3e55caae43d58e61cf982d4721c1f9360b93cf044c87a3c5237b",
+      "prompt_token_counts": {
+        "ltx": 113,
+        "cogvideox": 113,
+        "wan": 131
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t10_supported_folder.material friction",
+        "release_time",
+        "t10_tape_roll.initial_speed",
+        "t10_supported_folder.initial_angle",
+        "t10_support_pen.initial_X",
+        "t10_support_pen.initial_Y",
+        "t10_support_pen.initial_Z",
+        "t10_supported_folder.mass",
+        "t10_support_pen.mass",
+        "t10_tape_roll.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t10_supported_folder.restitution",
+        "t10_support_pen.material friction",
+        "t10_support_pen.restitution",
+        "t10_tape_roll.material friction",
+        "t10_tape_roll.restitution",
+        "frozen_tabletop_collision_slab.material friction"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 9.81 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 3 m/s. Supported folder initial angle 38 deg. Support pen initial x 0.2171429 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Continue this scene with a fixed camera. Gravity 9.81 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 3 m/s. Supported folder initial angle 38 deg. Support pen initial x 0.2171429 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg.",
+        "Fixed camera; continue the physical motion. Gravity 9.81 m/s^2. Supported folder material friction 0.72. Release time 0.36 s. Tape roll initial speed 3 m/s. Supported folder initial angle 38 deg. Support pen initial x 0.2171429 m. Support pen initial y 0.08 m. Support pen initial z 0.16 m. Supported folder mass 0.05 kg. Support pen mass 0.095 kg. Tape roll mass 0.18 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 131
+        },
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 132
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 133
+        }
+      ],
+      "prompt_variant_sha256": [
+        "5ae0a78ebd4c3e55caae43d58e61cf982d4721c1f9360b93cf044c87a3c5237b",
+        "3f26fb69c00acb8a31091b91b852e4c69a51bb83ef1699b6945f7268cfe088fd",
+        "d730a79adb9c8b4fdae182d9a81685f9aa6bd4e12d3eb6bd55c7bf8f8cae42ca"
+      ],
+      "generation_time_contract": "realtime; release at 0.36 seconds; 50 fps derivative reference",
+      "historical_state_candidate": {
+        "path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam01.json",
+        "sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03.mp4",
+        "direct_cam01_binding_verified": false
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "configuration_reconstruction": {
+        "config": "benchmarks/core100_recovery_v3_20261021/T10_C05_recovery_config.json",
+        "comparison": "benchmarks/core100_recovery_v3_20261021/T10_comparison.json",
+        "video": "benchmarks/core100_recovery_v3_20261021/T10_C05_recovered.mp4",
+        "state": "benchmarks/core100_recovery_v3_20261021/T10_C05_recovered_state.json",
+        "original_seed_recovered": false,
+        "original_run_full_config_recovered": false,
+        "source_video_sha256": "ef0f430d1c3ded6a7e6ab12cdf4e0cf3ca2b8e55dce73188f95cdbacc8a25a88",
+        "rerender_video_sha256": "6b772e44da4545aa170b667b23086ef4cecf9178d2b4ffe1c7cdd67a13fff7f3",
+        "initial_poses_match_cross_view_record": true,
+        "repo_id": "phy2/phydataset",
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      }
+    },
+    {
+      "clip_id": "T18_C01",
+      "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+      "source_video_sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T18/videos/T18__bg01_home_ase__g01_moon__contact_friction__p019__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 1.62
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t18_book_00.mass",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_00.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_01.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_01.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_01.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_02.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_02.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_03.mass",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_03.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_03.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_04.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_04.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_04.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_05.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_05.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_05.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_06.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_06.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_06.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_07.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_07.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_07.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "overlap_length_m",
+          0.15,
+          "m"
+        ],
+        [
+          "static_friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "dynamic_friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.initial_speed",
+          3.0,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          1.62,
+          "m/s²"
+        ],
+        [
+          "t18_book_00.mass",
+          "",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_00.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_01.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_01.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_01.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_02.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_02.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_03.mass",
+          "",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_03.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_03.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_04.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_04.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_04.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_05.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_05.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_05.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_06.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_06.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_06.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_07.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_07.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_07.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "overlap_length_m",
+          "",
+          0.15,
+          "m"
+        ],
+        [
+          "static_material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "dynamic_material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.initial_speed",
+          "",
+          3.0,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T18/videos/T18__bg01_home_ase__g01_moon__contact_friction__p019__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 00 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.48 kg. Book 04 mass 0.4 kg. Book 05 mass 0.4 kg. Book 06 mass 0.4 kg.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "1704819f7b91343007adb5af71fb61a31c76a1758bd8e7f19ee268895c30c62d",
+      "prompt_token_counts": {
+        "ltx": 113,
+        "cogvideox": 113,
+        "wan": 162
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t18_book_00.material friction",
+        "background.material friction",
+        "release_time",
+        "t18_book_00.initial_speed",
+        "overlap_length_m",
+        "t18_book_00.mass",
+        "t18_book_01.mass",
+        "t18_book_02.mass",
+        "t18_book_03.mass",
+        "t18_book_04.mass",
+        "t18_book_05.mass",
+        "t18_book_06.mass"
+      ],
+      "omitted_parameter_keys": [
+        "t18_book_00.restitution",
+        "t18_book_01.material friction",
+        "t18_book_01.restitution",
+        "t18_book_02.material friction",
+        "t18_book_02.restitution",
+        "t18_book_03.material friction",
+        "t18_book_03.restitution",
+        "t18_book_04.material friction",
+        "t18_book_04.restitution",
+        "t18_book_05.material friction",
+        "t18_book_05.restitution",
+        "t18_book_06.material friction",
+        "t18_book_06.restitution",
+        "t18_book_07.mass",
+        "t18_book_07.material friction",
+        "t18_book_07.restitution",
+        "static_material friction",
+        "dynamic_material friction"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 1.62 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 00 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.48 kg. Book 04 mass 0.4 kg. Book 05 mass 0.4 kg. Book 06 mass 0.4 kg.",
+        "Continue this scene with a fixed camera. Gravity 1.62 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 00 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.48 kg. Book 04 mass 0.4 kg. Book 05 mass 0.4 kg. Book 06 mass 0.4 kg.",
+        "Fixed camera; continue the physical motion. Gravity 1.62 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 00 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.48 kg. Book 04 mass 0.4 kg. Book 05 mass 0.4 kg. Book 06 mass 0.4 kg."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 113,
+          "cogvideox": 113,
+          "wan": 162
+        },
+        {
+          "ltx": 115,
+          "cogvideox": 115,
+          "wan": 163
+        },
+        {
+          "ltx": 114,
+          "cogvideox": 114,
+          "wan": 164
+        }
+      ],
+      "prompt_variant_sha256": [
+        "1704819f7b91343007adb5af71fb61a31c76a1758bd8e7f19ee268895c30c62d",
+        "aa2be3784c0952e37af5694bab42bb06b07cc229dbf9cad6b25aaa4e37b0204b",
+        "83e391c3c9e57e5cfd7877f5f8ac4a6d35340cb59d4e8dfd83d985a56abb411d"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T18/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p019__trajectory.json.gz",
+        "source_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p019/videos/T18__bg01_home_ase__g01_moon__contact_friction__p019__cam01.mp4",
+        "local_video_sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T18_C01",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 0.0001154148077097428,
+        "frames": 210,
+        "objects": {
+          "t18_book_00": {
+            "max_position_difference_m": 0.0001154148077097428,
+            "mean_position_difference_m": 7.981243485646186e-05,
+            "max_velocity_difference_mps": 0.0003600188724714836
+          },
+          "t18_book_01": {
+            "max_position_difference_m": 1.1920928955078125e-07,
+            "mean_position_difference_m": 4.8819042387462796e-08,
+            "max_velocity_difference_mps": 7.469198628739707e-06
+          },
+          "t18_book_02": {
+            "max_position_difference_m": 0.0,
+            "mean_position_difference_m": 0.0,
+            "max_velocity_difference_mps": 6.510427950655052e-06
+          },
+          "t18_book_03": {
+            "max_position_difference_m": 9.5367431640625e-07,
+            "mean_position_difference_m": 1.4844394865490142e-07,
+            "max_velocity_difference_mps": 1.57285853762249e-05
+          },
+          "t18_book_04": {
+            "max_position_difference_m": 1.0990553447357282e-06,
+            "mean_position_difference_m": 2.791176889592118e-07,
+            "max_velocity_difference_mps": 1.1028517196975902e-05
+          },
+          "t18_book_05": {
+            "max_position_difference_m": 7.177349673981843e-07,
+            "mean_position_difference_m": 5.484046671066016e-07,
+            "max_velocity_difference_mps": 6.909018506815865e-05
+          },
+          "t18_book_06": {
+            "max_position_difference_m": 2.277490279023981e-06,
+            "mean_position_difference_m": 1.3529718128012979e-06,
+            "max_velocity_difference_mps": 9.660050159158306e-05
+          },
+          "t18_book_07": {
+            "max_position_difference_m": 1.8196508315174278e-06,
+            "mean_position_difference_m": 1.3806734455073332e-06,
+            "max_velocity_difference_mps": 8.538317455224246e-05
+          }
+        },
+        "source_state_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068",
+        "reproduced_state_sha256": "a3a0162e51ab1235c215a35b0ebdaa28ea0477f25aa125baed6123b2809197f9",
+        "production_config_sha256": "75bd44f0a4a3334ef67cdaa0f40c202daccbc7569072814f457db5dca30f62d3",
+        "reproduction_config_sha256": "8052b7cc688b2315bfb82c5092acf125399740cf79d5495e4035150885d2567f",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T18_C01_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T20_C03_full_materials.json",
+        "probe_sha256": "00b655f7abcf539c2482bd86b08c6a3991e10c5d969aa56890c1fb4b9824ee4c",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t18_book_00|t18_book_01",
+          "objects": [
+            "t18_book_00",
+            "t18_book_01"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_02|t18_book_03",
+          "objects": [
+            "t18_book_02",
+            "t18_book_03"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_01|t18_book_02",
+          "objects": [
+            "t18_book_01",
+            "t18_book_02"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_03|t18_book_04",
+          "objects": [
+            "t18_book_03",
+            "t18_book_04"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_04|t18_book_05",
+          "objects": [
+            "t18_book_04",
+            "t18_book_05"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_05|t18_book_06",
+          "objects": [
+            "t18_book_05",
+            "t18_book_06"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_06|t18_book_07",
+          "objects": [
+            "t18_book_06",
+            "t18_book_07"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_8|t18_book_00",
+          "objects": [
+            "static_geom_8",
+            "t18_book_00"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_8|t18_book_01",
+          "objects": [
+            "static_geom_8",
+            "t18_book_01"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_3|t18_book_00",
+          "objects": [
+            "static_geom_3",
+            "t18_book_00"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t18_book_00",
+          "objects": [
+            "static_geom_0",
+            "t18_book_00"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ]
+    },
+    {
+      "clip_id": "T18_C02",
+      "sample_id": "T18__bg01_home_ase__g02_mars__contact_friction__p019",
+      "source_video_sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c",
+      "source_repo": "phyeditingvideo/Phyediting",
+      "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+      "source_video_path": "data/T16_T20/T18/videos/T18__bg01_home_ase__g02_mars__contact_friction__p019__cam01.mp4",
+      "configuration_status": "historical_trajectory_reproduced_with_measured_materials",
+      "verified_parameter_truth": {
+        "background_material_friction": 1.0,
+        "gravity": 3.71
+      },
+      "clock": {
+        "status": "verified",
+        "physical_dt_s": 0.03333333333333333,
+        "media_fps": 30,
+        "release_frame": 24,
+        "frame_count": 210,
+        "source": "video-hash-matched trajectory header",
+        "source_sha256": "45246a37091ffaa8c34eb5999a5ca0350134d090ca2100ef50c58f2d429e08d5"
+      },
+      "contact_friction": {
+        "background_material_friction": 1.0,
+        "status": "validated_by_runtime_construction_and_trajectory_reproduction",
+        "current_code_default_candidate": 1.0,
+        "combine_rule_candidate": "genesis_max_floor_0.01",
+        "combine_rule": "genesis_max_floor_0.01"
+      },
+      "parameter_facts": [
+        [
+          "gravity",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t18_book_00.mass",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_00.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_01.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_01.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_01.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_02.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_02.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_03.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_03.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_03.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_04.mass",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_04.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_04.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_05.mass",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_05.friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_05.restitution",
+          0.025,
+          ""
+        ],
+        [
+          "overlap_length_m",
+          0.15,
+          "m"
+        ],
+        [
+          "static_friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "dynamic_friction",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.initial_speed",
+          3.0,
+          "m/s"
+        ]
+      ],
+      "prompt_generation_facts": [
+        [
+          "gravity",
+          "",
+          3.71,
+          "m/s²"
+        ],
+        [
+          "t18_book_00.mass",
+          "",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_00.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_00.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_01.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_01.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_01.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_02.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_02.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_03.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_03.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_03.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_04.mass",
+          "",
+          0.4,
+          "kg"
+        ],
+        [
+          "t18_book_04.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_04.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "t18_book_05.mass",
+          "",
+          0.48,
+          "kg"
+        ],
+        [
+          "t18_book_05.material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_05.restitution",
+          "",
+          0.025,
+          ""
+        ],
+        [
+          "overlap_length_m",
+          "",
+          0.15,
+          "m"
+        ],
+        [
+          "static_material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "dynamic_material friction",
+          "",
+          0.526896551724138,
+          ""
+        ],
+        [
+          "t18_book_02.initial_speed",
+          "",
+          3.0,
+          "m/s"
+        ],
+        [
+          "background.material friction",
+          "",
+          1.0,
+          ""
+        ],
+        [
+          "release_time",
+          "",
+          0.8,
+          "s"
+        ]
+      ],
+      "prompt_provenance": "video_hash_bound_initial_header",
+      "prompt_status": "validated_initial_materials_and_reproduced_trajectory",
+      "reference": {
+        "source_video_path": "data/T16_T20/T18/videos/T18__bg01_home_ase__g02_mars__contact_friction__p019__cam01.mp4",
+        "source_repo": "phyeditingvideo/Phyediting",
+        "source_revision": "e2f2e4cdff26cdc26a6dc4ae545d589fd9005de6",
+        "sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c"
+      },
+      "prompt_en": "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 02 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.4 kg. Book 04 mass 0.4 kg. Book 05 mass 0.48 kg. Book 01 material friction 0.526896551724138.",
+      "prompt_language": "en",
+      "prompt_policy": "core100-recovery-three-prompts-v3-20261021",
+      "prompt_sha256": "89ccf3eafda0b9d1977fafdaea3f06efa319ecaa25a50634e56fde401163a17d",
+      "prompt_token_counts": {
+        "ltx": 118,
+        "cogvideox": 118,
+        "wan": 177
+      },
+      "token_budget": 120,
+      "selected_parameter_keys": [
+        "gravity",
+        "t18_book_00.material friction",
+        "background.material friction",
+        "release_time",
+        "t18_book_02.initial_speed",
+        "overlap_length_m",
+        "t18_book_00.mass",
+        "t18_book_01.mass",
+        "t18_book_02.mass",
+        "t18_book_03.mass",
+        "t18_book_04.mass",
+        "t18_book_05.mass",
+        "t18_book_01.material friction"
+      ],
+      "omitted_parameter_keys": [
+        "t18_book_00.restitution",
+        "t18_book_01.restitution",
+        "t18_book_02.material friction",
+        "t18_book_02.restitution",
+        "t18_book_03.material friction",
+        "t18_book_03.restitution",
+        "t18_book_04.material friction",
+        "t18_book_04.restitution",
+        "t18_book_05.material friction",
+        "t18_book_05.restitution",
+        "static_material friction",
+        "dynamic_material friction"
+      ],
+      "full_parameters_location": "parameter_facts; metadata only, not a model input",
+      "default_variant": 1,
+      "prompt_variants_en": [
+        "Continue the scene; fixed camera. Gravity 3.71 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 02 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.4 kg. Book 04 mass 0.4 kg. Book 05 mass 0.48 kg. Book 01 material friction 0.526896551724138.",
+        "Continue this scene with a fixed camera. Gravity 3.71 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 02 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.4 kg. Book 04 mass 0.4 kg. Book 05 mass 0.48 kg. Book 01 material friction 0.526896551724138.",
+        "Fixed camera; continue the physical motion. Gravity 3.71 m/s^2. Book 00 material friction 0.526896551724138. Background material friction 1. Release time 0.8 s. Book 02 initial speed 3 m/s. Overlap length 0.15 m. Book 00 mass 0.48 kg. Book 01 mass 0.4 kg. Book 02 mass 0.4 kg. Book 03 mass 0.4 kg. Book 04 mass 0.4 kg. Book 05 mass 0.48 kg. Book 01 material friction 0.526896551724138."
+      ],
+      "prompt_variant_token_counts": [
+        {
+          "ltx": 118,
+          "cogvideox": 118,
+          "wan": 177
+        },
+        {
+          "ltx": 120,
+          "cogvideox": 120,
+          "wan": 178
+        },
+        {
+          "ltx": 119,
+          "cogvideox": 119,
+          "wan": 179
+        }
+      ],
+      "prompt_variant_sha256": [
+        "89ccf3eafda0b9d1977fafdaea3f06efa319ecaa25a50634e56fde401163a17d",
+        "000ade4fe550823074be03a3da4775e1bca2399324eed49088643d3d195ea279",
+        "ffb2599018095473fa62b71b4aca3da46399599553f68ca8586cbfe9ee474b32"
+      ],
+      "header_provenance": {
+        "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/hf_exports/Phyediting_training_ready_20260827/data/T16_T20/T18/metadata/T18__bg01_home_ase__g02_mars__contact_friction__p019__trajectory.json.gz",
+        "source_sha256": "45246a37091ffaa8c34eb5999a5ca0350134d090ca2100ef50c58f2d429e08d5",
+        "recorded_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g02_mars__contact_friction__p019/videos/T18__bg01_home_ase__g02_mars__contact_friction__p019__cam01.mp4",
+        "local_video_sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c"
+      },
+      "condition_recovery_version": "core100-recovery-v3-20261021",
+      "reproduction_evidence": {
+        "clip_id": "T18_C02",
+        "status": "reproduced",
+        "position_tolerance_m": 0.001,
+        "position_max_m": 0.0006815954776611191,
+        "frames": 210,
+        "objects": {
+          "t18_book_00": {
+            "max_position_difference_m": 8.043756679457349e-06,
+            "mean_position_difference_m": 8.886235275173541e-07,
+            "max_velocity_difference_mps": 0.0003687779032605562
+          },
+          "t18_book_01": {
+            "max_position_difference_m": 1.3284349685515556e-05,
+            "mean_position_difference_m": 4.7977157699353325e-06,
+            "max_velocity_difference_mps": 0.000765480754322671
+          },
+          "t18_book_02": {
+            "max_position_difference_m": 0.0006815954776611191,
+            "mean_position_difference_m": 0.0003800999890626493,
+            "max_velocity_difference_mps": 0.007242978353625579
+          },
+          "t18_book_03": {
+            "max_position_difference_m": 3.202716805062978e-05,
+            "mean_position_difference_m": 5.147930856905044e-06,
+            "max_velocity_difference_mps": 0.0015813461587634368
+          },
+          "t18_book_04": {
+            "max_position_difference_m": 3.9232037994575015e-05,
+            "mean_position_difference_m": 3.2002461472475985e-05,
+            "max_velocity_difference_mps": 0.004752554161292874
+          },
+          "t18_book_05": {
+            "max_position_difference_m": 3.5054018107972824e-05,
+            "mean_position_difference_m": 6.693692749727404e-06,
+            "max_velocity_difference_mps": 0.03360375447713246
+          }
+        },
+        "source_state_sha256": "45246a37091ffaa8c34eb5999a5ca0350134d090ca2100ef50c58f2d429e08d5",
+        "reproduced_state_sha256": "4daba9f8b9365febdf82207f044bfc4e9bffeadff7e3b758ff68027a30fd2569",
+        "production_config_sha256": "5979d595712041c81f4d02cbb051ff7f9a1b8d1e2d110386ae1bd6fb0c3fe596",
+        "reproduction_config_sha256": "328a4a68929d96dfe1485a84f04fb6964854b6ebab964f6a775a6362288fd5a8",
+        "outputs": "/data_cached/wangzijun_p25/core100_recovery_20261021/T18_C02_reproduction",
+        "render_exit_code": 0
+      },
+      "background_material_evidence": {
+        "measured_coefficient": 1.0,
+        "runtime_probe": "benchmarks/core100_recovery_v3_20261021/T20_C03_full_materials.json",
+        "probe_sha256": "00b655f7abcf539c2482bd86b08c6a3991e10c5d969aa56890c1fb4b9824ee4c",
+        "historical_binary_preserved": false,
+        "method": "current full-config collider construction plus per-task historical-trajectory reproduction",
+        "historical_config_specs_match_header": true,
+        "revision": "474cbb0444fed4e4e038acdf6bc0a7b872fd2563"
+      },
+      "verified_contact_pairs": [
+        {
+          "pair_id": "t18_book_04|t18_book_05",
+          "objects": [
+            "t18_book_04",
+            "t18_book_05"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_03|t18_book_04",
+          "objects": [
+            "t18_book_03",
+            "t18_book_04"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_00|t18_book_01",
+          "objects": [
+            "t18_book_00",
+            "t18_book_01"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_02|t18_book_03",
+          "objects": [
+            "t18_book_02",
+            "t18_book_03"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_01|t18_book_02",
+          "objects": [
+            "t18_book_01",
+            "t18_book_02"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_8|t18_book_00",
+          "objects": [
+            "static_geom_8",
+            "t18_book_00"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "t18_book_01|t18_book_03",
+          "objects": [
+            "t18_book_01",
+            "t18_book_03"
+          ],
+          "material_a": 0.526896551724138,
+          "material_b": 0.526896551724138,
+          "effective_friction": 0.526896551724138,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_8|t18_book_02",
+          "objects": [
+            "static_geom_8",
+            "t18_book_02"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        },
+        {
+          "pair_id": "static_geom_0|t18_book_02",
+          "objects": [
+            "static_geom_0",
+            "t18_book_02"
+          ],
+          "material_a": 1.0,
+          "material_b": 0.526896551724138,
+          "effective_friction": 1.0,
+          "combine_rule": "genesis_max_floor_0.01",
+          "status": "verified",
+          "verification_method": "reproduced_historical_states_with_measured_background_materials",
+          "historical_binary_preserved": false
+        }
+      ]
+    }
+  ]
+}

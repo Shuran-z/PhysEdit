@@ -1,0 +1,140 @@
+[
+  {
+    "clip_id": "T04_C02",
+    "old_sample_id": "T04F880V1__bg01_home_ase__g02_mars__global_03__rep01",
+    "old_reference_sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8",
+    "new_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02",
+    "new_reference_sha256": "4f2ceec14f6bfca09f45549f6e5cd0b0e05f7a7c1bb2d58e155b2083e94e5548",
+    "axis": "bottom_book_friction_coefficient",
+    "theta": 0.14,
+    "event": "original_full_chain",
+    "label": 0,
+    "brackets": [
+      [
+        0.08,
+        0.105
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.5833333333333335,
+      1.0
+    ],
+    "distance_bin": "far",
+    "old_results_reusable": false
+  },
+  {
+    "clip_id": "T06_C02",
+    "old_sample_id": "PROD_T06_bg01_home_ase_g02_mars_gap_p08",
+    "old_reference_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+    "new_sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p17",
+    "new_reference_sha256": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460",
+    "axis": "impact_force",
+    "theta": 1.5357143,
+    "event": "complete_required_contact_chain",
+    "label": 0,
+    "brackets": [
+      [
+        1.5357143,
+        1.6428571
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.0,
+      0.035714266666666696
+    ],
+    "distance_bin": "near",
+    "old_results_reusable": false
+  },
+  {
+    "clip_id": "T06_C03",
+    "old_sample_id": "PROD_T06_bg01_home_ase_g03_earth_gap_p08",
+    "old_reference_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+    "new_sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p18",
+    "new_reference_sha256": "f876b60a4ce6784223aea84d8400f3e23e8622e1a4b68a09bce2701a9f90d8a4",
+    "axis": "impact_force",
+    "theta": 1.75,
+    "event": "complete_required_contact_chain",
+    "label": 1,
+    "brackets": [
+      [
+        1.5357143,
+        1.6428571
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.03571429999999998,
+      0.07142856666666668
+    ],
+    "distance_bin": null,
+    "old_results_reusable": false
+  },
+  {
+    "clip_id": "T10_C05",
+    "old_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p17",
+    "old_reference_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+    "new_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p18",
+    "new_reference_sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4",
+    "axis": "support_x",
+    "theta": 0.1974,
+    "event": "support_pen_displacement_reaches_source_threshold",
+    "label": 1,
+    "brackets": [
+      [
+        0.204,
+        0.2105
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.04817518248175178,
+      0.09562043795620438
+    ],
+    "distance_bin": null,
+    "old_results_reusable": false
+  },
+  {
+    "clip_id": "T18_C01",
+    "old_sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+    "old_reference_sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b",
+    "new_sample_id": "T18_CRITICAL_GPU_PAIR_20261103_T18_C01",
+    "new_reference_sha256": "54800b89bf6edebe9d55839607b443d3f3bf5037d47a514f2b69be12939ee4e2",
+    "axis": "contact_friction",
+    "theta": 0.04,
+    "event": "upper_nonpulled_book_on_table_at_end",
+    "label": 1,
+    "brackets": [
+      [
+        0.04,
+        0.08
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.0,
+      0.05555555555555555
+    ],
+    "distance_bin": null,
+    "old_results_reusable": false
+  },
+  {
+    "clip_id": "T18_C02",
+    "old_sample_id": "T18__bg01_home_ase__g02_mars__contact_friction__p019",
+    "old_reference_sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c",
+    "new_sample_id": "T18_CRITICAL_GPU_PAIR_20261103_T18_C02",
+    "new_reference_sha256": "ba52e556caea4d304d23458acc406cd2ff29649084985c6742426c9bc32f9b79",
+    "axis": "contact_friction",
+    "theta": 0.08,
+    "event": "upper_nonpulled_book_on_table_at_end",
+    "label": 0,
+    "brackets": [
+      [
+        0.04,
+        0.08
+      ]
+    ],
+    "normalized_absolute_interval": [
+      0.0,
+      0.05555555555555555
+    ],
+    "distance_bin": null,
+    "old_results_reusable": false
+  }
+]

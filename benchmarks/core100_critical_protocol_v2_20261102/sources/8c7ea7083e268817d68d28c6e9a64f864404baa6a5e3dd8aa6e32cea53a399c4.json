@@ -1,0 +1,428 @@
+{
+  "clip_id": "T10_C05",
+  "reference_video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+  "parameter": "support_x",
+  "theta": 0.2171429,
+  "normalization_domain": [
+    -0.05,
+    0.28
+  ],
+  "source_state_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam01.json",
+  "source_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+  "source_physical_context": {
+    "sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p17",
+    "state_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam01.json",
+    "state_stored_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+    "state_decoded_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+    "actual_support_x": 0.2171429,
+    "actual_roll_speed": 3.0,
+    "actual_folder_angle": 38.0,
+    "native_header_parameter": {
+      "parameter_name": "v_roll",
+      "parameter_value": 3.0,
+      "parameter_index": 17,
+      "single_primary_intervention": true
+    },
+    "original_native_specs": {
+      "frozen_tabletop_collision_slab": {
+        "name": "frozen_tabletop_collision_slab",
+        "asset_id": "frozen_tabletop_collision_slab",
+        "category": "support_surface",
+        "semantic_label": "frozen_tabletop_collision_slab",
+        "shape": "box",
+        "size": [
+          1.42,
+          0.76,
+          0.064
+        ],
+        "pose": {
+          "position": [
+            0.0,
+            0.0,
+            -0.03199999999999992
+          ],
+          "euler_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "fixed": true,
+        "motion": {
+          "type": "none"
+        },
+        "visualization": false,
+        "collision": true,
+        "friction": 0.52,
+        "restitution": 0.01,
+        "mass": 0.0,
+        "camera_focus": false,
+        "color": [
+          0.36,
+          0.23,
+          0.13
+        ],
+        "roughness": 0.62,
+        "is_tabletop_collision_slab": true
+      },
+      "t10_supported_folder": {
+        "name": "t10_supported_folder",
+        "asset_id": "t10_supported_folder",
+        "category": "supported_folder",
+        "semantic_label": "supported_folder",
+        "shape": "box",
+        "pose": {
+          "position": [
+            -0.0004796,
+            0.08,
+            0.1872249
+          ],
+          "euler_xyz": [
+            0.0,
+            -38.0,
+            0.0
+          ]
+        },
+        "fixed": false,
+        "motion": {
+          "type": "physics",
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "color": [
+          0.18,
+          0.34,
+          0.56
+        ],
+        "friction": 0.72,
+        "restitution": 0.003,
+        "linear_damping": 0.025,
+        "angular_damping": 0.04,
+        "ccd_enabled": true,
+        "disable_sleep": true,
+        "contact_offset": 0.0012,
+        "camera_focus": true,
+        "mass": 0.05,
+        "size": [
+          0.58,
+          0.34,
+          0.0195
+        ],
+        "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/folders/folder_board_01.obj",
+        "collision_proxy": "box",
+        "preserve_mesh_material": true,
+        "visualization": true,
+        "collision": true,
+        "convexify": false,
+        "collision_visual_alignment": "same_origin_measured_bounds",
+        "collision_proxy_size": [
+          0.58,
+          0.34,
+          0.0195
+        ]
+      },
+      "t10_support_pen": {
+        "name": "t10_support_pen",
+        "asset_id": "t10_support_pen",
+        "category": "support_pen",
+        "semantic_label": "support_pen",
+        "shape": "cylinder",
+        "pose": {
+          "position": [
+            0.2171429,
+            0.08,
+            0.16
+          ],
+          "euler_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "fixed": false,
+        "motion": {
+          "type": "physics",
+          "initial_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "color": [
+          0.08,
+          0.12,
+          0.18
+        ],
+        "friction": 0.88,
+        "restitution": 0.003,
+        "linear_damping": 0.03,
+        "angular_damping": 0.04,
+        "ccd_enabled": true,
+        "disable_sleep": true,
+        "contact_offset": 0.0012,
+        "camera_focus": true,
+        "mass": 0.095,
+        "radius": 0.0105,
+        "height": 0.32,
+        "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/pens/support_pen_01.obj",
+        "collision_proxy": "cylinder",
+        "preserve_mesh_material": true,
+        "visualization": true,
+        "collision": true,
+        "convexify": false,
+        "collision_visual_alignment": "same_origin_measured_bounds",
+        "collision_proxy_radius": 0.0105,
+        "collision_proxy_height": 0.32
+      },
+      "t10_tape_roll": {
+        "name": "t10_tape_roll",
+        "asset_id": "t10_tape_roll",
+        "category": "tape_roll",
+        "semantic_label": "tape_roll",
+        "shape": "cylinder",
+        "pose": {
+          "position": [
+            0.2171429,
+            -0.305,
+            0.0615
+          ],
+          "euler_xyz": [
+            0.0,
+            90.0,
+            0.0
+          ]
+        },
+        "fixed": false,
+        "motion": {
+          "type": "physics",
+          "initial_velocity": [
+            0.0,
+            3.0,
+            0.0
+          ],
+          "initial_angular_velocity": [
+            -49.586776859504134,
+            0.0,
+            0.0
+          ],
+          "prefer_separate_velocity_setters": true,
+          "hold_during_settle": true
+        },
+        "color": [
+          0.84,
+          0.66,
+          0.18
+        ],
+        "friction": 0.4,
+        "restitution": 0.008,
+        "linear_damping": 0.002,
+        "angular_damping": 0.004,
+        "ccd_enabled": true,
+        "disable_sleep": true,
+        "contact_offset": 0.0012,
+        "camera_focus": true,
+        "mass": 0.18,
+        "radius": 0.0605,
+        "height": 0.038,
+        "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t06_t10_realism_v8/tape/tape_roll_01.obj",
+        "collision_proxy": "cylinder",
+        "preserve_mesh_material": true,
+        "visualization": true,
+        "collision": true,
+        "convexify": false,
+        "collision_visual_alignment": "same_origin_measured_bounds",
+        "collision_proxy_radius": 0.0605,
+        "collision_proxy_height": 0.06
+      }
+    },
+    "original_native_solver": {
+      "gravity": [
+        0,
+        0,
+        -9.81
+      ],
+      "dt": 0.005,
+      "substeps": 4,
+      "physics_steps_per_render_frame": 4,
+      "settle_steps": 80,
+      "record_contacts": true,
+      "static_scene_collision": false,
+      "layout_collision": false,
+      "add_ground_plane": false,
+      "static_visual_only_instance_ids": [
+        "baxi_round_table_01"
+      ],
+      "room_wall_colliders": false,
+      "room_boundary_safety": {
+        "enabled": false
+      },
+      "use_gjk_collision": true,
+      "enable_multi_contact": true,
+      "box_box_detection": true,
+      "raytracing": true,
+      "raytracing_state_limit": 8388608,
+      "raytracing_depth": 8,
+      "raytracing_rr_depth": 2,
+      "gravity_id": "g03_earth",
+      "raytracing_env_map": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+      "raytracing_env_map_required": true,
+      "raytracing_env_encoding": "linear",
+      "raytracing_env_euler": [
+        0,
+        0,
+        25
+      ],
+      "raytracing_lights": [
+        {
+          "pos": [
+            -0.2999999999999998,
+            -0.18000000000000016,
+            2.04
+          ],
+          "color": [
+            1.0,
+            0.93,
+            0.82
+          ],
+          "intensity": 7.2,
+          "radius": 0.52
+        },
+        {
+          "pos": [
+            0.9199999999999999,
+            -0.78,
+            1.48
+          ],
+          "color": [
+            0.82,
+            0.9,
+            1.0
+          ],
+          "intensity": 2.8,
+          "radius": 0.42
+        }
+      ]
+    },
+    "original_native_forces": [],
+    "declared_native_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03.mp4"
+  },
+  "frozen_physical_facts_verified": [
+    {
+      "field": "gravity",
+      "frozen": 9.81,
+      "executed": 9.81,
+      "unit": "m/s\u00b2"
+    },
+    {
+      "field": "t10_supported_folder.mass",
+      "frozen": 0.05,
+      "executed": 0.05,
+      "unit": "kg"
+    },
+    {
+      "field": "t10_supported_folder.friction",
+      "frozen": 0.72,
+      "executed": 0.72,
+      "unit": ""
+    },
+    {
+      "field": "t10_supported_folder.restitution",
+      "frozen": 0.003,
+      "executed": 0.003,
+      "unit": ""
+    },
+    {
+      "field": "t10_support_pen.mass",
+      "frozen": 0.095,
+      "executed": 0.095,
+      "unit": "kg"
+    },
+    {
+      "field": "t10_support_pen.friction",
+      "frozen": 0.88,
+      "executed": 0.88,
+      "unit": ""
+    },
+    {
+      "field": "t10_support_pen.restitution",
+      "frozen": 0.003,
+      "executed": 0.003,
+      "unit": ""
+    },
+    {
+      "field": "t10_tape_roll.mass",
+      "frozen": 0.18,
+      "executed": 0.18,
+      "unit": "kg"
+    },
+    {
+      "field": "t10_tape_roll.friction",
+      "frozen": 0.4,
+      "executed": 0.4,
+      "unit": ""
+    },
+    {
+      "field": "t10_tape_roll.restitution",
+      "frozen": 0.008,
+      "executed": 0.008,
+      "unit": ""
+    },
+    {
+      "field": "t10_supported_folder.initial_angle",
+      "frozen": 38.0,
+      "executed": 38.0,
+      "unit": "\u00b0"
+    },
+    {
+      "field": "t10_support_pen.initial_X",
+      "frozen": 0.2171429,
+      "executed": 0.2171429,
+      "unit": "m"
+    },
+    {
+      "field": "t10_support_pen.initial_Y",
+      "frozen": 0.08,
+      "executed": 0.08,
+      "unit": "m"
+    },
+    {
+      "field": "t10_support_pen.initial_Z",
+      "frozen": 0.16,
+      "executed": 0.16,
+      "unit": "m"
+    },
+    {
+      "field": "t10_tape_roll.initial_speed",
+      "frozen": 3.0,
+      "executed": 3.0,
+      "unit": "m/s"
+    },
+    {
+      "field": "frozen_tabletop_collision_slab.friction",
+      "frozen": 0.52,
+      "executed": 0.52,
+      "unit": ""
+    }
+  ],
+  "actual_fixed_controls": {
+    "tape_initial_speed_mps": 3.0,
+    "folder_initial_angle_deg": 38.0
+  },
+  "original_range_evidence": "Original b10/gen_prod_cfg support_x range[-.05,.28],22 indices; native p16 and p17 agree with that exact mapping.",
+  "matching_version_boundary_recovered": false,
+  "reference_event_admission_changed": false,
+  "old_other_version_candidate_retained": true,
+  "frozen_inputs_modified": false,
+  "reason": "Frozen prompt and executed native state both specify x0.2171429, speed3, angle38. Current same-ID cam01 config specifies x0.1909, speed1.8, angle38.68 and belongs to another production version. Its interval cannot be transferred.",
+  "limitations": "Original cam01 trajectory/producer correspondence and a matching old-version boundary remain pending. Reconstructed range is disclosed, not an original solved critical value.",
+  "source_hashes": {
+    "review/core100_v2_resolution_20261102/t10_old_executed_version_states.json": "12644fc97b8c9f5bb0fbd06bb3e02d23e2ac662c167b90572d18698e107317c7",
+    "benchmarks/core100_critical_pairs_v2_20261101/MANIFEST.json": "d2f8b84898ac8c67589a99e13b46ec255e46915a05cf89f41a80541ded94450e",
+    "review/core100_v2_resolution_20261102/t10_original_generator_sources.json": "eee4d4dd3b154623cd3dd3b101b1645d3ad9a4b235173799233b4a783b716f9e",
+    "review/core100_v2_resolution_20261102/T10_C05_camera_projection.json": "6fc9a386cbd0a25619eafc824a476ec6b706d1639b290b0b17ff6aa18f062460",
+    "scripts/recover_core100_v2_t10_c05_version.py": "c0a50f1bf83d6b19517d57506b106240d030f33029e6bf46127d898fe6bbbfb5"
+  }
+}

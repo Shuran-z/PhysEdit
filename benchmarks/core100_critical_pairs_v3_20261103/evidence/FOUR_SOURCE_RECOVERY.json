@@ -1,0 +1,118 @@
+{
+  "sources": [
+    {
+      "clip_id": "T04_C02",
+      "native_sample_id": "T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02",
+      "reference_video_sha256": "4f2ceec14f6bfca09f45549f6e5cd0b0e05f7a7c1bb2d58e155b2083e94e5548",
+      "source_state_decoded_sha256": "8c4b7df43ffcca1199f5de58771dd4321053b18f2d487928adcd5e3092452fcd",
+      "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02/metadata/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02__cam01.json.gz",
+      "native_video_candidates": [
+        {
+          "path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phyeditingvideo--Phyediting/snapshots/3856c258368789c942dbc16d4983e756881ad986/staging/t04_t05/formal_880_v1_480p_20260903T1310CST/T04/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02/videos/T04F880V1__bg01_home_ase__g03_earth__cf_stack_sliding_plus__rep02__cam01.mp4",
+          "sha256": "4f2ceec14f6bfca09f45549f6e5cd0b0e05f7a7c1bb2d58e155b2083e94e5548"
+        }
+      ],
+      "state_video_identity_verified": true,
+      "same_immutable_release_identity_verified": false,
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "files": {
+        "contact_sheet.jpg": "1f96f548ec69441a7f6936eec0de1ef63f8bdd8a4e476b4ebd6e064d37236fab",
+        "reference.mp4": "4f2ceec14f6bfca09f45549f6e5cd0b0e05f7a7c1bb2d58e155b2083e94e5548",
+        "condition.png": "1ed93d8c9c5aedc829e881fb29d59f446a1d7d1418db0a30a4c0114bbdb8a8de",
+        "source_state.json.gz": "04cf431505016e8298d235d421ea3927560ffb47761c208c5920bb9d30b08347"
+      }
+    },
+    {
+      "clip_id": "T06_C02",
+      "native_sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p17",
+      "reference_video_sha256": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460",
+      "source_state_decoded_sha256": "64d970627487426ddc6997e27096c7f1b6afb0bf4b225a75803d74e42f7ef3d6",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/pilot/PROD_T06_bg01_home_ase_g03_earth_J_p17/metadata/PROD_T06_bg01_home_ase_g03_earth_J_p17__cam01.json",
+      "native_video_candidates": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g03_earth_J_p17__cam01/videos/PROD_T06_bg01_home_ase_g03_earth_J_p17__cam01.mp4",
+          "sha256": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460"
+        }
+      ],
+      "state_video_identity_verified": true,
+      "same_immutable_release_identity_verified": false,
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "files": {
+        "contact_sheet.jpg": "4744e7efa25ec2e9cac9cf359d488834297ce4c62d484e5d5a81cb6ac4c9cf10",
+        "reference.mp4": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460",
+        "condition.png": "456f0ad5d3e176c1f5196729f3220e93b189046e69f8d7179859c1c2e29ea7ef",
+        "source_state.json.gz": "3caed3302820b9cbafc27bb5d1d49a3be30cfc997e1e63f7c2225a7a72e60113"
+      }
+    },
+    {
+      "clip_id": "T06_C03",
+      "native_sample_id": "PROD_T06_bg01_home_ase_g03_earth_J_p18",
+      "reference_video_sha256": "f876b60a4ce6784223aea84d8400f3e23e8622e1a4b68a09bce2701a9f90d8a4",
+      "source_state_decoded_sha256": "dac27650d725687154eddfe864a6afbdc472060dd8ea869020947eb42f3755dd",
+      "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/pilot/PROD_T06_bg01_home_ase_g03_earth_J_p18/metadata/PROD_T06_bg01_home_ase_g03_earth_J_p18__cam01.json",
+      "native_video_candidates": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g03_earth_J_p18__cam01/videos/PROD_T06_bg01_home_ase_g03_earth_J_p18__cam01.mp4",
+          "sha256": "f876b60a4ce6784223aea84d8400f3e23e8622e1a4b68a09bce2701a9f90d8a4"
+        }
+      ],
+      "state_video_identity_verified": true,
+      "same_immutable_release_identity_verified": false,
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "files": {
+        "contact_sheet.jpg": "5d427f0bcbf47ecadd3f05abbcacd2c01250fc23cbc4db1ca21c8f45b3232214",
+        "reference.mp4": "f876b60a4ce6784223aea84d8400f3e23e8622e1a4b68a09bce2701a9f90d8a4",
+        "condition.png": "456f0ad5d3e176c1f5196729f3220e93b189046e69f8d7179859c1c2e29ea7ef",
+        "source_state.json.gz": "f40160a439ad34fc1c4c6bf5b3df2e3745129a403b73abc10d82d4c63f95e5d4"
+      }
+    },
+    {
+      "clip_id": "T10_C05",
+      "native_sample_id": "PROD_T10_bg01_home_ase_g03_earth_supx_p18",
+      "reference_video_sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4",
+      "source_state_decoded_sha256": "2bd868a8b01e9134803cb2662280b18e5e9f8aab2f1bcfb4d88fb10675e71d2d",
+      "source_state_path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/metadata/PROD_T10_bg01_home_ase_g03_earth_supx_p18__cam01.json",
+      "native_video_candidates": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p18__cam01/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p18__cam01.mp4",
+          "sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4"
+        },
+        {
+          "path": "/data_cached/wangzijun_p25/hf_phyediting/data/T10/production_2640_480p_h264_20260906/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p18__cam01.mp4",
+          "sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4"
+        }
+      ],
+      "state_video_identity_verified": true,
+      "same_immutable_release_identity_verified": false,
+      "media": {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "30/1",
+        "nb_frames": "210"
+      },
+      "files": {
+        "contact_sheet.jpg": "ff95fc7012502368c1ce1fa1fa2823d3bb450d0afed6ef599e02a3a2dccf20cd",
+        "reference.mp4": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4",
+        "condition.png": "7dca06439512b6e427f02fb92cf7236d10e0636d994a32f34809d69580145578",
+        "source_state.json.gz": "1c0158bee7a831b1614afc57b52134efe0d80aadbf11d9a89333fe72c49d2c1a"
+      }
+    }
+  ],
+  "archive": "/data_cached/wangzijun_p25/liyuhan/core100_six_replacement_sources_20261103/published_four.zip",
+  "archive_sha256": "5b1daceb1dec75c8da1e9a806f2605dc2ae348cfb0ff3af74418eca9e5dbb844"
+}

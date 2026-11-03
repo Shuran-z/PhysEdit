@@ -1,0 +1,134 @@
+{
+  "clip_id": "T04_C02",
+  "native_stored_sha256": "68f1d003cba7e92ab6b3d247f0c14f2ca4364f99d05cfb19632c6d26a06fee48",
+  "native_decoded_sha256": "a238762b5b9af8d3cca1e7fe486085cdcc680097a82009d073fafab1d75b16f0",
+  "saved_source_seed": 1212927170,
+  "old_random_seed_alias": null,
+  "base_config_seed": 1212927170,
+  "physical_objects_match": true,
+  "solver_differences": [],
+  "runtime_force_match": true,
+  "source_frame_clock": {
+    "pre_static_frames": 24,
+    "physics_steps_per_render_frame": 16,
+    "fps": 30
+  },
+  "config_frame_clock": {
+    "pre_static_frames": 24,
+    "physics_steps_per_render_frame": 16,
+    "fps": 30
+  },
+  "source_measurement": {
+    "label": 0,
+    "mug_maximum_displacement_m": 0.02295113390927972,
+    "mug_maximum_angle_deg": 0.574427833141525,
+    "contact_frames": [
+      142,
+      143,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154
+    ]
+  },
+  "replays": [
+    {
+      "kind": "0.15",
+      "stored_state_sha256": "005cd6ccd8c442798aa254b8bc685d54008a5bdbef8a9efbe8f1cc371c74f4ac",
+      "decoded_state_sha256": "5df372b3aa61ce1831a97606ac4b81e9577911a50de9d663c687f45d20195a6d",
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/0.15/physics.json.gz",
+      "seed": 1212927170,
+      "backend": "gpu32",
+      "measurement": {
+        "label": 0,
+        "mug_maximum_displacement_m": 0.03330845746480425,
+        "mug_maximum_angle_deg": 0.32063759229417865,
+        "contact_frames": [
+          144,
+          146,
+          147,
+          148,
+          150,
+          152,
+          153,
+          154
+        ]
+      },
+      "full_window_position_errors_m": {
+        "t04v3_tabletop_collision_slab": 0,
+        "t04v3_ramp_support_pbr": 0,
+        "t04v3_folder_ramp_pbr": 0,
+        "t04v3_support_bar_guide_upslope": 0,
+        "t04v3_support_bar_guide_downslope": 0,
+        "t04v3_support_bar_endstop": 0,
+        "t04v3_removable_support_bar": 0.004253866068247029,
+        "t04v3_stack_book_bottom": 0.050599770210154486,
+        "t04v3_stack_book_middle": 0.04990410385399402,
+        "t04v3_stack_book_top": 0.059108416307180375,
+        "t04v3_chain_can_1": 0.02545147161672386,
+        "t04v3_chain_can_2": 0.013043106177473217,
+        "t04v3_chain_mug": 0.011545821506787084
+      },
+      "config_sha256": "9a576205e10e9cb30148b73b4952a779c333ab9258ac106ce3d28aaed6690c07"
+    },
+    {
+      "kind": "source_repeat",
+      "stored_state_sha256": "370c9a1b25e4ff0a8ca730a872c9bbc13932d858c1e4b39b2b71c69e71536bae",
+      "decoded_state_sha256": "a4d34ac02e3b1abbd7c52ec395a2bdb4057b637d7df7e00a870af6a3176a790c",
+      "state_path": "/data2/liyuhan/core100_continue_original_20261031/T04_C02/T04_C02/profile_0/source_repeat/physics.json.gz",
+      "seed": 1212927170,
+      "backend": "gpu32",
+      "measurement": {
+        "label": 0,
+        "mug_maximum_displacement_m": 0.0346705199196218,
+        "mug_maximum_angle_deg": 0.6112072839202098,
+        "contact_frames": [
+          144,
+          145,
+          147,
+          148,
+          150,
+          151,
+          152,
+          153,
+          154
+        ]
+      },
+      "full_window_position_errors_m": {
+        "t04v3_tabletop_collision_slab": 0,
+        "t04v3_ramp_support_pbr": 0,
+        "t04v3_folder_ramp_pbr": 0,
+        "t04v3_support_bar_guide_upslope": 0,
+        "t04v3_support_bar_guide_downslope": 0,
+        "t04v3_support_bar_endstop": 0,
+        "t04v3_removable_support_bar": 0.0029762638755136063,
+        "t04v3_stack_book_bottom": 0.05484092101837655,
+        "t04v3_stack_book_middle": 0.0560675670637675,
+        "t04v3_stack_book_top": 0.06549581659104506,
+        "t04v3_chain_can_1": 0.024071075218376398,
+        "t04v3_chain_can_2": 0.01201615188837409,
+        "t04v3_chain_mug": 0.011719601386420843
+      },
+      "config_sha256": "6bef1bf69b753516cc77433332d329a1eda8637512278c9f693d307cb674b569"
+    }
+  ],
+  "renderer_sources": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/render_t04_t05_live_multicam.py": "7a79eb7aef5757c9e35d93c4951bca51368f42614c9a6038274f13cf6c979840",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/06_run_genesis_import.py": "020168020e233ff41e0a3be9099f565fb2c218c1685f5ab3edbccf40899ec1cc",
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/scripts/common.py": "60663bc613e3447d89dad5291142c17c2e1a787eb163237ca822e886acadb4ba",
+    "/data_cached/wangzijun_p25/liyuhan/core100_t04_t05_cpu_throughput_20261029/worker.py": "9c41af4bdcdc401cc6050c2b95926381da35d96aaaaeb6af0a5d38330064a361",
+    "/data2/liyuhan/core100_continue_original_20261031/T04_C02/worker.py": "cb7c5c084860c414809a86c081913203c5a26ad0c4e4b8d8648e48483d6c48cb",
+    "/data2/liyuhan/core100_continue_original_20261031/T04_C02/native_bootstrap.py": "bc178e90fa746e635af10936e2b9f112398f6930ffdf1713e233d113b4cf444f",
+    "/data2/liyuhan/core100_continue_20261031_device_policy/policy.json": "3ee445e1c5efe442b5620810f7f86a0d739e20ff99e4cb78ad240cdb1c1cb607",
+    "/data2/liyuhan/core100_continue_20261031_device_policy/device_handoff.py": "56880db3f36d8779fa3f04929202bf82bbf59ba040c5230b160414ca05cb22f7",
+    "/data2/liyuhan/core100_continue_20261031_device_policy/egl_uuid_identity.py": "88f91d33bceb4dc90a38f4d56078212989d931c00ea1fcdf21d19264ca74d4cc"
+  },
+  "job_family": "support_release",
+  "original_config_byte_identity_claimed": false,
+  "source_physical_contract_attested": true,
+  "simulations_started": 0,
+  "full_trajectory_equivalence_claimed": false
+}

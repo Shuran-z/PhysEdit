@@ -1,0 +1,167 @@
+{
+  "T19_C01": {
+    "version": "core100-t19-isaac-v1-20261031-T19_C01",
+    "status": "frozen",
+    "actors": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "formal_score_event_ids": [
+      "source_motion",
+      "striker_target_contact"
+    ],
+    "required_order": [
+      [
+        "source_motion",
+        "striker_target_contact"
+      ]
+    ],
+    "condition_frame_index": 0,
+    "end_frame_index": 209,
+    "horizon_s": 6.966666666666667,
+    "events": {
+      "source_motion": {
+        "definition": "Striker exhibits physical motion in the observation window."
+      },
+      "striker_target_contact": {
+        "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+        "time_semantics": "ever"
+      }
+    },
+    "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+    "target_truth_source": "original_isaac_native_contact_qa",
+    "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+  },
+  "T19_C02": {
+    "version": "core100-t19-isaac-v1-20261031-T19_C02",
+    "status": "frozen",
+    "actors": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "formal_score_event_ids": [
+      "source_motion",
+      "striker_target_contact"
+    ],
+    "required_order": [
+      [
+        "source_motion",
+        "striker_target_contact"
+      ]
+    ],
+    "condition_frame_index": 0,
+    "end_frame_index": 209,
+    "horizon_s": 6.966666666666667,
+    "events": {
+      "source_motion": {
+        "definition": "Striker exhibits physical motion in the observation window."
+      },
+      "striker_target_contact": {
+        "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+        "time_semantics": "ever"
+      }
+    },
+    "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+    "target_truth_source": "original_isaac_native_contact_qa",
+    "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+  },
+  "T19_C03": {
+    "version": "core100-t19-isaac-v1-20261031-T19_C03",
+    "status": "frozen",
+    "actors": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "formal_score_event_ids": [
+      "source_motion",
+      "striker_target_contact"
+    ],
+    "required_order": [
+      [
+        "source_motion",
+        "striker_target_contact"
+      ]
+    ],
+    "condition_frame_index": 0,
+    "end_frame_index": 209,
+    "horizon_s": 6.966666666666667,
+    "events": {
+      "source_motion": {
+        "definition": "Striker exhibits physical motion in the observation window."
+      },
+      "striker_target_contact": {
+        "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+        "time_semantics": "ever"
+      }
+    },
+    "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+    "target_truth_source": "original_isaac_native_contact_qa",
+    "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+  },
+  "T19_C04": {
+    "version": "core100-t19-isaac-v1-20261031-T19_C04",
+    "status": "frozen",
+    "actors": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "formal_score_event_ids": [
+      "source_motion",
+      "striker_target_contact"
+    ],
+    "required_order": [
+      [
+        "source_motion",
+        "striker_target_contact"
+      ]
+    ],
+    "condition_frame_index": 0,
+    "end_frame_index": 209,
+    "horizon_s": 6.966666666666667,
+    "events": {
+      "source_motion": {
+        "definition": "Striker exhibits physical motion in the observation window."
+      },
+      "striker_target_contact": {
+        "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+        "time_semantics": "ever"
+      }
+    },
+    "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+    "target_truth_source": "original_isaac_native_contact_qa",
+    "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+  },
+  "T19_C05": {
+    "version": "core100-t19-isaac-v1-20261031-T19_C05",
+    "status": "frozen",
+    "actors": [
+      "t19_striker",
+      "t19_target"
+    ],
+    "formal_score_event_ids": [
+      "source_motion",
+      "striker_target_contact"
+    ],
+    "required_order": [
+      [
+        "source_motion",
+        "striker_target_contact"
+      ]
+    ],
+    "condition_frame_index": 0,
+    "end_frame_index": 209,
+    "horizon_s": 6.966666666666667,
+    "events": {
+      "source_motion": {
+        "definition": "Striker exhibits physical motion in the observation window."
+      },
+      "striker_target_contact": {
+        "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+        "time_semantics": "ever"
+      }
+    },
+    "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+    "target_truth_source": "original_isaac_native_contact_qa",
+    "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+  }
+}

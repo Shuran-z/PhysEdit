@@ -1,0 +1,834 @@
+{
+  "cases": [
+    {
+      "clip_id": "T18_C01",
+      "source": {
+        "theta": 0.526896551724138,
+        "labels": {
+          "upper_nonpulled_book_on_table_at_end": 1
+        },
+        "sample_id": "T18__bg01_home_ase__g01_moon__contact_friction__p019",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p019/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p019__cam01.json.gz",
+        "stored_state_sha256": "7052dc0ff676e243a7de0ade142dd7e93c1c47fc44e90029058fa9184440e068",
+        "decoded_state_sha256": "8cb88c142a8ca134ef441536683147089873784752e95931838539fb5c4ac6ce",
+        "fixed_context_sha256": "e64b7ee9868198c009ede524a2cd2022c55630b9bbcc7526d84c85857bfb6e87",
+        "evidence": {
+          "label": 1,
+          "upper_books_on_table": [
+            "t18_book_01"
+          ],
+          "contact_evidence": [
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6936936378479004,
+                2.3375747203826904,
+                0.8239791393280029
+              ],
+              "penetration_m": 4.184245699434541e-05,
+              "surface_tolerance_m": 0.0001418424569943454
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.6944363117218018,
+                2.1580944061279297,
+                0.8239799737930298
+              ],
+              "penetration_m": 4.030590207548812e-05,
+              "surface_tolerance_m": 0.0001403059020754881
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.4472203254699707,
+                2.3365049362182617,
+                0.8239880800247192
+              ],
+              "penetration_m": 2.382349885010626e-05,
+              "surface_tolerance_m": 0.00012382349885010625
+            },
+            {
+              "book": "t18_book_01",
+              "surface_entity": "static_geom_8",
+              "position": [
+                3.447998523712158,
+                2.157073974609375,
+                0.8239888548851013
+              ],
+              "penetration_m": 2.2304122467176057e-05,
+              "surface_tolerance_m": 0.00012230412246717605
+            }
+          ],
+          "event_scope": "specified upper-book table contact; coherent resettling versus scattering is not inferred from contact alone"
+        },
+        "horizon_s": 5.0,
+        "end_frame_index": 154
+      },
+      "points_read": 27,
+      "points_failed": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p004/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p004__cam01.json.gz",
+          "error": "KeyError: 'supported_book_names'"
+        },
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p008/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p008__cam01.json.gz",
+          "error": "KeyError: 'supported_book_names'"
+        },
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g01_moon__contact_friction__p012/metadata/T18__bg01_home_ase__g01_moon__contact_friction__p012__cam01.json.gz",
+          "error": "KeyError: 'supported_book_names'"
+        }
+      ],
+      "same_original_context_points": 1,
+      "observed_values": [
+        {
+          "theta": 0.5268965517,
+          "label": 1
+        }
+      ],
+      "intervals": [],
+      "reference_label": 1,
+      "reference_video_sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b",
+      "formal_admission": false,
+      "scope": "Read-only existing native states; release-version endpoint provenance is not auto-approved."
+    },
+    {
+      "clip_id": "T18_C02",
+      "source": {
+        "theta": 0.526896551724138,
+        "labels": {
+          "upper_nonpulled_book_on_table_at_end": 0
+        },
+        "sample_id": "T18__bg01_home_ase__g02_mars__contact_friction__p019",
+        "source_state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g02_mars__contact_friction__p019/metadata/T18__bg01_home_ase__g02_mars__contact_friction__p019__cam01.json.gz",
+        "stored_state_sha256": "45246a37091ffaa8c34eb5999a5ca0350134d090ca2100ef50c58f2d429e08d5",
+        "decoded_state_sha256": "e1c7e22b1fa99ca5c183a7254d0f3e2a0ef84c3e6990bafe7e056f29762c1ceb",
+        "fixed_context_sha256": "d1d75ffda734a74c7fa39c56c4bcb0d352f55c83c6cc4f81f77dab4a11ad6e99",
+        "evidence": {
+          "label": 0,
+          "upper_books_on_table": [],
+          "contact_evidence": [],
+          "event_scope": "specified upper-book table contact; coherent resettling versus scattering is not inferred from contact alone"
+        },
+        "horizon_s": 5.0,
+        "end_frame_index": 154
+      },
+      "points_read": 29,
+      "points_failed": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/production/T18__bg01_home_ase__g02_mars__contact_friction__p023/metadata/T18__bg01_home_ase__g02_mars__contact_friction__p023__cam01.json.gz",
+          "error": "KeyError: 'supported_book_names'"
+        }
+      ],
+      "same_original_context_points": 1,
+      "observed_values": [
+        {
+          "theta": 0.5268965517,
+          "label": 0
+        }
+      ],
+      "intervals": [],
+      "reference_label": 0,
+      "reference_video_sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c",
+      "formal_admission": false,
+      "scope": "Read-only existing native states; release-version endpoint provenance is not auto-approved."
+    },
+    {
+      "clip_id": "T18_C03",
+      "source": {
+        "theta": 0.526896551724138,
+        "labels": {
+          "upper_nonpulled_book_on_table_at_end": 0
+        },
+        "sample_id": "canonical",
+        "source_state_path": "/home/wangzijun_p25/.cache/huggingface/hub/datasets--phy2--phydataset/snapshots/a249aa4ad5a9355244935e30e5812137ffdb927d/benchmarks/core100_release_v4_20261022/canonical/T18_C03/state.json",
+        "stored_state_sha256": "52a07784f0dcc7d02d27a0abe9b3730083111cd2547d40970cc6aafeb7c2638c",
+        "decoded_state_sha256": "52a07784f0dcc7d02d27a0abe9b3730083111cd2547d40970cc6aafeb7c2638c",
+        "fixed_context_sha256": "482ba18cf00556d08e3fc41ce1cb1c667a78d8118d71e967e8ab417370523326",
+        "evidence": {
+          "label": 0,
+          "upper_books_on_table": [],
+          "contact_evidence": [],
+          "event_scope": "specified upper-book table contact; coherent resettling versus scattering is not inferred from contact alone"
+        },
+        "horizon_s": 5.0,
+        "end_frame_index": 154
+      },
+      "points_read": 0,
+      "points_failed": [],
+      "same_original_context_points": 0,
+      "observed_values": [],
+      "intervals": [],
+      "reference_label": 0,
+      "reference_video_sha256": "fe3b30009efe0aa2462f405caa74db52779f9c6c38da6042174d6df306ac83f9",
+      "formal_admission": false,
+      "scope": "Read-only existing native states; release-version endpoint provenance is not auto-approved."
+    }
+  ],
+  "new_simulations": 0,
+  "original_files_modified": false
+}

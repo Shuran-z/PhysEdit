@@ -1,0 +1,15 @@
+{
+  "t06_bw06": {
+    "id": "BW06",
+    "name": "long_chain",
+    "count": 10,
+    "gap": 0.03,
+    "arc": 0.025,
+    "mixed": true,
+    "parameter": [
+      "impact_force",
+      1.0,
+      4.0
+    ]
+  }
+}

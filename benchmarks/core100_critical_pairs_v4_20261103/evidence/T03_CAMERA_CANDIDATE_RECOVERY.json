@@ -1,0 +1,18 @@
+[
+  {
+    "camera": "cam01",
+    "source_video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam01.mp4",
+    "video_sha256": "17a3d9d58428b956bae992a5eccf90a7659a0ec196b00d65094ee171ad4b172a",
+    "same_objects_solver_seed_controls": true,
+    "local_candidate": "/data_cached/wangzijun_p25/liyuhan/core100_t03_camera_candidate_20261103/cam01.mp4",
+    "config_sha256": "2073922b5e286ed437c441559df4b2f8e2afe78a9f2154bfbb1cc1b24345ccf3"
+  },
+  {
+    "camera": "cam02",
+    "source_video": "/data_cached/wangzijun_p25/t03_formal_480p_r032/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/videos/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032__cam02.mp4",
+    "video_sha256": "b7a0d5bfb91962c673bacb1378b86ef172b360ccecc59ca94243921f459a5c03",
+    "same_objects_solver_seed_controls": true,
+    "local_candidate": "/data_cached/wangzijun_p25/liyuhan/core100_t03_camera_candidate_20261103/cam02.mp4",
+    "config_sha256": "ffee30e1a6b478ec3d34fe871abb69209df3b61c838a3a797dfb632cba1c5560"
+  }
+]

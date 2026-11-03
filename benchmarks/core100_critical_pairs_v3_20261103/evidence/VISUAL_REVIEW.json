@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "clip_id": "T04_C02",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "note": "The mug remains essentially at its condition pose (native maximum center motion 0.0004185 m); full-chain target is false. All original actors remain visible.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T04_C02/contact_sheet.png",
+        "sha256": "a626f3eb53b665727e50dea367a8c8da3bf06bcf9bf20171bb0305c7642bb9ec"
+      },
+      "video_sha256": "4f2ceec14f6bfca09f45549f6e5cd0b0e05f7a7c1bb2d58e155b2083e94e5548"
+    },
+    {
+      "clip_id": "T06_C02",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "note": "Propagation stops after the first two adjacent contacts; later upright books remain in place throughout the observed window.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T06_C02/contact_sheet.png",
+        "sha256": "586d8094be4fc2becb7b808d5506a110c231b3fef03fef458a94db109c22d801"
+      },
+      "video_sha256": "4aa02f964279b6efdeab05c4ffae81530bdec5de1691ad63e645452ebd3f6460"
+    },
+    {
+      "clip_id": "T06_C03",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "note": "The book chain propagates to the last original book; native contact witness confirms all nine required adjacent pairs.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T06_C03/contact_sheet.png",
+        "sha256": "2cab7eeac4895d58925251aa6234026d8c9615e567829bf90d3980fa393c19d5"
+      },
+      "video_sha256": "f876b60a4ce6784223aea84d8400f3e23e8622e1a4b68a09bce2701a9f90d8a4"
+    },
+    {
+      "clip_id": "T10_C05",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "note": "The original support pen moves visibly as the folder loses support later in the full source window. Native maximum motion is 0.118273 m, beyond the registered 0.04 m target; no folder-support-loss label substituted.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T10_C05/contact_sheet.png",
+        "sha256": "1f6fec70ee7ac552bf13fcf764038278fa79429c45d4a5ddd9925a6f924eadeb"
+      },
+      "video_sha256": "c986ec7f518eae665959da152fb8dd4b74e4e3f5dababf12305d3941e2d977a4"
+    },
+    {
+      "clip_id": "T18_C01",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "observed_label": 1,
+      "note": "After Book 01 extraction, the original upper books tip and at least one of books 02-05 has an end resting on the tabletop in frame 154; distinct from the extracted blue book.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T18_C01/contact_sheet.png",
+        "sha256": "f1a16faa872633eb7a9691e71ff348bfe443a3ec6a93542e8419bf66673662c4"
+      },
+      "video_sha256": "54800b89bf6edebe9d55839607b443d3f3bf5037d47a514f2b69be12939ee4e2"
+    },
+    {
+      "clip_id": "T18_C02",
+      "reviewer": "assistant_visual_source_review_20261103",
+      "independent_human_gold": false,
+      "status": "observable_for_registered_target",
+      "observed_label": 0,
+      "note": "After extraction the upper books remain on the original lower support book as a compact stack at frame 154. The extracted blue book alone on the table is excluded from the event.",
+      "evidence": {
+        "path": "review/core100_six_replacements_20261103/sources/T18_C02/contact_sheet.png",
+        "sha256": "15891d6787f5dd9d24b30e0b1bcbd861634a2594af85eb99a5b3a5d9784f461e"
+      },
+      "video_sha256": "ba52e556caea4d304d23458acc406cd2ff29649084985c6742426c9bc32f9b79"
+    }
+  ]
+}
