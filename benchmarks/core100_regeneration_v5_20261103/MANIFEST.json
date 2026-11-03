@@ -1,0 +1,21 @@
+{
+  "roster_release": "core100-critical-pairs-v5-20261103",
+  "registry_sha256": "9d36771444d1e93e87106af18a8e3ef757d9958eea8006160acc39108483b0f0",
+  "required_new_inputs": 15,
+  "default_prompt_variant": 1,
+  "suggested_seeds": [
+    0,
+    1,
+    2
+  ],
+  "generation_positions_per_model": 45,
+  "old_results_modified": false,
+  "actual_generation_executed": false,
+  "export_code_sha256": "122d3afd674e96e0daf70e2acc8f8e76cec4b023d49b246fda0f5384ce8f202d",
+  "files": {
+    "annotation_tasks.jsonl": "f269b183253831d7d6fc08d49d0f49b557f43ef2feaf743f6f1b7be6113ae9d8",
+    "generation_tasks.jsonl": "8b3ab5b20801c041a8f5643f62abd508f2d633cbc9f9b3ccc767308bd9d0d491",
+    "README.md": "327c18a424fdc6c6918243350b00f7f8e1498c9ee1852caa10ae04a45f898711",
+    "tasks.jsonl": "92b3246c2016e58ddffa239507f889b06399027739fae56804f968add6e67327"
+  }
+}

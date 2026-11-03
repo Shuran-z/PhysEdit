@@ -2,7 +2,7 @@
 
 [Repository guide](docs/REPOSITORY_GUIDE.md) · [Dataset overview](docs/DATASET_INTRODUCTION.md) · [Annotation site](annotation_site/README.md) · [Active Core100 references](catalog/active_core100_conditions.json)
 
-[Core100 critical-boundary protocol v4](docs/critical_boundary/CORE100_CAMERA_REVISION_V4.md) provides 100 bound references, including 14 Near references and 13 cross-boundary pairs. [15 changed inputs require new generation and annotation](benchmarks/core100_regeneration_v4_20261103/README.md). This version has a separate input and scoring namespace; the result tables below do not represent evaluation on these changed inputs.
+[Core100 critical-boundary evaluation](docs/critical_boundary/CORE100_ACTUAL_PROMPT_BINDINGS_V5.md) provides 100 bound references, including 14 Near references and 13 cross-boundary pairs, with the author-selected actual submission text restored in v5. [15 changed inputs require new generation and annotation](benchmarks/core100_regeneration_v5_20261103/README.md). This version has a separate input and scoring namespace; the result tables below do not represent evaluation on these changed inputs.
 
 **Do image-to-video models follow the physics they are asked for?** PhysEdit gives a model the first frame of a simulated physical event and a prompt that states its physics: gravity, friction or initial speed. We measure the physics in each generated video by inverting the original simulator and compare it with the prompt.
 

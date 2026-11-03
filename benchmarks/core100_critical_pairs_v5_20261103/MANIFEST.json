@@ -1,0 +1,62 @@
+{
+  "schema": "core100-rebalanced-roster-v4",
+  "version": "core100-critical-pairs-v5-20261103",
+  "registered_cases": 100,
+  "retained_reference_inputs": 100,
+  "prompt_binding_restored": 57,
+  "retained_full_task_records": 43,
+  "replaced": 0,
+  "scene_counts": {
+    "T01": 5,
+    "T02": 5,
+    "T03": 5,
+    "T04": 5,
+    "T05": 5,
+    "T06": 5,
+    "T07": 5,
+    "T08": 5,
+    "T09": 5,
+    "T10": 5,
+    "T11": 5,
+    "T12": 5,
+    "T13": 5,
+    "T14": 5,
+    "T15": 5,
+    "T16": 5,
+    "T17": 5,
+    "T18": 5,
+    "T19": 5,
+    "T20": 5
+  },
+  "parent_manifest": {
+    "path": "benchmarks/core100_critical_pairs_v4_20261103/MANIFEST.json",
+    "sha256": "a880841c405822412fc4d6d1da68ec776088dd58523a7aca4d44eb94d7608f5b"
+  },
+  "newly_replaced_generation_and_annotation_pending": [],
+  "model_generation_and_annotation_pending": [
+    "T03_C02",
+    "T04_C01",
+    "T04_C02",
+    "T04_C03",
+    "T05_C01",
+    "T05_C03",
+    "T06_C02",
+    "T06_C03",
+    "T10_C01",
+    "T10_C02",
+    "T10_C05",
+    "T11_C01",
+    "T11_C02",
+    "T18_C01",
+    "T18_C02"
+  ],
+  "old_outputs_or_labels_modified": false,
+  "online_tasks_modified": false,
+  "release_status": "prepared_actual_submission_binding_restored",
+  "files": {
+    "known_conditions.json": "60b7dfebc7506d1360791005b8a45554b0a77b46af2f7ba4455a284667d671bf",
+    "prompt_restoration_map.json": "4acd69390a52f6d43a7e8b02e9aff179a28c691be0028d6d89c0bbd200a2cc36",
+    "replacement_map.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "evidence/ACTUAL_SUBMITTED_PROMPTS.json": "30c4b3226058711d12e597222e7181757713e95cb0398bebd705d43b509c82db"
+  }
+}

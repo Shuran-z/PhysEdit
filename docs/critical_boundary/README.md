@@ -4,6 +4,8 @@ This directory contains the protocol and user-facing workflow for the critical-b
 
 ## Start here
 
+- [当前入口：实际提交文本绑定修订版v5](CORE100_ACTUAL_PROMPT_BINDINGS_V5.md)：100条物理参考和临界距离不变；修复57个恢复文本与实际冻结提交文本不一致的绑定。15条新输入独立生成、标注，其余候选按实际输入匹配后重新评分。
+
 - [第四版：100条临界参考接入完成](CORE100_CAMERA_REVISION_V4.md)：作者批准T03_C02改用cam02；100条数值及视觉参考齐全、待完成0条，Near14条。新名单和协议独立封存，未改线上旧任务；新机位需独立生成和标注。
 
 - [第三版：六条替换参考与独立评测入口](CORE100_SIX_REPLACEMENTS_V3.md)：保留该版100条数值、99条视觉参考的原记录；最后一条的cam02更新见第四版。使用第三版指针时仍读取该版结果，不套用第四版状态。

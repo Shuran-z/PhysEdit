@@ -1,0 +1,7 @@
+{
+  "version": "core100-critical-pairs-v5-20261103",
+  "release_root": "../benchmarks/core100_critical_pairs_v5_20261103",
+  "manifest": "MANIFEST.json",
+  "manifest_sha256": "d7c90d72f4a5f2ffbf178a291db60135cae2898a3a0d4943243404a92ae784fd",
+  "status": "prepared_not_live"
+}
