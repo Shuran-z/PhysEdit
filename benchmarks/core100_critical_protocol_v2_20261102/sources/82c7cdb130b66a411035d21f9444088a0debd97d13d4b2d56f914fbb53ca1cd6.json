@@ -1,0 +1,155 @@
+{
+  "phase": "endpoints",
+  "status": "pending",
+  "points": [
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.04,
+      "pid": 547295,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.04",
+      "config_sha256": "eb89cdb1d114cb1b292c6c695a1737ac7deb8bef9b17119b776de71ff51051c8",
+      "original_frozen_config_sha256": "09d2f073c0b99eeb81fe8bbba705286374d38455e2b997d40347db8f9170df10",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.04/physics.json",
+      "state_sha256": "ad66854025b99ac17ae90f6cd5e4dd7a026972f66c01cd09484662325faff2df",
+      "reference_native_state_sha256": "12ef34cbfbb532e5a7dc0ed289c7c923f3d7115b342c3d1cb977a2dc06bd01dc",
+      "old_numerical_state_sha256": "1c2bcf9b26f9d21ee8dca82ff88c57d81bc2d71f98952683dbd4c46233d00c80",
+      "reference_video_sha256": "666e1ee997a8f4c719ff813c1cc073633fec092226250f4d3110057da1f950ae",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 2022945425,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            31
+          ]
+        ],
+        "cup_final_displacement_m": 0.9084746651013682
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            20
+          ]
+        ],
+        "cup_final_displacement_m": 0.9127339525434859
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "native_peak_penetration_m": 0.0003448450588621199,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    },
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.45,
+      "pid": 547296,
+      "folder": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.45",
+      "config_sha256": "d07262e6917919e7390996ef4db6b2616e76448692474e97ddf5af90c1108469",
+      "original_frozen_config_sha256": "09d2f073c0b99eeb81fe8bbba705286374d38455e2b997d40347db8f9170df10",
+      "status": "completed",
+      "state_path": "/data_cached/wangzijun_p25/liyuhan/core100_v2_t20_canonical_gpu_20261102/endpoints/T20_C01_0.45/physics.json",
+      "state_sha256": "b8af0094ffcb59648d75d7bd5501acf0c68e7cffae480bf285509dc0c18ee185",
+      "reference_native_state_sha256": "12ef34cbfbb532e5a7dc0ed289c7c923f3d7115b342c3d1cb977a2dc06bd01dc",
+      "old_numerical_state_sha256": "1c2bcf9b26f9d21ee8dca82ff88c57d81bc2d71f98952683dbd4c46233d00c80",
+      "reference_video_sha256": "666e1ee997a8f4c719ff813c1cc073633fec092226250f4d3110057da1f950ae",
+      "actual_frozen_solver_seed_objects_and_axis_verified": true,
+      "backend": {
+        "backend": "gpu32",
+        "actual_init_seed": 2022945425,
+        "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py",
+        "renderer_sha256": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+        "instrumentation_sha256": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+        "telemetry": "all_native_rigid_substeps",
+        "original_sources_modified": false,
+        "rgb_export_disabled": true
+      },
+      "measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            38,
+            4
+          ]
+        ],
+        "cup_final_displacement_m": 0.028046673430275997
+      },
+      "source_measurement": {
+        "label": 1,
+        "first_contact_tuples": [
+          [
+            24,
+            5
+          ],
+          [
+            24,
+            9
+          ],
+          [
+            25,
+            20
+          ]
+        ],
+        "cup_final_displacement_m": 0.9127339525434859
+      },
+      "source_maximum_position_difference_m": null,
+      "horizon_s": 5.0,
+      "native_peak_penetration_m": 0.0006742236437276006,
+      "scope": "Frozen geometry_r3_full producer/profile. Original production distances are kept separately and not transferred."
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 0.5,
+      "status": "running",
+      "log_tail": " [04:25:11] [INFO] Running at \u001b[38;5;121m6.92\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m6.99\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m7.01\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m7.02\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m7.00\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m6.99\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m6.87\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:12] [INFO] Running at \u001b[38;5;121m3.37\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 2.25,
+      "status": "running",
+      "log_tail": " [04:25:11] [INFO] Running at \u001b[38;5;121m9.33\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m9.25\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m9.17\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m9.06\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m8.89\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:11] [INFO] Running at \u001b[38;5;121m8.77\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:12] [INFO] Running at \u001b[38;5;121m8.61\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:25:12] [INFO] Running at \u001b[38;5;121m3.76\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    }
+  ],
+  "source_hashes": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+    "/data_cached/wangzijun_p25/liyuhan/core100_t16_c04_sealed_window_v2_20261030/native_bootstrap.py": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/contact_precision_render.py": "f7b8ed866872da64caa32043295049bf3e8ca8d29045c1675b2ef10c40a06977",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4"
+  },
+  "original_sources_modified": false
+}

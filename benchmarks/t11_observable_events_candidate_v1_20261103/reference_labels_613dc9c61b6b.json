@@ -1,0 +1,472 @@
+{
+  "version": "t11-observable-events-candidate-v1",
+  "status": "candidate_not_active",
+  "registered_original_reference_count": 5,
+  "source_critical_registry_sha256": "99526466ed6d844842b760ed8af9717d6177d5b24f76f3b2b564b4d5903c84ca",
+  "event_definition_sha256": "42d2b880841aff475f2e2e24c4faa3367cf907501c57e0a7d4e206657a4ab59a",
+  "references": [
+    {
+      "clip_id": "T11_C01",
+      "reference_video_sha256": "ae521019dfe989da6c1d9bda2d3be21401b623a43eac20358f82fc95ed29c321",
+      "native_stored_state_sha256": "61f6d6abfe62a92ac8a5c32a16d5c34858542903ed7bc8d9fbbac344e71c4ae4",
+      "native_decoded_state_sha256": "15519985583312d6b999c9ed357366d0121959bd0b8585200f372697edd5d816",
+      "original_binding_hash_semantics": "Legacy decoded_state_sha256 alias refers to the manifest-bound stored gzip digest; original alias preserved.",
+      "measurement": {
+        "version": "t11-observable-events-candidate-v1",
+        "status": "candidate_reference_readback_not_formal_rgb_admission",
+        "events": {
+          "t11_eyeglasses_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 99,
+            "confirmed_frame": 100,
+            "evidence_frames": [
+              99,
+              100
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_relay_pencil_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 116,
+            "confirmed_frame": 117,
+            "evidence_frames": [
+              116,
+              117
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_edge_fall_begins": {
+            "label": 0,
+            "first_frame": null,
+            "evidence_frames": [
+              4,
+              154
+            ],
+            "reason": "Complete native state window; no qualifying edge-fall transition."
+          },
+          "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+            "label": 1,
+            "first_frame": 78,
+            "evidence_frames": [
+              78
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+            "label": 1,
+            "first_frame": 85,
+            "evidence_frames": [
+              85
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_eyeglasses_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 108,
+            "evidence_frames": [
+              108
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 124,
+            "evidence_frames": [
+              124
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_driver_eraser_contacts_floor": {
+            "label": 0,
+            "first_frame": null,
+            "evidence_frames": [
+              4,
+              154
+            ],
+            "reason": "Complete recorded reference window; no named contact."
+          }
+        },
+        "physical_frame_period_s": 0.03333333333333333,
+        "window_frames": [
+          4,
+          154
+        ],
+        "spatial_tolerance_m": 0.001,
+        "min_descent_duration_s": 0.03333333333333333,
+        "source": "simulator state and original exterior contacts; never supplied to generated-video judge",
+        "limitations": "Conservative contact-connectivity witness for the original horizontal-table T11 scene only. Simultaneous side contacts can delay detection; this is not proof of general contact-force support or physical causality."
+      }
+    },
+    {
+      "clip_id": "T11_C02",
+      "reference_video_sha256": "3e8731c40749c6431bc686487c3fd4a56cd336cfed0592e6bf90f209c6b893ca",
+      "native_stored_state_sha256": "53e01e6582f3cefef39f4fdffa3e5174e6134905423fc397ffc35c69f31ffb46",
+      "native_decoded_state_sha256": "cfb42d19a2309541941921b397f503ce843c3eab30d4f850f219669ee0a44d82",
+      "original_binding_hash_semantics": "Legacy decoded_state_sha256 alias refers to the manifest-bound stored gzip digest; original alias preserved.",
+      "measurement": {
+        "version": "t11-observable-events-candidate-v1",
+        "status": "candidate_reference_readback_not_formal_rgb_admission",
+        "events": {
+          "t11_eyeglasses_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 98,
+            "confirmed_frame": 99,
+            "evidence_frames": [
+              98,
+              99
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_relay_pencil_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 110,
+            "confirmed_frame": 111,
+            "evidence_frames": [
+              110,
+              111
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 120,
+            "confirmed_frame": 121,
+            "evidence_frames": [
+              120,
+              121
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+            "label": 1,
+            "first_frame": 78,
+            "evidence_frames": [
+              78
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+            "label": 1,
+            "first_frame": 85,
+            "evidence_frames": [
+              85
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_eyeglasses_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 107,
+            "evidence_frames": [
+              107
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 118,
+            "evidence_frames": [
+              118
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_driver_eraser_contacts_floor": {
+            "label": 1,
+            "first_frame": 130,
+            "evidence_frames": [
+              130
+            ],
+            "reason": "Original named exterior contact record."
+          }
+        },
+        "physical_frame_period_s": 0.03333333333333333,
+        "window_frames": [
+          4,
+          154
+        ],
+        "spatial_tolerance_m": 0.001,
+        "min_descent_duration_s": 0.03333333333333333,
+        "source": "simulator state and original exterior contacts; never supplied to generated-video judge",
+        "limitations": "Conservative contact-connectivity witness for the original horizontal-table T11 scene only. Simultaneous side contacts can delay detection; this is not proof of general contact-force support or physical causality."
+      }
+    },
+    {
+      "clip_id": "T11_C03",
+      "reference_video_sha256": "818e9d0baf6cec0ecf6504659b0e9803967b7509b51789624a3bdd3feeee11f4",
+      "native_stored_state_sha256": "1a4aec0200a4f573f6ea89a5dd2e7a2e05b3e11d1d278f29ec634130f0d407c2",
+      "native_decoded_state_sha256": "5b85b8a1071591267ab90fc7a8435039bf7a3c84fa380520435e1e5e5351232e",
+      "measurement": {
+        "version": "t11-observable-events-candidate-v1",
+        "status": "candidate_reference_readback_not_formal_rgb_admission",
+        "events": {
+          "t11_eyeglasses_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 91,
+            "confirmed_frame": 92,
+            "evidence_frames": [
+              91,
+              92
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_relay_pencil_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 97,
+            "confirmed_frame": 98,
+            "evidence_frames": [
+              97,
+              98
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 100,
+            "confirmed_frame": 101,
+            "evidence_frames": [
+              100,
+              101
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+            "label": 1,
+            "first_frame": 76,
+            "evidence_frames": [
+              76
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+            "label": 1,
+            "first_frame": 82,
+            "evidence_frames": [
+              82
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_eyeglasses_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 100,
+            "evidence_frames": [
+              100
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 108,
+            "evidence_frames": [
+              108
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_driver_eraser_contacts_floor": {
+            "label": 1,
+            "first_frame": 120,
+            "evidence_frames": [
+              120
+            ],
+            "reason": "Original named exterior contact record."
+          }
+        },
+        "physical_frame_period_s": 0.03333333333333333,
+        "window_frames": [
+          4,
+          154
+        ],
+        "spatial_tolerance_m": 0.001,
+        "min_descent_duration_s": 0.03333333333333333,
+        "source": "simulator state and original exterior contacts; never supplied to generated-video judge",
+        "limitations": "Conservative contact-connectivity witness for the original horizontal-table T11 scene only. Simultaneous side contacts can delay detection; this is not proof of general contact-force support or physical causality."
+      }
+    },
+    {
+      "clip_id": "T11_C04",
+      "reference_video_sha256": "3ce7996824078b9ca8cfd9247624424b38c3b203496cd1e90c06dcfb0a410880",
+      "native_stored_state_sha256": "665e91850221e26667953479e123a71e61bac1d83d77991e4417318b15f61ac0",
+      "native_decoded_state_sha256": "c791fdb9088a253de058d8bd644ab99944ba987908f6968a877eb92b13bcdd76",
+      "measurement": {
+        "version": "t11-observable-events-candidate-v1",
+        "status": "candidate_reference_readback_not_formal_rgb_admission",
+        "events": {
+          "t11_eyeglasses_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 95,
+            "confirmed_frame": 96,
+            "evidence_frames": [
+              95,
+              96
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_relay_pencil_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 102,
+            "confirmed_frame": 103,
+            "evidence_frames": [
+              102,
+              103
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 107,
+            "confirmed_frame": 108,
+            "evidence_frames": [
+              107,
+              108
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+            "label": 1,
+            "first_frame": 77,
+            "evidence_frames": [
+              77
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+            "label": 1,
+            "first_frame": 83,
+            "evidence_frames": [
+              83
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_eyeglasses_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 104,
+            "evidence_frames": [
+              104
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 111,
+            "evidence_frames": [
+              111
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_driver_eraser_contacts_floor": {
+            "label": 1,
+            "first_frame": 117,
+            "evidence_frames": [
+              117
+            ],
+            "reason": "Original named exterior contact record."
+          }
+        },
+        "physical_frame_period_s": 0.03333333333333333,
+        "window_frames": [
+          4,
+          154
+        ],
+        "spatial_tolerance_m": 0.001,
+        "min_descent_duration_s": 0.03333333333333333,
+        "source": "simulator state and original exterior contacts; never supplied to generated-video judge",
+        "limitations": "Conservative contact-connectivity witness for the original horizontal-table T11 scene only. Simultaneous side contacts can delay detection; this is not proof of general contact-force support or physical causality."
+      }
+    },
+    {
+      "clip_id": "T11_C05",
+      "reference_video_sha256": "19837c763256d0c3f016a728a4b45859eb05bcd8bcd49b82d0e594fec160b03f",
+      "native_stored_state_sha256": "78cee22997fe1ccecf91f28fff61ff365c84338ef9bb252086ad367bd42e3c75",
+      "native_decoded_state_sha256": "c80b029e59baaef4eb72e46c08308ef532015239c181f693c359d13d52849ce6",
+      "measurement": {
+        "version": "t11-observable-events-candidate-v1",
+        "status": "candidate_reference_readback_not_formal_rgb_admission",
+        "events": {
+          "t11_eyeglasses_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 94,
+            "confirmed_frame": 95,
+            "evidence_frames": [
+              94,
+              95
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_relay_pencil_case_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 100,
+            "confirmed_frame": 101,
+            "evidence_frames": [
+              100,
+              101
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_edge_fall_begins": {
+            "label": 1,
+            "first_frame": 103,
+            "confirmed_frame": 104,
+            "evidence_frames": [
+              103,
+              104
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+            "label": 1,
+            "first_frame": 76,
+            "evidence_frames": [
+              76
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+            "label": 1,
+            "first_frame": 82,
+            "evidence_frames": [
+              82
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_eyeglasses_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 103,
+            "evidence_frames": [
+              103
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_relay_pencil_case_contacts_floor": {
+            "label": 1,
+            "first_frame": 109,
+            "evidence_frames": [
+              109
+            ],
+            "reason": "Original named exterior contact record."
+          },
+          "t11_driver_eraser_contacts_floor": {
+            "label": 1,
+            "first_frame": 131,
+            "evidence_frames": [
+              131
+            ],
+            "reason": "Original named exterior contact record."
+          }
+        },
+        "physical_frame_period_s": 0.03333333333333333,
+        "window_frames": [
+          4,
+          154
+        ],
+        "spatial_tolerance_m": 0.001,
+        "min_descent_duration_s": 0.03333333333333333,
+        "source": "simulator state and original exterior contacts; never supplied to generated-video judge",
+        "limitations": "Conservative contact-connectivity witness for the original horizontal-table T11 scene only. Simultaneous side contacts can delay detection; this is not proof of general contact-force support or physical causality."
+      }
+    }
+  ],
+  "new_simulations": 0,
+  "active_critical_registry_modified": false,
+  "old_labels_modified": false,
+  "existing_boundary_labels_transferred": false,
+  "formal_reference_count_increment": 0,
+  "scope": "Reference state readback only; image observability, event-matched boundary readback and new generated-video annotations remain separately required."
+}

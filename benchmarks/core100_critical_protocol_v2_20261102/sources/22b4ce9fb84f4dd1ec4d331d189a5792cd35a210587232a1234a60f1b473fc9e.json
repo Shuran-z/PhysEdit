@@ -1,0 +1,37 @@
+{
+  "phase": "endpoints",
+  "status": "pending",
+  "points": [
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.04,
+      "status": "running",
+      "log_tail": " [04:12:52] [INFO] Running at \u001b[38;5;121m9.56\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m9.44\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m9.43\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m9.44\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m9.23\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m9.17\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m9.17\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m9.17\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    },
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.45,
+      "status": "running",
+      "log_tail": " [04:12:52] [INFO] Running at \u001b[38;5;121m8.18\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.24\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.34\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.43\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.38\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.41\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.38\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m8.28\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 0.5,
+      "status": "running",
+      "log_tail": " [04:12:52] [INFO] Running at \u001b[38;5;121m7.83\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m7.76\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m7.70\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m7.60\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m7.61\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.58\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m4.33\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m2.52\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    },
+    {
+      "clip_id": "T20_C05",
+      "theta": 2.25,
+      "status": "running",
+      "log_tail": " [04:12:52] [INFO] Running at \u001b[38;5;121m4.70\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m4.73\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:52] [INFO] Running at \u001b[38;5;121m4.80\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.28\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.29\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.26\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.26\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:12:53] [INFO] Running at \u001b[38;5;121m7.20\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    }
+  ],
+  "source_hashes": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+    "/data_cached/wangzijun_p25/liyuhan/core100_t16_c04_sealed_window_v2_20261030/native_bootstrap.py": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/contact_precision_render.py": "f7b8ed866872da64caa32043295049bf3e8ca8d29045c1675b2ef10c40a06977",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4"
+  },
+  "original_sources_modified": false
+}

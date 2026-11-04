@@ -1,0 +1,613 @@
+{
+  "schema": "prompt-parameter-selection-registration-v1",
+  "catalog_base_revision": "88f8fde1d1c240cec2cc0c201a4310cd8d4c5cbc",
+  "affected_videos": 15,
+  "affected_reference_cases": 5,
+  "scope": "selected_parameter_keys metadata only",
+  "prompt_texts_unchanged": true,
+  "physical_parameter_values_unchanged": true,
+  "training_manifest_unchanged": true,
+  "evaluation_results_unchanged": true,
+  "records": [
+    {
+      "canonical_video_id": "physedit_genesis_t04_538b6bcdea1b5b08__cam01",
+      "clip_id": "T04_C02",
+      "camera": "cam01",
+      "video_sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8",
+      "prompt_variant_sha256": [
+        "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+        "352f5c8db4da9949465a3992b1a1dd2190ac322cb133b4e101a485d876a22f31",
+        "8db2294f7c22eeb33b702d58e0951871e0a7fdcfae9c66b1602d403d251e007c"
+      ],
+      "parameter_facts_sha256": "c67a5af4ff69377c0eb9cf76c31d66e179e92549b777dd3898946f67ab052b46",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_538b6bcdea1b5b08__cam02",
+      "clip_id": "T04_C02",
+      "camera": "cam02",
+      "video_sha256": "3e8e1738dc709126846df230dd202d00f0954357563a06a40c696139dd3d7885",
+      "prompt_variant_sha256": [
+        "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+        "352f5c8db4da9949465a3992b1a1dd2190ac322cb133b4e101a485d876a22f31",
+        "8db2294f7c22eeb33b702d58e0951871e0a7fdcfae9c66b1602d403d251e007c"
+      ],
+      "parameter_facts_sha256": "c67a5af4ff69377c0eb9cf76c31d66e179e92549b777dd3898946f67ab052b46",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_538b6bcdea1b5b08__cam03",
+      "clip_id": "T04_C02",
+      "camera": "cam03",
+      "video_sha256": "a15fb0e4236604b0f5b859760063392d9ae0eb3a29bbe9d216c27c67edd4b0aa",
+      "prompt_variant_sha256": [
+        "4549703dd4cb785bbdcf92a03bb6fe6246b2eb5d3456073b6f76e6bc32c87d7e",
+        "352f5c8db4da9949465a3992b1a1dd2190ac322cb133b4e101a485d876a22f31",
+        "8db2294f7c22eeb33b702d58e0951871e0a7fdcfae9c66b1602d403d251e007c"
+      ],
+      "parameter_facts_sha256": "c67a5af4ff69377c0eb9cf76c31d66e179e92549b777dd3898946f67ab052b46",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_b8b5baf269caf15f__cam01",
+      "clip_id": "T04_C03",
+      "camera": "cam01",
+      "video_sha256": "d2720f3f0dd6e2a972a0790373e371665ac00c62230809f906f9dbc50ae3b9df",
+      "prompt_variant_sha256": [
+        "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+        "8f22a3e4d80049cdc7efddacba3d4ec3d3e1bf3d5028064bcb11043ae3b0d2f5",
+        "9ab36bb07ffed67e92e5429355f8e60c1f9126fed2ae08687da9eca095f4bf53"
+      ],
+      "parameter_facts_sha256": "f70b3fbb6ce60b1c278b048983376ae768f94ce9e16ed418b4acdc8c44bcc9a2",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_b8b5baf269caf15f__cam02",
+      "clip_id": "T04_C03",
+      "camera": "cam02",
+      "video_sha256": "34b33707edd350be713e506f0c2fe17da4f5cf230600edb57ecf16e85045be5b",
+      "prompt_variant_sha256": [
+        "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+        "8f22a3e4d80049cdc7efddacba3d4ec3d3e1bf3d5028064bcb11043ae3b0d2f5",
+        "9ab36bb07ffed67e92e5429355f8e60c1f9126fed2ae08687da9eca095f4bf53"
+      ],
+      "parameter_facts_sha256": "f70b3fbb6ce60b1c278b048983376ae768f94ce9e16ed418b4acdc8c44bcc9a2",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_b8b5baf269caf15f__cam03",
+      "clip_id": "T04_C03",
+      "camera": "cam03",
+      "video_sha256": "71d3f3d944b82d4af2b7f426c66d00ec39f3ae6b7f5be603f3068a309abc8409",
+      "prompt_variant_sha256": [
+        "149f78df63211d731873d89a3c968b16f03a74c0febae8f4c06e4a486bf90965",
+        "8f22a3e4d80049cdc7efddacba3d4ec3d3e1bf3d5028064bcb11043ae3b0d2f5",
+        "9ab36bb07ffed67e92e5429355f8e60c1f9126fed2ae08687da9eca095f4bf53"
+      ],
+      "parameter_facts_sha256": "f70b3fbb6ce60b1c278b048983376ae768f94ce9e16ed418b4acdc8c44bcc9a2",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d6562baaa7da7dd3__cam01",
+      "clip_id": "T04_C05",
+      "camera": "cam01",
+      "video_sha256": "13e838ca378546be88dd8342e1f5364fcb4648b58de58241c1d9484d66bde510",
+      "prompt_variant_sha256": [
+        "13acb75fb9e3559fd94324ee45f9a7b77b2e01de5c308c58ed34a08a90217016",
+        "51472e067a822eca27102f4bac1886c479f0028b19830102db72de157d722d13",
+        "0af32229a5ea152eccf700f109757dabd364d67311440d6f4638d217f9ee3225"
+      ],
+      "parameter_facts_sha256": "4b250b27903bc785ba0661d9a783cade7a3b607e0eda71688cd978b9e8fedc8f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d6562baaa7da7dd3__cam02",
+      "clip_id": "T04_C05",
+      "camera": "cam02",
+      "video_sha256": "3374b4cf83a7f24a2c556324105afa906ecf3bae430ea07764ebd1b1f08c53fe",
+      "prompt_variant_sha256": [
+        "13acb75fb9e3559fd94324ee45f9a7b77b2e01de5c308c58ed34a08a90217016",
+        "51472e067a822eca27102f4bac1886c479f0028b19830102db72de157d722d13",
+        "0af32229a5ea152eccf700f109757dabd364d67311440d6f4638d217f9ee3225"
+      ],
+      "parameter_facts_sha256": "4b250b27903bc785ba0661d9a783cade7a3b607e0eda71688cd978b9e8fedc8f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d6562baaa7da7dd3__cam03",
+      "clip_id": "T04_C05",
+      "camera": "cam03",
+      "video_sha256": "0db2908dcb916729017d7f31b44b118010bbca62fd97478c58bebd6089a6542e",
+      "prompt_variant_sha256": [
+        "13acb75fb9e3559fd94324ee45f9a7b77b2e01de5c308c58ed34a08a90217016",
+        "51472e067a822eca27102f4bac1886c479f0028b19830102db72de157d722d13",
+        "0af32229a5ea152eccf700f109757dabd364d67311440d6f4638d217f9ee3225"
+      ],
+      "parameter_facts_sha256": "4b250b27903bc785ba0661d9a783cade7a3b607e0eda71688cd978b9e8fedc8f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d906463f601dbff1__cam01",
+      "clip_id": "T04_C04",
+      "camera": "cam01",
+      "video_sha256": "65202d5adf9632aa017b547b0156297bc15b813bc034c68454589700ecf7b33e",
+      "prompt_variant_sha256": [
+        "5fbafa79ced114f2ec9dcfc806cd640cd24a18ab9cdb7ab9fcd14db1dec145fc",
+        "610ff896e7fc74e22514baf62c93b24d22c06f92e9bb33410a7e4362a8a18388",
+        "4544872f8e3c987513a78a031ee2043de703606b292ab6b36d48e6ba2b360e06"
+      ],
+      "parameter_facts_sha256": "17cf74cfa0c5db42dc917815b0d1ec01d91ad5a394016ca3726209795471d807",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d906463f601dbff1__cam02",
+      "clip_id": "T04_C04",
+      "camera": "cam02",
+      "video_sha256": "b45db5fc26b70ce977670c9aa811f57222dfe33ce0ac392bee964044a1abd26a",
+      "prompt_variant_sha256": [
+        "5fbafa79ced114f2ec9dcfc806cd640cd24a18ab9cdb7ab9fcd14db1dec145fc",
+        "610ff896e7fc74e22514baf62c93b24d22c06f92e9bb33410a7e4362a8a18388",
+        "4544872f8e3c987513a78a031ee2043de703606b292ab6b36d48e6ba2b360e06"
+      ],
+      "parameter_facts_sha256": "17cf74cfa0c5db42dc917815b0d1ec01d91ad5a394016ca3726209795471d807",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_d906463f601dbff1__cam03",
+      "clip_id": "T04_C04",
+      "camera": "cam03",
+      "video_sha256": "6eaa174019e3a9039b0267c670e7f346579ea1396484ad5f9c104bc202b59cde",
+      "prompt_variant_sha256": [
+        "5fbafa79ced114f2ec9dcfc806cd640cd24a18ab9cdb7ab9fcd14db1dec145fc",
+        "610ff896e7fc74e22514baf62c93b24d22c06f92e9bb33410a7e4362a8a18388",
+        "4544872f8e3c987513a78a031ee2043de703606b292ab6b36d48e6ba2b360e06"
+      ],
+      "parameter_facts_sha256": "17cf74cfa0c5db42dc917815b0d1ec01d91ad5a394016ca3726209795471d807",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_ee5df11022358001__cam01",
+      "clip_id": "T04_C01",
+      "camera": "cam01",
+      "video_sha256": "5d0931944f25399117bf9acd6707a20a5c32cda1a3afbe711c9be0d3af80f307",
+      "prompt_variant_sha256": [
+        "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+        "547449860f9e1de8403a96f11ba723c908a1a6f46a19fb1d78f8cb1e9d8248ce",
+        "e2f8ff1a38a7c75354669559b7bc4fd55e041b1016a3a3ca636c90347b83c0da"
+      ],
+      "parameter_facts_sha256": "4481920b1d9a61f5a179818b9cb85b02a48cf7ade789debbcf034ba83a65351f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_ee5df11022358001__cam02",
+      "clip_id": "T04_C01",
+      "camera": "cam02",
+      "video_sha256": "7cc2d3975573e669aa4fabce81b536164d33c8bba31b0ea6acb067a5c9fffd6d",
+      "prompt_variant_sha256": [
+        "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+        "547449860f9e1de8403a96f11ba723c908a1a6f46a19fb1d78f8cb1e9d8248ce",
+        "e2f8ff1a38a7c75354669559b7bc4fd55e041b1016a3a3ca636c90347b83c0da"
+      ],
+      "parameter_facts_sha256": "4481920b1d9a61f5a179818b9cb85b02a48cf7ade789debbcf034ba83a65351f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    },
+    {
+      "canonical_video_id": "physedit_genesis_t04_ee5df11022358001__cam03",
+      "clip_id": "T04_C01",
+      "camera": "cam03",
+      "video_sha256": "587bbeafb5036d9d4b2bf0bccc0969bfd076ce410ee88f048be4f651e6ee83c9",
+      "prompt_variant_sha256": [
+        "3016a98f32b96e319a60f58c675f01343d3a8ff8b59f0d552150088f7369ce20",
+        "547449860f9e1de8403a96f11ba723c908a1a6f46a19fb1d78f8cb1e9d8248ce",
+        "e2f8ff1a38a7c75354669559b7bc4fd55e041b1016a3a3ca636c90347b83c0da"
+      ],
+      "parameter_facts_sha256": "4481920b1d9a61f5a179818b9cb85b02a48cf7ade789debbcf034ba83a65351f",
+      "previous_selected_parameter_keys": [
+        "gravity",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass",
+        "t04v3_stack_book_bottom.mass"
+      ],
+      "selected_parameter_keys": [
+        "gravity",
+        "t04v3_removable_support_bar.friction",
+        "ramp_angle_deg",
+        "commanded_extraction_distance_m",
+        "commanded_extraction_speed_mps",
+        "support_pull_force_magnitude_n",
+        "support_pull_force_duration_s",
+        "t04v3_removable_support_bar.initial_speed",
+        "t04v3_removable_support_bar.force_peak",
+        "t04v3_removable_support_bar.mass"
+      ],
+      "actual_prompt_text_changed": false,
+      "physical_parameter_values_changed": false,
+      "training_membership_changed": false,
+      "evaluation_results_changed": false
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "rows": [
+    {
+      "clip_id": "T11_C04",
+      "old_bracket": [
+        2.3844726562500003,
+        2.3853515625000004
+      ],
+      "points": [
+        {
+          "theta": 2.3844726562500003,
+          "old_label": 0,
+          "new_event": {
+            "label": 0,
+            "first_frame": null,
+            "evidence_frames": [
+              4,
+              154
+            ],
+            "reason": "Complete native state window; no qualifying edge-fall transition."
+          },
+          "state_path": "/data/yangkaiyuan/core100_t11_exact_20261029/T11_C04/profile_2/2.38447265625/physics.json.gz",
+          "stored_state_sha256": "2d97e6ba3d333b7af5dab3d741b53afc1a598334e3dc528c06a02bffeee5292a",
+          "decoded_state_sha256": "8a87d132a3c8249f1c5f9597aa3a12d5e8adfed4d364eb4995ec70f7b6922b41",
+          "config_sha256": "d267525cfc2117aed3002c08fb2244cc52114df2fa4a163bacbea5dd37edb6f0"
+        },
+        {
+          "theta": 2.3853515625000004,
+          "old_label": 1,
+          "new_event": {
+            "label": 1,
+            "first_frame": 131,
+            "confirmed_frame": 132,
+            "evidence_frames": [
+              131,
+              132
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "state_path": "/data/yangkaiyuan/core100_t11_exact_20261029/T11_C04/profile_2/2.3853515625/physics.json.gz",
+          "stored_state_sha256": "6a009142601b44b4bd06f6703eeb85a3e9a38950f587471e4c5fc47bd6b9d12d",
+          "decoded_state_sha256": "d1a84aab34bdcef97604749390c45d23742c41f904a673933fd5f690bb291380",
+          "config_sha256": "e4e6231f4e5f1a489d9f13fbf35a2da77a48d301855693b1f076d1074ba20ad1"
+        }
+      ],
+      "backend": "cpu64",
+      "profile": 2,
+      "formal_admission": false,
+      "profile_not_transferred_to_original_gpu": true
+    },
+    {
+      "clip_id": "T11_C05",
+      "old_bracket": [
+        2.3844726562500003,
+        2.3853515625000004
+      ],
+      "points": [
+        {
+          "theta": 2.3844726562500003,
+          "old_label": 0,
+          "new_event": {
+            "label": 0,
+            "first_frame": null,
+            "evidence_frames": [
+              4,
+              154
+            ],
+            "reason": "Complete native state window; no qualifying edge-fall transition."
+          },
+          "state_path": "/data/yangkaiyuan/core100_t11_exact_20261029/T11_C05/profile_2/2.38447265625/physics.json.gz",
+          "stored_state_sha256": "96660c6b707eb8572ecc0423e84ff4c433d27482b8b82f85a876f4ea14f88837",
+          "decoded_state_sha256": "37e08d6601ebbc1dcc5d917cf91eaa1d64c8895dd98fe1b63a5e84fa47016333",
+          "config_sha256": "2a0d99b5a390409ce04a16927ec361884b2a7abb9c5a9f0e10e66eb4400a3a8d"
+        },
+        {
+          "theta": 2.3853515625000004,
+          "old_label": 1,
+          "new_event": {
+            "label": 1,
+            "first_frame": 131,
+            "confirmed_frame": 132,
+            "evidence_frames": [
+              131,
+              132
+            ],
+            "reason": "Prior table connection, no remaining table contact path, beyond tabletop footprint and sustained downward motion below the tabletop."
+          },
+          "state_path": "/data/yangkaiyuan/core100_t11_exact_20261029/T11_C05/profile_2/2.3853515625/physics.json.gz",
+          "stored_state_sha256": "020484a63d84b743b6f682f467b935d7bd124bc7175049901c4c620083eba807",
+          "decoded_state_sha256": "16e6b7b3c936bf50e401dcf04a67b8a52069bac9658cb59caeabbe39d7a7aa28",
+          "config_sha256": "830aa5f265d1b1f43f0a21baa5cfe112dcb60a0b4210de5b37779e987739b9f3"
+        }
+      ],
+      "backend": "cpu64",
+      "profile": 2,
+      "formal_admission": false,
+      "profile_not_transferred_to_original_gpu": true
+    }
+  ],
+  "new_simulations": 0,
+  "event_definition_sha256": "d463f5fa8c24cd2fca9690ae14c02a06e51d1ec15353459f09b30c15a85de93c",
+  "scope": "CPU64 refined-profile old intervals only; diagnostic predicate re-read, not original-profile admission."
+}

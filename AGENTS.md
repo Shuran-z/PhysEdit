@@ -1,5 +1,11 @@
 # 项目整体定位
 
+2026-11-03实际试跑纠正：第四版部分保留案例误用了恢复文本，而非作者选择的实际提交短prompt。已依照冻结输入政策和生成metadata逐字恢复57个案例（其中56条参考未换、1条为本就待重生成的T03_C02），未改任何物理参考、事件、窗口、区间或归一化。当前准备入口为`catalog/core100_critical_pairs_v5.json`与`catalog/prepared_core100_critical_protocol_v5.json`；说明`docs/critical_boundary/CORE100_ACTUAL_PROMPT_BINDINGS_V5.md`。14条其他替换参考的独立prompt不变；15条重生成任务仍独立登记。旧v4、旧结果和标注保留，不能将不同文本的视频或标签直接混入本版。
+
+最新用户授权（2026-11-03）：T03_C02从原cam03换为已核验的cam02，以可见“罐碰手机后越缘下落”为主事件，不要求落地。第四版名单入口`catalog/core100_critical_pairs_v4.json`，临界协议入口`catalog/prepared_core100_critical_protocol_v4.json`，说明见`docs/critical_boundary/CORE100_CAMERA_REVISION_V4.md`。相对第三版99条输入不变，只改该条视频、条件图及来源绑定；物理参数、prompt、观察窗口、原临界区间和归一化不变。100条临界数值与视觉参考已齐；Near14条。第三版、旧机位、旧模型结果、标签和线上任务保留；新机位需独立生成、标注与反演相机标定，不能套用cam03结果。新版本在本地独立封存，线上旧入口尚未切换；相对线上旧版累计15条输入需独立生成和标注。
+
+最新用户授权（2026-11-01）：将8条独立临界补充参考换入新版Core100，仍为20场景各5条。新版名单入口为 `catalog/core100_critical_pairs_v2.json`，版本 `core100-critical-pairs-v2-20261101`；保留92条原输入，替换T04_C01/C03、T05_C01/C03、T10_C01/C02、T11_C01/C02。参数、真值、距离及来源绑定见 `docs/critical_boundary/CORE100_CRITICAL_PAIRS_V2.md`。旧版清单、模型输出、人工标签和正在进行的标注任务保留；换入8条需独立生成和标注，旧结果不得套用。新版名单与导出已准备，线上标注和发布尚未迁移，`catalog/active_core100_conditions.json` 仍指向旧在用版本。下文关于其余95条不替换的旧规定仅对该旧版本继续成立；不阻止用户此次明确授权的新8条替换。
+
 最新用户授权：Core100的5条T19参考现已单独替换为 `core100-t19-isaac-v1-20261031`，以 `catalog/active_core100_conditions.json` 为当前入口。其余95条继续逐项沿用冻结v6输入。旧T19参考、prompt、生成结果和人工标签保留，不转移到新视频；新5条需独立生成和标注。该更新已发布至 `phy2/phydataset`，参数及临界距离绑定见 `docs/critical_boundary/CORE100_T19_REPLACEMENT.md`。下文关于全部100条始终使用v6的旧规定，已被本次明确授权仅对T19五条覆盖。
 
 最新用户纠正：全量72,000条提示词与已整理的Core100实际生成提示词统一为简短三种变体格式；不再使用v7三焦点文本。保留各视频自己的物理输入和必要控制说明，不能将100个测试案例的参数复制到全量视频。Core100已有模型视频的实际提交文本保持不变。此前本文件关于全量默认v7的说明属于历史决策，已被此次明确用户指令覆盖。统一入口为父目录 `prompts_72000_unified`，以其中清单和对齐报告为准。

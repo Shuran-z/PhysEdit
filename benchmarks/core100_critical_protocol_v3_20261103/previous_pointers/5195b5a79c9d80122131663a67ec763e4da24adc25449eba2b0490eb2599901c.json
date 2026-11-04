@@ -1,0 +1,7 @@
+{
+  "version": "core100_critical_protocol_v3_20261103",
+  "roster_release": "core100-critical-pairs-v2-20261101",
+  "registry": "../benchmarks/core100_critical_protocol_v3_20261103/registry_5195b5a79c9d.json",
+  "registry_sha256": "5195b5a79c9d80122131663a67ec763e4da24adc25449eba2b0490eb2599901c",
+  "scope": "Versioned T11 observable-event revision; all generation inputs and previous runs preserved."
+}

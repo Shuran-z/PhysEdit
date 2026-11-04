@@ -1,0 +1,1644 @@
+{
+  "schema": "core100-original-media-observability-progress-v1",
+  "registered_cases": 100,
+  "original_hash_verified_decoded": 100,
+  "formally_admitted_target_references": 81,
+  "cases": [
+    {
+      "clip_id": "T01_C01",
+      "video_sha256": "6a34afdbec313b42d415cee9ea8f79783736fa6aa0f8bbf56d7ff885f4005476",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T01_C02",
+      "video_sha256": "db515f17a38d8db149252547e128c9a4f05f7f9fb38f98a967ced6a3a24aef7e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T01_C03",
+      "video_sha256": "b09c34844de555b910f2a76f03f9d845ccd74bb7e9eca03e1088d3d93b571ef5",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T01_C04",
+      "video_sha256": "54389b72509a4de31380dde3745bccd33dd0a6ae55309b2ac929fa49af5c5282",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T01_C05",
+      "video_sha256": "b96784287b3f3df3cc7c78d609a0e3ca226154141d9a38510dd9745ca91dfdde",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T02_C01",
+      "video_sha256": "3c4824f89a8547d60f409fb37873407002dc9a1c68b379813b219bc53cdfdeab",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "C2_signal_displaced_0p05m",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T02_C02",
+      "video_sha256": "306a3323df0142470b47695b9c9ca603a6abbcc20aa402f92d8dce0d16323423",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "C2_signal_displaced_0p05m",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T02_C03",
+      "video_sha256": "a1a3c1cc4f44d05cac4796121bac7e0c9a940c382517cb4c5ee2bd60d547a5d4",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "C2_signal_displaced_0p05m",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T02_C04",
+      "video_sha256": "0ac4108458f7b43563b7e96ab484a5eefcf49ad856f3da39580e0f20558417c5",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "C2_signal_displaced_0p05m",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T02_C05",
+      "video_sha256": "58f124e0611c31b3ab3b359f92ac20202cac851e485f6d06cb15a140af1b4b6a",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "C2_signal_displaced_0p05m",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T03_C01",
+      "video_sha256": "bebdd0f52f72027a3d85919c107b730f162f8da242333ce22793b4ebfe8c311d",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "book_contacts_upper_can",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T03_C02",
+      "video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "book_contacts_upper_can",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T03_C03",
+      "video_sha256": "4e61c885a4db36f9fdac0a5bdbafe7cbd8de2b15df53574f24a7c81adab05675",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "book_contacts_upper_can",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T03_C04",
+      "video_sha256": "54a97a1b440576eb9fbadb2795e844c0d53e89c90a565c5d3b59bda3cf43ba4b",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "book_contacts_upper_can",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T03_C05",
+      "video_sha256": "7b0f85749ebce77a976866a134a4b855137dbacdefe13052692ad56ae488902e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "book_contacts_upper_can",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T04_C01",
+      "video_sha256": "5d0931944f25399117bf9acd6707a20a5c32cda1a3afbe711c9be0d3af80f307",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "original_full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T04_C02",
+      "video_sha256": "38cf451638d6d75f9523b5c9f231032431e270e3a239f48427a7a4ca94feeac8",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "original_full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T04_C03",
+      "video_sha256": "d2720f3f0dd6e2a972a0790373e371665ac00c62230809f906f9dbc50ae3b9df",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "original_full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T04_C04",
+      "video_sha256": "65202d5adf9632aa017b547b0156297bc15b813bc034c68454589700ecf7b33e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "original_full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T04_C05",
+      "video_sha256": "13e838ca378546be88dd8342e1f5364fcb4648b58de58241c1d9484d66bde510",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "original_full_chain",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T05_C01",
+      "video_sha256": "ba65662bffd4b0de9d1ea2f77fc019b2b8624cff2f5b05483759fc08b4d38b1d",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "gate_passage",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T05_C02",
+      "video_sha256": "8a767b1b3d744dd3b7ea01f45f823d6e9bafd09b33961dace266224a7f8a0394",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T05_C03",
+      "video_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T05_C04",
+      "video_sha256": "654086a30af9b718ac71d1992ef3ab5c298c62b7e3bba6af3788f685dffd1cc2",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T05_C05",
+      "video_sha256": "6a7e8666a29c495209a94be5779cfcc8a9379f5b2b9b2eb55667ba94509fe57b",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T06_C01",
+      "video_sha256": "e96ee44ef1ff23a01c4feff680e4dd161965400818471ba9bade8ab07b2506f0",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "6ec1729cb894664559cd93f19d62ac61d37ac3f036d5dec24faff92a01917b7e",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g01_moon_gap_p08__cam03/videos/PROD_T06_bg01_home_ase_g01_moon_gap_p08__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T06_C02",
+      "video_sha256": "29c7f46acba2bed110190c8a170ace7db9e957b0cbf48af372a32127c4307001",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "9663ba138dca890480d0de25832572f41b1a86ce03009e8d72323bc67f3748da",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam03/videos/PROD_T06_bg01_home_ase_g02_mars_gap_p08__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T06_C03",
+      "video_sha256": "1c27416f5b34e7680ca3726c51ad6d724973b115f77fc91811756b35486ed072",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "3a375b14576cb6c6741cc5212e4be06e1b4b0862c143e37032110b170b18471e",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam03/videos/PROD_T06_bg01_home_ase_g03_earth_gap_p08__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T06_C04",
+      "video_sha256": "988bb895f4b9a8a1f0cddf50f13903ca92b228ff325c3525dc34df80fafeea31",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_required_contact_chain",
+      "horizon_s": 4.1,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T06_C05",
+      "video_sha256": "db74c70320d3412093acff4628a3863112c3c724ce1620d4583ef9ad24a969fd",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "95cb1c5f92e41b0faa6aaf31671714742166e029d5e7c5962d09431e74267cb3",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T06_bg01_home_ase_g03_earth_J_p03__cam02/videos/PROD_T06_bg01_home_ase_g03_earth_J_p03__cam02.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T07_C01",
+      "video_sha256": "cac6af50f855b78dc990708f0b19b25d39a03ac9b43b009b19090ad407159151",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "motion_ge_1cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T07_C02",
+      "video_sha256": "e9f43c622acb27a5b8495b3dd7fc7eed9599174a70b366a2a239c8e6080d7107",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "motion_ge_1cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T07_C03",
+      "video_sha256": "3432d5a73ac6593c0f5eb17635c917ec6435b78e6166e66989976c03680491fa",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "motion_ge_1cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T07_C04",
+      "video_sha256": "6b212e5e71ee50036aba0bca5b57e9c8f7f22b4199448c15d1c740524c460227",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "motion_ge_1cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T07_C05",
+      "video_sha256": "fc0b95a3ecbe80174d24e26d9ee45b28b70e764f1ddc7530e55b92060ec50451",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "motion_ge_1cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T08_C01",
+      "video_sha256": "7ea5d07b092f6dac23c247de552e63bc750dd3c646aff84ef600a5fce6255924",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "t08_target_mug_below_table_8cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T08_C02",
+      "video_sha256": "d0183c7abbdc2695a967dd7235603257d04f465b92ee744d11d4c86ec50bff2e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "t08_target_mug_below_table_8cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T08_C03",
+      "video_sha256": "f73c849a313ce4c5f40b45c4cddca252bab945b10ab60becd48413ce3ea45c20",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "t08_target_mug_below_table_8cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T08_C04",
+      "video_sha256": "3ca5cb8707a2f75c03b18ea50e5f99a72c4b4d382f560f0202c42bd9d84aa535",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "t08_target_mug_below_table_8cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T08_C05",
+      "video_sha256": "d1a798dbe46182d694ab9ccca8e67cb37fdce0dac9e1e3f5373d02e474f3bcbe",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "t08_target_mug_below_table_8cm",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T09_C01",
+      "video_sha256": "604e8c4ece535b108b3c08ded5f36186f8ed1f70dbdc045c763305491e96d011",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "5f9ae89615d29287bd6e801467c57bd272f412ad8d85a8393409a0660c095858",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam03/videos/PROD_T09_bg01_home_ase_g01_moon_pull_p13__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T09_C02",
+      "video_sha256": "0677f49f8f7adc668cd0f99ea432665c4d16b01ab9972eb50f9389813509780d",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "620957075fde021fdcb9d7127007f251d1307b643c3f58f371548507af095299",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g02_mars_pull_p13__cam03/videos/PROD_T09_bg01_home_ase_g02_mars_pull_p13__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T09_C03",
+      "video_sha256": "07136e9d68d981b50fb0793f6920e00354de6ed2a0e17a0b112b1769261b40be",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "b7691e6de6367e500677ca86c8debcfcf9ec150db9a08ef6b93c4e347fdb7f17",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g03_earth_pull_p13__cam03/videos/PROD_T09_bg01_home_ase_g03_earth_pull_p13__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T09_C04",
+      "video_sha256": "5ef437508c283fe1cbecd7245819f2b596ca554576ad3fdb4b5ec1d8d0574195",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "73598896d9b1ecd31168bdcb1b3aefd1587f7f605d9fd4f30e501de5f2ad6c8a",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g03_earth_mu_p00__cam03/videos/PROD_T09_bg01_home_ase_g03_earth_mu_p00__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T09_C05",
+      "video_sha256": "b0db72a29be48b9966c64495e87399e2116f5bd23c419bbb75dd9fc46737bfc9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "c192f2c328367c01ed83486adf486bdc70793901618201959bb248c458873356",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam03/videos/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T10_C01",
+      "video_sha256": "736296e41540affd3cbe21dd4763add180ab190b2c095c6bcea13fbeef1ef45e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [
+        "原参数方向临界区间未闭合；保留有限无翻转或修复中状态，不填造阈值。"
+      ],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "b74d7d956678fddcdf121fe6436c180bee4e732925d8a3d3d7bb47a936cf3d20",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam02/videos/PROD_T10_bg01_home_ase_g01_moon_supx_p00__cam02.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T10_C02",
+      "video_sha256": "d64ab449145c89c3155affe051a3bbf76b1c60dba9587aaa74efd2b13ddba16a",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [
+        "原参数方向临界区间未闭合；保留有限无翻转或修复中状态，不填造阈值。"
+      ],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "13dfb62358389aab59792b421a841704ea485aa9a0c23efc71df0c2c6396987f",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam02/videos/PROD_T10_bg01_home_ase_g02_mars_supx_p00__cam02.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T10_C03",
+      "video_sha256": "71083e276db9d09912c9df90ff81d3bd94f618f4c09460feee2d26c48fa5a22c",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "1e99de3e5ad4f2ca373ae04aaa5b95be0d7797d38eebf7b94f5bcb45c7b90c3c",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p00__cam02/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p00__cam02.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T10_C04",
+      "video_sha256": "f94034ff6760d2721338ec756689f3e3dadeeafd2e65d4ae4f5356504502159a",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [
+        "已有边界区间跨分桶线，Near/Mid/Far不确定；不能取中点强行分桶。"
+      ],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "864e2b025754d5a69f4d5f0e738b1abba652d06762cb52d8309285877e3b9690",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p21__cam03/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p21__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T10_C05",
+      "video_sha256": "c5f47b2d4dc2baeccf3a512d0554f9613cb557552394bd9b424b5b086e3a4864",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "50/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。",
+      "source_blockers": [
+        "原视频及配置已按上传清单SHA核实；已找回的旧状态内部指向其他机位，尚无证据证明其与当前cam01为同一次轨迹。不能仅按文件名、相同参数或转码说明转移真值。"
+      ],
+      "distance_or_window_notes": [],
+      "original_video_and_config_transfer_hashes_verified": true,
+      "located_state_sha256": "bbdb81039e6d8b33223b1bc61eeceb88a33b405a946596b10726a1b323284e16",
+      "located_state_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03/videos/PROD_T10_bg01_home_ase_g03_earth_supx_p17__cam03.mp4",
+      "source_state_binding_status": "different_declared_camera_pending_original_trajectory_identity"
+    },
+    {
+      "clip_id": "T11_C01",
+      "video_sha256": "7a83eee8d9e00fce180bed3885c47a4a589d693a956c20b8c07b113e8184ca36",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。",
+      "source_blockers": [
+        "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。"
+      ],
+      "distance_or_window_notes": [],
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T11_C02",
+      "video_sha256": "880008d7be3cfc0cc1d871b3d01efb5c328b4f685cc4fb654f6b300e79aa1ff8",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。",
+      "source_blockers": [
+        "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。"
+      ],
+      "distance_or_window_notes": [],
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T11_C03",
+      "video_sha256": "818e9d0baf6cec0ecf6504659b0e9803967b7509b51789624a3bdd3feeee11f4",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。",
+      "source_blockers": [
+        "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。"
+      ],
+      "distance_or_window_notes": [],
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T11_C04",
+      "video_sha256": "3ce7996824078b9ca8cfd9247624424b38c3b203496cd1e90c06dcfb0a410880",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。",
+      "source_blockers": [
+        "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。"
+      ],
+      "distance_or_window_notes": [],
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T11_C05",
+      "video_sha256": "19837c763256d0c3f016a728a4b45859eb05bcd8bcd49b82d0e594fec160b03f",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": false,
+      "reference_pending_reason": "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。",
+      "source_blockers": [
+        "210帧完整核验完成；三目标在原五秒末帧154均不可见。原协议要求末态世界z判据，不能以较早可见的下落替代。原状态已恢复，当前RGB末态可观察性未通过。"
+      ],
+      "distance_or_window_notes": [],
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T12_C01",
+      "video_sha256": "3acd50b9b614d2ff905b2182e8f7177fbcd69308bcf7896239ba677adc70a6c0",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T12_C02",
+      "video_sha256": "58ba7ad20a9b94f26215d6aaedcc38ae95f0696025006e00b23a5841766a2f61",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T12_C03",
+      "video_sha256": "d8967313deaec7b3cba3d3f662153e69c85f71fdee03effa22c447a87494a3a5",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T12_C04",
+      "video_sha256": "d6e70f57e1e9973a93d04a6cf51c000bfb33c53f9cc54c3b06078232b004f508",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T12_C05",
+      "video_sha256": "ba7d2eb7ace63aaa754a8d071315bae8338fcaf16d21222ba2075d68c7035b64",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "stapler_contacts_tissue_box",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T13_C01",
+      "video_sha256": "4bf238d0c80751cfba7bab17bc5eb00cd0613128dd216126a7c3e9ab8e4494aa",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "24/1",
+      "native_frames": 168,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "falling_book_to_drink_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T13_C02",
+      "video_sha256": "9f7a0f5d433b9f6b174cf130bda6896f3d35bb44078114b774702e4576010ef9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "24/1",
+      "native_frames": 168,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "falling_book_to_drink_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T13_C03",
+      "video_sha256": "405d4478167349a20567e74a59a6f56a528e34d8abd5ab9c957114bfb3242da9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "24/1",
+      "native_frames": 168,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "falling_book_to_drink_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T13_C04",
+      "video_sha256": "ece4831439bd27c0b4f254df449461fe3c54834711269aa98da83c4e8a4e1d2a",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "24/1",
+      "native_frames": 168,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "falling_book_to_drink_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T13_C05",
+      "video_sha256": "4317f311b0984890153a045354d4a470eef1385c29fb461a5c79f3aa35086acd",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "24/1",
+      "native_frames": 168,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "falling_book_to_drink_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T14_C01",
+      "video_sha256": "1bcfe9949e6c8d5f35f93c8f6ed7d7b8a791f28dc3f857cd07e9d9adf6ea6afe",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "passed_channel",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T14_C02",
+      "video_sha256": "24709c91a4755203a16783b70a3389783ff7986b7d6c5e3be949fd7fff64ad14",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "passed_channel",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T14_C03",
+      "video_sha256": "ae34ab1c6893b9a46a2cbfdc83ba693abdf654a6f3197648275156cd57d065e6",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "passed_channel",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T14_C04",
+      "video_sha256": "e375d6391bca795b2e1959250259182d53f7c6fa8d4aae6e4bb90333f9949674",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "passed_channel",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T14_C05",
+      "video_sha256": "e1ea4a13716699147669df58b7075712c78946ec2c256db0e2551ca17ae4f4c1",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "passed_channel",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T15_C01",
+      "video_sha256": "7cda112c0057556cfcb58e53b2b1fe04c9bdc836e4a340c0ec9ae08d6b472817",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "laptop_reaches_original_fall_criterion",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T15_C02",
+      "video_sha256": "5cb16ff515d1ad6c8c95ff801e12c6be7020275ff87a0eff887cc21cc777a680",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "laptop_reaches_original_fall_criterion",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T15_C03",
+      "video_sha256": "291e03ad4dbdb1813c16b98a91fe1ad300cd2003d8e7449a99c446ac41d575f3",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "laptop_reaches_original_fall_criterion",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T15_C04",
+      "video_sha256": "535b2246c82c5d1fa3107c9570365461feefc10161c2941211c15ecbae10fdc3",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原五秒目标事件参考已接入；不继承不同原状态或求解器的边界。"
+      ],
+      "target_event": "laptop_contacts_phone",
+      "horizon_s": 5,
+      "distance_reference_admitted": false,
+      "full_native_frames_reviewed": 210
+    },
+    {
+      "clip_id": "T15_C05",
+      "video_sha256": "5e075492f5abfdb4aaf7d5f7b670c4da90ab0b5ae8a9ad23bdf0e1bbae18728e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "laptop_contacts_phone",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T16_C01",
+      "video_sha256": "48f02114e3a0d9129a837ebe2038cccd05ad1c409b7c3cf9cdad85ad152b8b5a",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "folder_downstream_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T16_C02",
+      "video_sha256": "648f4b1084c62b3a65c475e8dc6b010b0cd2cd9a657ae9a11fc305bc0efa8022",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "folder_downstream_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T16_C03",
+      "video_sha256": "b07385e9ece89a2efb0708f3a11891a2723c27b7394b1ea964a0fa5c90925649",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "folder_downstream_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T16_C04",
+      "video_sha256": "ba0e217242ca5bc76d00a96781afef6aa071e0e05c9b84eed790c48b34033b9e",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "folder_downstream_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T16_C05",
+      "video_sha256": "f64d192a47b42625c1f7ec16e3deb9fbed760e573b90b30774980abcca56388b",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "folder_downstream_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T17_C01",
+      "video_sha256": "1dc06bda020e137e5c94ba4bc951ed0f4b925301ef5e2703ef9e9c1dd6e40bf5",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "can_tissue_box_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T17_C02",
+      "video_sha256": "89d58b40675675526b5cea626c1bc95a80cecd89b04b641a58048cb1769af82b",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "can_tissue_box_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T17_C03",
+      "video_sha256": "3e83cae31380b9d2d789d83b8f072bf083ac43c27e26b9f699c8ceb9aac689c9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "can_tissue_box_contact",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T17_C04",
+      "video_sha256": "24ac101cea05e675baaa346d56fd94ec18e3535803dff6df94eb3dadb0c70ef5",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "can_tissue_box_contact",
+      "horizon_s": 6.4,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T17_C05",
+      "video_sha256": "2f76a0eb63d315975f5526a93009e1431a251d251d80d7f8931fbaaf651f8c8d",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "can_tissue_box_contact",
+      "horizon_s": 6.4,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T18_C01",
+      "video_sha256": "e400f74d84a23c89699e500f17ec23a8537f71970495b1579258fc916641029b",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "upper_nonpulled_book_on_table_at_end",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T18_C02",
+      "video_sha256": "1d9135b803107b033bc0f97a4c81508ca6717167c6b64530893a5bd14b0de65c",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "upper_nonpulled_book_on_table_at_end",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T18_C03",
+      "video_sha256": "fe3b30009efe0aa2462f405caa74db52779f9c6c38da6042174d6df306ac83f9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "upper_nonpulled_book_on_table_at_end",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T18_C04",
+      "video_sha256": "9f3ffcd52df8ce9d62544ca73b5e6e4801b8eba7cc9e9e274a2342809d33abf8",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "upper_nonpulled_book_on_table_at_end",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T18_C05",
+      "video_sha256": "7ef0a0fcc092a34ffcd06e5e7532c2086baf4b2c41c3ee4590ebaa29249364c7",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "upper_nonpulled_book_on_table_at_end",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T19_C01",
+      "video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T19_C02",
+      "video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T19_C03",
+      "video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T19_C04",
+      "video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T19_C05",
+      "video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原协议的局部边界区间已核验；分桶不确定性保留。"
+      ],
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "distance_reference_admitted": true
+    },
+    {
+      "clip_id": "T20_C01",
+      "video_sha256": "666e1ee997a8f4c719ff813c1cc073633fec092226250f4d3110057da1f950ae",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_propagation_original",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T20_C02",
+      "video_sha256": "84523298f11f683747c34798a76a2f2629f68930f60e609d8de73818f4dc6526",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_propagation_original",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T20_C03",
+      "video_sha256": "dcc3b49cb0ec1a158be8b0404978669433ff5789f0b9b6b5311e50b04cbf209c",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_propagation_original",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T20_C04",
+      "video_sha256": "d5837b6424950f7dd03303de8695ca68a91c9ef6c9e44c3574af05b0585e981f",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_propagation_original",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    },
+    {
+      "clip_id": "T20_C05",
+      "video_sha256": "d89c90774e742416cd148b4db7d44d332c0b88f9fbd0750eb5f2da841f6644af",
+      "original_media_audit": "original_hash_verified_cpu_decode_complete",
+      "native_fps": "30/1",
+      "native_frames": 210,
+      "target_reference_admitted": true,
+      "reference_pending_reason": null,
+      "source_blockers": [],
+      "distance_or_window_notes": [
+        "原目标事件参考已接入；当前原边界身份或区间证据未准入，不生成NearAcc或PairAcc。"
+      ],
+      "target_event": "complete_propagation_original",
+      "horizon_s": 5.0,
+      "distance_reference_admitted": false
+    }
+  ],
+  "formally_admitted_original_interval_references": 40,
+  "remaining_reference_cases": [
+    "T06_C01",
+    "T06_C02",
+    "T06_C03",
+    "T06_C05",
+    "T09_C01",
+    "T09_C02",
+    "T09_C03",
+    "T09_C04",
+    "T09_C05",
+    "T10_C01",
+    "T10_C02",
+    "T10_C03",
+    "T10_C04",
+    "T10_C05",
+    "T11_C01",
+    "T11_C02",
+    "T11_C03",
+    "T11_C04",
+    "T11_C05"
+  ],
+  "remaining20_full_frame_extraction_sha256": "479887fc183f8446f2b7dd8b7f142734af81a240ac31872a9df7fe29dfa6450e",
+  "remaining20_archived_state_trace_sha256": "dc0488c7eb28cf7bf81d29e7eb565bf1d017057b552a09c4f0daaebe9a0faf58",
+  "remaining20_backup_search_sha256": "57f3afc77be214ec5504f9d85c4db197bb45d0453d2d647933142fdfcfca1d8c"
+}

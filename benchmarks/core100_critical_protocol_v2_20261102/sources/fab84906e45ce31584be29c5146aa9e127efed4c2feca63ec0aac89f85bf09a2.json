@@ -1,0 +1,19 @@
+{
+  "phase": "gap_extension",
+  "status": "pending",
+  "points": [
+    {
+      "clip_id": "T20_C01",
+      "theta": 0.7,
+      "status": "running",
+      "log_tail": " [04:40:28] [INFO] Running at \u001b[38;5;121m2.86\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:28] [INFO] Running at \u001b[38;5;121m7.82\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m4.55\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m4.61\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m6.98\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m6.99\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m6.93\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n\u001b[38;5;159m[Genesis] [04:40:29] [INFO] Running at \u001b[38;5;121m2.88\u001b[0m\u001b[38;5;159m FPS.\u001b[0m\n"
+    }
+  ],
+  "source_hashes": {
+    "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T16_T20_v1/scripts/render_sample.py": "4563b8bf1fd8007b5865c270a6dc2ea11a898696d85a5c017ef304ff31f6a7d5",
+    "/data_cached/wangzijun_p25/liyuhan/core100_t16_c04_sealed_window_v2_20261030/native_bootstrap.py": "554fbab95e1c96200897083f1a8afd9af081691be35064b13f71ba8eb978b5a2",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/contact_precision_render.py": "f7b8ed866872da64caa32043295049bf3e8ca8d29045c1675b2ef10c40a06977",
+    "/data_cached/wangzijun_p25/core100_recovery_20261021/sealed_material_render.py": "07724523f358582bf0b3c59766c23e2b08563692930731a63da3af84e5c4eaa4"
+  },
+  "original_sources_modified": false
+}

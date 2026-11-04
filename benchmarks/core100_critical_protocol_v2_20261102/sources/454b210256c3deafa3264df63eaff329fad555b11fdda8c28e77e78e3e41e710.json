@@ -1,0 +1,101 @@
+"""Audit original T18 terminal-contact evidence without changing its event.
+
+Early transient contacts, terminal measurement quality, source reproduction,
+and source-video review are recorded separately. No universal physical-quality
+certificate is inferred from a small final penetration or a matching label.
+"""
+import argparse
+import hashlib
+import inspect
+import json
+from pathlib import Path
+
+from physedit.core100_critical import load
+from scripts.t18_table_contact_boundary_worker import table_event
+from review.cvpr_experiments_20261031.archive_hunyuan_checkpoint_sftp import rpc,P21_OPTIONS
+
+ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'review/core100_v2_resolution_20261102'
+REMOTE=r'''
+import copy,gzip,hashlib,json,math
+from pathlib import Path
+def state(path):
+ raw=Path(path).read_bytes();decoded=gzip.decompress(raw)if raw[:2]==bytes([31,139])else raw
+ return json.loads(decoded),hashlib.sha256(raw).hexdigest(),hashlib.sha256(decoded).hexdigest()
+def event(s,f,native=False):
+ if native and f['frame_index']>=s['render']['pre_static_frames']:
+  f=dict(f,contacts=f['original_exterior_contacts'])
+ return table_event(s,f)
+original,stored,decoded=state(TARGET['source_path'])
+assert TARGET['source_sha256']in[stored,decoded]
+upper=set(original['experiment']['supported_book_names'])
+positions={f['frame_index']:{o['name']:o['position']for o in f['objects']}for f in original['frames'][4:155]}
+original_history=[f['frame_index']for f in original['frames'][4:155]if event(original,f)['label']]
+del original
+out=[]
+for point in POINTS:
+ s,stored,decoded=state(point['state_path']);assert point['state_sha256']==stored
+ assert len(s['frames'])==210
+ frames=[];errors={};target_errors={};prefix_errors={}
+ for f in s['frames'][4:155]:
+  index=f['frame_index'];observation=event(s,f,True)
+  native=f.get('contacts',[])
+  for o in f['objects']:
+   error=math.dist(o['position'],positions[index][o['name']])
+   errors[o['name']]=max(errors.get(o['name'],0),error)
+   if o['name']in upper:target_errors[o['name']]=max(target_errors.get(o['name'],0),error)
+   if not original_history or index<=original_history[0]:prefix_errors[o['name']]=max(prefix_errors.get(o['name'],0),error)
+  e=s['experiment'];center=e['support_center'];radius=e['support_radius']
+  contacts=observation['contact_evidence']
+  outside=[c for c in contacts if math.dist(c['position'][:2],center)>radius+.0001]
+  frames.append(dict(frame=index,label=observation['label'],upper_books_on_table=observation['upper_books_on_table'],
+   maximum_native_penetration_m=max((c.get('penetration_m',0)for c in native),default=0),
+   target_table_contact_penetration_m=max((c.get('penetration_m',0)for c in contacts),default=0),
+   target_table_contacts_outside_declared_support=len(outside)))
+ is_source=point['kind']=='source'
+ out.append(dict(kind=point['kind'],theta=point['theta'],state_path=point['state_path'],state_sha256=stored,
+  reference_video_sha256=TARGET['video_sha256'],original_source_sha256=TARGET['source_sha256'],
+  native_fps=s['render']['fps'],condition_frame=4,end_frame=154,horizon_s=5.,
+  finite_positions=all(math.isfinite(v)for f in s['frames'][4:155]for o in f['objects']for v in o['position']),
+  terminal_frames=frames[-10:],terminal_label=frames[-1]['label'],
+  original_source_contact_history=original_history if is_source else None,
+  native_contact_history=[f['frame']for f in frames if f['label']],
+  original_source_position_error_by_actor_m=errors if is_source else None,
+  original_source_target_position_error_m=target_errors if is_source else None,
+  source_prefix_through_first_table_contact_error_by_actor_m=prefix_errors if is_source else None,
+  earlier_frames_above_1mm=[f['frame']for f in frames[:-10]if f['maximum_native_penetration_m']>.001],
+  terminal_maximum_native_penetration_m=max(f['maximum_native_penetration_m']for f in frames[-10:]),
+  terminal_target_table_penetration_m=max(f['target_table_contact_penetration_m']for f in frames[-10:]),
+  terminal_all_contacts_inside_declared_support=not any(f['target_table_contacts_outside_declared_support']for f in frames[-10:]),
+  formal_admission=False))
+ del s
+print(json.dumps(dict(clip_id=TARGET['clip_id'],points=out,source_files_modified=False,
+ scope='Original named terminal table contact only. Earlier transient penetration remains disclosed; no convergence or universal physical-quality claim.')))
+'''
+
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--clip',required=True,choices=['T18_C04','T18_C05']);args=parser.parse_args()
+    data,_=load();row=next(r for r in data['cases']if r['clip_id']==args.clip)
+    pointers=['T18_GPU_OVERLAP_SOURCE_RESULT.json','T18_GPU_ENDPOINTS_RESULT.json'];reports=[];files=[]
+    for name in pointers:
+        pointer=json.loads((WORK/name).read_text());path=ROOT/pointer['path']
+        assert hashlib.sha256(path.read_bytes()).hexdigest()==pointer['sha256']
+        reports.append(json.loads(path.read_text()));files.append(path)
+    source=next(p for p in reports[0]['points']if p['clip_id']==args.clip);assert source['status']=='completed'
+    points=[dict(kind='source',theta=source['theta'],state_path=source['state_path'],state_sha256=source['state_sha256'])]
+    selected=[.1947952586206897,.19523706896551726]if args.clip=='T18_C04'else[.15]
+    for theta in selected:
+        p=next(p for p in reports[1]['points']if p['clip_id']==args.clip and abs(p['theta']-theta)<1e-12)
+        assert p['status']=='completed'and p['actual_original_objects_axis_seed_solver_controller_and_clock_verified']
+        points.append(dict(kind='endpoint',theta=p['theta'],state_path=p['state_path'],state_sha256=p['state_sha256']))
+    target=dict(clip_id=args.clip,source_path=row['reference_native_state_binding']['state_path'],
+        source_sha256=row['source_state_sha256'],video_sha256=row['reference_video_sha256'])
+    result=rpc(P21_OPTIONS,'p25','TARGET='+repr(target)+'\nPOINTS='+repr(points)+'\n'+inspect.getsource(table_event)+'\n'+REMOTE)
+    result['source_hashes']={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in files+[Path(__file__)]}
+    raw=json.dumps(result,indent=2).encode();digest=hashlib.sha256(raw).hexdigest();path=WORK/(args.clip+'_terminal_contact_audit_'+digest[:12]+'.json');path.write_bytes(raw)
+    (WORK/(args.clip+'_TERMINAL_CONTACT_AUDIT.json')).write_text(json.dumps(dict(path=path.relative_to(ROOT).as_posix(),sha256=digest),indent=2))
+    print(json.dumps(dict(clip_id=args.clip,path=str(path),points=[dict(theta=p['theta'],kind=p['kind'],terminal_labels=[f['label']for f in p['terminal_frames']],
+        target_source_error=p['original_source_target_position_error_m'],terminal_peak=p['terminal_maximum_native_penetration_m'],inside_support=p['terminal_all_contacts_inside_declared_support'])for p in result['points']])))
+
+
+if __name__=='__main__':main()

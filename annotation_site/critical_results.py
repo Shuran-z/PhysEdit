@@ -179,8 +179,10 @@ def calculate(tasks):
         active_reference_calibration_values=active_distance_registry['summary'].get('recorded_calibration_reference_cases',0),
         active_reference_distance_not_applicable=active_distance_registry['summary']['not_applicable_in_registered_scan'],
         active_reference_distance_pending=active_distance_registry['summary']['incomplete'])
+    from core100_connection import calculate as connect_all
+    all_connection=connect_all(active_distance_registry,tasks,policy,admitted or {})
     return dict(schema='critical-calculation-v2',calculated_at=time.time(),status='admitted_cohort_scoring_live' if admitted else 'numerical_complete_formal_admission_pending',
-        summary=summary,points=points,distance_records=records,candidate_pairs=pairs,
+        summary=summary,points=points,distance_records=records,candidate_pairs=pairs,core100_connection=all_connection,
         model_window_diagnostics=admission['model_window_diagnostics'],per_model=per_model,outputs=output_rows,
         vlm_human_agreement=events,admitted_cohort=scoped,reference_window_admission=admitted,contact_amendment=contact_amendment,execution_readiness=execution,
         physical_window_registry=physical,
@@ -199,3 +201,11 @@ def csv_bytes(result):
     writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader()
     for row in rows:writer.writerow({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(list,dict)) else v for k,v in row.items()})
     return ('\ufeff'+stream.getvalue()).encode('utf-8')
+
+# FORMAL_BOUNDARY_EVALUATION_V1
+_calculate_before_formal_boundary = calculate
+def calculate(tasks):
+    from formal_boundary_evaluation import attach
+    from formal_critical_cohorts import attach as attach_explicit
+    from scoped_window_completion import attach_scoped
+    return attach(attach_explicit(attach_scoped(_calculate_before_formal_boundary(tasks), tasks), tasks), tasks)

@@ -1,0 +1,493 @@
+{
+  "source_registry_sha256": "99526466ed6d844842b760ed8af9717d6177d5b24f76f3b2b564b4d5903c84ca",
+  "rows": [
+    {
+      "clip_id": "T11_C01",
+      "stored_state_sha256": "61f6d6abfe62a92ac8a5c32a16d5c34858542903ed7bc8d9fbbac344e71c4ae4",
+      "projection": {
+        "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+        "experiment_parameter": {
+          "parameter_name": "driver_initial_speed_mps",
+          "parameter_value": 2.3,
+          "parameter_unit": "m/s",
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "driver_initial_speed_mps": 0.0,
+          "driver_relay_gap_m": 0.28,
+          "relay_case_gap_m": 0.16726027397260274,
+          "case_edge_margin_m": 0.08573333333333333,
+          "case_friction_coefficient": 0.12,
+          "driver_mass_kg": 0.12,
+          "case_mass_kg": 0.2,
+          "table_friction_coefficient": 0.04,
+          "trigger_type": "finite_force_until_second_contact",
+          "initial_velocity_application_mode": "zero",
+          "pencil_tin_mass_kg": 0.1,
+          "driver_force_before_first_contact_n": 0.21333333333333332,
+          "driver_force_between_contacts_n": 0.55,
+          "driver_force_after_second_contact_n": 0.16666666666666657,
+          "driver_force_after_second_contact_frames": 6
+        },
+        "original_runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.21333333333333332,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "condition_poses": {
+          "t11_tabletop_collision_slab": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03200000151991844
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "t11_driver_eraser": {
+            "position": [
+              -0.24599361419677734,
+              0.0,
+              0.017619872465729713
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_eyeglasses_case": {
+            "position": [
+              0.5367666482925415,
+              0.0,
+              0.02011987194418907
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_relay_pencil_case": {
+            "position": [
+              0.1830063909292221,
+              0.0,
+              0.018119873479008675
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_floor_collision_slab": {
+            "position": [
+              0.0,
+              -0.20000000298023224,
+              -0.8740000128746033
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "physics_steps_per_render_frame": 67,
+        "pre_static_frames": 60,
+        "manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json"
+      }
+    },
+    {
+      "clip_id": "T11_C02",
+      "stored_state_sha256": "53e01e6582f3cefef39f4fdffa3e5174e6134905423fc397ffc35c69f31ffb46",
+      "projection": {
+        "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+        "experiment_parameter": {
+          "parameter_name": "driver_initial_speed_mps",
+          "parameter_value": 2.5,
+          "parameter_unit": "m/s",
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "driver_initial_speed_mps": 0.0,
+          "driver_relay_gap_m": 0.28,
+          "relay_case_gap_m": 0.16726027397260274,
+          "case_edge_margin_m": 0.08573333333333333,
+          "case_friction_coefficient": 0.12,
+          "driver_mass_kg": 0.12,
+          "case_mass_kg": 0.2,
+          "table_friction_coefficient": 0.04,
+          "trigger_type": "finite_force_until_second_contact",
+          "initial_velocity_application_mode": "zero",
+          "pencil_tin_mass_kg": 0.1,
+          "driver_force_before_first_contact_n": 0.22666666666666666,
+          "driver_force_between_contacts_n": 0.55,
+          "driver_force_after_second_contact_n": 0.23333333333333328,
+          "driver_force_after_second_contact_frames": 8
+        },
+        "original_runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.22666666666666666,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "condition_poses": {
+          "t11_tabletop_collision_slab": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03200000151991844
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "t11_driver_eraser": {
+            "position": [
+              -0.24599361419677734,
+              0.0,
+              0.017619872465729713
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_eyeglasses_case": {
+            "position": [
+              0.5367666482925415,
+              0.0,
+              0.02011987194418907
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_relay_pencil_case": {
+            "position": [
+              0.1830063909292221,
+              0.0,
+              0.018119873479008675
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_floor_collision_slab": {
+            "position": [
+              0.0,
+              -0.20000000298023224,
+              -0.8740000128746033
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "physics_steps_per_render_frame": 67,
+        "pre_static_frames": 60,
+        "manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json"
+      }
+    },
+    {
+      "clip_id": "T11_C04",
+      "stored_state_sha256": "665e91850221e26667953479e123a71e61bac1d83d77991e4417318b15f61ac0",
+      "projection": {
+        "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+        "experiment_parameter": {
+          "parameter_name": "driver_initial_speed_mps",
+          "parameter_value": 2.9,
+          "parameter_unit": "m/s",
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "driver_initial_speed_mps": 0.0,
+          "driver_relay_gap_m": 0.28,
+          "relay_case_gap_m": 0.16726027397260274,
+          "case_edge_margin_m": 0.08573333333333333,
+          "case_friction_coefficient": 0.12,
+          "driver_mass_kg": 0.12,
+          "case_mass_kg": 0.2,
+          "table_friction_coefficient": 0.04,
+          "trigger_type": "finite_force_until_second_contact",
+          "initial_velocity_application_mode": "zero",
+          "pencil_tin_mass_kg": 0.1,
+          "driver_force_before_first_contact_n": 0.2533333333333333,
+          "driver_force_between_contacts_n": 0.55,
+          "driver_force_after_second_contact_n": 0.36666666666666664,
+          "driver_force_after_second_contact_frames": 12
+        },
+        "original_runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.2533333333333333,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "condition_poses": {
+          "t11_tabletop_collision_slab": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03200000151991844
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "t11_driver_eraser": {
+            "position": [
+              -0.24599361419677734,
+              0.0,
+              0.017619872465729713
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_eyeglasses_case": {
+            "position": [
+              0.5367666482925415,
+              0.0,
+              0.02011987194418907
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_relay_pencil_case": {
+            "position": [
+              0.1830063909292221,
+              0.0,
+              0.018119873479008675
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_floor_collision_slab": {
+            "position": [
+              0.0,
+              -0.20000000298023224,
+              -0.8740000128746033
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "physics_steps_per_render_frame": 67,
+        "pre_static_frames": 60,
+        "manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json"
+      }
+    },
+    {
+      "clip_id": "T11_C05",
+      "stored_state_sha256": "78cee22997fe1ccecf91f28fff61ff365c84338ef9bb252086ad367bd42e3c75",
+      "projection": {
+        "fixed_context_sha256": "e60a47f4f27f7a06ee3c0548b99dc48847902e37690f8ee3f37f6a796816d5e6",
+        "experiment_parameter": {
+          "parameter_name": "driver_initial_speed_mps",
+          "parameter_value": 3.1,
+          "parameter_unit": "m/s",
+          "gravity_vector_mps2": [
+            0.0,
+            0.0,
+            -9.81
+          ],
+          "driver_initial_speed_mps": 0.0,
+          "driver_relay_gap_m": 0.28,
+          "relay_case_gap_m": 0.16726027397260274,
+          "case_edge_margin_m": 0.08573333333333333,
+          "case_friction_coefficient": 0.12,
+          "driver_mass_kg": 0.12,
+          "case_mass_kg": 0.2,
+          "table_friction_coefficient": 0.04,
+          "trigger_type": "finite_force_until_second_contact",
+          "initial_velocity_application_mode": "zero",
+          "pencil_tin_mass_kg": 0.1,
+          "driver_force_before_first_contact_n": 0.26666666666666666,
+          "driver_force_between_contacts_n": 0.55,
+          "driver_force_after_second_contact_n": 0.4333333333333333,
+          "driver_force_after_second_contact_frames": 14
+        },
+        "original_runtime_forces": [
+          {
+            "name": "t11_driver_push_until_relay_case_contact",
+            "target": "t11_driver_eraser",
+            "force_world": [
+              0.26666666666666666,
+              0.0,
+              0.0
+            ],
+            "frame_start": 0,
+            "frame_end": 105
+          }
+        ],
+        "condition_poses": {
+          "t11_tabletop_collision_slab": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03200000151991844
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "t11_driver_eraser": {
+            "position": [
+              -0.24599361419677734,
+              0.0,
+              0.017619872465729713
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_eyeglasses_case": {
+            "position": [
+              0.5367666482925415,
+              0.0,
+              0.02011987194418907
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_relay_pencil_case": {
+            "position": [
+              0.1830063909292221,
+              0.0,
+              0.018119873479008675
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              -0.03904477506875992
+            ]
+          },
+          "t11_floor_collision_slab": {
+            "position": [
+              0.0,
+              -0.20000000298023224,
+              -0.8740000128746033
+            ],
+            "quaternion": null,
+            "velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "physics_steps_per_render_frame": 67,
+        "pre_static_frames": 60,
+        "manifest": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/manifests/home_living_pbr_everyday_life_v1.json"
+      }
+    }
+  ],
+  "simulations_started": 0,
+  "active_protocol_modified": false,
+  "comparisons_to_C01": [
+    {
+      "clip_id": "T11_C01",
+      "same_physical_context": true,
+      "same_condition_poses": true,
+      "same_frame_clock": true
+    },
+    {
+      "clip_id": "T11_C02",
+      "same_physical_context": true,
+      "same_condition_poses": true,
+      "same_frame_clock": true
+    },
+    {
+      "clip_id": "T11_C04",
+      "same_physical_context": true,
+      "same_condition_poses": true,
+      "same_frame_clock": true
+    },
+    {
+      "clip_id": "T11_C05",
+      "same_physical_context": true,
+      "same_condition_poses": true,
+      "same_frame_clock": true
+    }
+  ]
+}

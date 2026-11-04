@@ -1,0 +1,120 @@
+{
+  "cases": [
+    {
+      "clip_id": "T03_C02",
+      "original_config_path": "/data_cached/wangzijun_p25/t03_configs_r032_pbr_scene/T03V5F480R032__bg01_home_ase__g02_mars__global_C_05__A0680000__B0008000__C0100000__r032/cam03.json",
+      "original_config_sha256": "41a4c371bd9b5dd460a267890543299ca0b992b2d44d3b056645f713125cfc9d",
+      "native_stored_state_sha256": "3194190b1b32581962698bdedd6661a63f6f915ae4d103ed6ea8687f8eddcb16",
+      "reference_video_sha256": "9b39098a91f4204e9883b234be73c44163d25cc5d6e96fd8b7ed55a4ac19bdac",
+      "physical_objects_solver_controls_verified": true,
+      "source_random_seed": 2201504954,
+      "effective_Genesis_seed": 54021306,
+      "metadata_experiment_seed": 1652679045,
+      "experimental_seed_is_not_Genesis_seed": true,
+      "points": [
+        {
+          "theta": 0.1,
+          "original_C_geometry_verified": true,
+          "physical_solver_matches_original": true,
+          "original_window_clock_matches": true,
+          "original_config_seed_matches": false,
+          "actual_backend": {
+            "backend": "gpu32",
+            "actual_init_seed": null,
+            "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/scripts/render_t03_v5_multicam_r032.py",
+            "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+            "instrumentation_sha256": "5139577652808e8aa84784b6e4fc11366f4f8281263f045d639b59d143be9085",
+            "telemetry": "all_native_rigid_substeps",
+            "original_sources_modified": false
+          },
+          "effective_seed_matches": false,
+          "decoded_state_sha256": "bc9977cc9c31a8a4b666ae123d64bd79c08f513a5776ca6a5f07c5b0898d96a5",
+          "config_sha256": "6cbb384139a9117a87de573fff735a9b932f73dda0eb385dddd9e119007aca5d"
+        },
+        {
+          "theta": 0.4,
+          "original_C_geometry_verified": true,
+          "physical_solver_matches_original": true,
+          "original_window_clock_matches": true,
+          "original_config_seed_matches": false,
+          "actual_backend": {
+            "backend": "gpu32",
+            "actual_init_seed": null,
+            "renderer": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/scripts/render_t03_v5_multicam_r032.py",
+            "renderer_sha256": "482fa1a15c91e3ad2dbc63448057b08602ff9a12eaae38dc6dc06c478031a3f6",
+            "instrumentation_sha256": "bc178e90fa746e635af10936e2b9f112398f6930ffdf1713e233d113b4cf444f",
+            "telemetry": "all_native_rigid_substeps",
+            "original_sources_modified": false
+          },
+          "effective_seed_matches": false,
+          "decoded_state_sha256": "0028adff0ceb337fec81d29b2760e19183e3aae778ef8f16ce9a064e3c57b64c",
+          "config_sha256": "be05490da8bac7eaa310f2c79d70bc23a5d50d9b095d5eda22fc1341fa974158"
+        }
+      ],
+      "original_parameter": "lower_phone_com_edge_distance_m",
+      "normalization_domain": [
+        0.006,
+        0.1
+      ]
+    },
+    {
+      "clip_id": "T03_C03",
+      "original_config_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T03_v5_multilevel_cascade/configs/formal_480p_fullsim_r014/T03V5F480__bg01_home_ase__g03_earth__global_C_05__A0650000__B0008000__C0100000__r014/cam03.json",
+      "original_config_sha256": "c6e798b5f59f1fc7d61e306626fde4127fd33d000706f902f90725fdbd014311",
+      "native_stored_state_sha256": "a9d1857c877fb78f689ec8169a2a8aa61e5095201bb09d002274e76a3467748a",
+      "reference_video_sha256": "4e61c885a4db36f9fdac0a5bdbafe7cbd8de2b15df53574f24a7c81adab05675",
+      "physical_objects_solver_controls_verified": true,
+      "source_random_seed": 3674978752,
+      "effective_Genesis_seed": 1527495104,
+      "metadata_experiment_seed": 3152586458,
+      "experimental_seed_is_not_Genesis_seed": true,
+      "points": [
+        {
+          "theta": 0.1,
+          "original_C_geometry_verified": true,
+          "physical_solver_matches_original": true,
+          "original_window_clock_matches": true,
+          "original_config_seed_matches": true,
+          "actual_backend": {
+            "backend": "gpu32",
+            "actual_init_seed": 1527495104,
+            "renderer": "/data_cached/wangzijun_p25/liyuhan/core100_t03_cpu_exact_20261029/runtime_r014/scripts/render_t03_v5_multicam_r008.py",
+            "renderer_sha256": "198ede45267d61bc273a635629a55ec99b837346f2a90ddf4850c48116840a59",
+            "instrumentation_sha256": "a17159735ab5179d57696b0ec6a6289d8a5f17ff9d81342ca127b3001320777a",
+            "telemetry": "all_native_rigid_substeps",
+            "original_sources_modified": false
+          },
+          "effective_seed_matches": true,
+          "decoded_state_sha256": "4b19c4dc5af245ccb1d28e971abea940411ad5652e65ca802a0ca3423c1c3583",
+          "config_sha256": "a7a8f715685d51964697194f06cac4b48760fe522f3f68f62601f02d4126f0b0"
+        },
+        {
+          "theta": 0.4,
+          "original_C_geometry_verified": true,
+          "physical_solver_matches_original": true,
+          "original_window_clock_matches": true,
+          "original_config_seed_matches": true,
+          "actual_backend": {
+            "backend": "gpu32",
+            "actual_init_seed": 1527495104,
+            "renderer": "/data_cached/wangzijun_p25/liyuhan/core100_t03_cpu_exact_20261029/runtime_r014/scripts/render_t03_v5_multicam_r008.py",
+            "renderer_sha256": "198ede45267d61bc273a635629a55ec99b837346f2a90ddf4850c48116840a59",
+            "instrumentation_sha256": "3a9720f788ede2c5d45b6885cf2acfb5b610f58afb542d3719a152c89c006af0",
+            "telemetry": "all_native_rigid_substeps",
+            "original_sources_modified": false
+          },
+          "effective_seed_matches": true,
+          "decoded_state_sha256": "d5d5a6fa6375b94c45b97b085ede02e240a410e9cbc6e6a5ccb105c133c17a37",
+          "config_sha256": "80e6a997015b17b5d4a18745183e5c9bc4c6d9836b0c86558acf4a4e3484ef8b"
+        }
+      ],
+      "original_parameter": "lower_phone_com_edge_distance_m",
+      "normalization_domain": [
+        0.006,
+        0.1
+      ]
+    }
+  ],
+  "simulations_started": 0,
+  "old_reference_labels_modified": false
+}

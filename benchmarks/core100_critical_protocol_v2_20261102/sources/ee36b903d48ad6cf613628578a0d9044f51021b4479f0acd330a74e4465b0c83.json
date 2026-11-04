@@ -1,0 +1,1821 @@
+{
+  "clip_id": "T09_C05",
+  "points": [
+    {
+      "sample_id": "PROD_T09_bg01_home_ase_g03_earth_mu_p10",
+      "theta": 0.5571429,
+      "family": "layer_friction",
+      "original_config_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam01/cam01.json",
+      "original_config_sha256": "a69b8bed6f2b75aa39d456f03bb8a5d4b6fd3859522dc77b24be1e13dde7b10d",
+      "state_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/pilot/PROD_T09_bg01_home_ase_g03_earth_mu_p10/metadata/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam01.json",
+      "state_stored_sha256": "c192f2c328367c01ed83486adf486bdc70793901618201959bb248c458873356",
+      "state_decoded_sha256": "c192f2c328367c01ed83486adf486bdc70793901618201959bb248c458873356",
+      "native_declared_video": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/outputs/production/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam03/videos/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam03.mp4",
+      "native_header_parameter": {
+        "parameter_name": "layer_friction",
+        "parameter_value": 0.5571429,
+        "parameter_index": 10,
+        "single_primary_intervention": true
+      },
+      "executed_object_specs_match_config": true,
+      "original_solver_matches_config": false,
+      "state_config_differences": {
+        "raytracing_env_map": {
+          "native": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/realistic_assets/backgrounds/bg01_home_ase/hdri/ferndale_studio_03_2k_gain_0p50.hdr",
+          "config": null
+        },
+        "raytracing_env_map_required": {
+          "native": true,
+          "config": null
+        },
+        "raytracing_lights": {
+          "native": [
+            {
+              "pos": [
+                -0.2999999999999998,
+                -0.18000000000000016,
+                2.04
+              ],
+              "color": [
+                1.0,
+                0.93,
+                0.82
+              ],
+              "intensity": 7.2,
+              "radius": 0.52
+            },
+            {
+              "pos": [
+                0.9199999999999999,
+                -0.78,
+                1.48
+              ],
+              "color": [
+                0.82,
+                0.9,
+                1.0
+              ],
+              "intensity": 2.8,
+              "radius": 0.42
+            }
+          ],
+          "config": null
+        },
+        "raytracing_env_encoding": {
+          "native": "linear",
+          "config": null
+        },
+        "raytracing_env_euler": {
+          "native": [
+            0,
+            0,
+            25
+          ],
+          "config": null
+        }
+      },
+      "physics_settings_match_config": true,
+      "original_seed": 1411132175,
+      "native_runtime_forces": [
+        {
+          "name": "t09_linear_pull_000",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.0722852,
+            0.0,
+            0.0
+          ],
+          "frame_start": 10,
+          "frame_end": 10
+        },
+        {
+          "name": "t09_linear_pull_001",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.2865283,
+            0.0,
+            0.0
+          ],
+          "frame_start": 11,
+          "frame_end": 11
+        },
+        {
+          "name": "t09_linear_pull_002",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.6349859,
+            0.0,
+            0.0
+          ],
+          "frame_start": 12,
+          "frame_end": 12
+        },
+        {
+          "name": "t09_linear_pull_003",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.1050638,
+            0.0,
+            0.0
+          ],
+          "frame_start": 13,
+          "frame_end": 13
+        },
+        {
+          "name": "t09_linear_pull_004",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.6797724,
+            0.0,
+            0.0
+          ],
+          "frame_start": 14,
+          "frame_end": 14
+        },
+        {
+          "name": "t09_linear_pull_005",
+          "target": "t09_book_03",
+          "force_world": [
+            -2.3383399,
+            0.0,
+            0.0
+          ],
+          "frame_start": 15,
+          "frame_end": 15
+        },
+        {
+          "name": "t09_linear_pull_006",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.0569643,
+            0.0,
+            0.0
+          ],
+          "frame_start": 16,
+          "frame_end": 16
+        },
+        {
+          "name": "t09_linear_pull_007",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.8096723,
+            0.0,
+            0.0
+          ],
+          "frame_start": 17,
+          "frame_end": 17
+        },
+        {
+          "name": "t09_linear_pull_008",
+          "target": "t09_book_03",
+          "force_world": [
+            -4.5692594,
+            0.0,
+            0.0
+          ],
+          "frame_start": 18,
+          "frame_end": 18
+        },
+        {
+          "name": "t09_linear_pull_009",
+          "target": "t09_book_03",
+          "force_world": [
+            -5.3082719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 19,
+          "frame_end": 19
+        },
+        {
+          "name": "t09_linear_pull_010",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.0,
+            0.0,
+            0.0
+          ],
+          "frame_start": 20,
+          "frame_end": 20
+        },
+        {
+          "name": "t09_linear_pull_011",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.6194429,
+            0.0,
+            0.0
+          ],
+          "frame_start": 21,
+          "frame_end": 21
+        },
+        {
+          "name": "t09_linear_pull_012",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.1442124,
+            0.0,
+            0.0
+          ],
+          "frame_start": 22,
+          "frame_end": 22
+        },
+        {
+          "name": "t09_linear_pull_013",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.5553418,
+            0.0,
+            0.0
+          ],
+          "frame_start": 23,
+          "frame_end": 23
+        },
+        {
+          "name": "t09_linear_pull_014",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.8379719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 24,
+          "frame_end": 24
+        },
+        {
+          "name": "t09_linear_pull_015",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.9818877,
+            0.0,
+            0.0
+          ],
+          "frame_start": 25,
+          "frame_end": 25
+        },
+        {
+          "name": "t09_linear_pull_016",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.9818877,
+            0.0,
+            0.0
+          ],
+          "frame_start": 26,
+          "frame_end": 26
+        },
+        {
+          "name": "t09_linear_pull_017",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.8379719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 27,
+          "frame_end": 27
+        },
+        {
+          "name": "t09_linear_pull_018",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.5553418,
+            0.0,
+            0.0
+          ],
+          "frame_start": 28,
+          "frame_end": 28
+        },
+        {
+          "name": "t09_linear_pull_019",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.1442124,
+            0.0,
+            0.0
+          ],
+          "frame_start": 29,
+          "frame_end": 29
+        },
+        {
+          "name": "t09_linear_pull_020",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.6194429,
+            0.0,
+            0.0
+          ],
+          "frame_start": 30,
+          "frame_end": 30
+        },
+        {
+          "name": "t09_linear_pull_021",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.0,
+            0.0,
+            0.0
+          ],
+          "frame_start": 31,
+          "frame_end": 31
+        },
+        {
+          "name": "t09_linear_pull_022",
+          "target": "t09_book_03",
+          "force_world": [
+            -5.3082719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 32,
+          "frame_end": 32
+        },
+        {
+          "name": "t09_linear_pull_023",
+          "target": "t09_book_03",
+          "force_world": [
+            -4.5692594,
+            0.0,
+            0.0
+          ],
+          "frame_start": 33,
+          "frame_end": 33
+        },
+        {
+          "name": "t09_linear_pull_024",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.8096723,
+            0.0,
+            0.0
+          ],
+          "frame_start": 34,
+          "frame_end": 34
+        },
+        {
+          "name": "t09_linear_pull_025",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.0569643,
+            0.0,
+            0.0
+          ],
+          "frame_start": 35,
+          "frame_end": 35
+        },
+        {
+          "name": "t09_linear_pull_026",
+          "target": "t09_book_03",
+          "force_world": [
+            -2.3383399,
+            0.0,
+            0.0
+          ],
+          "frame_start": 36,
+          "frame_end": 36
+        },
+        {
+          "name": "t09_linear_pull_027",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.6797724,
+            0.0,
+            0.0
+          ],
+          "frame_start": 37,
+          "frame_end": 37
+        },
+        {
+          "name": "t09_linear_pull_028",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.1050638,
+            0.0,
+            0.0
+          ],
+          "frame_start": 38,
+          "frame_end": 38
+        },
+        {
+          "name": "t09_linear_pull_029",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.6349859,
+            0.0,
+            0.0
+          ],
+          "frame_start": 39,
+          "frame_end": 39
+        },
+        {
+          "name": "t09_linear_pull_030",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.2865283,
+            0.0,
+            0.0
+          ],
+          "frame_start": 40,
+          "frame_end": 40
+        },
+        {
+          "name": "t09_linear_pull_031",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.0722852,
+            0.0,
+            0.0
+          ],
+          "frame_start": 41,
+          "frame_end": 41
+        }
+      ],
+      "runtime_forces_match_config": false,
+      "executed_force_commands_match_config": true,
+      "original_cam03_configuration_evidence": [
+        {
+          "path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_72k_T06_T10_v1/configs/production/PROD_T09_bg01_home_ase_g03_earth_mu_p10__cam03/cam01.json",
+          "sha256": "41e0df076aa37617b298ad6ef1fa4277e27c3d8322c02328a6220c5f4fda8562",
+          "same_physical_config_and_seed": true
+        }
+      ],
+      "labels": {
+        "upper_nonpulled_book_ever_contacts_table": 0,
+        "upper_nonpulled_book_on_table_at_end": 0
+      },
+      "measurements": {
+        "first_upper_table_contact_frame": null,
+        "upper_books": [
+          "t09_book_04",
+          "t09_book_05",
+          "t09_book_06",
+          "t09_book_07"
+        ],
+        "original_force_waveform": [
+          {
+            "name": "t09_linear_pull_000",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.0722852,
+              0.0,
+              0.0
+            ],
+            "frame_start": 10,
+            "frame_end": 10,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_001",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.2865283,
+              0.0,
+              0.0
+            ],
+            "frame_start": 11,
+            "frame_end": 11,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_002",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.6349859,
+              0.0,
+              0.0
+            ],
+            "frame_start": 12,
+            "frame_end": 12,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_003",
+            "target": "t09_book_03",
+            "force_world": [
+              -1.1050638,
+              0.0,
+              0.0
+            ],
+            "frame_start": 13,
+            "frame_end": 13,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_004",
+            "target": "t09_book_03",
+            "force_world": [
+              -1.6797724,
+              0.0,
+              0.0
+            ],
+            "frame_start": 14,
+            "frame_end": 14,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_005",
+            "target": "t09_book_03",
+            "force_world": [
+              -2.3383399,
+              0.0,
+              0.0
+            ],
+            "frame_start": 15,
+            "frame_end": 15,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_006",
+            "target": "t09_book_03",
+            "force_world": [
+              -3.0569643,
+              0.0,
+              0.0
+            ],
+            "frame_start": 16,
+            "frame_end": 16,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_007",
+            "target": "t09_book_03",
+            "force_world": [
+              -3.8096723,
+              0.0,
+              0.0
+            ],
+            "frame_start": 17,
+            "frame_end": 17,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_008",
+            "target": "t09_book_03",
+            "force_world": [
+              -4.5692594,
+              0.0,
+              0.0
+            ],
+            "frame_start": 18,
+            "frame_end": 18,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_009",
+            "target": "t09_book_03",
+            "force_world": [
+              -5.3082719,
+              0.0,
+              0.0
+            ],
+            "frame_start": 19,
+            "frame_end": 19,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_010",
+            "target": "t09_book_03",
+            "force_world": [
+              -6.0,
+              0.0,
+              0.0
+            ],
+            "frame_start": 20,
+            "frame_end": 20,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_011",
+            "target": "t09_book_03",
+            "force_world": [
+              -6.6194429,
+              0.0,
+              0.0
+            ],
+            "frame_start": 21,
+            "frame_end": 21,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_012",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.1442124,
+              0.0,
+              0.0
+            ],
+            "frame_start": 22,
+            "frame_end": 22,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_013",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.5553418,
+              0.0,
+              0.0
+            ],
+            "frame_start": 23,
+            "frame_end": 23,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_014",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.8379719,
+              0.0,
+              0.0
+            ],
+            "frame_start": 24,
+            "frame_end": 24,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_015",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.9818877,
+              0.0,
+              0.0
+            ],
+            "frame_start": 25,
+            "frame_end": 25,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_016",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.9818877,
+              0.0,
+              0.0
+            ],
+            "frame_start": 26,
+            "frame_end": 26,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_017",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.8379719,
+              0.0,
+              0.0
+            ],
+            "frame_start": 27,
+            "frame_end": 27,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_018",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.5553418,
+              0.0,
+              0.0
+            ],
+            "frame_start": 28,
+            "frame_end": 28,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_019",
+            "target": "t09_book_03",
+            "force_world": [
+              -7.1442124,
+              0.0,
+              0.0
+            ],
+            "frame_start": 29,
+            "frame_end": 29,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_020",
+            "target": "t09_book_03",
+            "force_world": [
+              -6.6194429,
+              0.0,
+              0.0
+            ],
+            "frame_start": 30,
+            "frame_end": 30,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_021",
+            "target": "t09_book_03",
+            "force_world": [
+              -6.0,
+              0.0,
+              0.0
+            ],
+            "frame_start": 31,
+            "frame_end": 31,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_022",
+            "target": "t09_book_03",
+            "force_world": [
+              -5.3082719,
+              0.0,
+              0.0
+            ],
+            "frame_start": 32,
+            "frame_end": 32,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_023",
+            "target": "t09_book_03",
+            "force_world": [
+              -4.5692594,
+              0.0,
+              0.0
+            ],
+            "frame_start": 33,
+            "frame_end": 33,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_024",
+            "target": "t09_book_03",
+            "force_world": [
+              -3.8096723,
+              0.0,
+              0.0
+            ],
+            "frame_start": 34,
+            "frame_end": 34,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_025",
+            "target": "t09_book_03",
+            "force_world": [
+              -3.0569643,
+              0.0,
+              0.0
+            ],
+            "frame_start": 35,
+            "frame_end": 35,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_026",
+            "target": "t09_book_03",
+            "force_world": [
+              -2.3383399,
+              0.0,
+              0.0
+            ],
+            "frame_start": 36,
+            "frame_end": 36,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_027",
+            "target": "t09_book_03",
+            "force_world": [
+              -1.6797724,
+              0.0,
+              0.0
+            ],
+            "frame_start": 37,
+            "frame_end": 37,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_028",
+            "target": "t09_book_03",
+            "force_world": [
+              -1.1050638,
+              0.0,
+              0.0
+            ],
+            "frame_start": 38,
+            "frame_end": 38,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_029",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.6349859,
+              0.0,
+              0.0
+            ],
+            "frame_start": 39,
+            "frame_end": 39,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_030",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.2865283,
+              0.0,
+              0.0
+            ],
+            "frame_start": 40,
+            "frame_end": 40,
+            "profile": "minimum_jerk_like_sine_squared"
+          },
+          {
+            "name": "t09_linear_pull_031",
+            "target": "t09_book_03",
+            "force_world": [
+              -0.0722852,
+              0.0,
+              0.0
+            ],
+            "frame_start": 41,
+            "frame_end": 41,
+            "profile": "minimum_jerk_like_sine_squared"
+          }
+        ]
+      },
+      "status": "original_released_state_read",
+      "original_specs": {
+        "frozen_tabletop_collision_slab": {
+          "name": "frozen_tabletop_collision_slab",
+          "asset_id": "frozen_tabletop_collision_slab",
+          "category": "support_surface",
+          "semantic_label": "frozen_tabletop_collision_slab",
+          "shape": "box",
+          "size": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "pose": {
+            "position": [
+              0.0,
+              0.0,
+              -0.03199999999999992
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fixed": true,
+          "motion": {
+            "type": "none"
+          },
+          "visualization": false,
+          "collision": true,
+          "friction": 0.52,
+          "restitution": 0.01,
+          "mass": 0.0,
+          "camera_focus": false,
+          "color": [
+            0.36,
+            0.23,
+            0.13
+          ],
+          "roughness": 0.62,
+          "is_tabletop_collision_slab": true
+        },
+        "t09_book_00": {
+          "name": "t09_book_00",
+          "asset_id": "t09_book_00",
+          "category": "book_00",
+          "semantic_label": "book_00",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0,
+              0.0,
+              0.0145
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              0.84375
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.1,
+            0.22,
+            0.45
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.027
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_navy_physics.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.027
+          ]
+        },
+        "t09_book_01": {
+          "name": "t09_book_01",
+          "asset_id": "t09_book_01",
+          "category": "book_01",
+          "semantic_label": "book_01",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0014286,
+              0.004,
+              0.045
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0625
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.54,
+            0.12,
+            0.18
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.034
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_burgundy_mechanics.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.034
+          ]
+        },
+        "t09_book_02": {
+          "name": "t09_book_02",
+          "asset_id": "t09_book_02",
+          "category": "book_02",
+          "semantic_label": "book_02",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0028571,
+              0.0,
+              0.0835
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.3437499999999998
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.15,
+            0.38,
+            0.24
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.043
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_forest_botany.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.043
+          ]
+        },
+        "t09_book_03": {
+          "name": "t09_book_03",
+          "asset_id": "t09_book_03",
+          "category": "book_03",
+          "semantic_label": "book_03",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0042857,
+              0.004,
+              0.1185
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              0.84375
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.72,
+            0.42,
+            0.08
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.027
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_ochre_architecture.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.027
+          ]
+        },
+        "t09_book_04": {
+          "name": "t09_book_04",
+          "asset_id": "t09_book_04",
+          "category": "book_04",
+          "semantic_label": "book_04",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0057143,
+              0.0,
+              0.149
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0625
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.25,
+            0.31,
+            0.4
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.034
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_slate_astronomy.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.034
+          ]
+        },
+        "t09_book_05": {
+          "name": "t09_book_05",
+          "asset_id": "t09_book_05",
+          "category": "book_05",
+          "semantic_label": "book_05",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0071429,
+              0.004,
+              0.1875
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.3437499999999998
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.08,
+            0.38,
+            0.58
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.043
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_blue_chemistry.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.043
+          ]
+        },
+        "t09_book_06": {
+          "name": "t09_book_06",
+          "asset_id": "t09_book_06",
+          "category": "book_06",
+          "semantic_label": "book_06",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.0085714,
+              0.0,
+              0.2225
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              0.84375
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.44,
+            0.22,
+            0.52
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.027
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_navy_physics.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.027
+          ]
+        },
+        "t09_book_07": {
+          "name": "t09_book_07",
+          "asset_id": "t09_book_07",
+          "category": "book_07",
+          "semantic_label": "book_07",
+          "shape": "box",
+          "pose": {
+            "position": [
+              0.01,
+              0.004,
+              0.253
+            ],
+            "euler_xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0625
+            ]
+          },
+          "fixed": false,
+          "motion": {
+            "type": "physics",
+            "initial_velocity": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "color": [
+            0.66,
+            0.26,
+            0.12
+          ],
+          "friction": 0.5571428571428572,
+          "restitution": 0.04,
+          "linear_damping": 0.018,
+          "angular_damping": 0.025,
+          "ccd_enabled": true,
+          "disable_sleep": true,
+          "contact_offset": 0.0012,
+          "camera_focus": true,
+          "mass": 0.4,
+          "size": [
+            0.245,
+            0.178,
+            0.034
+          ],
+          "visual_mesh_path": "/home/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/assets_generated/t16_t20_realistic_v4b_20260816/books/book_textbook_burgundy_mechanics.obj",
+          "collision_proxy": "box",
+          "preserve_mesh_material": true,
+          "visualization": true,
+          "collision": true,
+          "convexify": false,
+          "collision_visual_alignment": "same_origin_measured_bounds",
+          "collision_proxy_size": [
+            0.245,
+            0.178,
+            0.034
+          ]
+        }
+      },
+      "original_solver": {
+        "gravity": [
+          0,
+          0,
+          -9.81
+        ],
+        "dt": 0.005,
+        "substeps": 4,
+        "physics_steps_per_render_frame": 4,
+        "settle_steps": 80,
+        "record_contacts": true,
+        "static_scene_collision": false,
+        "layout_collision": false,
+        "add_ground_plane": false,
+        "static_visual_only_instance_ids": [
+          "baxi_round_table_01"
+        ],
+        "room_wall_colliders": false,
+        "room_boundary_safety": {
+          "enabled": false
+        },
+        "use_gjk_collision": true,
+        "enable_multi_contact": true,
+        "box_box_detection": true,
+        "raytracing": true,
+        "raytracing_state_limit": 8388608,
+        "raytracing_depth": 8,
+        "raytracing_rr_depth": 2,
+        "gravity_id": "g03_earth"
+      },
+      "original_runtime_forces": [
+        {
+          "name": "t09_linear_pull_000",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.0722852,
+            0.0,
+            0.0
+          ],
+          "frame_start": 10,
+          "frame_end": 10,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_001",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.2865283,
+            0.0,
+            0.0
+          ],
+          "frame_start": 11,
+          "frame_end": 11,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_002",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.6349859,
+            0.0,
+            0.0
+          ],
+          "frame_start": 12,
+          "frame_end": 12,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_003",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.1050638,
+            0.0,
+            0.0
+          ],
+          "frame_start": 13,
+          "frame_end": 13,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_004",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.6797724,
+            0.0,
+            0.0
+          ],
+          "frame_start": 14,
+          "frame_end": 14,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_005",
+          "target": "t09_book_03",
+          "force_world": [
+            -2.3383399,
+            0.0,
+            0.0
+          ],
+          "frame_start": 15,
+          "frame_end": 15,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_006",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.0569643,
+            0.0,
+            0.0
+          ],
+          "frame_start": 16,
+          "frame_end": 16,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_007",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.8096723,
+            0.0,
+            0.0
+          ],
+          "frame_start": 17,
+          "frame_end": 17,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_008",
+          "target": "t09_book_03",
+          "force_world": [
+            -4.5692594,
+            0.0,
+            0.0
+          ],
+          "frame_start": 18,
+          "frame_end": 18,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_009",
+          "target": "t09_book_03",
+          "force_world": [
+            -5.3082719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 19,
+          "frame_end": 19,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_010",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.0,
+            0.0,
+            0.0
+          ],
+          "frame_start": 20,
+          "frame_end": 20,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_011",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.6194429,
+            0.0,
+            0.0
+          ],
+          "frame_start": 21,
+          "frame_end": 21,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_012",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.1442124,
+            0.0,
+            0.0
+          ],
+          "frame_start": 22,
+          "frame_end": 22,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_013",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.5553418,
+            0.0,
+            0.0
+          ],
+          "frame_start": 23,
+          "frame_end": 23,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_014",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.8379719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 24,
+          "frame_end": 24,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_015",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.9818877,
+            0.0,
+            0.0
+          ],
+          "frame_start": 25,
+          "frame_end": 25,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_016",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.9818877,
+            0.0,
+            0.0
+          ],
+          "frame_start": 26,
+          "frame_end": 26,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_017",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.8379719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 27,
+          "frame_end": 27,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_018",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.5553418,
+            0.0,
+            0.0
+          ],
+          "frame_start": 28,
+          "frame_end": 28,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_019",
+          "target": "t09_book_03",
+          "force_world": [
+            -7.1442124,
+            0.0,
+            0.0
+          ],
+          "frame_start": 29,
+          "frame_end": 29,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_020",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.6194429,
+            0.0,
+            0.0
+          ],
+          "frame_start": 30,
+          "frame_end": 30,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_021",
+          "target": "t09_book_03",
+          "force_world": [
+            -6.0,
+            0.0,
+            0.0
+          ],
+          "frame_start": 31,
+          "frame_end": 31,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_022",
+          "target": "t09_book_03",
+          "force_world": [
+            -5.3082719,
+            0.0,
+            0.0
+          ],
+          "frame_start": 32,
+          "frame_end": 32,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_023",
+          "target": "t09_book_03",
+          "force_world": [
+            -4.5692594,
+            0.0,
+            0.0
+          ],
+          "frame_start": 33,
+          "frame_end": 33,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_024",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.8096723,
+            0.0,
+            0.0
+          ],
+          "frame_start": 34,
+          "frame_end": 34,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_025",
+          "target": "t09_book_03",
+          "force_world": [
+            -3.0569643,
+            0.0,
+            0.0
+          ],
+          "frame_start": 35,
+          "frame_end": 35,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_026",
+          "target": "t09_book_03",
+          "force_world": [
+            -2.3383399,
+            0.0,
+            0.0
+          ],
+          "frame_start": 36,
+          "frame_end": 36,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_027",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.6797724,
+            0.0,
+            0.0
+          ],
+          "frame_start": 37,
+          "frame_end": 37,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_028",
+          "target": "t09_book_03",
+          "force_world": [
+            -1.1050638,
+            0.0,
+            0.0
+          ],
+          "frame_start": 38,
+          "frame_end": 38,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_029",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.6349859,
+            0.0,
+            0.0
+          ],
+          "frame_start": 39,
+          "frame_end": 39,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_030",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.2865283,
+            0.0,
+            0.0
+          ],
+          "frame_start": 40,
+          "frame_end": 40,
+          "profile": "minimum_jerk_like_sine_squared"
+        },
+        {
+          "name": "t09_linear_pull_031",
+          "target": "t09_book_03",
+          "force_world": [
+            -0.0722852,
+            0.0,
+            0.0
+          ],
+          "frame_start": 41,
+          "frame_end": 41,
+          "profile": "minimum_jerk_like_sine_squared"
+        }
+      ],
+      "horizon_s": 4.1
+    }
+  ],
+  "source_sample_id": "PROD_T09_bg01_home_ase_g03_earth_mu_p10",
+  "new_simulations": 0,
+  "source_modified": false,
+  "formal_admission": false,
+  "scope": "Original release observations only. Native camera, fixed-context comparisons and event visual review remain separate; no curve is spliced across differing contexts."
+}

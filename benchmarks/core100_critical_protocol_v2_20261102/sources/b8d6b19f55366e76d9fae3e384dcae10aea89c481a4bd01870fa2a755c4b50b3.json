@@ -1,0 +1,104 @@
+"""Read released T06/T09/T10 axis records and actual original configurations.
+
+Some archived state headers contain stale experiment parameter names. Preserve
+those fields and separately attest the original config and executed objects;
+never use the state header's scalar alone as an intervention value.
+"""
+import argparse
+import base64
+import hashlib
+import json
+from pathlib import Path
+import zlib
+
+from physedit.core100_critical import load
+from review.cvpr_experiments_20261031.archive_hunyuan_checkpoint_sftp import rpc,P21_OPTIONS
+
+ROOT=Path(__file__).resolve().parents[1]
+WORK=ROOT/'review/core100_v2_resolution_20261102'
+REMOTE=r'''
+import gzip,hashlib,json,math
+from pathlib import Path
+t=TARGET;config=Path(next(r['source']for r in t['transfer_records']if'/configs/'in r['source']))
+config_root=config.parents[1];meta_root=Path(STATE_PATH).parent;prefix=t['sample_id'].rsplit('_p',1)[0]+'_p'
+points=[]
+for path in sorted(meta_root.glob(prefix+'*__cam01.json*')):
+ sid=path.name.split('__cam01')[0];cp=config_root/(sid+'__cam01')/'cam01.json'
+ if not cp.exists():points.append(dict(sample_id=sid,state_path=str(path),status='original_config_missing'));continue
+ raw=path.read_bytes();decoded=gzip.decompress(raw)if raw[:2]==bytes([31,139])else raw;s=json.loads(decoded);cfgraw=cp.read_bytes();c=json.loads(cfgraw)
+ p=c['experiment']['parameter'];fs=s['frames'];assert len(fs)==210
+ frames=fs[5:END+1];contacts=[dict(x,frame=f['frame_index'])for f in frames for x in f.get('contacts',[])]
+ assert s['scene_overrides']['record_contacts']is True
+ names={o['name']:o.get('spec',o)for o in s['dynamic_objects']};expected={o['name']:o for o in c['dynamic_objects']}
+ differences={k:dict(native=s['scene_overrides'].get(k),config=c['scene_overrides'].get(k))for k in set(s['scene_overrides'])|set(c['scene_overrides'])if s['scene_overrides'].get(k)!=c['scene_overrides'].get(k)}
+ lighting_only={'raytracing_env_encoding','raytracing_env_euler','raytracing_env_map','raytracing_lights','raytracing_env_map_required'}
+ # The native exporter drops the descriptive profile tag from an already
+ # sampled force waveform. Every numeric command, target and timing survives.
+ strip_profile=lambda fs:[{k:v for k,v in f.items()if k!='profile'}for f in fs]
+ cam03files=list((config_root/(sid+'__cam03')).glob('*.json'));camera_evidence=[]
+ for cam03 in cam03files:
+  other=json.loads(cam03.read_text());keys=['dynamic_objects','scene_overrides','runtime_forces','seed']
+  camera_evidence.append(dict(path=str(cam03),sha256=hashlib.sha256(cam03.read_bytes()).hexdigest(),
+   same_physical_config_and_seed=all(other.get(k)==c.get(k)for k in keys)))
+ labels={};measurement={}
+ if t['clip_id'].startswith('T06'):
+  pairs=c['experiment']['required_contact_pairs'];hits=[min((x['frame']for x in contacts if{x['entity_a'],x['entity_b']}==set(pair)),default=None)for pair in pairs]
+  labels['complete_required_contact_chain']=int(all(x is not None for x in hits));measurement['first_contact_frames']=hits
+  books=[expected['t06_book_'+str(i).zfill(2)]for i in range(10)]
+  # Original nominal gap excludes the first book's initial one-degree lean.
+  gaps=[b['pose']['position'][0]-a['pose']['position'][0]-(a['size'][2]+b['size'][2])/2 for a,b in zip(books,books[1:])]
+  measurement['executed_nominal_gaps_m']=gaps
+ elif t['clip_id'].startswith('T09'):
+  upper=c['experiment']['supported_book_names'];table='frozen_tabletop_collision_slab'
+  hits=[x for x in contacts if any({x['entity_a'],x['entity_b']}=={name,table}for name in upper)]
+  labels['upper_nonpulled_book_ever_contacts_table']=int(bool(hits))
+  labels['upper_nonpulled_book_on_table_at_end']=int(any(x['frame']==END for x in hits))
+  measurement.update(first_upper_table_contact_frame=min((x['frame']for x in hits),default=None),upper_books=upper,
+   original_force_waveform=c.get('runtime_forces',[]))
+ else:
+  base=next(o['position']for o in fs[4]['objects']if o['name']=='t10_support_pen')
+  distances=[math.sqrt(sum((a-b)**2 for a,b in zip(base,o['position'])))for f in fs[4:END+1]for o in f['objects']if o['name']=='t10_support_pen']
+  threshold=c['experiment']['support_ejection_threshold_m'];measurement.update(maximum_pen_displacement_m=max(distances),threshold_m=threshold)
+  labels['support_pen_displacement_reaches_source_threshold']=int(max(distances)>=threshold)
+ points.append(dict(sample_id=sid,theta=p['parameter_value'],family=p['parameter_name'],
+  original_config_path=str(cp),original_config_sha256=hashlib.sha256(cfgraw).hexdigest(),
+  state_path=str(path),state_stored_sha256=hashlib.sha256(raw).hexdigest(),state_decoded_sha256=hashlib.sha256(decoded).hexdigest(),
+  native_declared_video=s['render']['save_video'],native_header_parameter=s['experiment']['parameter'],
+  executed_object_specs_match_config=names==expected,original_solver_matches_config=s['scene_overrides']==c['scene_overrides'],
+  state_config_differences=differences,physics_settings_match_config=not(set(differences)-lighting_only),original_seed=c.get('seed'),
+  native_runtime_forces=s.get('runtime_forces',[]),runtime_forces_match_config=s.get('runtime_forces',[])==c.get('runtime_forces',[]),
+  executed_force_commands_match_config=strip_profile(s.get('runtime_forces',[]))==strip_profile(c.get('runtime_forces',[])),
+  original_cam03_configuration_evidence=camera_evidence,
+  labels=labels,measurements=measurement,status='original_released_state_read',
+  original_specs=expected,original_solver=c['scene_overrides'],original_runtime_forces=c.get('runtime_forces',[]),
+  horizon_s=s['scene_overrides']['dt']*s['render']['physics_steps_per_render_frame']*(END-4)))
+print(json.dumps(dict(clip_id=t['clip_id'],points=points,source_sample_id=t['sample_id'],
+ new_simulations=0,source_modified=False,formal_admission=False,
+ scope='Original release observations only. Native camera, fixed-context comparisons and event visual review remain separate; no curve is spliced across differing contexts.')))
+'''
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--clip');args=p.parse_args()
+    old=ROOT/'review/core100_remaining20_20261101'
+    jobs=json.loads((old/'ORIGINAL_SOURCE_JOBS.json').read_text(encoding='utf8'))
+    trace={r['clip_id']:r for r in json.loads((old/'ARCHIVED_STATE_TRACE.json').read_text(encoding='utf8'))}
+    registry={r['clip_id']:r for r in load()[0]['cases']}
+    for t in jobs:
+        cid=t['clip_id']
+        if not cid.startswith(('T06','T09','T10'))or args.clip and cid!=args.clip:continue
+        state_path=trace[cid]['states'][0]['path']
+        payload='TARGET='+repr(t)+'\nSTATE_PATH='+repr(state_path)+'\nEND='+repr(registry[cid]['end_frame_index'])+'\n'+REMOTE
+        encoded=base64.b64encode(zlib.compress(payload.encode())).decode()
+        result=rpc(P21_OPTIONS,'p25','import base64,zlib;exec(zlib.decompress(base64.b64decode('+repr(encoded)+')))')
+        raw=json.dumps(result,indent=2).encode();digest=hashlib.sha256(raw).hexdigest()
+        path=WORK/(cid+'_released_axis_'+digest[:12]+'.json');path.write_bytes(raw)
+        (WORK/(cid+'_RELEASED_AXIS.json')).write_text(json.dumps(dict(path=path.relative_to(ROOT).as_posix(),sha256=digest),indent=2),encoding='utf8')
+        points=[x for x in result['points']if x['status']=='original_released_state_read']
+        print(json.dumps(dict(clip_id=cid,read=len(points),parameter_names=sorted({x['family']for x in points}),
+            distinct_labels={k:sorted({x['labels'][k]for x in points})for k in points[0]['labels']}if points else{},
+            actual_object_mismatches=sum(not x['executed_object_specs_match_config']for x in points),
+            original_solver_mismatches=sum(not x['original_solver_matches_config']for x in points),new_simulations=0)),flush=True)
+
+
+if __name__=='__main__':main()

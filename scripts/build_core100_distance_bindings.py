@@ -4,10 +4,12 @@ Original observed transitions, conditional searches, and explicit no-flip scans
 remain distinguishable. No reference media, prompt, or generated label is edited.
 """
 import collections
+import copy
 import datetime
 import hashlib
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -27,6 +29,20 @@ def read(path):
     return json.loads(raw)
 
 
+def read_pinned(path):
+    """Pin a changing continuation index to immutable bytes before binding it."""
+    path=Path(path)
+    raw=path.read_bytes();digest=hashlib.sha256(raw).hexdigest()
+    archive=path.parent/'sealed_snapshots'/(digest+'.json')
+    archive.parent.mkdir(parents=True,exist_ok=True)
+    if not archive.exists():
+        temp=archive.with_suffix('.'+str(os.getpid())+'.tmp')
+        temp.write_bytes(raw);temp.replace(archive)
+    assert archive.read_bytes()==raw
+    EVIDENCE[archive.relative_to(ROOT).as_posix()]=digest
+    return json.loads(raw)
+
+
 def measured(theta,bracket,span):
     a,b=bracket
     assert all(math.isfinite(v)for v in [theta,a,b,span])and a<b and span>0
@@ -38,6 +54,18 @@ def measured(theta,bracket,span):
 
 def evidence(path,detail=None):
     return dict(file=str(Path(path).relative_to(ROOT)).replace('\\','/'),detail=detail)
+
+
+def apply_original_search_trace(cases, audit):
+    """Attach source findings, never a boundary or an applicability verdict."""
+    from physedit.core100_bindings import original_family_reference_ready
+    for trace in audit['cases']:
+        row=cases[trace['clip_id']]
+        for key in ['sample_id','reference_video_sha256','horizon_s','reference_events']:
+            if trace[key]!=row[key]:raise ValueError('original_search_trace_identity_or_event_mismatch:'+key)
+        if original_family_reference_ready(row):continue
+        row['original_search_trace']=copy.deepcopy(trace)
+        row['reason']=trace['finding']
 
 
 def main():
@@ -392,37 +420,101 @@ def main():
                 EVIDENCE[name]=hashlib.sha256(path.read_bytes()).hexdigest()
     # Sealed follow-up searches are applied after the older source-review reset.
     for relative in ['review/core100_completion_20261031/sealed_binding_updates.json',
-                     'review/core100_remaining16_20261031/sealed_binding_updates.json']:
+                     'review/core100_remaining16_20261031/sealed_binding_updates.json',
+                     'review/core100_remaining15_followup_20261031/t14_unified_binding_update.json',
+                     'review/core100_continue_20261031/sealed_binding_updates.json']:
         supplement=ROOT/relative
         if supplement.exists():
             from scripts.apply_core100_completion_updates import apply_updates
-            apply_updates(cases,read(supplement),ROOT,EVIDENCE)
+            apply_updates(cases,read_pinned(supplement),ROOT,EVIDENCE)
+    motion=ROOT/'review/core100_remaining15_followup_20261031/verified_motion_axis_patches.json'
+    if motion.exists():
+        from scripts.apply_core100_axis_patches import apply_axis_patches
+        apply_axis_patches(cases,read_pinned(motion),ROOT,EVIDENCE)
+    # Exact original T13 sidecars and decoded videos are 24fps/168 frames.
+    # Preserve the old generic endpoint as provenance; the 5s labels and every
+    # stored boundary are unchanged (the original extractor already used 124).
+    clock_proof=ROOT/'review/core100_reference_admission_continue_20261101/T13_ORIGINAL_WINDOW.json'
+    if clock_proof.exists():
+        for clock in read(clock_proof):
+            r=cases[clock['clip_id']]
+            if r['reference_video_sha256']!=clock['reference_video_sha256']:continue
+            assert r['source_state_sha256']==clock['reference_state_sha256']
+            assert r['horizon_s']==clock['horizon_s'] and r['condition_frame_index']==clock['condition_frame_index']
+            assert r['reference_events']==clock['reference_events']
+            r['legacy_generic_end_frame_index']=r['end_frame_index']
+            r['end_frame_index']=clock['end_frame_index']
+            r['reference_media_fps']=clock['native_fps']
+            r['physical_frame_period_s']=clock['physical_frame_period_s']
+            r['reference_clock_proof']=clock_proof.relative_to(ROOT).as_posix()
+        EVIDENCE[clock_proof.relative_to(ROOT).as_posix()]=hashlib.sha256(clock_proof.read_bytes()).hexdigest()
+    trace=ROOT/'review/core100_continue_20261031/original_search_trace_20261101.json'
+    if trace.exists():
+        audit=read(trace)
+        for name,expected in audit['evidence_sha256'].items():
+            path=(ROOT/name).resolve();assert path.is_relative_to(ROOT)
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==expected,name
+            EVIDENCE[name]=expected
+        apply_original_search_trace(cases,audit)
+    scan_pointer=ROOT/'review/core100_continue_20261031/pending_six_native_readback_latest.json'
+    if scan_pointer.exists():
+        from scripts.audit_core100_pending6_readback import apply_readback
+        pointer=read_pinned(scan_pointer);proof=(ROOT/pointer['evidence']).resolve()
+        assert proof.is_relative_to(ROOT)
+        assert hashlib.sha256(proof.read_bytes()).hexdigest()==pointer['sha256']
+        apply_readback(cases,read(proof),pointer['evidence'])
+        EVIDENCE[pointer['evidence']]=pointer['sha256']
+    repeat_pointer=ROOT/'review/core100_continue_20261031/endpoint_repeatability_latest.json'
+    if repeat_pointer.exists():
+        from scripts.collect_t11_c02_endpoint_rechecks import apply_report
+        pointer=read_pinned(repeat_pointer);proof=(ROOT/pointer['file']).resolve()
+        assert proof.is_relative_to(ROOT)
+        assert hashlib.sha256(proof.read_bytes()).hexdigest()==pointer['sha256']
+        apply_report(cases,read(proof),pointer['file'])
+        EVIDENCE[pointer['file']]=pointer['sha256']
     rows=[cases[cid]for cid in sorted(cases)]
+    from physedit.core100_bindings import original_family_reference_ready
+    original_pending=[r['clip_id'] for r in rows if not original_family_reference_ready(r)]
     counts=collections.Counter(r['status']for r in rows)
     assert len(rows)==100 and sum(counts.values())==100
     scenes=[]
     for i in range(1,21):
         scene=f'T{i:02}';own=[r for r in rows if r['scene_id']==scene]
-        scenes.append(dict(scene_id=scene,**{k:sum(r['status']==k for r in own)for k in ['distance_ready','not_applicable_in_registered_scan','incomplete']}))
+        scenes.append(dict(scene_id=scene,
+            original_family_distance_ready=sum(original_family_reference_ready(r) for r in own),
+            original_family_incomplete=sum(not original_family_reference_ready(r) for r in own),
+            supplemental_only_distance_ready=sum(r['status']=='distance_ready' and not original_family_reference_ready(r) for r in own),
+            **{k:sum(r['status']==k for r in own)for k in ['distance_ready','not_applicable_in_registered_scan','incomplete']}))
     summary=dict(total=100,**{k:counts[k]for k in ['distance_ready','not_applicable_in_registered_scan','incomplete']},
+        original_family_distance_ready=100-len(original_pending),
+        original_family_incomplete=len(original_pending),
+        supplemental_only_distance_ready=sum(r['status']=='distance_ready' and not original_family_reference_ready(r) for r in rows),
         observed_transition_cases=sum(r['status']=='distance_ready'and r['binding_kind']=='released_state_scan'for r in rows),
         conditional_search_cases=sum(r['status']=='distance_ready'and r['binding_kind']not in('released_state_scan','original_recorded_calibration')for r in rows),
-        interval_reference_cases=sum(r['status']=='distance_ready'and bool(r['boundary_records'])for r in rows),
+        interval_reference_cases=sum(r['status']=='distance_ready'and bool(r['boundary_records']or r.get('conditional_axes'))for r in rows),
         recorded_calibration_reference_cases=sum(r['status']=='distance_ready'and bool(r.get('original_calibration_reference'))for r in rows),
         numerical_near_candidate_cases=sum(any(b['distance']['bin']=='near'for b in r['boundary_records'])for r in rows),
+        conditional_axis_reference_count=sum(len(r.get('conditional_axes',{}))for r in rows),
+        conditional_axis_event_intervals=sum(len(a['boundary_records'])for r in rows for a in r.get('conditional_axes',{}).values()),
+        endpoint_recheck_blocked_intervals=sum(b.get('endpoint_repeatability',{}).get('status','reproduced')!='reproduced'
+            for r in rows for a in r.get('conditional_axes',{}).values()for b in a['boundary_records']),
+        endpoint_recheck_reproduced_intervals=sum(b.get('endpoint_repeatability',{}).get('status')=='reproduced'
+            for r in rows for a in r.get('conditional_axes',{}).values()for b in a['boundary_records']),
         generated_model_scores_computed=False)
-    result=dict(schema='core100-active-distance-bindings-v1',generated_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),reference_release_version=manifest['version'],
+    result=dict(schema='core100-active-distance-bindings-v2'if any(r.get('conditional_axes')for r in rows)else'core100-active-distance-bindings-v1',generated_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),reference_release_version=manifest['version'],
         summary=summary,cases=rows,scenes=scenes,evidence_sha256=EVIDENCE,
+        original_family_pending=original_pending,
         policy=dict(no_near_targeted_rescan=True,no_original_inputs_or_labels_modified=True,
             finite_no_flip_is_not_global_nonexistence=True,observed_interval_is_not_an_exact_threshold=True,
             pending_generated_labels_are_not_zeros=True,metric_applicability_separate_from_reference_binding=True))
     output=RES/'core100_distance_bindings.json';temporary=output.with_suffix('.tmp')
     temporary.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf8');temporary.replace(output)
     lines=['# Core100 临界距离接入结果','', '这是参考参数与临界证据的接入状态，不是生成模型成绩。', '',
-        f"100条：已接数值参考 {counts['distance_ready']}（边界区间{summary['interval_reference_cases']}、原校准值{summary['recorded_calibration_reference_cases']}）；已确认不适用 {counts['not_applicable_in_registered_scan']}；原族/事件/观察窗仍待对齐 {counts['incomplete']}。",'',
+        f"100条：原参数族已接数值参考 {summary['original_family_distance_ready']}，未完成 {summary['original_family_incomplete']}，已确认不适用 {counts['not_applicable_in_registered_scan']}。",'',
+        f"另有 {summary['supplemental_only_distance_ready']} 条目前仅有补充方向参考，不能计入原参数族完成数。包含这些方向的参考登记总数为 {counts['distance_ready']}（边界区间{summary['interval_reference_cases']}、原校准值{summary['recorded_calibration_reference_cases']}）。",'',
         '原21条统一不适用结论已撤回。有限扫描无翻转不能证明没有原临界值；原族未核清的保留待对齐。原校准点、原采样中心与已测边界区间分别记录，不冒充精确物理阈值。','',
-        '| 场景 | 已接数值参考 | 已确认不适用 | 待对齐 |','|---|---:|---:|---:|']
-    lines += [f"| {r['scene_id']} | {r['distance_ready']} | {r['not_applicable_in_registered_scan']} | {r['incomplete']} |"for r in scenes]
+        '| 场景 | 原参数族已接 | 原参数族未完成 | 仅补充方向 | 已确认不适用 |','|---|---:|---:|---:|---:|']
+    lines += [f"| {r['scene_id']} | {r['original_family_distance_ready']} | {r['original_family_incomplete']} | {r['supplemental_only_distance_ready']} | {r['not_applicable_in_registered_scan']} |"for r in scenes]
     lines+=['','## 接入命令','','```text','python -m physedit.core100_bindings status --verify-evidence',
         'python -m physedit.core100_bindings export --out core100_distance_reference.jsonl','```','',
         '评分代码 `annotation_site/critical_results.py` 已读取此表。匹配同时检查参考视频哈希和观察时长，不能仅按案例ID套用。',
@@ -431,10 +523,18 @@ def main():
         '有限扫描无翻转只作为诊断；原族、事件或窗口未核清时保持待对齐，不直接判不适用。',
         '原始区间、条件补算和物理诊断分别保留；区间跨越Near/Mid/Far阈值时保留未定，不取中点强行分组。',
         '', '## 未完成项','']
-    remaining=[r for r in rows if r['status']=='incomplete']
+    remaining=[r for r in rows if r['clip_id'] in original_pending]
     for r in remaining:
         cid=r['clip_id']
-        if 'running'in r['reason']:
+        if r.get('completed_original_scan_readback'):
+            audit=r['completed_original_scan_readback']
+            text=(f"已读取原状态并重判{audit['verified_distinct_probes']}个有效参数点，事件标签集合{audit['labels_by_event']}。"
+                  '当前没有异侧端点，原参数族临界距离仍未完成；未判不适用。')
+        elif r.get('original_search_trace'):
+            text=r['original_search_trace']['finding']
+        elif r['status']=='distance_ready' and not original_family_reference_ready(r):
+            text='已有补充方向的数值参考；原参数族仍未绑定区间，不计作原参数族完成。'
+        elif 'running'in r['reason']:
             text=('原状态已找回；CPU复跑与原结果不同，正在用原GPU设置补算。'if cid.startswith('T14')else
                   '已复现冻结修复版来源；正在原参数范围内补齐有效转变区间。'if cid=='T16_C02'else
                   '已找回原发布配置和种子；原逐帧状态缺失，正在用原GPU设置补算。')
@@ -449,9 +549,27 @@ def main():
         bins=sorted({b['distance']['bin']or'区间跨分界'for b in r['boundary_records']})
         theta=f"{r['theta']:.9g}"if type(r['theta'])in(int,float)else json.dumps(r['theta'],ensure_ascii=False)if r['theta']is not None else'待定'
         bin_text=', '.join(bins)or('原校准值距离，非精确边界'if r.get('original_calibration_reference')else'待定')
-        lines.append(f"| {r['clip_id']} | {r['parameter']} | {theta} | {r['horizon_s']:.6g} | {labels[r['status']]} | {bin_text} |")
+        if r.get('conditional_axes'):bin_text='多方向分别登记；原主轴记录保留，评分须显式指定方向'
+        label=labels[r['status']]
+        if r['status']=='distance_ready' and not original_family_reference_ready(r):label='仅补充方向；原参数族未完成'
+        lines.append(f"| {r['clip_id']} | {r['parameter']} | {theta} | {r['horizon_s']:.6g} | {label} | {bin_text} |")
+    lines+=['','## 多方向条件边界','','旧主轴的参数与证据保留；多方向结果不压成一个全局最近距离。调用 bind_answer 时必须指定 axis。','','| 案例 | 方向 | 原参数值 | 事件 | 临界区间 |','|---|---|---:|---|---|']
+    for r in rows:
+        for name,axis in r.get('conditional_axes',{}).items():
+            for record in axis['boundary_records']:
+                lines.append(f"| {r['clip_id']} | {name} | {axis['theta']} | {record['event']} | {record['bracket']} |")
+    checked=[(r['clip_id'],name,b)for r in rows for name,a in r.get('conditional_axes',{}).items()
+             for b in a['boundary_records']if b.get('endpoint_repeatability')]
+    if checked:
+        lines+=['','## 端点重复运行核查','',
+            '原窄区间和距离保留。重复运行矛盾或尚未完成核查的区间，不作为可用评分边界；不修改原事件真值、不判不适用。',
+            'T11_C02原运行的数值种子为None，保留该设置不等于固定数值种子。逐次GPU身份、实际初始化种子和运行后端随证据保存。',
+            '', '| 案例 | 方向 | 事件 | 重复运行结果 | 端点标签 |','|---|---|---|---|---|']
+        for cid,name,b in checked:
+            check=b['endpoint_repeatability']
+            lines.append(f"| {cid} | {name} | {b['event']} | {check['status']} | {[e['labels']for e in check['endpoints']]} |")
     (ROOT/'docs/critical_boundary/CORE100_DISTANCE_BINDINGS.md').write_text('\n'.join(lines)+'\n',encoding='utf8')
-    print(json.dumps(summary));print([(r['clip_id'],r['reason'])for r in rows if r['status']=='incomplete'])
+    print(json.dumps(summary));print([(r['clip_id'],r['reason'])for r in rows if r['clip_id'] in original_pending])
 
 
 if __name__=='__main__':main()

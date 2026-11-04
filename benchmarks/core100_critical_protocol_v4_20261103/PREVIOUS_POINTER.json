@@ -1,0 +1,7 @@
+{
+  "version": "core100_critical_protocol_v4_20261103",
+  "roster_release": "core100-critical-pairs-v2-20261101",
+  "registry": "../benchmarks/core100_critical_protocol_v4_20261103/registry_55ac1ceabfc8.json",
+  "registry_sha256": "55ac1ceabfc8f0d8aa872b23730a92422f7e2d22f8bc5b1331e6bcc8552365d4",
+  "scope": "Author-approved T03 stage revision; all input media, prompts and earlier scores retained."
+}

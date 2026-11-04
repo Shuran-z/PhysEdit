@@ -1,0 +1,1623 @@
+{
+  "schema": "scoped-native-completion-v1",
+  "reviews": [
+    {
+      "id": "f3600_2164",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "37e3094fba73cbf8578c6d00b775cb60b6923908c540a8bd10731cbc4868e9ab",
+      "reference_video_sha256": "8a767b1b3d744dd3b7ea01f45f823d6e9bafd09b33961dace266224a7f8a0394",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "86bc839a2ab3e4c712ab1c0fd7c42cd98018727822e5b5cbadd77d4b1fee6fa7",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "37e3094fba73cbf8578c6d00b775cb60b6923908c540a8bd10731cbc4868e9ab",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "calibrated_phone_world_centre_measurement_pending",
+        "reason": "逐帧跟踪原手机165帧，屏幕始终在左侧；源相机估计尚未完成生成视频相机/支撑平面和三维质心不确定度校准，不把屏幕质心当正式米制测量。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2164/witness.jpg",
+          "sha256": "7cab19b1769ea4ac92badb551a58a25006bcd26ff04627566646b0b731dc98e9",
+          "frames": [
+            0,
+            80,
+            164
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2165",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "cd1acfdd567338a19dbc5d812e5d7dbec4b12f2d5479e4c7a98684718f0f6662",
+      "reference_video_sha256": "8a767b1b3d744dd3b7ea01f45f823d6e9bafd09b33961dace266224a7f8a0394",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "86bc839a2ab3e4c712ab1c0fd7c42cd98018727822e5b5cbadd77d4b1fee6fa7",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "cd1acfdd567338a19dbc5d812e5d7dbec4b12f2d5479e4c7a98684718f0f6662",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "calibrated_phone_world_centre_measurement_pending",
+        "reason": "逐帧跟踪原手机165帧，屏幕始终在左侧；源相机估计尚未完成生成视频相机/支撑平面和三维质心不确定度校准，不把屏幕质心当正式米制测量。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2165/witness.jpg",
+          "sha256": "84d4acf23f2f52ee31fca5e2fbda81f044108131de308bac3927cb38ce30b82e",
+          "frames": [
+            0,
+            80,
+            164
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2166",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "e7d6e8adeac660032cf27e4f900c96148c884c3dcdd60350d8130afb59dcd744",
+      "reference_video_sha256": "8a767b1b3d744dd3b7ea01f45f823d6e9bafd09b33961dace266224a7f8a0394",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "86bc839a2ab3e4c712ab1c0fd7c42cd98018727822e5b5cbadd77d4b1fee6fa7",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "e7d6e8adeac660032cf27e4f900c96148c884c3dcdd60350d8130afb59dcd744",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "calibrated_phone_world_centre_measurement_pending",
+        "reason": "逐帧跟踪原手机165帧，屏幕始终在左侧；源相机估计尚未完成生成视频相机/支撑平面和三维质心不确定度校准，不把屏幕质心当正式米制测量。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2166/witness.jpg",
+          "sha256": "811a70ae5b832b67188a77c70da0d8deedae406d6d389b6f95d9defb41fb32f1",
+          "frames": [
+            0,
+            80,
+            164
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2167",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "60a925930dcf442cc5a0a8d495bfd5b10502990ff50ff4ddf9f006c6a86363f4",
+      "reference_video_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "51cabe19fc59306331fdc7adaf0f32f9b2e970a8046b45984e88362661831caa",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "60a925930dcf442cc5a0a8d495bfd5b10502990ff50ff4ddf9f006c6a86363f4",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原手机和罐仍在，额外小球/珠状物独立运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2167/witness.jpg",
+          "sha256": "db30906a1bac3ebc8e50d007b6f835f31fb4e3195ed37d11f03608e3389597e6",
+          "frames": [
+            10,
+            11,
+            14
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2168",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "6b931060542efb51126a2ff82b93bde6e8c3f4a0830b73a6e62fa0b496e9aa62",
+      "reference_video_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "51cabe19fc59306331fdc7adaf0f32f9b2e970a8046b45984e88362661831caa",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "6b931060542efb51126a2ff82b93bde6e8c3f4a0830b73a6e62fa0b496e9aa62",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原黑色手机保持原位，另有钥匙/工具状物体出现在手机边并向导轨运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2168/witness.jpg",
+          "sha256": "4b11d077a9d43434070f5154b39191c21cb7a9aea052d15ec351908d968183b5",
+          "frames": [
+            6,
+            7,
+            10
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2169",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "7a190034c1ec36020fd2a922db66a5cde013d298f0b3528df4cf7ec122cad789",
+      "reference_video_sha256": "8499be3c0aeae4a9c1f10ef9a16d4b2fbfd9a9cbc91a9a2fedcfaf18657c634f",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "51cabe19fc59306331fdc7adaf0f32f9b2e970a8046b45984e88362661831caa",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "7a190034c1ec36020fd2a922db66a5cde013d298f0b3528df4cf7ec122cad789",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "identity_morph",
+        "event_label": null,
+        "reason": "原罐显著变为薄片/手机状实体，形状与原刚体身份不连续。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2169/witness.jpg",
+          "sha256": "a0ce1f1163a57d6402dc0e9b4c18cae3df1d94063abb5728ca120acb8cdd9bec",
+          "frames": [
+            26,
+            27,
+            47
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2170",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "3fb490d00a9005b2e42d8872d6a7ed44d0fadfdbddb5c3e2a2f8e0e0f10ba9ae",
+      "reference_video_sha256": "654086a30af9b718ac71d1992ef3ab5c298c62b7e3bba6af3788f685dffd1cc2",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "02c2949babf891739780a39fcabaacb36be20af8a78ca9d58ba55ef0494f0f4c",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "3fb490d00a9005b2e42d8872d6a7ed44d0fadfdbddb5c3e2a2f8e0e0f10ba9ae",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "identity_morph",
+        "event_label": null,
+        "reason": "原圆柱罐变为红色薄片/手机状实体，在导轨中运动；原手机仍在左侧。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2170/witness.jpg",
+          "sha256": "df1d73763c74e40bb09d77d8f8d757d572cb40b1f1bdad19a353916ca471fbcb",
+          "frames": [
+            22,
+            23,
+            47
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2171",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "ed240a63802d0922c9ab41d131d17d3e311358a3b334fc0974df711b71eb93b3",
+      "reference_video_sha256": "654086a30af9b718ac71d1992ef3ab5c298c62b7e3bba6af3788f685dffd1cc2",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "02c2949babf891739780a39fcabaacb36be20af8a78ca9d58ba55ef0494f0f4c",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "ed240a63802d0922c9ab41d131d17d3e311358a3b334fc0974df711b71eb93b3",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "body_duplication",
+        "event_label": null,
+        "reason": "原罐位置另有浅色实体，同时红色薄片实体进入导轨，出现分裂/身份改变。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2171/witness.jpg",
+          "sha256": "4a72cd33a96a671691bd5b9d81a2b9fa2297657863e3a4590ef59a6b897a1a8f",
+          "frames": [
+            18,
+            19,
+            26
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2172",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "216e3e3756d099e46fcfd786cea2c785ea5758bb9cbaeee87330db9ac2d451e4",
+      "reference_video_sha256": "654086a30af9b718ac71d1992ef3ab5c298c62b7e3bba6af3788f685dffd1cc2",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "02c2949babf891739780a39fcabaacb36be20af8a78ca9d58ba55ef0494f0f4c",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "216e3e3756d099e46fcfd786cea2c785ea5758bb9cbaeee87330db9ac2d451e4",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "identity_morph",
+        "event_label": null,
+        "reason": "原圆柱罐变成薄片实体在导轨间运动，原手机未成为该运动实体。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2172/witness.jpg",
+          "sha256": "b3f77fb18c662adb8a86abb0cd3f46a39c74852d6b92a815a52017362d8cf455",
+          "frames": [
+            22,
+            23,
+            47
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2173",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "21eb7453a53e469cefc399a5cfa5f183727e8e820f70239d2e79a99a9f7bda23",
+      "reference_video_sha256": "6a7e8666a29c495209a94be5779cfcc8a9379f5b2b9b2eb55667ba94509fe57b",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "a5ec2676f410891914f26faa2b8c8a3722b6de131860d33986e959ae93294261",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "21eb7453a53e469cefc399a5cfa5f183727e8e820f70239d2e79a99a9f7bda23",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原手机及罐仍在，额外小矩形/碎片在通道内独立运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2173/witness.jpg",
+          "sha256": "b69046b49c804b3fbe1a01c0c6915557e05e23c2f8dfba53b45c782ecff201b2",
+          "frames": [
+            18,
+            19,
+            22
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2174",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "0308dc9b7178c03e310b06fc14b7cec6441376dc3ee645cc489db924e8f4c8da",
+      "reference_video_sha256": "6a7e8666a29c495209a94be5779cfcc8a9379f5b2b9b2eb55667ba94509fe57b",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "a5ec2676f410891914f26faa2b8c8a3722b6de131860d33986e959ae93294261",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "0308dc9b7178c03e310b06fc14b7cec6441376dc3ee645cc489db924e8f4c8da",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原手机及罐仍在，出现额外珠状小物体进入导轨。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2174/witness.jpg",
+          "sha256": "87eed6f04114b9a6fe2c4becf7a7d2c39cb3e7aa40eedd1f91de73a65a6df459",
+          "frames": [
+            26,
+            27,
+            30
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "f3600_2175",
+      "kind": "existing_output_scoped_review",
+      "clip_id": "T05_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "28f1a825f4e0f30a8eb2ee24cdc78ed6cb0fd0830034a691e2f8c398ce682d62",
+      "reference_video_sha256": "6a7e8666a29c495209a94be5779cfcc8a9379f5b2b9b2eb55667ba94509fe57b",
+      "target_event": "gate_passage",
+      "horizon_s": 6.833333333333333,
+      "end_frame": 164,
+      "protocol_sha256": "a5ec2676f410891914f26faa2b8c8a3722b6de131860d33986e959ae93294261",
+      "event_definition_sha256": "fa8a4b0fa6567541a9879c50ce87453e784edcc73799f781e41905aa7db5dc8c",
+      "media": {
+        "sha256": "28f1a825f4e0f30a8eb2ee24cdc78ed6cb0fd0830034a691e2f8c398ce682d62",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原手机及罐仍在，额外橙色实体进入导轨。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/f3600_2175/witness.jpg",
+          "sha256": "7d97ee3234c70a7b4229603b62806ef6d86d3039d456d3866c3894293729884f",
+          "frames": [
+            22,
+            23,
+            26
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C01_p1_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C01",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "bc7a353cb2acbaa683db6542ae87e9f801f384967ac2fc10f3a985fb0f3cfa53",
+      "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+      "condition_frame_index": 0,
+      "prompt_sha256": "86344ad1f2903365ff06472db1a2142180caea790c0f028c0146cd43bab27cf0",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "4ac043398567df141487dcd505e0b1ad122e006037fcce2f4c96fcb6329a7758",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "bc7a353cb2acbaa683db6542ae87e9f801f384967ac2fc10f3a985fb0f3cfa53",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C01_p1_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C01_p1_s0/video.mp4",
+        "sha256": "bc7a353cb2acbaa683db6542ae87e9f801f384967ac2fc10f3a985fb0f3cfa53",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "86344ad1f2903365ff06472db1a2142180caea790c0f028c0146cd43bab27cf0",
+        "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+        "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "画面中出现从桌边进入的长条/棒状外来实体，随后分裂/新增球状物，无法保持原罐身份。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C01_p1_s0/witness.jpg",
+          "sha256": "cceb22dcfec1d6a406566b4f6ae61af3d538239378da1465f60788c84713f04a",
+          "frames": [
+            2,
+            3,
+            8
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C02_p1_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "b16b3412ff88a26855b4b29317c8a759c138bc801cc6d42760592799f26bcde4",
+      "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+      "condition_frame_index": 0,
+      "prompt_sha256": "8bc1f1c1f6e1966a080b020dad80227e17f3e78459ff9493cb832b15ff57290d",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "32597f0159d4c53efe9c17c6171434cb4e6b16b76bde1ccba92cf3318b2075c7",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "b16b3412ff88a26855b4b29317c8a759c138bc801cc6d42760592799f26bcde4",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C02_p1_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C02_p1_s0/video.mp4",
+        "sha256": "b16b3412ff88a26855b4b29317c8a759c138bc801cc6d42760592799f26bcde4",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "8bc1f1c1f6e1966a080b020dad80227e17f3e78459ff9493cb832b15ff57290d",
+        "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+        "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "body_duplication",
+        "event_label": null,
+        "reason": "原罐形变成长串/螺旋状实体，另有独立小物体/红色碎片在桌面和纸巾盒附近运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C02_p1_s0/witness.jpg",
+          "sha256": "50c948cceb96ed430a6c8f8cacee4c9abda36258402f9cd1addcef6c1b93e867",
+          "frames": [
+            16,
+            17,
+            18
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C03_p1_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "813ceae8de5b65c85794bca4525e87ae6eae5024ac2226b9c2f3a62065710eb7",
+      "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+      "condition_frame_index": 0,
+      "prompt_sha256": "86344ad1f2903365ff06472db1a2142180caea790c0f028c0146cd43bab27cf0",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "477101786ccc5eb2d448677f9a65578bd5221ed8a0b8adea648ea696eac295ce",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "813ceae8de5b65c85794bca4525e87ae6eae5024ac2226b9c2f3a62065710eb7",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C03_p1_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C03_p1_s0/video.mp4",
+        "sha256": "813ceae8de5b65c85794bca4525e87ae6eae5024ac2226b9c2f3a62065710eb7",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "86344ad1f2903365ff06472db1a2142180caea790c0f028c0146cd43bab27cf0",
+        "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+        "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C03_p1_s0/witness.jpg",
+          "sha256": "5411784b7e9f637d743e538ef308020e85867e206de961db09ec37fbe1a220ce",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C04_p1_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "62ae8c10e10d41cfbbd98058948c34f9f5c8c20d1a38697014a98a0dc2c8822b",
+      "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+      "condition_frame_index": 0,
+      "prompt_sha256": "8bc1f1c1f6e1966a080b020dad80227e17f3e78459ff9493cb832b15ff57290d",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "a1956cf34cb9873521cde5009d0551c69f897a073e3ed83cc7ccc0b4b64c8f40",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "62ae8c10e10d41cfbbd98058948c34f9f5c8c20d1a38697014a98a0dc2c8822b",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C04_p1_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C04_p1_s0/video.mp4",
+        "sha256": "62ae8c10e10d41cfbbd98058948c34f9f5c8c20d1a38697014a98a0dc2c8822b",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "8bc1f1c1f6e1966a080b020dad80227e17f3e78459ff9493cb832b15ff57290d",
+        "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+        "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C04_p1_s0/witness.jpg",
+          "sha256": "5ac4dba4a5118e8969642d8ea1bc9367bcb1933eeec5460cec128a157591b502",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C05_p1_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 1,
+      "video_sha256": "7dccfdf62cedaecd062ed7a02405d8a962919c71544d4f416c800605aef21d03",
+      "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+      "condition_frame_index": 0,
+      "prompt_sha256": "35e9ed2d33f0035a2512e6976dea09cc43f8e03490b729cd6c694196cddee2ee",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "0c4a03475bc87d564a934a607c7cfa21ab88ed267fd79bbd479cf4496edf0f83",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "7dccfdf62cedaecd062ed7a02405d8a962919c71544d4f416c800605aef21d03",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C05_p1_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C05_p1_s0/video.mp4",
+        "sha256": "7dccfdf62cedaecd062ed7a02405d8a962919c71544d4f416c800605aef21d03",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "35e9ed2d33f0035a2512e6976dea09cc43f8e03490b729cd6c694196cddee2ee",
+        "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+        "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "原罐与纸巾盒仍在，额外浅色球状实体出现并独立运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C05_p1_s0/witness.jpg",
+          "sha256": "9c8b4fe06040cb0fc33978b14aa9d273a77ab4c3f033a0e0a5c6314e5341d981",
+          "frames": [
+            2,
+            3,
+            8
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C01_p2_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C01",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "0a33baf36a9521f9181ffe7f2e304dd1b1e594d3f4ef802f356109b15f7247a6",
+      "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+      "condition_frame_index": 0,
+      "prompt_sha256": "1504421845396c5cd3c004fb197c61b987dd64b337231569681a96aea2c0a0ef",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "4ac043398567df141487dcd505e0b1ad122e006037fcce2f4c96fcb6329a7758",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "0a33baf36a9521f9181ffe7f2e304dd1b1e594d3f4ef802f356109b15f7247a6",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C01_p2_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C01_p2_s0/video.mp4",
+        "sha256": "0a33baf36a9521f9181ffe7f2e304dd1b1e594d3f4ef802f356109b15f7247a6",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "1504421845396c5cd3c004fb197c61b987dd64b337231569681a96aea2c0a0ef",
+        "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+        "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "画面中出现从桌边进入的长条/棒状外来实体，随后分裂/新增球状物，无法保持原罐身份。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C01_p2_s0/witness.jpg",
+          "sha256": "d0d85c1eb4ba93c44f025b339a0f88d6ed34b466205b1f8c02128661230fc26a",
+          "frames": [
+            2,
+            3,
+            8
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C02_p2_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "17874514b96dbfa12c8fc1e04e8c13e247c168bb245f376a0f28d6c8f842e3bc",
+      "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+      "condition_frame_index": 0,
+      "prompt_sha256": "22fbbf617a97dcc62424e5ff3a24d1fc167c6c477d701d6c0ceab87d0190b8d6",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "32597f0159d4c53efe9c17c6171434cb4e6b16b76bde1ccba92cf3318b2075c7",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "17874514b96dbfa12c8fc1e04e8c13e247c168bb245f376a0f28d6c8f842e3bc",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C02_p2_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C02_p2_s0/video.mp4",
+        "sha256": "17874514b96dbfa12c8fc1e04e8c13e247c168bb245f376a0f28d6c8f842e3bc",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "22fbbf617a97dcc62424e5ff3a24d1fc167c6c477d701d6c0ceab87d0190b8d6",
+        "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+        "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "body_duplication",
+        "event_label": null,
+        "reason": "原罐形变成长串/螺旋状实体，另有独立小物体/红色碎片在桌面和纸巾盒附近运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C02_p2_s0/witness.jpg",
+          "sha256": "9ba29adcb741132da299447fa3b9055667a7dfecec44800f738fe4aa78a76526",
+          "frames": [
+            16,
+            17,
+            18
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C03_p2_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "8c8f5ec9d0c0a22a35a5145611518391ba4b8ba0e0c9dc823c452dc4e0d5be7f",
+      "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+      "condition_frame_index": 0,
+      "prompt_sha256": "1504421845396c5cd3c004fb197c61b987dd64b337231569681a96aea2c0a0ef",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "477101786ccc5eb2d448677f9a65578bd5221ed8a0b8adea648ea696eac295ce",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "8c8f5ec9d0c0a22a35a5145611518391ba4b8ba0e0c9dc823c452dc4e0d5be7f",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C03_p2_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C03_p2_s0/video.mp4",
+        "sha256": "8c8f5ec9d0c0a22a35a5145611518391ba4b8ba0e0c9dc823c452dc4e0d5be7f",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "1504421845396c5cd3c004fb197c61b987dd64b337231569681a96aea2c0a0ef",
+        "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+        "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C03_p2_s0/witness.jpg",
+          "sha256": "2919fa8e9b9e8ca17f5ec34fe7a23b6621b579aa7bc358216d7184b77ce830da",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C04_p2_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "49e03bb4d212b2e6ba62d28b21e948316138f44c07d9acafe0fb1a7fd417072f",
+      "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+      "condition_frame_index": 0,
+      "prompt_sha256": "22fbbf617a97dcc62424e5ff3a24d1fc167c6c477d701d6c0ceab87d0190b8d6",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "a1956cf34cb9873521cde5009d0551c69f897a073e3ed83cc7ccc0b4b64c8f40",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "49e03bb4d212b2e6ba62d28b21e948316138f44c07d9acafe0fb1a7fd417072f",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C04_p2_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C04_p2_s0/video.mp4",
+        "sha256": "49e03bb4d212b2e6ba62d28b21e948316138f44c07d9acafe0fb1a7fd417072f",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "22fbbf617a97dcc62424e5ff3a24d1fc167c6c477d701d6c0ceab87d0190b8d6",
+        "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+        "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C04_p2_s0/witness.jpg",
+          "sha256": "deb78cd494b03e10fbeef2f912668275f60e8a075a98b12b47ef9b05610105cf",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C05_p2_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 2,
+      "video_sha256": "94d0d1f760527bcc21597436e8ecaf1a6208196303b7a4b8809475a2d1d9ad86",
+      "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+      "condition_frame_index": 0,
+      "prompt_sha256": "2644eae2164adb92027c6d66aa1daf3dcb2eb82180027a46443555fd501bf50e",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "0c4a03475bc87d564a934a607c7cfa21ab88ed267fd79bbd479cf4496edf0f83",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "94d0d1f760527bcc21597436e8ecaf1a6208196303b7a4b8809475a2d1d9ad86",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C05_p2_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C05_p2_s0/video.mp4",
+        "sha256": "94d0d1f760527bcc21597436e8ecaf1a6208196303b7a4b8809475a2d1d9ad86",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "2644eae2164adb92027c6d66aa1daf3dcb2eb82180027a46443555fd501bf50e",
+        "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+        "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。罐最终呈端面/球状，身份及接触证据仍有歧义。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C05_p2_s0/witness.jpg",
+          "sha256": "2c964da18c5a5e22f0949fcbb1845a6fbfd260074dfbae92b47189bde65ada26",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C01_p3_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C01",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "ea9fea409115a185a10c342cf66e0dc4685fc44bde373e42d3155430cc9483bb",
+      "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+      "condition_frame_index": 0,
+      "prompt_sha256": "d95b2d42d72867abc97f9a6c64b8246859b1af710999b4d91d8deef9d472a582",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "4ac043398567df141487dcd505e0b1ad122e006037fcce2f4c96fcb6329a7758",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "ea9fea409115a185a10c342cf66e0dc4685fc44bde373e42d3155430cc9483bb",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C01_p3_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C01_p3_s0/video.mp4",
+        "sha256": "ea9fea409115a185a10c342cf66e0dc4685fc44bde373e42d3155430cc9483bb",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "d95b2d42d72867abc97f9a6c64b8246859b1af710999b4d91d8deef9d472a582",
+        "condition_sha256": "de5d3a60720ec2dce327b85203c7a9a3240eba05f5abb4a6fe54e99e5cb0dceb",
+        "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "extra_body",
+        "event_label": null,
+        "reason": "画面中出现从桌边进入的长条/棒状外来实体，随后分裂/新增球状物，无法保持原罐身份。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C01_p3_s0/witness.jpg",
+          "sha256": "a1b5aac91d74ffd0f90dfe228404a5a47afe267d2cbba0be0b4863724e3026fb",
+          "frames": [
+            2,
+            3,
+            8
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C02_p3_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C02",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "5fd5a13fd56ca5967ecbd734c553241502680960469e732e67a2c792c6faa44c",
+      "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+      "condition_frame_index": 0,
+      "prompt_sha256": "fc966291fcddadbd4edb524ad66f7723f23063662f71ebd0df0dab2a37bdaf9d",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "32597f0159d4c53efe9c17c6171434cb4e6b16b76bde1ccba92cf3318b2075c7",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "5fd5a13fd56ca5967ecbd734c553241502680960469e732e67a2c792c6faa44c",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C02_p3_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C02_p3_s0/video.mp4",
+        "sha256": "5fd5a13fd56ca5967ecbd734c553241502680960469e732e67a2c792c6faa44c",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "fc966291fcddadbd4edb524ad66f7723f23063662f71ebd0df0dab2a37bdaf9d",
+        "condition_sha256": "d96f4f9b7008d935ac1224ac7d3781802c6eee348d64bd097c830d1226a1f480",
+        "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "body_duplication",
+        "event_label": null,
+        "reason": "原罐形变成长串/螺旋状实体，另有独立小物体/红色碎片在桌面和纸巾盒附近运动。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C02_p3_s0/witness.jpg",
+          "sha256": "7f3f330662836b844c3944e880a0c84a5630579caee2473a30d76ba50ed2dd97",
+          "frames": [
+            16,
+            17,
+            18
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C03_p3_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C03",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "756e215aafa315634f0af8088ed527b7563a4a18549cb555d44fd71ed6bef7f4",
+      "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+      "condition_frame_index": 0,
+      "prompt_sha256": "d95b2d42d72867abc97f9a6c64b8246859b1af710999b4d91d8deef9d472a582",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "477101786ccc5eb2d448677f9a65578bd5221ed8a0b8adea648ea696eac295ce",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "756e215aafa315634f0af8088ed527b7563a4a18549cb555d44fd71ed6bef7f4",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C03_p3_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C03_p3_s0/video.mp4",
+        "sha256": "756e215aafa315634f0af8088ed527b7563a4a18549cb555d44fd71ed6bef7f4",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "d95b2d42d72867abc97f9a6c64b8246859b1af710999b4d91d8deef9d472a582",
+        "condition_sha256": "c8098ee682088c1f9a0c2567c03279be56ea84de1704990921e34f18349bb96c",
+        "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "event_label": "uncertain",
+        "failure_type": "extra_body",
+        "reason": "Native frames 2 (0.0833 s) and 4 (0.1667 s) introduce a red rod/hand-like actor and a separate white airborne object while the original can remains visible. Definite foreign-object intrusion; physical contact remains unresolved and is not inferred."
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C03_p3_s0/witness.jpg",
+          "sha256": "becdf2f98d492e787c29df298b6676be98c5168fb0ea0b93187d71ff37bc8c19",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        },
+        {
+          "path": "resources/scoped_native_review_20261102/T19_C03_p3_intrusion_frames0_5.jpg",
+          "sha256": "941a871edebb623188f7b79686b1a205cf036ede46ef72b451726fc95c729a09",
+          "frames": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "scope": "Consecutive full native frames 0 through 5; no interpolation or generated enhancement."
+        }
+      ],
+      "review_addendum": {
+        "previous_registry_sha256": "bdf4517d142906e2fdb82bc4fc8aa6c417de5c1e457c7bbd43d2e8c1f24dde4e",
+        "reason": "Full consecutive-frame re-review found transient intrusion missed by sparse overview",
+        "original_event_label_not_replaced": true
+      }
+    },
+    {
+      "id": "core100_t19_v1_T19_C04_p3_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C04",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "f31fd7b2ccfa78b9bc51c491f6c7c364c59e15b187a32b8bc6d1f5034fc2cc5a",
+      "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+      "condition_frame_index": 0,
+      "prompt_sha256": "fc966291fcddadbd4edb524ad66f7723f23063662f71ebd0df0dab2a37bdaf9d",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "a1956cf34cb9873521cde5009d0551c69f897a073e3ed83cc7ccc0b4b64c8f40",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "f31fd7b2ccfa78b9bc51c491f6c7c364c59e15b187a32b8bc6d1f5034fc2cc5a",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C04_p3_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C04_p3_s0/video.mp4",
+        "sha256": "f31fd7b2ccfa78b9bc51c491f6c7c364c59e15b187a32b8bc6d1f5034fc2cc5a",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "fc966291fcddadbd4edb524ad66f7723f23063662f71ebd0df0dab2a37bdaf9d",
+        "condition_sha256": "a0ab5c2c8df418a493d1bcb9b6d4464e69aa406c43777f1902c9d41240af6d1b",
+        "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "pass",
+        "event_label": "uncertain",
+        "pending_reason": "native_grazing_contact_unresolved",
+        "reason": "罐移近纸巾盒后几乎停住；原生分辨率局部放大仍无法排除投影近邻/轻微间隙，不能把靠近或轮廓相邻认作真实物理接触。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C04_p3_s0/witness.jpg",
+          "sha256": "f9dc568694d59482c7a8bf2ad33deb05cb54ceb56ab58cfb54bfcdf118b0b363",
+          "frames": [
+            5,
+            10,
+            20
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    },
+    {
+      "id": "core100_t19_v1_T19_C05_p3_s0",
+      "kind": "supplemental_generation",
+      "clip_id": "T19_C05",
+      "model": "Cosmos3-Nano",
+      "seed": 0,
+      "prompt_variant": 3,
+      "video_sha256": "6943005c5368cd05fc6031b5b27f6af21da749274425b0964e02e783a7f9faf9",
+      "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "reference_release_version": "core100-t19-isaac-v1-20261031",
+      "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+      "condition_frame_index": 0,
+      "prompt_sha256": "4b5db334d86029c9c0c924f8c59cd815abfa71570b334ab4e21436f583a1695a",
+      "target_event": "striker_target_contact",
+      "horizon_s": 6.966666666666667,
+      "end_frame": 167,
+      "protocol_sha256": "0c4a03475bc87d564a934a607c7cfa21ab88ed267fd79bbd479cf4496edf0f83",
+      "event_definition_sha256": "a6c15d6c88de6a4a39f753b140f2c0cf3025c19b02467f5335e6535276b8a58d",
+      "media": {
+        "sha256": "6943005c5368cd05fc6031b5b27f6af21da749274425b0964e02e783a7f9faf9",
+        "frames": 189,
+        "fps": 24.0
+      },
+      "generation_receipt": {
+        "sample_id": "core100_t19_v1_T19_C05_p3_s0",
+        "video": "/data/yangkaiyuan/core100_t19_cosmos3_20261031/generated/core100_t19_v1_T19_C05_p3_s0/video.mp4",
+        "sha256": "6943005c5368cd05fc6031b5b27f6af21da749274425b0964e02e783a7f9faf9",
+        "frames": 189,
+        "fps": 24,
+        "prompt_sha256": "4b5db334d86029c9c0c924f8c59cd815abfa71570b334ab4e21436f583a1695a",
+        "condition_sha256": "1f01fc7ca633a754ec09ac117b5cd39cc73d121c047633bd6c0f7475d66f7931",
+        "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+        "reference_release_version": "core100-t19-isaac-v1-20261031",
+        "event_annotations": "not_yet_reviewed",
+        "old_human_labels_reused": false
+      },
+      "generation_parameters": {
+        "num_frames": 189,
+        "output_fps": 24.0,
+        "cosmos_num_inference_steps": 35,
+        "cosmos_guidance_scale": 6.0,
+        "gen_width": 832,
+        "gen_height": 480
+      },
+      "reviewer_type": "Codex_visual_review_not_independent_human_gold",
+      "decision": {
+        "quality": "failure",
+        "failure_type": "body_duplication",
+        "event_label": null,
+        "reason": "桌上罐状实体和纸巾盒仍在，桌下另出现持续运动的浅色实体，存在新增/重复物体。"
+      },
+      "artifacts": [
+        {
+          "path": "resources/scoped_native_review_20261101/core100_t19_v1_T19_C05_p3_s0/witness.jpg",
+          "sha256": "73d297ab9ba87eff8dfc8efa1b1b505254eb6991ef04ab72401c5e3327668869",
+          "frames": [
+            140,
+            141,
+            142
+          ],
+          "scope": "Native frame crop. No interpolation or AI enhancement; enlargement only."
+        }
+      ]
+    }
+  ],
+  "original_labels_modified": false,
+  "old_generation_parameters_modified": false,
+  "hf_uploads": 0,
+  "source_manifest_sha256": "67e9e4f22aef468f9b136947a28ac65e81fac0d4ceedf0faaa9d7d5c9c4a8aeb",
+  "source_protocols": {
+    "T19_C01": {
+      "version": "core100-t19-isaac-v1-20261031-T19_C01",
+      "status": "frozen",
+      "actors": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "formal_score_event_ids": [
+        "source_motion",
+        "striker_target_contact"
+      ],
+      "required_order": [
+        [
+          "source_motion",
+          "striker_target_contact"
+        ]
+      ],
+      "condition_frame_index": 0,
+      "end_frame_index": 209,
+      "horizon_s": 6.966666666666667,
+      "events": {
+        "source_motion": {
+          "definition": "Striker exhibits physical motion in the observation window."
+        },
+        "striker_target_contact": {
+          "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+          "time_semantics": "ever"
+        }
+      },
+      "reference_video_sha256": "c67c37ff0ca82df43878d9edf9cf6b4c34a807371396a74c9044bb39ab2ef1e2",
+      "target_truth_source": "original_isaac_native_contact_qa",
+      "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+    },
+    "T19_C02": {
+      "version": "core100-t19-isaac-v1-20261031-T19_C02",
+      "status": "frozen",
+      "actors": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "formal_score_event_ids": [
+        "source_motion",
+        "striker_target_contact"
+      ],
+      "required_order": [
+        [
+          "source_motion",
+          "striker_target_contact"
+        ]
+      ],
+      "condition_frame_index": 0,
+      "end_frame_index": 209,
+      "horizon_s": 6.966666666666667,
+      "events": {
+        "source_motion": {
+          "definition": "Striker exhibits physical motion in the observation window."
+        },
+        "striker_target_contact": {
+          "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+          "time_semantics": "ever"
+        }
+      },
+      "reference_video_sha256": "1bcfcfbb414777e602c7ff1dd284fe964de5063f5bc00933d2d983f15fcbd8f9",
+      "target_truth_source": "original_isaac_native_contact_qa",
+      "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+    },
+    "T19_C03": {
+      "version": "core100-t19-isaac-v1-20261031-T19_C03",
+      "status": "frozen",
+      "actors": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "formal_score_event_ids": [
+        "source_motion",
+        "striker_target_contact"
+      ],
+      "required_order": [
+        [
+          "source_motion",
+          "striker_target_contact"
+        ]
+      ],
+      "condition_frame_index": 0,
+      "end_frame_index": 209,
+      "horizon_s": 6.966666666666667,
+      "events": {
+        "source_motion": {
+          "definition": "Striker exhibits physical motion in the observation window."
+        },
+        "striker_target_contact": {
+          "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+          "time_semantics": "ever"
+        }
+      },
+      "reference_video_sha256": "acc00df356e9b6285dcdeb6e4807db3064c19f20d12e3dca8a02da9ff0a70337",
+      "target_truth_source": "original_isaac_native_contact_qa",
+      "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+    },
+    "T19_C04": {
+      "version": "core100-t19-isaac-v1-20261031-T19_C04",
+      "status": "frozen",
+      "actors": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "formal_score_event_ids": [
+        "source_motion",
+        "striker_target_contact"
+      ],
+      "required_order": [
+        [
+          "source_motion",
+          "striker_target_contact"
+        ]
+      ],
+      "condition_frame_index": 0,
+      "end_frame_index": 209,
+      "horizon_s": 6.966666666666667,
+      "events": {
+        "source_motion": {
+          "definition": "Striker exhibits physical motion in the observation window."
+        },
+        "striker_target_contact": {
+          "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+          "time_semantics": "ever"
+        }
+      },
+      "reference_video_sha256": "4892e245123ef225c9a5f70178bdc6b3c8a462ffd711e4e6f36c793b8078aec1",
+      "target_truth_source": "original_isaac_native_contact_qa",
+      "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+    },
+    "T19_C05": {
+      "version": "core100-t19-isaac-v1-20261031-T19_C05",
+      "status": "frozen",
+      "actors": [
+        "t19_striker",
+        "t19_target"
+      ],
+      "formal_score_event_ids": [
+        "source_motion",
+        "striker_target_contact"
+      ],
+      "required_order": [
+        [
+          "source_motion",
+          "striker_target_contact"
+        ]
+      ],
+      "condition_frame_index": 0,
+      "end_frame_index": 209,
+      "horizon_s": 6.966666666666667,
+      "events": {
+        "source_motion": {
+          "definition": "Striker exhibits physical motion in the observation window."
+        },
+        "striker_target_contact": {
+          "definition": "At least one physical contact between the striker can and tissue-box target in the full window. Projection overlap alone is insufficient.",
+          "time_semantics": "ever"
+        }
+      },
+      "reference_video_sha256": "ed363078b380d3cfa2cddc73c5ca53a37611ca51cd8ba3f893e2560011461005",
+      "target_truth_source": "original_isaac_native_contact_qa",
+      "uncertainty_policy": "Generated identity failure remains in denominator; uncertain grazing contact is referred for manual review."
+    }
+  },
+  "status": "27 scoped observations; 18 evidenced quality failures, 9 unresolved; native-frame intrusion addendum 20261102"
+}

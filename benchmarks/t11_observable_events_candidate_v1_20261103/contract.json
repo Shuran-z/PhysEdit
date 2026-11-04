@@ -1,0 +1,103 @@
+{
+  "version": "t11-observable-events-candidate-v1",
+  "status": "candidate_not_active",
+  "events": {
+    "t11_driver_eraser_contacts_t11_relay_pencil_case": {
+      "name": "橡皮撞到笔盒",
+      "actors": [
+        "t11_driver_eraser",
+        "t11_relay_pencil_case"
+      ],
+      "time_semantics": "ever_first_confirmed_contact",
+      "definition": "The two named original objects physically collide within the observation window. Use contact geometry and temporally consistent motion; proximity or image overlap alone is insufficient."
+    },
+    "t11_relay_pencil_case_contacts_t11_eyeglasses_case": {
+      "name": "笔盒撞到眼镜盒",
+      "actors": [
+        "t11_relay_pencil_case",
+        "t11_eyeglasses_case"
+      ],
+      "time_semantics": "ever_first_confirmed_contact",
+      "definition": "The two named original objects physically collide within the observation window. Use contact geometry and temporally consistent motion; proximity or image overlap alone is insufficient."
+    },
+    "t11_driver_eraser_edge_fall_begins": {
+      "name": "指定物体越过桌缘并开始跌落",
+      "actors": [
+        "t11_driver_eraser",
+        "t11_tabletop_collision_slab"
+      ],
+      "time_semantics": "ever_event_transition",
+      "definition": "The named original object initially has tabletop support, passes the tabletop edge, loses support, and is visibly moving down beside the tabletop. Assess the transition, not its location in the final frame. Continued edge support, a stable overhang, disappearance, occlusion or leaving the image alone is insufficient. Floor impact is not required.",
+      "positive_evidence": "Identify the same object before and after support loss, the tabletop edge, and downward motion after crossing that edge.",
+      "negative_evidence": "Observe the complete registered window with a continuous usable track; the required edge-fall transition never occurs.",
+      "unknown_evidence": "The relevant transition is hidden, the track is lost, or the clip ends before the transition can be established."
+    },
+    "t11_driver_eraser_contacts_floor": {
+      "name": "指定物体接触地面",
+      "actors": [
+        "t11_driver_eraser",
+        "t11_floor_collision_slab"
+      ],
+      "time_semantics": "ever_first_confirmed_contact",
+      "definition": "Actual floor contact by the same named original object is visible. Falling below the tabletop or leaving the image does not establish floor contact.",
+      "role": "optional_visible_extension"
+    },
+    "t11_relay_pencil_case_edge_fall_begins": {
+      "name": "指定物体越过桌缘并开始跌落",
+      "actors": [
+        "t11_relay_pencil_case",
+        "t11_tabletop_collision_slab"
+      ],
+      "time_semantics": "ever_event_transition",
+      "definition": "The named original object initially has tabletop support, passes the tabletop edge, loses support, and is visibly moving down beside the tabletop. Assess the transition, not its location in the final frame. Continued edge support, a stable overhang, disappearance, occlusion or leaving the image alone is insufficient. Floor impact is not required.",
+      "positive_evidence": "Identify the same object before and after support loss, the tabletop edge, and downward motion after crossing that edge.",
+      "negative_evidence": "Observe the complete registered window with a continuous usable track; the required edge-fall transition never occurs.",
+      "unknown_evidence": "The relevant transition is hidden, the track is lost, or the clip ends before the transition can be established."
+    },
+    "t11_relay_pencil_case_contacts_floor": {
+      "name": "指定物体接触地面",
+      "actors": [
+        "t11_relay_pencil_case",
+        "t11_floor_collision_slab"
+      ],
+      "time_semantics": "ever_first_confirmed_contact",
+      "definition": "Actual floor contact by the same named original object is visible. Falling below the tabletop or leaving the image does not establish floor contact.",
+      "role": "optional_visible_extension"
+    },
+    "t11_eyeglasses_case_edge_fall_begins": {
+      "name": "指定物体越过桌缘并开始跌落",
+      "actors": [
+        "t11_eyeglasses_case",
+        "t11_tabletop_collision_slab"
+      ],
+      "time_semantics": "ever_event_transition",
+      "definition": "The named original object initially has tabletop support, passes the tabletop edge, loses support, and is visibly moving down beside the tabletop. Assess the transition, not its location in the final frame. Continued edge support, a stable overhang, disappearance, occlusion or leaving the image alone is insufficient. Floor impact is not required.",
+      "positive_evidence": "Identify the same object before and after support loss, the tabletop edge, and downward motion after crossing that edge.",
+      "negative_evidence": "Observe the complete registered window with a continuous usable track; the required edge-fall transition never occurs.",
+      "unknown_evidence": "The relevant transition is hidden, the track is lost, or the clip ends before the transition can be established."
+    },
+    "t11_eyeglasses_case_contacts_floor": {
+      "name": "指定物体接触地面",
+      "actors": [
+        "t11_eyeglasses_case",
+        "t11_floor_collision_slab"
+      ],
+      "time_semantics": "ever_first_confirmed_contact",
+      "definition": "Actual floor contact by the same named original object is visible. Falling below the tabletop or leaving the image does not establish floor contact.",
+      "role": "optional_visible_extension"
+    }
+  },
+  "primary_outcome_candidates": [
+    "t11_driver_eraser_edge_fall_begins",
+    "t11_relay_pencil_case_edge_fall_begins",
+    "t11_eyeglasses_case_edge_fall_begins"
+  ],
+  "initial_primary_outcome": "t11_driver_eraser_edge_fall_begins",
+  "causal_chain": [
+    "t11_driver_eraser_contacts_t11_relay_pencil_case",
+    "t11_relay_pencil_case_contacts_t11_eyeglasses_case"
+  ],
+  "causal_scope": "Contact order and each object fall outcome are separate. Contacts in the expected order alone do not prove causal attribution or a complete chain.",
+  "uncertainty_policy": "Use yes/no/unknown per event with evidence times. Occlusion is not nonoccurrence. Identity failure follows the separate quality router and stays in the overall denominator.",
+  "migration": "New event IDs require fresh labels and event-matched boundary readback; old final-world-z labels/thresholds are never copied by name."
+}

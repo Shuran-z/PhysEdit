@@ -66,7 +66,9 @@ python physedit/tools/prepare_core100_current.py --output ./core100_inputs
 
 ## 原始配置下载
 
-全量逐视频配置登记在 `physedit/catalog/config_bindings.jsonl.gz`，用 `canonical_video_id` 对应视频。`VERIFIED` 表示原始配置字节已核验，`config_download` 给出固定提交、归档成员和原始配置SHA256；未核实的记录明确标为 `UNRESOLVED`，不以参数表代替。
+全量逐视频配置登记在 `physedit/catalog/config_bindings.jsonl.gz`，用 `canonical_video_id` 对应视频。`VERIFIED` 表示原始配置或明确标明类型的原始生成输入记录已核验，`config_download` 给出固定提交、归档成员和原始配置SHA256；未核实的记录明确标为 `UNRESOLVED`，不以参数表代替。
+
+其中 T14 的924条 Isaac 视频使用原始生成矩阵记录（`config_document_type=original_generation_matrix_record`），不是独立配置文件。下载JSON保留原矩阵行的原始字节；配套原始矩阵、渲染脚本及启动脚本见 `physedit/provenance/t14s_original_inputs/`。另36条补生成视频使用已登记SHA256一致的原始执行任务JSON（`original_render_job_record`）。固定渲染器参数保留在脚本中；不把后期参数表拼成原始配置。
 
 下载并解压本说明第2步的最新元数据包后，按视频编号导出原始配置：
 
@@ -76,4 +78,6 @@ python physedit/tools/download_original_configs.py --video-id physedit_genesis_t
 
 得到 `dataset/configs/T03/physedit_genesis_t03_7b11b86fe8ac0134__cam01.json`。也可用 `--scene T03` 按场景导出；命令会检查请求的配置是否全部可用并逐条校验SHA256。
 
-本轮检查72,000条：已核实配置绑定 47,252 条，待补 24,748 条；逐条缺口在 `physedit/checks/unresolved_configs.jsonl.gz`。先前抽查的4条缺口已全部补齐。
+本轮检查72,000条：已核实配置绑定 69,360 条，待补 2,640 条；逐条缺口在 `physedit/checks/unresolved_configs.jsonl.gz`。先前抽查的4条缺口已全部补齐。
+
+本次追溯纠正了399条T04的来源类型：它们只有元数据转换副本，单列在配置绑定表的 `auxiliary_config` 中，不算原始配置已找回。原始配置缺口为T04 2,628条、T01 12条；视频及训练资格不受影响。原日志与回执的哈希及来源逐条见 `physedit/checks/CONFIG_SOURCE_TRACE.jsonl.gz`。

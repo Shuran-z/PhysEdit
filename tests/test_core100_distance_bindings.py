@@ -90,7 +90,9 @@ def test_original_late_gate_event_recovers_boundary_and_requires_original_window
 
 def test_no_flip_is_not_an_exclusion_and_original_axes_are_preserved():
     data=bindings.load();by={r['clip_id']:r for r in data['cases']}
-    assert by['T06_C02']['status']=='incomplete'
+    # A later original-axis search may recover a boundary. A finite no-flip
+    # diagnostic must never turn into permanent exclusion of the case.
+    assert by['T06_C02']['status'] in ('incomplete','distance_ready')
     assert by['T06_C02']['ordinary_event_denominator_retained']
     assert by['T05_C01']['parameter']=='phone_tray_friction_coefficient'
     assert by['T05_C01']['theta']==.049
@@ -108,3 +110,58 @@ def test_original_calibration_value_is_recovered_without_inventing_bracket():
     assert new['boundary']['status']=='recorded_reference'
     from physedit.boundary import distance
     assert distance(new)['bin']is None
+
+
+def test_missing_boundary_for_one_event_is_not_an_exclusion_or_another_event_score():
+    import copy
+    data=copy.deepcopy(bindings.load())
+    row=next(r for r in data['cases']if r['clip_id']=='T06_C04')
+    row['reference_events']['retained_legacy_event']=0
+    answer=dict(point_id='T06_C04',target_event='retained_legacy_event',events={'retained_legacy_event':0})
+    new=bindings.bind_answer(answer,reference_video_sha256=row['reference_video_sha256'],
+        horizon_s=row['horizon_s'],registry=data)
+    assert new['boundary']['status']=='unavailable'
+    assert new['events']==answer['events']
+    from physedit.boundary import distance
+    assert distance(new)['bin'] is None
+
+
+def test_supplemental_axis_does_not_hide_a_completed_original_primary_axis():
+    import copy
+    data=copy.deepcopy(bindings.load());row=next(r for r in data['cases']if r['clip_id']=='T06_C04')
+    row['conditional_axes']={'other_direction':dict(parameter='other_direction',theta=42.)}
+    answer=dict(point_id=row['clip_id'],target_event='complete_required_contact_chain',
+        events={'complete_required_contact_chain':0},theta=row['theta'])
+    kwargs=dict(reference_video_sha256=row['reference_video_sha256'],horizon_s=row['horizon_s'],registry=data)
+    with pytest.raises(ValueError,match='axis_required'):bindings.bind_answer(answer,**kwargs)
+    result=bindings.bind_answer(answer,axis=row['parameter'],**kwargs)
+    assert result['theta']==row['theta'] and result['boundary_axis']==row['parameter']
+    from physedit.boundary import distance
+    assert distance(result)['bin']=='mid'
+
+
+def test_supplemental_only_boundary_does_not_complete_original_family():
+    row=dict(status='distance_ready', boundary_records=[], conditional_axes={
+        'force':dict(boundary_records=[{}], binding_kind='verified_supplemental_conditional_local_search')})
+    assert not bindings.original_family_reference_ready(row)
+    row['conditional_axes']['original_gap']=dict(boundary_records=[{}],
+        binding_kind='original_physics_completed_probe_local_intervals')
+    assert bindings.original_family_reference_ready(row)
+
+
+def test_original_family_summary_accounts_for_all_registered_cases():
+    data=bindings.load()
+    expected=[r['clip_id']for r in data['cases']if not bindings.original_family_reference_ready(r)]
+    assert data['original_family_pending']==expected
+    assert data['summary']['original_family_incomplete']==len(expected)
+    assert data['summary']['original_family_distance_ready']+len(expected)==100
+
+
+def test_independent_axis_through_a_global_source_does_not_complete_its_joint_family():
+    row=dict(status='distance_ready',parameter='joint_global_configuration',
+        boundary_records=[],conditional_axes={'case_edge_margin_m':dict(
+            boundary_records=[{}],binding_kind='original_physics_completed_probe_local_intervals')})
+    assert not bindings.original_family_reference_ready(row)
+    row['conditional_axes']['original_G_global_path']=dict(boundary_records=[{}],
+        original_registered_family='joint_global_configuration')
+    assert bindings.original_family_reference_ready(row)

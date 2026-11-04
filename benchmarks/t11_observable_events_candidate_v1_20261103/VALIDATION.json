@@ -1,0 +1,41 @@
+{
+  "status": "candidate_protocol_prepared_not_active",
+  "references_relabelled": 5,
+  "new_simulations": 0,
+  "new_event_contrast": {
+    "event": "t11_driver_eraser_edge_fall_begins",
+    "clips": [
+      "T11_C01",
+      "T11_C02"
+    ],
+    "parameter": "driver_initial_speed_command_mps",
+    "bracket": [
+      2.3,
+      2.5
+    ],
+    "endpoint_labels": [
+      0,
+      1
+    ],
+    "normalization_domain": [
+      1.8,
+      3.6
+    ],
+    "source": "New predicate evaluated independently on both original published states; no old height-rule labels copied.",
+    "exact_root_claimed": false,
+    "formal_rgb_distance_admitted": false,
+    "limitation": "Stage the contrast only. Fresh image-event review and versioned scoring migration are required; fine intervals from the old predicate are not transferred."
+  },
+  "checks": {
+    "command": "pytest tests/test_t11_visual_events.py tests/test_core100_critical.py -q",
+    "passed": 30,
+    "failed": 0,
+    "elapsed_s": 26.94
+  },
+  "active_registry_unchanged": true,
+  "source_inputs_old_labels_and_model_scores_unchanged": true,
+  "remaining": [
+    "Re-read original-family scan states using the new event; do not reuse old height-rule fine boundaries.",
+    "Complete full-window RGB negative-reference review and migrate event annotations/scoring as a new version before publishing new scores."
+  ]
+}

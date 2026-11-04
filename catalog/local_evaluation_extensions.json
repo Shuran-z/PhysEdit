@@ -1,0 +1,20 @@
+{
+  "extensions": [
+    {
+      "version": "t11-visible-events-v1-20261102",
+      "status": "active_local_supplement_ready_for_review",
+      "scope": "T11_observable_events_separate_from_legacy_numeric_scores",
+      "registry": "review/all20_completion_20261101/camera_rule_fix_20261102/t11_visible/REGISTRY.json",
+      "registry_sha256": "400ea048ede0d6a7d0596e2feca3fb536a12bc4df92d42a070065ca690b9afb3",
+      "protocol_sha256": "8e9fbf6ecb7338de79a17ffc42175341afd1883f3b3836e05d27c54dcb2bdbb3",
+      "scoring_command": ".venv/Scripts/python.exe scripts/t11_visible_evaluation.py --out review/all20_completion_20261101/camera_rule_fix_20261102/t11_visible --reviews review/all20_completion_20261101/t11_execution_20261102/OBSERVATIONS_COSMOS15_H3_FIRST3.json --artifact-root review",
+      "original_formal_results_unchanged": true,
+      "website_deployed": false,
+      "results_current": "review/all20_completion_20261101/t11_execution_20261102/RESULTS_WITH_REUSED_LABELS.json",
+      "report_current": "review/all20_completion_20261101/t11_execution_20261102/CURRENT_REPORT.html",
+      "scored_event_slots": 303,
+      "complete_outputs": 54,
+      "reuse_command": ".venv/Scripts/python.exe scripts/reuse_t11_visible_labels.py"
+    }
+  ]
+}

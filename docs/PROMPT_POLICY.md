@@ -18,6 +18,20 @@ See `core100_generation_input_bindings.jsonl` for the current input bindings.
 Historical version-specific scores and fixed protocol files remain provenance;
 the statements below describing default v7 use are historical and superseded.
 
+## Current semantic repair and H3 binding (2026-11-02)
+
+The active 72,000-video prompt entry is `../prompts_72000_unified/CURRENT_AUDITED_PROMPTS.json`.
+HF revision: `223aabbe11b3c0e4f739374430269e144853aa24`; policy: `semantic-units-display-dedup-v2-20261102`.
+Use the version-bound English variants. All physical fact keys must have a reviewed dimensional type; unknown keys fail publication.
+Exact values remain in metadata. Display at most 8 significant digits or a shorter exact fraction, with relative error <=5e-8.
+Deduplicate only source-proven identical actor/property information; retain signs, axes, conditional controls and timing.
+Publication requires full source numeric, dimensional, display, clause coverage, tokenizer, Parquet and all 216,000 TXT export checks,
+followed by fresh remote byte/hash readback. Source producer regressions are covered in `tests/test_prompt_semantic_rules.py`.
+The current H3 run is `/data/yangkaiyuan/h3_prompt_retrain_semantic_v2_20261102`. Its model text is exactly the selected published variant; do not append a generic FPS sentence.
+Video/VAE features may be reused only with matching media/clock/preprocessing; conditioning reuse also requires byte-identical model input.
+The user chose to finish existing CogVideo validation before automatically starting the fresh H3 LoRA run.
+Frozen Core100 submitted inputs, old checkpoints and old feature directories remain provenance and are not rewritten.
+
 ---
 
 # Historical policy records (superseded defaults)

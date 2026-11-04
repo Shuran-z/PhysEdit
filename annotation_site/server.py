@@ -191,6 +191,9 @@ class Handler(BaseHTTPRequestHandler):
             self.admin()
             name='remaining50_recovery.csv' if p.endswith('.csv') else 'remaining50_recovery.json'
             return self.respond((RESOURCES/name).read_bytes(),ctype='text/csv; charset=utf-8' if name.endswith('.csv') else 'application/json; charset=utf-8')
+        if p=='/api/prompt-parameter-registration':
+            self.admin()
+            return self.respond((RESOURCES/'prompt_parameter_selection_registration.json').read_bytes(),ctype='application/json; charset=utf-8')
         if p=='/api/reference-window-admission':
             self.admin()
             return self.respond((RESOURCES/'reference_window_admission.json').read_bytes(),ctype='application/json; charset=utf-8')
@@ -204,10 +207,23 @@ class Handler(BaseHTTPRequestHandler):
                    '/api/near6-windows':'near6_windows72.json','/api/near6-windows.csv':'near6_windows72.csv','/api/t13-source-contacts':'t13_F5_source_contacts.json'}
             name=names[p]
             return self.respond((RESOURCES/name).read_bytes(),ctype='text/csv; charset=utf-8' if name.endswith('.csv') else 'application/json; charset=utf-8')
-        if p in ('/api/critical-results','/api/critical-results.csv','/api/critical-distances.csv','/api/critical-pairs.csv','/api/scoped-critical.csv','/api/critical-case-gaps.csv','/api/critical-window-gaps.csv'):
+        if p in ('/api/formal-boundary-results','/api/formal-boundary-models.csv','/api/formal-boundary-references.csv','/api/formal-boundary-outputs.csv'):
+            self.admin()
+            result=calculate_critical(self.server.store.all_tasks('formal3600_v1'))['formal_boundary_evaluation']
+            if p.endswith('.csv'):
+                key={'/api/formal-boundary-models.csv':'per_model','/api/formal-boundary-references.csv':'references','/api/formal-boundary-outputs.csv':'outputs'}[p]
+                return self.respond(critical_csv({'outputs':result[key]}),ctype='text/csv; charset=utf-8')
+            return self.respond(result)
+        if p in ('/api/critical-results','/api/critical-results.csv','/api/critical-distances.csv','/api/critical-pairs.csv','/api/scoped-critical.csv','/api/critical-case-gaps.csv','/api/critical-window-gaps.csv','/api/core100-connections.csv','/api/core100-connected-outputs.csv','/api/core100-connected-boundaries.csv','/api/formal-critical-references.csv','/api/formal-critical-outputs.csv'):
             self.admin()
             result=calculate_critical(self.server.store.all_tasks('formal3600_v1'))
             if p.endswith('.csv'):
+                if p in ('/api/core100-connections.csv','/api/core100-connected-outputs.csv','/api/core100-connected-boundaries.csv','/api/formal-critical-references.csv','/api/formal-critical-outputs.csv'):
+                    if p in ('/api/formal-critical-references.csv','/api/formal-critical-outputs.csv'):
+                        key='references' if p=='/api/formal-critical-references.csv' else 'outputs'
+                        return self.respond(critical_csv({'outputs':result['formal_critical_cohorts'][key]}),ctype='text/csv; charset=utf-8')
+                    key={'/api/core100-connections.csv':'cases','/api/core100-connected-outputs.csv':'outputs','/api/core100-connected-boundaries.csv':'boundaries'}[p]
+                    return self.respond(critical_csv({'outputs':result['core100_connection'][key]}),ctype='text/csv; charset=utf-8')
                 rows=result['execution_readiness']['cases'] if p=='/api/critical-case-gaps.csv' else result['execution_readiness']['physical_window_outputs'] if p=='/api/critical-window-gaps.csv' else result['admitted_cohort']['outputs'] if p=='/api/scoped-critical.csv' else result['distance_records'] if p=='/api/critical-distances.csv' else result['candidate_pairs'] if p=='/api/critical-pairs.csv' else result['outputs']
                 return self.respond(critical_csv({'outputs':rows}),ctype='text/csv; charset=utf-8')
             return self.respond(result)

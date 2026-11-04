@@ -1,7 +1,7 @@
 """Copy only requested config files after validating their registered raw hashes."""
-import hashlib,json,tarfile,io
+import hashlib,json,tarfile,io,os
 from pathlib import Path
-R=Path('/tmp/physedit_config_recovery_20261031')
+R=Path(os.environ.get('CONFIG_RECOVERY_DIR','/tmp/physedit_config_recovery_20261031'))
 R.mkdir(exist_ok=True)
 requests=json.loads((R/'REQUESTS.json').read_text())
 result=[];done=set()

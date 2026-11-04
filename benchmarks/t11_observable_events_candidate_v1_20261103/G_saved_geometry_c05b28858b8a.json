@@ -1,0 +1,563 @@
+{
+  "rows": [
+    {
+      "kind": "endpoint",
+      "theta": 0.388892197576643,
+      "stored_state_sha256": "d6c5b87c6cfb620162bd553e8b9c9acde3e34d391ed6274bf21d1f4c18e73c52",
+      "decoded_state_sha256": "86272c65b1990dd3bcfd2f5ab79769a341b6408854a3eec3d526b95109c8c8c3",
+      "pairs": [
+        {
+          "pair": [
+            "t11_relay_pencil_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.3419042229652405,
+          "saved_pose_peak": 0.0001659031957387952,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": true,
+          "pose_independent_loose_box_bound_m": 0.189
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "native_peak": 0.3451820909976959,
+          "saved_pose_peak": 0.00016620461642742612,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": true,
+          "pose_independent_loose_box_bound_m": 0.1745
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "native_peak": 9.201280772686005e-05,
+          "saved_pose_peak": 0.00011446353793144459,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1265
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.014468035660684109,
+          "saved_pose_peak": 0.0026156667135655842,
+          "peak_frame": 78,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1125
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.00516287237405777,
+          "saved_pose_peak": 0.0058288376085655486,
+          "peak_frame": 124,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.16049999999999998
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_floor_collision_slab"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.006132228299975395,
+          "saved_pose_peak": 0.010269702106993128,
+          "peak_frame": 109,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1925
+        },
+        {
+          "pair": [
+            "t11_floor_collision_slab",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.006576251238584518,
+          "saved_pose_peak": 0.007163954098755795,
+          "peak_frame": 123,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.20700000000000002
+        }
+      ],
+      "unsupported_pairs": [],
+      "all_saved_positions_finite": true,
+      "source_config_sha256": "b29290e59cd46b1f555517f809229ecbefbc6bbeb677dc9b4cd751dc63d821c7",
+      "original_experiment": {
+        "design_id": "G_global_06",
+        "boundary_role": "global_coverage",
+        "changed_variable": "joint_global_configuration",
+        "repeat": 1
+      }
+    },
+    {
+      "kind": "endpoint",
+      "theta": 0.389468606164474,
+      "stored_state_sha256": "518a786b9646cee5936138fe47ce9e2ecf2ec31b31cad47599171b559b433fa8",
+      "decoded_state_sha256": "8f6a877d3c0e3715112051f85bfdd677e33067ab1029883c759cc03a7f0524fe",
+      "pairs": [
+        {
+          "pair": [
+            "t11_relay_pencil_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.34168848395347595,
+          "saved_pose_peak": 0.0001659031957387952,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": true,
+          "pose_independent_loose_box_bound_m": 0.189
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "native_peak": 0.00011928379535675049,
+          "saved_pose_peak": 0.00016620461642742612,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1745
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "native_peak": 0.3557802140712738,
+          "saved_pose_peak": 0.0001450728129827536,
+          "peak_frame": 118,
+          "native_depth_incompatible_with_any_box_overlap": true,
+          "pose_independent_loose_box_bound_m": 0.1265
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.014200542122125626,
+          "saved_pose_peak": 0.0026559897214174233,
+          "peak_frame": 78,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1125
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.006361478939652443,
+          "saved_pose_peak": 0.009447287668698026,
+          "peak_frame": 124,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.16049999999999998
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_floor_collision_slab"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.006574064493179321,
+          "saved_pose_peak": 0.007482736048371297,
+          "peak_frame": 109,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1925
+        },
+        {
+          "pair": [
+            "t11_floor_collision_slab",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.005116799846291542,
+          "saved_pose_peak": 0.008364173717746073,
+          "peak_frame": 123,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.20700000000000002
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_floor_collision_slab"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.008613554760813713,
+          "saved_pose_peak": 0.016944791479132998,
+          "peak_frame": 152,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.14450000000000002
+        }
+      ],
+      "unsupported_pairs": [],
+      "all_saved_positions_finite": true,
+      "source_config_sha256": "80d525d7860e563dc3eeed7d6ca6da9603471f00eb7402026356657cef9b07cb",
+      "original_experiment": {
+        "design_id": "G_global_06",
+        "boundary_role": "global_coverage",
+        "changed_variable": "joint_global_configuration",
+        "repeat": 1
+      }
+    },
+    {
+      "kind": "frozen_reference",
+      "theta": null,
+      "stored_state_sha256": "1a4aec0200a4f573f6ea89a5dd2e7a2e05b3e11d1d278f29ec634130f0d407c2",
+      "decoded_state_sha256": "5b85b8a1071591267ab90fc7a8435039bf7a3c84fa380520435e1e5e5351232e",
+      "pairs": [
+        {
+          "pair": [
+            "t11_relay_pencil_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.00011920742690563202,
+          "saved_pose_peak": 0.0001659031957387952,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.189
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "native_peak": 0.00017686076171230525,
+          "saved_pose_peak": 0.0001659810990095184,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1745
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_tabletop_collision_slab"
+          ],
+          "shape_a": [
+            1.42,
+            0.76,
+            0.064
+          ],
+          "shape_b": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "native_peak": 9.144749492406845e-05,
+          "saved_pose_peak": 0.0001091810762882256,
+          "peak_frame": 60,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1265
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.014298276975750923,
+          "saved_pose_peak": 0.0038444150686264,
+          "peak_frame": 76,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1125
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "native_peak": 0.009753573685884476,
+          "saved_pose_peak": 0.0042188493072540245,
+          "peak_frame": 106,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.16049999999999998
+        },
+        {
+          "pair": [
+            "t11_eyeglasses_case",
+            "t11_floor_collision_slab"
+          ],
+          "shape_a": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.0082764383405447,
+          "saved_pose_peak": 0.015598901334437157,
+          "peak_frame": 110,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1925
+        },
+        {
+          "pair": [
+            "t11_floor_collision_slab",
+            "t11_relay_pencil_case"
+          ],
+          "shape_a": [
+            0.2,
+            0.078,
+            0.036
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.0027766041457653046,
+          "saved_pose_peak": 0.0036781305677233977,
+          "peak_frame": 111,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.20700000000000002
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_eyeglasses_case"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            0.175,
+            0.07,
+            0.04
+          ],
+          "native_peak": 0.005945234093815088,
+          "saved_pose_peak": 0.009379384868459212,
+          "peak_frame": 110,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.1145
+        },
+        {
+          "pair": [
+            "t11_driver_eraser",
+            "t11_floor_collision_slab"
+          ],
+          "shape_a": [
+            0.104,
+            0.05,
+            0.035
+          ],
+          "shape_b": [
+            20.0,
+            12.0,
+            0.1
+          ],
+          "native_peak": 0.002132883295416832,
+          "saved_pose_peak": 0.002221355168801481,
+          "peak_frame": 126,
+          "native_depth_incompatible_with_any_box_overlap": false,
+          "pose_independent_loose_box_bound_m": 0.14450000000000002
+        }
+      ],
+      "unsupported_pairs": [],
+      "all_saved_positions_finite": true,
+      "source_config_sha256": null,
+      "original_experiment": {
+        "design_id": "G_global_06",
+        "boundary_role": "global_coverage",
+        "changed_variable": "joint_global_configuration",
+        "repeat": 1
+      }
+    }
+  ],
+  "simulations_started": 0,
+  "internal_substep_poses_reconstructed": false,
+  "formal_admission": false,
+  "scope": "Independent saved-box geometry; internal scalar telemetry is retained. No internal convergence or full physical correctness claim."
+}

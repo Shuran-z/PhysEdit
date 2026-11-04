@@ -1,9 +1,9 @@
 """Publish verified original config downloads without modifying scientific inputs."""
-import collections,gzip,hashlib,json,shutil,subprocess,sys,zipfile
+import collections,gzip,hashlib,json,shutil,subprocess,sys,zipfile,os
 from pathlib import Path
 from huggingface_hub import HfApi,CommitOperationAdd,hf_hub_download
 
-R=Path('/data_cached/wangzijun_p25/config_bindings_20261031')
+R=Path(os.environ.get('CONFIG_BINDING_WORKDIR','/data_cached/wangzijun_p25/config_bindings_20261031'))
 STAGE=R/'stage'
 D=STAGE/'releases/physedit'
 REPO='phy2/phydataset'
@@ -17,7 +17,7 @@ def main():
     api=HfApi();inventory=json.loads((R/'INVENTORY.json').read_text());base=inventory['revision']
     assert api.repo_info(REPO,repo_type='dataset').sha==base,'Main changed; rebase config audit before publishing'
     status=json.loads(Path(hf_hub_download(REPO,'release_status.json',repo_type='dataset',revision=base)).read_text())
-    zpath=Path(hf_hub_download(REPO,status['offline_metadata'],repo_type='dataset',revision=base))
+    zpath=Path(os.environ['CONFIG_BINDING_SOURCE_METADATA']) if os.environ.get('CONFIG_BINDING_SOURCE_METADATA') else Path(hf_hub_download(REPO,status['offline_metadata'],repo_type='dataset',revision=base))
     assert sha(zpath)==status['offline_metadata_sha256']
     assert not STAGE.exists(),'Use a fresh stage'
     D.mkdir(parents=True)
@@ -40,11 +40,12 @@ def main():
     bindings={}
     with gzip.open(R/'config_bindings.jsonl.gz','rt') as f:
         for b in map(json.loads,f):
-            if b['status']=='VERIFIED':b['download']=dict(repo_id=REPO,revision=configrev,path='releases/physedit/provenance/configs.zip',member=b['archive_member'],sha256=b['config_sha256'],archive_sha256=package['zip_sha256'])
+            if b['status']=='VERIFIED':b['download']=dict(repo_id=REPO,revision=configrev,path='releases/physedit/provenance/configs.zip',member=b['archive_member'],sha256=b['config_sha256'],archive_sha256=package['zip_sha256'],document_type=b.get('config_document_type','original_render_config'))
             bindings[b['canonical_video_id']]=b
     with gzip.open(D/'catalog/config_bindings.jsonl.gz','wt',encoding='utf8') as f:
         for b in bindings.values():f.write(json.dumps(b,ensure_ascii=False)+'\n')
     shutil.copyfile(R/'unresolved_configs.jsonl.gz',D/'checks/unresolved_configs.jsonl.gz')
+    if (R/'extra_metadata').exists():shutil.copytree(R/'extra_metadata',D,dirs_exist_ok=True)
     changed=[]
     for p in sorted((D/'catalog').rglob('*.jsonl.gz')):
         if p.name in ['config_bindings.jsonl.gz','content_groups.jsonl.gz','content_identity.jsonl.gz']:continue
@@ -67,8 +68,11 @@ def main():
         p=D/name;text=p.read_text();start=text.find('**原始配置下载仍有缺口：**')
         if start>=0:
             end=text.find('\n\n',start);text=text[:start]+text[end+2:]
+        prior_section=text.find('\n## 原始配置下载\n')
+        if prior_section>=0:text=text[:prior_section]
         text+='\n## 原始配置下载\n\n'
-        text+='全量逐视频配置登记在 `physedit/catalog/config_bindings.jsonl.gz`，用 `canonical_video_id` 对应视频。`VERIFIED` 表示原始配置字节已核验，`config_download` 给出固定提交、归档成员和原始配置SHA256；未核实的记录明确标为 `UNRESOLVED`，不以参数表代替。\n\n'
+        text+='全量逐视频配置登记在 `physedit/catalog/config_bindings.jsonl.gz`，用 `canonical_video_id` 对应视频。`VERIFIED` 表示原始配置或明确标明类型的原始生成输入记录已核验，`config_download` 给出固定提交、归档成员和原始配置SHA256；未核实的记录明确标为 `UNRESOLVED`，不以参数表代替。\n\n'
+        if package.get('original_matrix_record_bindings',0):text+='其中 T14 的924条 Isaac 视频使用原始生成矩阵记录（`config_document_type=original_generation_matrix_record`），不是独立配置文件。下载JSON保留原矩阵行的原始字节；配套原始矩阵、渲染脚本及启动脚本见 `physedit/provenance/t14s_original_inputs/`。另36条补生成视频使用已登记SHA256一致的原始执行任务JSON（`original_render_job_record`）。固定渲染器参数保留在脚本中；不把后期参数表拼成原始配置。\n\n'
         text+='下载并解压本说明第2步的最新元数据包后，按视频编号导出原始配置：\n\n```bash\npython physedit/tools/download_original_configs.py --video-id physedit_genesis_t03_7b11b86fe8ac0134__cam01 --output ./dataset\n```\n\n'
         text+='得到 `dataset/configs/T03/physedit_genesis_t03_7b11b86fe8ac0134__cam01.json`。也可用 `--scene T03` 按场景导出；命令会检查请求的配置是否全部可用并逐条校验SHA256。\n\n'
         text+=f"本轮检查72,000条：已核实配置绑定 {package['counts'].get('VERIFIED',0):,} 条，待补 {package['counts'].get('UNRESOLVED',0):,} 条；逐条缺口在 `physedit/checks/unresolved_configs.jsonl.gz`。先前抽查的4条缺口已全部补齐。\n"
@@ -98,9 +102,13 @@ def main():
     final=api.create_commit(REPO,repo_type='dataset',parent_commit=configrev,
         commit_message='Bind original configurations to all 72000 video records and add verified downloader',
         operations=[CommitOperationAdd(path_in_repo=p.relative_to(STAGE).as_posix(),path_or_fileobj=str(p)) for p in files])
+    remote={x.path:x for x in api.get_paths_info(REPO,[p.relative_to(STAGE).as_posix() for p in files],repo_type='dataset',revision=final.oid)}
     for p in files:
-        got=Path(hf_hub_download(REPO,p.relative_to(STAGE).as_posix(),repo_type='dataset',revision=final.oid));assert sha(got)==sha(p),str(p)
-    receipt=dict(revision=final.oid,base=base,config_revision=configrev,**package,files_uploaded=len(files),all_remote_hashes_verified=True,four_sample_exports_verified=True)
+        info=remote[p.relative_to(STAGE).as_posix()];raw=p.read_bytes();assert info.size==len(raw)
+        if info.lfs:assert info.lfs.sha256==hashlib.sha256(raw).hexdigest(),str(p)
+        else:assert info.blob_id==hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest(),str(p)
+    receipt=dict(revision=final.oid,base=base,config_revision=configrev,**package,files_uploaded=len(files),all_remote_hashes_verified=True,
+        verification_method='Remote content-addressed LFS SHA256 and Git blob identity; original ZIP contents validated before publication',four_sample_exports_verified=True)
     dump(R/'PUBLISHED.json',receipt);print(json.dumps(receipt),flush=True)
 
 if __name__=='__main__':main()

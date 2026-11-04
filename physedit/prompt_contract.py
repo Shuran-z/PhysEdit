@@ -161,7 +161,21 @@ def from_config(config):
     facts+=object_facts(objects)
     allow=re.compile(r'initial|mass|friction|restitution|damping|force|torque|impulse|angle|position|margin|offset|distance|gap|speed|velocity|overlap|stiffness|compression|rest_length|radius|width|length|duration|gravity')
     deny=re.compile(r'expected|outcome|boundary|threshold|theta|branch|contact_first|contact_records|displacement|maximum_motion|end_state|final_state|audit|label|search|repair|source|reference')
-    def unit(key):
+    def unit(key,value):
+        # Physical type and dimensional suffixes precede incidental words in a name.
+        # A gap ratio is not a length; a high-gravity pad size is still a length.
+        tail=key.rsplit('.',1)[-1]
+        if isinstance(value,bool):return ''
+        if 'timeline_target_s.' in key:return 's'
+        if 'frame_range' in tail or tail in ['frame_start','frame_end']:return 'frame index'
+        if tail.endswith('_frames'):return 'frames'
+        if tail.endswith('_count') or 'normalized' in tail or 'quaternion' in tail or re.search(r'(?:^|_)ratio(?:_|$)',tail):return ''
+        if 'friction' in tail or 'restitution' in tail:return ''
+        if 'momentum' in tail and 'kg_mps' in tail:return 'kg*m/s'
+        if 'angular_velocity' in tail:return 'rad/s'
+        if tail.endswith(('linear_damping','angular_damping')):return '1/s'
+        if tail.endswith('_m') or '_m_before_' in tail or tail.endswith('_m_fixed') or tail=='drink_initial_center_x':return 'm'
+        if tail in ['gravity','gravity_vector','gravity_strength'] or tail.startswith('gravity_'):return 'm/s^2'
         # Temporal suffixes take precedence over the mechanism name: a force
         # duration is measured in seconds, an impulse duration is not N*s.
         if 'duration' in key or key.endswith(('_start_s','_end_s')):return 's'
@@ -189,7 +203,7 @@ def from_config(config):
             if deny.search(k.lower()):continue
             key=prefix+'.'+k
             if isinstance(v,dict):physical_tree(v,key)
-            elif numeric(v) and allow.search(k.lower()):facts.append([key,'',v,unit(k.lower())])
+            elif numeric(v) and allow.search(k.lower()):facts.append([key,'',v,unit(key.lower(),v)])
     for key in ['t13_parameters','t14s_parameters','t12_parameters','declared_physical_inputs','spring','actuation']:
         physical_tree(cfg.get(key,{}),key)
     # Prescribed spring and hinge mechanisms are inputs, not observed contacts.

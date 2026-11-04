@@ -1,0 +1,718 @@
+{
+  "schema": "core100-v2-t02-full-window-recovery-v1",
+  "cases": [
+    {
+      "clip_id": "T02_C01",
+      "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010",
+      "reference_video_sha256": "3c4824f89a8547d60f409fb37873407002dc9a1c68b379813b219bc53cdfdeab",
+      "parameter": "probe_initial_speed_mps",
+      "theta": 0.1770508,
+      "source": {
+        "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010",
+        "theta": 0.1770508,
+        "label": 1,
+        "event_frame": 198,
+        "original_displacement_baseline_frame": 24,
+        "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+        "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010.json.gz",
+        "stored_state_sha256": "ec49dfecd7385f4ad690f2063e77653c55d26397ce3d9ff5d0d3ba6a2753e550",
+        "decoded_state_sha256": "fed19c8515ec078c644b3a6990173ae5053ff0d4c47259a9d52a46bfb0b87178"
+      },
+      "normalization_domain": [
+        0.100919,
+        0.2024281
+      ],
+      "normalization_span": 0.1015091,
+      "target_event": "C2_signal_displaced_0p05m",
+      "reference_label": 1,
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 6.833333333333333,
+      "matched_points": 14,
+      "unique_points": 6,
+      "conflicting_points": [],
+      "intervals": [
+        {
+          "event": "C2_signal_displaced_0p05m",
+          "bracket": [
+            0.1516736,
+            0.1770508
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_03__vs0201908__x0000000__vp0151674__r010",
+                "theta": 0.1516736,
+                "label": 0,
+                "event_frame": null,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_03__vs0201908__x0000000__vp0151674__r010.json.gz",
+                "stored_state_sha256": "0a13e621dda3bda6104f6c809e511247d2b64ce41453570fdefff4335069d2aa",
+                "decoded_state_sha256": "bf26543fe0644d77760b9c5637f161453ce15b852dfd9a0ab1dffe5083987868"
+              }
+            ],
+            [
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep01__vs0201908__x0000000__vp0177051__r010",
+                "theta": 0.1770508,
+                "label": 1,
+                "event_frame": 198,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep01__vs0201908__x0000000__vp0177051__r010.json.gz",
+                "stored_state_sha256": "c904d700f65039b97471ad9df8dc23d2c584405638553d58f17bad57befb1da5",
+                "decoded_state_sha256": "70bcef1f0bca9846bbd41654d3c517ae98288b30202662fede2e3fb890bef860"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep02__vs0201908__x0000000__vp0177051__r010",
+                "theta": 0.1770508,
+                "label": 1,
+                "event_frame": 198,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep02__vs0201908__x0000000__vp0177051__r010.json.gz",
+                "stored_state_sha256": "34688520a6f7062b51b87fa6f8d91e6818c4883f39d4f7faaf09ad1718b6a51b",
+                "decoded_state_sha256": "67466414377b0869e6a37c417ce740e66df1322044aef177e00317b0322ef172"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep03__vs0201908__x0000000__vp0177051__r010",
+                "theta": 0.1770508,
+                "label": 1,
+                "event_frame": 198,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep03__vs0201908__x0000000__vp0177051__r010.json.gz",
+                "stored_state_sha256": "dd0b897264754fed90ce24c8f2c34d3bb9d0e6838dac2fe0dd6470d7928565ee",
+                "decoded_state_sha256": "a1343acb28682e9748419d32190006e792eadbad11759ae746e5a842b8a7d5c2"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010",
+                "theta": 0.1770508,
+                "label": 1,
+                "event_frame": 198,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010.json.gz",
+                "stored_state_sha256": "ec49dfecd7385f4ad690f2063e77653c55d26397ce3d9ff5d0d3ba6a2753e550",
+                "decoded_state_sha256": "fed19c8515ec078c644b3a6990173ae5053ff0d4c47259a9d52a46bfb0b87178"
+              }
+            ]
+          ]
+        }
+      ],
+      "all_points": [
+        {
+          "theta": 0.100919,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_01__vs0201908__x0000000__vp0100919__r010",
+              "theta": 0.100919,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_01__vs0201908__x0000000__vp0100919__r010.json.gz",
+              "stored_state_sha256": "22a9f81243245616443e81715e7a62d3cebe77b3e079e8789f6335e1c6bd1cdf",
+              "decoded_state_sha256": "f9cf7e8afb1e53f1c206483a833caa582a905613a9bbaf0373377090af8ce996"
+            }
+          ]
+        },
+        {
+          "theta": 0.1262963,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep01__vs0201908__x0000000__vp0126296__r010",
+              "theta": 0.1262963,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep01__vs0201908__x0000000__vp0126296__r010.json.gz",
+              "stored_state_sha256": "1329efbace201f5ca4476fd231d4a8c06167a9be7cf9bf441c7d035b4757e474",
+              "decoded_state_sha256": "56601e185de4d66114cab232f0e733361b8712983b9abd293b0aa9700e1458e0"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep02__vs0201908__x0000000__vp0126296__r010",
+              "theta": 0.1262963,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep02__vs0201908__x0000000__vp0126296__r010.json.gz",
+              "stored_state_sha256": "f4a28032c9fbb617c281c7cb20b939f9bd7c5efbb70fec008e9b411e1673d1b3",
+              "decoded_state_sha256": "85287f7adfa1c8f1607f834122c84d8a10bdc878e36250f34fe728485500d25b"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep03__vs0201908__x0000000__vp0126296__r010",
+              "theta": 0.1262963,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_minus_rep03__vs0201908__x0000000__vp0126296__r010.json.gz",
+              "stored_state_sha256": "671c4a54ba02280b16ce9f8e2250421399238dd951d7164421b80c2ee1397a64",
+              "decoded_state_sha256": "3fc802b8e564d7c95f50a08aa963b0ea00c3dfa3144e44f8e3b81f7388c3cdc8"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_02__vs0201908__x0000000__vp0126296__r010",
+              "theta": 0.1262963,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_02__vs0201908__x0000000__vp0126296__r010.json.gz",
+              "stored_state_sha256": "1082b8a5c2f2ad46d33da196b2adbfb7ccb54601c3d2051f564fde4864429c44",
+              "decoded_state_sha256": "0c9a2e0eec6f58dbd7e1844ec34b1c84d0e8e69b7f07972cb7f2be9ae931f718"
+            }
+          ]
+        },
+        {
+          "theta": 0.1416407,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep01__vs0201908__x0000000__vp0141641__r010",
+              "theta": 0.1416407,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep01__vs0201908__x0000000__vp0141641__r010.json.gz",
+              "stored_state_sha256": "94bc6336b0f233ced6b1697ecfd8d1debc60da735ae3f5835caeece5f0cc558c",
+              "decoded_state_sha256": "788312ce9607cdde755091d95bc006a57dd9be737e596283843d15995d0d6b79"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep02__vs0201908__x0000000__vp0141641__r010",
+              "theta": 0.1416407,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep02__vs0201908__x0000000__vp0141641__r010.json.gz",
+              "stored_state_sha256": "01104098fa1b43f08c7a94d12b56c2b1f75dec4ad0c0d493d3d2accaf3c07b0b",
+              "decoded_state_sha256": "49fbd17a6be32a37aaf6474f418826cf0f487dd83fb447893ba2895cbb8f8de5"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep03__vs0201908__x0000000__vp0141641__r010",
+              "theta": 0.1416407,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_star_rep03__vs0201908__x0000000__vp0141641__r010.json.gz",
+              "stored_state_sha256": "0a63a27d868140f136f3335cee90b3427a06db1d81f4b731195e24ee86e3f11d",
+              "decoded_state_sha256": "ff39b1114415eeb76c21529884cab802ae520bc85713a4b35550b758c1d8021b"
+            }
+          ]
+        },
+        {
+          "theta": 0.1516736,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_03__vs0201908__x0000000__vp0151674__r010",
+              "theta": 0.1516736,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_03__vs0201908__x0000000__vp0151674__r010.json.gz",
+              "stored_state_sha256": "0a13e621dda3bda6104f6c809e511247d2b64ce41453570fdefff4335069d2aa",
+              "decoded_state_sha256": "bf26543fe0644d77760b9c5637f161453ce15b852dfd9a0ab1dffe5083987868"
+            }
+          ]
+        },
+        {
+          "theta": 0.1770508,
+          "label": 1,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep01__vs0201908__x0000000__vp0177051__r010",
+              "theta": 0.1770508,
+              "label": 1,
+              "event_frame": 198,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep01__vs0201908__x0000000__vp0177051__r010.json.gz",
+              "stored_state_sha256": "c904d700f65039b97471ad9df8dc23d2c584405638553d58f17bad57befb1da5",
+              "decoded_state_sha256": "70bcef1f0bca9846bbd41654d3c517ae98288b30202662fede2e3fb890bef860"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep02__vs0201908__x0000000__vp0177051__r010",
+              "theta": 0.1770508,
+              "label": 1,
+              "event_frame": 198,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep02__vs0201908__x0000000__vp0177051__r010.json.gz",
+              "stored_state_sha256": "34688520a6f7062b51b87fa6f8d91e6818c4883f39d4f7faaf09ad1718b6a51b",
+              "decoded_state_sha256": "67466414377b0869e6a37c417ce740e66df1322044aef177e00317b0322ef172"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep03__vs0201908__x0000000__vp0177051__r010",
+              "theta": 0.1770508,
+              "label": 1,
+              "event_frame": 198,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__cfC_theta_plus_rep03__vs0201908__x0000000__vp0177051__r010.json.gz",
+              "stored_state_sha256": "dd0b897264754fed90ce24c8f2c34d3bb9d0e6838dac2fe0dd6470d7928565ee",
+              "decoded_state_sha256": "a1343acb28682e9748419d32190006e792eadbad11759ae746e5a842b8a7d5c2"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010",
+              "theta": 0.1770508,
+              "label": 1,
+              "event_frame": 198,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_04__vs0201908__x0000000__vp0177051__r010.json.gz",
+              "stored_state_sha256": "ec49dfecd7385f4ad690f2063e77653c55d26397ce3d9ff5d0d3ba6a2753e550",
+              "decoded_state_sha256": "fed19c8515ec078c644b3a6990173ae5053ff0d4c47259a9d52a46bfb0b87178"
+            }
+          ]
+        },
+        {
+          "theta": 0.2024281,
+          "label": 1,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g01_moon__global_C_05__vs0201908__x0000000__vp0202428__r010",
+              "theta": 0.2024281,
+              "label": 1,
+              "event_frame": 176,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "c58b6219e4bcee919666fbbec64b6a999ca8dd7db577dad05be5061d8d1f62e1",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g01_moon__global_C_05__vs0201908__x0000000__vp0202428__r010.json.gz",
+              "stored_state_sha256": "f0fac6fae235d334bdf6e4cd3a56473cadab18fe6a331b72afabdc8f373e67c9",
+              "decoded_state_sha256": "21e41b58f9a0b49f04e4b54cc7ddb932a89060932447baeb0223127b19a3ec06"
+            }
+          ]
+        }
+      ],
+      "status": "observed_original_full_window_interval_recovered",
+      "original_calibration_reference": {
+        "value": 0.1416407,
+        "reference_kind": "original_calibrated_centre",
+        "raw_absolute_distance": 0.0354101,
+        "normalized_absolute_distance": 0.3488367052806103,
+        "normalization_span": 0.1015091,
+        "calibration_report": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/reports/t02_full_chain_calibration_r006_p26/g01_moon/group_C.json",
+        "calibration_report_sha256": "496FA72F577FC4CC55DFE4C8351A0EFDCACF8FB63F975970AA26200AA7396B34",
+        "calibrated_triplet": {
+          "theta_minus": {
+            "parameter_value": 0.1262963,
+            "observed_outcome": "probe_stops_short",
+            "sample_id": "T02ABCCAL__C__g01_moon__p0126296__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0126296__r009/metadata/T02ABCCAL__C__g01_moon__p0126296__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0126296__r009/qa/T02ABCCAL__C__g01_moon__p0126296__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0126296__r009/cam01.json",
+            "config_sha256": "4763A32482364C6D5C93F6EEEA85EBABDAA3BC82B16088199EEB07DF6FCF0BE0",
+            "support_contract_passed": true
+          },
+          "theta_star": {
+            "parameter_value": 0.1416407,
+            "observed_outcome": "probe_critical_contact",
+            "sample_id": "T02ABCCAL__C__g01_moon__p0141641__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0141641__r009/metadata/T02ABCCAL__C__g01_moon__p0141641__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0141641__r009/qa/T02ABCCAL__C__g01_moon__p0141641__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0141641__r009/cam01.json",
+            "config_sha256": "1C0D09FAFA71BBBC2F9274F2E307E8DEA56EE2B9EE06BDE444DA8D09BF04C15A",
+            "support_contract_passed": true
+          },
+          "theta_plus": {
+            "parameter_value": 0.1770508,
+            "observed_outcome": "full_signal_trigger",
+            "sample_id": "T02ABCCAL__C__g01_moon__p0177051__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0177051__r009/metadata/T02ABCCAL__C__g01_moon__p0177051__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0177051__r009/qa/T02ABCCAL__C__g01_moon__p0177051__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g01_moon/T02ABCCAL__C__g01_moon__p0177051__r009/cam01.json",
+            "config_sha256": "F5D89477FA6A663DD0A0F7380239671A22DF8C8C7CBD9F281309F28D799398E0",
+            "support_contract_passed": true
+          }
+        },
+        "exact_physical_threshold_certified": false
+      },
+      "new_simulations": 0,
+      "claim": "Observed published local interval only; no unique physical root or new RGB admission claimed."
+    },
+    {
+      "clip_id": "T02_C02",
+      "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010",
+      "reference_video_sha256": "306a3323df0142470b47695b9c9ca603a6abbcc20aa402f92d8dce0d16323423",
+      "parameter": "probe_initial_speed_mps",
+      "theta": 0.1786225,
+      "source": {
+        "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010",
+        "theta": 0.1786225,
+        "label": 1,
+        "event_frame": 196,
+        "original_displacement_baseline_frame": 24,
+        "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+        "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010.json.gz",
+        "stored_state_sha256": "44b8af189b16803e83f4569c21e60a60a0b633ff58c91f4c53ef8103ff2744bb",
+        "decoded_state_sha256": "5e20108aa15b794ea29d58a7688abaf8e417f372c123039011002c034efff47d"
+      },
+      "normalization_domain": [
+        0.1266394,
+        0.1959502
+      ],
+      "normalization_span": 0.06931079999999998,
+      "target_event": "C2_signal_displaced_0p05m",
+      "reference_label": 1,
+      "condition_frame_index": 4,
+      "end_frame_index": 209,
+      "horizon_s": 6.833333333333333,
+      "matched_points": 14,
+      "unique_points": 5,
+      "conflicting_points": [],
+      "intervals": [
+        {
+          "event": "C2_signal_displaced_0p05m",
+          "bracket": [
+            0.1612948,
+            0.1786225
+          ],
+          "endpoint_labels": [
+            0,
+            1
+          ],
+          "endpoints": [
+            [
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep01__vs0305111__x0000000__vp0161295__r010",
+                "theta": 0.1612948,
+                "label": 0,
+                "event_frame": null,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep01__vs0305111__x0000000__vp0161295__r010.json.gz",
+                "stored_state_sha256": "e2d0f0d998d5f043905f161ff7f8ea3875bd8037b250e56e6d1d23efcccf6681",
+                "decoded_state_sha256": "7b6f09e3d7e900b5db9110a3fe9392d4115779a976d3172aedae9c736d7cb3c7"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep02__vs0305111__x0000000__vp0161295__r010",
+                "theta": 0.1612948,
+                "label": 0,
+                "event_frame": null,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep02__vs0305111__x0000000__vp0161295__r010.json.gz",
+                "stored_state_sha256": "c9cea4e52e4b68ba4e2329acff67bf3ea484e5d7a1cd2ff803dc3c9d121c2c59",
+                "decoded_state_sha256": "eea5078b2af50bdef7dc14f1d67a801b65d852e8559f436809fc184da90fed9d"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep03__vs0305111__x0000000__vp0161295__r010",
+                "theta": 0.1612948,
+                "label": 0,
+                "event_frame": null,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep03__vs0305111__x0000000__vp0161295__r010.json.gz",
+                "stored_state_sha256": "80a0193aef6e2383feff5c8fe8afac5feeebd1a91588c56f856b90c1e97af977",
+                "decoded_state_sha256": "3f205fcfad6993e7a2612ae0cf274824124f21933b5ed331a184bde8af81cd38"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_03__vs0305111__x0000000__vp0161295__r010",
+                "theta": 0.1612948,
+                "label": 0,
+                "event_frame": null,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_03__vs0305111__x0000000__vp0161295__r010.json.gz",
+                "stored_state_sha256": "1227e275e42e1642c7d622f79e3a14ad8b66d9cd3eec6473839b4b25652ab27b",
+                "decoded_state_sha256": "9f9be9634ab1805b36d36b6c8bbe759fbdf5e4b1b10f1857b49448de8836b342"
+              }
+            ],
+            [
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep01__vs0305111__x0000000__vp0178622__r010",
+                "theta": 0.1786225,
+                "label": 1,
+                "event_frame": 196,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep01__vs0305111__x0000000__vp0178622__r010.json.gz",
+                "stored_state_sha256": "81694733236c26268a6576465916b3d4455d51b2fcad9aa7f41d3437a4a283a1",
+                "decoded_state_sha256": "f88f97dd48e27d9ce5bcbae76c02ae58fca7b444cf71f3542041fcb9ff1b7c2d"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep02__vs0305111__x0000000__vp0178622__r010",
+                "theta": 0.1786225,
+                "label": 1,
+                "event_frame": 196,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep02__vs0305111__x0000000__vp0178622__r010.json.gz",
+                "stored_state_sha256": "fe12a3d921eb65adcdc8aaf2a82787b75e44ed8bc3f579fd3d353b6efedd7fcb",
+                "decoded_state_sha256": "38f10a8606a9e93ab688ebb566c433046893a61f569f442c9c54c27a78273e2b"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep03__vs0305111__x0000000__vp0178622__r010",
+                "theta": 0.1786225,
+                "label": 1,
+                "event_frame": 196,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep03__vs0305111__x0000000__vp0178622__r010.json.gz",
+                "stored_state_sha256": "02b3dfad17bf952214a9e6763b3ac32e518f0a3a7388693234a80c59ed01e276",
+                "decoded_state_sha256": "e67fa9ab38a72bfd9575f5ea2cdbb45bddd7e34688ca6308225531350973c081"
+              },
+              {
+                "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010",
+                "theta": 0.1786225,
+                "label": 1,
+                "event_frame": 196,
+                "original_displacement_baseline_frame": 24,
+                "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+                "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010.json.gz",
+                "stored_state_sha256": "44b8af189b16803e83f4569c21e60a60a0b633ff58c91f4c53ef8103ff2744bb",
+                "decoded_state_sha256": "5e20108aa15b794ea29d58a7688abaf8e417f372c123039011002c034efff47d"
+              }
+            ]
+          ]
+        }
+      ],
+      "all_points": [
+        {
+          "theta": 0.1266394,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_01__vs0305111__x0000000__vp0126639__r010",
+              "theta": 0.1266394,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_01__vs0305111__x0000000__vp0126639__r010.json.gz",
+              "stored_state_sha256": "d7966609114eac5a0cdd20a178635d0dc4e8c565899860936951400d530e6c5a",
+              "decoded_state_sha256": "3dfc85c17e1f69b283b3254926691db48742ec975da0168065a531d544fcbdfb"
+            }
+          ]
+        },
+        {
+          "theta": 0.1439671,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep01__vs0305111__x0000000__vp0143967__r010",
+              "theta": 0.1439671,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep01__vs0305111__x0000000__vp0143967__r010.json.gz",
+              "stored_state_sha256": "4832a1690df7fc46e50e1734a73d5d3ee28b2cc42fc13d001fe7725d7017fa77",
+              "decoded_state_sha256": "d7a7b735624e4500ef3928eb85b16e9ec24dd86be7cd99fe5233d8b9dba3eb04"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep02__vs0305111__x0000000__vp0143967__r010",
+              "theta": 0.1439671,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep02__vs0305111__x0000000__vp0143967__r010.json.gz",
+              "stored_state_sha256": "4acc8c4691d5993377f74232b20cbb3ddd4e2a0ab58e2e1a48833734acaed209",
+              "decoded_state_sha256": "89cb4e330f19a1f64a068d14addbc87abd74022ace2f02d642ec74a2d1bd71c6"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep03__vs0305111__x0000000__vp0143967__r010",
+              "theta": 0.1439671,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_minus_rep03__vs0305111__x0000000__vp0143967__r010.json.gz",
+              "stored_state_sha256": "38279f40446e167e2af3555b8eba04291ea08d83a2d8e0792efe5326f5d3c0e5",
+              "decoded_state_sha256": "edc98d7abd1a7697615fbe1f8ca0bda8dad3593ab1e53d0f31b7b2b9631e4ab7"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_02__vs0305111__x0000000__vp0143967__r010",
+              "theta": 0.1439671,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_02__vs0305111__x0000000__vp0143967__r010.json.gz",
+              "stored_state_sha256": "374529edf10d108158b199c684b67110f09377ab90337d22c9bcd3839e14e708",
+              "decoded_state_sha256": "ed2af918ef0a3820271b05a30b928a8bdfbe54243c45e4bd30a9a47355b3045d"
+            }
+          ]
+        },
+        {
+          "theta": 0.1612948,
+          "label": 0,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep01__vs0305111__x0000000__vp0161295__r010",
+              "theta": 0.1612948,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep01__vs0305111__x0000000__vp0161295__r010.json.gz",
+              "stored_state_sha256": "e2d0f0d998d5f043905f161ff7f8ea3875bd8037b250e56e6d1d23efcccf6681",
+              "decoded_state_sha256": "7b6f09e3d7e900b5db9110a3fe9392d4115779a976d3172aedae9c736d7cb3c7"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep02__vs0305111__x0000000__vp0161295__r010",
+              "theta": 0.1612948,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep02__vs0305111__x0000000__vp0161295__r010.json.gz",
+              "stored_state_sha256": "c9cea4e52e4b68ba4e2329acff67bf3ea484e5d7a1cd2ff803dc3c9d121c2c59",
+              "decoded_state_sha256": "eea5078b2af50bdef7dc14f1d67a801b65d852e8559f436809fc184da90fed9d"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep03__vs0305111__x0000000__vp0161295__r010",
+              "theta": 0.1612948,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_star_rep03__vs0305111__x0000000__vp0161295__r010.json.gz",
+              "stored_state_sha256": "80a0193aef6e2383feff5c8fe8afac5feeebd1a91588c56f856b90c1e97af977",
+              "decoded_state_sha256": "3f205fcfad6993e7a2612ae0cf274824124f21933b5ed331a184bde8af81cd38"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_03__vs0305111__x0000000__vp0161295__r010",
+              "theta": 0.1612948,
+              "label": 0,
+              "event_frame": null,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_03__vs0305111__x0000000__vp0161295__r010.json.gz",
+              "stored_state_sha256": "1227e275e42e1642c7d622f79e3a14ad8b66d9cd3eec6473839b4b25652ab27b",
+              "decoded_state_sha256": "9f9be9634ab1805b36d36b6c8bbe759fbdf5e4b1b10f1857b49448de8836b342"
+            }
+          ]
+        },
+        {
+          "theta": 0.1786225,
+          "label": 1,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep01__vs0305111__x0000000__vp0178622__r010",
+              "theta": 0.1786225,
+              "label": 1,
+              "event_frame": 196,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep01__vs0305111__x0000000__vp0178622__r010.json.gz",
+              "stored_state_sha256": "81694733236c26268a6576465916b3d4455d51b2fcad9aa7f41d3437a4a283a1",
+              "decoded_state_sha256": "f88f97dd48e27d9ce5bcbae76c02ae58fca7b444cf71f3542041fcb9ff1b7c2d"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep02__vs0305111__x0000000__vp0178622__r010",
+              "theta": 0.1786225,
+              "label": 1,
+              "event_frame": 196,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep02__vs0305111__x0000000__vp0178622__r010.json.gz",
+              "stored_state_sha256": "fe12a3d921eb65adcdc8aaf2a82787b75e44ed8bc3f579fd3d353b6efedd7fcb",
+              "decoded_state_sha256": "38f10a8606a9e93ab688ebb566c433046893a61f569f442c9c54c27a78273e2b"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep03__vs0305111__x0000000__vp0178622__r010",
+              "theta": 0.1786225,
+              "label": 1,
+              "event_frame": 196,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__cfC_theta_plus_rep03__vs0305111__x0000000__vp0178622__r010.json.gz",
+              "stored_state_sha256": "02b3dfad17bf952214a9e6763b3ac32e518f0a3a7388693234a80c59ed01e276",
+              "decoded_state_sha256": "e67fa9ab38a72bfd9575f5ea2cdbb45bddd7e34688ca6308225531350973c081"
+            },
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010",
+              "theta": 0.1786225,
+              "label": 1,
+              "event_frame": 196,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_04__vs0305111__x0000000__vp0178622__r010.json.gz",
+              "stored_state_sha256": "44b8af189b16803e83f4569c21e60a60a0b633ff58c91f4c53ef8103ff2744bb",
+              "decoded_state_sha256": "5e20108aa15b794ea29d58a7688abaf8e417f372c123039011002c034efff47d"
+            }
+          ]
+        },
+        {
+          "theta": 0.1959502,
+          "label": 1,
+          "witnesses": [
+            {
+              "sample_id": "T02V2F52K__bg01_home_ase__g02_mars__global_C_05__vs0305111__x0000000__vp0195950__r010",
+              "theta": 0.1959502,
+              "label": 1,
+              "event_frame": 181,
+              "original_displacement_baseline_frame": 24,
+              "fixed_recorded_context_sha256": "a2fadfd200d32e8ffcd970fe670b75b07b70ec7d213283435f7e5f32a6af688d",
+              "state_path": "review\\scene_family_completion_20261018\\t02_published_states\\T02V2F52K__bg01_home_ase__g02_mars__global_C_05__vs0305111__x0000000__vp0195950__r010.json.gz",
+              "stored_state_sha256": "02e89373e94d635487987aeaa3f1f489dc589250f04045d80926573afd2d1109",
+              "decoded_state_sha256": "ba4e2d14ea002b6d8d84b38389eb8e00a7204f97da7f1ee9714908db3ae24790"
+            }
+          ]
+        }
+      ],
+      "status": "observed_original_full_window_interval_recovered",
+      "original_calibration_reference": {
+        "value": 0.1612948,
+        "reference_kind": "original_calibrated_centre",
+        "raw_absolute_distance": 0.0173277,
+        "normalized_absolute_distance": 0.2500000000000001,
+        "normalization_span": 0.06931079999999998,
+        "calibration_report": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/reports/t02_full_chain_calibration_r006_p26/g02_mars/group_C.json",
+        "calibration_report_sha256": "0D37ED4A56BFAE0694F008F726A103A1CA44A2039A693B2EC7DEF20718F1F574",
+        "calibrated_triplet": {
+          "theta_minus": {
+            "parameter_value": 0.1439671,
+            "observed_outcome": "probe_stops_short",
+            "sample_id": "T02ABCCAL__C__g02_mars__p0143967__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0143967__r009/metadata/T02ABCCAL__C__g02_mars__p0143967__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0143967__r009/qa/T02ABCCAL__C__g02_mars__p0143967__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0143967__r009/cam01.json",
+            "config_sha256": "F5E45B23BE01E8A4174EBAF55D43E8972E0149C73F5399494460A25EA04420FD",
+            "support_contract_passed": true
+          },
+          "theta_star": {
+            "parameter_value": 0.1612948,
+            "observed_outcome": "probe_critical_contact",
+            "sample_id": "T02ABCCAL__C__g02_mars__p0161295__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0161295__r009/metadata/T02ABCCAL__C__g02_mars__p0161295__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0161295__r009/qa/T02ABCCAL__C__g02_mars__p0161295__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0161295__r009/cam01.json",
+            "config_sha256": "BD7F6A4A9D76846697FDF43135D8E8A00779F140C53B5766167E72BD77463B54",
+            "support_contract_passed": true
+          },
+          "theta_plus": {
+            "parameter_value": 0.1786225,
+            "observed_outcome": "full_signal_trigger",
+            "sample_id": "T02ABCCAL__C__g02_mars__p0178622__r009",
+            "metadata": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0178622__r009/metadata/T02ABCCAL__C__g02_mars__p0178622__r009__cam01.json",
+            "audit": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0178622__r009/qa/T02ABCCAL__C__g02_mars__p0178622__r009__cam01__abc_event_audit.json",
+            "config": "/data2/wangzijun_p25/liyuhan/phydataset/ase_asset_importer/everyday_bifurcation_T02_v2_causal_gate/configs/calibration_t02_full_chain_r006_p26_C_g02_mars/T02ABCCAL__C__g02_mars__p0178622__r009/cam01.json",
+            "config_sha256": "AECC795E346175B09EAC2ACC8052C39B2FBBF41A14D270BBA1478C642A07EEBD",
+            "support_contract_passed": true
+          }
+        },
+        "exact_physical_threshold_certified": false
+      },
+      "new_simulations": 0,
+      "claim": "Observed published local interval only; no unique physical root or new RGB admission claimed."
+    }
+  ],
+  "original_context_extractor_sha256": "7efbe95e3ae78988b63f28ff3fef26efae640e59c59f6b9312de296ef11e0c17",
+  "generator_inputs_modified": false
+}
