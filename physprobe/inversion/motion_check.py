@@ -55,7 +55,7 @@ def run_clip(clip):
         lib = libs[p]; truth = ev.truth_of(clip, p)
         if not lib: continue
         _, boxes = min(lib, key=lambda t: abs(math.log(t[0] / truth)))
-        x = items[r['key']]; m = x['cam_to_video']; DT = ev.generated_dt(clip, x['fps'], a.clock); kc = KC.get(r['key'], 0)
+        x = items[r['key']]; m = x['cam_to_video']; DT = ev.generated_dt(clip, x['fps'], a.clock); kc = KC.get(r['key'], 0); cf = x.get('condition_frame_index', 4)   # simulation frame shown by the condition frame
         sa = np.array([m['scale'][0], m['scale'][1]] * 2); sb_ = np.array([m['offset'][0], m['offset'][1]] * 2)
         per = {}
         for n in ev.usable(clip):
@@ -64,19 +64,19 @@ def run_clip(clip):
             if kc not in set(k.tolist()): continue
             i0 = int(np.where(k == kc)[0][0])
             if np.isnan(ob[i0, 0]): continue
-            s = 4 + (k - kc) * (DT / dt if WINDOW == 'fixed' else dt / DT); h = int(hz[n]['horizon'])
-            sel = (s >= 4) & (s <= h)
+            s = cf + (k - kc) * (DT / dt if WINDOW == 'fixed' else dt / DT); h = int(hz[n]['horizon'])
+            sel = (s >= cf) & (s <= h)
             o = medfilt3(ob)[sel]
             obs_px = float(np.nanmax(np.abs(o - ob[i0]))) if np.isfinite(o).any() else float('nan')
             frac, sb = boxes[n]; F = len(sb); sbv = sb * sa + sb_
             hs = min(h, int(np.floor(np.nanmax(s)))) if SIM_TO_VIDEO else h
-            fr = [f for f in range(4, min(hs, F - 1) + 1) if frac[f] >= ev.MIN_VIS]
-            sim_px = float(np.max(np.abs(sbv[fr] - sbv[4]))) if fr and frac[4] >= ev.MIN_VIS else float('nan')
+            fr = [f for f in range(cf, min(hs, F - 1) + 1) if frac[f] >= ev.MIN_VIS]
+            sim_px = float(np.max(np.abs(sbv[fr] - sbv[cf]))) if fr and frac[cf] >= ev.MIN_VIS else float('nan')
             # motion onset (s after the condition frame): first frame moved > STATIC_PX (whole video for the observation)
             mv = np.nanmax(np.abs(medfilt3(ob) - ob[i0]), 1) > STATIC_PX; ko = k[mv & (k >= kc)]
             on_obs = float((ko.min() - kc) * DT) if len(ko) else None
-            fo = [f for f in fr if np.max(np.abs(sbv[f] - sbv[4])) > STATIC_PX]
-            on_sim = float((fo[0] - 4) * dt) if fo and frac[4] >= ev.MIN_VIS else None
+            fo = [f for f in fr if np.max(np.abs(sbv[f] - sbv[cf])) > STATIC_PX]
+            on_sim = float((fo[0] - cf) * dt) if fo and frac[cf] >= ev.MIN_VIS else None
             per[n] = (round(obs_px, 1), round(sim_px, 1), on_obs, on_sim)
         if not per: continue
         mo = max((v[0] for v in per.values() if np.isfinite(v[0])), default=float('nan'))

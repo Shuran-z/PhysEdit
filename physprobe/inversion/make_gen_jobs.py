@@ -54,16 +54,17 @@ def build(items, name, remote, workers=1, median_from=None):
         sx, sy = W / cam[5], H / cam[6]
         ax, ay = x['map']['scale']; bx, by = x['map']['offset']
         x['cam_to_video'] = dict(scale=(sx * ax, sy * ay), offset=(bx, by))
-        if clip not in cache:
-            poses = c2.initial_poses(clip); movers = {}
+        cf = x.get('condition_frame_index', 4)   # simulation frame shown by the condition frame (4 up to 2026-11-03; 0 for first-frame generation)
+        if (clip, cf) not in cache:
+            poses = c2.initial_poses(clip, frame=cf); movers = {}
             for n, p in poses.items():
                 try: sp = c2.spec(clip, n)
                 except KeyError: continue
                 if not sp.get('fixed'): movers[n] = np.array([p])
-            cache[clip] = c2.visible_boxes(clip, cam, movers)
+            cache[(clip, cf)] = c2.visible_boxes(clip, cam, movers)
         Wv, Hv = r.get('video_size') or (W, H)
         objs = {}
-        for n, (frac, box) in cache[clip].items():
+        for n, (frac, box) in cache[(clip, cf)].items():
             if frac[0] < 0.2 or np.isnan(box[0, 0]): continue
             b = box[0]
             b = [max(0, round(b[0] * sx * ax + bx)), max(0, round(b[1] * sy * ay + by)), min(Wv - 1, round(b[2] * sx * ax + bx)), min(Hv - 1, round(b[3] * sy * ay + by))]
@@ -71,7 +72,7 @@ def build(items, name, remote, workers=1, median_from=None):
         dt = float(RD[clip]['physical_seconds_per_frame']); pvp = float(RD[clip]['playback_vs_physics'])
         x['dt_obs'] = pvp / x['fps']
         h_end = max(o['horizon'] for o in HZ[clip]['objects'].values()) + 21          # simulation frames
-        last = math.ceil((h_end - 4) * dt / x['dt_obs']) + 1                            # generated frames after the condition frame
+        last = math.ceil((h_end - cf) * dt / x['dt_obs']) + 1                            # generated frames after the condition frame
         jobs.append(dict(id=x['key'], video=f"{remote}/videos/{x['key']}.mp4", prompt_frame=0, last_frame=min(x['frames'] - 1, last), objects=objs))
     (OUT / 'jobs.jsonl').write_text(''.join(json.dumps(j) + '\n' for j in jobs))
     json.dump(dict(items=items, model_median_map=med), open(OUT / 'items.json', 'w'), indent=1)

@@ -260,8 +260,10 @@ def refine_library(lib, names, n_sub=7, max_rel=0.5):
     return out
 
 
-def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0), interp=True):
-    """loss curve over the library and the identifiability estimate. scale/offset: camera pixel -> video pixel."""
+def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0), interp=True, cf=4):
+    """loss curve over the library and the identifiability estimate. scale/offset: camera pixel -> video pixel.
+    cf: the reference / simulation frame that the video's condition frame kc shows (4 = the fifth frame, all results up to
+    2026-11-03; 0 for videos generated from the first frame). The window starts there."""
     dt, _ = clock(clip); hz = HZ[clip]['objects']
     a = np.array([scale[0], scale[1], scale[0], scale[1]]); b = np.array([offset[0], offset[1], offset[0], offset[1]])
     use = [n for n in usable(clip) if n in obs]
@@ -271,8 +273,8 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
         if kc not in set(k.tolist()): continue
         i0 = int(np.where(k == kc)[0][0])
         if np.isnan(ob[i0, 0]): continue
-        s0 = 4 + (k - kc) * dt_obs / dt
-        inwin = (s0 >= 4) & (s0 <= hz[n]['horizon'])
+        s0 = cf + (k - kc) * dt_obs / dt
+        inwin = (s0 >= cf) & (s0 <= hz[n]['horizon'])
         cover = float(np.isfinite(ob[inwin, 0]).mean()) if inwin.any() else 0.0
         if cover < MIN_COVER: low_cover[n] = round(cover, 2); continue   # SAM lost it for most of its window
         prep[n] = (s0, ob, i0, float(np.linalg.norm(ob[i0, 2:] - ob[i0, :2])))
@@ -287,16 +289,16 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
             if n in boxes and d0 > 0:
                 frac, sb = boxes[n]
                 sbv = np.where((frac >= MIN_VIS)[:, None], sb * a + b, np.nan); F = len(sbv)
-                if not np.isnan(sbv[4, 0]):
-                    o = ob - (ob[i0] - sbv[4])
+                if not np.isnan(sbv[cf, 0]):
+                    o = ob - (ob[i0] - sbv[cf])
                     hi_t = min(int(hz[n]['horizon']), F - 1)                                   # the truth's window: same frames for every value
                     hi = min(int(hz[n]['start'] + (hz[n]['horizon'] - hz[n]['start']) * kf), F - 1)
                     S = s0[None, :] + SHIFTS[:, None]
                     if SHIFT_RULE == 'fixed':                                                # D66: same observation frames for every shift
-                        in_t = np.broadcast_to(((s0 >= 4) & (s0 <= hi_t) & ~np.isnan(o[:, 0]))[None, :], S.shape)
+                        in_t = np.broadcast_to(((s0 >= cf) & (s0 <= hi_t) & ~np.isnan(o[:, 0]))[None, :], S.shape)
                         in_v = in_t & (S >= 0) & (S <= F - 1) & (s0 <= hi)[None, :]
                     else:
-                        in_t = (S >= 4) & (S <= hi_t) & ~np.isnan(o[:, 0])[None, :]
+                        in_t = (S >= cf) & (S <= hi_t) & ~np.isnan(o[:, 0])[None, :]
                         in_v = in_t & (S <= hi)
                     Sc = np.clip(S, 0, F - 1); f0 = np.floor(Sc).astype(int); w = (Sc - f0)[..., None]; f1 = np.minimum(f0 + 1, F - 1)
                     pred = (1 - w) * sbv[f0] + w * sbv[f1]
@@ -306,7 +308,7 @@ def evaluate(clip, param, obs, kc, dt_obs, scale, lib, truth, offset=(0.0, 0.0),
                     lf = huber(rr).sum(-1) / (2 * (SIGMA_PX / d0) ** 2)
                     cnt = good.sum(1) + beyond.sum(1)
                     per = (np.where(good, lf, 0.0).sum(1) + E_BEYOND * beyond.sum(1)) / np.maximum(cnt, 1)
-                    moving = (good & (S >= max(hz[n]['start'], 4))).sum(1)                  # frames after motion start
+                    moving = (good & (S >= max(hz[n]['start'], cf))).sum(1)                  # frames after motion start
                     row = np.where((cnt >= MIN_FRAMES) & (moving >= MIN_FRAMES), per, np.inf)
                     z = np.argmin(np.abs(SHIFTS))
                     if moving[z] < MIN_FRAMES and moving.max() < MIN_FRAMES: row[:] = np.inf

@@ -1,9 +1,10 @@
 """Known-answer test of the GENERATED-video path: synthetic 'generated' videos made from the reference videos (truth known).
-Starting at the condition frame (index 4) every STEP-th reference frame is kept (playback fps = reference fps / STEP, so the
+Starting at the condition frame (index 4, or --start) every STEP-th reference frame is kept (playback fps = reference fps / STEP, so the
 clock is exact), at most N frames, and every frame is warped by x' = AX x + BX, y' = AY y + BY (default: the VideoGPA
 mapping measured by gen_register.py, x 1.0264 / -11.3 px). The items go through the same make_gen_jobs.build() as real
 generated videos (registration, prompts, tracking range). Usage:
-  python make_synth.py NAME REMOTE_DIR [--step 2] [--frames 81] [--ax 1.0264 --bx -11.3 --ay 1 --by 0] [CLIP ...]"""
+  python make_synth.py NAME REMOTE_DIR [--step 2] [--frames 81 | --seconds S] [--ax 1.0264 --bx -11.3 --ay 1 --by 0] [CLIP ...]
+--seconds S: per clip as many frames as cover S seconds after the condition frame at the kept rate (short-video formats)"""
 import argparse, json
 from pathlib import Path
 import cv2
@@ -12,9 +13,10 @@ import common as c2
 import make_gen_jobs as mg
 
 ap = argparse.ArgumentParser(); ap.add_argument('name'); ap.add_argument('remote'); ap.add_argument('clips', nargs='*')
-ap.add_argument('--step', type=int, default=2); ap.add_argument('--frames', type=int, default=81)
+ap.add_argument('--step', type=int, default=2); ap.add_argument('--frames', type=int, default=81); ap.add_argument('--seconds', type=float)
 ap.add_argument('--ax', type=float, default=1.0264); ap.add_argument('--bx', type=float, default=-11.3)
 ap.add_argument('--ay', type=float, default=1.0); ap.add_argument('--by', type=float, default=0.0)
+ap.add_argument('--start', type=int, default=4, help='reference frame used as the condition frame (4 = the fifth frame, all sets up to 2026-11-03; 0 for first-frame generation)')
 a = ap.parse_args()
 RD = mg.RD
 clips = a.clips or sorted(c for c, h in mg.HZ.items() if h.get('status') == 'OK' and c != 'T06_C04')
@@ -24,12 +26,12 @@ items = []
 for clip in clips:
     src = c2.B / 'sam_lean' / 'reference' / 'videos' / f'{clip}.mp4'
     cap = cv2.VideoCapture(str(src)); fps = cap.get(cv2.CAP_PROP_FPS); W, H = int(cap.get(3)), int(cap.get(4))
-    frames = []
+    frames = []; nmax = int(round(a.seconds * fps / a.step)) + 1 if a.seconds else a.frames
     k = 0
     while True:
         ok, im = cap.read()
         if not ok: break
-        if k >= 4 and (k - 4) % a.step == 0 and len(frames) < a.frames: frames.append(cv2.warpAffine(im, M, (W, H), borderMode=cv2.BORDER_REPLICATE))
+        if k >= a.start and (k - a.start) % a.step == 0 and len(frames) < nmax: frames.append(cv2.warpAffine(im, M, (W, H), borderMode=cv2.BORDER_REPLICATE))
         k += 1
     cap.release()
     key = f'synth_{a.name}_{clip}'; dst = OUT / f'{key}.mp4'
@@ -37,6 +39,7 @@ for clip in clips:
     for im in frames: vw.write(im)
     vw.release()
     items.append(dict(key=key, seed=-1, annotation=-1, model=f'synth_{a.name}', clip=clip, item=RD[clip]['anonymous_id'], path=str(dst),
-                      synthetic=dict(step=a.step, frames=len(frames), map=dict(scale=(a.ax, a.ay), offset=(a.bx, a.by)))))
+                      synthetic=dict(step=a.step, frames=len(frames), map=dict(scale=(a.ax, a.ay), offset=(a.bx, a.by))),
+                      **({'condition_frame_index': a.start} if a.start != 4 else {})))
     print(clip, len(frames), 'frames at', fps / a.step, 'fps', flush=True)
 mg.build(items, a.name, a.remote)
