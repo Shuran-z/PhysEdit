@@ -23,7 +23,16 @@ def quality_route(pred,job,threshold):
     if not isinstance(q,dict):return 'review'
     if q.get('policy_version')=='scene-integrity-v2':
         from .scene_quality import scene_quality_route
-        return scene_quality_route(q,job['window_s']) if pred.get('status')=='ok' else 'review'
+        # The registered horizon can fall between two native frames. The last
+        # observable frame, rather than an unavailable fractional frame, is the
+        # endpoint required for an absence check. Never accept a longer gap.
+        horizon=job['window_s']
+        last=job.get('last_observed_time_s',horizon)
+        fps=job.get('generated_fps')
+        if last!=horizon:
+            if type(fps)not in(int,float)or fps<=0 or not 0<=horizon-last<1/fps+1e-6:return 'review'
+            horizon=last
+        return scene_quality_route(q,horizon) if pred.get('status')=='ok' else 'review'
     if pred.get('status')!='ok' or not evidence(q,job['window_s'],threshold=threshold):return 'review'
     if q.get('status')=='measurable' and q.get('failure')=='none' and q.get('target_integrity')=='intact' and q.get('support_integrity')=='intact':return 'pass'
     if q.get('status')=='unmeasurable' and q.get('failure') in ('fusion','identity_loss','severe_corruption') and evidence(q,job['window_s'],2,threshold):return 'auto_rejected'
