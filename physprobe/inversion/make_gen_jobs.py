@@ -14,6 +14,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import common as c2
+import bindings
 import gen_register as gr
 
 G = c2.GENERATED / 'original_prompts'
@@ -49,12 +50,14 @@ def build(items, name, remote, workers=1, median_from=None):
         if r.get('ok'): x['map'] = dict(scale=r['scale'], offset=r['offset'], source='item')
         elif x['model'] in med: x['map'] = dict(med[x['model']], source='model_median')
         else: x['map'] = None; continue
-        cam = c2.camera(clip)
+        BIND = clip in bindings.CLIPS   # another sample than the formal reference: camera, objects and start poses from the package binding
+        cam = bindings.camera(clip) if BIND else c2.camera(clip)
         W, H = r.get('condition_size') or (cam[5], cam[6])
         sx, sy = W / cam[5], H / cam[6]
         ax, ay = x['map']['scale']; bx, by = x['map']['offset']
         x['cam_to_video'] = dict(scale=(sx * ax, sy * ay), offset=(bx, by))
         cf = x.get('condition_frame_index', 4)   # simulation frame shown by the condition frame (4 up to 2026-11-03; 0 for first-frame generation)
+        if BIND and (clip, cf) not in cache: cache[(clip, cf)] = bindings.visible_boxes(clip)
         if (clip, cf) not in cache:
             poses = c2.initial_poses(clip, frame=cf); movers = {}
             for n, p in poses.items():
@@ -73,6 +76,7 @@ def build(items, name, remote, workers=1, median_from=None):
         x['dt_obs'] = pvp / x['fps']
         h_end = max(o['horizon'] for o in HZ[clip]['objects'].values()) + 21          # simulation frames
         last = math.ceil((h_end - cf) * dt / x['dt_obs']) + 1                            # generated frames after the condition frame
+        if BIND: last = x['frames'] - 1; x['binding'] = True                             # no windows of this sample yet: the whole video
         jobs.append(dict(id=x['key'], video=f"{remote}/videos/{x['key']}.mp4", prompt_frame=0, last_frame=min(x['frames'] - 1, last), objects=objs))
     (OUT / 'jobs.jsonl').write_text(''.join(json.dumps(j) + '\n' for j in jobs))
     json.dump(dict(items=items, model_median_map=med), open(OUT / 'items.json', 'w'), indent=1)
