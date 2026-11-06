@@ -35,10 +35,10 @@ source /path/to/physedit-env/activate_phyediting.sh
 
 ## 当前100条重力任务
 
-填写[模型配置](../../examples/phyediting/gravity100.model.example.json)后，使用已登记任务目录创建运行配置：
+先[下载并解压完整100条任务包](GRAVITY100.md#任务包下载)，执行`python3 gravity100/verify.py`校验。总入口是`gravity100/tasks.jsonl`；每条`task.json`位于`gravity100/G100_XXX/`目录中。填写[模型配置](../../examples/phyediting/gravity100.model.example.json)后创建运行配置：
 
 ```bash
-physedit prepare-gravity100 /path/to/tasks.jsonl --model-config model.json --out gravity100.json
+physedit prepare-gravity100 gravity100/tasks.jsonl --model-config model.json --out gravity100.json
 physedit plan gravity100.json
 physedit run gravity100.json --execute
 ```
