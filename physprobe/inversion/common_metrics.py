@@ -66,17 +66,18 @@ def centre_at(fr, bx, t, dt, k0):
     w = (x - fr[j - 1]) / (fr[j] - fr[j - 1]); return (1 - w) * c[j - 1] + w * c[j]
 
 
-def trajectory(gen, ref, to_ref, dt_g, dt_r, T, diag):
-    """{ade, fde, ade_static, n_obj}; gen boxes in generated pixels (frame 0 = condition), ref boxes in reference pixels"""
+def trajectory(gen, ref, to_ref, dt_g, dt_r, T, diag, cf=4):
+    """{ade, fde, ade_static, n_obj}; gen boxes in generated pixels (frame 0 = condition), ref boxes in reference pixels
+    (cf: the reference frame the condition image shows, condition_frame_index, default 4)"""
     grid = np.arange(1, int(T * GRID_HZ * 3) + 1) / (GRID_HZ * 3)            # 30 Hz grid after the condition time
     per = []
     for n in sorted(set(gen) & set(ref)):   # fixed order: the means are then bit-reproducible across processes
         (fg, bg), (fr, br) = gen[n], ref[n]
-        g0, r0 = centre_at(fg, bg, 0.0, dt_g, 0), centre_at(fr, br, 0.0, dt_r, 4)
+        g0, r0 = centre_at(fg, bg, 0.0, dt_g, 0), centre_at(fr, br, 0.0, dt_r, cf)
         if not (np.isfinite(g0).all() and np.isfinite(r0).all()): continue
         e, s = [], []
         for t in grid:
-            g, r = centre_at(fg, bg, t, dt_g, 0), centre_at(fr, br, t, dt_r, 4)
+            g, r = centre_at(fg, bg, t, dt_g, 0), centre_at(fr, br, t, dt_r, cf)
             if not (np.isfinite(g).all() and np.isfinite(r).all()): continue
             dg = to_ref(g) - to_ref(g0); dr = r - r0
             e.append(np.linalg.norm(dg - dr) / diag); s.append(np.linalg.norm(dr) / diag)
@@ -115,10 +116,11 @@ def fidelity(gs, rs):
     return dict(video_psnr=float(np.mean(ps)), video_ssim=float(np.mean(ss)))
 
 
-def ref_clip(clip):
+def ref_clip(clip, cf=4):
+    """reference timing, size and tracks; cf 0: the reference tracked from frame 0 (sam_lean/reference_f0, F49), cf 4: the official tracks"""
     meta = ev.ref_meta(clip); cap = cv2.VideoCapture(str(REF / 'videos' / f'{clip}.mp4')); n_ref = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     W, H = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)); cap.release()
-    ref_tr = {n: (np.arange(len(b)), b) for n, b in ev.load_tracks_indexed(REF / 'tracks_lean.jsonl', clip).items()}
+    ref_tr = {n: (np.arange(len(b)), b) for n, b in ev.load_tracks_indexed((REF if cf == 4 else REF.parent / f'reference_f{cf}') / 'tracks_lean.jsonl', clip).items()}
     return meta['dt_obs'], np.array(meta['scale']), n_ref, W, H, ref_tr
 
 
@@ -143,17 +145,18 @@ def run_frozen(job):
 def run_clip(job):
     clip, xs = job
     dt_r, sr, n_ref, W, H, ref_tr = ref_clip(clip); diag = math.hypot(W, H)
-    ref_cache = {}; out = []
+    ref_trs = {4: ref_tr}; ref_cache = {}; out = []
     for x in xs:
         r = dict(key=x['key'], clip=clip, model=x['model'], seed=x.get('seed'), annotation=x.get('annotation'))
         try:
             m = x['cam_to_video']; sg, og = np.array(m['scale']), np.array(m['offset'])
             to_ref = lambda p: (p - og) / sg * sr                                    # generated pixels -> reference pixels
-            dt_g = ev.generated_dt(clip, x['fps'], A.clock)
-            T = min(T_MAX, (x['frames'] - 1) * dt_g, (n_ref - 1 - 4) * dt_r); r['window_s'] = round(T, 3)
-            r.update(trajectory(TR.get(x['key'], {}), ref_tr, to_ref, dt_g, dt_r, T, diag))
+            dt_g = ev.generated_dt(clip, x['fps'], A.clock); cf = x.get('condition_frame_index', 4)   # reference frame of the condition image
+            T = min(T_MAX, (x['frames'] - 1) * dt_g, (n_ref - 1 - cf) * dt_r); r['window_s'] = round(T, 3)
+            if cf not in ref_trs: ref_trs[cf] = ref_clip(clip, cf)[5]
+            r.update(trajectory(TR.get(x['key'], {}), ref_trs[cf], to_ref, dt_g, dt_r, T, diag, cf))
             ts = np.arange(0, int(T * GRID_HZ) + 1) / GRID_HZ
-            ig = [int(math.floor(t / dt_g + 0.5 - 1e-9)) for t in ts]; ir = [4 + int(math.floor(t / dt_r + 0.5 - 1e-9)) for t in ts]
+            ig = [int(math.floor(t / dt_g + 0.5 - 1e-9)) for t in ts]; ir = [cf + int(math.floor(t / dt_r + 0.5 - 1e-9)) for t in ts]
             vg = read_frames(Path(A.video_dir) / f"{x['key']}.mp4" if A.video_dir else gt(x['path']), set(ig))
             need = set(ir) - set(ref_cache)
             if need: ref_cache.update(read_frames(REF / 'videos' / f'{clip}.mp4', need))

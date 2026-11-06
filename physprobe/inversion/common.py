@@ -14,6 +14,8 @@ bound = json.load(open(READY / 'bound.json'))
 cams = json.load(open(PROJECTION / 'cams.json'))
 T13_DIR = KNOWN / 'bound_metadata/T13_server'
 NO_SANITIZE = {'T16', 'T17', 'T18', 'T19', 'T20'}
+# workspaces of the new samples (event_prompt/final_other_workspace.py) list their clips here: camera from cfg/, not the formal bindings
+CFG_CAMERA = set(json.load(open(B / 'camera_from_cfg.json'))) if (B / 'camera_from_cfg.json').exists() else set()
 _ns = {'np': np, 'Rot': Rot}
 _src = open(CODE / 'projection.py').read()
 exec(_src[_src.index('def size_of(s):'):_src.index('def huber(')], _ns)
@@ -47,6 +49,7 @@ def spec(clip, name):
 
 def _fixed_view(clip):
     """render block holding the benchmark camera's fixed_view"""
+    if clip in CFG_CAMERA: return config(clip)['render']   # new samples (2026-11-04): cfg/<clip>.json is the package binding's effective_config, camera from it (as bindings.camera)
     want = cams.get(clip, 'cam01'); sc = clip[:3]
     if sc == 'T13':   # physics config had sync_cameras removed; take the camera from the original server config
         d = next(x for x in T13_DIR.iterdir() if x.name.startswith(json.load(open(B / 'cfg' / f'{clip}.json'))['sample_id'].replace('_rgb3d', '')))

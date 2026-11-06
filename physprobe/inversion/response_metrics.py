@@ -17,7 +17,7 @@ the anonymous clip id, the video path under data/generated/, and the kind / valu
 comparison with human scores. T19/T20 friction is left out (B20); not_validated results are left out.
 Usage: python response_metrics.py [GENERATED_NAME=all_cc_gated] -> results_gen/response_metrics.md / .json
 (another name, e.g. a rule variant all_cc_sigma3_gated: response_metrics_<NAME>.md / .json, no per-video table)"""
-import collections, csv, glob, json, math, sys
+import os, collections, csv, glob, json, math, sys
 import numpy as np
 from scipy import stats
 
@@ -83,9 +83,11 @@ def response_bands(rs):
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'all_cc_gated'
 suffix = '' if name == 'all_cc_gated' else f'_{name}'
-known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / 'results_reference' / 'ref_*.json')) if not f.endswith('_summary.json')]}
+KT = os.environ.get('PHYSPROBE_KNOWN_TAG', '')   # a rule variant's own known-truth sets (results_reference_<TAG>, <set>_<TAG>), e.g. D51
+KT = f'_{KT}' if KT else ''
+known = {'reference': [json.load(open(f)) for f in glob.glob(str(B / f'results_reference{KT}' / 'ref_*.json')) if not f.endswith('_summary.json')]}
 for s in ('s15v', 's30f121', 's10f16'):
-    known[s] = [json.loads(l) for l in open(B / 'results_gen' / f'{s}.jsonl')]
+    known[s] = [json.loads(l) for l in open(B / 'results_gen' / f'{s}{KT}.jsonl')]
 G = [json.loads(l) for l in open(B / 'results_gen' / f'{name}.jsonl')]
 G = [r for r in G if 'param' in r and not skip(r)]
 V = [r for r in G if r['kind'] != 'not_validated']

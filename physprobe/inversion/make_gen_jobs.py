@@ -14,6 +14,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import common as c2
+import bindings
 import gen_register as gr
 
 G = c2.GENERATED / 'original_prompts'
@@ -28,7 +29,7 @@ def _register(x):
     return r, fps, frames
 
 
-def build(items, name, remote, workers=1):
+def build(items, name, remote, workers=1, median_from=None):
     OUT = c2.B / 'sam_gen' / name; OUT.mkdir(parents=True, exist_ok=True)
     # registration (per item, model median as fallback)
     if workers > 1:
@@ -37,8 +38,10 @@ def build(items, name, remote, workers=1):
     else: regs = [_register(x) for x in items]
     for x, (r, fps, frames) in zip(items, regs): x['registration'] = r; x['fps'] = fps; x['frames'] = frames
     med = {}
+    pool_items = list(items)   # --median-from: the fallback median also over the items of earlier job sets (e.g. the final set), as in the main run
+    for f in filter(None, (median_from or '').split(',')): pool_items += json.load(open(f))['items']
     for m in {x['model'] for x in items}:
-        ok = [x['registration'] for x in items if x['model'] == m and x['registration'].get('ok')]
+        ok = [x['registration'] for x in pool_items if x['model'] == m and (x.get('registration') or {}).get('ok')]
         if ok: med[m] = dict(scale=(st.median(r['scale'][0] for r in ok), st.median(r['scale'][1] for r in ok)), offset=(st.median(r['offset'][0] for r in ok), st.median(r['offset'][1] for r in ok)))
     jobs = []
     cache = {}
@@ -47,21 +50,24 @@ def build(items, name, remote, workers=1):
         if r.get('ok'): x['map'] = dict(scale=r['scale'], offset=r['offset'], source='item')
         elif x['model'] in med: x['map'] = dict(med[x['model']], source='model_median')
         else: x['map'] = None; continue
-        cam = c2.camera(clip)
+        BIND = clip in bindings.CLIPS   # another sample than the formal reference: camera, objects and start poses from the package binding
+        cam = bindings.camera(clip) if BIND else c2.camera(clip)
         W, H = r.get('condition_size') or (cam[5], cam[6])
         sx, sy = W / cam[5], H / cam[6]
         ax, ay = x['map']['scale']; bx, by = x['map']['offset']
         x['cam_to_video'] = dict(scale=(sx * ax, sy * ay), offset=(bx, by))
-        if clip not in cache:
-            poses = c2.initial_poses(clip); movers = {}
+        cf = x.get('condition_frame_index', 4)   # simulation frame shown by the condition frame (4 up to 2026-11-03; 0 for first-frame generation)
+        if BIND and (clip, cf) not in cache: cache[(clip, cf)] = bindings.visible_boxes(clip)
+        if (clip, cf) not in cache:
+            poses = c2.initial_poses(clip, frame=cf); movers = {}
             for n, p in poses.items():
                 try: sp = c2.spec(clip, n)
                 except KeyError: continue
                 if not sp.get('fixed'): movers[n] = np.array([p])
-            cache[clip] = c2.visible_boxes(clip, cam, movers)
+            cache[(clip, cf)] = c2.visible_boxes(clip, cam, movers)
         Wv, Hv = r.get('video_size') or (W, H)
         objs = {}
-        for n, (frac, box) in cache[clip].items():
+        for n, (frac, box) in cache[(clip, cf)].items():
             if frac[0] < 0.2 or np.isnan(box[0, 0]): continue
             b = box[0]
             b = [max(0, round(b[0] * sx * ax + bx)), max(0, round(b[1] * sy * ay + by)), min(Wv - 1, round(b[2] * sx * ax + bx)), min(Hv - 1, round(b[3] * sy * ay + by))]
@@ -69,7 +75,8 @@ def build(items, name, remote, workers=1):
         dt = float(RD[clip]['physical_seconds_per_frame']); pvp = float(RD[clip]['playback_vs_physics'])
         x['dt_obs'] = pvp / x['fps']
         h_end = max(o['horizon'] for o in HZ[clip]['objects'].values()) + 21          # simulation frames
-        last = math.ceil((h_end - 4) * dt / x['dt_obs']) + 1                            # generated frames after the condition frame
+        last = math.ceil((h_end - cf) * dt / x['dt_obs']) + 1                            # generated frames after the condition frame
+        if BIND: last = x['frames'] - 1; x['binding'] = True                             # no windows of this sample yet: the whole video
         jobs.append(dict(id=x['key'], video=f"{remote}/videos/{x['key']}.mp4", prompt_frame=0, last_frame=min(x['frames'] - 1, last), objects=objs))
     (OUT / 'jobs.jsonl').write_text(''.join(json.dumps(j) + '\n' for j in jobs))
     json.dump(dict(items=items, model_median_map=med), open(OUT / 'items.json', 'w'), indent=1)
@@ -85,6 +92,7 @@ if __name__ == '__main__':
     ap.add_argument('--models'); ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--annotations', default='1,2,3'); ap.add_argument('--limit', type=int)
     ap.add_argument('--gen-dir', help='generation delivery root (default: data/generated/original_prompts, the three-variant run)')
     ap.add_argument('--workers', type=int, default=1, help='parallel registration processes')
+    ap.add_argument('--median-from', help='comma-separated items.json files whose registrations join the model median of the fallback mapping (small incremental sets)')
     ap.add_argument('--skip', help='comma-separated job names (sam_gen/<name>/items.json) whose keys are already tracked (incremental deliveries)')
     a = ap.parse_args()
     if a.gen_dir: G = Path(c2.gt(a.gen_dir))
@@ -103,4 +111,4 @@ if __name__ == '__main__':
         done = {x['key'] for n in a.skip.split(',') for x in json.load(open(c2.B / 'sam_gen' / n / 'items.json'))['items']}
         items = [x for x in items if x['key'] not in done]
     if a.limit: items = items[:a.limit]
-    build(items, a.name, a.remote, a.workers)
+    build(items, a.name, a.remote, a.workers, a.median_from)
