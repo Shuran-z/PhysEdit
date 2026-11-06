@@ -1,8 +1,8 @@
 # 单视角物理参数测量
 
-PhysEdit从单视角目标观测中测量重力、动摩擦和初速度系数。SAM3.1提供目标掩膜和图像边界，解析运动模型预测三维轨迹，再用相机参数投影到图像平面，与目标观测拟合。各参数的输入条件和开发集误差见[性能评测](phyediting/validation.md)。
+PhysEdit从单视角目标观测中测量重力、动摩擦和初速度系数。SAM3.1提供目标掩膜和图像边界，解析运动模型预测三维轨迹，再用相机参数投影到图像平面，与目标观测拟合。各参数的输入条件和开发集误差见[性能评测](../phyediting/validation.md)。
 
-三类参数均可随生成视频自动测量，也可处理已有视频观测。单独测量见[物理参数测量](phyediting/MOTION_PARAMETERS.md)，生成与评测见[快速上手](phyediting/QUICKSTART.md)。
+三类参数均可随生成视频自动测量，也可处理已有视频观测。单独测量见[物理参数测量](../phyediting/MOTION_PARAMETERS.md)，生成与评测见[快速上手](../phyediting/QUICKSTART.md)。
 
 ## 三类参数
 
@@ -12,7 +12,7 @@ PhysEdit从单视角目标观测中测量重力、动摩擦和初速度系数。
 | 动摩擦 | 已知重力和坡面条件下拟合滑动减速 | 有效系数误差、响应斜率与排序 |
 | 初速度 | 自由飞行三维拟合或沿坡滑动拟合 | 模长、向量与零目标误差、响应与排序 |
 
-三类参数在`summary.json.physical_parameters`下并列提供相同的样本数、误差、失败率和覆盖率字段。摩擦另保留静止片段的下界信息，初速度另报告方向误差。单独测量命令与条件清单见[物理参数测量](phyediting/MOTION_PARAMETERS.md)。
+三类参数在`summary.json.physical_parameters`下并列提供相同的样本数、误差、失败率和覆盖率字段。摩擦另保留静止片段的下界信息，初速度另报告方向误差。单独测量命令与条件清单见[物理参数测量](../phyediting/MOTION_PARAMETERS.md)。
 
 <details>
 <summary>重力测量方法、输入与命令</summary>
@@ -24,7 +24,7 @@ PhysEdit从单视角目标观测中测量重力、动摩擦和初速度系数。
 3. 计算预测边界与观测边界相对锚帧的位移残差。固定的几何或掩膜偏移由相对位移消除，图像边界裁切及标注遮挡的边缘单独处理。
 4. 使用soft-L1稳健损失进行有界最小二乘拟合。重力采用对数参数化，未知初速度和时间偏移等辅助参数在给定范围内同时拟合；离散坡面假设按拟合代价比较。
 
-物体旋转根据初始角速度、惯量和角阻尼，通过刚体Euler方程计算。重力拟合使用预先确定的观察窗口；生成评测的窗口与帧数规则见[生成评分方法](phyediting/GENERATION.md)。
+物体旋转根据初始角速度、惯量和角阻尼，通过刚体Euler方程计算。重力拟合使用预先确定的观察窗口；生成评测的窗口与帧数规则见[生成评分方法](../phyediting/GENERATION.md)。
 
 `fit`命令可检查首次接触：预测轨迹越过地面，或后续观测偏离此前拟合超过`max(3 px, 3 × median error)`时结束解析轨迹。固定窗口评测使用`window.contact_check=false`，输入指定连续适用片段。
 
@@ -68,13 +68,13 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 
 生成视频使用参考场景的已知条件与同一初始时刻。`scripts/generated_manifest.py GT.jsonl VIDEOS.jsonl OUT.jsonl`将参考样本与生成视频观测关联；视频行提供`id/gt_id/masks/fps/start_s`，随后使用上述`fit/score`命令。
 
-一键流水线使用固定窗口评分，按配置记录重力、动摩擦与初速度对请求值的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](phyediting/QUICKSTART.md)，指标定义见[生成视频评测](phyediting/EVALUATION.md)。
+一键流水线使用固定窗口评分，按配置记录重力、动摩擦与初速度对请求值的偏差、V/P定量指标及Qwen视觉判断。不同模型采用相同真实时间范围；执行与配置见[快速上手](../phyediting/QUICKSTART.md)，指标定义见[生成视频评测](../phyediting/EVALUATION.md)。
 
 ## 测量条件
 
 重力测量需要相机参数、初始几何与位姿、角运动、阻尼、重力方向和观测时钟。未知初速度在拟合中估计，参考速度与目标重力用于拟合后的评分。自由飞行和单一支撑面的斜面模型分别对应连续无碰撞片段和稳定支撑片段。
 
-遮挡、截断、身份漂移、接触和缺失观测按逐例状态报告。速度大小与三维向量误差分别统计；摩擦测量使用已知重力和坡面几何，静止样本给出静摩擦下界。各指标的误差分母和覆盖率见[性能评测](phyediting/validation.md)。
+遮挡、截断、身份漂移、接触和缺失观测按逐例状态报告。速度大小与三维向量误差分别统计；摩擦测量使用已知重力和坡面几何，静止样本给出静摩擦下界。各指标的误差分母和覆盖率见[性能评测](../phyediting/validation.md)。
 
 ## 输入格式转换
 
@@ -85,4 +85,4 @@ gravtrace score samples.jsonl predictions.jsonl -o summary.json
 
 ## 许可证
 
-MIT，见[LICENSE](../LICENSE)。
+MIT，见[LICENSE](../../LICENSE)。

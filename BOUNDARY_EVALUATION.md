@@ -28,7 +28,7 @@ The controller uses only the Python standard library. Actual media validation ne
 
 ## Prepare a registration
 
-Create three UTF-8 files: `inputs.jsonl`, `answers.jsonl`, and `spec.json`. Each JSONL has one object per sample. IDs must match exactly. Use [the example schemas](examples/boundary/).
+Create three UTF-8 files: `inputs.jsonl`, `answers.jsonl`, and `spec.json`. Each JSONL has one object per sample. IDs must match exactly. Use [the example schemas](examples/boundary).
 
 Each input row declares `sample_id`, `condition_image`, `condition_sha256`, `prompt`, `seed`, `num_frames`, `fps`, `evaluation_duration_s`, `source_width`, and `source_height`. Optional `negative_prompt`, `width`, `height`, and condition/trigger timestamps may be kept in the input record. The image hash is the SHA-256 of the exact conditioning file.
 

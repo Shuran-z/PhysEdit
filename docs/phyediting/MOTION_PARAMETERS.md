@@ -17,7 +17,7 @@ physedit measure gravity samples.jsonl -o predictions.jsonl
 gravtrace score samples.jsonl predictions.jsonl -o summary.json
 ```
 
-相机、真实尺度、初始姿态、角运动和阻尼由输入给定。目标重力仅用于拟合后的评分，方法与输入格式见[测量参考](../REFERENCE.md)。
+相机、真实尺度、初始姿态、角运动和阻尼由输入给定。目标重力仅用于拟合后的评分，方法与输入格式见[测量参考](../internal/REFERENCE.md)。
 
 
 ## 动摩擦

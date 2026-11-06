@@ -110,7 +110,7 @@ document. The mapping below describes the existing website deployment and
 its preserved historical records; it does not supersede those current
 instructions. The site has not been migrated by this audit. Its 31/69
 acceptance count must not be reported as complete-v6 coverage. See
-[the submission audit](PROJECT_STATUS.md) for both hash counts.
+[the submission audit](internal/PROJECT_STATUS.md) for both hash counts.
 
 The author chose to retain original inputs for 69 cases and use the v6
 control-disclosure correction for 31 cases (T04/T06/T09/T11/T13/T16 C01-C05,

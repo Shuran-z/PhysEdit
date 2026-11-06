@@ -177,7 +177,7 @@ def main():
     repo = Path(__file__).resolve().parents[1]
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--splits-root", type=Path, default=repo.parent / "dataset_splits_v2")
-    ap.add_argument("--development-audit", type=Path, default=repo / "docs/CVPR_PROGRESS_AUDIT_2026-10-09.json")
+    ap.add_argument("--development-audit", type=Path, default=repo / "docs/internal/CVPR_PROGRESS_AUDIT_2026-10-09.json")
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
     development = json.loads(args.development_audit.read_text(encoding="utf-8"))

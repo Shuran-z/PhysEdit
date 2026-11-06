@@ -350,7 +350,7 @@ T15 当前 pilot 是开发观测，不再声称该上下文从未被指标开发
 
 ## 12. 本版依据与尚未完成项
 
-项目定位：[BENCHMARK_CONTEXT](../BENCHMARK_CONTEXT.md)；现行划分：[joint_split_v3/plan.json](../joint_split_v3/plan.json)。历史 T15 状态和证据：[T15 专项文档](T15_EVALUATION_PROTOCOL.md)、[参考 pilot](../../review/t15_boundary_pilot_20261014/README.md)、[GPU 复核](../../review/t15_boundary_pilot_20261014/GPU_RECHECK.md)。
+项目定位：[BENCHMARK_CONTEXT](../internal/BENCHMARK_CONTEXT.md)；现行划分：[joint_split_v3/plan.json](../joint_split_v3/plan.json)。历史 T15 状态和证据：[T15 专项文档](T15_EVALUATION_PROTOCOL.md)、[参考 pilot](../../review/t15_boundary_pilot_20261014/README.md)、[GPU 复核](../../review/t15_boundary_pilot_20261014/GPU_RECHECK.md)。
 
 本次完成的是统一协议，不是完整搜索记录恢复、正式 split 冻结、模型生成评分或 T15 GravTrace 验证。已准备的 225 条 pilot 输入不等于完成 225 次生成。本版没有启动远端训练、生成、仿真或渲染。
 

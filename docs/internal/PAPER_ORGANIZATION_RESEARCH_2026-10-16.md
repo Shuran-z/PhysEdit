@@ -97,10 +97,10 @@ Related work 末尾放一个紧凑比较表，维度只保留能解释本文差�
 
 ## 本地证据入口
 
-- `docs/BENCHMARK_CONTEXT.md`
+- `docs/internal/BENCHMARK_CONTEXT.md`
 - `docs/joint_split_v3/README.md` and `plan.json`
-- `docs/CVPR_PROGRESS_2026-10-09.md`
-- `docs/COMPETITIVE_REVIEW_2026-10-09.md`
+- `docs/internal/CVPR_PROGRESS_2026-10-09.md`
+- `docs/internal/COMPETITIVE_REVIEW_2026-10-09.md`
 - `scripts/phyediting_gen.py`
 
 ## 补充：评测整体性与是否需要总分（2026-10-17）

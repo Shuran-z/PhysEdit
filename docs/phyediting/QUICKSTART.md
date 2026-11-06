@@ -4,7 +4,7 @@
 
 ## 安装
 
-当前100条重力任务使用[条件帧评测入口](GRAVITY100.md#一键运行)。该入口直接读取任务第0帧和逐条物理时钟，配置中显式登记`protocol: gravity100`。
+当前100条重力任务使用[条件帧评测入口](../internal/phyediting/GRAVITY100.md#一键运行)。该入口直接读取任务第0帧和逐条物理时钟，配置中显式登记`protocol: gravity100`。
 
 在已有PyTorch/CUDA环境中安装项目：
 
@@ -35,7 +35,7 @@ source /path/to/physedit-env/activate_phyediting.sh
 
 ## 当前100条重力任务
 
-先[下载并解压完整100条任务包](GRAVITY100.md#任务包下载)，执行`python3 gravity100/verify.py`校验。总入口是`gravity100/tasks.jsonl`；每条`task.json`位于`gravity100/G100_XXX/`目录中。填写[模型配置](../../examples/phyediting/gravity100.model.example.json)后创建运行配置：
+先[下载并解压完整100条任务包](../internal/phyediting/GRAVITY100.md#任务包下载)，执行`python3 gravity100/verify.py`校验。总入口是`gravity100/tasks.jsonl`；每条`task.json`位于`gravity100/G100_XXX/`目录中。填写[模型配置](../../examples/phyediting/gravity100.model.example.json)后创建运行配置：
 
 ```bash
 physedit prepare-gravity100 gravity100/tasks.jsonl --model-config model.json --out gravity100.json
@@ -43,7 +43,7 @@ physedit plan gravity100.json
 physedit run gravity100.json --execute
 ```
 
-该配置读取100条任务的第0帧、固定时间范围和逐条已知条件，按ID、OOD-1、OOD-2汇总重力结果。`plan`分别列出输入齐备数和模型原生时间网格下可测数量；低帧率短片段的不足原因逐条保留。数据字段和范围见[100条重力评测](GRAVITY100.md)。
+该配置读取100条任务的第0帧、固定时间范围和逐条已知条件，按ID、OOD-1、OOD-2汇总重力结果。`plan`分别列出输入齐备数和模型原生时间网格下可测数量；低帧率短片段的不足原因逐条保留。数据字段和范围见[100条重力评测](../internal/phyediting/GRAVITY100.md)。
 
 <details>
 <summary>其他数据与物理参数任务的输入配置</summary>
@@ -57,7 +57,7 @@ physedit run gravity100.json --execute
 | `compact` | 初始场景几何与状态文件 |
 | `applicability` | 参考清单与已有重力评测结果 |
 
-每个样本包含`id`、`event`、`gravity`、`fps`、`image_size`、`video`、`trajectory`、`camera_id`、`object_name`、`camera`、`object`、`motion`和`window`。场景字段见[输入格式](../REFERENCE.md#样本格式)。
+每个样本包含`id`、`event`、`gravity`、`fps`、`image_size`、`video`、`trajectory`、`camera_id`、`object_name`、`camera`、`object`、`motion`和`window`。场景字段见[输入格式](../internal/REFERENCE.md#样本格式)。
 
 提示可通过`generation_prompt`提供；内置事件模板覆盖T03、T05、T08、T16–T20。`split`读取输入的集合标记，缺失时为`unspecified`。逐例结果保留全部样本及其缺源、失败和不适用原因。
 

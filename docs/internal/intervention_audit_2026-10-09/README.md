@@ -62,7 +62,7 @@ Isaac HF 结构候选 150 组；加入服务器范围后为 870 组。结构通�
 在仓库根目录运行：
 
 ```powershell
-python scripts/phyediting_intervention_audit.py --out docs/intervention_audit_2026-10-09
+python scripts/phyediting_intervention_audit.py --out docs/internal/intervention_audit_2026-10-09
 python -m unittest discover -s tests -p test_intervention_audit.py -v
 ```
 

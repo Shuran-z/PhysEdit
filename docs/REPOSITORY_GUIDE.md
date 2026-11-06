@@ -12,7 +12,7 @@
 | 临界边界、配对和事件链评分 | [执行指南](../BOUNDARY_EVALUATION.md)、[协议索引](critical_boundary/README.md) | `physedit/boundary.py`、`physedit/boundary_pipeline.py` |
 | 当前 Core100 参考与距离 | [五条 T19 替换](critical_boundary/CORE100_T19_REPLACEMENT.md)、[距离绑定](critical_boundary/CORE100_DISTANCE_BINDINGS.md) | `catalog/active_core100_conditions.json`、`physedit/core100_release.py`、`physedit/core100_bindings.py` |
 | 人工标注与评分桥 | [标注站](../annotation_site/README.md) | `annotation_site/` |
-| 数据下载、清单和发布工具 | [同事下载指南](DOWNLOAD_FOR_COLLEAGUES_ZH.md)、[数据清单](dataset_inventory/README.md) | [scripts/README.md](../scripts/README.md) |
+| 数据下载、清单和发布工具 | [同事下载指南](internal/DOWNLOAD_FOR_COLLEAGUES_ZH.md)、[数据清单](internal/dataset_inventory/README.md) | [scripts/README.md](../scripts/README.md) |
 | 提示词与训练划分 | [提示规则](PROMPT_POLICY.md)、[划分协议](joint_split_v3/PROTOCOL.md) | `physedit/prompt_contract.py`、`docs/joint_split_v3/plan.json` |
 
 ## 目录职责
@@ -61,4 +61,4 @@ python -m pytest tests/test_core100_distance_bindings.py tests/test_core100_refe
 
 ## Git 同步
 
-本地和远端的两套提交历史已在集成分支保留并合并；处理记录见 [REPOSITORY_INTEGRATION_20261031.md](REPOSITORY_INTEGRATION_20261031.md)。今后使用普通 fetch/pull/push，不需要再次允许无共同祖先的历史合并，也不需要强制推送。冻结参考和评分资源通过 `.gitattributes` 禁止换行转换，普通源码统一 LF。
+本地和远端的两套提交历史已在集成分支保留并合并；处理记录见 [REPOSITORY_INTEGRATION_20261031.md](internal/REPOSITORY_INTEGRATION_20261031.md)。今后使用普通 fetch/pull/push，不需要再次允许无共同祖先的历史合并，也不需要强制推送。冻结参考和评分资源通过 `.gitattributes` 禁止换行转换，普通源码统一 LF。

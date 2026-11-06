@@ -296,7 +296,7 @@ python3 -m physedit run public211 --models ltx_i2v,cosmos3_nano --watch 10
 python3 -m physedit status public211
 ```
 
-Models, machines and benchmarks are declared in `physedit/config.py`; see [docs/PIPELINE.md](docs/PIPELINE.md).
+Models, machines and benchmarks are declared in `physedit/config.py`; see [docs/internal/PIPELINE.md](../PIPELINE.md).
 
 ## License
 

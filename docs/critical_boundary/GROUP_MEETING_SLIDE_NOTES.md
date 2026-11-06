@@ -223,7 +223,7 @@ T15 的参考链条可登记为：**书本接触笔记本 → 笔记本越缘 �
 - [统一协议与相关工作对照](CRITICAL_BOUNDARY_PROTOCOL.md)：完整公式、场景映射、文献定位及 GitHub 对照。
 - [T15 版本与参考数据审计](T15_EVALUATION_PROTOCOL.md)：历史实测保留；设计要求以统一协议为准。
 - [联合划分与库存](../joint_split_v3/README.md)：设计容量、当前绑定路径和待落实事项。
-- [整体 benchmark 定位](../BENCHMARK_CONTEXT.md)：数据、生成与反演属于同一工作。
+- [整体 benchmark 定位](../internal/BENCHMARK_CONTEXT.md)：数据、生成与反演属于同一工作。
 - [真实生成实跑记录](../../review/t15_boundary_pipeline_20261014/README.md)：区分工程验证与正式科学评测。
 
 适合最后口头说的一句话：**我们希望测量的不是模型能否生成一次看似合理的运动，而是在已知物理条件改变时，能否正确改变事件分支、传递这一变化，并保持可量化的动力学一致性。**

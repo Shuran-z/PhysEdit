@@ -23,7 +23,7 @@
 | `scripts/t07_original_boundary_worker.py` | 保留全网格、压缩状态读取及资源队列修复 |
 | `scripts/t18_table_contact_boundary_worker.py` | 保留资产路径、执行环境、资源队列及完成回执修复 |
 
-详细目录入口见 [REPOSITORY_GUIDE.md](REPOSITORY_GUIDE.md)。恢复/发布脚本保留原名，避免破坏服务器登记的调用和源代码证据路径。
+详细目录入口见 [REPOSITORY_GUIDE.md](../REPOSITORY_GUIDE.md)。恢复/发布脚本保留原名，避免破坏服务器登记的调用和源代码证据路径。
 
 ## 文件与安装检查
 

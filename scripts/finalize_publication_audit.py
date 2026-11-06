@@ -202,7 +202,7 @@ Isaac媒体归集在`data/T01/isaac/`。每条未停用成员的下载路径均�
 '''
     assert '历史' not in report
     (dest/'PUBLICATION_CHECK.md').write_text(report,encoding='utf-8')
-    (REPO/'docs/PUBLICATION_CHECK_20261029.md').write_text(report,encoding='utf-8')
+    (REPO/'docs/internal/PUBLICATION_CHECK_20261029.md').write_text(report,encoding='utf-8')
     (OUT/'final_catalog_audit.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     print(json.dumps(summary))
 

@@ -24,7 +24,7 @@
 
 旧80/10/10方案仅供历史或可选分组工具使用，不能覆盖当前决定。当前策略在 `docs/joint_split_v3/plan.json` 的 `active_partition` 和 `evaluation_sets.fixed_core100.training_policy` 中登记。登记策略不等于最终训练清单已完成科学验收，也不自动满足临界边界配对要求。
 
-历史文档保存于 `docs/archive/JOINT_SPLIT_20261009.md` 和 `docs/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md`。
+历史文档保存于 `docs/internal/archive/JOINT_SPLIT_20261009.md` 和 `docs/internal/archive/GRAVTRACE_REFERENCE_PREINTEGRATION.md`。
 
 ## 验证
 

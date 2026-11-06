@@ -8,9 +8,9 @@
 
 |用途|现行文件|说明|
 |---|---|---|
-|数据集章节|`docs/dataset_description.tex`|整体benchmark定位、双引擎、固定Core100、输入绑定；发布数量仍需冻结清单支持|
-|评测章节|`docs/evaluation_protocol.tex`|分支、临界、事件链、GravTrace；原生观察窗、VLM与人工、覆盖率及统计单位|
-|补充参考文献|`docs/cvpr_related_work_addendum.bib`|已有文献片段；不等于完整稿件的全部引用|
+|数据集章节|`docs/internal/paper/dataset_description.tex`|整体benchmark定位、双引擎、固定Core100、输入绑定；发布数量仍需冻结清单支持|
+|评测章节|`docs/internal/paper/evaluation_protocol.tex`|分支、临界、事件链、GravTrace；原生观察窗、VLM与人工、覆盖率及统计单位|
+|补充参考文献|`docs/internal/paper/cvpr_related_work_addendum.bib`|已有文献片段；不等于完整稿件的全部引用|
 |历史数据集草稿|`docs/internal/dataset_description.tex`|保留原文，不作为现行入口；含已停用的80/10/10划分和72,960容量描述|
 
 不要同时插入两个数据集片段：它们重复定义`sec:dataset`，且历史稿的划分已被作者后续决定覆盖。
@@ -19,6 +19,6 @@
 
 可复核记录在`review/cvpr_experiments_20261031/PAPER_SOURCE_AUDIT_CURRENT.json`及`PAPER_ALL_BRANCH_TREE_AUDIT.json`。查询未切换分支、合并或提交，也没有覆盖作者原稿。
 
-实验和证据状态以`docs/CVPR_EXPERIMENTS_20261031.md`及其时间戳为准。逐条Core100缺项见`review/cvpr_experiments_20261031/CORE100_CVPR_EVIDENCE_100_20261101.md`。参考准入、区间准入、生成覆盖与已有分数字段分别统计；机器观察不能填作独立人工准确率，排队不能填作生成完成。
+实验和证据状态以`docs/internal/CVPR_EXPERIMENTS_20261031.md`及其时间戳为准。逐条Core100缺项见`review/cvpr_experiments_20261031/CORE100_CVPR_EVIDENCE_100_20261101.md`。参考准入、区间准入、生成覆盖与已有分数字段分别统计；机器观察不能填作独立人工准确率，排队不能填作生成完成。
 
 整篇稿件尚未完成的审阅包括：主张与所有结果的一致性、主表与补充实验的取舍、完整图表引用、页数和最终编译。这些项目需要完整稿件源码，不能靠当前章节片段宣告通过。

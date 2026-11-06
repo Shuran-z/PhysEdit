@@ -514,7 +514,7 @@ T01 now has real genesis/ and isaac/ media directories. All 157 card/catalog
 files verified remotely. Core100/benchmarks and annotation trees unchanged.
 README and project introduction describe current state, with no chronology.
 Visibility remains private and authorization unchanged at author request.
-Report: docs/PUBLICATION_CHECK_20261029.md. Full 72k visual approval and a
+Report: docs/internal/PUBLICATION_CHECK_20261029.md. Full 72k visual approval and a
 verified final training-source-group exclusion manifest remain incomplete.
 
 

@@ -4,11 +4,11 @@
 
 ## 英文 prompt 升级（2026-10-20）
 
-新实验使用 `gravity100-en-v1.tar.gz` 中的 `gravity100_en_v1/tasks.jsonl`，并按新版文件 SHA256 注册输入。100条成员、参考视频、条件帧和评分时钟不变；prompt 从结构化初始参数重建，移除参考事件结果。旧中文包及其历史成绩保持原版本；不得混称为英文实验。统一规则见 [PROMPT_POLICY](../PROMPT_POLICY.md)。
+新实验使用 `gravity100-en-v1.tar.gz` 中的 `gravity100_en_v1/tasks.jsonl`，并按新版文件 SHA256 注册输入。100条成员、参考视频、条件帧和评分时钟不变；prompt 从结构化初始参数重建，移除参考事件结果。旧中文包及其历史成绩保持原版本；不得混称为英文实验。统一规则见 [PROMPT_POLICY](../../PROMPT_POLICY.md)。
 
 # 条件帧重力评测
 
-本协议包含100条单视角重力任务，覆盖T01–T20，每类5条。使用[清单CSV](gravity100.csv)固定样本、机位、条件帧与评测长度；同一条任务在所有生成模型中使用相同输入和时域。
+本协议包含100条单视角重力任务，覆盖T01–T20，每类5条。使用[清单CSV](../../phyediting/gravity100.csv)固定样本、机位、条件帧与评测长度；同一条任务在所有生成模型中使用相同输入和时域。
 
 ## 集合与分布
 
@@ -64,7 +64,7 @@ CSV SHA256：`8a0106b377fc66a6fd4e34d9996d202841a0e64b020a8586b7f2f7777769894f`�
 
 ## 一键运行
 
-任务目录包含条件图、参考片段、逐条已知条件和测量定义，入口为`tasks.jsonl`。先填写[模型配置](../../examples/phyediting/gravity100.model.example.json)，再创建运行配置：
+任务目录包含条件图、参考片段、逐条已知条件和测量定义，入口为`tasks.jsonl`。先填写[模型配置](../../../examples/phyediting/gravity100.model.example.json)，再创建运行配置：
 
 ```bash
 physedit prepare-gravity100 gravity100/tasks.jsonl --model-config model.json --out gravity100.json
@@ -76,7 +76,7 @@ physedit run gravity100.json --execute
 
 GPU阶段默认要求设备空闲。允许共享时，在`generation_runtime.gpu_sharing`中填写`allowed_gpu_uuids`、`minimum_free_mib`和`maximum_utilization_percent`，分别限定设备、剩余显存和已有负载。运行前重新读取资源，超出范围则保留输出并暂缓，不终止已有进程。
 
-轮廓、表面RGB和接触动力学使用各条登记的测量模型。T02的耦合运动通过`native_runtime.command`连接CPU PhysX后端，按当前视频观测重新搜索重力；后端程序为[`native_physx_worker.py`](../../physedit/native_physx_worker.py)，使用CPU容器运行并校验源码SHA256。跨主机部署可用[`native_bridge.py`](../../physedit/native_bridge.py)转发固定后端会话；连接使用Unix socket，不传递登录凭据。参考视频的观测、估计值和自适应搜索候选不进入生成视频的估计过程。
+轮廓、表面RGB和接触动力学使用各条登记的测量模型。T02的耦合运动通过`native_runtime.command`连接CPU PhysX后端，按当前视频观测重新搜索重力；后端程序为[`native_physx_worker.py`](../../../physedit/native_physx_worker.py)，使用CPU容器运行并校验源码SHA256。跨主机部署可用[`native_bridge.py`](../../../physedit/native_bridge.py)转发固定后端会话；连接使用Unix socket，不传递登录凭据。参考视频的观测、估计值和自适应搜索候选不进入生成视频的估计过程。
 
 低帧率模型在短时域内的观测可能少于测量所需数量。这类任务保留身份与原因，计入覆盖率和失败率的固定分母。物理测量使用实际解码帧及其时间戳，保留原帧率。顺序读取模型使用固定范围内的无损帧前缀；不插入观测帧，也不改变播放速度。离散控制模型同时检查原物理子步与观测时刻是否兼容。
 
@@ -84,4 +84,4 @@ PhysRVG将同一条件图重复为五帧静态输入。评测以给定前缀的�
 
 重力结果按ID、OOD-1、OOD-2汇总。选用V/P时，参考图像比较与配对轨迹使用该条固定时域；1秒指标在时长足够的任务中统计。Qwen判断整段生成视频的视觉与物理表现。已有运行可用`physedit evaluate gravity100.json --run-dir runs/gravity100 --out runs/recheck --execute`重评选用的V/P和Qwen，并读取该次生成视频的重力结果。
 
-数据集核心协议与训练来源分配见[评测划分与联合训练](../joint_split_v3/PROTOCOL.md)。
+数据集核心协议与训练来源分配见[评测划分与联合训练](../../joint_split_v3/PROTOCOL.md)。
