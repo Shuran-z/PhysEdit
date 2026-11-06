@@ -59,23 +59,20 @@ def generate(args):
 
     # Mount LoRA (optional)
     if args.lora_path:
-        if not Path(args.lora_path).exists():
-            raise FileNotFoundError(f"VideoGPA adapter disappeared: {args.lora_path}")
-        else:
-            print(f"Mounting LoRA: {args.lora_path} (weight={args.lora_weight})")
-            engine.model = PeftModel.from_pretrained(
-                engine.model, args.lora_path,
-                adapter_name="default",
-                torch_dtype=torch.bfloat16,
-            )
-            # Scale the LoRA contribution before merging (delta_W *= lora_weight)
-            if args.lora_weight != 1.0:
-                for module in engine.model.modules():
-                    if hasattr(module, "scaling") and isinstance(module.scaling, dict):
-                        for adapter in module.scaling:
-                            module.scaling[adapter] *= args.lora_weight
-            engine.model.merge_and_unload()
-            print("LoRA merged.")
+        print(f"Mounting LoRA: {args.lora_path} (weight={args.lora_weight})")
+        engine.model = PeftModel.from_pretrained(
+            engine.model, args.lora_path,
+            adapter_name="default",
+            torch_dtype=torch.bfloat16,
+        )
+        # Scale the LoRA contribution before merging (delta_W *= lora_weight)
+        if args.lora_weight != 1.0:
+            for module in engine.model.modules():
+                if hasattr(module, "scaling") and isinstance(module.scaling, dict):
+                    for adapter in module.scaling:
+                        module.scaling[adapter] *= args.lora_weight
+        engine.model.merge_and_unload()
+        print("LoRA merged.")
 
     engine.model.eval()
     # Restore the configured inference dtype after merging the adapter.
