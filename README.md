@@ -20,44 +20,53 @@
 
 ## Results
 
-12 image-to-video models on 97 Core100 tasks. Every task has 3 prompt variants and 3 seeds, about 870 videos per model. Two groups of metrics score each video:
+10 image-to-video models on the Core100 tasks, each prompted in four ways, 3,680 videos in total with seed 0:
 
-- **V** compares the video with the reference continuation of its task, which shows the same scene with the prompted physics.
-- **P** measures the physical parameters the video shows.
+- **short**: one sentence on the event, then the parameter values;
+- **medium**: the parameter values written into a natural description of the event;
+- **detailed**: the medium prompt plus the initial layout of the scene;
+- **concat**: the parameter values alone, in a fixed sentence pattern.
 
-Definitions are in [docs/METRICS.md](docs/METRICS.md).
+**V** compares each video with the reference continuation of its task, which shows the same scene with the prompted physics. **P** measures the physical parameters the video shows. Definitions are in [docs/METRICS.md](docs/METRICS.md).
 
 <table>
-<tr><th rowspan="2">Model</th><th colspan="6">V: visual and motion consistency</th><th colspan="6">P: physical parameters</th></tr>
-<tr><th>ADE ratio&nbsp;↓</th><th>S-IoU&nbsp;↑</th><th>ST-IoU&nbsp;↑</th><th>PSNR&nbsp;↑</th><th>SSIM&nbsp;↑</th><th>Cam.&nbsp;drift&nbsp;↓</th><th>Explainable&nbsp;↑</th><th>g&nbsp;err.&nbsp;↓</th><th>μ&nbsp;err.&nbsp;↓</th><th>v&nbsp;err.&nbsp;↓</th><th>g&nbsp;τ&nbsp;↑</th><th>v&nbsp;τ&nbsp;↑</th></tr>
-<tr><td>CogVideoX-1.5</td><td align="right">1.01</td><td align="right">0.060</td><td align="right">0.003</td><td align="right">24.6</td><td align="right">0.869</td><td align="right">11%</td><td align="right">34.2%</td><td align="right">60.6%</td><td align="right">34.6%</td><td align="right">61.9%</td><td align="right">+0.17</td><td align="right">–</td></tr>
-<tr><td>Cosmos-Predict2</td><td align="right">1.04</td><td align="right">0.087</td><td align="right">0.004</td><td align="right">24.5</td><td align="right">0.842</td><td align="right">28%</td><td align="right">31.7%</td><td align="right">60.6%</td><td align="right">34.6%</td><td align="right">45.7%</td><td align="right">+0.56</td><td align="right">+0.62</td></tr>
-<tr><td>Cosmos3-Nano</td><td align="right">1.07</td><td align="right">0.185</td><td align="right">0.010</td><td align="right">30.6</td><td align="right">0.933</td><td align="right">4%</td><td align="right">35.0%</td><td align="right">79.5%</td><td align="right">16.2%</td><td align="right">52.7%</td><td align="right">+0.37</td><td align="right">-0.05</td></tr>
-<tr><td>DynamiCrafter</td><td align="right">2.09</td><td align="right">0.021</td><td align="right">0.003</td><td align="right">18.8</td><td align="right">0.606</td><td align="right">86%</td><td align="right">19.7%</td><td align="right">79.4%</td><td align="right">39.4%</td><td align="right">21.1%</td><td align="right">+0.33</td><td align="right">+0.24</td></tr>
-<tr><td>HunyuanVideo-1.5</td><td align="right">1.26</td><td align="right">0.199</td><td align="right">0.011</td><td align="right">27.9</td><td align="right">0.926</td><td align="right">5%</td><td align="right">20.1%</td><td align="right">60.6%</td><td align="right">34.6%</td><td align="right">61.3%</td><td align="right">+0.95</td><td align="right">+0.64</td></tr>
-<tr><td>LTX-Video-2B</td><td align="right">1.03</td><td align="right">0.068</td><td align="right">0.003</td><td align="right">26.5</td><td align="right">0.846</td><td align="right">42%</td><td align="right">41.0%</td><td align="right">60.5%</td><td align="right">33.0%</td><td align="right">–</td><td align="right">+0.80</td><td align="right">–</td></tr>
-<tr><td>MiniMax-H3</td><td align="right">1.46</td><td align="right">0.169</td><td align="right">0.009</td><td align="right">23.6</td><td align="right">0.736</td><td align="right">57%</td><td align="right">25.9%</td><td align="right">66.7%</td><td align="right">48.6%</td><td align="right">22.5%</td><td align="right">+0.78</td><td align="right">+0.76</td></tr>
-<tr><td>PhysAlign</td><td align="right">1.67</td><td align="right">0.156</td><td align="right">0.004</td><td align="right">29.9</td><td align="right">0.934</td><td align="right">1%</td><td align="right">22.6%</td><td align="right">70.3%</td><td align="right">34.7%</td><td align="right">65.9%</td><td align="right">+0.46</td><td align="right">+1.00</td></tr>
-<tr><td>PhysRVG</td><td align="right">1.01</td><td align="right">0.027</td><td align="right">0.001</td><td align="right">29.6</td><td align="right">0.927</td><td align="right">7%</td><td align="right">47.5%</td><td align="right">83.7%</td><td align="right">34.6%</td><td align="right">–</td><td align="right">+0.69</td><td align="right">–</td></tr>
-<tr><td>VideoGPA</td><td align="right">1.08</td><td align="right">0.043</td><td align="right">0.004</td><td align="right">22.2</td><td align="right">0.801</td><td align="right">65%</td><td align="right">29.6%</td><td align="right">79.5%</td><td align="right">34.6%</td><td align="right">55.6%</td><td align="right">+0.43</td><td align="right">–</td></tr>
-<tr><td>Wan2.2-I2V-A14B</td><td align="right">1.67</td><td align="right">0.081</td><td align="right">0.005</td><td align="right">22.1</td><td align="right">0.723</td><td align="right">60%</td><td align="right">22.1%</td><td align="right">83.4%</td><td align="right">34.7%</td><td align="right">12.3%</td><td align="right">+0.92</td><td align="right">+0.75</td></tr>
-<tr><td>Wan2.2-TI2V-5B</td><td align="right">1.04</td><td align="right">0.044</td><td align="right">0.003</td><td align="right">24.4</td><td align="right">0.832</td><td align="right">54%</td><td align="right">37.0%</td><td align="right">79.6%</td><td align="right">34.6%</td><td align="right">50.6%</td><td align="right">+0.43</td><td align="right">–</td></tr>
-<tr><td><b>All models</b></td><td align="right"></td><td align="right"></td><td align="right"></td><td align="right"></td><td align="right"></td><td align="right"></td><td align="right">30.6%</td><td align="right">71.8%</td><td align="right">34.6%</td><td align="right">32.6%</td><td align="right">+0.63</td><td align="right">+0.48</td></tr>
-<tr><td><i>Physically correct video</i></td><td align="right">0.02</td><td align="right">0.962</td><td align="right">0.891</td><td align="right">37.7</td><td align="right">0.978</td><td align="right">–</td><td align="right">–</td><td align="right">2.4%</td><td align="right">2.7%</td><td align="right">0.7%</td><td align="right">+1.00</td><td align="right">+1.00</td></tr>
-<tr><td><i>Condition frame held still</i></td><td align="right">1.00</td><td align="right">0.000</td><td align="right">0.000</td><td align="right">37.0</td><td align="right">0.976</td><td align="right">–</td><td align="right">–</td><td align="right">–</td><td align="right">–</td><td align="right">–</td><td align="right">–</td><td align="right">–</td></tr>
+<tr><th rowspan="2">Model</th><th colspan="6">V: visual and motion consistency</th><th colspan="3">P: physical parameters</th></tr>
+<tr><th>ADE ratio&nbsp;↓</th><th>S-IoU&nbsp;↑</th><th>ST-IoU&nbsp;↑</th><th>PSNR&nbsp;↑</th><th>SSIM&nbsp;↑</th><th>Cam.&nbsp;drift&nbsp;↓</th><th>Explained&nbsp;↑</th><th>g&nbsp;err.&nbsp;↓</th><th>v&nbsp;err.&nbsp;↓</th></tr>
+<tr><td>CogVideoX-1.5</td><td align="right">1.02</td><td align="right">0.037</td><td align="right">0.000</td><td align="right">22.7</td><td align="right">0.852</td><td align="right">38%</td><td align="right">31.9%</td><td align="right">84.2%</td><td align="right">–</td></tr>
+<tr><td>Cosmos-Predict2</td><td align="right">1.11</td><td align="right">0.033</td><td align="right">0.002</td><td align="right">20.1</td><td align="right">0.832</td><td align="right">12%</td><td align="right">19.3%</td><td align="right">58.0%</td><td align="right">44.6%</td></tr>
+<tr><td>Cosmos3-Nano</td><td align="right">1.40</td><td align="right">0.123</td><td align="right">0.002</td><td align="right">30.0</td><td align="right">0.938</td><td align="right">4%</td><td align="right">24.6%</td><td align="right">70.4%</td><td align="right">35.2%</td></tr>
+<tr><td>HunyuanVideo-1.5</td><td align="right">1.55</td><td align="right">0.154</td><td align="right">0.010</td><td align="right">27.8</td><td align="right">0.938</td><td align="right">8%</td><td align="right">23.2%</td><td align="right">66.6%</td><td align="right">–</td></tr>
+<tr><td>MiniMax-H3</td><td align="right">1.32</td><td align="right">0.263</td><td align="right">0.007</td><td align="right">30.2</td><td align="right">0.927</td><td align="right">20%</td><td align="right">26.8%</td><td align="right">65.3%</td><td align="right">36.0%</td></tr>
+<tr><td>PhysAlign</td><td align="right">2.06</td><td align="right">0.181</td><td align="right">0.002</td><td align="right">30.4</td><td align="right">0.944</td><td align="right">0%</td><td align="right">18.7%</td><td align="right">83.7%</td><td align="right">59.0%</td></tr>
+<tr><td>PhysRVG</td><td align="right">1.01</td><td align="right">0.016</td><td align="right">0.000</td><td align="right">32.1</td><td align="right">0.945</td><td align="right">6%</td><td align="right">29.0%</td><td align="right">83.7%</td><td align="right">–</td></tr>
+<tr><td>VideoGPA</td><td align="right">1.37</td><td align="right">0.027</td><td align="right">0.002</td><td align="right">23.4</td><td align="right">0.860</td><td align="right">49%</td><td align="right">26.0%</td><td align="right">75.4%</td><td align="right">41.1%</td></tr>
+<tr><td>Wan2.2-I2V-A14B</td><td align="right">1.54</td><td align="right">0.040</td><td align="right">0.003</td><td align="right">20.8</td><td align="right">0.698</td><td align="right">63%</td><td align="right">17.8%</td><td align="right">67.2%</td><td align="right">60.0%</td></tr>
+<tr><td>Wan2.2-TI2V-5B</td><td align="right">1.10</td><td align="right">0.030</td><td align="right">0.002</td><td align="right">22.2</td><td align="right">0.838</td><td align="right">54%</td><td align="right">18.3%</td><td align="right">77.8%</td><td align="right">–</td></tr>
+<tr><td><b>All models</b></td><td align="right">1.18</td><td align="right">0.056</td><td align="right">0.002</td><td align="right">26.6</td><td align="right">0.913</td><td align="right">25%</td><td align="right">23.4%</td><td align="right">71.2%</td><td align="right">49.3%</td></tr>
+<tr><td><i>Physically correct video</i></td><td align="right">0.03</td><td align="right">0.950</td><td align="right">0.761</td><td align="right">38.0</td><td align="right">0.984</td><td align="right">–</td><td align="right">92.9%</td><td align="right">3.0%</td><td align="right">1.5%</td></tr>
+<tr><td><i>Condition frame held still</i></td><td align="right">1.00</td><td align="right">0.000</td><td align="right">0.000</td><td align="right">37.8</td><td align="right">0.980</td><td align="right">–</td><td align="right">–</td><td align="right">–</td><td align="right">–</td></tr>
 </table>
 
 - **ADE ratio**: trajectory error of the tracked objects divided by that of a video in which nothing moves. Below 1 is closer to the reference than standing still.
 - **S-IoU, ST-IoU**: whether motion happens at the right place, and at the right place and time, as defined in Physics-IQ.
-- **PSNR, SSIM**: per frame against the reference continuation. A still condition frame scores 37.0 dB, more than any model, so both measure appearance stability rather than physics.
+- **PSNR, SSIM**: per frame against the reference continuation. A still condition frame scores almost as high as a physically correct video, so both measure appearance stability rather than physics.
 - **Cam. drift**: share of videos whose camera moves by more than 2 % of the image diagonal.
-- **Explainable**: share of results whose motion some value of the parameter explains in the original simulator.
+- **Explained**: share of results whose motion some value of the parameter explains in the original simulator.
 - **Error**: median |measured / prompted − 1| over the results that yield a value.
-- **τ**: Kendall τ between prompted and measured values across the videos of one task. The 95 % interval over all models is +0.46 to +0.78 for g and +0.10 to +0.73 for v.
-- *Italic rows*: the reference re-encoded at 30 fps as a physically correct video, and the condition frame held still.
+- *Italic rows*: the reference videos re-encoded in the generated formats, and the condition frame held still.
 
+**Do the videos follow the prompted values?** Every video of a scene is read under the same reference clip, so the only systematic difference between two videos is the value in their prompts. A pair is concordant when the measured values keep the prompted order; chance is 0.5.
 
-This table retains the inputs and results of its released generation cohort. The active Core100 reference release replaces five T19 cases and keeps the other 95 on frozen v6 inputs; existing results and human labels are not transferred to replacement videos. See the [current reference and distance bindings](docs/critical_boundary/CORE100_DISTANCE_BINDINGS.md).
+| Prompt type | g: concordant share | v: concordant share |
+|---|---:|---:|
+| short | 0.54 [0.34–0.74] (34/29) | 0.54 [0.41–0.66] (39/33) |
+| medium | 0.36 [0.22–0.55] (14/25) | 0.68 [0.50–0.86] (36/17) |
+| detailed | 0.46 [0.34–0.59] (24/28) | 0.45 [0.29–0.62] (23/28) |
+| concat | 0.44 [0.28–0.64] (18/23) | 0.51 [0.37–0.66] (27/26) |
+
+Share with its 95 % interval and the number of concordant/discordant pairs. No prompt type moves the measured physics with the prompted value clearly beyond chance. In the medium and detailed prompts the event sentence also changes with the value, so their pairs carry that difference too.
+
+Results of the earlier 12-model collection: [docs/ARCHIVE.md](docs/ARCHIVE.md).
 
 ## Critical-boundary evaluation
 
