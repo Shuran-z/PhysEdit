@@ -128,8 +128,11 @@ def _command(spec, profile, manifest, root, python, ffmpeg, rows):
             command.extend(['--physalign-adapter-dir', runtime['lora_dir']])
         return [command], None
     if runner == 'minimax_h3':
-        return [[python, str(RUNNERS/'minimax_h3.py'), '--source-manifest', str(manifest),
-                 '--out-root', str(root/'minimax_runtime'), '--model', model]], None
+        command = [python, str(RUNNERS/'minimax_h3.py'), '--source-manifest', str(manifest),
+                   '--out-root', str(root/'minimax_runtime'), '--model', model]
+        if runtime.get('minimax_memory_policy', 'auto') != 'auto':
+            command.extend(['--memory-policy', runtime['minimax_memory_policy']])
+        return [command], None
     if runner == 'physrvg':
         commands = []
         for width, height in sorted({(int(r['gen_width']), int(r['gen_height'])) for r in rows}):

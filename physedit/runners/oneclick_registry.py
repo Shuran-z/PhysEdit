@@ -77,4 +77,17 @@ def validate_registration(spec: dict, *, require_runtime=True) -> ModelContract:
     if 'pythonpath' in runtime and (not isinstance(runtime['pythonpath'], list) or
                                      any(not isinstance(p, str) or not p for p in runtime['pythonpath'])):
         raise ValueError('generation_runtime.pythonpath must be a list of paths')
+    if 'offload_mode' in runtime:
+        if profile.runner != 'diffusers':
+            raise ValueError('generation_runtime.offload_mode is only available for the Diffusers runner')
+        if runtime['offload_mode'] not in ('model', 'group', 'sequential', 'none'):
+            raise ValueError('generation_runtime.offload_mode must be model, group, sequential or none')
+        if runtime['offload_mode'] == 'group' and not spec['model'].startswith('wan_'):
+            raise ValueError('group offload is only available for Wan Diffusers pipelines')
+    if 'attention_slicing' in runtime:
+        if profile.runner != 'diffusers' or type(runtime['attention_slicing']) is not bool:
+            raise ValueError('generation_runtime.attention_slicing must be a boolean for the Diffusers runner')
+    if 'minimax_memory_policy' in runtime:
+        if profile.runner != 'minimax_h3' or runtime['minimax_memory_policy'] not in ('auto', 'resident-denoiser'):
+            raise ValueError('generation_runtime.minimax_memory_policy must be auto or resident-denoiser for MiniMax-H3')
     return profile

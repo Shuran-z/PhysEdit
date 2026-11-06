@@ -59,6 +59,7 @@ def main(argv=None) -> int:
     parser.add_argument("--torch-dtype", choices=["float16", "bfloat16"], default="bfloat16")
     parser.add_argument("--device-map", default=None)
     parser.add_argument("--offload-mode", choices=["model", "group", "sequential", "none"], default=None)
+    parser.add_argument("--attention-slicing", choices=["on", "off"], default="on")
     parser.add_argument(
         "--wan-invert-output",
         action="store_true",
@@ -82,6 +83,9 @@ def main(argv=None) -> int:
 
     settings_binding = {k: v for k, v in vars(args).items() if k not in (
         "generation_manifest", "start_index", "limit", "skip_existing", "dry_run", "cuda_visible_devices")}
+    if args.attention_slicing == "on":
+        # Keep existing completion bindings valid for the unchanged default.
+        settings_binding.pop("attention_slicing")
     status_path = manifest.parent / f"{args.pipeline}_generation_status.jsonl"
     failed = completed = skipped = 0
     pipe = None
@@ -122,7 +126,8 @@ def main(argv=None) -> int:
                 if row.get('source_video_sha256') and sha256(row['source_video']) != row['source_video_sha256']:
                     raise ValueError('registered_source_video_drift')
                 if pipe is None:
-                    pipe = _load_pipeline(args.pipeline, args.model_dir, args.torch_dtype, args.offload_mode, args.device_map)
+                    pipe = _load_pipeline(args.pipeline, args.model_dir, args.torch_dtype, args.offload_mode,
+                                          args.device_map, args.attention_slicing == "on")
                 raw_partial = raw_path.with_suffix('.partial.mp4')
                 resized_partial = resized_path.with_suffix('.partial.mp4')
                 _generate_one(pipe, args, row, raw_partial, log_path)
@@ -156,7 +161,10 @@ def main(argv=None) -> int:
     return 1 if failed else 0
 
 
-def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_mode: str | None, device_map: str | None):
+def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_mode: str | None,
+                   device_map: str | None, attention_slicing: bool = True):
+    if offload_mode == "group" and not pipeline_key.startswith("wan_"):
+        raise ValueError("group offload is only available for Wan Diffusers pipelines")
     import diffusers
     import torch
 
@@ -180,7 +188,7 @@ def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_m
     if device_map:
         pass
     elif pipeline_key.startswith("wan_"):
-        _enable_wan_offload(pipe, offload_mode or "group")
+        _enable_wan_offload(pipe, offload_mode or "group", strict=offload_mode == "group")
     elif offload_mode == "none":
         pipe.to("cuda")
     elif offload_mode == "sequential" and hasattr(pipe, "enable_sequential_cpu_offload"):
@@ -193,12 +201,12 @@ def _load_pipeline(pipeline_key: str, model_dir: str, dtype_name: str, offload_m
         pipe.to("cuda")
     if hasattr(pipe, "vae") and hasattr(pipe.vae, "enable_tiling"):
         pipe.vae.enable_tiling()
-    if hasattr(pipe, "enable_attention_slicing"):
+    if attention_slicing and hasattr(pipe, "enable_attention_slicing"):
         pipe.enable_attention_slicing()
     return pipe
 
 
-def _enable_wan_offload(pipe, mode: str) -> None:
+def _enable_wan_offload(pipe, mode: str, *, strict: bool = False) -> None:
     import torch
     if mode == "none":
         pipe.to("cuda")
@@ -220,11 +228,15 @@ def _enable_wan_offload(pipe, mode: str) -> None:
                         offload_device=offload_device,
                         offload_type="leaf_level",
                     )
+                elif strict and component is not None:
+                    raise ValueError(f"{component_name} does not support group offload")
             text_encoder = getattr(pipe, "text_encoder", None)
             if text_encoder is not None:
                 apply_group_offloading(text_encoder, onload_device=onload_device, offload_type="leaf_level")
             return
         except Exception as exc:
+            if strict:
+                raise ValueError("requested group offload could not be configured") from exc
             print(f"[wan_offload_warning] group offload unavailable: {exc!r}; falling back to sequential", flush=True)
             if hasattr(pipe, "enable_sequential_cpu_offload"):
                 pipe.enable_sequential_cpu_offload()
@@ -351,6 +363,7 @@ def _generate_one(pipe, args: argparse.Namespace, row: dict[str, Any], raw_path:
             "denoise_strength": row.get("denoise_strength"),
             "conditioning_strength": row.get("conditioning_strength"),
             "flow_shift": flow_shift,
+            "attention_slicing": getattr(args, "attention_slicing", "on"),
         },
     )
     with torch.inference_mode():
