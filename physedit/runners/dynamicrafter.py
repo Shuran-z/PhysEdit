@@ -128,8 +128,10 @@ def main() -> int:
             # The scheduler already narrows the physical GPU namespace. Keep
             # that mapping so logical cuda:0 does not escape back to GPU 0.
             env.setdefault("CUDA_VISIBLE_DEVICES", str(args.cuda_visible_devices))
+            inference_started = time.time()
             with log_path.open("w", encoding="utf-8") as log_handle:
                 result = subprocess.run(command, cwd=repo, env=env, stdout=log_handle, stderr=subprocess.STDOUT, check=False)
+            inference_seconds = time.time() - inference_started
 
             for row, stem in staged:
                 started = time.time()
@@ -160,6 +162,9 @@ def main() -> int:
                     "seed": seed,
                     "method": "dynamicrafter_official_1024_i2v",
                     "elapsed_seconds": time.time() - started,
+                    "elapsed_scope": "postprocess_only",
+                    "inference_group_elapsed_seconds": inference_seconds,
+                    "inference_group_samples": len(staged),
                     "output": str(resized_output),
                     "official_log": str(log_path),
                 }
