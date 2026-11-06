@@ -2,7 +2,7 @@
 
 The inversion measures the gravity *g*, the friction *μ* of the main contact and the initial speed *v* that a video shows. It replays the task's own simulation at many parameter values and keeps the values whose rendered motion matches the video.
 
-<p align="center"><img src="figures/inversion_approaches.svg" width="95%"></p>
+<p align="center"><img src="figures/inversion_method_comparison.svg" width="95%"></p>
 
 ## Observation
 

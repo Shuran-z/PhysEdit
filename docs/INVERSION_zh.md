@@ -2,7 +2,7 @@
 
 反演测量一段视频表现出的重力 *g*、主接触面摩擦 *μ* 和初速度 *v*。做法是在该任务自己的仿真里用很多参数值重放场景，保留渲染出的运动和视频对得上的取值。
 
-<p align="center"><img src="figures/inversion_approaches.svg" width="95%"></p>
+<p align="center"><img src="figures/inversion_method_comparison.svg" width="95%"></p>
 
 ## 观测
 

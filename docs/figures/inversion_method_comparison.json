@@ -1,0 +1,72 @@
+{
+ "true": {
+  "g": 9.81,
+  "mu": 0.2,
+  "v": 2.5
+ },
+ "frames": {
+  "onset": 3,
+  "airborne": [
+   15,
+   25
+  ],
+  "first_on_floor": 26,
+  "sim_horizon": 22
+ },
+ "baseline_2d": {
+  "g": 8.988804057004165,
+  "g_se": 0.2231465921963395,
+  "depth_used_m": 2.615034565390075,
+  "g_all_moving_frames": 3.9597539725599216
+ },
+ "baseline_depth": {
+  "g": 10.419207014654745,
+  "g_se": 0.5449151102680946,
+  "g_all_moving_frames": 4.136047675560328,
+  "depth_scale_error": 0.04,
+  "depth_frame_noise": 0.02
+ },
+ "ours": {
+  "g": {
+   "kind": "point",
+   "band": [
+    8.840169126835661,
+    10.630952405696304
+   ],
+   "center": 9.694298182214935,
+   "min_loss": 1.3871343616480079,
+   "best_shift": -3.0,
+   "n_library": 35,
+   "truth_in_band": true
+  },
+  "mu": {
+   "kind": "point",
+   "band": [
+    0.1777711004532222,
+    0.21834678088430323
+   ],
+   "center": 0.1970171249364409,
+   "min_loss": 1.8324754655807889,
+   "best_shift": -2.75,
+   "n_library": 17,
+   "truth_in_band": true
+  },
+  "v": {
+   "kind": "point",
+   "band": [
+    2.4050039444816287,
+    2.6413978432128085
+   ],
+   "center": 2.5204309615365523,
+   "min_loss": 4.922861736575744,
+   "best_shift": -3.75,
+   "n_library": 17,
+   "truth_in_band": true
+  }
+ },
+ "not_explained_example": {
+  "min_loss": 33.466753388246,
+  "gate": 10.0,
+  "g_at_min": 3.8449828975107425
+ }
+}

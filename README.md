@@ -84,7 +84,7 @@ There are three ways to measure gravity, friction or speed from a single video:
 - **Depth lifting** lifts the trajectory to 3D with a depth model and fits a parabola along gravity.
 - **Simulator inversion**, ours, re-simulates the task's original scene at many parameter values and keeps the values whose rendered boxes match the video.
 
-The two baselines fit a free-flight trajectory and estimate g. Simulator inversion is analysis by synthesis with a physics engine, as in [Galileo](https://proceedings.neurips.cc/paper_files/paper/2015/file/d09bf41544a3365a46c9077ebb5e35c3-Paper.pdf). Every generated video starts from a known simulated scene, so we replay that exact scene: contact, friction, rolling and collisions follow the same simulator as the reference, one fit gives g, μ and v, and a motion that no parameter value reproduces is reported as not explained. The method is described in [docs/INVERSION.md](docs/INVERSION.md).
+The two baselines fit a free-flight trajectory and estimate g. Simulator inversion is analysis by synthesis with a physics engine, as in [Galileo](https://proceedings.neurips.cc/paper_files/paper/2015/file/d09bf41544a3365a46c9077ebb5e35c3-Paper.pdf). Every generated video starts from a known simulated scene, so we replay that exact scene: contact, friction, rolling and collisions follow the same simulator as the reference, the same replay measures g, μ and v, each over its own library of values, and a motion that no parameter value reproduces is reported as not explained. The method is described in [docs/INVERSION.md](docs/INVERSION.md).
 
 **Development set.** Simulated videos with known parameters, separate from Core100. Every method receives the same tracked boxes and the same camera.
 
