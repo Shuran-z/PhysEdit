@@ -91,7 +91,7 @@ def output_row(source_row: dict, output: pathlib.Path, resized: pathlib.Path):
         "output_fps": 24.0,
         "num_frames": 124,
         "sample_steps": 50,
-        "h3_resolution": {"width": H3_WIDTH, "height": H3_HEIGHT},
+        "h3_resolution": {"width": int(source_row.get("gen_width") or H3_WIDTH), "height": int(source_row.get("gen_height") or H3_HEIGHT)},
         "h3_audio_generation": True,
         "negative_prompt_used": False,
         "gt_join_stage": "score_only",
@@ -106,6 +106,7 @@ def main():
     parser.add_argument("--max-samples", type=int, default=0)
     parser.add_argument("--model", required=True)
     parser.add_argument("--pad-input", action="store_true", help="Preserve source pixels on a padded canvas and crop output back")
+    parser.add_argument("--memory-policy", choices=["auto", "resident-denoiser"], default="auto")
     args = parser.parse_args()
     model = args.model
 
@@ -120,6 +121,12 @@ def main():
         source_rows = source_rows[: args.max_samples]
     if len({row["sample_id"] for row in source_rows}) != len(source_rows):
         raise RuntimeError("source manifest contains duplicate sample_id values")
+    if args.memory_policy == "resident-denoiser":
+        if torch.cuda.device_count() != 1:
+            parser.error("resident-denoiser requires exactly one visible GPU")
+        if any(int(row.get("gen_width") or H3_WIDTH) * int(row.get("gen_height") or H3_HEIGHT)
+               > H3_WIDTH * H3_HEIGHT for row in source_rows):
+            parser.error("resident-denoiser supports canvases up to 896x512 pixels")
 
     generated_rows = []
     for source in source_rows:
@@ -131,7 +138,8 @@ def main():
         row = output_row(source, output, resized)
         row.update(sample_steps=args.steps, pad_input=args.pad_input,
                    h3_resolution={"width": int(source.get("gen_width") or H3_WIDTH),
-                                  "height": int(source.get("gen_height") or H3_HEIGHT)})
+                                  "height": int(source.get("gen_height") or H3_HEIGHT)},
+                   memory_policy=args.memory_policy)
         generated_rows.append(row)
     canonical_path.parent.mkdir(parents=True, exist_ok=True)
     canonical_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in generated_rows), encoding="utf-8")
@@ -152,6 +160,13 @@ def main():
     generator = workflow.init_pipeline(model, components_manager=generator_manager)
     generator.load_components(dtype=torch.bfloat16)
     generator_manager.enable_auto_cpu_offload(device="cuda:0", memory_reserve_margin="8GB")  # public211: re-apply the 8GB margin to every component
+    if args.memory_policy == "resident-denoiser":
+        try:
+            from .minimax_memory import configure_resident_denoiser
+        except ImportError:
+            from minimax_memory import configure_resident_denoiser
+        placement = configure_resident_denoiser(conditioner, generator)
+        write_json(runtime / "memory_placement.json", placement)
 
     completed = 0
     failed = 0
@@ -222,7 +237,7 @@ def main():
             temp_output.unlink(missing_ok=True)
             temp_resized.unlink(missing_ok=True)
         with status_path.open("a", encoding="utf-8") as handle:
-            handle.write(json.dumps({"time": now(), "sample_id": row["sample_id"], "state": event, "elapsed_seconds": round(time.time() - started, 3), "bytes": output.stat().st_size if output.exists() else 0, "error": error, "steps": args.steps, "resolution": row["h3_resolution"], "pad_input": args.pad_input}, ensure_ascii=False) + "\n")
+            handle.write(json.dumps({"time": now(), "sample_id": row["sample_id"], "state": event, "elapsed_seconds": round(time.time() - started, 3), "bytes": output.stat().st_size if output.exists() else 0, "error": error, "steps": args.steps, "resolution": row["h3_resolution"], "pad_input": args.pad_input, "memory_policy": args.memory_policy}, ensure_ascii=False) + "\n")
         if event == "failed":
             write_json(state_path, {"state": "failed", "completed": completed, "failed": failed, "total": len(generated_rows), "current": row["sample_id"], "error": error, "updated_at": now()})
             raise SystemExit(error)

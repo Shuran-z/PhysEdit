@@ -158,7 +158,18 @@ def diffusers_launch(spec, manifest):
     command += ['--num-inference-steps', str(settings['steps']), '--guidance-scale', str(settings['guidance'])]
     if 'flow_shift' in settings:
         command += ['--flow-shift', str(settings['flow_shift'])]
-    command += ['--offload-mode', 'sequential' if spec['model'] == 'hunyuan15_i2v' else 'model']
+    runtime = spec.get('generation_runtime', {})
+    offload = runtime.get('offload_mode', 'sequential' if spec['model'] == 'hunyuan15_i2v' else 'model')
+    if offload not in ('model', 'group', 'sequential', 'none'):
+        raise ValueError('generation_runtime.offload_mode must be model, group, sequential or none')
+    if offload == 'group' and not spec['model'].startswith('wan_'):
+        raise ValueError('group offload is only available for Wan Diffusers pipelines')
+    command += ['--offload-mode', offload]
+    attention_slicing = runtime.get('attention_slicing', True)
+    if type(attention_slicing) is not bool:
+        raise ValueError('generation_runtime.attention_slicing must be a boolean')
+    if not attention_slicing:
+        command += ['--attention-slicing', 'off']
     if model_profile(spec).mode == 'v2v':
         command[command.index('--pipeline')+1] = 'ltx_v2v'
     return command, env
