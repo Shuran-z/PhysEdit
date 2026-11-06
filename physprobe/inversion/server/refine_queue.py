@@ -16,7 +16,20 @@ prog = D / 'queue' / f'{a.name}_progress.json'; done = []; t0 = time.time()
 if a.wait_pid:
     while os.path.exists(f'/proc/{a.wait_pid}'):
         prog.write_text(json.dumps(dict(waiting_for_pid=a.wait_pid, elapsed_s=round(time.time() - t0), total=len(plan)))); time.sleep(20)
+def free_mib(gpu):   # shared machine (shuan 2026-11-04: never push others into OOM): free memory of our GPU before each launch
+    try: return int(subprocess.run(['nvidia-smi', '--query-gpu=memory.free', '--format=csv,noheader,nounits', '-i', str(gpu)], stdout=subprocess.PIPE, universal_newlines=True).stdout.split()[0])
+    except Exception: return 0
+
+
+NEED = int(os.environ.get('QUEUE_FREE_MIB', '2048'))   # margin on top of about 1 GB per simulation (shuan 2026-11-05: free memory decides, 2 GiB margin)
+
+
 def launch(j):
+    # live check before every launch (F55; rule of shuan 2026-11-05: free memory now >= what we need + 2 GiB, others' use no longer decides)
+    while subprocess.run(['python3', str(D / 'gpu_guard.py'), a.gpu, '--need', str(1000 * len(j['values']))]).returncode != 0:
+        prog.write_text(json.dumps(dict(gpu_refused=True, gpu=a.gpu, job=j['tag']))); time.sleep(60)
+    while free_mib(a.gpu) < NEED + 1000 * len(j['values']):
+        prog.write_text(json.dumps(dict(waiting_for_memory=True, free_mib=free_mib(a.gpu), job=j['tag']))); time.sleep(60)
     env = dict(os.environ, RENDERER=j['renderer'], RENDERER_ARGS=j['renderer_args'])
     if j.get('friction_objects'): env['FRICTION_OBJECTS'] = j['friction_objects']
     if j.get('wrapper_args'): env['WRAPPER_ARGS'] = j['wrapper_args']
