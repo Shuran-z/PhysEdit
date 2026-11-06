@@ -1,10 +1,22 @@
-# PhysEdit
+# PhyResponse
 
-[仓库导航](docs/REPOSITORY_GUIDE.md) · [数据集介绍](docs/DATASET_INTRODUCTION.md) · [人工标注站](annotation_site/README.md) · [当前 Core100 参考](catalog/active_core100_conditions.json)
+<p align="center">
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-phy2%2Fphydataset-ffd21e" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E6%8F%90%E7%A4%BA%E8%AF%8D-PhyResponse-ffd21e" alt="Prompts"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-PhyResponse--Generations-ffd21e" alt="Generated videos"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA%20%E6%9D%83%E9%87%8D-Releases-2ea44f?logo=github&logoColor=white" alt="LoRA 权重"></a>
+<br>
+<a href="README.md"><img src="https://img.shields.io/badge/English-c8102e" alt="English"></a>
+<a href="docs/REPOSITORY_GUIDE.md"><img src="https://img.shields.io/badge/%E4%BB%93%E5%BA%93%E5%AF%BC%E8%88%AA-57606a" alt="仓库导航"></a>
+<a href="docs/DATASET_INTRODUCTION.md"><img src="https://img.shields.io/badge/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D-57606a" alt="数据集介绍"></a>
+<a href="annotation_site/README.md"><img src="https://img.shields.io/badge/%E4%BA%BA%E5%B7%A5%E6%A0%87%E6%B3%A8%E7%AB%99-57606a" alt="人工标注站"></a>
+<a href="catalog/active_core100_conditions.json"><img src="https://img.shields.io/badge/%E5%BD%93%E5%89%8D%20Core100%20%E5%8F%82%E8%80%83-57606a" alt="当前 Core100 参考"></a>
+<img src="https://img.shields.io/badge/python-3.9%2B-3776ab?logo=python&logoColor=white" alt="python">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-97ca00" alt="license"></a>
+</p>
 
-**图生视频模型能否按要求生成物理？** PhysEdit 给模型一段仿真物理事件的首帧，以及写明物理条件的提示词，包括重力、摩擦或初速度。我们用原始仿真器反演，测出每条生成视频里的物理参数，再和提示词比较。
 
-[生成视频](https://huggingface.co/datasets/phy2/phy2-benchmark-generations) · [PhyDataset](https://huggingface.co/datasets/phy2/phydataset) · [LoRA 权重](#数据与权重) · [English](README.md)
+**图生视频模型能否按要求生成物理？** PhyResponse 给模型一段仿真物理事件的首帧，以及写明物理条件的提示词，包括重力、摩擦或初速度。我们用原始仿真器反演，测出每条生成视频里的物理参数，再和提示词比较。
 
 ## 结果
 
@@ -95,18 +107,19 @@
 
 | 资源 | 内容 |
 |---|---|
-| [phy2/phy2-benchmark-generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations) | 12 个模型在 Core100 上的生成视频 |
 | [phy2/phydataset](https://huggingface.co/datasets/phy2/phydataset) | PhyDataset：仿真物理事件，含逐帧状态、已知条件和中英文提示词；Core100 的任务取自其中 |
+| [SunYat-senUniversity/PhyResponse](https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse) | 参考视频的四组条件提示词 |
+| [SunYat-senUniversity/PhyResponse-Generations](https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations) | 10 个模型在 Core100 上的生成视频，四组提示词；早先 12 个模型的视频在 `archive/` 下 |
 
-用 PhyDataset 训练的 LoRA 权重，发布在 [Releases](https://github.com/Shuran-z/PhysEdit/releases)：
+用 PhyDataset 训练的 LoRA 权重，发布在 [Releases](https://github.com/Shuran-z/PhyResponse/releases)：
 
 | 基础模型 | 语言 | 权重 |
 |---|---|---|
-| CogVideoX1.5-5B-I2V | 英文 | [cogvideox1.5-5b-i2v-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/cogvideox1.5-5b-i2v-phydataset-en-lora-v1) |
-| Wan2.2-TI2V-5B | 英文 | [wan2.2-ti2v-5b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/wan2.2-ti2v-5b-phydataset-en-lora-v1) |
-| Wan2.2-TI2V-5B | 中文 | [wan2.2-ti2v-5b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/wan2.2-ti2v-5b-phydataset-zh-lora-v1) |
-| LTX-Video-2B | 英文 | [ltx-video-2b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/ltx-video-2b-phydataset-en-lora-v1) |
-| LTX-Video-2B | 中文 | [ltx-video-2b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/ltx-video-2b-phydataset-zh-lora-v1) |
+| CogVideoX1.5-5B-I2V | 英文 | [cogvideox1.5-5b-i2v-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/cogvideox1.5-5b-i2v-phydataset-en-lora-v1) |
+| Wan2.2-TI2V-5B | 英文 | [wan2.2-ti2v-5b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/wan2.2-ti2v-5b-phydataset-en-lora-v1) |
+| Wan2.2-TI2V-5B | 中文 | [wan2.2-ti2v-5b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/wan2.2-ti2v-5b-phydataset-zh-lora-v1) |
+| LTX-Video-2B | 英文 | [ltx-video-2b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/ltx-video-2b-phydataset-en-lora-v1) |
+| LTX-Video-2B | 中文 | [ltx-video-2b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/ltx-video-2b-phydataset-zh-lora-v1) |
 
 ## 使用
 

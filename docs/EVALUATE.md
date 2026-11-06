@@ -4,7 +4,7 @@
 
 Start from [`catalog/active_core100_conditions.json`](../catalog/active_core100_conditions.json). Five T19 references use `core100-t19-isaac-v1-20261031`; the other 95 retain their frozen v6 inputs. Read the exact condition frame, observation window and prompt hashes from the bound task record. Existing generated cohorts and their reported results keep their original inputs.
 
-The released PhysProbe results use their registered reference libraries. Before evaluating replacement references, prepare matching simulation libraries, tracks and known-answer validation for that version; do not reuse an old T19 library or transfer its annotations. See [the reference replacement record](critical_boundary/CORE100_T19_REPLACEMENT.md).
+The released results use their registered reference libraries. Before evaluating replacement references, prepare matching simulation libraries, tracks and known-answer validation for that version; do not reuse an old T19 library or transfer its annotations. See [the reference replacement record](critical_boundary/CORE100_T19_REPLACEMENT.md).
 
 ## Requirements
 
@@ -17,7 +17,7 @@ All data live under `PHYSPROBE_WORK`, see `physprobe/inversion/paths.py`.
 
 ## Generate
 
-For each task, generate one video from its registered condition frame for each of the three prompt variants and three seeds. The released PhysProbe cohort uses frame 5; this is not a default for other input versions. Store the videos in the layout of the [released generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations): one `resized.mp4` per item, resized to the reference resolution, next to its item record.
+For each task, generate one video from its registered condition frame for each of the three prompt variants and three seeds. The released cohort uses frame 5; this is not a default for other input versions. Store the videos in the layout of the [released generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations): one `resized.mp4` per item, resized to the reference resolution, next to its item record.
 
 ## Evaluate
 

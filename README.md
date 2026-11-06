@@ -1,12 +1,22 @@
-# PhysEdit
+# PhyResponse
 
-[Repository guide](docs/REPOSITORY_GUIDE.md) · [Dataset overview](docs/DATASET_INTRODUCTION.md) · [Annotation site](annotation_site/README.md) · [Active Core100 references](catalog/active_core100_conditions.json)
+<p align="center">
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-phy2%2Fphydataset-ffd21e" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Prompts-PhyResponse-ffd21e" alt="Prompts"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Generated%20videos-PhyResponse--Generations-ffd21e" alt="Generated videos"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA%20weights-Releases-2ea44f?logo=github&logoColor=white" alt="LoRA weights"></a>
+<br>
+<a href="README_zh.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-c8102e" alt="中文"></a>
+<a href="docs/REPOSITORY_GUIDE.md"><img src="https://img.shields.io/badge/Repository%20guide-57606a" alt="Repository guide"></a>
+<a href="docs/DATASET_INTRODUCTION.md"><img src="https://img.shields.io/badge/Dataset%20overview-57606a" alt="Dataset overview"></a>
+<a href="annotation_site/README.md"><img src="https://img.shields.io/badge/Annotation%20site-57606a" alt="Annotation site"></a>
+<a href="catalog/active_core100_conditions.json"><img src="https://img.shields.io/badge/Active%20Core100%20references-57606a" alt="Active Core100 references"></a>
+<img src="https://img.shields.io/badge/python-3.9%2B-3776ab?logo=python&logoColor=white" alt="python">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-97ca00" alt="license"></a>
+</p>
 
-[Core100 critical-boundary evaluation](docs/critical_boundary/CORE100_ACTUAL_PROMPT_BINDINGS_V5.md) provides 100 bound references, including 14 Near references and 13 cross-boundary pairs, with the author-selected actual submission text restored in v5. [15 changed inputs require new generation and annotation](benchmarks/core100_regeneration_v5_20261103/README.md). This version has a separate input and scoring namespace; the result tables below do not represent evaluation on these changed inputs.
 
-**Do image-to-video models follow the physics they are asked for?** PhysEdit gives a model the first frame of a simulated physical event and a prompt that states its physics: gravity, friction or initial speed. We measure the physics in each generated video by inverting the original simulator and compare it with the prompt.
-
-[Generated videos](https://huggingface.co/datasets/phy2/phy2-benchmark-generations) · [PhyDataset](https://huggingface.co/datasets/phy2/phydataset) · [LoRA weights](#data-and-weights) · [中文](README_zh.md)
+**Do image-to-video models follow the physics they are asked for?** PhyResponse gives a model the first frame of a simulated physical event and a prompt that states its physics: gravity, friction or initial speed. We measure the physics in each generated video by inverting the original simulator and compare it with the prompt.
 
 ## Results
 
@@ -60,6 +70,8 @@ Some events change their outcome at a parameter boundary: an object tips over or
 | PairAcc | both samples of a cross-boundary pair are correct |
 | EventExact | the whole event chain matches |
 
+[Core100 critical-boundary evaluation](docs/critical_boundary/CORE100_ACTUAL_PROMPT_BINDINGS_V5.md) provides 100 bound references, including 14 Near references and 13 cross-boundary pairs, with the author-selected actual submission text restored in v5. [15 changed inputs require new generation and annotation](benchmarks/core100_regeneration_v5_20261103/README.md). This version has a separate input and scoring namespace; the result tables below do not represent evaluation on these changed inputs.
+
 `python -m physedit boundary` registers the samples, builds the generation manifests and scores them. `python -m physedit boundary-evaluate` adds quality screening, per-event judging and human review. Protocol: [docs/critical_boundary/CRITICAL_BOUNDARY_PROTOCOL.md](docs/critical_boundary/CRITICAL_BOUNDARY_PROTOCOL.md).
 
 ## Why simulator inversion
@@ -97,18 +109,19 @@ The uncertainty bands are calibrated to 95 % coverage on the reference videos. A
 
 | Resource | Content |
 |---|---|
-| [phy2/phy2-benchmark-generations](https://huggingface.co/datasets/phy2/phy2-benchmark-generations) | Generated videos of the 12 models on Core100 |
 | [phy2/phydataset](https://huggingface.co/datasets/phy2/phydataset) | PhyDataset: simulated physical events with per-frame states, known conditions and prompts in English and Chinese; the Core100 tasks come from it |
+| [SunYat-senUniversity/PhyResponse](https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse) | Four-condition prompts of the reference videos |
+| [SunYat-senUniversity/PhyResponse-Generations](https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations) | Generated videos of 10 models on Core100 with four prompt types; the earlier 12-model collection is under `archive/` |
 
-LoRA weights trained on PhyDataset, from the [Releases](https://github.com/Shuran-z/PhysEdit/releases):
+LoRA weights trained on PhyDataset, from the [Releases](https://github.com/Shuran-z/PhyResponse/releases):
 
 | Base model | Language | Weights |
 |---|---|---|
-| CogVideoX1.5-5B-I2V | EN | [cogvideox1.5-5b-i2v-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/cogvideox1.5-5b-i2v-phydataset-en-lora-v1) |
-| Wan2.2-TI2V-5B | EN | [wan2.2-ti2v-5b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/wan2.2-ti2v-5b-phydataset-en-lora-v1) |
-| Wan2.2-TI2V-5B | ZH | [wan2.2-ti2v-5b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/wan2.2-ti2v-5b-phydataset-zh-lora-v1) |
-| LTX-Video-2B | EN | [ltx-video-2b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/ltx-video-2b-phydataset-en-lora-v1) |
-| LTX-Video-2B | ZH | [ltx-video-2b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhysEdit/releases/tag/ltx-video-2b-phydataset-zh-lora-v1) |
+| CogVideoX1.5-5B-I2V | EN | [cogvideox1.5-5b-i2v-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/cogvideox1.5-5b-i2v-phydataset-en-lora-v1) |
+| Wan2.2-TI2V-5B | EN | [wan2.2-ti2v-5b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/wan2.2-ti2v-5b-phydataset-en-lora-v1) |
+| Wan2.2-TI2V-5B | ZH | [wan2.2-ti2v-5b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/wan2.2-ti2v-5b-phydataset-zh-lora-v1) |
+| LTX-Video-2B | EN | [ltx-video-2b-phydataset-en-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/ltx-video-2b-phydataset-en-lora-v1) |
+| LTX-Video-2B | ZH | [ltx-video-2b-phydataset-zh-lora-v1](https://github.com/Shuran-z/PhyResponse/releases/tag/ltx-video-2b-phydataset-zh-lora-v1) |
 
 ## Usage
 
