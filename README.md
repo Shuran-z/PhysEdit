@@ -1,16 +1,11 @@
 # PhyResponse
 
 <p align="center">
-<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-phy2%2Fphydataset-ffd21e" alt="PhyDataset"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Prompts-PhyResponse-ffd21e" alt="Prompts"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Generated%20videos-PhyResponse--Generations-ffd21e" alt="Generated videos"></a>
-<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA%20weights-Releases-2ea44f?logo=github&logoColor=white" alt="LoRA weights"></a>
-<br>
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-ffd21e" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Prompts-ffd21e" alt="Prompts"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Generated%20videos-ffd21e" alt="Generated videos"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-2ea44f?logo=github&logoColor=white" alt="LoRA"></a>
 <a href="README_zh.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-c8102e" alt="中文"></a>
-<a href="docs/REPOSITORY_GUIDE.md"><img src="https://img.shields.io/badge/Repository%20guide-57606a" alt="Repository guide"></a>
-<a href="docs/DATASET_INTRODUCTION.md"><img src="https://img.shields.io/badge/Dataset%20overview-57606a" alt="Dataset overview"></a>
-<a href="annotation_site/README.md"><img src="https://img.shields.io/badge/Annotation%20site-57606a" alt="Annotation site"></a>
-<a href="catalog/active_core100_conditions.json"><img src="https://img.shields.io/badge/Active%20Core100%20references-57606a" alt="Active Core100 references"></a>
 <img src="https://img.shields.io/badge/python-3.9%2B-3776ab?logo=python&logoColor=white" alt="python">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-97ca00" alt="license"></a>
 </p>
@@ -143,6 +138,8 @@ pip install -e .
 - Critical-boundary module: [BOUNDARY_EVALUATION.md](BOUNDARY_EVALUATION.md)
 
 ## Repository
+
+Guides: [repository](docs/REPOSITORY_GUIDE.md) · [dataset](docs/DATASET_INTRODUCTION.md) · [annotation site](annotation_site/README.md) · [active Core100 references](catalog/active_core100_conditions.json)
 
 | Path | Content |
 |---|---|

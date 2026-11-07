@@ -1,16 +1,11 @@
 # PhyResponse
 
 <p align="center">
-<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-phy2%2Fphydataset-ffd21e" alt="PhyDataset"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E6%8F%90%E7%A4%BA%E8%AF%8D-PhyResponse-ffd21e" alt="Prompts"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-PhyResponse--Generations-ffd21e" alt="Generated videos"></a>
-<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA%20%E6%9D%83%E9%87%8D-Releases-2ea44f?logo=github&logoColor=white" alt="LoRA 权重"></a>
-<br>
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-ffd21e" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E6%8F%90%E7%A4%BA%E8%AF%8D-ffd21e" alt="提示词"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-ffd21e" alt="生成视频"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-2ea44f?logo=github&logoColor=white" alt="LoRA"></a>
 <a href="README.md"><img src="https://img.shields.io/badge/English-c8102e" alt="English"></a>
-<a href="docs/REPOSITORY_GUIDE.md"><img src="https://img.shields.io/badge/%E4%BB%93%E5%BA%93%E5%AF%BC%E8%88%AA-57606a" alt="仓库导航"></a>
-<a href="docs/DATASET_INTRODUCTION.md"><img src="https://img.shields.io/badge/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D-57606a" alt="数据集介绍"></a>
-<a href="annotation_site/README.md"><img src="https://img.shields.io/badge/%E4%BA%BA%E5%B7%A5%E6%A0%87%E6%B3%A8%E7%AB%99-57606a" alt="人工标注站"></a>
-<a href="catalog/active_core100_conditions.json"><img src="https://img.shields.io/badge/%E5%BD%93%E5%89%8D%20Core100%20%E5%8F%82%E8%80%83-57606a" alt="当前 Core100 参考"></a>
 <img src="https://img.shields.io/badge/python-3.9%2B-3776ab?logo=python&logoColor=white" alt="python">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-97ca00" alt="license"></a>
 </p>
@@ -141,6 +136,8 @@ pip install -e .
 - 临界边界模块：[BOUNDARY_EVALUATION.md](BOUNDARY_EVALUATION.md)
 
 ## 仓库结构
+
+导航：[仓库导航](docs/REPOSITORY_GUIDE.md) · [数据集介绍](docs/DATASET_INTRODUCTION.md) · [人工标注站](annotation_site/README.md) · [当前 Core100 参考](catalog/active_core100_conditions.json)
 
 | 路径 | 内容 |
 |---|---|
