@@ -1,13 +1,11 @@
 # PhyResponse
 
 <p align="center">
-<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/PhyDataset-555555?logo=huggingface&logoColor=FFD21E" alt="PhyDataset"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/Prompts-555555?logo=huggingface&logoColor=FFD21E" alt="Prompts"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/Generated%20videos-555555?logo=huggingface&logoColor=FFD21E" alt="Generated videos"></a>
-<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-555555?logo=github&logoColor=white" alt="LoRA"></a>
-<a href="README_zh.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-555555?logo=googletranslate&logoColor=4285F4" alt="中文"></a>
-<img src="https://img.shields.io/badge/Python%203.9%2B-555555?logo=python&logoColor=FFD43B" alt="python">
-<a href="LICENSE"><img src="https://img.shields.io/badge/MIT-555555?logo=opensourceinitiative&logoColor=7CD95B" alt="license"></a>
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97-PhyDataset-555555?labelColor=FFD21E" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97-Prompts-555555?labelColor=FFD21E" alt="Prompts"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97-Generated%20videos-555555?labelColor=FFD21E" alt="Generated videos"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/-LoRA-555555?logo=github&logoColor=white&labelColor=181717" alt="LoRA"></a>
+<a href="README_zh.md"><img src="https://img.shields.io/badge/-%E4%B8%AD%E6%96%87-555555?logo=googletranslate&logoColor=white&labelColor=4285F4" alt="中文"></a>
 </p>
 
 

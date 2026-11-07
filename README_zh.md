@@ -1,13 +1,11 @@
 # PhyResponse
 
 <p align="center">
-<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/PhyDataset-555555?logo=huggingface&logoColor=FFD21E" alt="PhyDataset"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%E6%8F%90%E7%A4%BA%E8%AF%8D-555555?logo=huggingface&logoColor=FFD21E" alt="提示词"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-555555?logo=huggingface&logoColor=FFD21E" alt="生成视频"></a>
-<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-555555?logo=github&logoColor=white" alt="LoRA"></a>
-<a href="README.md"><img src="https://img.shields.io/badge/English-555555?logo=googletranslate&logoColor=4285F4" alt="English"></a>
-<img src="https://img.shields.io/badge/Python%203.9%2B-555555?logo=python&logoColor=FFD43B" alt="python">
-<a href="LICENSE"><img src="https://img.shields.io/badge/MIT-555555?logo=opensourceinitiative&logoColor=7CD95B" alt="license"></a>
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97-PhyDataset-555555?labelColor=FFD21E" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97-%E6%8F%90%E7%A4%BA%E8%AF%8D-555555?labelColor=FFD21E" alt="提示词"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97-%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-555555?labelColor=FFD21E" alt="生成视频"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/-LoRA-555555?logo=github&logoColor=white&labelColor=181717" alt="LoRA"></a>
+<a href="README.md"><img src="https://img.shields.io/badge/-English-555555?logo=googletranslate&logoColor=white&labelColor=4285F4" alt="English"></a>
 </p>
 
 
