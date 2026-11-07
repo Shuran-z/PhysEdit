@@ -1,13 +1,13 @@
 # PhyResponse
 
 <p align="center">
-<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20PhyDataset-ffd21e" alt="PhyDataset"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E6%8F%90%E7%A4%BA%E8%AF%8D-ffd21e" alt="提示词"></a>
-<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-ffd21e" alt="生成视频"></a>
-<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-2ea44f?logo=github&logoColor=white" alt="LoRA"></a>
-<a href="README.md"><img src="https://img.shields.io/badge/English-c8102e" alt="English"></a>
-<img src="https://img.shields.io/badge/python-3.9%2B-3776ab?logo=python&logoColor=white" alt="python">
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-97ca00" alt="license"></a>
+<a href="https://huggingface.co/datasets/phy2/phydataset"><img src="https://img.shields.io/badge/PhyDataset-555555?logo=huggingface&logoColor=FFD21E" alt="PhyDataset"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse"><img src="https://img.shields.io/badge/%E6%8F%90%E7%A4%BA%E8%AF%8D-555555?logo=huggingface&logoColor=FFD21E" alt="提示词"></a>
+<a href="https://huggingface.co/datasets/SunYat-senUniversity/PhyResponse-Generations"><img src="https://img.shields.io/badge/%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91-555555?logo=huggingface&logoColor=FFD21E" alt="生成视频"></a>
+<a href="https://github.com/Shuran-z/PhyResponse/releases"><img src="https://img.shields.io/badge/LoRA-555555?logo=github&logoColor=white" alt="LoRA"></a>
+<a href="README.md"><img src="https://img.shields.io/badge/English-555555?logo=googletranslate&logoColor=4285F4" alt="English"></a>
+<img src="https://img.shields.io/badge/Python%203.9%2B-555555?logo=python&logoColor=FFD43B" alt="python">
+<a href="LICENSE"><img src="https://img.shields.io/badge/MIT-555555?logo=opensourceinitiative&logoColor=7CD95B" alt="license"></a>
 </p>
 
 
