@@ -1,4 +1,4 @@
-"""Method-comparison figure for the simulator inversion (PhyResponse benchmark).
+"""Method-comparison figure for the simulator inversion (PhyResponse benchmark), second layout.
 
 Every curve is computed here. One example scene throughout: a block slides along a table with Coulomb friction,
 leaves the edge, flies, and lands on the floor. A known pinhole camera views the motion obliquely. Three ways to
@@ -293,58 +293,82 @@ def compute():
                 bd_all=bd_all, res=res, bad=dict(obs=obs_bad, loss=Lb))
 
 
+
 # ----------------------------------------------------------------------------------------------------------------
-# Figure
+# Figure: three rows (a)(b)(c), aligned columns inputs -> fit -> estimate / true
 # ----------------------------------------------------------------------------------------------------------------
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
+
 C_OBS = '#D55E00'      # tracked observation (Okabe-Ito vermillion)
 C_SIM = '#0072B2'      # simulation / library (Okabe-Ito blue)
-C_SIM_L = '#9CC3E0'    # other library members
-C_FIT = '#222222'      # baseline fits
-C_MUTE = '#9A9A9A'
-C_INK = '#222222'
-C_INK2 = '#555555'
-C_BAND = '#D6E6F3'
-C_OURS_BG = '#F1F6FB'
-FS = 7.0
+C_SIM_L = '#8FBCE0'    # other library values
+C_BASE = '#555555'     # baseline fits
+C_MUTE = '#A8A8A8'     # tracked frames a method does not use
+C_INK = '#1A1A1A'
+C_INK2 = '#666666'
+C_BAND = '#CFE2F3'
+C_BG_C = '#F2F7FC'
+FS, FS_T = 8.0, 10.0   # the two type sizes
+LW = 1.0
+
+W_IN, H_IN = 6.9, 4.95
 
 
 def setup_mpl():
     plt.rcParams.update({
         'font.family': 'sans-serif', 'font.sans-serif': ['Arial', 'Helvetica', 'DejaVu Sans'],
-        'font.size': FS, 'axes.labelsize': FS, 'xtick.labelsize': FS, 'ytick.labelsize': FS,
-        'axes.linewidth': 0.6, 'xtick.major.width': 0.6, 'ytick.major.width': 0.6,
-        'xtick.major.size': 2.0, 'ytick.major.size': 2.0, 'xtick.minor.size': 1.2, 'ytick.minor.size': 1.2,
-        'xtick.major.pad': 1.5, 'ytick.major.pad': 1.5, 'axes.labelpad': 1.5,
-        'axes.edgecolor': '#444444', 'xtick.color': '#444444', 'ytick.color': '#444444', 'axes.labelcolor': C_INK,
-        'svg.fonttype': 'none', 'svg.hashsalt': 'phyresponse', 'pdf.fonttype': 42, 'ps.fonttype': 42,
+        'font.size': FS, 'axes.labelsize': FS, 'xtick.labelsize': FS, 'ytick.labelsize': FS, 'legend.fontsize': FS,
+        'axes.linewidth': 0.8, 'xtick.major.width': 0.8, 'ytick.major.width': 0.8,
+        'xtick.major.size': 2.5, 'ytick.major.size': 2.5, 'xtick.major.pad': 2, 'ytick.major.pad': 2, 'axes.labelpad': 2,
+        'axes.edgecolor': '#333333', 'xtick.color': '#333333', 'ytick.color': '#333333', 'axes.labelcolor': C_INK,
+        'text.color': C_INK, 'svg.fonttype': 'none', 'svg.hashsalt': 'phyresponse', 'pdf.fonttype': 42,
         'axes.spines.top': False, 'axes.spines.right': False, 'lines.solid_capstyle': 'round',
     })
 
 
-W_IN, H_IN = 6.9, 4.62
+def ax_in(fig, x, y, w, h):
+    a = fig.add_axes([x / W_IN, y / H_IN, w / W_IN, h / H_IN]); a.patch.set_alpha(0); return a
 
 
-def ax_in(fig, x, y, w, h, **kw):
-    return fig.add_axes([x / W_IN, y / H_IN, w / W_IN, h / H_IN], **kw)
+def ftext(fig, x, y, s, size=FS, **kw):
+    return fig.text(x / W_IN, y / H_IN, s, fontsize=size, **kw)
 
 
-def fig_text(fig, x, y, s, **kw):
-    kw.setdefault('fontsize', FS); kw.setdefault('color', C_INK)
-    return fig.text(x / W_IN, y / H_IN, s, **kw)
+def fpatch(fig, p):
+    p.set_transform(fig.dpi_scale_trans); fig.patches.append(p); return p
 
 
-def chip(fig, x, y, s, w=0.70, h=0.165, strong=False):
-    p = FancyBboxPatch((x / W_IN, y / H_IN), w / W_IN, h / H_IN, boxstyle='round,pad=0,rounding_size=0.006',
-                       transform=fig.transFigure, fc='white', ec=(C_SIM if strong else '#8A8A8A'), lw=0.6)
-    fig.patches.append(p)
-    fig_text(fig, x + w / 2, y + h / 2, s, ha='center', va='center_baseline')
+PILL_W, PILL_H = 0.84, 0.22
 
 
-def arrow(fig, x0, y0, x1, y1, color='#8A8A8A', rad=0.0):
-    a = FancyArrowPatch((x0 / W_IN, y0 / H_IN), (x1 / W_IN, y1 / H_IN), transform=fig.transFigure,
-                        arrowstyle='-|>,head_length=3,head_width=1.6', lw=0.7, color=color,
-                        connectionstyle=f'arc3,rad={rad}', shrinkA=0, shrinkB=0)
-    fig.patches.append(a)
+def icon(fig, kind, x, y):
+    """small glyph centred at (x, y) inches"""
+    s = 0.075
+    if kind == 'boxes':
+        fpatch(fig, Rectangle((x - s, y - s), 2 * s, 2 * s, fill=False, ec=C_OBS, lw=LW))
+    elif kind == 'camera':
+        fpatch(fig, Rectangle((x - s, y - 0.6 * s), 1.3 * s, 1.2 * s, fc=C_INK2, ec='none'))
+        fpatch(fig, Polygon([(x + 0.3 * s, y), (x + s, y + 0.6 * s), (x + s, y - 0.6 * s)], closed=True, fc=C_INK2, ec='none'))
+    elif kind == 'depth':
+        for i, c in enumerate(('#D9D9D9', '#A6A6A6', '#6E6E6E')):
+            fpatch(fig, Rectangle((x - s, y + s - (i + 1) * 2 * s / 3), 2 * s, 2 * s / 3, fc=c, ec='none'))
+    elif kind == 'scene':
+        fpatch(fig, Rectangle((x - s, y + 0.2 * s), 2 * s, 0.35 * s, fc=C_SIM, ec='none'))
+        for xx in (x - 0.85 * s, x + 0.6 * s):
+            fpatch(fig, Rectangle((xx, y - s), 0.25 * s, 1.2 * s, fc=C_SIM, ec='none'))
+
+
+def pill(fig, x, y, kind, label):
+    fpatch(fig, FancyBboxPatch((x, y), PILL_W, PILL_H, boxstyle='round,pad=0,rounding_size=0.06',
+                               fc='white', ec='#9A9A9A', lw=0.8))
+    icon(fig, kind, x + 0.15, y + PILL_H / 2)
+    ftext(fig, x + 0.30, y + PILL_H / 2, label, va='center_baseline', ha='left')
+
+
+def arrow(fig, x0, x1, y):
+    fpatch(fig, FancyArrowPatch((x0, y), (x1, y), arrowstyle='-|>,head_length=3.5,head_width=2', lw=LW,
+                                color='#8C8C8C', shrinkA=0, shrinkB=0))
 
 
 def table_hull():
@@ -359,247 +383,188 @@ def table_hull():
     for q in pts[::-1]:
         while len(upper) >= 2 and cross(upper[-2], upper[-1], q) <= 0: upper.pop()
         upper.append(tuple(q))
-    hull = np.array(lower[:-1] + upper[:-1])
     top = project(np.array([[x, y, H_TABLE] for x, y in ((-1.6, -0.4), (0, -0.4), (0, 0.4), (-1.6, 0.4))]))[0]
-    return hull, top
-
-
-def draw_scene(ax, hull, top):
-    ax.add_patch(Polygon(hull, closed=True, fc='#E9E9E9', ec='#B0B0B0', lw=0.5, zorder=0))
-    ax.add_patch(Polygon(top, closed=True, fc='#F8F8F8', ec='#B0B0B0', lw=0.5, zorder=0))
-
-
-def boxes_patch(ax, b, **kw):
-    for x1, y1, x2, y2 in b:
-        ax.add_patch(Rectangle((x1, y1), x2 - x1, y2 - y1, fill=False, **kw))
+    return np.array(lower[:-1] + upper[:-1]), top
 
 
 XLIM_F = (0.8, 1.2)
 
 
-def forest(ax, rows):
-    """rows: (label, kind, a, b) in units of value / true. kind 'base': point a with half width b (black);
-    'ours': accepted range a..b (blue band) with the point estimate in rows[...][4]; 'none': not measured"""
+def dot_plot(ax, rows, ticks):
+    """estimate / true. rows: (label, kind, a, b, est). base: point a, half width b; ours: range a..b, point est"""
     n = len(rows)
-    ax.axvline(1.0, color=C_INK, lw=0.6, ls=(0, (2, 1.5)), zorder=1)
-    for i, row in enumerate(rows):
-        lab, kind, a, b = row[:4]; y = n - 1 - i
+    for xv in (0.9, 1.1):
+        ax.axvline(xv, color='#E6E6E6', lw=0.8, zorder=0)
+    ax.axvline(1.0, color=C_INK, lw=0.8, ls=(0, (3, 2)), zorder=1)
+    for i, (lab, kind, a, b, est) in enumerate(rows):
+        y = n - 1 - i
         if kind == 'ours':
-            ax.add_patch(Rectangle((a, y - 0.2), b - a, 0.4, fc=C_BAND, ec=C_SIM, lw=0.6, zorder=2))
-            if row[4] is not None: ax.plot([row[4]], [y], 'o', ms=3.0, color=C_SIM, zorder=3)
+            ax.add_patch(Rectangle((a, y - 0.22), b - a, 0.44, fc=C_BAND, ec=C_SIM, lw=0.8, zorder=2))
+            ax.plot([est], [y], 'o', ms=4, color=C_SIM, zorder=3)
         elif kind == 'base':
-            ax.plot([max(a - b, XLIM_F[0]), min(a + b, XLIM_F[1])], [y, y], color=C_FIT, lw=0.8, zorder=2)
-            ax.plot([a], [y], 'o', ms=3.0, color=C_FIT, zorder=3)
-        else:
-            ax.text(1.0, y, 'not measured', ha='center', va='center', color=C_INK2, fontsize=FS,
-                    bbox=dict(fc='white', ec='none', pad=0.6), zorder=3)
+            ax.plot([a - b, a + b], [y, y], color=C_BASE, lw=LW, zorder=2)
+            ax.plot([a], [y], 'o', ms=4, color=C_BASE, zorder=3)
+        else:   # not measured: row left empty, grey n/a between the row label and the axis area
+            ax.text(-0.03, y, 'n/a', transform=ax.get_yaxis_transform(), ha='right', va='center', color=C_INK2)
     ax.set_xlim(*XLIM_F); ax.set_ylim(-0.6, n - 0.4)
     ax.set_yticks(range(n)); ax.set_yticklabels([r[0] for r in rows[::-1]])
-    ax.tick_params(axis='y', length=0, pad=3)
+    ax.tick_params(axis='y', length=0, pad=17)
     ax.spines['left'].set_visible(False)
-    ax.set_xticks([0.8, 0.9, 1.0, 1.1, 1.2]); ax.set_xticklabels(['0.8', '', '1', '', '1.2'])
-    ax.patch.set_alpha(0)
+    ax.set_xticks([0.8, 1.0, 1.2])
+    if ticks:
+        ax.set_xticklabels(['0.8', '1', '1.2'])
+    else:
+        ax.tick_params(axis='x', labelbottom=False)
 
 
-def traj_panel(ax, t, h, idx, fit_coef, fit_all, label_fit, sub0, t_end):
-    """height-vs-time panel of a baseline"""
-    slide, air, land, mov = idx
-    for s in (slide, land):
-        ax.plot(t[s], h[s], 'o', ms=2.4, mfc='none', mec=C_MUTE, mew=0.6, zorder=2)
-    ax.plot(t[air], h[air], 'o', ms=2.7, color=C_OBS, mew=0, zorder=3)
-    tt = np.linspace(t[mov[0]], t[mov[-1]], 120)
-    ax.plot(tt, np.polyval(fit_all[::-1], tt) - sub0, color=C_MUTE, lw=0.7, ls=(0, (3, 2)), zorder=1)
-    ta = np.linspace(t[air[0]] - 0.015, t[air[-1]] + 0.015, 60)
-    ax.plot(ta, np.polyval(fit_coef[::-1], ta) - sub0, color=C_FIT, lw=1.0, zorder=4)
-    ax.set_xlim(0, t_end); ax.set_ylim(-1.18, 0.42)
-    ax.set_yticks([-1, 0]); ax.set_ylabel('height (m)', labelpad=1)
-    ax.set_xticks([0, 0.5, 1.0, 1.5, 2.0]); ax.set_xlabel('time (s)', labelpad=0.5)
-    ax.text(0.03, 0.12, 'sliding: not free flight, unused', ha='left', va='bottom', color=C_INK2)
-    ax.text(t[air[-1]] + 0.06, -0.22, label_fit, va='center', ha='left', color=C_INK, linespacing=1.1)
-    ax.text(t[land[-1]], -0.84, 'after landing: unused', ha='right', va='bottom', color=C_INK2)
+def height_panel(ax, t, h, slide, air, land, coef, sub0, t_end, xlabels):
+    unused = np.r_[slide, land]
+    ax.plot(t[unused], h[unused], 'o', ms=2.6, mfc='none', mec=C_MUTE, mew=0.7, zorder=2)
+    ax.plot(t[air], h[air], 'o', ms=3.0, color=C_OBS, mew=0, zorder=3)
+    ta = np.linspace(t[air[0]] - 0.02, t[air[-1]] + 0.02, 80)
+    ax.plot(ta, np.polyval(np.asarray(coef)[::-1], ta) - sub0, color=C_BASE, lw=LW, zorder=4)
+    ax.set_xlim(0, t_end); ax.set_ylim(-1.15, 0.2)
+    ax.set_yticks([-1, 0]); ax.set_ylabel('height (m)')
+    ax.set_xticks([0, 0.5, 1.0, 1.5, 2.0])
+    if xlabels:
+        ax.set_xticklabels(['0', '0.5', '1', '1.5', '2']); ax.set_xlabel('time (s)')
+    else:
+        ax.tick_params(axis='x', labelbottom=False)
 
 
 def make_figure(D):
     setup_mpl()
     fig = plt.figure(figsize=(W_IN, H_IN))
     obs, res, air, hz = D['obs'], D['res'], D['air'], D['horizon']
-    hull, top = table_hull()
     k = obs['k']; t = k * DT; t_end = t[-1] + DT
     bx = obs['boxes']; vc = 0.5 * (bx[:, 1] + bx[:, 3])
-    slide = np.where(obs['phase'] == 0)[0]; land = np.where(obs['phase'] == 2)[0]
-    mov = D['moving']; idx = (slide, air, land, mov)
+    slide = np.where((obs['phase'] == 0))[0]; land = np.where(obs['phase'] == 2)[0]
 
-    # layout (inches)
-    XL, VW = 0.05, 1.20
-    XC = 1.40
-    XP, WPAB = 2.40, 2.58
-    WP1, XP2, WP2 = 1.20, 3.92, 1.06
-    XO, WO = 5.30, 0.62
-    XT = XO + WO + 0.08
-    row = dict(a=(3.66, 0.58), b=(2.46, 0.58), c=(0.42, 1.36))
-    head = dict(a=4.50, b=3.30, c=2.07)
+    # columns (inches)
+    XI = 0.08                       # inputs
+    XF, XF1 = 1.62, 5.02            # fit column (rows a, b)
+    XC1, WC1 = 1.30, 1.70           # (c) image plane
+    XC2 = 3.50                      # (c) loss, up to XF1
+    XO, XO1 = 5.62, 6.80            # estimate / true
+    # rows: title baseline, panel bottom, panel height
+    R = dict(a=(4.54, 3.75, 0.62), b=(3.55, 2.70, 0.62), c=(2.06, 0.92, 0.94))
 
-    bg = FancyBboxPatch((1.33 / W_IN, 0.03 / H_IN), (W_IN - 1.36) / W_IN, 2.20 / H_IN,
-                        boxstyle='round,pad=0,rounding_size=0.012', transform=fig.transFigure, fc=C_OURS_BG, ec='none', zorder=-5)
-    fig.patches.append(bg)
-    fig.add_artist(plt.Line2D([1.36 / W_IN, (W_IN - 0.03) / W_IN], [3.43 / H_IN] * 2, transform=fig.transFigure, color='#D9D9D9', lw=0.6))
+    # header
+    for x, s, ha in ((XI, 'Inputs', 'left'), ((XF + XF1) / 2, 'Fit', 'center'), ((XO + XO1) / 2, 'Estimate / true', 'center')):
+        ftext(fig, x, 4.82, s, size=FS_T, ha=ha, va='center', color=C_INK2)
+    # background of (c)
+    fpatch(fig, FancyBboxPatch((0.02, 0.50), W_IN - 0.04, 1.77, boxstyle='round,pad=0,rounding_size=0.06',
+                               fc=C_BG_C, ec='none', zorder=-5))
 
-    # ---- shared input: the generated video with its tracked boxes
-    vh = VW * IMG_H / IMG_W; vy = 2.30
-    axv = ax_in(fig, XL, vy, VW, vh)
-    draw_scene(axv, hull, top)
-    boxes_patch(axv, bx[np.arange(ONSET_OBS, N_OBS, 2)], ec=C_OBS, lw=0.5)
-    axv.set_xlim(0, IMG_W); axv.set_ylim(IMG_H, 0); axv.set_xticks([]); axv.set_yticks([])
-    for s in axv.spines.values(): s.set_visible(True); s.set_color('#777777'); s.set_linewidth(0.6)
-    fig_text(fig, XL + VW / 2, vy + vh + 0.08, 'Generated video', ha='center', fontweight='bold', fontsize=7.5)
-    fig_text(fig, XL + VW / 2, vy - 0.06, 'tracked object boxes', ha='center', va='top', color=C_OBS)
-    fig_text(fig, XL + VW / 2, vy - 0.20, 'slide, take-off, flight,\nlanding', ha='center', va='top', color=C_INK2,
-             linespacing=1.1)
+    titles = dict(a='(a) 2D bounding box', b='(b) Depth lifting', c='(c) Simulator inversion (ours)')
+    inputs = dict(a=[('boxes', 'Boxes'), ('camera', 'Camera')],
+                  b=[('boxes', 'Boxes'), ('camera', 'Camera'), ('depth', 'Depth')],
+                  c=[('boxes', 'Boxes'), ('camera', 'Camera'), ('scene', 'Scene')])
+    for r in 'abc':
+        ty, yb, hh = R[r]
+        ftext(fig, XI, ty, titles[r], size=FS_T, fontweight='bold', va='baseline', color=(C_SIM if r == 'c' else C_INK))
+        n = len(inputs[r]); gap = 0.06; tot = n * PILL_H + (n - 1) * gap
+        ymid = yb + hh / 2
+        for i, (kind, lab) in enumerate(inputs[r]):
+            pill(fig, XI + 0.04, ymid + tot / 2 - (i + 1) * PILL_H - i * gap, kind, lab)
+        xa0 = XI + 0.04 + PILL_W + 0.06
+        arrow(fig, xa0, xa0 + 0.16, ymid)
+        arrow(fig, XF1 + 0.04, XF1 + 0.15, ymid)
 
-    # ---- headers, inputs, arrows
-    names = dict(a='(a) 2D bounding box', b='(b) Depth lifting', c='(c) Simulator inversion (ours)')
-    for r, s in names.items():
-        fig_text(fig, XC, head[r], s, fontweight='bold', fontsize=7.5, va='center', color=(C_SIM if r == 'c' else C_INK))
-    ch = dict(a=['tracked boxes', 'camera'], b=['tracked boxes', 'camera', 'depth model'],
-              c=['tracked boxes', 'camera', 'task scene'])
-    mids = {}
-    for r, items in ch.items():
-        yb, hh = row[r]; n = len(items); gap = 0.215
-        y0 = yb + hh / 2 + (n - 1) * gap / 2 - 0.0825 + (0.08 if r == 'c' else 0.0)
-        for i, s in enumerate(items):
-            chip(fig, XC, y0 - i * gap, s, strong=(r == 'c'))
-        mids[r] = y0 - (n - 1) * gap / 2 + 0.0825
-    fig_text(fig, XC + 0.35, y0 - 2 * 0.215 - 0.03, 'initial state', ha='center', va='top', color=C_INK2)
-    for r, rad in (('a', -0.2), ('b', 0.0), ('c', 0.2)):
-        arrow(fig, XL + VW + 0.03, vy + vh / 2, XC - 0.03, mids[r], rad=rad)
-
-    # ---- (a) image-plane parabola, pixels -> metres
-    b2, b2a = D['b2'], D['b2_all']
-    yb, hh = row['a']; ax = ax_in(fig, XP, yb, WPAB, hh)
+    # ---- (a)
+    b2 = D['b2']; _, yb, hh = R['a']
+    ax = ax_in(fig, XF, yb, XF1 - XF, hh)
     sc = b2['scale']; ref = vc[air[0]]
-    traj_panel(ax, t, -(vc - ref) * sc, idx, -np.array(b2['coef']) * sc, -np.array(b2a['coef']) * sc,
-               f'image-plane parabola, px → m\n(dashed: all frames, g = {b2a["g"]:.1f})', -ref * sc, t_end)
-
-    # ---- (b) depth lifting
-    bd, bda = D['bd'], D['bd_all']
-    yb, hh = row['b']; ax = ax_in(fig, XP, yb, WPAB, hh)
+    height_panel(ax, t, -(vc - ref) * sc, slide, air, land, -np.array(b2['coef']) * sc, -ref * sc, t_end, False)
+    # ---- (b)
+    bd = D['bd']; _, yb, hh = R['b']
+    ax = ax_in(fig, XF, yb, XF1 - XF, hh)
     z0 = bd['z'][air[0]]
-    traj_panel(ax, t, bd['z'] - z0, idx, np.array(bd['coef']), np.array(bda['coef']),
-               f'3D parabola along gravity\n(dashed: all frames, g = {bda["g"]:.1f})', z0, t_end)
+    height_panel(ax, t, bd['z'] - z0, slide, air, land, bd['coef'], z0, t_end, True)
 
-    # ---- (c1) image plane: tracked boxes vs library replays inside the predictability window
+    # ---- (c1) image plane
     rg = res['g']; e = rg['est']; vals = rg['values']; L = rg['loss']; ib = int(np.argmin(L))
-    yb, hh = row['c']
-    ax = ax_in(fig, XP, yb, WP1, hh)
-    draw_scene(ax, hull, top)
-    S_best = k + rg['shift'][ib]
-    inwin = (S_best >= CF) & (S_best <= hz) & (k >= ONSET_OBS)
-    outwin = ~((S_best >= CF) & (S_best <= hz)) & (k >= ONSET_OBS)
+    _, yb, hh = R['c']
+    ax = ax_in(fig, XC1, yb, WC1, hh)
+    hull, top = table_hull()
+    ax.add_patch(Polygon(hull, closed=True, fc='#EDEDED', ec='none', zorder=0))
+    ax.add_patch(Polygon(top, closed=True, fc='#F7F7F7', ec='#C8C8C8', lw=0.6, zorder=0))
+    S = k + rg['shift'][ib]
+    inwin = (S >= CF) & (S <= hz) & (k >= ONSET_OBS)
+    outwin = ~((S >= CF) & (S <= hz)) & (k >= ONSET_OBS)
     o = bx - (bx[0] - rg['sims'][ib][CF])
+    cu, cv = 0.5 * (o[:, 0] + o[:, 2]), 0.5 * (o[:, 1] + o[:, 3])
     ss = np.arange(CF, hz + 1)
-    for j in (ib - 3, ib - 1, ib + 1, ib + 3):
+    for j in (ib - 2, ib + 2):
         sb = rg['sims'][j]
-        ax.plot(0.5 * (sb[ss, 0] + sb[ss, 2]), 0.5 * (sb[ss, 1] + sb[ss, 3]), color=C_SIM_L, lw=0.8, zorder=2)
+        ax.plot(0.5 * (sb[ss, 0] + sb[ss, 2]), 0.5 * (sb[ss, 1] + sb[ss, 3]), color=C_SIM_L, lw=LW, zorder=2)
     sb = rg['sims'][ib]
     ax.plot(0.5 * (sb[ss, 0] + sb[ss, 2]), 0.5 * (sb[ss, 1] + sb[ss, 3]), color=C_SIM, lw=1.2, zorder=3)
-    boxes_patch(ax, o[inwin][::2], ec=C_OBS, lw=0.55, zorder=4)
-    boxes_patch(ax, o[outwin][::2], ec=C_MUTE, lw=0.55, ls=(0, (1.6, 1.2)), zorder=4)
+    # tracked centres: compared frames; frames outside the window thinned so markers do not overlap
+    ax.plot(cu[inwin], cv[inwin], 'o', ms=2.8, color=C_OBS, mew=0, zorder=4)
+    keep, last = [], None
+    for i in np.where(outwin)[0]:
+        if last is None or math.hypot(cu[i] - cu[last], cv[i] - cv[last]) > 7: keep.append(i); last = i
+    ax.plot(cu[keep], cv[keep], 'o', ms=2.6, mfc='none', mec=C_MUTE, mew=0.7, zorder=4)
+    # a few tracked boxes at sparse frames: start, take-off, mid-flight
+    for i in (ONSET_OBS, int(air[0]), int(air[len(air) * 2 // 3])):
+        ax.add_patch(Rectangle((o[i, 0], o[i, 1]), o[i, 2] - o[i, 0], o[i, 3] - o[i, 1], fill=False, ec=C_OBS, lw=0.8, zorder=5))
     sel = k >= ONSET_OBS
-    xs, ys = o[sel][:, [0, 2]].ravel(), o[sel][:, [1, 3]].ravel()
-    x0_, x1_, y0_, y1_ = xs.min() - 70, xs.max() + 12, ys.min() - 22, ys.max() + 12
-    asp = hh / WP1
+    x0_, x1_ = o[sel][:, [0, 2]].min() - 18, o[sel][:, [0, 2]].max() + 18
+    y0_, y1_ = o[sel][:, [1, 3]].min() - 24, o[sel][:, [1, 3]].max() + 16
+    asp = hh / WC1
     if (y1_ - y0_) / (x1_ - x0_) < asp:
         pad = ((x1_ - x0_) * asp - (y1_ - y0_)) / 2; y0_, y1_ = y0_ - pad, y1_ + pad
     else:
         pad = ((y1_ - y0_) / asp - (x1_ - x0_)) / 2; x0_, x1_ = x0_ - pad, x1_ + pad
     ax.set_xlim(x0_, x1_); ax.set_ylim(y1_, y0_)
     ax.set_xticks([]); ax.set_yticks([])
-    for s in ax.spines.values(): s.set_visible(True); s.set_color('#777777'); s.set_linewidth(0.6)
-    # legend (computed marks drawn as handles)
-    from matplotlib.lines import Line2D
-    from matplotlib.patches import Patch
-    hd = [Patch(fc='none', ec=C_OBS, lw=0.6, label='compared'),
-          Patch(fc='none', ec=C_MUTE, lw=0.6, ls=(0, (1.6, 1.2)), label='not compared'),
-          Line2D([], [], color=C_SIM, lw=1.2, label='best value'),
-          Line2D([], [], color=C_SIM_L, lw=0.8, label='other values')]
-    lg = ax.legend(handles=hd, loc='lower left', fontsize=FS, frameon=True, framealpha=0.92, edgecolor='none',
-                   handlelength=1.3, handleheight=0.7, handletextpad=0.4, borderpad=0.3, labelspacing=0.25, borderaxespad=0.2)
-    lg.get_frame().set_linewidth(0)
-    fig_text(fig, XP, yb + hh + 0.06, 'image plane, g library', va='bottom', color=C_INK)
-    w0, w1 = int(k[inwin][0]), int(k[inwin][-1])
-    fig_text(fig, XP + WP1 / 2, yb - 0.06, f'predictability window: frames {w0}–{w1}', ha='center', va='top', color=C_INK2)
+    for s in ax.spines.values(): s.set_visible(True); s.set_color('#9A9A9A'); s.set_linewidth(0.8)
+    ax.set_xlabel('image plane')
 
-    # ---- (c2) loss over the discrete library
-    ax = ax_in(fig, XP2, yb, WP2, hh)
+    # ---- (c2) loss over the discrete g library
+    ax = ax_in(fig, XC2, yb, XF1 - XC2, hh)
     a_, b_, c_ = e['quad']; ymin = L[ib]; lo, hi = e['band']
     xr = (vals[ib] / 1.12 ** 4.5, vals[ib] * 1.12 ** 4.5)
     ax.axvspan(lo, hi, color=C_BAND, lw=0, zorder=0)
-    xq = np.exp(np.linspace(math.log(e['sel'][0]) - 0.04, math.log(e['sel'][-1]) + 0.04, 120))
-    ax.plot(xq, a_ * np.log(xq) ** 2 + b_ * np.log(xq) + c_, color=C_SIM, lw=0.9, zorder=2)
-    ax.axhline(ymin + DELTA, color=C_INK, lw=0.6, ls=(0, (3, 2)), zorder=1)
+    xq = np.exp(np.linspace(math.log(e['sel'][0]) - 0.03, math.log(e['sel'][-1]) + 0.03, 120))
+    ax.plot(xq, a_ * np.log(xq) ** 2 + b_ * np.log(xq) + c_, color=C_SIM, lw=LW, zorder=2)
+    ax.axhline(ymin + DELTA, color=C_INK2, lw=0.8, ls=(0, (1, 1.5)), zorder=1)
     m = (vals >= xr[0]) & (vals <= xr[1])
-    ax.plot(vals[m], L[m], 'o', ms=3.4, mfc='white', mec=C_SIM, mew=0.9, zorder=3, clip_on=True)
-    ax.axvline(G_TRUE, color=C_INK, lw=0.6, zorder=1)
-    ax.set_xscale('log'); ax.set_xlim(*xr)
-    ytop = 13.0; ax.set_ylim(0, ytop)
+    ax.plot(vals[m], L[m], 'o', ms=4, mfc='white', mec=C_SIM, mew=LW, zorder=3)
+    ax.axvline(G_TRUE, color=C_INK, lw=0.8, ls=(0, (3, 2)), zorder=1)
+    ax.set_xscale('log'); ax.set_xlim(*xr); ax.set_ylim(0, 14.5)
     ax.set_xticks([6, 8, 10, 12, 15]); ax.set_xticklabels(['6', '8', '10', '12', '15'])
     ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     ax.set_yticks([0, 5, 10])
-    ax.set_xlabel('g (m/s², log scale)', labelpad=0.5); ax.set_ylabel('loss', labelpad=1)
-    ax.text(xr[0] * 1.02, ymin + DELTA + 0.3, 'min + δ', va='bottom', color=C_INK)
-    ax.text(G_TRUE * 1.015, 0.2, 'true', va='bottom', ha='left')
-    ax.text(math.sqrt(lo * hi), ytop * 0.985, 'accepted', ha='center', va='top', color=C_SIM)
-    lx = XP2 - 0.24
-    fig.text(lx / W_IN, (yb + hh + 0.06) / H_IN, '○', fontsize=FS, color=C_SIM, va='bottom')
-    fig_text(fig, lx + 0.09, yb + hh + 0.06, 'library value', va='bottom')
-    fig.add_artist(plt.Line2D([(lx + 0.72) / W_IN, (lx + 0.86) / W_IN], [(yb + hh + 0.105) / H_IN] * 2,
-                              transform=fig.transFigure, color=C_SIM, lw=0.9))
-    fig_text(fig, lx + 0.89, yb + hh + 0.06, 'quadratic', va='bottom')
+    ax.set_xlabel('g (m/s²)'); ax.set_ylabel('loss')
+    ax.text(xr[0] * 1.03, ymin + DELTA + 0.35, 'min + δ', va='bottom', ha='left', color=C_INK2)
 
-    fig_text(fig, 3.62, head['c'], f'Huber loss on box residuals / {SIGMA_PX} px, free onset shift ≤ 20 frames', va='center', color=C_INK2)
-
-    # ---- outputs
-    fig_text(fig, XO + WO / 2, head['a'], 'estimate / true', ha='center', va='center', color=C_INK2)
-    fig_text(fig, XT, head['a'], 'value', ha='left', va='center', color=C_INK2)
-    unit = dict(g='m/s²', mu='', v='m/s')
+    # ---- estimate / true
     for r, b in (('a', D['b2']), ('b', D['bd'])):
-        yb, hh = row[r]
-        ax = ax_in(fig, XO, yb, WO, hh + 0.04)
-        forest(ax, [('g', 'base', b['g'] / G_TRUE, 2 * b['g_se'] / G_TRUE), ('μ', 'none', 0, 0), ('v', 'none', 0, 0)])
-        ax.text(1.0, 2, '', transform=ax.get_yaxis_transform())
-        fig_text(fig, XT, yb + (hh + 0.04) * (2 + 0.6) / 3.2, f"{b['g']:.2f} ± {2 * b['g_se']:.2f}", va='center')
-    yb, hh = row['c']
-    fy, fh = yb + 0.80, 0.50
-    ax = ax_in(fig, XO, fy, WO, fh)
+        _, yb, hh = R[r]
+        ax = ax_in(fig, XO, yb, XO1 - XO, hh)
+        dot_plot(ax, [('g', 'base', b['g'] / G_TRUE, 2 * b['g_se'] / G_TRUE, None),
+                      ('μ', 'none', 0, 0, None), ('v', 'none', 0, 0, None)], ticks=False)
+    _, yb, hh = R['c']
+    ax = ax_in(fig, XO, yb + hh - 0.62, XO1 - XO, 0.62)
     rows = []
     for p, lab, tv in (('g', 'g', G_TRUE), ('mu', 'μ', MU_TRUE), ('v', 'v', V_TRUE)):
-        ee = res[p]['est']; rows.append((lab, 'ours', ee['band'][0] / tv, ee['band'][1] / tv,
-                                         ee['est'] / tv if ee.get('est') is not None else None))
-    forest(ax, rows)
-    fmt = dict(g='{:.2f}', mu='{:.3f}', v='{:.2f}')
-    for i, p in enumerate(('g', 'mu', 'v')):
-        ee = res[p]['est']; yy = fy + fh * ((2 - i) + 0.6) / 3.2
-        s = (fmt[p].format(ee['est']) if ee.get('est') is not None else '') + '  ' + (fmt[p] + '–' + fmt[p]).format(*ee['band'])
-        fig_text(fig, XT, yy, fmt[p].format(ee['est']) if ee.get('est') is not None else '', va='center')
-        fig_text(fig, XT + 0.30, yy, (fmt[p] + '–' + fmt[p]).format(*ee['band']), va='center', color=C_INK2,
-                 fontsize=FS)
-    fig_text(fig, XO - 0.10, fy + fh + 0.14,
-             f'true: g {G_TRUE:.2f} m/s², μ {MU_TRUE:.2f}, v {V_TRUE:.2f} m/s', va='center', color=C_INK2)
+        ee = res[p]['est']; rows.append((lab, 'ours', ee['band'][0] / tv, ee['band'][1] / tv, ee['center'] / tv))
+    dot_plot(ax, rows, ticks=True)
 
-    # not explained: another video, the block speeds up on the table
-    bad = D['bad']['loss']
-    axn = ax_in(fig, XO + 0.22, yb + 0.02, 1.20, 0.30)
-    axn.plot(vals, bad, 'o', ms=1.8, color=C_SIM, zorder=3)
-    axn.axhline(GATE, color=C_INK, lw=0.6, ls=(0, (3, 2)))
-    axn.set_xscale('log'); axn.set_xlim(0.45, 28)
-    axn.set_xticks([1, 10]); axn.set_xticklabels(['1', '10'])
-    axn.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
-    axn.set_ylim(0, 1.15 * bad.max()); axn.set_yticks([GATE]); axn.set_yticklabels(['≈3σ'])
-    axn.set_xlabel('g (m/s²)', labelpad=0.5); axn.patch.set_alpha(0)
-    fig_text(fig, XO - 0.10, yb + 0.40, 'block speeds up on the table:\nno g below ≈3σ, not explained', va='bottom',
-             color=C_INK, linespacing=1.1)
+    # ---- legend
+    hd = [Line2D([], [], ls='none', marker='o', ms=3.0, color=C_OBS, mew=0, label='Tracked, used'),
+          Line2D([], [], ls='none', marker='o', ms=2.6, mfc='none', mec=C_MUTE, mew=0.7, label='Tracked, unused'),
+          Line2D([], [], color=C_BASE, lw=LW, label='Baseline fit'),
+          Line2D([], [], color=C_INK, lw=0.8, ls=(0, (3, 2)), label='True value'),
+          Line2D([], [], color=C_SIM, lw=1.2, label='Best replay'),
+          Line2D([], [], color=C_SIM_L, lw=LW, label='Other replays'),
+          Line2D([], [], ls='none', marker='o', ms=4, mfc='white', mec=C_SIM, mew=LW, label='Library loss'),
+          Patch(fc=C_BAND, ec=C_SIM, lw=0.8, label='Accepted range')]
+    fig.legend(handles=hd, loc='lower center', bbox_to_anchor=(0.5, 0.0), ncol=4, frameon=False,
+               handlelength=1.8, handletextpad=0.5, columnspacing=1.6, labelspacing=0.45, borderaxespad=0.15)
     return fig
-
 
 
 def main():
